@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CyberCamCrsesStuController {
 
 	//수강생조회
-	@RequestMapping(value="/pro/cyberCrsesStuList", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/cyberCrsesStuList","/pro/cyberCrsesStuList"}, method=RequestMethod.GET)
 	public String cyberCrsesStuList(){
-		String url="";
+		String url="cyberCampus/common/cyberCrsesStuList";
 		
 		return url;
 	}
 	
 	//출석관리
-	@RequestMapping(value="/pro/cyberCrsesStuAttend", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/cyberCrsesStuAttend","/pro/cyberCrsesStuAttend"}, method=RequestMethod.GET)
 	public String cyberCrsesStuAttend(){
-		String url="";
+		String url="cyberCampus/common/cyberCrsesStuAttend";
 		
 		return url;
 	}

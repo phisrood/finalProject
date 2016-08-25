@@ -1,5 +1,20 @@
 package com.korea.classApp.service;
-
+/**
+ * @Class Name : AdviceController.java
+ * @Description : 학사일정관리 서비스 클래스
+ * @Modification Information
+ * @author 이영만
+ * @since  2016.08.25.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *   
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 public class ClassAppServiceImpl implements ClassAppService{
 
 	@Override

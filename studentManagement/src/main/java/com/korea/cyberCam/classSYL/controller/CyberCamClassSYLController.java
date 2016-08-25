@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CyberCamClassSYLController {
 	
 	//강의계획서 조회
-	@RequestMapping(value="stu/cyberClassSYLInfo", method=RequestMethod.GET)
+	@RequestMapping(value={"stu/cyberClassSYLInfo","pro/cyberClassSYLInfo"}, method=RequestMethod.GET)
 	public String cyberClassSYLInfo(){
-		String url="";
+		String url="cyberCampus/common/cyberClassSYLInfo";
 		
 		return url;
 	}

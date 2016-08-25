@@ -6,6 +6,20 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--==============================================================
+ * 공지사항 리스트
+ * @author 
+ * @since  2016.08.25.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
 
 	<!-- Data tables -->
     <link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">

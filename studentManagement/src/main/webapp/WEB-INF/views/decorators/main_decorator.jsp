@@ -7,6 +7,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%--==============================================================
+ * 학생 데코레이터
+ * @author 
+ * @since  2016.08.25.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,6 +106,7 @@
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
 		                      <li><a href="crsesBookList">수강편람조회</a></li>
+		                      
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>

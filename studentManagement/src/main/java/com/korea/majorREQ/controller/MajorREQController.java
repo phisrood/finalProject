@@ -28,13 +28,13 @@ public class MajorREQController {
 	//소속학과 부전공 신청내역 출력
 	@RequestMapping(value="/pro/belongMinorREQList", method=RequestMethod.GET)
 	public String belongMinorREQList(){
-		String url="";
+		String url="/pro/belongMinorREQList";
 		
 		return url;
 	}
 	
 	//소속학과 부전공신청내역 승인/반려
-	@RequestMapping(value="/emp/belongMinorREQDecide", method=RequestMethod.GET)
+	@RequestMapping(value="/pro/belongMinorREQDecide", method=RequestMethod.GET)
 	public String belongMinorREQDecide(){
 		String url="";
 		
@@ -44,13 +44,13 @@ public class MajorREQController {
 	//타학과 부전공 신청내역 출력
 	@RequestMapping(value="/pro/othersMinorREQList", method=RequestMethod.GET)
 	public String othersMinorREQList(){
-		String url="";
+		String url="/pro/othersMinorREQList";
 		
 		return url;
 	}
 	
 	//타학과 부전공신청내역 승인/반려
-	@RequestMapping(value="/emp/othersMinorREQDecide", method=RequestMethod.GET)
+	@RequestMapping(value="/pro/othersMinorREQDecide", method=RequestMethod.GET)
 	public String othersMinorREQDecide(){
 		String url="";
 		

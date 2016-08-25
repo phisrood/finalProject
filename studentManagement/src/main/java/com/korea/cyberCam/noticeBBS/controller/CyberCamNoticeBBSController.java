@@ -1,14 +1,16 @@
 package com.korea.cyberCam.noticeBBS.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@Controller
 public class CyberCamNoticeBBSController {
 	
 	//공지사항게시판 리스트
-	@RequestMapping(value="/common/cyberNoticeList", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/cyberNoticeList","/pro/cyberNoticeList"}, method=RequestMethod.GET)
 	public String noticeBBSList(){
-		String url="";
+		String url="/cyberCampus/common/cyberNoticeList";
 		
 		return url;
 	}
