@@ -80,7 +80,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>정보통신공학과 4학년 재학중</h3>  <!-- 학과 -->
+                <h3>정보통신공학과 학과장</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
                
@@ -102,6 +102,7 @@
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
+		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="#">수업평가통계</a></li>
 		                      <li><a href="#">수강편람등록</a></li>
 		                      <li><a href="#">수강생성적조회</a></li>

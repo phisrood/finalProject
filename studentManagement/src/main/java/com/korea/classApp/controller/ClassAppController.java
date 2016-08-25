@@ -30,7 +30,7 @@ public class ClassAppController {
 	//수업평가 항목 등록
 	@RequestMapping(value="/emp/classAppInsert", method=RequestMethod.GET)
 	public String classAppInsert(){
-		String url="";
+		String url="/emp/classAppInsert";
 		
 		return url;
 	}

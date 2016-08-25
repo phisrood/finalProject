@@ -23,23 +23,23 @@ public class CyberCamNoticeBBSController {
 	}
 	
 	//공지사항게시판 등록
-	@RequestMapping(value="/common/cyberNoticeInsert", method=RequestMethod.GET)
+	@RequestMapping(value="/emp/cyberNoticeInsert", method=RequestMethod.GET)
 	public String noticeBBSInsert(){
-		String url="";
+		String url="/emp/cyberNoticeInsert";
 		
 		return url;
 	}
 	//공지사항게시판 삭제
-	@RequestMapping(value="/common/cyberNoticeDelete", method=RequestMethod.GET)
+	@RequestMapping(value="/emp/cyberNoticeDelete", method=RequestMethod.GET)
 	public String noticeBBSDelete(){
-		String url="";
+		String url="/emp/cyberNoticeDelete";
 		
 		return url;
 	}
 	//공지사항게시판수정
-	@RequestMapping(value="/common/cyberNoticeUpdate", method=RequestMethod.GET)
+	@RequestMapping(value="/emp/cyberNoticeUpdate", method=RequestMethod.GET)
 	public String noticeBBSUpdate(){
-		String url="";
+		String url="/emp/cyberNoticeUpdate";
 		
 		return url;
 	}

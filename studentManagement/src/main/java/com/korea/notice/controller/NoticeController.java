@@ -24,8 +24,8 @@ public class NoticeController {
 		return url;
 	}
 	
-	//공지사항 더보기 url Select 제이쿼리구현/페이징, 학생화면
-	@RequestMapping(value="/stu/noticeAllList", method=RequestMethod.GET)
+	//공지사항 더보기 url Select 제이쿼리구현/페이징
+	@RequestMapping(value={"/stu/noticeAllList","/pro/noticeAllList","/emp/noticeAllList"}, method=RequestMethod.GET)
 	public String noticeAllList(){
 		String url="/common/noticeAllList";
 		
@@ -33,8 +33,8 @@ public class NoticeController {
 		return url;
 	}
 	
-	//공지사항 디테일, 학생화면
-	@RequestMapping(value="/stu/noticeDetail", method=RequestMethod.GET)
+	//공지사항 디테일
+	@RequestMapping(value="/noticeDetail", method=RequestMethod.GET)
 	public String noticeDetail(){
 		String url="/common/noticeDetail";
 		

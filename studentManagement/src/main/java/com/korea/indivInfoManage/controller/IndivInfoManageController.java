@@ -37,4 +37,11 @@ public class IndivInfoManageController {
 		
 		return url;
 	}
+	//학적변동현황
+	@RequestMapping(value="/emp/colleageChangeList", method=RequestMethod.GET)
+	public String colleageChangeListByEmp(){
+		String url = "/emp/colleageChangeList";
+		
+		return url;
+	}
 }

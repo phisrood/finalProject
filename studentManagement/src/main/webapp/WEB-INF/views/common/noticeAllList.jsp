@@ -56,7 +56,7 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td><a href="javascript:OpenWindow('/common/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
+                          <td><a href="javascript:OpenWindow('/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
                           <td>fileUpload</td>
                           <td>2016/08/13</td>
                           <td>뚜뚜</td>
