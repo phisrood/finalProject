@@ -10,7 +10,7 @@ public class RegController {
 	//학생 등록 내역 조회
 	@RequestMapping(value="/stu/regList", method=RequestMethod.GET)
 	public String regList(){
-		String url="";
+		String url="/stu/regList";
 		
 		return url;
 	}

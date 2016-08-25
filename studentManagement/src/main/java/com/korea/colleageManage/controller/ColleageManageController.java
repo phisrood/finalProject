@@ -10,7 +10,7 @@ public class ColleageManageController {
 	// 휴/복학 신청양식 출력
 	@RequestMapping(value="/stu/schoolReModel", method=RequestMethod.GET)
 	public String schoolReModel(){
-		String url = "";
+		String url = "/stu/schoolReModel";
 		
 		
 		return url;
@@ -19,7 +19,7 @@ public class ColleageManageController {
 	// 휴/복학 신청
 	@RequestMapping(value="/stu/schoolReREQ", method=RequestMethod.GET)
 	public String schoolReREQ(){
-		String url="";
+		String url="redirect:/stu/schoolReModel";
 		
 		return url;
 	}

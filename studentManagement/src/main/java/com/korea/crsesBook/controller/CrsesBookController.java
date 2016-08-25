@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CrsesBookController {
 
 	//수강편람조회
-	@RequestMapping(value="/common/crsesBookList", method=RequestMethod.GET)
+	@RequestMapping(value="/stu/crsesBookList", method=RequestMethod.GET)
 	public String crsesBookList(){
-		String url="";
+		String url="/stu/crsesBookList";
 		
 		return url;
 	}

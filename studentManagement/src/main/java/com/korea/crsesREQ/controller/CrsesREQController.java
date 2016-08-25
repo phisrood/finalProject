@@ -10,7 +10,7 @@ public class CrsesREQController {
 	//수강리스트 조회
 	@RequestMapping(value="/stu/crsesList", method=RequestMethod.GET)
 	public String crsesList(){
-		String url="";
+		String url="/stu/crsesList";
 		
 		return url;
 	}
@@ -26,7 +26,7 @@ public class CrsesREQController {
 	//수강 신청
 	@RequestMapping(value="/stu/crsesREQ", method=RequestMethod.GET)
 	public String crsesREQ(){
-		String url="";
+		String url="/stu/crsesREQ";
 		
 		return url;
 	}

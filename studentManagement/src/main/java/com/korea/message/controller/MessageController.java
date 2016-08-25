@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MessageController {
 
 	//쪽지함 리스트 출력 최신 20~30개만 (안읽은쪽지만)
-	@RequestMapping(value="/common/messageNewList", method=RequestMethod.GET)
+	@RequestMapping(value="/stu/messageNewList", method=RequestMethod.GET)
 	public String messageNewList(){
 		String url="";
 		
 		return url;
 	}
 	
-	//쪽지함 리스트 더보기 출력 제이쿼리구현
-	@RequestMapping(value="/common/messageAllList", method=RequestMethod.GET)
+	//쪽지함 리스트 더보기 출력 제이쿼리구현, 학생화면
+	@RequestMapping(value="/stu/messageAllList", method=RequestMethod.GET)
 	public String messageAllList(){
-		String url="messageAllList";
+		String url="/common/messageAllList";
 		
 		return url;
 	}
 	
 	//쪽지조회
-	@RequestMapping(value="/common/messageInfo", method=RequestMethod.GET)
+	@RequestMapping(value="/stu/messageInfo", method=RequestMethod.GET)
 	public String messageInfo(){
 		String url="";
 		

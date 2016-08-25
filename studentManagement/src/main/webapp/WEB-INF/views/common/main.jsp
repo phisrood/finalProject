@@ -42,7 +42,7 @@
                   <div class="x_title">
                     <h2>공지사항</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                       <li><a href="/common/noticeAllList">더보기+</a>
+                       <li><a href="/stu/noticeAllList">더보기+</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -64,7 +64,7 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td><a href="javascript:OpenWindow('/common/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
+                          <td><a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
                           <td>fileUpload</td>
                           <td>2016/08/13</td>
                           <td>뚜뚜</td>
@@ -179,7 +179,7 @@
                   <div class="x_title">
                     <h2>쪽지함</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a href="javascript:OpenWindow('/common/messageAllList','1000','860')" style="text-decoration:none">더보기+</a>
+                      <li><a href="/stu/messageAllList" style="text-decoration:none">더보기+</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>

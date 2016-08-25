@@ -32,10 +32,10 @@
             <form id="formm" name="formm">
               <h1>LOGIN</h1>
               <div>
-                <input type="text" class="form-control" name="id" id="id" placeholder="User ID" required="" />
+                <input type="text" class="form-control" name="id" id="id" placeholder="User ID" required="" value="12345678" />
               </div>
               <div>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="" />
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required=""/>
               </div>
               <div>
                 <a class="btn btn-default submit" onclick="go_login();">LOGIN</a>

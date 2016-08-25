@@ -23,15 +23,15 @@ public class LoginController {
 	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(){
-		String url = "loginForm";
+		String url = "/common/loginForm";
 		
 		return url;
 	}
 	
 	//메인
-	@RequestMapping(value="/common/main")
+	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
 	public String main(){
-		String url ="main";
+		String url ="/common/main";
 				
 		return url;
 	}
@@ -58,9 +58,15 @@ public class LoginController {
 		TestVO loginUser = service.getLoginInfo(id);
 		if(loginUser == null){
 			url = "redirect:/common/loginForm";
+		}else if(id.equals("1234567")){
+			session.setAttribute("loginUser", loginUser);
+			url= "redirect:/pro/main";
+		}else if(id.equals("123456")){
+			session.setAttribute("loginUser", loginUser);
+			url= "redirect:/emp/main";
 		}else{
 			session.setAttribute("loginUser", loginUser);
-			url= "redirect:/common/main";
+			url= "redirect:/stu/main";
 		}
 		
 		
@@ -70,7 +76,7 @@ public class LoginController {
 	//비밀번호찾기 이메일 구현
 	@RequestMapping(value="/common/pwdSearch")
 	public String pwdSearch(){
-		String url="searchPwd";
+		String url="/common/searchPwd";
 		
 		return url;
 	}

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class NoticeController {
 	
 	//공지사항 게시판 리스트 Select 최신 20개만
-	@RequestMapping(value="/common/noticeNewList", method=RequestMethod.GET)
+	@RequestMapping(value="/stu/noticeNewList", method=RequestMethod.GET)
 	public String noticeNewList(){
 		String url="";
 		
@@ -16,7 +16,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 미리보기 Select
-	@RequestMapping(value="/common/noticeInfo", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/noticeInfo", method=RequestMethod.POST)
 	public String noticeContentInfo(){
 		String url="";
 		
@@ -24,19 +24,19 @@ public class NoticeController {
 		return url;
 	}
 	
-	//공지사항 더보기 url Select 제이쿼리구현/페이징
-	@RequestMapping(value="/common/noticeAllList", method=RequestMethod.GET)
+	//공지사항 더보기 url Select 제이쿼리구현/페이징, 학생화면
+	@RequestMapping(value="/stu/noticeAllList", method=RequestMethod.GET)
 	public String noticeAllList(){
-		String url="noticeAllList";
+		String url="/common/noticeAllList";
 		
 		
 		return url;
 	}
 	
-	//공지사항 디테일
-	@RequestMapping(value="/common/noticeDetail", method=RequestMethod.GET)
+	//공지사항 디테일, 학생화면
+	@RequestMapping(value="/stu/noticeDetail", method=RequestMethod.GET)
 	public String noticeDetail(){
-		String url="noticeDetail";
+		String url="/common/noticeDetail";
 		
 		
 		return url;
@@ -44,7 +44,7 @@ public class NoticeController {
 	
 	
 	//공지사항 조회 Select
-	@RequestMapping(value="/common/noticeInquiry", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/noticeInquiry", method=RequestMethod.POST)
 	public String noticeInquiry(){
 		String url="";
 		
@@ -53,7 +53,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 수정
-	@RequestMapping(value="/common/noticeUpdate", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/noticeUpdate", method=RequestMethod.POST)
 	public String noticeUpdate(){
 		String url="";
 		
@@ -62,7 +62,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 삭제
-	@RequestMapping(value="/common/noticeDelete", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/noticeDelete", method=RequestMethod.POST)
 	public String noticeDelete(){
 		String url="";
 		
@@ -71,7 +71,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 등록 + 파일첨부
-	@RequestMapping(value="/common/noticeInsert", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/noticeInsert", method=RequestMethod.POST)
 	public String noticeInsert(){
 		String url="";
 		
@@ -81,7 +81,7 @@ public class NoticeController {
 	}
 	
 	//파일다운로드
-	@RequestMapping(value="/common/noticeFileDown", method=RequestMethod.GET)
+	@RequestMapping(value="/stu/noticeFileDown", method=RequestMethod.GET)
 	public String noticeFileDown(){
 		String url="";
 		

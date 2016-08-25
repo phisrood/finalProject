@@ -1,1 +1,22 @@
 @CHARSET "UTF-8";
+body{
+	background:red;
+}
+div.navbar.nav_title{
+	background:red;
+}
+div.left_col.scroll-view{
+	background:red;
+}
+footer{
+	background:red;
+}
+.nav.side-menu>li.active>a{
+	linear-gradient(red, orange), red;
+}
+.nav-md ul.child-menu li:before{
+	background:white;
+}
+.nav-md ul.child-menu li:after{
+	background:white;
+}

@@ -41,7 +41,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/common/main" class="site_title"><i class="fa fa-paw"></i> <span>Hanguk University</span></a>
+              <a href="/stu/main" class="site_title"><i class="fa fa-paw"></i> <span>Hanguk University</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -66,12 +66,11 @@
                 <h3>정보통신공학과 4학년 재학중</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
-                <c:choose>
-                	<c:when test='${loginUser.autu == "stu" }'>
+                
 		                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/common/noticeAllList">공지사항</a></li>
-		                      <li><a href="/common/messageAllList">쪽지함</a></li>
+		                      <li><a href="/stu/noticeAllList">공지사항</a></li>
+		                      <li><a href="/stu/messageAllList">쪽지함</a></li>
 		                  
 		                    </ul>
 		                  </li>
@@ -80,23 +79,23 @@
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
 		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
 		                      <li><a href="#">부/다 전공신청</a></li>
-		                      <li><a href="#">휴/복학신청</a></li>
+		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">학사일정조회</a></li>
-		                      <li><a href="#">수강신청조회</a></li>
+		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
+		                      <li><a href="/stu/crsesList">수강신청조회</a></li>
 		                      <li><a href="#">수업시간표</a></li>
-		                      <li><a href="#">전체성적조회</a></li>
-		                      <li><a href="#">수업평가</a></li>
-		                      <li><a href="#">현재학기성적조회</a></li>
-		                      <li><a href="#">수강편람조회</a></li>
+		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
+		                      <li><a href="/stu/classAppInput">수업평가</a></li>
+		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
+		                      <li><a href="crsesBookList">수강편람조회</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">등록내역</a></li>
+		                      <li><a href="/stu/regList">등록내역</a></li>
 		                      <li><a href="#">고지서</a></li>
 		                    </ul>
 		                  </li>
@@ -108,9 +107,10 @@
 		                  </li>
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">사이버 상담 신청 내역</a></li>
-		                      <li><a href="#">사이버 상담실</a></li>
-		                      <li><a href="#">상담게시판</a></li>
+		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
+		                      <li><a href="/stu/adviceREQ">상담신청</a></li>
+		                      <li><a href="/stu/camAdvice">사이버상담실</a></li>
+		                      <li><a href="/stu/adviceBoard">상담게시판</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i>증명서발급 <span class="fa fa-chevron-down"></span></a>
@@ -122,80 +122,12 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">수강신청</a></li>
+		                      <li><a href="/stu/crsesREQ">수강신청</a></li>
 		                     
 		                    </ul>
 		                  </li>
-	                  </c:when>
-	                  <c:when test='${loginUser.autu == "pro" }'>
-	                  	  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/common/noticeAllList">공지사항</a></li>
-		                      <li><a href="/common/messageAllList">쪽지함</a></li>
-		                  
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">학적변동현황 조회</a></li>
-		                      <li><a href="#">학과 부/다전공 신청</a></li>
-		                      <li><a href="#">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">휴/복학 신청 현황</a></li>
-		                      <li><a href="#">졸업요건</a></li>
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">수업평가통계</a></li>
-		                      <li><a href="#">수강편람등록</a></li>
-		                      <li><a href="#">수강생성적조회</a></li>
-		                      <li><a href="#">학과생성적조회</a></li>
-		                      <li><a href="#">성적입력</a></li>
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">사이버 상담 신청 내역</a></li>
-		                      <li><a href="#">사이버 상담실</a></li>
-		                      <li><a href="#">상담게시판</a></li>
-		                    </ul>
-		                  </li>
-	                  </c:when>
-	                  <c:when test='${loginUser.autu == "emp" }'>
-	                  	  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/common/noticeAllList">공지사항</a></li>
-		                      <li><a href="/common/messageAllList">쪽지함</a></li>
-		                  
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">학적변동현황조회</a></li>
-		                      <li><a href="#">학과 부/다전공 신청</a></li>
-		                      <li><a href="#">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">휴/복학신청 현황</a></li>
-		                      <li><a href="#">졸업요건</a></li>
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">학사일정관리</a></li>
-		                      <li><a href="#">수업평가항목관리</a></li>
-		                      <li><a href="#">수강편람승인관리</a></li>
-		                    </ul>
-		                  </li>
-		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">수강신청</a></li>
-		                     
-		                    </ul>
-		                  </li>
-	                  </c:when>
-	                  <c:otherwise>
-	                  	<script> location.href="/error"; </script>
-	                  </c:otherwise>
-                  </c:choose>
+	                 
+	              
                 </ul>
               </div>
              

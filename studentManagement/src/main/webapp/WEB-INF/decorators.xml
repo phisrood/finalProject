@@ -2,8 +2,15 @@
 
 <decorators defaultdir="/WEB-INF/views/decorators">
 	<decorator name="main" page="main_decorator.jsp">
-		<pattern>/*</pattern>
+		<pattern>/stu/*</pattern>
 	</decorator>
+	<decorator name="main_emp" page="emp_decorator.jsp">
+		<pattern>/emp/*</pattern>
+	</decorator>
+	<decorator name="main_pro" page="pro_decorator.jsp">
+		<pattern>/pro/*</pattern>
+	</decorator>
+	
 
 	<excludes>
 		<pattern>/common/loginForm</pattern>
@@ -11,6 +18,5 @@
 		<pattern>/main.jsp</pattern>
 		<pattern>/common/noticeDetail</pattern>
 		<pattern>/common/pwdSearch</pattern>
-		<pattern>/common/messageAllList</pattern>
 	</excludes>
 </decorators>

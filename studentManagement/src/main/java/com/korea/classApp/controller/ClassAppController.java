@@ -34,7 +34,7 @@ public class ClassAppController {
 	//수업평가 입력
 	@RequestMapping(value="/stu/classAppInput", method=RequestMethod.GET)
 	public String classAppInput(){
-		String url="";
+		String url="/stu/classAppInput";
 		
 		return url;
 	}

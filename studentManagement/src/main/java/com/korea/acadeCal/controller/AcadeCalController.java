@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AcadeCalController {
 
 	//학사일정 조회
-	@RequestMapping(value="/common/acadeCalList", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/acadeCalList","/emp/acadeCalList","/pro/acadeCalList"}, method=RequestMethod.GET)
 	public String acadeCalList(){
-		String url="";
+		String url="/common/acadeCalList";
 		
 		return url;
 	}

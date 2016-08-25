@@ -10,7 +10,7 @@ public class ScoreInquiryController {
 	//전체성적조회
 	@RequestMapping(value="/stu/scoreListAll", method=RequestMethod.GET)
 	public String scoreListAll(){
-		String url="";
+		String url="/stu/scoreListAll";
 		
 		return url;
 	}
@@ -18,7 +18,7 @@ public class ScoreInquiryController {
 	//현재 학기 성적조회
 	@RequestMapping(value="/stu/scoreListNow", method=RequestMethod.GET)
 	public String scoreListNow(){
-		String url="";
+		String url="/stu/scoreListNow";
 		
 		return url;
 	}

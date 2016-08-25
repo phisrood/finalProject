@@ -10,7 +10,7 @@ public class AdviceController {
 	//받은 상담 신청 조회(교수)
 	@RequestMapping(value="/pro/adviceResponsList", method=RequestMethod.GET)
 	public String adviceResponsList(){
-		String url="";
+		String url="/pro/adviceResponsList";
 		
 		return url;
 	}
@@ -18,7 +18,7 @@ public class AdviceController {
 	//보낸 상담 신청 조회(학생)
 	@RequestMapping(value="/stu/adviceRequestList", method=RequestMethod.GET)
 	public String adviceRequestList(){
-		String url="";
+		String url="/stu/adviceRequestList";
 		
 		return url;
 	}
@@ -26,7 +26,7 @@ public class AdviceController {
 	//상담신청
 	@RequestMapping(value="/stu/adviceREQ", method=RequestMethod.GET)
 	public String adviceREQ(){
-		String url="";
+		String url="/stu/adviceREQ";
 		
 		return url;
 	}
@@ -55,8 +55,22 @@ public class AdviceController {
 		return url;
 	}
 	
-	//상담 신청 삭제
-	@RequestMapping(value="/stu/adviceREQUpdate", method=RequestMethod.GET)
+	//상담 게시판
+	@RequestMapping(value="/stu/adviceBoard", method=RequestMethod.GET)
+	public String adviceBoard(){
+		String url="/common/adviceBoard";
+		
+		return url;
+	}
+	//상담 게시판 글 작성
+	@RequestMapping(value="/stu/adviceBoardWrite", method=RequestMethod.GET)
+	public String adviceBoardWrite(){
+		String url="";
+		
+		return url;
+	}
+	//상담 게시판 답변 작성
+	@RequestMapping(value="/stu/adviceBoardReply", method=RequestMethod.GET)
 	public String adviceREQUpdate(){
 		String url="";
 		
@@ -64,4 +78,16 @@ public class AdviceController {
 	}
 	
 	////////////////////////////////화상상담추가//////////////////////////////
+	@RequestMapping(value="/stu/camAdvice", method=RequestMethod.GET)
+	public String camAdvice(){
+		String url="/stu/cam_advice";
+		
+		return url;
+	}
+	@RequestMapping(value="/stu/chatAdvice", method=RequestMethod.GET)
+	public String chatAdvice(){
+		String url="/stu/chat_advice";
+		
+		return url;
+	}
 }
