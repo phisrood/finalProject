@@ -34,7 +34,7 @@ public class CrsesBookController {
 	//수강편람승인/반려
 	@RequestMapping(value="/emp/crsesBookDecide", method=RequestMethod.GET)
 	public String crsesBookDecide(){
-		String url="";
+		String url="/emp/crsesBookDecide";
 		
 		return url;
 	}
