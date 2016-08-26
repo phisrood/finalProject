@@ -9,7 +9,7 @@
 
 
     
-    <!-- 수강신청리스트 -->
+    <!-- 휴복학 신청 명단 -->
 			
            
             <div class="row">
@@ -25,8 +25,13 @@
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
+                          <th>순번</th>
+                          <th>성명</th>
+                          <th>학년</th>
+                          <th>학번</th>
+                          <th>전화번호</th>
                           <th>학과</th>
-                          <td>멀티미디어공학</td>
+                          <td>구분</td>
                         </tr>
                       </thead>
 

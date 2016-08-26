@@ -27,7 +27,7 @@ public class ColleageManageController {
 	// 휴/복학 신청내역조회
 	@RequestMapping(value="/emp/schoolReREQList", method=RequestMethod.GET)
 	public String schoolReREQList(){
-		String url="";
+		String url="/emp/schoolReREQList";
 		
 		return url;
 	}

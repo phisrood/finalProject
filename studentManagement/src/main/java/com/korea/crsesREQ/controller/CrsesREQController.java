@@ -31,6 +31,14 @@ public class CrsesREQController {
 		return url;
 	}
 	
+	//수강 신청 로그인
+	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.GET)
+	public String crsesLogin(){
+		String url="/stu/crsesLogin";
+		
+		return url;
+	}
+	
 	//수강 신청취소
 	@RequestMapping(value="/stu/crsesDelete", method=RequestMethod.GET)
 	public String crsesDelete(){

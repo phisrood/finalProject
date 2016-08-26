@@ -94,7 +94,7 @@
 		                      <li><a href="#">학적변동현황조회</a></li>
 		                      <li><a href="#">학과 부/다전공 신청</a></li>
 		                      <li><a href="#">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">휴/복학신청 현황</a></li>
+		                      <li><a href="/emp/schoolReREQList">휴/복학신청 현황</a></li>
 		                      <li><a href="#">졸업요건</a></li>
 		                    </ul>
 		                  </li>
@@ -102,7 +102,7 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="#">학사일정관리</a></li>
 		                      <li><a href="/emp/classAppInsert">수업평가항목관리</a></li>
-		                      <li><a href="#">수강편람승인관리</a></li>
+		                      <li><a href="/emp/crsesBookDecide">수강편람승인관리</a></li>
 		                    </ul>
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>

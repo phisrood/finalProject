@@ -122,7 +122,7 @@ public class AdviceController {
 	//상담 게시판 글 작성
 	@RequestMapping(value="/stu/adviceBoardWrite", method=RequestMethod.GET)
 	public String adviceBoardWrite(){
-		String url="";
+		String url="/stu/adviceBoardWrite";
 		
 		return url;
 	}
@@ -134,9 +134,9 @@ public class AdviceController {
 	 * @throws 
 	 */
 	//상담 게시판 답변 작성
-	@RequestMapping(value="/stu/adviceBoardReply", method=RequestMethod.GET)
+	@RequestMapping(value="/pro/adviceBoardReply", method=RequestMethod.GET)
 	public String adviceREQUpdate(){
-		String url="";
+		String url="/pro/adviceBoardReply";
 		
 		return url;
 	}
