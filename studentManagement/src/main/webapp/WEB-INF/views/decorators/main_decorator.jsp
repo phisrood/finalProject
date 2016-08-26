@@ -41,6 +41,7 @@
     <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+    <link href="/common/css/default.css" rel="stylesheet">
     
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -138,7 +139,7 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/crsesREQ">수강신청</a></li>
+		                      <li><a href="/stu/crsesLogin">수강신청</a></li>
 		                     
 		                    </ul>
 		                  </li>

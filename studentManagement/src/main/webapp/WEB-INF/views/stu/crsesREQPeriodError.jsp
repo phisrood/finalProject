@@ -9,7 +9,7 @@
 
 	
     
-    <!-- 등록납부내역 -->
+    <!-- 수강신청 기간 에러페이지 -->
 			
            <div class="col-md-12">
           <div class="col-middle">

@@ -70,6 +70,13 @@ public class CrsesREQController {
 		
 		return url;
 	}
+	//수강신청 기간설정
+	@RequestMapping(value="/stu/crsesREQPeriodError", method=RequestMethod.GET)
+	public String crsesREQPeriodError(){
+		String url="/stu/crsesREQPeriodError";
+		
+		return url;
+	}
 
 	
 

@@ -44,9 +44,8 @@
     <script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
     <script src="/bootstrap/js/dataTables.responsive.min.js"></script>
     <script src="/bootstrap/js/responsive.bootstrap.js"></script>
-    <script src="/bootstrap/js/datatables.scroller.min.js"></script>
+    <script src="/bootstrap/js/dataTables.scroller.min.js"></script>
     <script src="/bootstrap/js/jszip.min.js"></script>
-    <script src="/bootstrap/js/pdfmake.min.js"></script>
     <script src="/bootstrap/js/vfs_fonts.js"></script>
            
             <div class="row">
