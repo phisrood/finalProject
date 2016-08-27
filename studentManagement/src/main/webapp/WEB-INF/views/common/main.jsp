@@ -62,7 +62,7 @@
                   </div>
                   <div class="x_content">
                     
-                    <table id="datatable" class="table table-striped table-bordered">
+                    <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
                           <th>NO</th>
@@ -199,11 +199,10 @@
                   </div>
                   <div class="x_content">
                     
-                    <table id="datatable" class="table table-striped table-bordered">
+                    <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
-                          <th>삭제</th>
-                          <th>번호</th>
+                          <th>NO</th>
                           <th>수신</th>
                           <th>제목</th>
                           <th>수신일</th>
@@ -213,115 +212,99 @@
 
                       <tbody>
                         <tr>
-                          <td>√</td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>2</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>3</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>3</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>4</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
-                          <td>1</td>
+                          <td>5</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
-                          <td>1</td>
+                          <td>6</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
-                          <td>1</td>
+                          <td>7</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>8</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
-                          <td>1</td>
+                          <td>9</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
-                          <td>1</td>
+                          <td>10</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td>√</td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                          <tr>
-                          <td></td>
                           <td>1</td>
                           <td>읽음</td>
-                          <td>나다</td>
+                          <td>나양ㅇㅇㅇㅇㅇㅇ야ㅑㅑㅑㅑㅑㅑㅑㅑ</td>
                           <td>2016/08/13</td>
                         </tr>
                       </tbody>
