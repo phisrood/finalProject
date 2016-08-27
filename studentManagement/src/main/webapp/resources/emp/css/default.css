@@ -1,22 +1,22 @@
 @CHARSET "UTF-8";
 body{
-	background:blue;
+	background:#5D5D5D;
 }
 div.navbar.nav_title{
-	background:blue;
+	background:#5D5D5D;
 }
 div.left_col.scroll-view{
-	background:blue;
+	background:#5D5D5D;
 }
 footer{
-	background:blue;
+	background:#5D5D5D;
 }
 .nav.side-menu>li.active>a{
-	linear-gradient(blue, skyblue), blue;
+	background:linear-gradient(#747474, #747474), #5D5D5D;
 }
-.nav-md ul.child-menu li:before{
-	background:blue;
+.nav-md ul.nav.child_menu li:before{
+	background:white;
 }
-.nav-md ul.child-menu li:after{
-	background:blue;
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid white;
 }

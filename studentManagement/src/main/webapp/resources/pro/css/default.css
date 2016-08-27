@@ -1,22 +1,22 @@
 @CHARSET "UTF-8";
 body{
-	background:red;
+	background:#960707;
 }
 div.navbar.nav_title{
-	background:red;
+	background:#960707;
 }
 div.left_col.scroll-view{
-	background:red;
+	background:#960707;
 }
 footer{
-	background:red;
+	background:#960707;
 }
 .nav.side-menu>li.active>a{
-	linear-gradient(red, orange), red;
+	background:linear-gradient(#F06161, #F06161), #960707;
 }
-.nav-md ul.child-menu li:before{
+.nav-md ul.nav.child_menu li:before{
 	background:white;
 }
-.nav-md ul.child-menu li:after{
-	background:white;
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid white;
 }

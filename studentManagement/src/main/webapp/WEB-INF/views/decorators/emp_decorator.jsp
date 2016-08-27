@@ -99,7 +99,6 @@
 		                  <li><a><i class="fa fa-edit"></i>학과관리<span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/departmentInfoList">학과정보 조회</a></li>
-		                      <li><a href="/emp/departmentInsert">학과 신설</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
