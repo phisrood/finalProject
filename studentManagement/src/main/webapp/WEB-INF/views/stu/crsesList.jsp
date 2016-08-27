@@ -28,7 +28,7 @@
 		
 			<div class="x_title">
 				<h2>
-					<i class="fa fa-calendar"></i> 수강신청조회
+					수강신청조회
 				</h2>
 				<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
@@ -54,8 +54,10 @@
                             <option>2학기</option>
                           </select>
                         </div>
+               <div style="text-align:right;">
               <button type="button" class="btn btn-dark">조회</button>
 			<button type="button" class="btn btn-dark">출력</button>
+                    	</div>
            
 			      
 			<div class="x_content">

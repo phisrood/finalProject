@@ -60,7 +60,9 @@
                  
                    
                 
-                <button type="button" class="btn btn-dark">조회</button>
+                <div style="text-align:right;">
+                	<button type="button" class="btn btn-dark">조회</button>
+                </div>
           
 			<div class="x_content">
 			      <div class="x_content">

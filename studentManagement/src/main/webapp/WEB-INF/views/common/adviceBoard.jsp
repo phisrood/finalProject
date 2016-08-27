@@ -39,18 +39,21 @@
                 <div style="float: left; width: 72%;">
                 	&nbsp;&nbsp;&nbsp;- 상담 내역은 본인과 담당 교수만 열람이 가능합니다.
                 </div>
-                <div style="float: right; width: 4%;">
-					<a href="javascript:OpenWindow('UI-CS-010.jsp','600','450')" style="text-decoration:none">
-          				<button type="button" class="btn btn-default btn-xs">작 성</button>
-          			</a>
-				</div>
-				<div style="float: right; width: 4%;">
-					<button type="button" class="btn btn-default btn-xs">검 색</button>
-				</div>
-                <div style="float: right; width: 20%;">
-					<input name="seach" type="text"  size="30">
-				</div><br><br>
-                <table id="datatable" class="table table-striped table-bordered">
+               <div class="x_content">
+				<div style="text-align:right;">
+                    
+		                          <select style="width:100px; height:30px;">
+		                            <option>전체</option>
+		                            <option>제목</option>
+		                            <option>작성일</option>
+		                          </select>
+		                     <input type="text" style="width:200px; height:30px;">
+			                <button type="button" class="btn btn-dark">검색</button>
+			                <button type="button" class="btn btn-dark">작 성</button>
+                      
+                </div>  
+                
+                <table id="datatable" class="table table-striped jambo_table bulk_action">
                    	<thead>
                    		<tr>
                        		<th>글번호</th>
@@ -165,6 +168,7 @@
                		이전 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 다음
                 </a></div><br>
     	</div>
+    </div>
     </div>
     <!-- Datatables -->
     <script>

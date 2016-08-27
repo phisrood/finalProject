@@ -16,7 +16,7 @@
     
     <div class="row">
    		<!-- 사이버 상담실 ( 화상 상담 ) -->
-           	<table id="datatable" class="table table-striped table-bordered">
+           	<table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
                		<tr>
                    		<th>방법</th>
@@ -37,7 +37,7 @@
                    		<td>12</td>
                    		<td>대기</td>
                    		<td>
-                   			<button type="button" class="btn btn-default btn-xs">입 장</button>
+                   			<button type="button" class="btn btn-dark">입 장</button>
                    		</td>
                  	</tr>
                  	<tr>

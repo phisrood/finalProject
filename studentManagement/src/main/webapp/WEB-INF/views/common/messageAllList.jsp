@@ -82,16 +82,18 @@
 						<div role="tabpanel" class="tab-pane fade active in"
 							id="tab_content1" aria-labelledby="home-tab">
 							<div class="x_content">
-							<div class="title_right">
-				                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-				                  <div class="input-group">
-				                  <input type="text" class="form-control" placeholder="Search for...">
-				                    <span class="input-group-btn">
-				                      <button class="btn btn-dark" type="button">검색</button>
-				                    </span>
-				                  </div>
-				                </div>
-				              </div>
+							<div style="text-align:right;">
+                    
+		                          <select style="width:100px; height:30px;">
+		                            <option>전체</option>
+		                            <option>발신자</option>
+		                            <option>내용</option>
+		                            <option>수신일</option>
+		                          </select>
+		                     <input type="text" style="width:200px; height:30px;">
+			                <button type="button" class="btn btn-dark">검색</button>
+                      
+                    		 </div>   
 				              
 								<table id="datatable"
 									class="table table-striped jambo_table bulk_action">
@@ -142,8 +144,10 @@
 			                    <div class="col-md-9 col-sm-9 col-xs-12">
 			                      <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-comment"></i>받은쪽지내용</label><br/>
 			                      <textarea class="resizable_textarea form-control" placeholder="쪽지라느으으으으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅇ으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ응"></textarea><br/>
-									<button type="button" class="btn btn-dark">삭제</button>
 			                    </div>
+									<div style="text-align:right;">
+										<button type="button" class="btn btn-dark">삭제</button>
+			                    	</div>
 								
 							</div>
 							</div>
@@ -152,16 +156,18 @@
 						<div role="tabpanel" class="tab-pane fade" 
 									id="tab_content2" aria-labelledby="profile-tab">
 							<div class="x_content">
-							 <div class="title_right">
-				                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-				                  <div class="input-group">
-				                    <input type="text" class="form-control" placeholder="Search for...">
-				                    <span class="input-group-btn">
-				                      <button class="btn btn-dark" type="button">검색</button>
-				                    </span>
-				                  </div>
-				                </div>
-				              </div>
+							 <div style="text-align:right;">
+                    
+		                          <select style="width:100px; height:30px;">
+		                            <option>전체</option>
+		                            <option>수신자</option>
+		                            <option>내용</option>
+		                            <option>수신일</option>
+		                          </select>
+		                     <input type="text" style="width:200px; height:30px;">
+			                <button type="button" class="btn btn-dark">검색</button>
+                      
+                    		 </div>   
 				              
 							<table id="datatable" class="table table-striped jambo_table bulk_action">
 								<thead>
@@ -210,9 +216,11 @@
 								<div class="col-md-9 col-sm-9 col-xs-12">
 			                      <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-comment"></i>보낸쪽지내용</label><br/>
 			                      <textarea class="resizable_textarea form-control" placeholder="쪽지라느으으으으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅇ으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ응"></textarea><br/>
-								<button type="button" class="btn btn-dark">삭제</button>
 			                    </div>
-			                    
+									<div style="text-align:right;">
+										<button type="button" class="btn btn-dark">삭제</button>
+				                    
+				                    </div>
 							  </div>
 							</div>
 						
@@ -318,12 +326,10 @@
 		
 		                  <div id="editor" class="editor-wrapper"></div>
 		                  <br/>
+		                  <div style="text-align:right;">
 		                  <button type="button" class="btn btn-dark">보내기</button>
+		                  </div>
 		
-		                  <textarea name="descr" id="descr" style="display:none;"></textarea>
-		                  
-			                  <br />
-			
 		                </div>
 		                </div>     
 		            	</div>

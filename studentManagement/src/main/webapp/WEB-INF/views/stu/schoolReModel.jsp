@@ -83,10 +83,12 @@
                       <label>변동사유</label>
                       <input type="text" class="form-control" placeholder="변동사유를 쓰시오">
                     </div>
-			                      <button type="button" class="btn btn-dark">신청</button>
 			      </div>
-			      
+                    	<div style="text-align:right;">
+			                      <button type="button" class="btn btn-dark">신청</button>
+                    	</div>
 			      <div class="x_content">
+			      
                     
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>

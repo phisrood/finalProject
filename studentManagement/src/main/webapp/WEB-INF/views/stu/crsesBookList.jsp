@@ -72,9 +72,11 @@
                         <option>교양</option>
                       </select>
                    
-               
-            <button type="button" class="btn btn-dark">조회</button>
-			<button type="button" class="btn btn-dark">출력</button>
+             
+            <div style="text-align:right;">
+	            <button type="button" class="btn btn-dark">조회</button>
+				<button type="button" class="btn btn-dark">출력</button>
+            </div>   
        
      
 

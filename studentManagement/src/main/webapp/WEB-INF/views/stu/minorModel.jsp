@@ -82,7 +82,7 @@
                         </tr>
                     </table>
                     <div align="center">
-						<button type="button" class="btn btn-default btn-sm">신청</button>
+						<button type="button" class="btn btn-dark">신청</button>
 					</div>
                 </div>
     	</div>

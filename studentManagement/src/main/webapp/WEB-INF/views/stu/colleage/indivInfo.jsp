@@ -85,7 +85,7 @@
 	   						<i class="fa fa-arrow-circle-o-right"></i> &nbsp;개인 정보 / 주소 정보 ( 하이포탈 비밀 번호 변경 )
 	   					</div>
 	   					<div style="float: right; width: 4%;">
-	   						<button type="button" class="btn btn-default btn-xs">저 장</button>
+	   						<button type="button" class="btn btn-dark">저 장</button>
 	   					</div>
 	                </div>
 	                <div class="clearfix"></div><br>

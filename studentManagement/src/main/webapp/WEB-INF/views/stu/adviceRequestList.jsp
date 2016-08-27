@@ -71,7 +71,7 @@
 						</select> 시
 					</div><br>
 					<div align="center">
-						<button type="button" class="btn btn-default btn-sm">상담 신청</button>
+						<button type="button" class="btn btn-dark">상담 신청</button>
 					</div>
 	        	</div>
 	        </div>

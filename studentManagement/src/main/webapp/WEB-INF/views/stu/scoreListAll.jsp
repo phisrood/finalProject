@@ -57,13 +57,15 @@
                           </select>
                         </div>
                         
+                 <div style="text-align:right;">
                  
                     <label>
                       <input type="checkbox" >  전체조회
                     </label>
                 
-                <button type="button" class="btn btn-dark">조회</button>
+               	 <button type="button" class="btn btn-dark">조회</button>
                         
+                 </div>
            
 			      
 			<div class="x_content">
