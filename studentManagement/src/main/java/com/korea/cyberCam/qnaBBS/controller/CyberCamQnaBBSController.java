@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CyberCamQnaBBSController {
 
 	//qna게시판 리스트
-	@RequestMapping(value="/common/qnaBBSList", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/qnaBBSList","/cyberCampus/pro/qnaBBSList"}, method=RequestMethod.GET)
 	public String qnaBBSList(){
-		String url="";
+		String url="/cyberCampus/common/qnaBBSList";
 		
 		return url;
 	}
 	//qna게시판 상세보기
-	@RequestMapping(value="/common/qnaBBSDetail", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
 	public String qnaBBSDetail(){
-		String url = "";
+		String url = "/cyberCampus/common/qnaBBSDetail";
 		
 		return url;
 	}
 	
 	//qna게시판 등록
-	@RequestMapping(value="/common/qnaBBSInsert", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/qnaBBSInsert","/cyberCampus/pro/qnaBBSInsert"}, method=RequestMethod.GET)
 	public String qnaBBSInsert(){
-		String url="";
+		String url="/cyberCampus/common/qnaBBSInsert";
 		
 		return url;
 	}

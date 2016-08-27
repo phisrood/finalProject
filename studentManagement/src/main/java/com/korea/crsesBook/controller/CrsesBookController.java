@@ -18,7 +18,7 @@ public class CrsesBookController {
 	//수강편람등록
 	@RequestMapping(value="/pro/crsesBookInsert", method=RequestMethod.GET)
 	public String crsesBookInsert(){
-		String url="";
+		String url="/pro/crsesBookInsert";
 		
 		return url;
 	}

@@ -94,7 +94,7 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
 		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
-		                      <li><a href="#">부/다 전공신청</a></li>
+		                      <li><a href="/stu/minorModel">부/다 전공신청</a></li>
 		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
 		                    </ul>
 		                  </li>
@@ -116,12 +116,6 @@
 		                      <li><a href="#">고지서</a></li>
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-bar-chart-o"></i> 장학 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">수혜 내역</a></li>
-		                      <li><a href="#">석차 조회</a></li>
-		                    </ul>
-		                  </li>
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
@@ -139,12 +133,9 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/crsesLogin">수강신청</a></li>
-		                     
+		                      <li><a href="/stu/crsesLogin">수강신청</a></li>                     
 		                    </ul>
 		                  </li>
-	                 
-	              
                 </ul>
               </div>
              

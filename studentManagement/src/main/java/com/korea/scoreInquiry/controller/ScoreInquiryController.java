@@ -26,7 +26,7 @@ public class ScoreInquiryController {
 	//학과생 성적조회
 	@RequestMapping(value="/pro/scoreListDepartment", method=RequestMethod.GET)
 	public String scoreListDepartment(){
-		String url="";
+		String url="/pro/scoreListDepartment";
 		
 		return url;
 	}

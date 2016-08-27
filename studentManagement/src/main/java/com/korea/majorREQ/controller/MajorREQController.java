@@ -10,7 +10,7 @@ public class MajorREQController {
 	//부전공 신청양식 출력
 	@RequestMapping(value="/stu/minorModel", method=RequestMethod.GET)
 	public String minorREQModel(){
-		String url="";
+		String url="/stu/minorModel";
 		
 		return url;
 	}

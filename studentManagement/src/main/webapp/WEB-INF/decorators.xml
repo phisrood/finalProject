@@ -10,6 +10,12 @@
 	<decorator name="main_pro" page="pro_decorator.jsp">
 		<pattern>/pro/*</pattern>
 	</decorator>
+	<decorator name="main_cyberStu" page="cyber_stu_decorator.jsp">
+		<pattern>/cyberCampus/stu/*</pattern>
+	</decorator>
+	<decorator name="main_cyberPro" page="cyber_pro_decorator.jsp">
+		<pattern>/cyberCampus/pro/*</pattern>
+	</decorator>
 	
 
 	<excludes>

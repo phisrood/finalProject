@@ -32,9 +32,9 @@ public class CyberCamOnlineConController {
 	}
 	
 	//온라인콘텐츠 조회
-	@RequestMapping(value="/pro/onlineConList", method=RequestMethod.GET)
+	@RequestMapping(value="/cyberCampus/stu/onlineConList", method=RequestMethod.GET)
 	public String onlineConList(){
-		String url = "";
+		String url = "/cyberCampus/stu/onlineConList";
 		
 		return url;
 	}

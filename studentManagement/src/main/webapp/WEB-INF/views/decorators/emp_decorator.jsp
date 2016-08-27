@@ -42,6 +42,7 @@
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/emp/css/default.css" rel="stylesheet">
+    <link href="/common/css/default.css" rel="stylesheet">
     
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -86,16 +87,19 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/noticeAllList">공지사항</a></li>
 		                      <li><a href="/emp/messageAllList">쪽지함</a></li>
-		                  
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="#">학적변동현황조회</a></li>
-		                      <li><a href="#">학과 부/다전공 신청</a></li>
-		                      <li><a href="#">타학과 부/다전공신청</a></li>
 		                      <li><a href="/emp/schoolReREQList">휴/복학신청 현황</a></li>
 		                      <li><a href="#">졸업요건</a></li>
+		                    </ul>
+		                  </li>
+		                  <li><a><i class="fa fa-edit"></i>학과관리<span class="fa fa-chevron-down"></span></a>
+		                    <ul class="nav child_menu">
+		                      <li><a href="/emp/departmentInfoList">학과정보 조회</a></li>
+		                      <li><a href="/emp/departmentInsert">학과 신설</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>

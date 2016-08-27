@@ -18,7 +18,7 @@ public class SemesScoreController {
 	//성적 입력
 	@RequestMapping(value="/pro/scoreInput", method=RequestMethod.GET)
 	public String scoreInput(){
-		String url="";
+		String url="/pro/scoreInput";
 		
 		return url;
 	}

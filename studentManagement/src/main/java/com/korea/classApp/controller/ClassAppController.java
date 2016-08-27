@@ -56,7 +56,7 @@ public class ClassAppController {
 	//수업평가 통계
 	@RequestMapping(value="/pro/classAppStat", method=RequestMethod.GET)
 	public String classAppProStat(){
-		String url="";
+		String url="/pro/classAppStat";
 		
 		return url;
 	}

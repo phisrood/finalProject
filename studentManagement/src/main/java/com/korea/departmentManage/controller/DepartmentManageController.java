@@ -10,7 +10,7 @@ public class DepartmentManageController {
 	//학과정보조회
 	@RequestMapping(value="/emp/departmentInfoList", method=RequestMethod.GET)
 	public String departmentInfoList(){
-		String url = "";
+		String url = "/emp/departmentInfoList";
 		
 		return url;
 	}
@@ -18,7 +18,7 @@ public class DepartmentManageController {
 	//신설학과 등록
 	@RequestMapping(value="/emp/departmentInsert", method=RequestMethod.GET)
 	public String departmentInsert(){
-		String url = "";
+		String url = "/emp/departmentInsert";
 		
 		return url;
 	}
@@ -26,7 +26,7 @@ public class DepartmentManageController {
 	//학과정보 수정
 	@RequestMapping(value="/emp/departmentUpdate", method=RequestMethod.GET)
 	public String departmentUpdate(){
-		String url = "";
+		String url = "/emp/departmentUpdate";
 		
 		return url;
 	}

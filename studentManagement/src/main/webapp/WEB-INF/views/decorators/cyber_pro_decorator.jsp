@@ -59,7 +59,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/common/main" class="site_title"><i class="fa fa-paw"></i> <span>Hanguk University</span></a>
+              <a href="/common/main" class="site_title"><i class="fa fa-paw"></i> <span>CyberCampus</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -104,8 +104,8 @@
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>
-		                      <li><a href="/pro/classAppStat">수업평가통계</a></li>
-		                      <li><a href="/pro/crsesBookInsert">수강편람등록</a></li>
+		                      <li><a href="#">수업평가통계</a></li>
+		                      <li><a href="#">수강편람등록</a></li>
 		                      <li><a href="#">수강생성적조회</a></li>
 		                      <li><a href="#">학과생성적조회</a></li>
 		                      <li><a href="#">성적입력</a></li>

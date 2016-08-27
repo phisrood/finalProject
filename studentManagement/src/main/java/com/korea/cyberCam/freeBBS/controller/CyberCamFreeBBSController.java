@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CyberCamFreeBBSController {
 
 	//자유게시판 리스트
-	@RequestMapping(value="/common/freeBBSList", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/freeBBSList","/cyberCampus/pro/freeBBSList"}, method=RequestMethod.GET)
 	public String freeBBSList(){
-		String url="";
+		String url="/cyberCampus/common/freeBBSList";
 		
 		return url;
 	}
 	//자유게시판 상세보기
-	@RequestMapping(value="/common/freeBBSDetail", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/freeBBSDetail","/cyberCampus/pro/freeBBSDetail"}, method=RequestMethod.GET)
 	public String freeBBSDetail(){
-		String url = "";
+		String url = "/cyberCampus/common/freeBBSDetail";
 		
 		return url;
 	}
 	
 	//자유게시판 등록
-	@RequestMapping(value="/common/freeBBSInsert", method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/freeBBSInsert","/cyberCampus/pro/freeBBSInsert"}, method=RequestMethod.GET)
 	public String freeBBSInsert(){
-		String url="";
+		String url="/cyberCampus/common/freeBBSInsert";
 		
 		return url;
 	}

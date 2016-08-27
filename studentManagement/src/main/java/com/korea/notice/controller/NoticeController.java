@@ -34,7 +34,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 디테일
-	@RequestMapping(value="/noticeDetail", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail"}, method=RequestMethod.GET)
 	public String noticeDetail(){
 		String url="/common/noticeDetail";
 		
@@ -53,7 +53,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 수정
-	@RequestMapping(value="/stu/noticeUpdate", method=RequestMethod.POST)
+	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
 	public String noticeUpdate(){
 		String url="";
 		
@@ -62,7 +62,7 @@ public class NoticeController {
 	}
 	
 	//공지사항 삭제
-	@RequestMapping(value="/stu/noticeDelete", method=RequestMethod.POST)
+	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.POST)
 	public String noticeDelete(){
 		String url="";
 		
@@ -71,9 +71,9 @@ public class NoticeController {
 	}
 	
 	//공지사항 등록 + 파일첨부
-	@RequestMapping(value="/stu/noticeInsert", method=RequestMethod.POST)
+	@RequestMapping(value="/emp/noticeInsert", method=RequestMethod.POST)
 	public String noticeInsert(){
-		String url="";
+		String url="/emp/noticeInsert";
 		
 		//파일첨부 구현
 		

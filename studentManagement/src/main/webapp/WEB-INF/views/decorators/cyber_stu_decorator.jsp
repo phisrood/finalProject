@@ -41,7 +41,7 @@
     <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
-    <link href="/pro/css/default.css" rel="stylesheet">
+    <link href="/stu/css/default.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
     
     <script src="/common/js/notice.js"></script>
@@ -59,7 +59,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/common/main" class="site_title"><i class="fa fa-paw"></i> <span>Hanguk University</span></a>
+              <a href="/common/main" class="site_title"><i class="fa fa-paw"></i> <span>CyberCampus</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -81,7 +81,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>정보통신공학과 학과장</h3>  <!-- 학과 -->
+                <h3>정보통신공학과 4학년 재학중</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
                
@@ -104,8 +104,8 @@
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>
-		                      <li><a href="/pro/classAppStat">수업평가통계</a></li>
-		                      <li><a href="/pro/crsesBookInsert">수강편람등록</a></li>
+		                      <li><a href="#">수업평가통계</a></li>
+		                      <li><a href="#">수강편람등록</a></li>
 		                      <li><a href="#">수강생성적조회</a></li>
 		                      <li><a href="#">학과생성적조회</a></li>
 		                      <li><a href="#">성적입력</a></li>
