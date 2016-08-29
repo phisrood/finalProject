@@ -41,7 +41,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	private MemberManageDAO dao;
 	
 	String[] columnHead = {"이름","생년월일","핸드폰번호","우편번호"
-			,"주소","상세주소","혈액형","취미","성별","이메일","주민번호앞자리","주민번호뒷자리","학과번호"};
+			,"주소","상세주소","혈액형","성별","이메일","주민번호앞자리","주민번호뒷자리","학과번호","납부금액","납부일","영문명"};
 	
 
 	/**
@@ -204,7 +204,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
-
+		System.out.println(rows);
 		for (rowindex = 2; rowindex < rows; rowindex++) {
 			// 행을읽는다
 			Row row = sheet.getRow(rowindex);

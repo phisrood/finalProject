@@ -16,6 +16,7 @@
 	<mappers>
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/student.xml"/>
+		<mapper resource="sql/mapper/student.xml"/>
 
 	</mappers>
 </configuration>

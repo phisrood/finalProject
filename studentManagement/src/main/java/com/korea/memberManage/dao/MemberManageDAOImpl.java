@@ -52,10 +52,12 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 */
 	@Override
 	public int insertStuInfo(Map<String, String> studentMap) {
+		studentMap.put("use_id", "0");
 		int resultUser = sqlSession.insert("member.insertUser",studentMap);
+		System.out.println(studentMap.get("use_id"));
 		int resultStudent = sqlSession.insert("member.insertStudent", studentMap);
-		int resultMajor = sqlSession.insert("member.insertMajor", studentMap);
-		int reusltReg = sqlSession.insert("member.insertReg",studentMap);
+		int resultMajor = sqlSession.insert("member.insertMajorAssign", studentMap);
+		int reusltReg = sqlSession.insert("member.insertRegist",studentMap);
 		int resultCRC = sqlSession.insert("member.insertCRC",studentMap);
 		return resultUser;
 	}
