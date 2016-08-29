@@ -104,8 +104,7 @@ public class LoginController {
 		
 		//로그인되고
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		UsersVO usersVO = null;
+		UsersVO usersVO = new UsersVO();
 		
 		//id 가져와서
 		String id = auth.getName();
