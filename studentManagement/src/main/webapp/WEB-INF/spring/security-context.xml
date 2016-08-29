@@ -39,7 +39,7 @@
 	</authentication-manager>
 	
 <!-- 시큐리티 -->
-	<http pattern="/common/**" use-expressions="true">
+	<http pattern="/**" use-expressions="true">
 		<form-login
 			login-page="/common/loginForm"
 			login-processing-url="/common/loginProcess"
@@ -47,7 +47,7 @@
 			password-parameter="use_pwd"
 			default-target-url="/common/login"
 		/>
-		<access-denied-handler error-page="/common/login_error"/>
+		<access-denied-handler error-page="/common/auth_error"/>
 <!--
         login-page : 로그인이 요청될 시에 이동할 URL을 설정합니다.
 		username-parameter : 로그인 아이디의 파라미터명 즉 name필드값을 설정합니다.

@@ -21,8 +21,23 @@ public class LoginController {
 
 	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
-	public String loginForm(){
-		String url = "/common/loginForm";
+	public String loginForm(HttpSession session){
+		String url = "/error";
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		
+		//로그인이 되어있으면 로그인폼 못감.
+		if(usersVO != null){
+			if(usersVO.getUse_kind().equals("student")){
+				url="redirect:/stu/main";
+			}else if(usersVO.getUse_kind().equals("professor")){
+				url="redirect:/pro/main";
+			}else if(usersVO.getUse_kind().equals("employee")){
+				url="redirect:/emp/main";
+			}
+		}else{
+			url = "/common/loginForm";
+		}
+		
 		
 		return url;
 	}
@@ -52,14 +67,21 @@ public class LoginController {
 	public String login(HttpSession session) throws IOException{
 		String url = "redirect:/common/login_error";
 		
+		//로그인되고
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
 		UsersVO usersVO = null;
 		
+		//id 가져와서
 		String id = auth.getName();
 		
+		//usersVO에 접속정보담고
 		usersVO = service.getLoginInfo(id);
 			
+		//session에 넣고
 		session.setAttribute("loginUser", usersVO);
+		
+		//화면분기
 		if(usersVO.getUse_kind().equals("student")){
 			url="redirect:/stu/main";
 		}else if(usersVO.getUse_kind().equals("professor")){
@@ -93,6 +115,13 @@ public class LoginController {
 	@RequestMapping(value="/common/login_error")
 	public String login_error(){
 		String url="/login_error";
+		
+		return url;
+	}
+	//접근권한에러
+	@RequestMapping(value="/common/auth_error")
+	public String auth_error(){
+		String url="/auth_error";
 		
 		return url;
 	}
