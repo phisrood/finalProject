@@ -7,12 +7,15 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="test" type="com.korea.dto.TestVO"/>
+		<typeAlias alias="users" type="com.korea.dto.UsersVO"/>
 		<typeAlias alias="int" type="java.lang.Integer"/>
 		<typeAlias alias="str" type="java.lang.String"/>
+		<typeAlias alias="student" type="com.korea.dto.StudentVO"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="sql/mapper/login.xml" />
+		<mapper resource="sql/mapper/student.xml"/>
+
 	</mappers>
 </configuration>

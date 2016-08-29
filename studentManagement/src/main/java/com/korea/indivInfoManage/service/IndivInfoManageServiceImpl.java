@@ -1,4 +1,5 @@
 package com.korea.indivInfoManage.service;
+
 /**
  * @Class Name : IndivInfoManageServiceImpl.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,17 +16,26 @@ package com.korea.indivInfoManage.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.dto.StudentVO;
+import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
+
+@Service
 public class IndivInfoManageServiceImpl implements IndivInfoManageService{
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+
+	@Autowired
+	private IndivInfoManageDAO indivInfoManageDAO;
+	
+
 	@Override
-	public String getIndivInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public StudentVO getIndivInfo(String id) {
+		return indivInfoManageDAO.getIndivInfo(id);
+		
 	}
 	/**
 	 * 개인 정보 수정
@@ -46,6 +56,11 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	 */
 	@Override
 	public String getColleageChangeList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getIndivInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}

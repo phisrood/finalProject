@@ -1,4 +1,5 @@
 package com.korea.indivInfoManage.dao;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,7 +16,12 @@ package com.korea.indivInfoManage.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+import com.korea.dto.StudentVO;
+
+
 public interface IndivInfoManageDAO {
+
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -29,6 +35,12 @@ public interface IndivInfoManageDAO {
 	 * @return 
 	 * @throws 
 	 */
+
+
+	//개인신상정보 조회
+	public StudentVO getIndivInfo(String id);
+	
+	//개인신상정보 수정
 	public String updateIndiv();
 	/**
 	 * 학적 변동 현황

@@ -1,4 +1,5 @@
 package com.korea.login.dao;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -17,6 +18,8 @@ package com.korea.login.dao;
  */
 import com.korea.dto.TestVO;
 
+import com.korea.dto.UsersVO;
+
 public interface LoginDAO {
 	/**
 	 * 개인 정보 조회
@@ -25,13 +28,17 @@ public interface LoginDAO {
 	 * @throws 
 	 */
 	//로그인 액터별 VO 분기
-	public TestVO getLoginInfo(String id);
+
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
+
+	public UsersVO getLoginInfo(String id);
+	
 	//비밀번호찾기
 	public void getLoginPwdSearch();
 }

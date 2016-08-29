@@ -22,7 +22,7 @@
 		<pattern>/common/loginForm</pattern>
 		<pattern>/error</pattern>
 		<pattern>/main.jsp</pattern>
-		<pattern>/common/noticeDetail</pattern>
+		<pattern>/*/noticeDetail</pattern>
 		<pattern>/common/pwdSearch</pattern>
 	</excludes>
 </decorators>

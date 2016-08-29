@@ -6,7 +6,6 @@ function go_login(){
 		alert("패스워드를 입력하여 주세요.");
 		document.formm.password.focus();
 	}else{
-		document.formm.method="post";
 		document.formm.action="/common/login";
 		document.formm.submit();   
 	}    

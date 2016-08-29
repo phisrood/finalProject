@@ -44,16 +44,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form id="formm" name="formm">
+            <form name="form" method="post" action="/common/loginProcess">
               <h1>LOGIN</h1>
               <div>
-                <input type="text" class="form-control" name="id" id="id" placeholder="User ID" required="" value="12345678" />
+                <input type="text" class="form-control" name="use_id" id="use_id" placeholder="User ID"/>
               </div>
               <div>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required=""/>
+                <input type="password" class="form-control" name="use_pwd" id="use_pwd" placeholder="Password"/>
               </div>
               <div>
-                <a class="btn btn-default submit" onclick="go_login();">LOGIN</a>
+                <input type="submit" value="로그인">
                 <a class="reset_pass" href="/common/pwdSearch">비밀번호찾기</a>
               </div>
 
@@ -64,7 +64,7 @@
                   <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
                   <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
                 </div>
-            	</form>
+           	</form>
           	</section>
            </div>
         </div>     

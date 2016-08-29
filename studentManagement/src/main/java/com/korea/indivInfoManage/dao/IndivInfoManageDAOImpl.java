@@ -15,6 +15,14 @@ package com.korea.indivInfoManage.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.StudentVO;
+
+@Repository
 public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	/**
 	 * 개인 정보 조회
@@ -22,10 +30,19 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @return 
 	 * @throws 
 	 */
+
+
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
+	@Autowired
+	private SqlSession sqlSession;
+	
+
 	@Override
-	public String getIndivInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public StudentVO getIndivInfo(String id) {
+		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",id);
 	}
 	/**
 	 * 개인 정보 수정
@@ -46,6 +63,11 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 */
 	@Override
 	public String getColleageChangeList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getIndivInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
