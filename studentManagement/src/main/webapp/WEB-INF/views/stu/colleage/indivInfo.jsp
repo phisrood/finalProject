@@ -37,15 +37,15 @@
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="20122750" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_use_id}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성명(한글)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="이수정" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="박진성" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">단과 &nbsp;대학</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="공과 대학" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">주민 &nbsp;번호</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="930813-2310042" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_regno1}-${studentVO.stud_regno2}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">학적 &nbsp;상태</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="재학" style="text-align: center;"></div>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;"></div>
 					</div>
 				</div>
 				<div class="col-md-55">
@@ -53,7 +53,7 @@
                 		<div style="float: left; width: 35%; padding:3px;">과&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정규" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성명(영어)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="lee soojung" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_engname}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">현재 &nbsp;학과</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정보통신공학과" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">과&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정</div>
@@ -69,7 +69,7 @@
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정보통신공학전공" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="여자" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;"></div><br><br>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -92,20 +92,20 @@
 	                <div style="float: left; width: 5%;"><br></div>
 	                <div style="float: left; width: 70%;">
 		                <div style="float: left; width: 10%; padding: 3px;">생년월일</div>
-	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="1993.08.13" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_birth}" style="text-align: center;"></div>
 	               		<div style="float: left; width: 8%; padding: 3px;">혈액형</div>
-	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="A형" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;"></div>
 	               		<div style="float: left; width: 6%; padding: 3px;">취미</div>
-	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="노는게 제일 좋아" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_hob}" style="text-align: center;"></div>
                		</div>
                		<div style="float: left; width: 25%;"><br></div>
                		<div class="clearfix"></div><br>
                		<div style="float: left; width: 5%;"><br></div>
                		<div style="float: left; width: 70%;">
 	               		<div style="float: left; width: 10%; padding:3px;">전화번호</div>
-	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="010-4810-3183" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_phone}" style="text-align: center;"></div>
 	               		<div style="float: left; width: 8%; padding:3px;">E-mail</div>
-	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="lsj0813@naver.com" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_email}" style="text-align: center;"></div>
 	                	<div style="float: left; width: 32%;"><br></div>
                 	</div>
                 	<div style="float: left; width: 25%;"><br></div>
@@ -130,6 +130,7 @@
                 </div>
     	</div>
     </div>
+   
     
     <!-- Datatables -->
     <script src="/bootstrap/js/jquery.dataTables.min.js"></script>

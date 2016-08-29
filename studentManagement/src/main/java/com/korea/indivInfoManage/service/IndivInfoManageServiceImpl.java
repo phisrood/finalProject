@@ -1,11 +1,21 @@
 package com.korea.indivInfoManage.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.dto.StudentVO;
+import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
+
+@Service
 public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 
+	@Autowired
+	private IndivInfoManageDAO indivInfoManageDAO;
+	
 	@Override
-	public String getIndivInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public StudentVO getIndivInfo(String id) {
+		return indivInfoManageDAO.getIndivInfo(id);
+		
 	}
 
 	@Override

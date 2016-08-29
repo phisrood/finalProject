@@ -1,9 +1,11 @@
 package com.korea.indivInfoManage.dao;
 
+import com.korea.dto.StudentVO;
+
 public interface IndivInfoManageDAO {
 
 	//개인신상정보 조회
-	public String getIndivInfo();
+	public StudentVO getIndivInfo(String id);
 	
 	//개인신상정보 수정
 	public String updateIndiv();

@@ -1,16 +1,33 @@
 package com.korea.indivInfoManage.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.korea.dto.StudentVO;
+import com.korea.dto.TestVO;
+import com.korea.dto.UsersVO;
+import com.korea.indivInfoManage.service.IndivInfoManageService;
 
 @Controller
 public class IndivInfoManageController {
 	
+	@Autowired
+	IndivInfoManageService indivInfoManageService;
+	
 	//개인정보 조회
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
-	public String indivInfo(){
+	public String indivInfo(HttpSession session, Model model){
 		String url = "/stu/colleage/indivInfo";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		
+		StudentVO studentVO =  indivInfoManageService.getIndivInfo(loginUser.getUse_id());
+		model.addAttribute("studentVO",studentVO);
 		
 		return url;
 	}
