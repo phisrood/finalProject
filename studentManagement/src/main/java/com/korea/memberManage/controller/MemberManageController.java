@@ -25,6 +25,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,21 +44,20 @@ public class MemberManageController {
 	@RequestMapping(value="/emp/stuInfoList", method=RequestMethod.GET)
 	public String stuInfoList(){
 		String url="/emp/stuInfoList";
-		
+
 	
 		return url;
 	}
+
+
 	/**
 	 * 학생 정보 등록
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	@RequestMapping(value="/emp/stuInfoInsert", method=RequestMethod.GET)
-	public String stuInfoInsert(){
-		String url="";
-		return url;
-	}	
+
+
 	//학생정보등록
 	@RequestMapping(value="/emp/stuInfoInsert", method=RequestMethod.POST)
 	public String stuInfoInsert(MultipartHttpServletRequest request){

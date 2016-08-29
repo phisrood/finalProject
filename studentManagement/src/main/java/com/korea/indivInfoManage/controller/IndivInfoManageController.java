@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.dto.StudentVO;
-import com.korea.dto.TestVO;
 import com.korea.dto.UsersVO;
 import com.korea.indivInfoManage.service.IndivInfoManageService;
 
@@ -42,7 +41,11 @@ public class IndivInfoManageController {
 	@Autowired
 	IndivInfoManageService indivInfoManageService;
 	
+
 	//개인정보 조회
+
+	//개인정보 조회
+
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
 	public String indivInfo(HttpSession session, Model model){
 		String url = "/stu/colleage/indivInfo";
@@ -51,7 +54,7 @@ public class IndivInfoManageController {
 		
 		StudentVO studentVO =  indivInfoManageService.getIndivInfo(loginUser.getUse_id());
 		model.addAttribute("studentVO",studentVO);
-		
+	
 		return url;
 	}
 	/**

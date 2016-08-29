@@ -24,13 +24,14 @@ import org.springframework.stereotype.Service;
 import com.korea.dto.StudentVO;
 import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
 
+
 @Service
+
 public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 
 
 	@Autowired
 	private IndivInfoManageDAO indivInfoManageDAO;
-	
 
 	@Override
 	public StudentVO getIndivInfo(String id) {

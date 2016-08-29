@@ -22,6 +22,8 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.StudentVO;
 
+
+
 @Repository
 public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	/**
@@ -32,9 +34,11 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 */
 
 
+
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+
 
 	@Autowired
 	private SqlSession sqlSession;

@@ -30,7 +30,7 @@ public interface LoginService {
 	 */
 	//로그인 액터별 VO 분기
 
-	
+
 	/**
 	 * 개인 정보 조회
 	 * @param

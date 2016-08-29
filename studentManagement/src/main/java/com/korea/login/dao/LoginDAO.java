@@ -20,6 +20,8 @@ import com.korea.dto.TestVO;
 
 import com.korea.dto.UsersVO;
 
+import com.korea.dto.UsersVO;
+
 public interface LoginDAO {
 	/**
 	 * 개인 정보 조회
@@ -29,7 +31,7 @@ public interface LoginDAO {
 	 */
 	//로그인 액터별 VO 분기
 
-	
+
 	/**
 	 * 개인 정보 조회
 	 * @param

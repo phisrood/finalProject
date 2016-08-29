@@ -19,7 +19,6 @@ package com.korea.indivInfoManage.dao;
 
 import com.korea.dto.StudentVO;
 
-
 public interface IndivInfoManageDAO {
 
 	/**
