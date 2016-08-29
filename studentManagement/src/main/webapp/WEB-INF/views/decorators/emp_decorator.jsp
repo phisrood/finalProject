@@ -98,6 +98,7 @@
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i>학과관리<span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
+		                      <li><a href="/emp/stuInfoList">구성원 정보 관리</a></li>
 		                      <li><a href="/emp/departmentInfoList">학과정보 조회</a></li>
 		                    </ul>
 		                  </li>
