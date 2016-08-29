@@ -1,28 +1,75 @@
 package com.korea.cyberCam.freeBBS.dao;
-
+/**
+ * @Interface Name : CyberCamFreeBBSDAO.java
+ * @Description : 사이버 캠퍼스 자유 게시판 글 리스트 출력 / 등록 / 삭제 / 수정 / 상세보기 및 답글 등록 / 삭제 / 수정
+ * @Modification Information
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱        		최초생성
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 public interface CyberCamFreeBBSDAO {
-
-	//자유게시판 리스트
+	/**
+	 * 사이버 캠퍼스 자유 게시판 글 리스트 출력
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void getFreeBBSList();
-	
-	//자유게시판 상세보기
+	/**
+	 * 사이버 캠퍼스 자유 게시판 글 상세보기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void getFreeBBSDetail();
-	
-	//자유게시판 등록
+	/**
+	 * 사이버 캠퍼스 자유 게시판 글 등록
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void insertFreeBBS();
-	
-	//자유게시판 삭제
+	/**
+	 * 사이버 캠퍼스 자유 게시판 글 삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void deleteFreeBBS();
-	
-	//자유게시판 수정
+	/**
+	 * 사이버 캠퍼스 자유 게시판 글 수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void updateFreeBBS();
-	
-	//답글등록
+	/**
+	 * 사이버 캠퍼스 자유 게시판 답글 등록
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void insertFreeBBSReplyReg();
-	
-	//답글삭제
+	/**
+	 * 사이버 캠퍼스 자유 게시판 답글 삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void deleteFreeBBSReply();
-	
-	//답글수정
+	/**
+	 * 사이버 캠퍼스 자유 게시판 답글 수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void updateFreeBBSReply();
 }

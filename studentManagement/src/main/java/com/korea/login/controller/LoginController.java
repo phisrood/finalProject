@@ -1,5 +1,20 @@
 package com.korea.login.controller;
-
+/**
+ * @Class Name : IndivInfoManageController.java
+ * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Modification Information
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱        		최초생성
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -19,7 +34,12 @@ public class LoginController {
 	
 	@Autowired
 	LoginService service;
-
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(){
@@ -27,7 +47,12 @@ public class LoginController {
 		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//메인
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
 	public String main(){
@@ -35,7 +60,12 @@ public class LoginController {
 				
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//로그아웃
 	@RequestMapping(value="/common/logout")
 	public String logout(HttpSession session){
@@ -47,7 +77,12 @@ public class LoginController {
 		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//로그인 액터별 화면분기
 	@RequestMapping(value="/common/login")
 	public String login(@RequestParam(value="id", defaultValue="")String id,
@@ -72,7 +107,12 @@ public class LoginController {
 		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//비밀번호찾기 이메일 구현
 	@RequestMapping(value="/common/pwdSearch")
 	public String pwdSearch(){
