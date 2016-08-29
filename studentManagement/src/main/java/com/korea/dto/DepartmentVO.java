@@ -10,9 +10,11 @@ package com.korea.dto;
  *            dep_minneedcredit : 부전공졸업요건<br>
  *            dep_mulcredit : 다전공졸업요건<br>
  *            dep_revokeyn : 폐지여부<br>
- *            dep_phone : 전화번호
+ *            dep_phone : 전화번호<br>
+ *            dep_engname : 영문명
  * 
  * @version 한돈희, 1.0, 2016.08.24, 초기 작성
+ * 			이건원, 1.1, 2016.08.29, dep_engname 추가
  * @author 한돈희
  *
  */

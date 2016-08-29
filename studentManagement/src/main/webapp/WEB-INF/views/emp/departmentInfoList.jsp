@@ -11,23 +11,20 @@
 <!-- 학과정보관리 -->
 
 <form>
-
 	<div class="row">
-
 		<div class="x_panel_big">
 			<div class="x_panel">
+				
 				<div class="x_title">
 					<h2>학과정보관리</h2>
 					<div class="clearfix"></div>
 				</div>
 
 				<div style="text-align: right;">
-					<button type="button" class="btn btn-dark">
-						<a href="/emp/departmentInsertForm">등록</a>
-					</button>
-					<button type="button" class="btn btn-dark"
-						onclick='revoke(this.form);'>폐지</button>
+					<button type="button" class="btn btn-dark"><a href="/emp/departmentInsertForm">등록</a></button>
+					<button type="button" class="btn btn-dark" onclick='revoke(this.form);'>폐지</button>
 				</div>
+				
 				<div class="x_content">
 
 					<table id="datatable"
@@ -88,5 +85,4 @@
 			</div>
 		</div>
 	</div>
-
 </form>
