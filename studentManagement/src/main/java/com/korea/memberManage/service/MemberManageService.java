@@ -1,12 +1,14 @@
 package com.korea.memberManage.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public interface MemberManageService {
 	
 	//학생 정보 조회
 	public String getStuInfoList();
 	
 	//학생 정보 등록
-	public String insertStuInfo();
+	public String insertStuInfo(MultipartFile file);
 	
 	//학생 정보 수정
 	public String updateStuInfo();

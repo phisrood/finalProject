@@ -1,12 +1,14 @@
 package com.korea.memberManage.dao;
 
+import java.util.Map;
+
 public interface MemberManageDAO {
 
 	//학생 정보 조회
 	public String getStuInfoList();
 	
 	//학생 정보 등록
-	public String insertStuInfo();
+	public int insertStuInfo(Map<String, String> studentMap);
 	
 	//학생 정보 수정
 	public String updateStuInfo();

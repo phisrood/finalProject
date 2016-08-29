@@ -1,7 +1,17 @@
 package com.korea.memberManage.dao;
 
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class MemberManageDAOImpl implements MemberManageDAO{
 
+	@Autowired(required=false)
+	private SqlSession sqlSession;
+	
 	@Override
 	public String getStuInfoList() {
 		// TODO Auto-generated method stub
@@ -9,9 +19,13 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	}
 
 	@Override
-	public String insertStuInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertStuInfo(Map<String, String> studentMap) {
+		int resultUser = sqlSession.insert("member.insertUser",studentMap);
+		int resultStudent = sqlSession.insert("member.insertStudent", studentMap);
+		int resultMajor = sqlSession.insert("member.insertMajor", studentMap);
+		int reusltReg = sqlSession.insert("member.insertReg",studentMap);
+		int resultCRC = sqlSession.insert("member.insertCRC",studentMap);
+		return resultUser;
 	}
 
 	@Override
