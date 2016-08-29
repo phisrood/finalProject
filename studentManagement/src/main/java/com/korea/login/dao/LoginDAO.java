@@ -16,10 +16,13 @@ package com.korea.login.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.Map;
+
+import com.korea.dto.ProfessorVO;
+import com.korea.dto.School_PersonVO;
+import com.korea.dto.StudentVO;
 import com.korea.dto.TestVO;
-
 import com.korea.dto.UsersVO;
-
 import com.korea.dto.UsersVO;
 
 public interface LoginDAO {
@@ -41,6 +44,12 @@ public interface LoginDAO {
 
 	public UsersVO getLoginInfo(String id);
 	
-	//비밀번호찾기
-	public void getLoginPwdSearch();
+	//비밀번호찾기 학생
+	public StudentVO getLoginPwdSearchStu(Map<String, String> params);
+
+	//비밀번호찾기 교수
+	public ProfessorVO getLoginPwdSearchPro(Map<String, String> params);
+
+	//비밀번호찾기 교직원
+	public School_PersonVO getLoginPwdSearchEmp(Map<String, String> params);
 }

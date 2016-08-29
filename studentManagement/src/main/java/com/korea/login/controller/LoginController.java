@@ -24,6 +24,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
@@ -134,10 +136,22 @@ public class LoginController {
 	 * @return 
 	 * @throws 
 	 */
-	//비밀번호찾기 이메일 구현
-	@RequestMapping(value="/common/pwdSearch")
-	public String pwdSearch(){
+	//비밀번호찾기 폼
+	@RequestMapping(value="/common/pwdSearchForm")
+	public String pwdSearchForm(){
 		String url="/common/searchPwd";
+		
+		return url;
+	}
+	
+	//비밀번호찾기 이메일 구현
+	@RequestMapping(value="/common/pwdSearch", method=RequestMethod.POST)
+	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
+							@RequestParam(value="birth", defaultValue="")String birth){
+		String url="redirect:/common/loginForm";
+		
+		service.getLoginPwdSearch(id, birth);
+		
 		
 		return url;
 	}

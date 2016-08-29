@@ -8,4 +8,16 @@
 	<select id="loginInfo" parameterType="str" resultType="users">
 		select * from users where use_id=#{id}
 	</select>
+	
+	<select id="searchPwdStu" parameterMap="params" resultType="student">
+		select * from student where stud_use_id = #{id} and stud_birth = #{birth}
+	</select>
+	
+	<select id="searchPwdPro" parameterMap="params" resultType="professor">
+		select * from professor where pro_use_id = #{id} and pro_birth = #{birth}
+	</select>
+	
+	<select id="searchPwdEmp" parameterMap="params" resultType="employee">
+		select * from school_person where sp_use_id = #{id} and sp_birth = #{birth}
+	</select>
 </mapper>
