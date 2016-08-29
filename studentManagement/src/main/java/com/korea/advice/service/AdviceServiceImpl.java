@@ -1,4 +1,13 @@
 package com.korea.advice.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.advice.dao.AdviceDAO;
+import com.korea.dto.AdviceVO;
+
 /**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
@@ -15,7 +24,12 @@ package com.korea.advice.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Service
 public class AdviceServiceImpl implements AdviceService{
+	
+	@Autowired
+	AdviceDAO adviceDAO;
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
@@ -34,9 +48,9 @@ public class AdviceServiceImpl implements AdviceService{
 	 * @throws 
 	 */
 	@Override
-	public void getAdviceRequestList() {
-		// TODO Auto-generated method stub
-		
+	public List<AdviceVO> getAdviceRequestList() {
+		List<AdviceVO> adviceReqList = adviceDAO.getAdviceRequestList();
+		return adviceReqList;
 	}
 	/**
 	 * 교수가 받은 상담신청조회
@@ -45,9 +59,8 @@ public class AdviceServiceImpl implements AdviceService{
 	 * @throws 
 	 */
 	@Override
-	public void insertAdviceREQ() {
-		// TODO Auto-generated method stub
-		
+	public void insertAdviceREQ(AdviceVO adviceVO) {
+		adviceDAO.insertAdviceREQ(adviceVO);
 	}
 	/**
 	 * 교수가 받은 상담신청조회

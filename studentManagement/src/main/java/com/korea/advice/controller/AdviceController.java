@@ -1,11 +1,15 @@
 package com.korea.advice.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.korea.dto.UsersVO;
+import com.korea.advice.service.AdviceService;
+import com.korea.dto.AdviceVO;
 
 /**
  * @Class Name : AdviceController.java
@@ -24,6 +28,8 @@ import com.korea.dto.UsersVO;
  */
 @Controller
 public class AdviceController {
+	@Autowired
+	AdviceService adviceService;
 	/**
 	 * 교수가 받은 상담신청조회
 	 * 
@@ -48,9 +54,16 @@ public class AdviceController {
 	 */
 	// 보낸 상담 신청 조회(학생)
 	@RequestMapping(value = "/stu/adviceRequestList", method = RequestMethod.GET)
-	public String adviceRequestList() {
+	public String adviceRequestList(Model model) {
 		String url = "/stu/adviceRequestList";
-
+		
+		List<AdviceVO> adviceReqList = adviceService.getAdviceRequestList();
+	//	for(int i = 0;i<adviceReqList.size();i++){
+	//		System.out.println(adviceReqList.get(i).getAd_reqdate());
+	//	}
+		
+		model.addAttribute("adviceReqList", adviceReqList);
+		
 		return url;
 	}
 
@@ -62,10 +75,12 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담신청
-	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.GET)
-	public String adviceREQ() {
-		String url = "/stu/adviceREQ";
-
+	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.POST)
+	public String adviceREQ(AdviceVO adviceVO) {
+		String url = "stu/adviceRequestList";
+		
+		adviceService.insertAdviceREQ(adviceVO);
+		
 		return url;
 	}
 

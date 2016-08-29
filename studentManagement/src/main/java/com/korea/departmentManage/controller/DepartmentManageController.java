@@ -35,7 +35,7 @@ public class DepartmentManageController {
 	/**
 	 * 학과정보 전체 SELECT
 	 * 
-	 * @param
+	 * @param Model
 	 * @return String
 	 * @throws
 	 */
@@ -84,7 +84,7 @@ public class DepartmentManageController {
 	/**
 	 * 교수가 받은 상담신청조회
 	 * 
-	 * @param int
+	 * @param int,Model
 	 * @return String
 	 * @throws
 	 */
@@ -102,7 +102,7 @@ public class DepartmentManageController {
 	/**
 	 * 학과정보 UPDATE  
 	 * 
-	 * @param DepartmentVO
+	 * @param DepartmentVO,Model
 	 * @return String
 	 * @throws
 	 */
@@ -116,7 +116,7 @@ public class DepartmentManageController {
 	/**
 	 * 학과 폐지여부 UPDATE
 	 * 
-	 * @param String[]
+	 * @param String[],Model
 	 * @return String
 	 * @throws
 	 */
