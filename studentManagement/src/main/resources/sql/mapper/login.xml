@@ -5,7 +5,7 @@
 
 
 <mapper namespace="Login">
-	<select id="loginInfo" parameterType="str" resultType="test">
-		select * from test where id = #{id}
+	<select id="loginInfo" parameterType="str" resultType="users">
+		select * from users where use_id=#{id}
 	</select>
 </mapper>

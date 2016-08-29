@@ -1,17 +1,16 @@
 package com.korea.login.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.korea.dto.TestVO;
+import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
 
 @Controller
@@ -50,24 +49,25 @@ public class LoginController {
 	
 	//로그인 액터별 화면분기
 	@RequestMapping(value="/common/login")
-	public String login(@RequestParam(value="id", defaultValue="")String id,
-						@RequestParam(value="password", defaultValue="")String password,
-						HttpSession session) throws IOException{
-		String url = "";
+	public String login(HttpSession session) throws IOException{
+		String url = "redirect:/common/login_error";
 		
-		TestVO loginUser = service.getLoginInfo(id);
-		if(loginUser == null){
-			url = "redirect:/common/loginForm";
-		}else if(id.equals("1234567")){
-			session.setAttribute("loginUser", loginUser);
-			url= "redirect:/pro/main";
-		}else if(id.equals("123456")){
-			session.setAttribute("loginUser", loginUser);
-			url= "redirect:/emp/main";
-		}else{
-			session.setAttribute("loginUser", loginUser);
-			url= "redirect:/stu/main";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UsersVO usersVO = null;
+		
+		String id = auth.getName();
+		
+		usersVO = service.getLoginInfo(id);
+			
+		session.setAttribute("loginUser", usersVO);
+		if(usersVO.getUse_kind().equals("student")){
+			url="redirect:/stu/main";
+		}else if(usersVO.getUse_kind().equals("professor")){
+			url="redirect:/pro/main";
+		}else if(usersVO.getUse_kind().equals("employee")){
+			url="redirect:/emp/main";
 		}
+		
 		
 		
 		return url;
@@ -77,6 +77,22 @@ public class LoginController {
 	@RequestMapping(value="/common/pwdSearch")
 	public String pwdSearch(){
 		String url="/common/searchPwd";
+		
+		return url;
+	}
+	
+	//에러
+	@RequestMapping(value="/common/error")
+	public String error(){
+		String url="/error";
+		
+		return url;
+	}
+	
+	//로그인에러
+	@RequestMapping(value="/common/login_error")
+	public String login_error(){
+		String url="/login_error";
 		
 		return url;
 	}

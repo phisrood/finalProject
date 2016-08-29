@@ -12,7 +12,54 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- 	<authentication-manager>
+
+	<!-- .js/.css/.images 확장자를 가진 파일들은 security를 걸지않겠다는 설정. -->
+	<http pattern="common/**/*.js" security="none" />
+	<http pattern="stu/**/*.js" security="none" />
+	<http pattern="emp/**/*.js" security="none" />
+	<http pattern="pro/**/*.js" security="none" />
 	
-	</authentication-manager> -->
+	<http pattern="common/**/*.css" security="none" />
+	<http pattern="stu/**/*.css" security="none" />
+	<http pattern="emp/**/*.css" security="none" />
+	<http pattern="pro/**/*.css" security="none" />
+	
+	<http pattern="common/images/*" security="none" />
+	<http pattern="stu/images/*" security="none" />
+	<http pattern="emp/images/*" security="none" />
+	<http pattern="pro/images/*" security="none" />
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT USE_ID AS USERNAME, USE_PWD AS PASSWORD, ENABLED FROM USERS WHERE USE_ID=?"
+				authorities-by-username-query="SELECT USE_ID AS USERNAME, AUTHORITY FROM USERS WHERE USE_ID=?"
+			/>
+		</authentication-provider>
+	</authentication-manager>
+	
+<!-- 시큐리티 -->
+	<http pattern="/common/**" use-expressions="true">
+		<form-login
+			login-page="/common/loginForm"
+			login-processing-url="/common/loginProcess"
+			username-parameter="use_id"
+			password-parameter="use_pwd"
+			default-target-url="/common/login"
+		/>
+		<access-denied-handler error-page="/common/login_error"/>
+<!--
+        login-page : 로그인이 요청될 시에 이동할 URL을 설정합니다.
+		username-parameter : 로그인 아이디의 파라미터명 즉 name필드값을 설정합니다.
+		passoword-parameter : 비밀번호의 파라미터 명을 설정합니다.
+		login-processing-url : 폼에서 전송할 URL 값을 설정합니다. (action=login-processing-url)
+		default-target-url : 사용자 보호된 URL요청시 스프링 시큐리티에서 로그인 페이지를 보여주는 경우 사용자가 로그인 성공 후 대상 URL로 리다이렉트 된다.
+		authentication-failure-url : login 에러시 커스텀 페이지로 이동 (중복 로그인시 해당 url로 이동)
+		always-use-default-target="true" : 로그인 성공후에 default-target-url에 설정한 곳으로 갈지 말지 설정
+-->
+		<intercept-url pattern="/stu/**" access="hasRole('ROLE_STU')"/>
+		<intercept-url pattern="/pro/**" access="hasRole('ROLE_PRO')"/>
+		<intercept-url pattern="/emp/**" access="hasRole('ROLE_EMP')"/>
+		<intercept-url pattern="/common/**" access="permitAll"/>
+	</http>
 </beans:beans>

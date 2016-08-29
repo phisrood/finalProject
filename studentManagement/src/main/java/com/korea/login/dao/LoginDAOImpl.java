@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.korea.dto.TestVO;
+import com.korea.dto.UsersVO;
 
 @Repository
 public class LoginDAOImpl implements LoginDAO{
@@ -19,9 +19,10 @@ public class LoginDAOImpl implements LoginDAO{
 	}
 
 	@Override
-	public TestVO getLoginInfo(String id) {
-		// TODO Auto-generated method stub
-		return (TestVO) session.selectOne("Login.loginInfo", id);
+	public UsersVO getLoginInfo(String id) {
+		return (UsersVO) session.selectOne("Login.loginInfo", id);
 	}
+
+
 
 }

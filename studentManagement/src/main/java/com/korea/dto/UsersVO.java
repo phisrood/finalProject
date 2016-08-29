@@ -6,6 +6,7 @@ package com.korea.dto;
  * use_id : 아이디
  * use_kind : 학생/교수/직원
  * use_name : 이름
+ * use_pwd : 비밀번호
  * use_yn : 사용유무
  * use_athu : 권한
  * 
@@ -18,8 +19,9 @@ public class UsersVO {
 	private String use_id;
 	private String use_kind;
 	private String use_name;
-	private String use_yn;
-	private String use_athu;
+	private char enabled;
+	private String use_pwd;
+	private String authority;
 	public String getUse_id() {
 		return use_id;
 	}
@@ -38,17 +40,26 @@ public class UsersVO {
 	public void setUse_name(String use_name) {
 		this.use_name = use_name;
 	}
-	public String getUse_yn() {
-		return use_yn;
+	public String getUse_pwd() {
+		return use_pwd;
 	}
-	public void setUse_yn(String use_yn) {
-		this.use_yn = use_yn;
+	public void setUse_pwd(String use_pwd) {
+		this.use_pwd = use_pwd;
 	}
-	public String getUse_athu() {
-		return use_athu;
+	public String getAuthority() {
+		return authority;
 	}
-	public void setUse_athu(String use_athu) {
-		this.use_athu = use_athu;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
+	public char getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(char enabled) {
+		this.enabled = enabled;
+	}
+	
+	
+	
 	
 }

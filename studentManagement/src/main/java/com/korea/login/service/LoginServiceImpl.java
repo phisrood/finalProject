@@ -3,7 +3,7 @@ package com.korea.login.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.korea.dto.TestVO;
+import com.korea.dto.UsersVO;
 import com.korea.login.dao.LoginDAO;
 
 @Service
@@ -19,11 +19,11 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public TestVO getLoginInfo(String id) {
-		
-		
+	public UsersVO getLoginInfo(String id) {
+		// TODO Auto-generated method stub
 		return dao.getLoginInfo(id);
-		
 	}
+
+
 
 }
