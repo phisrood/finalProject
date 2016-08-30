@@ -96,13 +96,16 @@ public interface MemberManageService {
 
 	
 	/**
+	 * @param String 
+	 * @param ProfessorVO 
 	 * 교수 정보 수정
 	 * @param
-	 * @return 
+	 * @return  String
 	 * @throws 
 	 */
 
-	public String updateProInfo();
+	public void updateProInfo(ProfessorVO professorVO, String name);
+	
 	/**
 	 * 교수 정보 비활성화
 	 * @param

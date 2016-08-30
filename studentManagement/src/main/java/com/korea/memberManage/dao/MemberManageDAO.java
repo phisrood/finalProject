@@ -99,7 +99,7 @@ public interface MemberManageDAO {
 	 * @return
 	 * @throws
 	 */
-	public String updateProInfo();
+	public void updateProInfo(ProfessorVO professorVO, String name);
 
 	/**
 	 * 교수 정보 비활성화

@@ -177,9 +177,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @throws 
 	 */
 	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProInfo(ProfessorVO professorVO, String name) {
+		memberManageDAO.updateProInfo(professorVO, name);
+		
 	}
 	/**
 	 * 교수 정보 비활성화

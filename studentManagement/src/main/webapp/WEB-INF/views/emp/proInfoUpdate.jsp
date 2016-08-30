@@ -35,7 +35,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form name="proInsertForm" class="form-horizontal form-label-left">
+                    <form name="proUpdateForm" class="form-horizontal form-label-left">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">이름</label>
@@ -74,7 +74,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">생년월일</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="pro_birth" value="${professorDetailViewVO.pro_birth}">
+                          <input type="text" class="form-control" readonly="readonly" name="pro_birth" value="${professorDetailViewVO.pro_birth}">
                         </div>
                       </div>
                       <div class="form-group">
@@ -104,7 +104,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">혈액형</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_bltype" value="${professorDetailViewVO.pro_bltype}">
+                          <select class="form-control" name="pro_bltype" readonly="readonly" value="${professorDetailViewVO.pro_bltype}">
                           	<option selected>선택해주세요</option>
                             <option value="A" <c:if test="${professorDetailViewVO.pro_bltype=='A'}">selected</c:if>>A</option>
                             <option value="B" <c:if test="${professorDetailViewVO.pro_bltype=='B'}">selected</c:if>>B</option>
@@ -122,7 +122,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">성별</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_gender" value="${professorDetailViewVO.pro_gender}">
+                          <select class="form-control" name="pro_gender" readonly="readonly" value="${professorDetailViewVO.pro_gender}">
                           	<option selected>선택해주세요</option>
                             <option value="남자" <c:if test="${professorDetailViewVO.pro_gender=='남자'}">selected</c:if>>남자</option>
                             <option value="여자" <c:if test="${professorDetailViewVO.pro_gender=='여자'}">selected</c:if>>여자</option>
@@ -133,19 +133,20 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">이메일</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="email" class="form-control" placeholder="이메일" name="pro_email" value="${professorDetailViewVO.pro_email}">
+                          <input type="email" class="form-control" name="pro_email" value="${professorDetailViewVO.pro_email}">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">주민등록번호앞자리</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="주민등록번호뒷자리" name="pro_regno1" value="${professorDetailViewVO.pro_regno1}">
+                          <input type="text" class="form-control" readonly="readonly"  name="pro_regno1" value="${professorDetailViewVO.pro_regno1}">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">주민등록번호뒷자리</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="주민등록번호뒷자리" name="pro_regno2" value="${professorDetailViewVO.pro_regno2}">
+                          <input type="text" class="form-control" readonly="readonly"  name="pro_regno2" value="${professorDetailViewVO.pro_regno2}">
+                          <input type="hidden" value="${professorDetailViewVO.pro_use_id }" name="pro_use_id">
                         </div>
                       </div>
                       

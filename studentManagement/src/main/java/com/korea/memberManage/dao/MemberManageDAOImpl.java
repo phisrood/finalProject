@@ -141,9 +141,12 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProInfo(ProfessorVO professorVO, String name) {
+		UsersVO usersVO=new UsersVO();
+		usersVO.setUse_id(professorVO.getPro_use_id());
+		usersVO.setUse_name(name);
+		sqlSession.update("Professor.userProUpdate",usersVO);
+		sqlSession.update("Professor.professorUpdate",professorVO);
 	}
 	/**
 	 * 교수 정보 비활성화

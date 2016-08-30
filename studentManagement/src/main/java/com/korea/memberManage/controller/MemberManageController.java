@@ -213,16 +213,16 @@ public class MemberManageController {
 	 * @return String
 	 * @throws
 	 */
-	/*@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.GET)
-	public String proInfoUpdate(Model model) {
-		String url = "/emp/proInfoUpdate";
+	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
+	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
+			ProfessorVO professorVO) {
+		String url = "redirect:/emp/stuInfoList";
 		
-		List<ProfessorViewVO> professorList = memberManagerService
-				.getProInfoList();
-		model.addAttribute("professorList", professorList);
+		memberManagerService.updateProInfo(professorVO, name);
 		
 		return url;
-	}*/
+	}
+	
 
 	/**
 	 * 교수정보등록Form, 학과번호 콤보박스list
