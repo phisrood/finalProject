@@ -45,11 +45,20 @@ public interface LoginDAO {
 	public UsersVO getLoginInfo(String id);
 	
 	//비밀번호찾기 학생
-	public StudentVO getLoginPwdSearchStu(Map<String, String> params);
+	public StudentVO getLoginPwdSearchStu(StudentVO studentVO);
 
 	//비밀번호찾기 교수
-	public ProfessorVO getLoginPwdSearchPro(Map<String, String> params);
+	public ProfessorVO getLoginPwdSearchPro(ProfessorVO professorVO);
 
 	//비밀번호찾기 교직원
-	public School_PersonVO getLoginPwdSearchEmp(Map<String, String> params);
+	public School_PersonVO getLoginPwdSearchEmp(School_PersonVO school_PersonVO);
+
+	//비밀번호변경 학생
+	public void updatePwdChangeStu(StudentVO studentVO);
+	
+	//비밀번호변경 교수
+	public void updatePwdChangePro(ProfessorVO professorVO);
+	
+	//비밀번호변경 교직원
+	public void updatePwdChangeEmp(School_PersonVO school_PersonVO);
 }

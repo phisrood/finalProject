@@ -11,17 +11,17 @@ function go_login(){
 	}    
 }      
 
-function go_searchPwd(){
-	if(document.searchPwd_form.id.value=""){
+function go_searchPwd(searchPwdform){
+	if(document.searchPwdform.id.value=""){
 		alert("학번을 입력해주세요.");
-		document.searchPwd_form.id.focus();
-	}else if(document.searchPwd_form.birth.value=""){
+		document.searchPwdform.id.focus();
+	}else if(document.searchPwdform.birth.value=""){
 		alert("생년월일을 입력해주세요.")
-		document.searchPwd_form.birth.focus();
+		document.searchPwdform.birth.focus();
 	}else{
-		document.searchPwd_form.method="post";
-		document.searchPwd_form.action="/common/pwdSearch";
-		document.searchPwd_form.submit();
-	}
+		document.searchPwdform.method="post";
+		document.searchPwdform.action="/common/pwdSearch";
+		document.searchPwdform.submit();
+	} 
 	
 }

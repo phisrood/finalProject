@@ -18,9 +18,10 @@ public class SimpleRegistrationNotifier implements RegistrationNotifier {
 	@Override
 	public void sendMail(Receiver member) {
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setSubject("[Simple] 회원 가입 안내");
+		message.setSubject("[한국대학교 학사관리팀] 비밀번호 초기화 안내");
 		message.setFrom("hdh2688@naver.com");
-		message.setText("회원 가입을 환영합니다.");
+		message.setText("비밀번호 초기화 안내");
+		message.setText("회원님의 주민번호 앞자리("+member.getRegno()+")로 비밀번호가 초기화 되었습니다.");
 		message.setTo(member.getEmail());
 		try {
 			mailSender.send(message);
