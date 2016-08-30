@@ -21,6 +21,8 @@
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
+		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
+		
 	</typeAliases>
 
 	<mappers>
@@ -28,8 +30,9 @@
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/department.xml" />
 		<mapper resource="sql/mapper/professor.xml"/>
-
 		<mapper resource="sql/mapper/student.xml" />
+		<mapper resource="sql/mapper/message.xml" />
+		
 		<!-- 상담 -->
 	
 	</mappers>

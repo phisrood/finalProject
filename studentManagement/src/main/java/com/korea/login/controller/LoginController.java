@@ -16,6 +16,7 @@ package com.korea.login.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,18 +24,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.dto.MessageVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
+import com.korea.message.service.MessageService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	MessageService messageService;
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -71,9 +78,17 @@ public class LoginController {
 	 */
 	//메인
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
-	public String main(){
+	public String main(HttpSession session, Model model){
 		String url ="/common/main";
-				
+		
+		//세션정보
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		
+		//메인 로딩될때 메시지 리스트 출력
+		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
+		
+		model.addAttribute("messageNewList", messageNewList);
+
 		return url;
 	}
 	/**
