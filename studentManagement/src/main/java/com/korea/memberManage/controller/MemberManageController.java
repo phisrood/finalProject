@@ -1,22 +1,5 @@
 package com.korea.memberManage.controller;
 
-/**
- * @Class Name : MemberManageController.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
- * @Modification Information
- * @author 조현욱
- * @since  2016.08.29.
- * @version 1.0
- * @see
- * <pre>
- * << 개정이력(Modification Information) >>
- *    	수정일       	수정자          		수정내용
- *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
- * Copyright (c) 2016 by DDIT  All right reserved
- * </pre>
- */
-
 
 import java.util.List;
 
@@ -34,7 +17,27 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.StudentVO;
 import com.korea.memberManage.service.MemberManageService;
+
+/**
+ * @Class Name : MemberManageController.java
+ * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Modification Information
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.	김양문			학생등록
+ *    2016.08.29	이수정			교수등록
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 
 @Controller
 public class MemberManageController {
@@ -54,7 +57,8 @@ public class MemberManageController {
 	@RequestMapping(value="/emp/stuInfoList", method=RequestMethod.GET)
 	public String stuInfoList(Model model){
 		String url="/emp/stuInfoList";
-
+		List<StudentVO> studentList = memberManagerService.getStuInfoList();
+		model.addAttribute("studentList", studentList);
 		return url;
 	}
 

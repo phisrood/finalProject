@@ -28,7 +28,7 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지함 리스트 출력 최신 20~30개만 (안읽은쪽지만)
-	@RequestMapping(value="/stu/messageNewList", method=RequestMethod.GET)
+	@RequestMapping(value={"/stu/messageNewList","/emp/messageNewList","/pro/messageNewList"}, method=RequestMethod.GET)
 	public String messageNewList(){
 		String url="";
 		

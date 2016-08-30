@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.StudentVO;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.	김양문			학생등록
+ *    2016.08.29	이수정			교수등록
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -34,7 +37,7 @@ public interface MemberManageService {
 	 * @return 
 	 * @throws 
 	 */
-	public String getStuInfoList();
+	public List<StudentVO> getStuInfoList();
 	/**
 	 * 학생 정보 등록
 	 * @param

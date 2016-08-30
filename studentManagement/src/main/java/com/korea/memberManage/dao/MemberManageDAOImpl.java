@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
 
 import java.util.Map;
@@ -50,9 +51,9 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getStuInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StudentVO> getStuInfoList() {
+		List<StudentVO> studentList = sqlSession.selectList("member.getStuInfoList");
+		return studentList;
 	}
 	/**
 	 * 학생 정보 등록

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
 import com.korea.memberManage.dao.MemberManageDAO;
+
 
 
 
@@ -67,9 +69,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 */
 
 	@Override
-	public String getStuInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StudentVO> getStuInfoList() {
+		return memberManageDAO.getStuInfoList();
+		
 	}
 	/**
 	 * 학생 정보 등록

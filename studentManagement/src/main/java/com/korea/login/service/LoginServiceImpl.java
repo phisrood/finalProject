@@ -15,9 +15,6 @@ package com.korea.login.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +40,7 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public UsersVO getLoginInfo(String id) {
 		// TODO Auto-generated method stub
+		
 		return dao.getLoginInfo(id);
 	}
 	/**

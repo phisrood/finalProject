@@ -18,6 +18,7 @@
 
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
+		<typeAlias alias="studentView" type="com.korea.dto.StudentViewVO" />
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
