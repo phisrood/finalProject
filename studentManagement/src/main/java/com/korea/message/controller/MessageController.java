@@ -41,26 +41,6 @@ public class MessageController {
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지함 리스트 출력 최신 20~30개만 (안읽은쪽지만)
-
-	@RequestMapping({"/stu/messageNewList", "/pro/messageNewList", "/emp/messageNewList"})
-	public String messageNewList(HttpSession session, Model model){
-		String url="/common/main";
-		
-		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-		
-		//안읽은 최신메시지 출력
-		List<MessageVO> messageNewList=service.getMessageNewList(usersVO);
-		
-		model.addAttribute("messageNewList", messageNewList);
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	//쪽지함 리스트 더보기 출력 제이쿼리구현
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(){
