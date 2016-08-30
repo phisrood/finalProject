@@ -14,6 +14,8 @@
 
 		<!-- 학과정보 -->
 		<typeAlias alias="departmentVO" type="com.korea.dto.DepartmentVO" />
+		<!-- 상담 -->
+		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 	</typeAliases>
 
 	<mappers>
@@ -22,5 +24,7 @@
 
 		<!-- 학과정보 -->
 		<mapper resource="sql/mapper/departmentManage.xml" />
+		<!-- 상담 -->
+		<mapper resource="sql/mapper/advice.xml" />
 	</mappers>
 </configuration>
