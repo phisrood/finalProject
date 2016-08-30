@@ -46,32 +46,40 @@ public class LoginServiceImpl implements LoginService{
 		return dao.getLoginInfo(id);
 	}
 	/**
-	 * 패스워드찾기
+	 * 패스워드초기화
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getLoginPwdSearch(String id, String birth) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("id", id);
-		params.put("birth", birth);
-		
+	public void updateLoginPwdSearch(String id, String birth) {
+		StudentVO studentVO = new StudentVO();
+		ProfessorVO professorVO = new ProfessorVO();
+		School_PersonVO school_PersonVO = new School_PersonVO();
 		if(id.length()==8){
-			StudentVO studentVO = dao.getLoginPwdSearchStu(params);
-			if(studentVO != null){
+			studentVO.setStud_use_id(id);
+			studentVO.setStud_birth(birth);
+			studentVO = dao.getLoginPwdSearchStu(studentVO);
+			if(studentVO.getStud_email() != null){
 				MailSenderMain.sendMailInfoStu(studentVO);
+				dao.updatePwdChangeStu(studentVO);
 			}
 		}else if(id.length() == 7){
-			ProfessorVO professorVO = dao.getLoginPwdSearchPro(params);
-			if(professorVO != null){
+			professorVO.setPro_use_id(id);
+			professorVO.setPro_birth(birth);
+			professorVO = dao.getLoginPwdSearchPro(professorVO);
+			if(professorVO.getPro_email() != null){
 				MailSenderMain.sendMailInfoPro(professorVO);
+				dao.updatePwdChangePro(professorVO);
 				
 			}
 		}else if(id.length() == 6){
-			School_PersonVO school_PersonVO = dao.getLoginPwdSearchEmp(params);
-			if(school_PersonVO != null){
+			school_PersonVO.setSp_use_id(id);
+			school_PersonVO.setSp_birth(birth);
+			school_PersonVO = dao.getLoginPwdSearchEmp(school_PersonVO);
+			if(school_PersonVO.getSp_email() != null){
 				MailSenderMain.sendMailInfoEmp(school_PersonVO);
+				dao.updatePwdChangeEmp(school_PersonVO);
 			}
 		}
 	}

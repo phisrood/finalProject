@@ -16,7 +16,7 @@ public class MailSenderMain {
 		
 		SimpleRegistrationNotifier simpleNotifier 
 			= ctx.getBean("simpleNotifier", SimpleRegistrationNotifier.class);
-		simpleNotifier.sendMail(new Receiver(studentVO.getStud_email()));
+		simpleNotifier.sendMail(new Receiver(studentVO.getStud_email(), studentVO.getStud_regno1()));
 		
 		ctx.close();
 
@@ -27,7 +27,7 @@ public class MailSenderMain {
 		
 		SimpleRegistrationNotifier simpleNotifier 
 		= ctx.getBean("simpleNotifier", SimpleRegistrationNotifier.class);
-		simpleNotifier.sendMail(new Receiver(professorVO.getPro_email()));
+		simpleNotifier.sendMail(new Receiver(professorVO.getPro_email(), professorVO.getPro_regno1()));
 		
 		ctx.close();
 		
@@ -38,7 +38,7 @@ public class MailSenderMain {
 		
 		SimpleRegistrationNotifier simpleNotifier 
 		= ctx.getBean("simpleNotifier", SimpleRegistrationNotifier.class);
-		simpleNotifier.sendMail(new Receiver(school_PersonVO.getSp_email()));
+		simpleNotifier.sendMail(new Receiver(school_PersonVO.getSp_email(), school_PersonVO.getSp_regno1()));
 		
 		ctx.close();
 		

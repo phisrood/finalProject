@@ -149,8 +149,7 @@ public class LoginController {
 	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
 							@RequestParam(value="birth", defaultValue="")String birth){
 		String url="redirect:/common/loginForm";
-		
-		service.getLoginPwdSearch(id, birth);
+		service.updateLoginPwdSearch(id, birth);
 		
 		
 		return url;
