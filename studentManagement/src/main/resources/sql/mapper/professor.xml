@@ -58,7 +58,14 @@
 		,#{use_pwd}
 		,#{authority})
 		<selectKey resultType="str" keyProperty="use_id" order="AFTER">
-			SELECT professor_seq.currval FROM dual
+			SELECT trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.currval,'000'),' ','')) FROM dual
 		</selectKey>
 	</insert>
+	
+	<select id="getProInfoList" resultType="professorView">
+		SELECT USE_NAME, DEP_NAME, PRO_POSITION, PRO_GENDER  	
+		FROM	PROFESSOR
+		INNER JOIN USERS ON (USE_ID=PRO_USE_ID)
+		INNER JOIN DEPARTMENT ON (PRO_DEP_NO=DEP_NO)
+	</select>
 </mapper>

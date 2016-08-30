@@ -42,6 +42,7 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지함 리스트 출력 최신 20~30개만 (안읽은쪽지만)
+
 	@RequestMapping({"/stu/messageNewList", "/pro/messageNewList", "/emp/messageNewList"})
 	public String messageNewList(HttpSession session, Model model){
 		String url="/common/main";
@@ -52,7 +53,6 @@ public class MessageController {
 		List<MessageVO> messageNewList=service.getMessageNewList(usersVO);
 		
 		model.addAttribute("messageNewList", messageNewList);
-		
 		return url;
 	}
 	/**

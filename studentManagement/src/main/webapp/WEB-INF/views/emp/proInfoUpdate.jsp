@@ -9,18 +9,18 @@
 <%--==============================================================
  * 교수정보등록FORM
  * @author 
- * @since  2016.08.29.
+ * @since  2016.08.30.
  * @version 1.0
  * @see
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
- *    
+ *    2016.08.30.  	이수정      		최초생성
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<!-- 교수정보등록 -->
+<!-- 교수정보수정 -->
 	
 <script type="text/javascript" src="/emp/js/default.js"></script>
 
@@ -150,7 +150,7 @@
                       
                       
                       <div style="text-align:center;">
-		                <button type="button" class="btn btn-dark" onclick="insertPro('proInsertForm');" >등록</button>
+		                <button type="button" class="btn btn-dark" onclick="updatePro('proUpdateForm');" >수정</button>
 		                <button type="button" class="btn btn-dark">취소</button>
                       </div>   
 
