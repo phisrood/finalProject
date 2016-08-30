@@ -20,6 +20,8 @@
 		<typeAlias alias="studentView" type="com.korea.dto.StudentViewVO" />
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
+		<typeAlias alias="professorDetail" type="com.korea.dto.ProfessorDetailViewVO" />
+
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
 		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
