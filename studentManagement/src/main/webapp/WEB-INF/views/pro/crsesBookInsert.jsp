@@ -92,50 +92,41 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">교번</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="주소"
+							<input type="text" class="form-control" placeholder="교번"
 								name="pro_add">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">담당교수</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="상세주소"
+							<input type="text" class="form-control" placeholder="담당교수"
 								name="pro_adddetail">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">비고</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<select class="form-control" name="pro_bltype">
-								<option selected>선택해주세요</option>
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="AB">AB</option>
-								<option value="O">O</option>
-							</select>
+							<input type="text" class="form-control" placeholder="비고"
+								name="pro_adddetail">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">수업계획서
 							첨부파일</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="취미"
+							<input type="text" class="form-control" placeholder="수업계획서"
 								name="pro_hob">
 						</div>
 					</div>
-
-				
-						<div style="text-align:center;">
+					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
 							onclick="insertPro('proInsertForm');">등록</button>
 						<button type="button" class="btn btn-dark">취소</button>
 					</div>
-			
-			</form>
+
+				</form>
 			</div>
 		</div>
-
-
 		<!-- /page content -->
 	</div>
 
