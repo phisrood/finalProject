@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.memberManage.dao.MemberManageDAO;
+
 
 
 
@@ -132,9 +134,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @throws 
 	 */
 	@Override
-	public String getProInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProfessorViewVO> getProInfoList() {
+		
+		return memberManageDAO.getProInfoList();
 	}
 
 	/**
@@ -143,6 +145,29 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @return 
 	 * @throws 
 	 */
+	@Override
+	public List<DepartmentVO> getDepartmentList() {
+		// TODO Auto-generated method stub
+		return memberManageDAO.getDepartmentList();
+	}
+
+	
+	@Override
+	public void insertProInfo(ProfessorVO professorVO, String name) {
+		
+		
+		UsersVO usersVO = new UsersVO();
+		usersVO.setAuthority("ROLE_PRO");
+		usersVO.setUse_kind("professor");
+		usersVO.setUse_name(name);
+		usersVO.setUse_pwd(professorVO.getPro_regno1());
+		usersVO=memberManageDAO.insertUserProInfo(usersVO);
+		professorVO.setPro_use_id(usersVO.getUse_id());
+		memberManageDAO.insertProInfo(professorVO);
+		
+
+		
+	}
 
 	/**
 	 * 교수 정보 수정
@@ -225,28 +250,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	}
 
 
-	@Override
-	public List<DepartmentVO> getDepartmentList() {
-		// TODO Auto-generated method stub
-		return memberManageDAO.getDepartmentList();
-	}
-
-	@Override
-	public void insertProInfo(ProfessorVO professorVO, String name) {
-		
-		
-		UsersVO usersVO = new UsersVO();
-		usersVO.setAuthority("ROLE_PRO");
-		usersVO.setUse_kind("professor");
-		usersVO.setUse_name(name);
-		usersVO.setUse_pwd(professorVO.getPro_regno1());
-		usersVO=memberManageDAO.insertUserProInfo(usersVO);
-		professorVO.setPro_use_id(usersVO.getUse_id());
-		memberManageDAO.insertProInfo(professorVO);
-		
-
-		
-	}
+	
 
 
 	private void readRow(int columnindex, Row row) {

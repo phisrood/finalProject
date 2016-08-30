@@ -8,7 +8,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <script src="/emp/js/default.js"></script>
-
 <!-- 구성원정보관리 -->
 
    <div class="row">
@@ -160,31 +159,18 @@
                   <th>성별</th>
                </tr>
             </thead>
-
+			<c:forEach var="professor" items="${professorList}" varStatus="sta">
 
             <tbody>
                <tr>
-                  <td>1</td>
-                  <td>원장님</td>
-                  <td>정보통신공학과</td>
-                  <td>학과장</td>
-                  <td>남자</td>
+                  <td>${sta.count}</td>
+                  <td>${professor.use_name}</td>
+                  <td>${professor.dep_name}</td>
+                  <td>${professor.pro_position}</td>
+                  <td>${professor.pro_gender}</td>
                </tr>
-               <tr>
-                  <td>2</td>
-                  <td>김형민</td>
-                  <td>정보통신공학과</td>
-                  <td>흥부자</td>
-                  <td>남자</td>
-               </tr>
-               <tr>
-                  <td>1</td>
-                  <td>이영만</td>
-                  <td>정보통신공학과</td>
-                  <td>만년막내</td>
-                  <td>남자</td>
-               </tr>
-
+               
+			</c:forEach>
             </tbody>
          </table>
               

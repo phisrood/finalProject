@@ -21,6 +21,7 @@
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
+		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
 	</typeAliases>
 
 	<mappers>

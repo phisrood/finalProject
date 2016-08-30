@@ -3,6 +3,7 @@ package com.korea.memberManage.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.UsersVO;
-
-import java.util.Map;
-
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 
 /**
@@ -103,9 +99,12 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getProInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProfessorViewVO> getProInfoList() {
+		List<ProfessorViewVO> proInfoList = 
+				(List<ProfessorViewVO>) sqlSession.selectList("Professor.getProInfoList");
+		System.out.println(proInfoList);
+		return proInfoList;
+		
 	}
 
 

@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
 import com.korea.memberManage.service.MemberManageService;
 
 @Controller
@@ -53,7 +54,7 @@ public class MemberManageController {
 
 	@RequestMapping(value="/emp/stuInfoList", method=RequestMethod.GET)
 	public String stuInfoList(Model model){
-		String url="/emp/stuInfoList";
+		String url="redirect:/emp/proInfoList";
 
 		return url;
 	}
@@ -117,15 +118,19 @@ public class MemberManageController {
 	///////////////////////////교수/////////////////////////
 	
 	/**
-	 * 교수 정보 조회
-	 * @param
-	 * @return 
+	 * 교수 정보 전체조회
+	 * @param Model
+	 * @return String
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/proInfoList", method=RequestMethod.GET)
-	public String proInfoList(){
-
-		String url="/emp/proInfoList";
+	public String proInfoList(Model model){
+		System.out.println("aaaa");
+		String url="/emp/stuInfoList";
+		
+		List<ProfessorViewVO> professorList = memberManagerService.getProInfoList();
+		System.out.println(professorList+"@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		model.addAttribute("professorList",professorList);
 		
 		return url;
 	}
