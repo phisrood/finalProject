@@ -8,7 +8,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <script src="/emp/js/default.js"></script>
-
 <!-- 구성원정보관리 -->
 
 <div class="row">
@@ -73,20 +72,17 @@
 									<tbody>
 										<c:forEach var="stu" items="${studentList}" varStatus="sta">
 											<tr>
-												<td>${sta.count }</td>												
-												<td>${stu.use_id }</td>												
-												<td>${stu.use_name }</td>												
-												<td>${stu.dep_name }</td>																							
-												<td>${stu.crc_cemester }</td>												
-												<td>${stu.stud_gender }</td>												
-												<td>${stu.crc_colleagestatus }</td>												
+												<td>${sta.count }</td>
+												<td>${stu.use_id }</td>
+												<td>${stu.use_name }</td>
+												<td>${stu.dep_name }</td>
+												<td>${stu.crc_cemester }</td>
+												<td>${stu.stud_gender }</td>
+												<td>${stu.crc_colleagestatus }</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
-
-
-
 							</div>
 							<div style="text-align: right;">
 								<form name="insertStudent" enctype="multipart/form-data">
@@ -128,39 +124,26 @@
 											<th>성별</th>
 										</tr>
 									</thead>
+									<c:forEach var="professor" items="${professorList}"
+										varStatus="sta">
 
-
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>원장님</td>
-											<td>정보통신공학과</td>
-											<td>학과장</td>
-											<td>남자</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>김형민</td>
-											<td>정보통신공학과</td>
-											<td>흥부자</td>
-											<td>남자</td>
-										</tr>
-										<tr>
-											<td>1</td>
-											<td>이영만</td>
-											<td>정보통신공학과</td>
-											<td>만년막내</td>
-											<td>남자</td>
-										</tr>
-
+										<tbody>
+											<tr>
+												<td>${sta.count}</td>
+												<td>${professor.use_name}</td>
+												<td>${professor.dep_name}</td>
+												<td>${professor.pro_position}</td>
+												<td>${professor.pro_gender}</td>
+											</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 
 							</div>
 							<div style="text-align: right;">
-								<button type="button" class="btn btn-dark">
-									<a href="/emp/proInfoInsertForm">등록</a>
-								</button>
+								<a href="/emp/proInfoInsertForm">
+									<button type="button" class="btn btn-dark">등록</button>
+								</a>
 								<button type="button" class="btn btn-dark">수정</button>
 								<button type="button" class="btn btn-dark">삭제</button>
 							</div>
@@ -174,5 +157,4 @@
 	</div>
 	<!-- /page content -->
 </div>
-
 

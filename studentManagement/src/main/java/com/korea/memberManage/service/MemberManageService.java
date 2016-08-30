@@ -3,11 +3,12 @@ package com.korea.memberManage.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
-
-import org.springframework.web.multipart.MultipartFile;
 
 
 /**
@@ -72,7 +73,7 @@ public interface MemberManageService {
 	 * @return 
 	 * @throws 
 	 */
-	public String getProInfoList();
+	public List<ProfessorViewVO> getProInfoList();
 
 	
 	//교수 정보 등록

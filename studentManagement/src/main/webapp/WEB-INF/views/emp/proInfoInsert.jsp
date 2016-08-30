@@ -123,8 +123,8 @@
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <select class="form-control" name="pro_gender">
                           	<option selected>선택해주세요</option>
-                            <option value="male">남자</option>
-                            <option value="female">여자</option>
+                            <option value="남자">남자</option>
+                            <option value="여자">여자</option>
                           </select>
                         </div>
                       </div>

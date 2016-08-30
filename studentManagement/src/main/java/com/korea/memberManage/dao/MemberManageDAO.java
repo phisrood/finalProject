@@ -2,13 +2,13 @@ package com.korea.memberManage.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
-
-import java.util.Map;
 
 /**
  * @Interface Name : MemberManageDAO.java
@@ -75,7 +75,7 @@ public interface MemberManageDAO {
 	 * @return
 	 * @throws
 	 */
-	public String getProInfoList();
+	public List<ProfessorViewVO> getProInfoList();
 
 	//교수 정보 등록
 	public void insertProInfo(ProfessorVO professorVO) ;
