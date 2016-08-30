@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
@@ -60,7 +61,7 @@ public class MemberManageController {
 		String url = "/emp/stuInfoList";
 		List<StudentVO> studentList = memberManagerService.getStuInfoList();
 		model.addAttribute("studentList", studentList);
-
+		/*ObjectMapper jsonObject = new Object*/
 		return url;
 	}
 
