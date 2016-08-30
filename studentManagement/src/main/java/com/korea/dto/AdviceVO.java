@@ -28,6 +28,7 @@ public class AdviceVO {
 	private String ad_time;
 	private String ad_stat;
 	private String ad_return;
+	
 	public int getAd_no() {
 		return ad_no;
 	}

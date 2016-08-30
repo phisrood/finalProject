@@ -3,19 +3,39 @@
 <!DOCTYPE configuration
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
-	
+
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="users" type="com.korea.dto.UsersVO"/>
+
 		<typeAlias alias="int" type="java.lang.Integer"/>
 		<typeAlias alias="str" type="java.lang.String"/>
-		<typeAlias alias="student" type="com.korea.dto.StudentVO"/>
-	</typeAliases>
-	
-	<mappers>
-		<mapper resource="sql/mapper/login.xml" />
-		<mapper resource="sql/mapper/student.xml"/>
 
+	
+		<!-- 상담 -->
+		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
+
+		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
+		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
+		<typeAlias alias="studentView" type="com.korea.dto.StudentViewVO" />
+		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
+		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
+		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
+		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
+		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
+
+	</typeAliases>
+
+	<mappers>
+
+		<mapper resource="sql/mapper/login.xml" />
+		<mapper resource="sql/mapper/department.xml" />
+		<mapper resource="sql/mapper/departmentManage.xml" />
+		<mapper resource="sql/mapper/professor.xml"/>
+		<mapper resource="sql/mapper/student.xml" />
+		<mapper resource="sql/mapper/message.xml" />
+		
+		<!-- 상담 -->
+	
 	</mappers>
 </configuration>

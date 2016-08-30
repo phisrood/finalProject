@@ -16,6 +16,7 @@ package com.korea.login.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,20 +24,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.dto.MessageVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
+import com.korea.message.service.MessageService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	MessageService messageService;
 	/**
 	 * 개인 정보 조회
 	 * @param
-	 * @return 
+	 * @return 0
 	 * @throws 
 	 */
 	//메인실행 로그인폼
@@ -69,9 +78,17 @@ public class LoginController {
 	 */
 	//메인
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
-	public String main(){
+	public String main(HttpSession session, Model model){
 		String url ="/common/main";
-				
+		
+		//세션정보
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		
+		//메인 로딩될때 메시지 리스트 출력
+		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
+		
+		model.addAttribute("messageNewList", messageNewList);
+
 		return url;
 	}
 	/**
@@ -104,8 +121,7 @@ public class LoginController {
 		
 		//로그인되고
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		UsersVO usersVO = null;
+		UsersVO usersVO = new UsersVO();
 		
 		//id 가져와서
 		String id = auth.getName();
@@ -135,10 +151,21 @@ public class LoginController {
 	 * @return 
 	 * @throws 
 	 */
-	//비밀번호찾기 이메일 구현
-	@RequestMapping(value="/common/pwdSearch")
-	public String pwdSearch(){
+	//비밀번호찾기 폼
+	@RequestMapping(value="/common/pwdSearchForm")
+	public String pwdSearchForm(){
 		String url="/common/searchPwd";
+		
+		return url;
+	}
+	
+	//비밀번호찾기 이메일 구현
+	@RequestMapping(value="/common/pwdSearch", method=RequestMethod.POST)
+	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
+							@RequestParam(value="birth", defaultValue="")String birth){
+		String url="redirect:/common/loginForm";
+		service.updateLoginPwdSearch(id, birth);
+		
 		
 		return url;
 	}

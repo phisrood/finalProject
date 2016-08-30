@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 수료생 관리 tiles definition                        -->
-<!-- << 개정이력(Modification Information) >>            -->
-<!--  수정일       수정자          수정내용              -->
-<!--  =======      =======     =====================     -->
-<!--  2016.04.07.  이영만       최초생성                 -->
-<!-- Copyright (c) 2016 by DDIT  All right reserved      -->
+<!-- 수료생 관리 tiles definition -->
+<!-- << 개정이력(Modification Information) >> -->
+<!-- 수정일 수정자 수정내용 -->
+<!-- ======= ======= ===================== -->
+<!-- 2016.04.07. 이영만 최초생성 -->
+<!-- Copyright (c) 2016 by DDIT All right reserved -->
 
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/resources/fonts/**" location="/resources/fonts" />
-	
+
 	<!-- images mapping -->
 	<resources mapping="/common/images/**" location="/resources/common/images/" />
 	<resources mapping="/emp/images/**" location="/resources/emp/images/" />
 	<resources mapping="/pro/images/**" location="/resources/pro/images/" />
 	<resources mapping="/stu/images/**" location="/resources/stu/images/" />
-	
+
 	<!-- js mapping -->
 	<resources mapping="/common/js/**" location="/resources/common/js/" />
 	<resources mapping="/emp/js/**" location="/resources/emp/js/" />
 	<resources mapping="/pro/js/**" location="/resources/pro/js/" />
 	<resources mapping="/stu/js/**" location="/resources/stu/js/" />
 	<resources mapping="/bootstrap/js/**" location="/resources/bootstrap/js/" />
-	
+
 	<!-- css mapping -->
 	<resources mapping="/common/css/**" location="/resources/common/css/" />
 	<resources mapping="/emp/css/**" location="/resources/emp/css/" />
 	<resources mapping="/pro/css/**" location="/resources/pro/css/" />
 	<resources mapping="/stu/css/**" location="/resources/stu/css/" />
 	<resources mapping="/bootstrap/css/**" location="/resources/bootstrap/css/" />
-	
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- maximum file size in bytes 500MB -->
+		<beans:property name="maxUploadSize" value="524288000" />
+
+	</beans:bean>
+
 	<context:component-scan base-package="com.korea" />
-	
+
 </beans:beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="departmentDAO">
+	<insert id="insertDepartment" parameterType="department">
+		INSERT INTO
+		DEPARTMENT
+		(DEP_NO,DEP_NAME,DEP_MAJNEEDCREDIT,DEP_MINNEEDCREDIT,DEP_MULCREDIT,DEP_PHONE,DEP_ENGNAME)
+		VALUES
+		(DEPARTMENT_SEQ.NEXTVAL,#{dep_name},#{dep_majneedcredit},#{dep_minneedcredit},#{dep_mulcredit},#{dep_phone},#{dep_engname})
+	</insert>
+
+	<update id="updateDepartment" parameterType="department">
+		UPDATE DEPARTMENT
+		SET
+		DEP_NAME = #{dep_name},
+		DEP_ENGNAME = #{dep_engname},
+		DEP_MAJNEEDCREDIT = #{dep_majneedcredit},
+		DEP_MINNEEDCREDIT = #{dep_minneedcredit},
+		DEP_MULCREDIT = #{dep_mulcredit},
+		DEP_PHONE = #{dep_phone}
+		WHERE
+		DEP_NO = ${dep_no}
+	</update>
+	
+	<update id="updateDepartmentRevoke" parameterType="int">
+		UPDATE DEPARTMENT
+		SET
+		DEP_REVOKEYN = 'Y'
+		WHERE
+		DEP_NO = #{dep_no}
+	</update>
+
+	<select id="getDepartmentList" resultType="department">
+		SELECT * FROM
+		DEPARTMENT 
+		WHERE DEP_REVOKEYN = 'N'
+		ORDER BY DEP_NO DESC
+	</select>
+
+	<select id="getDepartment" parameterType="int" resultType="department">
+		SELECT * FROM DEPARTMENT WHERE DEP_NO = #{dep_no}
+	</select>
+</mapper>

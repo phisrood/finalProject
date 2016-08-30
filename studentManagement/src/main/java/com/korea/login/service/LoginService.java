@@ -16,8 +16,6 @@ package com.korea.login.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-import com.korea.dto.TestVO;
-
 import com.korea.dto.UsersVO;
 
 
@@ -41,5 +39,6 @@ public interface LoginService {
 	
 
 	//비밀번호찾기
-	public void getLoginPwdSearch();
+	public void updateLoginPwdSearch(String id, String birth);
+
 }

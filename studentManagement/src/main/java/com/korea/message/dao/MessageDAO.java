@@ -1,4 +1,10 @@
 package com.korea.message.dao;
+
+import java.util.List;
+
+import com.korea.dto.MessageVO;
+import com.korea.dto.UsersVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -24,7 +30,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//새로운 쪽지 리스트 안읽은쪽지만 출력
-	public void getMessageNewList();
+	public List<MessageVO> getMessageNewList(UsersVO usersVO);
 	/**
 	 * 개인 정보 조회
 	 * @param
