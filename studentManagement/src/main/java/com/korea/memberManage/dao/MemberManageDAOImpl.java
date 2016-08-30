@@ -115,7 +115,7 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 * @return 
 	 * @throws 
 	 */
-
+	
 	/**
 	 * 교수 정보 수정
 	 * @param

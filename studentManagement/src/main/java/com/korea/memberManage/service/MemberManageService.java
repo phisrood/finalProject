@@ -134,4 +134,5 @@ public interface MemberManageService {
 	//학과정보 가져오기
 	public List<DepartmentVO> getDepartmentList();
 
+
 }

@@ -7,8 +7,8 @@
 <mapper namespace="Professor">
 	<insert id="professorInsert" parameterType="professor">
 
-
-		INSERT INTO PROFESSOR (PRO_USE_ID
+		INSERT INTO PROFESSOR (
+		PRO_USE_ID
 		,PRO_DEP_NO
 		,PRO_POSITION
 		,PRO_BIRTH
@@ -24,7 +24,7 @@
 		,PRO_REGNO1
 		,PRO_REGNO2)
 		VALUES(
-		,#{pro_use_id}
+		#{pro_use_id}
 		,#{pro_dep_no}
 		,#{pro_position}
 		,#{pro_birth}
@@ -44,13 +44,15 @@
 
 
 	<insert id="userProInsert" parameterType="users">
-		INSERT INTO USERS (USE_ID
+		INSERT INTO USERS (
+		USE_ID
 		,USE_KIND
 		,USE_NAME
 		,USE_PWD
 		,AUTHORITY)
 		VALUES(
-		trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.nextval,'000'),' ',''))
+		trim(
+		replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.nextval,'000'),' ',''))
 		,#{use_kind}
 		,#{use_name}
 		,#{use_pwd}

@@ -12,6 +12,8 @@ import com.korea.dto.UsersVO;
 import com.korea.memberManage.dao.MemberManageDAO;
 
 
+
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -337,4 +339,6 @@ public class MemberManageServiceImpl implements MemberManageService{
 		}
 		return value;
 	}
+	
+	
 }

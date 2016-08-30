@@ -75,7 +75,7 @@ public interface MemberManageDAO {
 	public String getProInfoList();
 
 	//교수 정보 등록
-	public void insertProInfo(ProfessorVO professorVO);
+	public void insertProInfo(ProfessorVO professorVO) ;
 	
 	//교수 정보 수정
 
