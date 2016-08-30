@@ -2,6 +2,10 @@ package com.korea.memberManage.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -9,22 +13,29 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorVO;
+import com.korea.memberManage.service.MemberManageService;
+
 @Controller
 public class MemberManageController {
 
+	@Autowired 
+	private MemberManageService memberManagerService;
 	
 	//학생정보조회
 	@RequestMapping(value="/emp/stuInfoList", method=RequestMethod.GET)
-	public String stuInfoList(){
+	public String stuInfoList(Model model){
 		String url="/emp/stuInfoList";
-		
-	
+
 		return url;
 	}
 	
@@ -84,15 +95,31 @@ public class MemberManageController {
 	//교수정보조회
 	@RequestMapping(value="/emp/proInfoList", method=RequestMethod.GET)
 	public String proInfoList(){
-		String url="";
+		String url="emp/stuInfoList";
 		
 		return url;
 	}
 	
 	//교수정보등록
-	@RequestMapping(value="/emp/proInfoInsert", method=RequestMethod.GET)
-	public String proInfoInsert(){
-		String url="";
+	@RequestMapping(value="/emp/proInfoInsertForm", method=RequestMethod.GET)
+	public String proInfoInsertForm(Model model,HttpServletRequest request,HttpServletResponse response ){
+		String url="/emp/proInfoInsert";
+		
+		List<DepartmentVO> departmentList=memberManagerService.getDepartmentList();
+		
+		model.addAttribute("departmentList",departmentList);
+		
+		
+		return url;
+	}
+	//교수정보등록
+	@RequestMapping(value="/emp/proInfoInsert", method=RequestMethod.POST)
+	public String proInfoInsert(@RequestParam(value="name", defaultValue="")String name,
+			ProfessorVO professorVO){
+		String url="redirect:/emp/stuInfoList";
+		
+		memberManagerService.insertProInfo(professorVO,name);
+		
 		
 		return url;
 	}

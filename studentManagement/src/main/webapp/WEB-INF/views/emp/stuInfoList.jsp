@@ -184,12 +184,13 @@
                   <td>만년막내</td>
                   <td>남자</td>
                </tr>
+
             </tbody>
          </table>
               
                  </div>
                  <div style="text-align:right;">
-                  <button type="button" class="btn btn-dark" >등록</button>
+                  <button type="button" class="btn btn-dark" ><a href="/emp/proInfoInsertForm">등록</a></button>
                   <button type="button" class="btn btn-dark" >수정</button>
                   <button type="button" class="btn btn-dark">삭제</button>
                </div>

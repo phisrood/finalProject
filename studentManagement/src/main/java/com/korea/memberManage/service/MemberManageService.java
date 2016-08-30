@@ -1,5 +1,10 @@
 package com.korea.memberManage.service;
 
+import java.util.List;
+
+import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorVO;
+
 public interface MemberManageService {
 	
 	//학생 정보 조회
@@ -20,7 +25,7 @@ public interface MemberManageService {
 	public String getProInfoList();
 	
 	//교수 정보 등록
-	public String insertProInfo();
+	public void insertProInfo(ProfessorVO professorVO, String name);
 	
 	//교수 정보 수정
 	public String updateProInfo();
@@ -41,5 +46,8 @@ public interface MemberManageService {
 	
 	//교직원 정보 비활성화
 	public String updateEmpInfoOnOff();
+
+	//학과정보 가져오기
+	public List<DepartmentVO> getDepartmentList();
 
 }
