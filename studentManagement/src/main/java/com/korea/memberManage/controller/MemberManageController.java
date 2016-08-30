@@ -62,7 +62,7 @@ public class MemberManageController {
 		//String url = "/emp/stuInfoList";
 		List<StudentVO> studentList = memberManagerService.getStuInfoList();
 		model.addAttribute("studentList", studentList);
-
+		/*ObjectMapper jsonObject = new Object*/
 		return url;
 	}
 

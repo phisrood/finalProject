@@ -8,6 +8,23 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <script src="/emp/js/default.js"></script>
+<script>
+	$(function(){
+		$.ajax(function(){
+			url: "/emp/stuInfoList",
+			method:"get",
+			dataType:"json",
+			success:function(){
+				
+			},
+			error:function(){
+				alert("에러");
+			}
+		});
+	});
+</script>
+
+
 <!-- 구성원정보관리 -->
 
 <div class="row">
@@ -91,7 +108,6 @@
 									<button type="button" class="btn btn-dark"
 										onclick="insertStu(this.form);">등록</button>
 								</form>
-								<button type="button" class="btn btn-dark">수정</button>
 								<button type="button" class="btn btn-dark">삭제</button>
 							</div>
 						</div>

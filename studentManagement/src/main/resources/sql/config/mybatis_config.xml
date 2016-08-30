@@ -29,6 +29,7 @@
 
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/department.xml" />
+		<mapper resource="sql/mapper/departmentManage.xml" />
 		<mapper resource="sql/mapper/professor.xml"/>
 
 		<mapper resource="sql/mapper/student.xml" />
