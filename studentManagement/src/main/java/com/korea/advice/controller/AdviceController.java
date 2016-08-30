@@ -145,10 +145,10 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 신청 삭제
-	@RequestMapping(value = "/stu/adviceREQDelete", method = RequestMethod.GET)
-	public String adviceREQDelete() {
-		String url = "";
-
+	@RequestMapping(value = "/pro/adviceREQConfirm")
+	public String adviceREQConfirm() {
+		String url = "/pro/Consultation_RHP";
+		
 		return url;
 	}
 

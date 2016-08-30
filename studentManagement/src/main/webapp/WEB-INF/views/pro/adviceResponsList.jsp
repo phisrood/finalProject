@@ -57,9 +57,9 @@
 						<td>${adviceRes.ad_pro_use_id }</td>
 						<td>${adviceRes.ad_reqdate }</td>
 						<td>${adviceRes.ad_time }</td>
-						<td><button type="button" class="btn btn-default btn-xs">처리</button></td>
-						<td>${adviceRes.ad_return }</td>
-					</tr>
+						<td><button class="btn btn-default btn-xs">처리</button></td>      
+						<td>${adviceRes.ad_return }</td>  
+					</tr>    
 				</c:forEach>
 			</tbody>
 		</table>
