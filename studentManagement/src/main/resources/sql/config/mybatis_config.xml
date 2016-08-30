@@ -8,8 +8,8 @@
 <configuration>
 	<typeAliases>
 
-		<typeAlias alias="int" type="java.lang.Integer"/>
-		<typeAlias alias="str" type="java.lang.String"/>
+		<typeAlias alias="int" type="java.lang.Integer" />
+		<typeAlias alias="str" type="java.lang.String" />
 
 		<!-- 학과정보 -->
 		<typeAlias alias="departmentVO" type="com.korea.dto.DepartmentVO" />
@@ -27,10 +27,12 @@
 
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/department.xml" />
-		<mapper resource="sql/mapper/professor.xml"/>
+		<mapper resource="sql/mapper/professor.xml" />
 
 		<mapper resource="sql/mapper/student.xml" />
 		<!-- 상담 -->
-	
+		<mapper resource="sql/mapper/advice.xml" />
+
+
 	</mappers>
 </configuration>
