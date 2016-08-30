@@ -1,4 +1,9 @@
 package com.korea.notice.service;
+
+import java.util.List;
+
+import com.korea.dto.Colleage_NoticeVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -18,13 +23,14 @@ package com.korea.notice.service;
 
 public interface NoticeService {
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//공지사항 게시판 리스트 Select 최신 20~30개씩
-	public void getNoticeNewList();
+	public List<Colleage_NoticeVO> getNoticeNewList();
 	/**
 	 * 개인 정보 조회
 	 * @param

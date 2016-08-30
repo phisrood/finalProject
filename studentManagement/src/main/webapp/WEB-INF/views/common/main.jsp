@@ -58,111 +58,27 @@
 
 
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td><a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
+                        <c:choose>
+                      	<c:when test="${empty noticeNewList}">
+                      		<tr>
+								<td colspan='5'>
+									공지사항이 없습니다.
+								</td>                      		
+                      		</tr>
+                      	</c:when>
+                      	<c:otherwise>
+                        	<c:forEach var="noticeNewList" items="${noticeNewList }" varStatus="status">
+                        		<tr>
+                        			<td>${status.count }</td>
+                        			<td><a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">${noticeNewList.cn_title }</a> </td>
+                        			<c:if test="${noticeNewList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
+                        			<c:if test="${noticeNewList.cn_af_no != 0 }"><td>${noticeNewList.cn_af_no }</td></c:if>
+                        			<td>${noticeNewList.cn_date }</td>
+                        			<td>${noticeNewList.cn_sp_use_id }</td>
+                        		</tr>
+                        	</c:forEach>
+                        </c:otherwise>
+                     </c:choose>
                       </tbody>
                     </table>
                   </div>
@@ -187,6 +103,7 @@
                         <tr>
                           <th>NO</th>
                           <th>수신</th>
+                          <th>발신</th>
                           <th>제목</th>
                           <th>수신일</th>
                         </tr>
@@ -211,6 +128,7 @@
                         			읽지않음
                         			</c:if>
                         			</td>
+                        			<td>${messageNewList.mes_send_use_id }</td>
                         			<td>${messageNewList.mes_title }</td>
                         			<td>${messageNewList.mes_date }</td>
                         		</tr>
