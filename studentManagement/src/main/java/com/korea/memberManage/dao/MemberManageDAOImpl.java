@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
@@ -174,6 +175,12 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	public String updateEmpInfoOnOff() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	
+	@Override
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
+		return (ProfessorDetailViewVO) sqlSession.selectOne("Professor.professorDetail", pro_use_id);
 	}
 
 	

@@ -63,9 +63,15 @@
 	</insert>
 	
 	<select id="getProInfoList" resultType="professorView">
-		SELECT USE_NAME, DEP_NAME, PRO_POSITION, PRO_GENDER  	
+		SELECT USE_NAME, DEP_NAME, PRO_USE_ID, PRO_POSITION, PRO_GENDER  	
 		FROM	PROFESSOR
 		INNER JOIN USERS ON (USE_ID=PRO_USE_ID)
 		INNER JOIN DEPARTMENT ON (PRO_DEP_NO=DEP_NO)
+	</select>
+	
+	<select id="professorDetail" parameterType="str" resultType="professorDetail">
+		SELECT 	* 
+		FROM	PROFESSOR_VIEW 
+		WHERE 	PRO_USE_ID = #{pro_use_id}
 	</select>
 </mapper>

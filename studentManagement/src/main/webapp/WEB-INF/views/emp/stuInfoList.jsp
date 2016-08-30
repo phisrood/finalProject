@@ -53,7 +53,9 @@
 				alert("에러얌");		
 			}
 		});
-		
+		$("#profile-tab").click(function(){
+			$('#datatable2').DataTable();
+		});
 	});
 </script>
 
@@ -122,8 +124,8 @@
 										id="fileup" />
 									<button type="button" class="btn btn-dark"
 										onclick="insertStu(this.form);">등록</button>
-								</form>
 								<button type="button" class="btn btn-dark">삭제</button>
+								</form>
 							</div>
 						</div>
 
@@ -132,12 +134,13 @@
 							aria-labelledby="profile-tab">
 
 							<div class="x_content">
-								<table id="datatable"
+								<table id="datatable2"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
 										<tr>
 											<th>NO</th>
 											<th>이름</th>
+											<th>교번</th>
 											<th>소속학과</th>
 											<th>직책</th>
 											<th>성별</th>
@@ -150,6 +153,7 @@
 											<tr>
 												<td>${sta.count}</td>
 												<td>${professor.use_name}</td>
+												<td><a href="/emp/proInfoDetail?pro_use_id=${professor.pro_use_id}">${professor.pro_use_id}</a></td>
 												<td>${professor.dep_name}</td>
 												<td>${professor.pro_position}</td>
 												<td>${professor.pro_gender}</td>
@@ -163,7 +167,6 @@
 								<a href="/emp/proInfoInsertForm">
 									<button type="button" class="btn btn-dark">등록</button>
 								</a>
-								<button type="button" class="btn btn-dark">수정</button>
 								<button type="button" class="btn btn-dark">삭제</button>
 							</div>
 						</div>

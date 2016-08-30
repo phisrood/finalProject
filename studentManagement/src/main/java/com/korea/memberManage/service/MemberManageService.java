@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
@@ -110,6 +111,43 @@ public interface MemberManageService {
 	 */
 	public String updateproInfoOnOff();
 
+	/**
+	 * 교직원 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public String getEmpInfoList();
+	/**
+	 * 교직원 정보 등록
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public String insertEmpInfo();
+	/**
+	 * 교직원 정보 수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public String updateEmpInfo();
+	/**
+	 * 교직원 정보 비활성화
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public String updateEmpInfoOnOff();
 	
+	/**
+	 * @return 
+	 * 교수정보상세보기
+	 * @param	int
+	 * @return 
+	 * @throws 
+	 */
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id);
+
 
 }
