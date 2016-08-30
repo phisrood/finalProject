@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
@@ -57,8 +58,8 @@ public class MemberManageController {
 	@RequestMapping(value = "/emp/stuInfoList", method = RequestMethod.GET)
 	public String stuInfoList(Model model) {
 
-		//String url = "redirect:/emp/proInfoList";
-		String url = "/emp/stuInfoList";
+		String url = "redirect:/emp/proInfoList";
+		//String url = "/emp/stuInfoList";
 		List<StudentVO> studentList = memberManagerService.getStuInfoList();
 		model.addAttribute("studentList", studentList);
 
