@@ -7,21 +7,25 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<typeAlias alias="int" type="java.lang.Integer" />
 		<typeAlias alias="str" type="java.lang.String" />
-		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
 
 		<!-- 학과정보 -->
 		<typeAlias alias="departmentVO" type="com.korea.dto.DepartmentVO" />
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
+
+		<typeAlias alias="int" type="java.lang.Integer" />
+		<typeAlias alias="str" type="java.lang.String" />
+		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
+		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
+		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
+		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/student.xml" />
-
 		<!-- 학과정보 -->
 		<mapper resource="sql/mapper/departmentManage.xml" />
 		<!-- 상담 -->
