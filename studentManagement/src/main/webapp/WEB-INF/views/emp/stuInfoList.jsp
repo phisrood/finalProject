@@ -165,7 +165,6 @@
 								<a href="/emp/proInfoInsertForm">
 									<button type="button" class="btn btn-dark">등록</button>
 								</a>
-								<button type="button" class="btn btn-dark">수정</button>
 								<button type="button" class="btn btn-dark">삭제</button>
 							</div>
 						</div>
