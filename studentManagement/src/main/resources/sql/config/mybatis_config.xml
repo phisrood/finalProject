@@ -15,6 +15,7 @@
 		<typeAlias alias="departmentVO" type="com.korea.dto.DepartmentVO" />
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
+		<typeAlias alias="adviceBoardVO" type="com.korea.dto.Advice_BoardVO" />
 
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
@@ -32,7 +33,7 @@
 		<mapper resource="sql/mapper/student.xml" />
 		<!-- 상담 -->
 		<mapper resource="sql/mapper/advice.xml" />
-
+		<mapper resource="sql/mapper/adviceBoard.xml" />
 
 	</mappers>
 </configuration>

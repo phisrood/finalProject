@@ -50,15 +50,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>화상</td>
-					<td>취업</td>
-					<td>이건원</td>
-					<td>2016-08-14</td>
-					<td>14</td>
-					<td><button type="button" class="btn btn-default btn-xs">처리</button></td>
-					<td></td>
-				</tr>
+				<c:forEach var="adviceRes" items="${adviceResList}">
+					<tr>
+						<td>${adviceRes.ad_way }</td>
+						<td>${adviceRes.ad_purpose }</td>
+						<td>${adviceRes.ad_pro_use_id }</td>
+						<td>${adviceRes.ad_reqdate }</td>
+						<td>${adviceRes.ad_time }</td>
+						<td><button type="button" class="btn btn-default btn-xs">처리</button></td>
+						<td>${adviceRes.ad_return }</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
