@@ -38,7 +38,7 @@
 
 <!-- Custom Theme Style -->
 <link href="/stu/css/custom.min.css" rel="stylesheet">
-
+<script src="/common/js/notice.js"></script>
 
 <!-- 쪽지함 -->
 
@@ -241,7 +241,7 @@
 			                    <div class="col-md-7">
 			                      <input type="text" id="first-name2" required="required" class="form-control col-md-7 col-xs-12">
 			                    </div>
-			                     <button type="button" class="btn btn-dark">검색</button>
+			                     <button type="button" class="btn btn-dark" onclick="javascript:OpenWindow('/common/messageUserSearchForm','600','500')" style="text-decoration:none">검색</button>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>
@@ -267,17 +267,17 @@
 		                      <ul class="dropdown-menu">
 		                        <li>
 		                          <a data-edit="fontSize 5">
-		                            <p style="font-size:17px">Huge</p>
+		                            <p style="font-size:17px;">Huge</p>
 		                          </a>
 		                        </li>
 		                        <li>
 		                          <a data-edit="fontSize 3">
-		                            <p style="font-size:14px">Normal</p>
+		                            <p style="font-size:14px;">Normal</p>
 		                          </a>
 		                        </li>
 		                        <li>
 		                          <a data-edit="fontSize 1">
-		                            <p style="font-size:11px">Small</p>
+		                            <p style="font-size:11px;">Small</p>
 		                          </a>
 		                        </li>
 		                      </ul>

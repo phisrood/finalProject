@@ -15,10 +15,10 @@
 <%@page import="com.korea.indivInfoManage.dao.IndivInfoManageDAO"%>
 <%@ page contentType = "text/plain; charset=euc-kr" %>
 <%@ page import = "java.util.List" %>
-<%
+<%-- <%
 String id = request.getParameter("id");
 IndivInfoManageDAO dao;
-int re = dao.checkId(id);
+//int re = dao.checkId(id);
 %>
-<%=re%>
+<%=re%> --%>
 

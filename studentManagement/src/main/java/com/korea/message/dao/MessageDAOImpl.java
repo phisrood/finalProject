@@ -72,9 +72,9 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getMessageUserSearch() {
-		// TODO Auto-generated method stub
-		
+	public List<UsersVO> getMessageUserSearch() {
+
+		return session.selectList("Message.messageUserSearch");
 	}
 	/**
 	 * 개인 정보 조회
