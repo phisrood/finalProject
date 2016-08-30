@@ -28,7 +28,7 @@ import com.korea.memberManage.dao.MemberManageDAO;
 
 /**
  * @Class Name : MemberManageServiceImpl.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -192,53 +192,6 @@ public class MemberManageServiceImpl implements MemberManageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getEmpInfoList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String insertEmpInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateEmpInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateEmpInfoOnOff() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
@@ -350,6 +303,26 @@ public class MemberManageServiceImpl implements MemberManageService{
 	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
 		return memberManageDAO.getDetailProInfo(pro_use_id);
 		
+	}
+	@Override
+	public String getEmpInfoList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String insertEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfoOnOff() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

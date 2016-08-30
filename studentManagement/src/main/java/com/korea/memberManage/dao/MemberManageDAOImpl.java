@@ -19,7 +19,7 @@ import com.korea.dto.UsersVO;
 
 /**
  * @Class Name : MemberManageDAOImpl.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -156,48 +156,21 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String getEmpInfoList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String insertEmpInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String updateEmpInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String updateEmpInfoOnOff() {
 		// TODO Auto-generated method stub

@@ -1,3 +1,17 @@
+<%--==============================================================
+ * 구성원 정보 관리 left 메뉴구성
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱      		최초생성
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -7,20 +21,39 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+
 <script src="/emp/js/default.js"></script>
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
-	$(function(){
-		$.ajax(function(){
-			url: "/emp/stuInfoList",
+
+	$(function(){		
+		$.ajax({
+			url: "/emp/stuInfo",
 			method:"get",
 			dataType:"json",
-			success:function(){
-				
+			success:function(obj){
+				htmlCode = "";
+				$.each(obj, function(index, value){
+					index = parseInt(index)+1;
+					htmlCode += "<tr>";
+					htmlCode += "<td>"+index+"</td>";
+					htmlCode += "<td>"+value.use_id+"</td>";
+					htmlCode += "<td>"+value.use_name+"</td>";
+					htmlCode += "<td>"+value.dep_name+"</td>";
+					htmlCode += "<td>"+value.crc_cemester+"</td>";
+					htmlCode += "<td>"+value.stud_gender+"</td>";
+					htmlCode += "<td>"+value.crc_colleagestatus+"</td>";
+					htmlCode += "</tr>";
+				});
+				$("#stuTbody").html(htmlCode);
+				$('#datatable').DataTable();
 			},
 			error:function(){
-				alert("에러");
+				alert("에러얌");		
 			}
 		});
+		
 	});
 </script>
 
@@ -59,19 +92,9 @@
 						<!-- tab_content1 -->
 						<div role="tabpanel" class="tab-pane fade active in"
 							id="tab_content1" aria-labelledby="home-tab">
-							<div style="text-align: right;">
-
-								<select style="width: 100px; height: 30px;">
-									<option>전체</option>
-									<option>학번</option>
-									<option>이름</option>
-									<option>소속학과</option>
-								</select> <input type="text" style="width: 200px; height: 30px;">
-								<button type="button" class="btn btn-dark">검색</button>
-
-							</div>
+							
 							<div class="x_content">
-
+								<div id="paging">
 								<table id="datatable"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
@@ -86,20 +109,12 @@
 										</tr>
 									</thead>
 
-									<tbody>
-										<c:forEach var="stu" items="${studentList}" varStatus="sta">
-											<tr>
-												<td>${sta.count }</td>
-												<td>${stu.use_id }</td>
-												<td>${stu.use_name }</td>
-												<td>${stu.dep_name }</td>
-												<td>${stu.crc_cemester }</td>
-												<td>${stu.stud_gender }</td>
-												<td>${stu.crc_colleagestatus }</td>
-											</tr>
-										</c:forEach>
+									<tbody id="stuTbody" >
+									   <!-- table content -->
 									</tbody>
+									
 								</table>
+								</div>
 							</div>
 							<div style="text-align: right;">
 								<form name="insertStudent" enctype="multipart/form-data">
@@ -116,19 +131,7 @@
 						<div role="tabpanel" class="tab-pane fade" id="tab_content2"
 							aria-labelledby="profile-tab">
 
-							<div style="text-align: right;">
-
-								<select style="width: 100px; height: 30px;">
-									<option>전체</option>
-									<option>이름</option>
-									<option>소속학과</option>
-								</select> <input type="text" style="width: 200px; height: 30px;">
-								<button type="button" class="btn btn-dark">검색</button>
-
-							</div>
 							<div class="x_content">
-
-
 								<table id="datatable"
 									class="table table-striped jambo_table bulk_action">
 									<thead>

@@ -7,7 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--==============================================================
- * 학적변동현황(학과)
+ * 학적변동현황조회(학과)
  * @author 
  * @since  2016.08.25.
  * @version 1.0
@@ -21,7 +21,7 @@
  * </pre>
 ===============================================================--%>
     
-    <!-- 학적변동현황: 학과 -->
+    <!-- 학적변동현황조회: 학과 -->
 			
            
             <div class="row">

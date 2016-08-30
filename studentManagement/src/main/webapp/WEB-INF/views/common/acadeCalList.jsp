@@ -37,7 +37,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-               <div style="text-align:right";>
+               <div style="text-align:right;">
             <button type="button" class="btn btn-dark">리스트보기</button>
                </div>
                     <div id='calendar'></div>
