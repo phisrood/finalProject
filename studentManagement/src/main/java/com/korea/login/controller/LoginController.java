@@ -38,7 +38,7 @@ public class LoginController {
 	/**
 	 * 개인 정보 조회
 	 * @param
-	 * @return 
+	 * @return 0
 	 * @throws 
 	 */
 	//메인실행 로그인폼
