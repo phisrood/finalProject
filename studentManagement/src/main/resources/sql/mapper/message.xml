@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Message">
+	<select id="messageNewList" parameterType="users" resultType="message">
+		select * 
+			from (select ROW_NUMBER() OVER(order by mes_no desc) as rnum
+			, mes_send_use_id
+			, mes_recive_use_id
+			, mes_title
+			, mes_content
+			, mes_date
+			, mes_readyn
+			, mes_delyn from message
+			where mes_readyn = 'n'
+			order by mes_no desc
+			)
+			where rnum between 1 and 20 
+			and mes_recive_use_id = #{use_id}
+	</select>
+</mapper>

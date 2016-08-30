@@ -28,7 +28,7 @@ import com.sun.mail.iap.Response;
 
 /**
  * @Class Name : MemberManageController.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since 2016.08.29.
@@ -39,7 +39,8 @@ import com.sun.mail.iap.Response;
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
  *    2016.08.29.	김양문			학생등록
- *    2016.08.29	이수정			교수등록
+ *    2016.08.29.	이수정			교수등록
+ *    2016.08.30.	이수정			교수조회
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -62,8 +63,11 @@ public class MemberManageController {
 	@RequestMapping(value = "/emp/stuInfoList", method = RequestMethod.GET)
 	public String stuInfoList(Model model, HttpServletResponse response) {
 
-		String url = "/emp/stuInfoList";
-		
+		String url = "redirect:/emp/proInfoList";
+
+		List<StudentVO> studentList = memberManagerService.getStuInfoList();
+		model.addAttribute("studentList", studentList);
+
 		return url;
 	}
 	/**
@@ -168,21 +172,25 @@ public class MemberManageController {
 	 */
 	@RequestMapping(value = "/emp/proInfoList", method = RequestMethod.GET)
 	public String proInfoList(Model model) {
-		System.out.println("aaaa");
 		String url = "/emp/stuInfoList";
 
 		List<ProfessorViewVO> professorList = memberManagerService
 				.getProInfoList();
-		System.out.println(professorList + "@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		model.addAttribute("professorList", professorList);
 
 		return url;
 	}
 
-	// 교수정보등록Form
+	/**
+	 * 교수정보등록Form, 학과번호 콤보박스list
+	 * 
+	 * @param Model
+	 * @return String
+	 * @throws
+	 */
+	// 교수정보등록Form, 
 	@RequestMapping(value = "/emp/proInfoInsertForm", method = RequestMethod.GET)
-	public String proInfoInsertForm(Model model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public String proInfoInsertForm(Model model) {
 		String url = "/emp/proInfoInsert";
 
 		List<DepartmentVO> departmentList = memberManagerService
@@ -196,11 +204,10 @@ public class MemberManageController {
 	/**
 	 * 교수 정보 등록
 	 * 
-	 * @param
-	 * @return
+	 * @param String,ProfessorVO
+	 * @return String
 	 * @throws
 	 */
-	// 교수정보등록
 	@RequestMapping(value = "/emp/proInfoInsert", method = RequestMethod.POST)
 	public String proInfoInsert(
 			@RequestParam(value = "name", defaultValue = "") String name,
@@ -239,6 +246,7 @@ public class MemberManageController {
 
 		return url;
 	}
+
 
 	// /////////////////////////교직원/////////////////////////
 

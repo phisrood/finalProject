@@ -15,25 +15,26 @@ package com.korea.message.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.korea.dto.MessageVO;
+import com.korea.dto.UsersVO;
+import com.korea.message.service.MessageService;
+
 @Controller
 public class MessageController {
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//쪽지함 리스트 출력 최신 20~30개만 (안읽은쪽지만)
-	@RequestMapping(value={"/stu/messageNewList","/emp/messageNewList","/pro/messageNewList"}, method=RequestMethod.GET)
-	public String messageNewList(){
-		String url="";
-		
-		return url;
-	}
+	
+	@Autowired
+	MessageService service;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param

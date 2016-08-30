@@ -11,8 +11,7 @@
 		<typeAlias alias="int" type="java.lang.Integer"/>
 		<typeAlias alias="str" type="java.lang.String"/>
 
-		<!-- 학과정보 -->
-		<typeAlias alias="departmentVO" type="com.korea.dto.DepartmentVO" />
+	
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 
@@ -22,7 +21,11 @@
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
+		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
+		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
+		
+
 	</typeAliases>
 
 	<mappers>
@@ -31,8 +34,10 @@
 		<mapper resource="sql/mapper/department.xml" />
 		<mapper resource="sql/mapper/departmentManage.xml" />
 		<mapper resource="sql/mapper/professor.xml"/>
-
 		<mapper resource="sql/mapper/student.xml" />
+		<mapper resource="sql/mapper/message.xml" />
+		<mapper resource="sql/mapper/colleageNotice.xml" />
+		
 		<!-- 상담 -->
 	
 	</mappers>

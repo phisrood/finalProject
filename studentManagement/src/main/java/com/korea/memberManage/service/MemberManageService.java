@@ -13,7 +13,7 @@ import com.korea.dto.StudentVO;
 
 /**
  * @Interface Name : MemberManageService.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -25,7 +25,8 @@ import com.korea.dto.StudentVO;
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
  *    2016.08.29.	김양문			학생등록
- *    2016.08.29	이수정			교수등록
+ *    2016.08.29.	이수정			교수등록
+ *    2016.08.30.	이수정			교수조회
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -70,24 +71,29 @@ public interface MemberManageService {
 	/**
 	 * 교수 정보 조회
 	 * @param
-	 * @return 
+	 * @return 	List<ProfessorViewVO>
 	 * @throws 
 	 */
 	public List<ProfessorViewVO> getProInfoList();
 
 	
-	//교수 정보 등록
-	public void insertProInfo(ProfessorVO professorVO, String name);
-	
-	//교수 정보 수정
-
 	/**
 	 * 교수 정보 등록
-	 * @param
+	 * @param	ProfessorVO,String
 	 * @return 
 	 * @throws 
 	 */
+	public void insertProInfo(ProfessorVO professorVO, String name);
+	
+	/**
+	 * 학과 정보 가져오기
+	 * @param	
+	 * @return 	List<DepartmentVO>
+	 * @throws 
+	 */
+	public List<DepartmentVO> getDepartmentList();
 
+	
 	/**
 	 * 교수 정보 수정
 	 * @param
@@ -103,40 +109,7 @@ public interface MemberManageService {
 	 * @throws 
 	 */
 	public String updateproInfoOnOff();
-	
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String getEmpInfoList();
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String insertEmpInfo();
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateEmpInfo();
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateEmpInfoOnOff();
 
-	//학과정보 가져오기
-	public List<DepartmentVO> getDepartmentList();
-
+	
 
 }

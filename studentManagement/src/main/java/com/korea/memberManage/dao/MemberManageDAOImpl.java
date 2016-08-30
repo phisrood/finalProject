@@ -18,7 +18,7 @@ import com.korea.dto.UsersVO;
 
 /**
  * @Class Name : MemberManageDAOImpl.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -29,6 +29,9 @@ import com.korea.dto.UsersVO;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.	김양문			학생등록
+ *    2016.08.29	이수정			교수등록 
+ *    2016.08.30.	이수정			교수조회
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -96,7 +99,7 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	/**
 	 * 교수 정보 조회
 	 * @param
-	 * @return 
+	 * @return 	List<ProfessorViewVO>
 	 * @throws 
 	 */
 	@Override
@@ -109,12 +112,26 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	}
 
 
-	/**
-	 * 교수 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//학과번호 리스트불러오기
+	@Override
+	public List<DepartmentVO> getDepartmentList() {
+		return sqlSession.selectList("Department.departmentList");
+	}
+	
+	//교수정보등록
+	public void insertProInfo(ProfessorVO professorVO) {
+		System.out.println(professorVO.getPro_use_id());
+		sqlSession.insert("Professor.professorInsert",professorVO);
+	}
+	
+	//USERS테이블에 교수정보 등록
+	@Override
+	public UsersVO insertUserProInfo(UsersVO usersVO) {
+		sqlSession.insert("Professor.userProInsert",usersVO);
+		
+		return usersVO;
+		
+	}
 	
 	/**
 	 * 교수 정보 수정
@@ -138,71 +155,27 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String getEmpInfoList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String insertEmpInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String updateEmpInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
 	public String updateEmpInfoOnOff() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<DepartmentVO> getDepartmentList() {
-		return sqlSession.selectList("Department.departmentList");
-	}
 	
-	@Override
-	public void insertProInfo(ProfessorVO professorVO) {
-		System.out.println(professorVO.getPro_use_id());
-		sqlSession.insert("Professor.professorInsert",professorVO);
-	}
-
-	@Override
-	public UsersVO insertUserProInfo(UsersVO usersVO) {
-		sqlSession.insert("Professor.userProInsert",usersVO);
-		
-		return usersVO;
-		
-	}
 
 }
