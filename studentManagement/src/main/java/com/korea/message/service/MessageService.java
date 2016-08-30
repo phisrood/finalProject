@@ -54,7 +54,7 @@ public interface MessageService {
 	 * @throws 
 	 */
 	//수신사용자검색 다른쪽 VO 리턴
-	public void getMessageUserSearch();
+	public List<UsersVO> getMessageUserSearch();
 	/**
 	 * 개인 정보 조회
 	 * @param
