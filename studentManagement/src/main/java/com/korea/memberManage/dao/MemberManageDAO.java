@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
@@ -154,4 +155,6 @@ public interface MemberManageDAO {
 	public List<DepartmentVO> getDepartmentList();
 
 	public UsersVO insertUserProInfo(UsersVO usersVO);
+	
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id);
 }

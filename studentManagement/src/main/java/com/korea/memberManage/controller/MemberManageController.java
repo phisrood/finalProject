@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
@@ -98,6 +99,9 @@ public class MemberManageController {
 
 		return url;
 	}
+	
+	
+	
 
 	/**
 	 * 학생 정보 수정
@@ -146,6 +150,45 @@ public class MemberManageController {
 
 		return url;
 	}
+	/**
+	 * 교수 정보 상세보기
+	 * 
+	 * @param Model,String
+	 * @return String
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/proInfoDetail", method = RequestMethod.GET)
+	public String proInfoDetail(@RequestParam(value="pro_use_id", defaultValue = "")String pro_use_id,Model model) {
+		String url = "/emp/proInfoUpdate";
+		
+		System.out.println(pro_use_id);
+		ProfessorDetailViewVO professorDetailViewVO = memberManagerService.getDetailProInfo(pro_use_id);
+		List<DepartmentVO> departmentList = memberManagerService
+				.getDepartmentList();
+
+		model.addAttribute("departmentList", departmentList);
+		model.addAttribute("professorDetailViewVO",professorDetailViewVO);
+		
+		
+		return url;
+	}
+	/**
+	 * 교수 정보 수정
+	 * 
+	 * @param Model
+	 * @return String
+	 * @throws
+	 */
+	/*@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.GET)
+	public String proInfoUpdate(Model model) {
+		String url = "/emp/proInfoUpdate";
+		
+		List<ProfessorViewVO> professorList = memberManagerService
+				.getProInfoList();
+		model.addAttribute("professorList", professorList);
+		
+		return url;
+	}*/
 
 	/**
 	 * 교수정보등록Form, 학과번호 콤보박스list
