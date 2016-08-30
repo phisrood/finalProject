@@ -53,7 +53,9 @@
 				alert("에러얌");		
 			}
 		});
-		
+		$("#profile-tab").click(function(){
+			$('#datatable2').DataTable();
+		});
 	});
 </script>
 
@@ -122,8 +124,8 @@
 										id="fileup" />
 									<button type="button" class="btn btn-dark"
 										onclick="insertStu(this.form);">등록</button>
-								</form>
 								<button type="button" class="btn btn-dark">삭제</button>
+								</form>
 							</div>
 						</div>
 
@@ -132,7 +134,7 @@
 							aria-labelledby="profile-tab">
 
 							<div class="x_content">
-								<table id="datatable"
+								<table id="datatable2"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
 										<tr>
