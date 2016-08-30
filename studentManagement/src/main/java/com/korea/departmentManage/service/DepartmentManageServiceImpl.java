@@ -1,29 +1,45 @@
 package com.korea.departmentManage.service;
 
-public class DepartmentManageServiceImpl implements DepartmentManageService{
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.departmentManage.dao.DepartmentManageDAO;
+import com.korea.dto.DepartmentVO;
+
+@Service
+public class DepartmentManageServiceImpl implements DepartmentManageService {
+
+	@Autowired
+	DepartmentManageDAO departmentManageDAO;
 
 	@Override
-	public String getDepartmentInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DepartmentVO> getDepartmentInfoList() {
+		List<DepartmentVO> departmentList = departmentManageDAO
+				.getDepartmentInfoList();
+		return departmentList;
 	}
 
 	@Override
-	public String insertDepartmentInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public DepartmentVO getDepartmentInfo(int dep_no) {
+		DepartmentVO department = departmentManageDAO.getDepartmentInfo(dep_no);
+		return department;
 	}
 
 	@Override
-	public String updateDepartmentInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void insertDepartmentInfo(DepartmentVO departmentVO) {
+		departmentManageDAO.insertDepartmentInfo(departmentVO);
 	}
 
 	@Override
-	public String updateDepartmentOnOff() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateDepartmentInfo(DepartmentVO departmentVO) {
+		departmentManageDAO.updateDepartmentInfo(departmentVO);
+	}
+
+	@Override
+	public void updateDepartmentOnOff(int dep_no) {
+		departmentManageDAO.updateDepartmentOnOff(dep_no);
 	}
 
 }

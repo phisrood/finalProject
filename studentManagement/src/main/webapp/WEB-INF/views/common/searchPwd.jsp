@@ -19,6 +19,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <script type="text/javascript" src="/common/js/login.js" ></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -42,16 +43,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form name="searchPwd_form">
               <h1>SEARCH</h1>
               <div>
-                <input type="text" class="form-control" placeholder="학번" required="" />
+                <input type="text" class="form-control" name="id" placeholder="학번" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="생년월일 ex)930813" required="" />
+                <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)930813"  />
               </div>
               <div>
-                <a class="btn btn-default submit" href="/common/loginForm">인증메일발송</a>
+                <input type="button" value="인증메일발송" onclick="go_searchPwd();">
               </div>
                 <div class="clearfix"></div>
               <br />
