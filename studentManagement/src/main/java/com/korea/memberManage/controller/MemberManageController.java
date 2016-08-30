@@ -33,7 +33,8 @@ import com.korea.memberManage.service.MemberManageService;
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
  *    2016.08.29.	김양문			학생등록
- *    2016.08.29	이수정			교수등록
+ *    2016.08.29.	이수정			교수등록
+ *    2016.08.30.	이수정			교수조회
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -136,21 +137,25 @@ public class MemberManageController {
 	 */
 	@RequestMapping(value = "/emp/proInfoList", method = RequestMethod.GET)
 	public String proInfoList(Model model) {
-		System.out.println("aaaa");
 		String url = "/emp/stuInfoList";
 
 		List<ProfessorViewVO> professorList = memberManagerService
 				.getProInfoList();
-		System.out.println(professorList + "@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		model.addAttribute("professorList", professorList);
 
 		return url;
 	}
 
-	// 교수정보등록Form
+	/**
+	 * 교수정보등록Form, 학과번호 콤보박스list
+	 * 
+	 * @param Model
+	 * @return String
+	 * @throws
+	 */
+	// 교수정보등록Form, 
 	@RequestMapping(value = "/emp/proInfoInsertForm", method = RequestMethod.GET)
-	public String proInfoInsertForm(Model model, HttpServletRequest request,
-			HttpServletResponse response) {
+	public String proInfoInsertForm(Model model) {
 		String url = "/emp/proInfoInsert";
 
 		List<DepartmentVO> departmentList = memberManagerService
@@ -164,11 +169,10 @@ public class MemberManageController {
 	/**
 	 * 교수 정보 등록
 	 * 
-	 * @param
-	 * @return
+	 * @param String,ProfessorVO
+	 * @return String
 	 * @throws
 	 */
-	// 교수정보등록
 	@RequestMapping(value = "/emp/proInfoInsert", method = RequestMethod.POST)
 	public String proInfoInsert(
 			@RequestParam(value = "name", defaultValue = "") String name,

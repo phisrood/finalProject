@@ -38,6 +38,9 @@ import com.korea.memberManage.dao.MemberManageDAO;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.	김양문			학생등록
+ *    2016.08.29	이수정			교수등록 
+ *    2016.08.30.	이수정			교수조회
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
