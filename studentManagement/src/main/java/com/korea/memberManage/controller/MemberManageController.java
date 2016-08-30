@@ -2,7 +2,7 @@ package com.korea.memberManage.controller;
 
 /**
  * @Class Name : MemberManageController.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
