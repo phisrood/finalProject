@@ -173,58 +173,6 @@ public class MemberManageController {
 		return url;
 	}
 	
-	///////////////////////////교직원/////////////////////////
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@RequestMapping(value="/emp/empInfoList", method=RequestMethod.GET)
-	public String empInfoList(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@RequestMapping(value="/emp/empInfoInsert", method=RequestMethod.GET)
-	public String empInfoInsert(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@RequestMapping(value="/emp/empInfoUpdate", method=RequestMethod.GET)
-	public String empInfoUpdate(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 교직원 정보 비활성화 ( on / off )
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@RequestMapping(value="/emp/empInfoOnOff", method=RequestMethod.GET)
-	public String empInfoOnOff(){
-		String url="";
-		
-		return url;
-	}
-	
-	
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();

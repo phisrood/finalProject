@@ -75,35 +75,5 @@ public interface MemberManageDAO {
 	 * @throws 
 	 */
 	public String updateproInfoOnOff();
-	
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String getEmpInfoList();
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String insertEmpInfo();
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateEmpInfo();
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateEmpInfoOnOff();
+
 }

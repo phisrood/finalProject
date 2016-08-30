@@ -31,21 +31,15 @@ import com.korea.indivInfoManage.service.IndivInfoManageService;
 
 @Controller
 public class IndivInfoManageController {
+
+	@Autowired
+	IndivInfoManageService indivInfoManageService;
 	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	
-	@Autowired
-	IndivInfoManageService indivInfoManageService;
-	
-
-	//개인정보 조회
-
-	//개인정보 조회
-
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
 	public String indivInfo(HttpSession session, Model model){
 		String url = "/stu/colleage/indivInfo";
