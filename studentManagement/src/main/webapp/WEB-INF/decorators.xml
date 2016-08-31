@@ -24,5 +24,6 @@
 		<pattern>/main.jsp</pattern>
 		<pattern>/*/noticeDetail</pattern>
 		<pattern>/common/pwdSearch</pattern>
+		<pattern>/pro/updateAdviceConfirmForm*</pattern>
 	</excludes>
 </decorators>

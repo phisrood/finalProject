@@ -67,8 +67,8 @@
 				</div>
 				<br> <br>
 				<div>
-					일자 선택 <input type="text" OnClick="Calendar(this, 'down','no');"
-						name="ad_reqdate">
+					일자 선택 
+					<input type="text" OnClick="Calendar(this, 'top','no');" name="ad_reqdate">
 				</div>
 				<br>
 				<div>
