@@ -28,8 +28,15 @@
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-<div class="row">
-	<div class="x_panel_big">
+<script>
+ function confirm(ad_no){
+	 var url = "/pro/updateAdviceConfirmForm?ad_no="+ad_no;
+	 window.open(url,'처리','옵션');  
+ }
+</script>
+
+<div class="row">  
+	<div class="x_panel_big">  
 		<!-- 상담 신청 내역 -->
 		<div class="x_title">
 			<h2>상담 신청 내역</h2>
@@ -52,14 +59,22 @@
 			<tbody>
 				<c:forEach var="adviceRes" items="${adviceResList}">
 					<tr>
+						<input type="hidden" name="ad_no" value="${adviceRes.ad_no }"/>
 						<td>${adviceRes.ad_way }</td>
 						<td>${adviceRes.ad_purpose }</td>
 						<td>${adviceRes.ad_pro_use_id }</td>
-						<td>${adviceRes.ad_reqdate }</td>
+						<td>${adviceRes.ad_reqdate }</td>  
 						<td>${adviceRes.ad_time }</td>
-						<td><button class="btn btn-default btn-xs">처리</button></td>      
-						<td>${adviceRes.ad_return }</td>  
-					</tr>    
+						<c:choose>
+							<c:when test="${adviceRes.ad_stat eq '미처리'}">
+						        <td><input type="button" id="click" class="btn btn-default btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
+						    </c:when>
+							<c:otherwise>
+						       	<td>${adviceRes.ad_stat }</td>
+						    </c:otherwise>
+						</c:choose>
+						<td>${adviceRes.ad_return }</td>  	
+					</tr>  
 				</c:forEach>
 			</tbody>
 		</table>

@@ -78,8 +78,7 @@ public class AdviceDAOImpl implements AdviceDAO {
 	 */
 	@Override
 	public void deleteAdviceREQ() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	/**
@@ -90,9 +89,22 @@ public class AdviceDAOImpl implements AdviceDAO {
 	 * @throws
 	 */
 	@Override
-	public void updateAdviceREQ() {
-		// TODO Auto-generated method stub
-
+	public AdviceVO updateAdviceConfirmForm(int ad_no) {
+		AdviceVO adviceVO = (AdviceVO) sqlSession.selectOne("adviceDAO.selectResConfirm",ad_no);
+		return adviceVO;
+	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	@Override
+	public AdviceVO updateAdviceConfirm(int ad_no) {
+		AdviceVO adviceVO = (AdviceVO) sqlSession.selectOne("adviceDAO.updateAdviceConfirm",ad_no);
+		return adviceVO;
 	}
 
 	/**

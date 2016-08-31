@@ -27,31 +27,54 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
-    <div class="row">
+  	 
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		$(function() {
+			$("#selectBox").change(function() {
+				var str = $("#selectBox option:selected").val();
+				alert(str);
+			}).change();
+		});
+	</script>
+	
+<div class="row">
     	<!-- 상담 신청 내역 처리 화면 ( 연기 ) -->
        		<div class="x_title">
                 <h2>&nbsp;&nbsp;상담 신청 내역 처리</h2>
                	<div class="clearfix"></div>
             </div><br>
+            
             <div style="float: right; width: 80%;">
-	          	<select name="processing_select">
-					<option value="연기">연기</option>
+	          	<select name="ad_stat" id="selectBox">
 					<option value="확인">확인</option>
+					<option value="연기">연기</option>
 				</select>
 			</div>
+			
+			<c:set var="adviceVO" value="${adviceVO}"/>
 			<div style="float: right; width: 20%;"></div><br><br>
-			<div style="float: right; width: 80%;">학생명 : 김양문</div>
+			<div style="float: right; width: 80%;">학생명 : ${adviceVO.ad_stud_use_id }</div>
 			<div style="float: right; width: 20%;"></div><br><br>
-			<div style="float: right; width: 50%;">상담 방법 : 화상</div>
-			<div style="float: right; width: 30%;">상담 내용 : 취업</div>
+			<div style="float: right; width: 50%;">상담 방법 : ${adviceVO.ad_way }</div>
+			<div style="float: right; width: 30%;">상담 내용 : ${adviceVO.ad_purpose }</div>
 			<div style="float: right; width: 20%;"></div><br><br>
-			<div style="float: right; width: 80%;">일자 선택 <input type="text" OnClick="Calendar(this, 'down','no');"></div>
+			<div style="float: right; width: 30%;">날짜 : ${adviceVO.ad_reqdate }</div>
+			<div style="float: right; width: 30%;">시간 : ${adviceVO.ad_time }</div>
 			<div style="float: right; width: 20%;"></div><br><br>
-	        <div style="float: right; width: 50%;">
-				<button type="button" class="btn btn-default btn-xs">연 기</button>
+	        <div style="float: right; width: 50%;"></div>
+			<div style="float: right; width: 20%;">
 			</div>
-	        <div style="float: right; width: 30%;">시간 선택 
+			<br />	
+				
+    <form method="post" action="/pro/updateAdviceConfirm">
+    		<input type="hidden" name="ad_no" value="${adviceVO.ad_no }"/>
+			<input type="submit" class="btn btn-default btn-xs" value="처리"/>	
+	</form>
+	
+    </div>
+    	<!-- <div style="float: right; width: 80%;">일자 선택 <input type="text" OnClick="Calendar(this, 'down','no');"></div> -->
+	   <!--      <div style="float: right; width: 30%;">시간 선택 
 	          	<select name="time_select">
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -78,9 +101,7 @@
 					<option value="23">23</option>
 					<option value="24">24</option>
 				</select> 시
-			</div>
-			<div style="float: right; width: 20%;"></div>
-    </div>
+			</div> -->
         
     <!-- Datatables -->
     <script src="/stu/js/click_cal.js"></script>

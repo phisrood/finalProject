@@ -52,7 +52,8 @@ public class AdviceController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String pro_use_id = user.getUse_id();
 
-		List<AdviceVO> adviceResList = adviceService.getAdviceResponsList(pro_use_id);
+		List<AdviceVO> adviceResList = adviceService
+				.getAdviceResponsList(pro_use_id);
 
 		model.addAttribute("adviceResList", adviceResList);
 
@@ -145,10 +146,26 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 신청 삭제
-	@RequestMapping(value = "/pro/adviceREQConfirm")
-	public String adviceREQConfirm() {
+	@RequestMapping(value = "/pro/updateAdviceConfirmForm", method = RequestMethod.GET)
+	public String updateAdviceConfirmForm(int ad_no, Model model) {
 		String url = "/pro/Consultation_RHP";
-		
+		AdviceVO adviceVO = adviceService.updateAdviceConfirmForm(ad_no);
+		model.addAttribute("adviceVO", adviceVO);
+		return url;
+	}
+
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 신청 삭제
+	@RequestMapping(value = "/pro/updateAdviceConfirm", method = RequestMethod.POST)
+	public String updateAdviceConfirm(int ad_no) {
+		String url = "redirect:/pro/adviceResponsList";
+		adviceService.updateAdviceConfirm(ad_no);
 		return url;
 	}
 
