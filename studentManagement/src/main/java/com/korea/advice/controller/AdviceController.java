@@ -2,6 +2,8 @@ package com.korea.advice.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.advice.service.AdviceService;
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.ProfessorVO;
+import com.korea.dto.UsersVO;
 
 /**
  * @Class Name : AdviceController.java
@@ -30,6 +35,7 @@ import com.korea.dto.AdviceVO;
 public class AdviceController {
 	@Autowired
 	AdviceService adviceService;
+
 	/**
 	 * 교수가 받은 상담신청조회
 	 * 
@@ -38,9 +44,18 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 받은 상담 신청 조회(교수)
-	@RequestMapping(value = "/pro/adviceResponsList", method = RequestMethod.GET)
-	public String adviceResponsList() {
+	@RequestMapping(value = "/pro/adviceResponsList")
+	public String adviceResponsList(Model model, HttpSession session) {
 		String url = "/pro/adviceResponsList";
+
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String pro_use_id = user.getUse_id();
+
+		List<AdviceVO> adviceResList = adviceService
+				.getAdviceResponsList(pro_use_id);
+
+		model.addAttribute("adviceResList", adviceResList);
 
 		return url;
 	}
@@ -53,17 +68,22 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 보낸 상담 신청 조회(학생)
-	@RequestMapping(value = "/stu/adviceRequestList", method = RequestMethod.GET)
-	public String adviceRequestList(Model model) {
+	@RequestMapping(value = "/stu/adviceRequestList")
+	public String adviceRequestList(Model model, HttpSession session) {
 		String url = "/stu/adviceRequestList";
-		
-		List<AdviceVO> adviceReqList = adviceService.getAdviceRequestList();
-	//	for(int i = 0;i<adviceReqList.size();i++){
-	//		System.out.println(adviceReqList.get(i).getAd_reqdate());
-	//	}
-		
+
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = user.getUse_id();
+
+		List<AdviceVO> adviceReqList = adviceService
+				.getAdviceRequestList(stud_use_id);
+		List<ProfessorVO> professorList = adviceService
+				.getProfessorList(stud_use_id);
+
 		model.addAttribute("adviceReqList", adviceReqList);
-		
+		model.addAttribute("professorList", professorList);
+
 		return url;
 	}
 
@@ -76,11 +96,15 @@ public class AdviceController {
 	 */
 	// 상담신청
 	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.POST)
-	public String adviceREQ(AdviceVO adviceVO) {
-		String url = "stu/adviceRequestList";
-		
+	public String adviceREQ(AdviceVO adviceVO, HttpSession session) {
+		String url = "redirect:adviceRequestList";
+
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		adviceVO.setAd_stud_use_id(user.getUse_id());
+
 		adviceService.insertAdviceREQ(adviceVO);
-		
+
 		return url;
 	}
 
@@ -122,10 +146,26 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 신청 삭제
-	@RequestMapping(value = "/stu/adviceREQDelete", method = RequestMethod.GET)
-	public String adviceREQDelete() {
-		String url = "";
+	@RequestMapping(value = "/pro/updateAdviceConfirmForm", method = RequestMethod.GET)
+	public String updateAdviceConfirmForm(int ad_no, Model model) {
+		String url = "/pro/Consultation_RHP";
+		AdviceVO adviceVO = adviceService.updateAdviceConfirmForm(ad_no);
+		model.addAttribute("adviceVO", adviceVO);
+		return url;
+	}
 
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 신청 삭제
+	@RequestMapping(value = "/pro/updateAdviceConfirm", method = RequestMethod.POST)
+	public String updateAdviceConfirm(int ad_no) {
+		String url = "redirect:/pro/adviceResponsList";
+		adviceService.updateAdviceConfirm(ad_no);
 		return url;
 	}
 
@@ -137,9 +177,26 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 게시판
-	@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" }, method = RequestMethod.GET)
-	public String adviceBoard() {
+	@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
+	public String adviceBoard(Model model) {
 		String url = "/common/adviceBoard";
+		List<Advice_BoardVO> adviceBoardList = adviceService
+				.getAdviceBoardList();
+		model.addAttribute("adviceBoardList", adviceBoardList);
+		return url;
+	}
+
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 글 작성
+	@RequestMapping(value = "/stu/adviceBoardWriteForm")
+	public String adviceBoardWriteForm() {
+		String url = "/stu/adviceBoardWrite";
 
 		return url;
 	}
@@ -152,10 +209,9 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 게시판 글 작성
-	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.GET)
-	public String adviceBoardWrite() {
-		String url = "/stu/adviceBoardWrite";
-
+	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
+	public String adviceBoardWrite(Advice_BoardVO adviceBoardVO) {
+		String url = "redirect:/common/adviceBoard";
 		return url;
 	}
 

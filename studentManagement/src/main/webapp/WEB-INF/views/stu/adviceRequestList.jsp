@@ -39,13 +39,14 @@
 					<div class="clearfix"></div>
 				</div>
 				<div>
-					상담교수 : <select name="ad_pro_use_id">
-						<option value="교수1">교수1</option>
-						<option value="교수2">교수2</option>
-						<option value="교수3">교수3</option>
-						<option value="교수4">교수4</option>
-						<option value="기타">기타</option>
+					학과교수 : 
+					<select name="ad_pro_use_id">
+						<c:forEach var="professor" items="${professorList}">
+							<option value="${professor}">${professor}</option>
+						</c:forEach>
 					</select>
+
+
 				</div>
 				<br>
 				<div style="float: left; width: 50%;">
@@ -135,7 +136,7 @@
 							<td>${adviceReq.ad_way }</td>
 							<td>${adviceReq.ad_purpose }</td>
 							<td>${adviceReq.ad_pro_use_id }</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${adviceReq.ad_reqdate }"/></td>
+							<td>${adviceReq.ad_reqdate }</td>
 							<td>${adviceReq.ad_time }</td>
 							<td>${adviceReq.ad_stat }</td>
 							<td>${adviceReq.ad_return }</td>
