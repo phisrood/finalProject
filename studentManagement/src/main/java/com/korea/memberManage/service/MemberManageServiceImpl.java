@@ -41,7 +41,8 @@ import com.korea.memberManage.dao.MemberManageDAO;
  *    2016.08.29.  	조현욱        		최초생성
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29	이수정			교수등록 
- *    2016.08.30.	이수정			교수조회
+ *    2016.08.29	이수정			교수조회 
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -169,7 +170,13 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 		
 	}
-
+	
+	//교수정보상세보기
+	@Override
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
+		return memberManageDAO.getDetailProInfo(pro_use_id);
+		
+	}
 	/**
 	 * 교수 정보 수정
 	 * @param
@@ -192,6 +199,8 @@ public class MemberManageServiceImpl implements MemberManageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
@@ -298,12 +307,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 		return value;
 	}
 	
-	//교수정보상세보기
-	@Override
-	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
-		return memberManageDAO.getDetailProInfo(pro_use_id);
-		
-	}
+	
 	@Override
 	public String getEmpInfoList() {
 		// TODO Auto-generated method stub
