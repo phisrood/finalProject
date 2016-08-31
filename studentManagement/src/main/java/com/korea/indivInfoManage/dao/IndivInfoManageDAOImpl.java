@@ -44,8 +44,9 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public StudentVO getIndivInfo(String id) {
-		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",id);
+	public StudentVO getIndivInfo(String stud_use_id) {
+		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",stud_use_id);
+											           	//xml 네임스페이스, id, 가져갈것
 	}
 	/**
 	 * 개인 정보 수정
@@ -74,11 +75,7 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public int checkId(String usrid) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 	
 }

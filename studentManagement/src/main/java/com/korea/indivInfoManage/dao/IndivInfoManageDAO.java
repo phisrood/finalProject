@@ -37,7 +37,7 @@ public interface IndivInfoManageDAO {
 
 
 	//개인신상정보 조회
-	public StudentVO getIndivInfo(String id);
+	public StudentVO getIndivInfo(String stud_use_id);
 	
 	//개인신상정보 수정
 	public String updateIndiv();
@@ -49,5 +49,5 @@ public interface IndivInfoManageDAO {
 	 */
 	public String getColleageChangeList();
 	
-	public int checkId(String usrid);
+
 }

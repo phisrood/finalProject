@@ -27,7 +27,7 @@
     <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <style>
+ <!--    <style>
     	#image{width:80%; height: 80%;}
     	#checkMsg{
 		  font-size: 12px;
@@ -106,7 +106,7 @@
 	   }
 	  }
 	 }
-	</script>
+	</script> -->
 
 
 	<div class="row">

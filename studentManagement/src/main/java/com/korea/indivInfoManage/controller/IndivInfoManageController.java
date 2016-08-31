@@ -44,9 +44,13 @@ public class IndivInfoManageController {
 	public String indivInfo(HttpSession session, Model model){
 		String url = "/stu/colleage/indivInfo";
 		
+		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = loginUser.getUse_id();
 		
-		StudentVO studentVO =  indivInfoManageService.getIndivInfo(loginUser.getUse_id());
+		
+		//받아온 아이디로 검색결과 출력
+		StudentVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
 	
 		return url;

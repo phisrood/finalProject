@@ -39,7 +39,7 @@ public interface IndivInfoManageService {
 
 
 	//개인신상정보 조회
-	public StudentVO getIndivInfo(String id);
+	public StudentVO getIndivInfo(String stud_use_id);
 	
 	//개인신상정보 수정
 

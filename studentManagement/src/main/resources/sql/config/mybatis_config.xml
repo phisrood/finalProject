@@ -14,19 +14,17 @@
 	
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
-
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
 		<typeAlias alias="studentView" type="com.korea.dto.StudentViewVO" />
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="professorDetail" type="com.korea.dto.ProfessorDetailViewVO" />
-
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
 		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
 		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
-		
+		<typeAlias alias="IndivInfoManage" type="com.korea.dto.StudentVO" />
 
 	</typeAliases>
 
@@ -39,6 +37,7 @@
 		<mapper resource="sql/mapper/student.xml" />
 		<mapper resource="sql/mapper/message.xml" />
 		<mapper resource="sql/mapper/colleageNotice.xml" />
+		<mapper resource="sql/mapper/IndivInfoManage.xml" />
 		
 		<!-- 상담 -->
 	
