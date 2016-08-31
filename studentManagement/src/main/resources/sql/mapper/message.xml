@@ -28,8 +28,18 @@
 		select * from message_view where ENABLED = '1'
 	</select>
 	
-	<!--  -->
+	<!-- 전체리스트 가져오기 -->
 	<select id="messageAllList" parameterType="str" resultType="message">
 		select * from message where mes_send_use_id =#{id} or mes_recive_use_id=#{id}
+	</select>
+	
+	<!-- 쪽지읽음처리 -->
+	<update id="messageReadUpdate" parameterType="str">
+		update message set mes_readyn = 'y' where mes_no = #{message_no}
+	</update>
+	
+	<!-- 쪽지조회 -->
+	<select id="messageInfo" parameterType="str" resultType="message">
+		select * from message where mes_no = #{message_no}
 	</select>
 </mapper>

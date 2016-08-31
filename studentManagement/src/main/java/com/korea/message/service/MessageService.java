@@ -42,13 +42,15 @@ public interface MessageService {
 	//전체 쪽지 리스트
 	public List<MessageVO> getMessageAllList(String id);
 	/**
+	 * @return 
+	 * @param message_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//쪽지조회
-	public void getMessageInfo();
+	public MessageVO updateMessageInfo(String message_no);
 	/**
 	 * 개인 정보 조회
 	 * @param
