@@ -22,6 +22,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.Professor_InfoViewVO;
+import com.korea.dto.School_PersonInfoViewVO;
 import com.korea.dto.School_PersonVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
@@ -89,6 +91,16 @@ public class LoginDAOImpl implements LoginDAO{
 	@Override
 	public void updatePwdChangeEmp(School_PersonVO school_PersonVO) {
 		session.update("Login.changePwdEmp", school_PersonVO);
+	}
+
+	@Override
+	public Professor_InfoViewVO getProdivInfo(String id) {
+		return (Professor_InfoViewVO) session.selectOne("Login.proInfo", id);
+	}
+
+	@Override
+	public School_PersonInfoViewVO getEmpdivInfo(String id) {
+		return (School_PersonInfoViewVO) session.selectOne("Login.empInfo", id);
 	}
 
 

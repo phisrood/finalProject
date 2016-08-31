@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 
 
 
@@ -40,8 +41,9 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public StudentVO getIndivInfo(String id) {
-		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",id);
+	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
+		return (Student_InfoViewVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",stud_use_id);
+											           	//xml 네임스페이스, id, 가져갈것
 	}
 	/**
 	 * 개인 정보 수정
@@ -50,9 +52,8 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String updateIndiv() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateIndiv(StudentVO studentVO) {
+		 return sqlSession.update("indivInfoManageDAO.setIndivInfo",studentVO);
 	}
 	/**
 	 * 학적 변동 현황
@@ -71,10 +72,12 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		return null;
 	}
 	@Override
-	public int checkId(String usrid) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateIndiv(String password) {
+		
+		
+		return sqlSession.update("indivInfoManageDAO.setIndivPwd",password);
 	}
+	
 
 	
 }

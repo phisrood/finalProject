@@ -168,6 +168,21 @@ public class AdviceController {
 		adviceService.updateAdviceConfirm(ad_no);
 		return url;
 	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 신청 삭제
+	@RequestMapping(value = "/pro/updateAdviceDelay", method = RequestMethod.POST)
+	public String updateAdviceDelay(AdviceVO adviceVO) {
+		String url = "redirect:/pro/adviceResponsList";
+		adviceService.updateAdviceDelay(adviceVO);
+		return url;
+	}
 
 	/**
 	 * 교수가 받은 상담신청조회
@@ -180,8 +195,7 @@ public class AdviceController {
 	@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
 	public String adviceBoard(Model model) {
 		String url = "/common/adviceBoard";
-		List<Advice_BoardVO> adviceBoardList = adviceService
-				.getAdviceBoardList();
+		List<Advice_BoardVO> adviceBoardList = adviceService.getAdviceBoardList();
 		model.addAttribute("adviceBoardList", adviceBoardList);
 		return url;
 	}

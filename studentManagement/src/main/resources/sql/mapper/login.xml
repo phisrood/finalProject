@@ -39,4 +39,14 @@
 	<update id="changePwdEmp" parameterType="employee">
 		update users set use_pwd = #{sp_regno1} where use_id = #{sp_use_id}
 	</update>
+	
+	<!-- 교수로그인정보 -->
+	<select id="proInfo" parameterType="str" resultType="professorInfo">
+		select * from professor_info where use_id = #{id}
+	</select>
+	
+	<!-- 행정로그인정보 -->
+	<select id="empInfo" parameterType="str" resultType="employeeInfo">
+		select * from employee_info where use_id = #{id}
+	</select>
 </mapper>

@@ -67,11 +67,12 @@
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="/common/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="/common/images/default.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>환영합니다,</span>
-                <h2>이수정</h2>
+                <h2>${professorInfo.use_name }</h2>
+                <br>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -81,7 +82,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>정보통신공학과 학과장</h3>  <!-- 학과 -->
+                <h3>${professorInfo.dep_name } &nbsp; ${professorInfo.pro_position }${professorInfo.pro_stat }중</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
                
@@ -106,6 +107,8 @@
 		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="/pro/classAppStat">수업평가통계</a></li>
 		                      <li><a href="/pro/crsesBookInsert">수강편람등록</a></li>
+		                      <li><a href="/pro/crsesBookList">수강편람조회</a></li>
+		                      <li><a href="#">강의개설</a></li>
 		                      <li><a href="#">수강생성적조회</a></li>
 		                      <li><a href="#">학과생성적조회</a></li>
 		                      <li><a href="#">성적입력</a></li>
@@ -140,7 +143,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/common/images/img.jpg" alt="">이수정
+                    <img src="/common/images/default.png" alt="">${professorInfo.use_name }
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

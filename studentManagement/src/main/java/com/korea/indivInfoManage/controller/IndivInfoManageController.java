@@ -24,8 +24,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.indivInfoManage.service.IndivInfoManageService;
 
@@ -44,9 +46,13 @@ public class IndivInfoManageController {
 	public String indivInfo(HttpSession session, Model model){
 		String url = "/stu/colleage/indivInfo";
 		
+		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = loginUser.getUse_id();
 		
-		StudentVO studentVO =  indivInfoManageService.getIndivInfo(loginUser.getUse_id());
+		
+		//받아온 아이디로 검색결과 출력
+		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
 	
 		return url;
@@ -57,9 +63,33 @@ public class IndivInfoManageController {
 	 * @return 
 	 * @throws 
 	 */
-	@RequestMapping(value="/stu/indivUpdate", method=RequestMethod.GET)
-	public String indivUpdate(){
-		String url = "";
+	@RequestMapping(value="/stu/indivUpdate", method=RequestMethod.POST)
+	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO,
+							@RequestParam(value="after_use_pwd1", defaultValue="")String password){
+		String url = "/stu/colleage/indivInfo";
+		
+		
+		
+		
+		//세션 아이디 받아오기
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = loginUser.getUse_id();
+		
+		
+		//받아온 아이디로 수정
+		indivInfoManageService.updateIndiv(studentVO);
+		
+		
+		indivInfoManageService.updateIndiv(password);
+		
+		
+		
+		//받아온 아이디로 검색결과 출력
+		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
+		model.addAttribute("studentVO",studentViewVO);
+		
+
+		
 		
 		return url;
 	}
