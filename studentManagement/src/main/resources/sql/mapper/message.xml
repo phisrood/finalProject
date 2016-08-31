@@ -22,7 +22,7 @@
 			and mes_recive_use_id = #{use_id}
 	</select>
 	
-	<select id="messageUserSearch" resultType="users">
-		select * from users where ENABLED = '1'
+	<select id="messageUserSearch" resultType="messageView">
+		select * from message_view where ENABLED = '1'
 	</select>
 </mapper>

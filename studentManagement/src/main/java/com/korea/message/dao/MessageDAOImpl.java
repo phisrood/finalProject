@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 
 /**
@@ -72,7 +73,7 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<UsersVO> getMessageUserSearch() {
+	public List<MessageViewVO> getMessageUserSearch() {
 
 		return session.selectList("Message.messageUserSearch");
 	}

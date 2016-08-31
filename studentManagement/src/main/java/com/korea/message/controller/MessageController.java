@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.korea.dto.UsersVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.message.service.MessageService;
 
 @Controller
@@ -43,7 +43,7 @@ public class MessageController {
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지함 리스트 더보기 출력 제이쿼리구현
+	//쪽지함 리스트 더보기 출력
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(){
 		String url="/common/messageAllList";
@@ -86,7 +86,7 @@ public class MessageController {
 	@RequestMapping(value="/common/messageUserSearch", method=RequestMethod.GET)
 	public void messageUserSearch(Model model, HttpServletResponse response){
 		
-		List<UsersVO> usersList = service.getMessageUserSearch();
+		List<MessageViewVO> usersList = service.getMessageUserSearch();
 		ObjectMapper jsonObject = new ObjectMapper();
 		
 		try {
