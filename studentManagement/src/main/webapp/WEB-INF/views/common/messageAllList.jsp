@@ -15,7 +15,7 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *    2016-08-31 한돈희 리스트 출력
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>

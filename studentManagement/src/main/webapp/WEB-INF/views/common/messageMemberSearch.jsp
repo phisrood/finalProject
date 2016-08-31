@@ -15,7 +15,7 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *    2016-08-30 한돈희       사용자 검색기능 추가
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
