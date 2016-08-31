@@ -5,22 +5,50 @@
 
 <mapper namespace="crsesBook">
 	<insert id="insertLectureBreak" parameterType="lb">
-		INSERT INTO LECTURE_BREAKEDOWN
-		(LB_NO, LB_NAME, LB_DEPARTMENT, LB_COMPLETEKIND,LB_CREDIT, LB_APPROVALYN, LB_REVOKEYN)
+		INSERT INTO
+		LECTURE_BREAKEDOWN
+		(LB_NO, LB_NAME, LB_DEPARTMENT,
+		LB_COMPLETEKIND,LB_CREDIT, LB_APPROVALYN, LB_REVOKEYN)
 		VALUES
 		(
-		TO_CHAR(#{lb_no}, '000')
+		TO_CHAR(#{lb_no}, '00000')
 		,#{lb_name}
 		,#{lb_department}
 		,#{lb_completekind}
 		,#{lb_credit}
 		,'N'
-		,'N'	
+		,'N'
 		)
 	</insert>
 	<select id="getLbNoMatch" parameterType="str" resultType="str">
-		SELECT LB_NO
+		SELECT
+		LB_NO
 		FROM LECTURE_BREAKEDOWN
 		WHERE LB_NO = #{lbNo}
 	</select>
+
+	<select id="getCrsesBookList" resultType="lb">
+		SELECT *
+		FROM
+		LECTURE_BREAKEDOWN
+		WHERE LB_REVOKEYN='N'
+	</select>
+	<select id="getCrsesBookListByEmp" resultType="lb">
+		SELECT *
+		FROM
+		LECTURE_BREAKEDOWN
+		WHERE LB_REVOKEYN='N'
+		AND LB_APPROVALYN = 'N'
+	</select>
+
+	<update id="updateCrsesBookDecide">
+		UPDATE
+		LECTURE_BREAKEDOWN
+		SET LB_APPROVALYN = 'Y'
+		WHERE LB_NO in
+		<foreach item="item" index="index" collection="array" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+	</update>
 </mapper>

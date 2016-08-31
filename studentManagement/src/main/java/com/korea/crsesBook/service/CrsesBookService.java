@@ -1,5 +1,7 @@
 package com.korea.crsesBook.service;
 
+import java.util.List;
+
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -20,13 +22,14 @@ import com.korea.dto.Lecture_BreakeDownVO;
  */
 public interface CrsesBookService {
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강편람조회
-	public void getCrsesBookList();
+	public List<Lecture_BreakeDownVO> getCrsesBookList();
 	/**
 	 * @param lbVO 
 	 * 개인 정보 조회
@@ -45,13 +48,14 @@ public interface CrsesBookService {
 	//수강편람수정
 	public void updateCrsesBook();
 	/**
+	 * @param data 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강편람승인/반려
-	public void updateCrsesBookDecide();
+	public void updateCrsesBookDecide(String data);
 	
 	/**
 	 * 학수번호 체크
@@ -60,6 +64,14 @@ public interface CrsesBookService {
 	 * @throws 
 	 */
 	public boolean getLbNoMatch(String lbNo);
+	
+	/**
+	 * 수강편람가져오기(행정)
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp();
 	
 	
 }

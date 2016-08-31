@@ -53,9 +53,7 @@
 				alert("에러얌");		
 			}
 		});
-		$("#profile-tab").click(function(){
 			$('#datatable2').DataTable();
-		});
 	});
 </script>
 
