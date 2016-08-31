@@ -7,7 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--==============================================================
- * 상담게시판
+ * 상담 게시판
  * @author 
  * @since  2016.08.25.
  * @version 1.0
@@ -20,7 +20,6 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-
 
 	<!-- Data tables -->
     <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">

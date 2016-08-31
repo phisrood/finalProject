@@ -1,6 +1,22 @@
 package com.korea.login.controller;
-
+/**
+ * @Class Name : IndivInfoManageController.java
+ * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Modification Information
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱        		최초생성
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,17 +24,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.MessageVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
+import com.korea.message.service.MessageService;
+import com.korea.notice.service.NoticeService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	LoginService service;
-
+	
+	@Autowired
+	MessageService messageService;
+	
+	@Autowired
+	NoticeService noticeService;
+	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 0
+	 * @throws 
+	 */
 	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(HttpSession session){
@@ -41,15 +76,36 @@ public class LoginController {
 		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//메인
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
-	public String main(){
+	public String main(HttpSession session, Model model){
 		String url ="/common/main";
-				
+		
+		//세션정보
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		
+		//메인 로딩될때 메시지 리스트 출력
+		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
+		//메인 로딩될때 공지사항 리스트 출력
+		List<Colleage_NoticeVO> noticeNewList = noticeService.getNoticeNewList();
+		
+		model.addAttribute("messageNewList", messageNewList);
+		model.addAttribute("noticeNewList", noticeNewList);
+		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//로그아웃
 	@RequestMapping(value="/common/logout")
 	public String logout(HttpSession session){
@@ -61,7 +117,12 @@ public class LoginController {
 		
 		return url;
 	}
-	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//로그인 액터별 화면분기
 	@RequestMapping(value="/common/login")
 	public String login(HttpSession session) throws IOException{
@@ -69,8 +130,7 @@ public class LoginController {
 		
 		//로그인되고
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		UsersVO usersVO = null;
+		UsersVO usersVO = new UsersVO();
 		
 		//id 가져와서
 		String id = auth.getName();
@@ -94,11 +154,27 @@ public class LoginController {
 		
 		return url;
 	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//비밀번호찾기 폼
+	@RequestMapping(value="/common/pwdSearchForm")
+	public String pwdSearchForm(){
+		String url="/common/searchPwd";
+		
+		return url;
+	}
 	
 	//비밀번호찾기 이메일 구현
-	@RequestMapping(value="/common/pwdSearch")
-	public String pwdSearch(){
-		String url="/common/searchPwd";
+	@RequestMapping(value="/common/pwdSearch", method=RequestMethod.POST)
+	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
+							@RequestParam(value="birth", defaultValue="")String birth){
+		String url="redirect:/common/loginForm";
+		service.updateLoginPwdSearch(id, birth);
+		
 		
 		return url;
 	}

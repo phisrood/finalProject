@@ -40,6 +40,12 @@ public class UsersVO {
 	public void setUse_name(String use_name) {
 		this.use_name = use_name;
 	}
+	public char getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(char enabled) {
+		this.enabled = enabled;
+	}
 	public String getUse_pwd() {
 		return use_pwd;
 	}
@@ -52,12 +58,7 @@ public class UsersVO {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	public char getEnabled() {
-		return enabled;
-	}
-	public void setEnabled(char enabled) {
-		this.enabled = enabled;
-	}
+
 	
 	
 	

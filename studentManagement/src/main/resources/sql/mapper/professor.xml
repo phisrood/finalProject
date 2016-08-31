@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Professor">
+	<insert id="professorInsert" parameterType="professor">
+
+		INSERT INTO PROFESSOR (
+		PRO_USE_ID
+		,PRO_DEP_NO
+		,PRO_POSITION
+		,PRO_BIRTH
+		,PRO_PHONE
+		,PRO_ZIPCODE
+		,PRO_ADD
+		,PRO_ADDDETAIL
+		,PRO_BLTYPE
+		,PRO_HOB
+		,PRO_GENDER
+		,PRO_ENGNAME
+		,PRO_EMAIL
+		,PRO_REGNO1
+		,PRO_REGNO2)
+		VALUES(
+		#{pro_use_id}
+		,#{pro_dep_no}
+		,#{pro_position}
+		,#{pro_birth}
+		,#{pro_phone}
+		,#{pro_zipcode}
+		,#{pro_add}
+		,#{pro_adddetail}
+		,#{pro_bltype}
+		,#{pro_hob}
+		,#{pro_gender}
+		,#{pro_engname}
+		,#{pro_email}
+		,#{pro_regno1}
+		,#{pro_regno2})
+
+	</insert>
+
+
+	<insert id="userProInsert" parameterType="users">
+		INSERT INTO USERS (
+		USE_ID
+		,USE_KIND
+		,USE_NAME
+		,USE_PWD
+		,AUTHORITY)
+		VALUES(
+		trim(
+		replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.nextval,'000'),' ',''))
+		,#{use_kind}
+		,#{use_name}
+		,#{use_pwd}
+		,#{authority})
+		<selectKey resultType="str" keyProperty="use_id" order="AFTER">
+			SELECT trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.currval,'000'),' ','')) FROM dual
+		</selectKey>
+	</insert>
+	
+	<select id="getProInfoList" resultType="professorView">
+		SELECT USE_NAME, DEP_NAME, PRO_USE_ID, PRO_POSITION, PRO_GENDER  	
+		FROM	PROFESSOR
+		INNER JOIN USERS ON (USE_ID=PRO_USE_ID)
+		INNER JOIN DEPARTMENT ON (PRO_DEP_NO=DEP_NO)
+	</select>
+	
+	<select id="professorDetail" parameterType="str" resultType="professorDetail">
+		SELECT 	* 
+		FROM	PROFESSOR_VIEW 
+		WHERE 	PRO_USE_ID = #{pro_use_id}
+	</select>
+	
+	<update id="professorUpdate" parameterType="professor">
+		UPDATE 	PROFESSOR
+		SET 	PRO_POSITION = #{pro_position}
+			 	,PRO_ENGNAME = #{pro_engname}
+				,PRO_PHONE = #{pro_phone}
+				,PRO_ZIPCODE = #{pro_zipcode}
+				,PRO_ADD = #{pro_add}
+				,PRO_ADDDETAIL = #{pro_adddetail}
+				,PRO_HOB = #{pro_hob}
+				,PRO_EMAIL = #{pro_email}
+		WHERE	PRO_USE_ID = #{pro_use_id}
+	</update>
+	
+	<update id="userProUpdate" parameterType="users">
+		UPDATE 	USERS
+		SET 	USE_NAME = #{use_name}
+		WHERE	USE_ID = #{use_id}
+	</update>
+</mapper>

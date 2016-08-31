@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adviceDAO">
+	<insert id="insertAdvice" parameterType="adviceVO">
+		INSERT INTO ADVICE (AD_NO,AD_PRO_USE_ID,AD_STUD_USE_ID,AD_REQDATE,AD_WAY,AD_PURPOSE,AD_TIME)
+		VALUES (ADVICE_SEQ.NEXTVAL,'professor','student',#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
+	</insert>
+	
+	<select id="selectReqList" resultType="adviceVO">
+		SELECT * FROM ADVICE
+	</select>
+</mapper>

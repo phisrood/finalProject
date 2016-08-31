@@ -1,3 +1,17 @@
+<%--==============================================================
+ * 개인 정보 관리 left 메뉴구성
+ * @author 조현욱
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.08.29.  	조현욱      		최초생성
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -15,7 +29,85 @@
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
     <style>
     	#image{width:80%; height: 80%;}
+    	#checkMsg{
+		  font-size: 12px;
+		}
+		#checkPwd{
+		  color : red;
+		  font-size: 12px;
+		}
     </style>
+	<script type="text/javascript" src="httpRequest.js"></script>
+	<script type="text/javascript">
+	 var checkFirst = false;
+	 var lastKeyword = '';
+	 var loopSendKeyword = false;
+	 
+	 function checkId() {
+	  if (checkFirst == false) {
+	   //0.5초 후에 sendKeyword()함수 실행
+	   setTimeout("sendId();", 500);
+	   loopSendKeyword = true;
+	  }
+	  checkFirst = true;
+	 }
+	 
+	 function checkPwd(){
+	  var f1 = document.forms[0];
+	  var pw1 = f1.pwd.value;
+	  var pw2 = f1.pwd_check.value;
+	  if(pw1!=pw2){
+	   document.getElementById('checkPwd').style.color = "red";
+	   document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요."; 
+	  }else{
+	   document.getElementById('checkPwd').style.color = "black";
+	   document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다."; 
+	   
+	  }
+	  
+	 }
+	 
+	 
+	 function sendId() {
+	  if (loopSendKeyword == false) return;
+	  
+	  var keyword = document.search.u_id.value;
+	  if (keyword == '') {
+	   lastKeyword = '';
+	   document.getElementById('checkMsg').style.color = "black";
+	   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
+	  } else if (keyword != lastKeyword) {
+	   lastKeyword = keyword;
+	   
+	   if (keyword != '') {
+	    var params = "id="+encodeURIComponent(keyword);
+	    sendRequest("id_check.jsp", params, displayResult, 'POST');
+	   } else {
+	   }
+	  }
+	  setTimeout("sendId();", 500);
+	 }
+	 
+	 
+	 function displayResult() {
+	  if (httpRequest.readyState == 4) {
+	   if (httpRequest.status == 200) {
+	    var resultText = httpRequest.responseText;
+	    var listView = document.getElementById('checkMsg');
+	    if(resultText==0){
+	     listView.innerHTML = "사용 할 수 있는 ID 입니다";
+	     listView.style.color = "blue";
+	    }else{
+	     listView.innerHTML = "이미 등록된 ID 입니다";
+	     listView.style.color = "red";
+	    }
+	   } else {
+	    alert("에러 발생: "+httpRequest.status);
+	   }
+	  }
+	 }
+	</script>
+
 
 	<div class="row">
     	<div class="x_panel_big">
@@ -116,14 +208,16 @@
                 	<div class="x_panel" style="float: left; width: 60%;">
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">현재</div>
-		               		<div style="float: left; width: 37%;"><input type="text" id="" required="required" size="15" value="" style="text-align: center;"></div>
-		               		<div style="float: left; width: 49%;"><br></div><br><br>
+		               		<div style="float: left; width: 37%;"><input type="text" name="u_id" id="u_id" required="required" size="15" value="" onkeydown="checkId()" style="text-align: center;"></div>
+		               		<div id="checkMsg" style="float: left; width: 49%;">아이디를 입력하세요.</div><br><br>
 	               		</div>
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">변경</div>
-		               		<div style="float: left; width: 37%;"><input type="text" id="" required="required" size="15" value="" style="text-align: center;"></div>
+		               		<div style="float: left; width: 37%;"><input type="password" name="pwd" required="required" size="15" value="" style="text-align: center;"></div>
 		               		<div style="float: left; width: 11%; padding: 3px;">변경(확인)</div>
-		               		<div style="float: left; width: 37%;"><input type="text" id="" required="required" size="15" value="" style="text-align: center;"></div><br>
+		               		<div style="float: left; width: 37%;"><input type="password" name="pwd_check" required="required" size="15" value="" onkeyup="checkPwd()" style="text-align: center;"></div><br>
+		               		<div style="float: left; width: 62%;"><br></div>
+		               		<div id="checkPwd" style="float: left; width: 37%;">동일한 암호를 입력하세요.</div>
 	               		</div>
                		</div>
                		<div style="float: left; width: 20%;"><br></div>

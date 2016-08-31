@@ -18,7 +18,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<script type="text/javascript" src="/common/js/login.js"></script>
+	<script type="text/javascript" src="/common/js/login.js" ></script>
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -54,7 +54,7 @@
               </div>
               <div>
                 <input type="submit" value="로그인">
-                <a class="reset_pass" href="/common/pwdSearch">비밀번호찾기</a>
+                <a class="reset_pass" href="/common/pwdSearchForm">비밀번호찾기</a>
               </div>
 
                 <div class="clearfix"></div>

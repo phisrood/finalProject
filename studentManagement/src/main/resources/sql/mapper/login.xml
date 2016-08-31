@@ -5,7 +5,38 @@
 
 
 <mapper namespace="Login">
+	<!-- 로그인정보 -->
 	<select id="loginInfo" parameterType="str" resultType="users">
 		select * from users where use_id=#{id}
 	</select>
+	
+	<!-- 비밀번호찾기학생 -->
+	<select id="searchPwdStu" parameterType="student" resultType="student">
+		select * from student where stud_use_id = #{stud_use_id} and stud_birth = #{stud_birth}
+	</select>
+	
+	<!-- 비밀번호찾기교수 -->
+	<select id="searchPwdPro" parameterType="professor" resultType="professor">
+		select * from professor where pro_use_id = #{pro_use_id} and pro_birth = #{pro_birth}
+	</select>
+	
+	<!-- 비밀번호찾기교직원 -->
+	<select id="searchPwdEmp" parameterType="employee" resultType="employee">
+		select * from school_person where sp_use_id = #{sp_use_id} and sp_birth = #{sp_birth}
+	</select>
+	
+	<!-- 비밀번호초기화(주민번호앞자리)학생 -->
+	<update id="changePwdStu" parameterType="student">
+		update users set use_pwd = #{stud_regno1} where use_id = #{stud_use_id}
+	</update>
+	
+	<!-- 비밀번호초기화(주민번호앞자리)교수 -->
+	<update id="changePwdPro" parameterType="professor">
+		update users set use_pwd = #{pro_regno1} where use_id = #{pro_use_id}
+	</update>
+	
+	<!-- 비밀번호초기화(주민번호앞자리)교직원 -->
+	<update id="changePwdEmp" parameterType="employee">
+		update users set use_pwd = #{sp_regno1} where use_id = #{sp_use_id}
+	</update>
 </mapper>

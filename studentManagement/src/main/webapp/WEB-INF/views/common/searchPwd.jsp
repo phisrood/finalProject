@@ -27,6 +27,7 @@
 
     <title>Hanguk University! | </title>
 
+	  <script src="/common/js/login.js" ></script>
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
     <link href="/bootstrap/css/nprogress.css" rel="stylesheet">
@@ -42,16 +43,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="/common/pwdSearch" method="post">
               <h1>SEARCH</h1>
               <div>
-                <input type="text" class="form-control" placeholder="학번" required="" />
+                <input type="text" class="form-control" name="id" placeholder="학번" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="생년월일 ex)930813" required="" />
+                <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)930813"/>
               </div>
               <div>
-                <a class="btn btn-default submit" href="/common/loginForm">인증메일발송</a>
+                <input type="submit" value="인증메일발송">
               </div>
                 <div class="clearfix"></div>
               <br />
@@ -60,7 +61,7 @@
                   <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
                   <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
                 </div>
-            	</form>
+            </form>
           	</section>
            </div>
         </div>     

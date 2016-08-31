@@ -1,4 +1,9 @@
 package com.korea.advice.service;
+
+import java.util.List;
+
+import com.korea.dto.AdviceVO;
+
 /**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
@@ -31,7 +36,7 @@ public interface AdviceService {
 	 * @throws 
 	 */
 	//보낸 상담 신청조회(학생)
-	public void getAdviceRequestList();
+	public List<AdviceVO> getAdviceRequestList();
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
@@ -39,7 +44,7 @@ public interface AdviceService {
 	 * @throws 
 	 */
 	//상담신청
-	public void insertAdviceREQ();
+	public void insertAdviceREQ(AdviceVO adviceVO);
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
