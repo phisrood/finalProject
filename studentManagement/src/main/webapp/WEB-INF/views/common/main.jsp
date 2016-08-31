@@ -15,7 +15,8 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *    2016-08-31 한돈희       사용자 분기
+ 	  2016-08-31 한돈희	  미리보기기능
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
@@ -30,7 +31,28 @@
     
     
     <script src="/common/js/notice.js"></script>
-           
+	<script> 
+		//------- 미리보기 관련 div 처리----------- 
+		function setPreviewBox(e) { 
+		var e = e || window.event; 
+		    document.getElementById('preview').style.left =	e.clientX + document.body.scrollLeft + 20 + 'px';  // 마우스 
+		    document.getElementById('preview').style.top = e.clientY + document.body.scrollTop + 'px';  // 포인트에 위치 
+		} 
+		  
+		function showPreview(content) { 
+		    var text = ""; 
+		        text = '<table cellpadding="5" bgcolor="#ffffff" style="font-size:10pt;color:#005F8B;filter:alpha(opacity=90); border-width:1; border-color:yellow; border-style:solid; background-color:yellow;">'; 
+		        text += '<tr><td>--내용미리보기--<br>' + content + '</td></tr></table>'; 
+		        document.getElementById('preview').innerHTML = text; 
+		        document.getElementById('preview').style.visibility = 'visible';  
+		} 
+		  
+		function hidePreview() { 
+		    document.getElementById('preview').innerHTML = ''; 
+		    document.getElementById('preview').style.visibility = 'hidden'; 
+		} 
+		
+	</script>
             <div class="row">
             <!-- 공지사항 -->
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -38,8 +60,17 @@
                   <div class="x_title">
                     <h2>공지사항</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                       <li><a href="/stu/noticeAllList">더보기+</a>
-                      </li>
+                    <c:choose>
+                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+                       		<li><a href="/stu/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+                       		<li><a href="/pro/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+                       		<li><a href="/emp/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    </c:choose>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -68,9 +99,11 @@
                       	</c:when>
                       	<c:otherwise>
                         	<c:forEach var="noticeNewList" items="${noticeNewList }" varStatus="status">
-                        		<tr>
+                        		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${noticeNewList.cn_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
                         			<td>${status.count }</td>
-                        			<td><a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">${noticeNewList.cn_title }</a> </td>
+                        			<td>
+                        			<a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">
+                        			${noticeNewList.cn_title }</a></td>
                         			<c:if test="${noticeNewList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
                         			<c:if test="${noticeNewList.cn_af_no != 0 }"><td>${noticeNewList.cn_af_no }</td></c:if>
                         			<td>${noticeNewList.cn_date }</td>
@@ -91,13 +124,23 @@
                   <div class="x_title">
                     <h2>쪽지함</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a href="/stu/messageAllList" style="text-decoration:none">더보기+</a>
+                     <c:choose>
+                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+                       		<li><a href="/stu/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+                       		<li><a href="/pro/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+                       		<li><a href="/emp/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    </c:choose>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    
+                   
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
@@ -121,7 +164,7 @@
                       	</c:when>
                       	<c:otherwise>
                         	<c:forEach var="messageNewList" items="${messageNewList }" varStatus="status">
-                        		<tr>
+                        		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${messageNewList.mes_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
                         			<td>${status.count }</td>
                         			<td>
                         			<c:if test="${messageNewList.mes_readyn == 'n' }">
@@ -129,7 +172,7 @@
                         			</c:if>
                         			</td>
                         			<td>${messageNewList.mes_send_use_id }</td>
-                        			<td>${messageNewList.mes_title }</td>
+                        			<td><a href="#">${messageNewList.mes_title }</a></td>
                         			<td>${messageNewList.mes_date }</td>
                         		</tr>
                         	</c:forEach>
@@ -140,7 +183,7 @@
                   </div>
                 </div>
               </div>
-              
+              	<div id='preview' STYLE="BORDER-RIGHT: 1px; BORDER-TOP: 1px; Z-INDEX: 1; VISIBILITY: hidden; BORDER-LEFT: 1px; BORDER-BOTTOM: 1px; POSITION: absolute;"></div> 
               </div>
        
      	    <!-- 부트스트랩js -->

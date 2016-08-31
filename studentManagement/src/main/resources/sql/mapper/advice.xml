@@ -5,11 +5,43 @@
 
 <mapper namespace="adviceDAO">
 	<insert id="insertAdvice" parameterType="adviceVO">
-		INSERT INTO ADVICE (AD_NO,AD_PRO_USE_ID,AD_STUD_USE_ID,AD_REQDATE,AD_WAY,AD_PURPOSE,AD_TIME)
-		VALUES (ADVICE_SEQ.NEXTVAL,'professor','student',#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
+		INSERT INTO ADVICE
+		(AD_NO,AD_PRO_USE_ID,AD_STUD_USE_ID,AD_REQDATE,AD_WAY,AD_PURPOSE,AD_TIME)
+		VALUES
+		(ADVICE_SEQ.NEXTVAL,#{ad_pro_use_id},#{ad_stud_use_id},#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
 	</insert>
-	
-	<select id="selectReqList" resultType="adviceVO">
-		SELECT * FROM ADVICE
+
+	<select id="selectReqList" resultType="adviceVO" parameterType="str">
+		SELECT * 
+		FROM ADVICE 
+		WHERE AD_STUD_USE_ID = #{stud_use_id}
+		ORDER BY AD_NO DESC
 	</select>
+
+	<select id="selectResList" resultType="adviceVO" parameterType="str">
+		SELECT * 
+		FROM ADVICE 
+		WHERE AD_PRO_USE_ID = #{pro_use_id}
+		ORDER BY AD_NO DESC
+	</select>
+	
+	<select id="selectProfessorList" resultType="str" parameterType="str">
+		SELECT PRO_USE_ID
+		FROM ADVICE_VIEW
+		WHERE STUD_USE_ID = #{stud_use_id}
+	</select>
+	
+	<select id="selectResConfirm" resultType="adviceVO" parameterType="int">
+		SELECT *
+		FROM ADVICE
+		WHERE AD_NO = #{ad_no}
+	</select>
+
+	<update id="updateAdviceConfirm" parameterType="int">
+		UPDATE ADVICE
+		SET AD_STAT = '대기'
+		WHERE AD_NO = #{ad_no}
+	</update>
+
+
 </mapper>

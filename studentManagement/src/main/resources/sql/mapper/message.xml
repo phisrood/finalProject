@@ -5,6 +5,7 @@
 
 
 <mapper namespace="Message">
+	<!-- 메인화면 안읽은새로운쪽지 출력 -->
 	<select id="messageNewList" parameterType="users" resultType="message">
 		select * 
 			from (select ROW_NUMBER() OVER(order by mes_no desc) as rnum
@@ -22,7 +23,13 @@
 			and mes_recive_use_id = #{use_id}
 	</select>
 	
+	<!-- 보내는사람검색 -->
 	<select id="messageUserSearch" resultType="messageView">
 		select * from message_view where ENABLED = '1'
+	</select>
+	
+	<!--  -->
+	<select id="messageAllList" parameterType="str" resultType="message">
+		select * from message where mes_send_use_id =#{id} or mes_recive_use_id=#{id}
 	</select>
 </mapper>
