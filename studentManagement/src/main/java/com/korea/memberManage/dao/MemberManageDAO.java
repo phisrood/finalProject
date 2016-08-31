@@ -96,7 +96,7 @@ public interface MemberManageDAO {
 	/**
 	 * 교수 정보 수정
 	 * 
-	 * @param
+	 * @param	ProfessorVO,UsersVO
 	 * @return
 	 * @throws
 	 */

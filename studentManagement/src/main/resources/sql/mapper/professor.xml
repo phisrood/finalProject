@@ -5,6 +5,7 @@
 
 
 <mapper namespace="Professor">
+
 	<insert id="professorInsert" parameterType="professor">
 
 		INSERT INTO PROFESSOR (
@@ -93,7 +94,7 @@
 	<update id="userProUpdate" parameterType="users">
 		UPDATE 	USERS
 		SET 	USE_NAME = #{use_name}
-			 	ENABLED = #{enabled}
+				,ENABLED = #{enabled}
 		WHERE	USE_ID = #{use_id}
 	</update>
 </mapper>

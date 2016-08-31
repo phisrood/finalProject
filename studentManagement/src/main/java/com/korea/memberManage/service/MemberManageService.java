@@ -82,7 +82,7 @@ public interface MemberManageService {
 	
 	/**
 	 * 교수 정보 등록
-	 * @param	ProfessorVO,String
+	 * @param	ProfessorVO,UsersVO
 	 * @return 
 	 * @throws 
 	 */
@@ -98,30 +98,14 @@ public interface MemberManageService {
 
 	
 	/**
-	 * @param String 
-	 * @param ProfessorVO 
 	 * 교수 정보 수정
-	 * @param
-	 * @return  String
+	 * @param ProfessorVO,UsersVO 
+	 * @return  
 	 * @throws 
 	 */
-
 	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO);
 	
-	/**
-	 * 교수 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateproInfoOnOff();
-
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
 	public String getEmpInfoList();
 	/**
 	 * 교직원 정보 등록
