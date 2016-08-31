@@ -3,6 +3,7 @@ package com.korea.message.dao;
 import java.util.List;
 
 import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 
 /**
@@ -32,13 +33,15 @@ public interface MessageDAO {
 	//새로운 쪽지 리스트 안읽은쪽지만 출력
 	public List<MessageVO> getMessageNewList(UsersVO usersVO);
 	/**
+	 * @return 
+	 * @param id 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//전체 쪽지 리스트
-	public void getMessageAllList();
+	public List<MessageVO> getMessageAllList(String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -55,7 +58,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//수신사용자검색 다른쪽 VO 리턴
-	public List<UsersVO> getMessageUserSearch();
+	public List<MessageViewVO> getMessageUserSearch();
 	/**
 	 * 개인 정보 조회
 	 * @param

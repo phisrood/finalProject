@@ -15,7 +15,7 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *    2016-08-31 한돈희       사용자 분기
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
@@ -38,8 +38,17 @@
                   <div class="x_title">
                     <h2>공지사항</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                       <li><a href="/stu/noticeAllList">더보기+</a>
-                      </li>
+                    <c:choose>
+                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+                       		<li><a href="/stu/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+                       		<li><a href="/pro/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+                       		<li><a href="/emp/noticeAllList">더보기+</a></li>
+                    	</c:when>
+                    </c:choose>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -91,7 +100,17 @@
                   <div class="x_title">
                     <h2>쪽지함</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a href="/stu/messageAllList" style="text-decoration:none">더보기+</a>
+                     <c:choose>
+                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+                       		<li><a href="/stu/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+                       		<li><a href="/pro/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+                       		<li><a href="/emp/messageAllList">더보기+</a></li>
+                    	</c:when>
+                    </c:choose>
                       </li>
                     </ul>
                     <div class="clearfix"></div>

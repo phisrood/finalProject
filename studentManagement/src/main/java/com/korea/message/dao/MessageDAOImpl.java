@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 
 /**
@@ -32,27 +33,25 @@ public class MessageDAOImpl implements MessageDAO{
 	SqlSession session;
 	
 	/**
-	 * 개인 정보 조회
+	 * 새로운쪽지리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
 	public List<MessageVO> getMessageNewList(UsersVO usersVO) {
-
 		return session.selectList("Message.messageNewList", usersVO);
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지전체리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageAllList() {
-		// TODO Auto-generated method stub
-		
+	public List<MessageVO> getMessageAllList(String id) {
+		return session.selectList("Message.messageAllList", id);
 	}
 	/**
 	 * 개인 정보 조회
@@ -72,8 +71,7 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<UsersVO> getMessageUserSearch() {
-
+	public List<MessageViewVO> getMessageUserSearch() {
 		return session.selectList("Message.messageUserSearch");
 	}
 	/**

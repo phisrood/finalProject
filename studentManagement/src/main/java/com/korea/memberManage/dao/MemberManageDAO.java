@@ -26,6 +26,7 @@ import com.korea.dto.UsersVO;
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29	이수정			교수등록 
  *    2016.08.30.	이수정			교수조회
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */

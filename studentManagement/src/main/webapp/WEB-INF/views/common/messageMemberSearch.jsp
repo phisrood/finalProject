@@ -15,7 +15,7 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *    2016-08-30 한돈희       사용자 검색기능 추가
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
@@ -40,8 +40,10 @@
 			success:function(data){
 				var htmlCode="";
 				$.each(data, function(index, value){
-					htmlCode+="<tr>";
-					htmlCode+="<td id="+value.use_id+">"+value.use_id+"          "+value.use_name+"</td>";
+					htmlCode+="<tr id="+value.use_id+" class='searchTr'>";
+					htmlCode+="<td>"+value.use_id+"</td>";
+					htmlCode+="<td>"+value.use_name+"</td>";
+					htmlCode+="<td>"+value.dep_name+"</td>";
 					htmlCode+="</tr>"
 				});
 				$("#searchTbody").html(htmlCode);
@@ -50,7 +52,7 @@
 			
 		});
 		
-		$("#result").on("click", "td", function(){
+		$("#result").on("click", "tr", function(){
 			var id = $(this).attr("id");
 			
 			$("#first-name2", opener.document).val(id);
@@ -66,6 +68,9 @@ html, body {
 h2 {
 	display : inline;
 }
+#searchTable .searchTr:hover{
+	background-color: #CECEF6;
+}
 </style>
 </head>
 <body>
@@ -78,10 +83,12 @@ h2 {
 	<hr>
     <div>
 		<div style="width:100%;" id="result">
-			<table id="searchTable">
+			<table id="searchTable" border="1" style="width:100%;">
 				<thead>
 					<tr>
-						<td>학번          이름</td>
+						<th>학번</th>
+						<th>이름</th>
+						<th>학과</th>
 					</tr>
 				</thead>
 				<tbody id="searchTbody">

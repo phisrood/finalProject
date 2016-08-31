@@ -77,7 +77,7 @@ public class LoginController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 메인화면
 	 * @param
 	 * @return 
 	 * @throws 
@@ -97,6 +97,7 @@ public class LoginController {
 		
 		model.addAttribute("messageNewList", messageNewList);
 		model.addAttribute("noticeNewList", noticeNewList);
+		model.addAttribute("loginUser", usersVO);
 		
 		return url;
 	}

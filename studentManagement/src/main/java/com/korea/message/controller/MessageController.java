@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.message.service.MessageService;
 
@@ -43,10 +46,18 @@ public class MessageController {
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지함 리스트 더보기 출력 제이쿼리구현
+	//쪽지함 리스트 더보기 출력
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
-	public String messageAllList(){
+	public String messageAllList(HttpSession session, Model model){
 		String url="/common/messageAllList";
+		
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String id = usersVO.getUse_id();
+		
+		List<MessageVO> messageAllList = service.getMessageAllList(id);
+		
+		model.addAttribute("messageAllList", messageAllList);
+		model.addAttribute("id",id);
 		
 		return url;
 	}
@@ -86,7 +97,7 @@ public class MessageController {
 	@RequestMapping(value="/common/messageUserSearch", method=RequestMethod.GET)
 	public void messageUserSearch(Model model, HttpServletResponse response){
 		
-		List<UsersVO> usersList = service.getMessageUserSearch();
+		List<MessageViewVO> usersList = service.getMessageUserSearch();
 		ObjectMapper jsonObject = new ObjectMapper();
 		
 		try {

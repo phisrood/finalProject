@@ -42,6 +42,7 @@ import com.sun.mail.iap.Response;
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29.	이수정			교수등록
  *    2016.08.30.	이수정			교수조회
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -184,44 +185,6 @@ public class MemberManageController {
 
 		return url;
 	}
-	/**
-	 * 교수 정보 상세보기
-	 * 
-	 * @param Model,String
-	 * @return String
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/proInfoDetail", method = RequestMethod.GET)
-	public String proInfoDetail(@RequestParam(value="pro_use_id", defaultValue = "")String pro_use_id,Model model) {
-		String url = "/emp/proInfoUpdate";
-		
-		System.out.println(pro_use_id);
-		ProfessorDetailViewVO professorDetailViewVO = memberManagerService.getDetailProInfo(pro_use_id);
-		List<DepartmentVO> departmentList = memberManagerService
-				.getDepartmentList();
-
-		model.addAttribute("departmentList", departmentList);
-		model.addAttribute("professorDetailViewVO",professorDetailViewVO);
-		
-		
-		return url;
-	}
-	/**
-	 * 교수 정보 수정
-	 * 
-	 * @param Model
-	 * @return String
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
-	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
-			ProfessorVO professorVO) {
-		String url = "redirect:/emp/stuInfoList";
-		
-		memberManagerService.updateProInfo(professorVO, name);
-		
-		return url;
-	}
 	
 
 	/**
@@ -231,7 +194,6 @@ public class MemberManageController {
 	 * @return String
 	 * @throws
 	 */
-	// 교수정보등록Form, 
 	@RequestMapping(value = "/emp/proInfoInsertForm", method = RequestMethod.GET)
 	public String proInfoInsertForm(Model model) {
 		String url = "/emp/proInfoInsert";
@@ -261,21 +223,45 @@ public class MemberManageController {
 
 		return url;
 	}
+	/**
+	 * 교수 정보 상세보기
+	 * 
+	 * @param Model,String
+	 * @return String
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/proInfoDetail", method = RequestMethod.GET)
+	public String proInfoDetail(@RequestParam(value="pro_use_id", defaultValue = "")String pro_use_id,Model model) {
+		String url = "/emp/proInfoUpdate";
+		
+		System.out.println(pro_use_id);
+		ProfessorDetailViewVO professorDetailViewVO = memberManagerService.getDetailProInfo(pro_use_id);
+		List<DepartmentVO> departmentList = memberManagerService
+				.getDepartmentList();
 
+		model.addAttribute("departmentList", departmentList);
+		model.addAttribute("professorDetailViewVO",professorDetailViewVO);
+		
+		
+		return url;
+	}
 	/**
 	 * 교수 정보 수정
 	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * @param String, ProfessorVO
+	 * @return String
+	 * @throws 
 	 */
-	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.GET)
-	public String proInfoUpdate() {
-		String url = "";
-
+	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
+	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
+			ProfessorVO professorVO) {
+		String url = "redirect:/emp/stuInfoList";
+		
+		memberManagerService.updateProInfo(professorVO, name);
+		
 		return url;
 	}
-
+	
 	/**
 	 * 교수 정보 비활성화 ( on / off )
 	 * 
@@ -286,67 +272,9 @@ public class MemberManageController {
 	@RequestMapping(value = "/emp/proInfoOnOff", method = RequestMethod.GET)
 	public String proInfoOnOff() {
 		String url = "";
-
+		
 		return url;
 	}
 
-
-	// /////////////////////////교직원/////////////////////////
-
-	/**
-	 * 교직원 정보 조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/empInfoList", method = RequestMethod.GET)
-	public String empInfoList() {
-		String url = "";
-
-		return url;
-	}
-
-	/**
-	 * 교직원 정보 등록
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/empInfoInsert", method = RequestMethod.GET)
-	public String empInfoInsert() {
-		String url = "";
-
-		return url;
-	}
-
-	/**
-	 * 교직원 정보 수정
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/empInfoUpdate", method = RequestMethod.GET)
-	public String empInfoUpdate() {
-		String url = "";
-
-		return url;
-	}
-
-	/**
-	 * 교직원 정보 비활성화 ( on / off )
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/empInfoOnOff", method = RequestMethod.GET)
-	public String empInfoOnOff() {
-		String url = "";
-
-		return url;
-	}
 
 }
