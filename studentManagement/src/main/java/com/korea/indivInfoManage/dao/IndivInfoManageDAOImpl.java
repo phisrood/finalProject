@@ -76,22 +76,9 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	}
 	@Override
 	public int checkId(String usrid) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int re = 0;
-		try{
-			con = db.getConnection();
-	    String selectSQL="select * from users where use_id=?";
-	    pstmt = con.prepareStatement(selectSQL);
-	    pstmt.setString(1,usrid);
-	    ResultSet rs = pstmt.executeQuery();
-	    if(rs.next()){
-	    	re = 1;
-	    }
-		}finally{
-		   	db.close(con,pstmt);
-		}
-		return re;
-	}//end list()
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 	
 }
