@@ -89,11 +89,16 @@ public class LoginController {
 		
 		//세션정보
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-		
-		//메인 로딩될때 메시지 리스트 출력
-		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
-		//메인 로딩될때 공지사항 리스트 출력
-		List<Colleage_NoticeVO> noticeNewList = noticeService.getNoticeNewList();
+		List<MessageVO> messageNewList = null;
+		List<Colleage_NoticeVO> noticeNewList = null;
+		if(usersVO != null){
+			//메인 로딩될때 메시지 리스트 출력
+			messageNewList = messageService.getMessageNewList(usersVO);
+			//메인 로딩될때 공지사항 리스트 출력
+			noticeNewList = noticeService.getNoticeNewList();
+		}else{
+			url = "redirect:/common/loginForm";
+		}
 		
 		model.addAttribute("messageNewList", messageNewList);
 		model.addAttribute("noticeNewList", noticeNewList);
