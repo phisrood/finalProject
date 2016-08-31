@@ -48,117 +48,43 @@
                           <th>제목</th>
                           <th>첨부파일</th>
                           <th>작성일</th>
-                          <th>작성자</th>
                         </tr>
                       </thead>
 
 
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td><a href="javascript:OpenWindow('/noticeDetail','400','330')" style="text-decoration:none">공지입니다</a></td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>공지입니다</td>
-                          <td>fileUpload</td>
-                          <td>2016/08/13</td>
-                          <td>뚜뚜</td>
-                        </tr>
+                        <c:choose>
+                      	<c:when test="${empty noticeAllList}">
+                      		<tr>
+								<td colspan='5'>
+									공지사항이 없습니다.
+								</td>                      		
+                      		</tr>
+                      	</c:when>
+                      	<c:otherwise>
+                        	<c:forEach var="noticeAllList" items="${noticeAllList }" varStatus="status">
+                        		<tr height="30" onMouseMove="setPreviewBox(event);"  onClick="">
+                        			<td>${status.count }</td>
+                        			<td>
+                        			<c:choose>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+				                       		<a href="/stu/noticeDetail?cn_no=${noticeAllList.cn_no}">${noticeAllList.cn_title }</a>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+				                       		<a href="/pro/noticeDetail?cn_no=${noticeAllList.cn_no}">${noticeAllList.cn_title }</a>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+				                       		<a href="/emp/noticeDetail?cn_no=${noticeAllList.cn_no}">${noticeAllList.cn_title }</a>
+				                    	</c:when>
+				                    </c:choose>
+                        			</td>
+                        			<c:if test="${noticeAllList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
+                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td>${noticeAllList.cn_af_no }</td></c:if>
+                        			<td>${noticeAllList.cn_date }</td>
+                        		</tr>
+                        	</c:forEach>
+                        </c:otherwise>
+                     </c:choose>
                       </tbody>
                     </table>
                   </div>

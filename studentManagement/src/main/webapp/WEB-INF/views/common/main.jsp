@@ -83,7 +83,6 @@
                           <th>제목</th>
                           <th>첨부파일</th>
                           <th>작성일</th>
-                          <th>작성자</th>
                         </tr>
                       </thead>
 
@@ -102,12 +101,20 @@
                         		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${noticeNewList.cn_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
                         			<td>${status.count }</td>
                         			<td>
-                        			<a href="javascript:OpenWindow('/stu/noticeDetail','400','330')" style="text-decoration:none">
-                        			${noticeNewList.cn_title }</a></td>
+                        			<c:choose>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+				                       		<a href="/stu/noticeDetail?cn_no=${noticeNewList.cn_no}">${noticeNewList.cn_title }</a>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+				                       		<a href="/pro/noticeDetail?cn_no=${noticeNewList.cn_no}">${noticeNewList.cn_title }</a>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+				                       		<a href="/emp/noticeDetail?cn_no=${noticeNewList.cn_no}">${noticeNewList.cn_title }</a>
+				                    	</c:when>
+				                    </c:choose></td>
                         			<c:if test="${noticeNewList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
                         			<c:if test="${noticeNewList.cn_af_no != 0 }"><td>${noticeNewList.cn_af_no }</td></c:if>
                         			<td>${noticeNewList.cn_date }</td>
-                        			<td>${noticeNewList.cn_sp_use_id }</td>
                         		</tr>
                         	</c:forEach>
                         </c:otherwise>

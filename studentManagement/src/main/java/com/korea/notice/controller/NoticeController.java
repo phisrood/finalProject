@@ -15,12 +15,26 @@ package com.korea.notice.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.UsersVO;
+import com.korea.notice.service.NoticeService;
 
 @Controller
 public class NoticeController {
+	
+	@Autowired
+	private NoticeService noticeManagerService;
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -49,31 +63,37 @@ public class NoticeController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 전체리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 더보기 url Select 제이쿼리구현/페이징
 	@RequestMapping(value={"/stu/noticeAllList","/pro/noticeAllList","/emp/noticeAllList"}, method=RequestMethod.GET)
-	public String noticeAllList(){
+	public String noticeAllList(Model model){
 		String url="/common/noticeAllList";
 		
+		List<Colleage_NoticeVO> noticeAllList = noticeManagerService.getNoticeAllList();
+		
+		model.addAttribute("noticeAllList", noticeAllList);
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 상세보기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 디테일
-	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail"}, method=RequestMethod.GET)
-	public String noticeDetail(){
+	//공지사항 상세보기
+	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail","/emp/noticeDetail"}, method=RequestMethod.GET)
+	public String noticeDetail(int cn_no,Model model){
+		
 		String url="/common/noticeDetail";
+	
+		Colleage_NoticeVO noticeDetailVO = noticeManagerService.getNoticeDetailInfo(cn_no);
 		
-		
+		model.addAttribute("noticeDetailVO", noticeDetailVO);
+		System.out.println(url+"*****************************");
 		return url;
 	}
 	/**

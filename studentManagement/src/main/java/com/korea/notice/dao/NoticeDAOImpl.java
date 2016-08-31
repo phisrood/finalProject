@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -41,25 +43,28 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return sqlSession.selectList("ColleageNotice.noticeNewList");
 	}
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * 공지 상세
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeInfo() {
-		// TODO Auto-generated method stub
-		
+	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no) {
+		return(Colleage_NoticeVO) sqlSession.selectOne("ColleageNotice.noticeDetail", cn_no);
 	}
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * 공지리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeAllList() {
-		// TODO Auto-generated method stub
+	public List<Colleage_NoticeVO> getNoticeAllList() {
+		List<Colleage_NoticeVO> noticeAllList = 
+				(List<Colleage_NoticeVO>) sqlSession.selectList("ColleageNotice.getNoticeAllList");
+		return noticeAllList;
 		
 	}
 	/**

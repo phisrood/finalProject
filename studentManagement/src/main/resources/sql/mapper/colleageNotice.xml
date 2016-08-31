@@ -7,6 +7,7 @@
 	<select id="noticeNewList" resultType="colleageNotice">
 		select * 
 			from (select ROW_NUMBER() OVER(order by cn_no desc) as rnum
+			, cn_no
 			, cn_af_no
 			, cn_sp_use_id
 			, cn_title
@@ -16,4 +17,17 @@
 			)
 			where rnum between 1 and 20
 	</select>
+	
+	<select id="getNoticeAllList" resultType="colleageNotice">
+		SELECT 	*  	
+		FROM	COLLEAGE_NOTICE
+		ORDER BY CN_NO DESC
+	</select>
+	
+	<select id="noticeDetail" parameterType="int" resultType="colleageNotice">
+		SELECT 	* 
+		FROM	COLLEAGE_NOTICE
+		WHERE 	CN_NO = #{cn_no}
+	</select>
+	
 </mapper>

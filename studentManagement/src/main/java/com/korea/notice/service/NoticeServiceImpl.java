@@ -42,14 +42,16 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNoticeNewList();
 	}
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeInfo() {
-		// TODO Auto-generated method stub
+	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no) {
+		return noticeDAO.getNoticeDetailInfo(cn_no);
+		
 		
 	}
 	/**
@@ -59,9 +61,9 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeAllList() {
-		// TODO Auto-generated method stub
-		
+	public List<Colleage_NoticeVO> getNoticeAllList() {
+
+		return noticeDAO.getNoticeAllList();
 	}
 	/**
 	 * 개인 정보 조회
