@@ -8,12 +8,15 @@
 <configuration>
 	<typeAliases>
 
-		<typeAlias alias="int" type="java.lang.Integer"/>
-		<typeAlias alias="str" type="java.lang.String"/>
+		<typeAlias alias="int" type="java.lang.Integer" />
+		<typeAlias alias="str" type="java.lang.String" />
 
 	
 		<!-- 상담 -->
+
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
+		<typeAlias alias="adviceBoardVO" type="com.korea.dto.Advice_BoardVO" />
+
 
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<typeAlias alias="student" type="com.korea.dto.StudentVO" />
@@ -21,13 +24,17 @@
 		<typeAlias alias="professor" type="com.korea.dto.ProfessorVO" />
 		<typeAlias alias="employee" type="com.korea.dto.School_PersonVO" />
 		<typeAlias alias="professorDetail" type="com.korea.dto.ProfessorDetailViewVO" />
-
 		<typeAlias alias="department" type="com.korea.dto.DepartmentVO" />
 		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
 		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
 		<typeAlias alias="lb" type="com.korea.dto.Lecture_BreakeDownVO" />
-		
+		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
+		<typeAlias alias="IndivInfoManage" type="com.korea.dto.Student_InfoViewVO" />
+		<typeAlias alias="messageView" type="com.korea.dto.MessageViewVO" />
+		<typeAlias alias="professorInfo" type="com.korea.dto.Professor_InfoViewVO" />
+		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
+
 
 	</typeAliases>
 
@@ -35,14 +42,16 @@
 
 		<mapper resource="sql/mapper/login.xml" />
 		<mapper resource="sql/mapper/department.xml" />
+		<mapper resource="sql/mapper/professor.xml" />
 		<mapper resource="sql/mapper/departmentManage.xml" />
-		<mapper resource="sql/mapper/professor.xml"/>
 		<mapper resource="sql/mapper/student.xml" />
 		<mapper resource="sql/mapper/message.xml" />
 		<mapper resource="sql/mapper/colleageNotice.xml" />
 		<mapper resource="sql/mapper/crsesBook.xml" />
-		
+		<mapper resource="sql/mapper/IndivInfoManage.xml" />
 		<!-- 상담 -->
-	
+		<mapper resource="sql/mapper/advice.xml" />
+		<mapper resource="sql/mapper/adviceBoard.xml" />
+
 	</mappers>
 </configuration>

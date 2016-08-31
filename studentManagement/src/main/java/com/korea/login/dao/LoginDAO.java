@@ -19,6 +19,8 @@ package com.korea.login.dao;
 import java.util.Map;
 
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.Professor_InfoViewVO;
+import com.korea.dto.School_PersonInfoViewVO;
 import com.korea.dto.School_PersonVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.TestVO;
@@ -61,4 +63,10 @@ public interface LoginDAO {
 	
 	//비밀번호변경 교직원
 	public void updatePwdChangeEmp(School_PersonVO school_PersonVO);
+
+	//교수 정보가져오기
+	public Professor_InfoViewVO getProdivInfo(String id);
+
+	//행정 정보 가져오기
+	public School_PersonInfoViewVO getEmpdivInfo(String id);
 }

@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.dto.ProfessorVO;
+import com.korea.dto.Professor_InfoViewVO;
+import com.korea.dto.School_PersonInfoViewVO;
 import com.korea.dto.School_PersonVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
@@ -80,6 +82,14 @@ public class LoginServiceImpl implements LoginService{
 				dao.updatePwdChangeEmp(school_PersonVO);
 			}
 		}
+	}
+	@Override
+	public Professor_InfoViewVO getProdivInfo(String id) {
+		return dao.getProdivInfo(id);
+	}
+	@Override
+	public School_PersonInfoViewVO getEmpdivInfo(String id) {
+		return dao.getEmpdivInfo(id);
 	}
 
 

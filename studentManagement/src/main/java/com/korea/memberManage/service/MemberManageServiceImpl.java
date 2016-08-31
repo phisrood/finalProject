@@ -41,7 +41,8 @@ import com.korea.memberManage.dao.MemberManageDAO;
  *    2016.08.29.  	조현욱        		최초생성
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29	이수정			교수등록 
- *    2016.08.30.	이수정			교수조회
+ *    2016.08.29	이수정			교수조회 
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -122,24 +123,14 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 	
 	
-	/**
-	 * 교수 정보 조회
-	 * @param
-	 * @return 	List<ProfessorViewVO>
-	 * @throws 
-	 */
+	//교수정보조회
 	@Override
 	public List<ProfessorViewVO> getProInfoList() {
 		
 		return memberManageDAO.getProInfoList();
 	}
 
-	/**
-	 * 학과 정보 가져오기
-	 * @param
-	 * @return 	List<DepartmentVO>
-	 * @throws 
-	 */
+	//학과정보가져오기
 	@Override
 	public List<DepartmentVO> getDepartmentList() {
 		// TODO Auto-generated method stub
@@ -147,50 +138,39 @@ public class MemberManageServiceImpl implements MemberManageService{
 	}
 
 	
-	/**
-	 * 교수 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//교수정보등록
 	@Override
-	public void insertProInfo(ProfessorVO professorVO, String name) {
-
-		UsersVO usersVO = new UsersVO();
+	public void insertProInfo(ProfessorVO professorVO, UsersVO usersVO) {
+		
+		
 		usersVO.setAuthority("ROLE_PRO");
 		usersVO.setUse_kind("professor");
-		usersVO.setUse_name(name);
 		usersVO.setUse_pwd(professorVO.getPro_regno1());
-		usersVO=memberManageDAO.insertUserProInfo(usersVO);
+		memberManageDAO.insertUserProInfo(usersVO);
 		professorVO.setPro_use_id(usersVO.getUse_id());
+		
 		memberManageDAO.insertProInfo(professorVO);
 		
 
 		
 	}
-
-	/**
-	 * 교수 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//교수정보상세보기
 	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
+		return memberManageDAO.getDetailProInfo(pro_use_id);
+		
 	}
-	/**
-	 * 교수 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//교수정보수정
 	@Override
-	public String updateproInfoOnOff() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
+		memberManageDAO.updateProInfo(professorVO, usersVO);
+		
 	}
+	
+	
+	
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
@@ -297,12 +277,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 		return value;
 	}
 	
-	//교수정보상세보기
-	@Override
-	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
-		return memberManageDAO.getDetailProInfo(pro_use_id);
-		
-	}
+	
 	@Override
 	public String getEmpInfoList() {
 		// TODO Auto-generated method stub

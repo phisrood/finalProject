@@ -26,6 +26,7 @@ import com.korea.dto.UsersVO;
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29	이수정			교수등록 
  *    2016.08.30.	이수정			교수조회
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -95,11 +96,11 @@ public interface MemberManageDAO {
 	/**
 	 * 교수 정보 수정
 	 * 
-	 * @param
+	 * @param	ProfessorVO,UsersVO
 	 * @return
 	 * @throws
 	 */
-	public String updateProInfo();
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO);
 
 	/**
 	 * 교수 정보 비활성화

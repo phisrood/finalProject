@@ -5,6 +5,7 @@
 
 
 <mapper namespace="Professor">
+
 	<insert id="professorInsert" parameterType="professor">
 
 		INSERT INTO PROFESSOR (
@@ -49,6 +50,7 @@
 		,USE_KIND
 		,USE_NAME
 		,USE_PWD
+		,ENABLED
 		,AUTHORITY)
 		VALUES(
 		trim(
@@ -56,6 +58,7 @@
 		,#{use_kind}
 		,#{use_name}
 		,#{use_pwd}
+		,#{enabled}
 		,#{authority})
 		<selectKey resultType="str" keyProperty="use_id" order="AFTER">
 			SELECT trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.currval,'000'),' ','')) FROM dual
@@ -63,7 +66,7 @@
 	</insert>
 	
 	<select id="getProInfoList" resultType="professorView">
-		SELECT USE_NAME, DEP_NAME, PRO_USE_ID, PRO_POSITION, PRO_GENDER  	
+		SELECT USE_NAME, DEP_NAME, PRO_USE_ID, PRO_POSITION, PRO_GENDER,ENABLED  	
 		FROM	PROFESSOR
 		INNER JOIN USERS ON (USE_ID=PRO_USE_ID)
 		INNER JOIN DEPARTMENT ON (PRO_DEP_NO=DEP_NO)
@@ -74,4 +77,24 @@
 		FROM	PROFESSOR_VIEW 
 		WHERE 	PRO_USE_ID = #{pro_use_id}
 	</select>
+	
+	<update id="professorUpdate" parameterType="professor">
+		UPDATE 	PROFESSOR
+		SET 	PRO_POSITION = #{pro_position}
+			 	,PRO_ENGNAME = #{pro_engname}
+				,PRO_PHONE = #{pro_phone}
+				,PRO_ZIPCODE = #{pro_zipcode}
+				,PRO_ADD = #{pro_add}
+				,PRO_ADDDETAIL = #{pro_adddetail}
+				,PRO_HOB = #{pro_hob}
+				,PRO_EMAIL = #{pro_email}
+		WHERE	PRO_USE_ID = #{pro_use_id}
+	</update>
+	
+	<update id="userProUpdate" parameterType="users">
+		UPDATE 	USERS
+		SET 	USE_NAME = #{use_name}
+				,ENABLED = #{enabled}
+		WHERE	USE_ID = #{use_id}
+	</update>
 </mapper>

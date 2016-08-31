@@ -33,6 +33,7 @@ import com.korea.dto.UsersVO;
  *    2016.08.29.	김양문			학생등록
  *    2016.08.29	이수정			교수등록 
  *    2016.08.30.	이수정			교수조회
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -97,12 +98,7 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	
 	
 	
-	/**
-	 * 교수 정보 조회
-	 * @param
-	 * @return 	List<ProfessorViewVO>
-	 * @throws 
-	 */
+	//교수 정보 조회
 	@Override
 	public List<ProfessorViewVO> getProInfoList() {
 		List<ProfessorViewVO> proInfoList = 
@@ -111,7 +107,6 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 		return proInfoList;
 		
 	}
-
 
 	//학과번호 리스트불러오기
 	@Override
@@ -126,25 +121,24 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	}
 	
 	//USERS테이블에 교수정보 등록
-	@Override
 	public UsersVO insertUserProInfo(UsersVO usersVO) {
+		
+		
 		sqlSession.insert("Professor.userProInsert",usersVO);
 		
 		return usersVO;
 		
 	}
 	
-	/**
-	 * 교수 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//교수정보수정
 	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
+		usersVO.setUse_id(professorVO.getPro_use_id());
+		sqlSession.update("Professor.userProUpdate",usersVO);
+		sqlSession.update("Professor.professorUpdate",professorVO);
 	}
+	
+	
 	/**
 	 * 교수 정보 비활성화
 	 * @param

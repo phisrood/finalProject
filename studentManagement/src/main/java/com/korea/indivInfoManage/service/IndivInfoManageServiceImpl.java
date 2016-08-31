@@ -22,11 +22,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
 
 
 @Service
-
 public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 
 
@@ -34,8 +34,8 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	private IndivInfoManageDAO indivInfoManageDAO;
 
 	@Override
-	public StudentVO getIndivInfo(String id) {
-		return indivInfoManageDAO.getIndivInfo(id);
+	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
+		return indivInfoManageDAO.getIndivInfo(stud_use_id);
 		
 	}
 	/**
@@ -45,9 +45,8 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	 * @throws 
 	 */
 	@Override
-	public String updateIndiv() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateIndiv(StudentVO studentVO) {
+		return indivInfoManageDAO.updateIndiv(studentVO);
 	}
 	/**
 	 * 학적 변동 현황
@@ -64,6 +63,11 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	public String getIndivInfo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int updateIndiv(String password) {
+	
+		return indivInfoManageDAO.updateIndiv(password);
 	}
 
 }

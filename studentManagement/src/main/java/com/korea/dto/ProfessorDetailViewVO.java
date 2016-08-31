@@ -32,13 +32,19 @@ public class ProfessorDetailViewVO {
 	private String pro_email;
 	private String pro_regno1;
 	private String pro_regno2;
-	
+	private String enabled;
 
 	public String getDep_name() {
 		return dep_name;
 	}
 	public void setDep_name(String dep_name) {
-		this.dep_name = dep_name;
+		this.dep_name = dep_name;	
+	}
+	public String getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
 	}
 	public String getPro_use_id() {
 		return pro_use_id;

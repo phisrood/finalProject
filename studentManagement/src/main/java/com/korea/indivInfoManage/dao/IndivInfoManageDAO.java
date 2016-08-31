@@ -18,6 +18,7 @@ package com.korea.indivInfoManage.dao;
  */
 
 import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 
 public interface IndivInfoManageDAO {
 
@@ -37,10 +38,19 @@ public interface IndivInfoManageDAO {
 
 
 	//개인신상정보 조회
-	public StudentVO getIndivInfo(String id);
+	public Student_InfoViewVO getIndivInfo(String stud_use_id);
 	
 	//개인신상정보 수정
-	public String updateIndiv();
+	public int updateIndiv(StudentVO studentVO);
+	/**
+	 * 학적 변동 현황
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	
+	
+	public int updateIndiv(String password);
 	/**
 	 * 학적 변동 현황
 	 * @param
@@ -48,4 +58,6 @@ public interface IndivInfoManageDAO {
 	 * @throws 
 	 */
 	public String getColleageChangeList();
+	
+
 }
