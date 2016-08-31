@@ -21,12 +21,11 @@ package com.korea.indivInfoManage.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
 
 
 @Service
-
 public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 
 
@@ -34,7 +33,7 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	private IndivInfoManageDAO indivInfoManageDAO;
 
 	@Override
-	public StudentVO getIndivInfo(String stud_use_id) {
+	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
 		return indivInfoManageDAO.getIndivInfo(stud_use_id);
 		
 	}

@@ -25,7 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.indivInfoManage.service.IndivInfoManageService;
 
@@ -50,7 +50,7 @@ public class IndivInfoManageController {
 		
 		
 		//받아온 아이디로 검색결과 출력
-		StudentVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
+		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
 	
 		return url;

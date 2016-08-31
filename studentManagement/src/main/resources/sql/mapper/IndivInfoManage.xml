@@ -6,7 +6,7 @@
 <mapper namespace="indivInfoManageDAO">
 	<select id="getIndivInfo" parameterType="str" resultType="IndivInfoManage">
 		SELECT *
-		FROM STUDENT
+		FROM STUDENT_INFO
 		WHERE STUD_USE_ID = #{stud_use_id}
 	</select>
 	

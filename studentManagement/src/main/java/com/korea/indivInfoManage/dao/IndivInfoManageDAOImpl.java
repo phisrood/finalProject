@@ -16,15 +16,11 @@ package com.korea.indivInfoManage.dao;
  * </pre>
  */
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.korea.dto.StudentVO;
+import com.korea.dto.Student_InfoViewVO;
 
 
 
@@ -44,8 +40,8 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public StudentVO getIndivInfo(String stud_use_id) {
-		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",stud_use_id);
+	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
+		return (Student_InfoViewVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",stud_use_id);
 											           	//xml 네임스페이스, id, 가져갈것
 	}
 	/**

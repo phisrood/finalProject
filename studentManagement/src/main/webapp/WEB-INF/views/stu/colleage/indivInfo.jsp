@@ -131,35 +131,29 @@
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_use_id}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성명(한글)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="박진성" style="text-align: center;"></div><br><br>
-                		<div style="float: left; width: 35%; padding:3px;">단과 &nbsp;대학</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="공과 대학" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.use_name}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">주민 &nbsp;번호</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_regno1}-${studentVO.stud_regno2}" style="text-align: center;"></div><br><br>
-                		<div style="float: left; width: 35%; padding:3px;">학적 &nbsp;상태</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;"></div>
+     
 					</div>
 				</div>
 				<div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
-                		<div style="float: left; width: 35%; padding:3px;">과&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정규" style="text-align: center;"></div><br><br>
+             
                 		<div style="float: left; width: 35%; padding:3px;">성명(영어)</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_engname}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">현재 &nbsp;학과</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정보통신공학과" style="text-align: center;"></div><br><br>
-                		<div style="float: left; width: 35%; padding:3px;">과&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;정</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="대한민국" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;"></div><br><br>
+                      		<div style="float: left; width: 35%; padding:3px;">학적 &nbsp;상태</div>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;"></div>
 					</div>
 				</div>
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="4" style="text-align: center;"></div><br><br>
-                		<div style="float: left; width: 35%; padding:3px;">성명(한자)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="李水正" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="수저저저저저저저정" style="text-align: center;"></div><br><br>  
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="정보통신공학전공" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;"></div><br><br>
 					</div>
@@ -208,16 +202,18 @@
                 	<div class="x_panel" style="float: left; width: 60%;">
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">현재</div>
-		               		<div style="float: left; width: 37%;"><input type="text" name="u_id" id="u_id" required="required" size="15" value="" onkeydown="checkId()" style="text-align: center;"></div>
-		               		<div id="checkMsg" style="float: left; width: 49%;">아이디를 입력하세요.</div><br><br>
+		               		<div style="float: left; width: 37%;">
+		               		<input type="text" name="u_id" id="u_id" required="required" size="15" value="" style="text-align: center;"></div>
+		               		<div style="float: left; width: 48%; padding: 3px;"></div>
+		               	
 	               		</div>
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">변경</div>
 		               		<div style="float: left; width: 37%;"><input type="password" name="pwd" required="required" size="15" value="" style="text-align: center;"></div>
 		               		<div style="float: left; width: 11%; padding: 3px;">변경(확인)</div>
-		               		<div style="float: left; width: 37%;"><input type="password" name="pwd_check" required="required" size="15" value="" onkeyup="checkPwd()" style="text-align: center;"></div><br>
+		               		<div style="float: left; width: 37%;"><input type="password" name="pwd_check" required="required" size="15" value=""  style="text-align: center;"></div><br>
 		               		<div style="float: left; width: 62%;"><br></div>
-		               		<div id="checkPwd" style="float: left; width: 37%;">동일한 암호를 입력하세요.</div>
+		               	
 	               		</div>
                		</div>
                		<div style="float: left; width: 20%;"><br></div>
