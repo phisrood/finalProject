@@ -69,9 +69,9 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBookDecide() {
-		// TODO Auto-generated method stub
-		
+	public void updateCrsesBookDecide(String lbNo) {
+		String[] checkedlbNo =lbNo.split(",");
+		crsesBookDAO.updateCrsesBookDecide(checkedlbNo);
 	}
 	@Override
 	public boolean getLbNoMatch(String lbNo) {

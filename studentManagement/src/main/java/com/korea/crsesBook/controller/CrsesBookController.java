@@ -89,7 +89,7 @@ public class CrsesBookController {
 	// 수강편람등록
 	@RequestMapping(value = "/pro/crsesBookInsert", method = RequestMethod.POST)
 	public String crsesBookInsert(Lecture_BreakeDownVO lbVO) {
-		String url = "redirect:/pro/crsesList";
+		String url = "redirect:/pro/crsesBookList";
 		crsesBookService.insertCrsesBook(lbVO);
 
 		return url;
@@ -111,19 +111,31 @@ public class CrsesBookController {
 	}
 
 	/**
-	 * 개인 정보 조회
+	 * 수강편람 승인반려페이지
 	 * 
 	 * @param
 	 * @return
 	 * @throws
 	 */
-	// 수강편람승인/반려
 	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.GET)
-	public String crsesBookDecide(Model model) {
+	public String crsesBookDecidePage(Model model) {
 		String url = "/emp/crsesBookDecide";
 		List<Lecture_BreakeDownVO> lbList =  crsesBookService.getCrsesBookListByEmp();
 		model.addAttribute("crsesBookList",lbList);
 		return url;
+	}
+	/**
+	 * 수강편람 승인반려
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.POST)
+	public void crsesBookDecide(String data) {
+		
+		crsesBookService.updateCrsesBookDecide(data);
+		
 	}
 
 	/**
@@ -133,7 +145,6 @@ public class CrsesBookController {
 	 * @return
 	 * @throws
 	 */
-	// 수강편람승인/반려
 	@RequestMapping(value = "/pro/lbNoSearch", method = RequestMethod.GET)
 	public void lbNoSearch(String lbNo, HttpServletResponse response) {
 		boolean result = crsesBookService.getLbNoMatch(lbNo);

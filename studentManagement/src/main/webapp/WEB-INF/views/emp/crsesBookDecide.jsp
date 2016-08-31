@@ -23,6 +23,7 @@
 
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="/emp/js/default.js"></script>
 <script>
 	$(function() {
 		$('#datatable').DataTable();
@@ -62,20 +63,22 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${crsesBookList}" var="lb">
-						<tr>
-							<td>${lb.lb_no }</td>
-							<td>${lb.lb_name }</td>
-							<td>${lb.lb_department }</td>
-							<td>${lb.lb_completekind }</td>
-							<td>${lb.lb_credit }</td>
-							<td>
-							<input type="checkbox" value="${lb_no }"/>
-							</td>
-						</tr>
+						<c:forEach items="${crsesBookList}" var="lb">
+							<tr>
+								<td>${lb.lb_no }</td>
+								<td>${lb.lb_name }</td>
+								<td>${lb.lb_department }</td>
+								<td>${lb.lb_completekind }</td>
+								<td>${lb.lb_credit }</td>
+								<td><input type="checkbox" class="checkLb" value="${lb.lb_no }" /></td>
+							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
+			<div style="text-align: right;">			
+				<button type="button" class="btn btn-dark" onclick="approve()">승인</button>
+				<button type="button" class="btn btn-dark" onclick="disapprove()" >반려</button>
 			</div>
 			<!-- x-content -->
 		</div>

@@ -69,8 +69,8 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBookDecide() {
-		// TODO Auto-generated method stub
+	public void updateCrsesBookDecide(String[] checkedlbNo) {
+		sqlSession.update("crsesBook.updateCrsesBookDecide", checkedlbNo);
 		
 	}
 	//학수번호체크

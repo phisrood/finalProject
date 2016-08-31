@@ -48,13 +48,14 @@ public interface CrsesBookService {
 	//수강편람수정
 	public void updateCrsesBook();
 	/**
+	 * @param data 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강편람승인/반려
-	public void updateCrsesBookDecide();
+	public void updateCrsesBookDecide(String data);
 	
 	/**
 	 * 학수번호 체크
