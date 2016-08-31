@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crsesBook">
+	<insert id="insertLectureBreak" parameterType="lb">
+		INSERT INTO LECTURE_BREAKEDOWN
+		(LB_NO, LB_NAME, LB_DEPARTMENT, LB_COMPLETEKIND,LB_CREDIT, LB_APPROVALYN, LB_REVOKEYN)
+		VALUES
+		(
+		TO_CHAR(#{lb_no}, '000')
+		,#{lb_name}
+		,#{lb_department}
+		,#{lb_completekind}
+		,#{lb_credit}
+		,'N'
+		,'N'	
+		)
+	</insert>
+	<select id="getLbNoMatch" parameterType="str" resultType="str">
+		SELECT LB_NO
+		FROM LECTURE_BREAKEDOWN
+		WHERE LB_NO = #{lbNo}
+	</select>
+</mapper>

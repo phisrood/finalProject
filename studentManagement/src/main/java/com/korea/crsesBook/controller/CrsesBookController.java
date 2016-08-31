@@ -43,7 +43,7 @@ public class CrsesBookController {
 	private CrsesBookService crsesBookService;
 	@Autowired
 	private MemberManageService memberManageService;
-
+	
 	/**
 	 * 개인 정보 조회
 	 * 
@@ -52,10 +52,10 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	// 수강편람조회
-	@RequestMapping(value = {"/stu/crsesBookList", "/pro/crsesBookList"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/pro/crsesBookList"}, method = RequestMethod.GET)
 	public String crsesBookList() {
-		String url = "/common/crsesList";
-
+		String url = "/pro/crsesBookList";
+		
 		return url;
 	}
 
