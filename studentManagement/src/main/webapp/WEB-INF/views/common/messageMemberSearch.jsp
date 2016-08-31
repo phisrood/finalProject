@@ -40,8 +40,10 @@
 			success:function(data){
 				var htmlCode="";
 				$.each(data, function(index, value){
-					htmlCode+="<tr>";
-					htmlCode+="<td id="+value.use_id+">"+value.use_id+"          "+value.use_name+"</td>";
+					htmlCode+="<tr id="+value.use_id+">";
+					htmlCode+="<td>"+value.use_id+"</td>";
+					htmlCode+="<td>"+value.use_name+"</td>";
+					htmlCode+="<td>"+value.dep_name+"</td>";
 					htmlCode+="</tr>"
 				});
 				$("#searchTbody").html(htmlCode);
@@ -50,7 +52,7 @@
 			
 		});
 		
-		$("#result").on("click", "td", function(){
+		$("#result").on("click", "tr", function(){
 			var id = $(this).attr("id");
 			
 			$("#first-name2", opener.document).val(id);
@@ -81,7 +83,9 @@ h2 {
 			<table id="searchTable">
 				<thead>
 					<tr>
-						<td>학번          이름</td>
+						<th>학번</th>
+						<th>이름</th>
+						<th>학과</th>
 					</tr>
 				</thead>
 				<tbody id="searchTbody">

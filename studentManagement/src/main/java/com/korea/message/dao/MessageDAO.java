@@ -3,6 +3,7 @@ package com.korea.message.dao;
 import java.util.List;
 
 import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 
 /**
@@ -55,7 +56,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//수신사용자검색 다른쪽 VO 리턴
-	public List<UsersVO> getMessageUserSearch();
+	public List<MessageViewVO> getMessageUserSearch();
 	/**
 	 * 개인 정보 조회
 	 * @param

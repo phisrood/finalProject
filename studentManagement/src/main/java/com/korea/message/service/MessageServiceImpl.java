@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.message.dao.MessageDAO;
 
@@ -69,7 +70,7 @@ public class MessageServiceImpl implements MessageService{
 	 * @throws 
 	 */
 	@Override
-	public List<UsersVO> getMessageUserSearch() {
+	public List<MessageViewVO> getMessageUserSearch() {
 		return dao.getMessageUserSearch();
 	}
 	/**
