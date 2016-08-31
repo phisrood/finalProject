@@ -127,8 +127,9 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	}
 	
 	//USERS테이블에 교수정보 등록
-	@Override
 	public UsersVO insertUserProInfo(UsersVO usersVO) {
+		
+		
 		sqlSession.insert("Professor.userProInsert",usersVO);
 		
 		return usersVO;
@@ -142,10 +143,8 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateProInfo(ProfessorVO professorVO, String name) {
-		UsersVO usersVO=new UsersVO();
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
 		usersVO.setUse_id(professorVO.getPro_use_id());
-		usersVO.setUse_name(name);
 		sqlSession.update("Professor.userProUpdate",usersVO);
 		sqlSession.update("Professor.professorUpdate",professorVO);
 	}

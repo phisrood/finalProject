@@ -24,6 +24,7 @@ import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
+import com.korea.dto.UsersVO;
 import com.korea.memberManage.service.MemberManageService;
 import com.sun.mail.iap.Response;
 
@@ -214,12 +215,12 @@ public class MemberManageController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/proInfoInsert", method = RequestMethod.POST)
-	public String proInfoInsert(
-			@RequestParam(value = "name", defaultValue = "") String name,
-			ProfessorVO professorVO) {
+	public String proInfoInsert(UsersVO usersVO, ProfessorVO professorVO) {
 		String url = "redirect:/emp/stuInfoList";
-
-		memberManagerService.insertProInfo(professorVO, name);
+		
+		
+		
+		memberManagerService.insertProInfo(professorVO, usersVO);
 
 		return url;
 	}
@@ -253,11 +254,11 @@ public class MemberManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
-	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
+	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") UsersVO usersVO,
 			ProfessorVO professorVO) {
 		String url = "redirect:/emp/stuInfoList";
 		
-		memberManagerService.updateProInfo(professorVO, name);
+		memberManagerService.updateProInfo(professorVO, usersVO);
 		
 		return url;
 	}

@@ -100,7 +100,7 @@ public interface MemberManageDAO {
 	 * @return
 	 * @throws
 	 */
-	public void updateProInfo(ProfessorVO professorVO, String name);
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO);
 
 	/**
 	 * 교수 정보 비활성화

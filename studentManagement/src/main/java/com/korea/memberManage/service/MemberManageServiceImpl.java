@@ -155,16 +155,16 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @throws 
 	 */
 	@Override
-	public void insertProInfo(ProfessorVO professorVO, String name) {
+	public void insertProInfo(ProfessorVO professorVO, UsersVO usersVO) {
 		
 		
-		UsersVO usersVO = new UsersVO();
+		
 		usersVO.setAuthority("ROLE_PRO");
 		usersVO.setUse_kind("professor");
-		usersVO.setUse_name(name);
 		usersVO.setUse_pwd(professorVO.getPro_regno1());
-		usersVO=memberManageDAO.insertUserProInfo(usersVO);
+		memberManageDAO.insertUserProInfo(usersVO);
 		professorVO.setPro_use_id(usersVO.getUse_id());
+		
 		memberManageDAO.insertProInfo(professorVO);
 		
 
@@ -184,8 +184,8 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @throws 
 	 */
 	@Override
-	public void updateProInfo(ProfessorVO professorVO, String name) {
-		memberManageDAO.updateProInfo(professorVO, name);
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
+		memberManageDAO.updateProInfo(professorVO, usersVO);
 		
 	}
 	/**
