@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -47,7 +48,6 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지함 리스트 더보기 출력
-	@SuppressWarnings("unused")
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(HttpSession session, Model model){
 		String url="/common/messageAllList";
@@ -55,10 +55,10 @@ public class MessageController {
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String id = usersVO.getUse_id();
 		List<MessageVO> messageAllList = null;
-		if(usersVO != null){
-			messageAllList = service.getMessageAllList(id);
-		}else{
+		if(id.equals("")){
 			url="redirect:/common/loginForm";
+		}else{
+			messageAllList = service.getMessageAllList(id);
 		}
 		model.addAttribute("messageAllList", messageAllList);
 		model.addAttribute("id",id);
@@ -72,11 +72,23 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지조회
-	@RequestMapping(value="/stu/messageInfo", method=RequestMethod.GET)
-	public String messageInfo(){
-		String url="";
+	@RequestMapping(value="/common/messageInfo", method=RequestMethod.GET)
+	public void messageInfo(@RequestParam(value="message_no")String message_no,
+			HttpServletResponse response){
 		
-		return url;
+		MessageVO messageInfo = service.updateMessageInfo(message_no);
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(messageInfo);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 	/**
 	 * 개인 정보 조회

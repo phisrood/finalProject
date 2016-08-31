@@ -22,35 +22,79 @@
 ===============================================================--%>
 
 
-<!-- PNotify -->
-<link href="/stu/css/pnotify.css" rel="stylesheet">
-<link href="/stu/css/pnotify.buttons.css" rel="stylesheet">
-<link href="/stu/css/pnotify.nonblock.css" rel="stylesheet">
+<!-- <link href="/bootstrap/css/pnotify.css" rel="stylesheet">
+<link href="/bootstrap/css/pnotify.buttons.css" rel="stylesheet">
+<link href="/bootstrap/css/pnotify.nonblock.css" rel="stylesheet">
+<link href="/bootstrap/css/prettify.min.css" rel="stylesheet">
+<link href="/bootstrap/css/select2.min.css" rel="stylesheet">
+<link href="/bootstrap/css/switchery.min.css" rel="stylesheet">
+<link href="/bootstrap/css/starrr.css" rel="stylesheet">
+<link href="/bootstrap/css/custom.min.css" rel="stylesheet"> -->
 
-<!-- bootstrap-wysiwyg -->
-<link href="/stu/css/prettify.min.css" rel="stylesheet">
-<!-- Select2 -->
-<link href="/stu/css/select2.min.css" rel="stylesheet">
-<!-- Switchery -->
-<link href="/stu/css/switchery.min.css" rel="stylesheet">
-<!-- starrr -->
-<link href="/stu/css/starrr.css" rel="stylesheet">
-
-<!-- Custom Theme Style -->
-<link href="/stu/css/custom.min.css" rel="stylesheet">
 <script src="/common/js/notice.js"></script>
-<script src="/bootstrap/js/jquery.min.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function(){
 		$('#reciveTable').DataTable();
 		$('#sendTable').DataTable();
+		
+		$(".messageSendDetail").click(function(){
+			var message_no = $(this).attr("id");
+			
+			$.ajax({
+				url:"/common/messageInfo",
+				method:"get",
+				type:"json",
+				data:{"message_no": message_no},
+				success:function(data){
+					var send = "Form."+data.mes_send_use_id;;
+					var title = data.mes_title;
+					var content = data.mes_content;
+					var date = data.mes_date;
+					var sendBtn = "<br><br><button type='button' class='btn btn-dark'>답장</button>&nbsp";
+					sendBtn += "<button type='button' class='btn btn-dark'>삭제</button>";
+					
+					$("#messageSend").html(send);
+					$("#messageTitle").html(title);
+					$("#messageContent").html(content);
+					$("#messageDate").html(date);
+					$("#messageButton").html(sendBtn);
+					$("#"+message_no+"readyn").html("");
+					
+					
+				}
+			});
+		}); 
+		
+		$(".messageReciveDetail").click(function(){
+			var message_no = $(this).attr("id");
+			
+			$.ajax({
+				url:"/common/messageInfo",
+				method:"get",
+				type:"json",
+				data:{"message_no": message_no},
+				success:function(data){
+					var send = "TO."+data.mes_recive_use_id;
+					var title = data.mes_title;
+					var content = data.mes_content;
+					var date = data.mes_date;
+					var reciveBtn = "<br><br><button type='button' class='btn btn-dark'>삭제</button>&nbsp";
+					
+					$("#messageSend").html(send);
+					$("#messageTitle").html(title);
+					$("#messageContent").html(content);
+					$("#messageDate").html(date);
+					$("#messageButton").html(reciveBtn);
+				}
+			});
+		}); 
+		
 	});
 </script>
 
-<!-- 쪽지함 -->
+<!-- 쪽지함 --> 
 
 
 
@@ -59,7 +103,7 @@
 	<!-- page content -->
 	
 	<div class="x_panel_big">
-		<div class="x_panel">
+		<div class="x_panel" style="width:60%">
 		
 			<div class="x_title">
 				<h2>
@@ -69,7 +113,7 @@
 				<div class="clearfix"></div>
 			</div>
 			
-	<div class="x_content">
+			<div class="x_content">
 
 
 				<div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -101,17 +145,24 @@
 											<th>발신자</th>
 											<th>제목</th>
 											<th>수신일</th>
+											<th>수신여부</th>
 										</tr>
 									</thead>
 
 									<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_recive_use_id }">
-												<tr>
-													<td></td>
+												<tr class="messageSendDetail" id="${messageAllList.mes_no }">
+													<td><input type="checkbox"></td>
 													<td>${messageAllList.mes_send_use_id }</td>
 													<td>${messageAllList.mes_title }</td>
 													<td>${messageAllList.mes_date }</td>
+													<c:if test="${messageAllList.mes_readyn == 'n' }">
+														<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
+													</c:if>
+													<c:if test="${messageAllList.mes_readyn == 'y' }">
+														<td><span id="${messageAllList.mes_no }readyn"></span></td>
+													</c:if>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -122,11 +173,6 @@
 										</c:if>
 									</tbody>
 								</table>
-								
-			                    <div class="col-md-9 col-sm-9 col-xs-12">
-			                      <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-comment"></i>받은쪽지내용</label><br/>
-			                      <textarea class="resizable_textarea form-control" placeholder="쪽지라느으으으으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅇ으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ응"></textarea><br/>
-			                    </div>
 									<div style="text-align:right;">
 										<button type="button" class="btn btn-dark">삭제</button>
 			                    	</div>
@@ -153,8 +199,8 @@
 								<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_send_use_id }">
-												<tr>
-													<td></td>
+												<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
+													<td><input type="checkbox"></td>
 													<td>${messageAllList.mes_recive_use_id }</td>
 													<td>${messageAllList.mes_title }</td>
 													<td>${messageAllList.mes_date }</td>
@@ -168,10 +214,6 @@
 										</c:if>
 								</tbody>
 							</table>
-								<div class="col-md-9 col-sm-9 col-xs-12">
-			                      <label class="control-label col-md-3 col-sm-3 col-xs-12"><i class="fa fa-comment"></i>보낸쪽지내용</label><br/>
-			                      <textarea class="resizable_textarea form-control" placeholder="쪽지라느으으으으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅇ으ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ응"></textarea><br/>
-			                    </div>
 									<div style="text-align:right;">
 										<button type="button" class="btn btn-dark">삭제</button>
 				                    
@@ -184,7 +226,7 @@
 							aria-labelledby="profile-tab">
 							
 							<!-- 쪽지쓰기 -->
-							<div class="x_panel">
+							<div class="x_panel" style="width:100%">
 			                
 			                  <h2>쪽지쓰기</h2>
 			                  <ul class="nav navbar-right panel_toolbox">	                    
@@ -194,96 +236,30 @@
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="first-name">수신자 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" id="first-name2" required="required" class="form-control col-md-7 col-xs-12">
+			                      <input type="text" id="first-name2" required="required" class="col-md-7 col-xs-12" style="width:80%;">
 			                    </div>
 			                     <button type="button" class="btn btn-dark" onclick="javascript:OpenWindow('/common/messageUserSearchForm','600','500')" style="text-decoration:none">검색</button>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" id="last-name2" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+			                      <input type="text" id="last-name2" name="last-name" required="required" class="col-md-7 col-xs-12" style="width:80%;">
 			                    </div>
 			                  </div>
+			                  <div class="form-group">
+			                    <label class="control-label col-md-3" for="last-name">내용 </label>
+			                    <div class="col-md-7">
+			                      <textarea row="30" cols="30" id="last-name2" name="last-name" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
+			                    </div>
+			                  </div>
+			                  <br/>
+		                  		<div style="text-align:right;">
+			                  		<button type="button" class="btn btn-dark">보내기</button>
+			                  	</div>
 			                </form>
 		                	
 		                <div class="x_content">
-		                  <div id="alerts"></div>
-		                  
-		                  
-		                  <div class="btn-toolbar editor" data-role="editor-toolbar" data-target="#editor">
-		                    <div class="btn-group">
-		                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="fa fa-font"></i><b class="caret"></b></a>
-		                      <ul class="dropdown-menu">
-		                      </ul>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font Size"><i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-		                      <ul class="dropdown-menu">
-		                        <li>
-		                          <a data-edit="fontSize 5">
-		                            <p style="font-size:17px;">Huge</p>
-		                          </a>
-		                        </li>
-		                        <li>
-		                          <a data-edit="fontSize 3">
-		                            <p style="font-size:14px;">Normal</p>
-		                          </a>
-		                        </li>
-		                        <li>
-		                          <a data-edit="fontSize 1">
-		                            <p style="font-size:11px;">Small</p>
-		                          </a>
-		                        </li>
-		                      </ul>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn" data-edit="bold" title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
-		                      <a class="btn" data-edit="italic" title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
-		                      <a class="btn" data-edit="strikethrough" title="Strikethrough"><i class="fa fa-strikethrough"></i></a>
-		                      <a class="btn" data-edit="underline" title="Underline (Ctrl/Cmd+U)"><i class="fa fa-underline"></i></a>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn" data-edit="insertunorderedlist" title="Bullet list"><i class="fa fa-list-ul"></i></a>
-		                      <a class="btn" data-edit="insertorderedlist" title="Number list"><i class="fa fa-list-ol"></i></a>
-		                      <a class="btn" data-edit="outdent" title="Reduce indent (Shift+Tab)"><i class="fa fa-dedent"></i></a>
-		                      <a class="btn" data-edit="indent" title="Indent (Tab)"><i class="fa fa-indent"></i></a>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn" data-edit="justifyleft" title="Align Left (Ctrl/Cmd+L)"><i class="fa fa-align-left"></i></a>
-		                      <a class="btn" data-edit="justifycenter" title="Center (Ctrl/Cmd+E)"><i class="fa fa-align-center"></i></a>
-		                      <a class="btn" data-edit="justifyright" title="Align Right (Ctrl/Cmd+R)"><i class="fa fa-align-right"></i></a>
-		                      <a class="btn" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><i class="fa fa-align-justify"></i></a>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn dropdown-toggle" data-toggle="dropdown" title="Hyperlink"><i class="fa fa-link"></i></a>
-		                      <div class="dropdown-menu input-append">
-		                        <input class="span2" placeholder="URL" type="text" data-edit="createLink" />
-		                        <button class="btn" type="button">Add</button>
-		                      </div>
-		                      <a class="btn" data-edit="unlink" title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="fa fa-picture-o"></i></a>
-		                      <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
-		                    </div>
-		
-		                    <div class="btn-group">
-		                      <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
-		                      <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
-		                    </div>
-		                  </div>
-		
-		                  <div id="editor" class="editor-wrapper"></div>
-		                  <br/>
-		                  <div style="text-align:right;">
-		                  <button type="button" class="btn btn-dark">보내기</button>
-		                  </div>
+
 		
 		                </div>
 		                </div>     
@@ -294,19 +270,41 @@
 				<!-- x-content -->
 			</div>		
 		</div>
+			<div class="x_panel" style="float: right; width:40%; height:100%;">
+				<div class="x_title">
+					<h2>
+						<i class="fa fa-comment"></i> <span id="messageSend">쪽지상세</span>
+					</h2>
+					<ul class="nav navbar-right panel_toolbox"></ul>
+				<div class="clearfix"></div>
+				<div class="x_content">
+						<br>
+						<br>
+						<br>
+				     <label>제목   :</label>&nbsp;&nbsp;&nbsp;
+				     <span style="color: gray;" id="messageTitle"></span><br><br><br>
+				     <label>수신일 :</label>&nbsp;&nbsp;&nbsp;
+				     <span style="color: gray;" id="messageDate"></span><br><br><br>
+				     
+				     <label>내용 : </label>
+				     <div id="messageContent" style="border: 1px solid black; padding: 10px 10px 10px 10px;">
+				     </div>
+				     <div style="text-align:right;" id="messageButton">
+				     	
+	                 </div>
+								
+								
+				</div>
+			</div>
+			
+			</div>
 	</div>
 					<!-- /page content -->
 	</div>
 			
-			<div id="custom_notifications" class="custom-notifications dsp_none">
-				<ul class="list-unstyled notifications clearfix"
-					data-tabbed_notifications="notif-group">
-				</ul>
-				<div class="clearfix"></div>
-				<div id="notif-group" class="tabbed_notifications"></div>
-			</div>
 
-			<script src="/bootstrap/js/fastclick.js"></script>
+
+			<!-- <script src="/bootstrap/js/fastclick.js"></script>
 			<script src="/bootstrap/js/nprogress.js"></script>
 			<script src="/bootstrap/js/icheck.min.js"></script>
 			<script src="/bootstrap/js/bootstrap-progressbar.min.js"></script>
@@ -323,4 +321,4 @@
 		    <script src="/bootstrap/js/autosize.min.js"></script>
 		    <script src="/bootstrap/js/jquery.autocomplete.min.js"></script>
 		    <script src="/bootstrap/js/starrr.js"></script>
-			<script src="/bootstrap/js/custom.min.js"></script>
+			<script src="/bootstrap/js/custom.min.js"></script> -->

@@ -54,15 +54,18 @@ public class MessageServiceImpl implements MessageService{
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageInfo() {
-		// TODO Auto-generated method stub
+	public MessageVO updateMessageInfo(String message_no) {
 		
+		dao.updateMessageRead(message_no);
+		MessageVO messageVO = dao.updateMessageInfo(message_no);
+		
+		return messageVO;
 	}
 	/**
 	 * 개인 정보 조회

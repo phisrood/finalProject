@@ -43,13 +43,14 @@ public interface MessageDAO {
 	//전체 쪽지 리스트
 	public List<MessageVO> getMessageAllList(String id);
 	/**
+	 * @param message_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//쪽지조회
-	public void getMessageInfo();
+	public MessageVO updateMessageInfo(String message_no);
 	/**
 	 * @return 
 	 * 개인 정보 조회
@@ -75,4 +76,7 @@ public interface MessageDAO {
 	 */
 	//쪽지삭제
 	public void deleteMessage();
+	
+	//읽음처리
+	public void updateMessageRead(String message_no);
 }
