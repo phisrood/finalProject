@@ -7,8 +7,8 @@ package com.korea.dto;
  * use_kind : 학생/교수/직원
  * use_name : 이름
  * use_pwd : 비밀번호
- * use_yn : 사용유무
- * use_athu : 권한
+ * enabled : 사용유무
+ * authority : 권한
  * 
  * @version 한돈희, 1.0, 2016.08.24, 초기 작성
  * @author 한돈희
@@ -19,9 +19,10 @@ public class UsersVO {
 	private String use_id;
 	private String use_kind;
 	private String use_name;
-	private char enabled;
+	private String enabled;
 	private String use_pwd;
 	private String authority;
+	
 	public String getUse_id() {
 		return use_id;
 	}
@@ -40,10 +41,11 @@ public class UsersVO {
 	public void setUse_name(String use_name) {
 		this.use_name = use_name;
 	}
-	public char getEnabled() {
+	
+	public String getEnabled() {
 		return enabled;
 	}
-	public void setEnabled(char enabled) {
+	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
 	public String getUse_pwd() {

@@ -20,9 +20,17 @@ public class ProfessorViewVO {
 	private String pro_position;
 	private String pro_use_id;
 	private String pro_gender;
+	private String enabled;
 	
 	
 	
+	
+	public String getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
+	}
 	public String getPro_use_id() {
 		return pro_use_id;
 	}

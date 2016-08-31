@@ -10,6 +10,7 @@ import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
+import com.korea.dto.UsersVO;
 
 
 /**
@@ -81,11 +82,11 @@ public interface MemberManageService {
 	
 	/**
 	 * 교수 정보 등록
-	 * @param	ProfessorVO,String
+	 * @param	ProfessorVO,UsersVO
 	 * @return 
 	 * @throws 
 	 */
-	public void insertProInfo(ProfessorVO professorVO, String name);
+	public void insertProInfo(ProfessorVO professorVO, UsersVO usersVO);
 	
 	/**
 	 * 학과 정보 가져오기
@@ -97,30 +98,14 @@ public interface MemberManageService {
 
 	
 	/**
-	 * @param String 
-	 * @param ProfessorVO 
 	 * 교수 정보 수정
-	 * @param
-	 * @return  String
+	 * @param ProfessorVO,UsersVO 
+	 * @return  
 	 * @throws 
 	 */
-
-	public void updateProInfo(ProfessorVO professorVO, String name);
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO);
 	
-	/**
-	 * 교수 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	public String updateproInfoOnOff();
-
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
 	public String getEmpInfoList();
 	/**
 	 * 교직원 정보 등록

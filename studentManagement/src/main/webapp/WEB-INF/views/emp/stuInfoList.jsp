@@ -144,6 +144,7 @@
 											<th>소속학과</th>
 											<th>직책</th>
 											<th>성별</th>
+											<th>재직상태</th>
 										</tr>
 									</thead>
 									<c:forEach var="professor" items="${professorList}"
@@ -157,6 +158,16 @@
 												<td>${professor.dep_name}</td>
 												<td>${professor.pro_position}</td>
 												<td>${professor.pro_gender}</td>
+												<td>
+												<c:choose>
+												<c:when test="${professor.enabled=='1'}">
+												재직
+												</c:when> 
+												<c:otherwise>
+												퇴직
+												</c:otherwise> 
+												</c:choose>
+												</td>
 											</tr>
 									</c:forEach>
 									</tbody>

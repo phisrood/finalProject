@@ -24,6 +24,7 @@ import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
+import com.korea.dto.UsersVO;
 import com.korea.memberManage.service.MemberManageService;
 import com.sun.mail.iap.Response;
 
@@ -43,6 +44,7 @@ import com.sun.mail.iap.Response;
  *    2016.08.29.	이수정			교수등록
  *    2016.08.30.	이수정			교수조회
  *    2016.08.30.	이수정			교수수정
+ *    2016.08.31.	이수정			교수비활성
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -214,12 +216,12 @@ public class MemberManageController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/proInfoInsert", method = RequestMethod.POST)
-	public String proInfoInsert(
-			@RequestParam(value = "name", defaultValue = "") String name,
-			ProfessorVO professorVO) {
+	public String proInfoInsert(UsersVO usersVO, ProfessorVO professorVO) {
 		String url = "redirect:/emp/stuInfoList";
-
-		memberManagerService.insertProInfo(professorVO, name);
+		
+		
+		
+		memberManagerService.insertProInfo(professorVO, usersVO);
 
 		return url;
 	}
@@ -246,35 +248,22 @@ public class MemberManageController {
 		return url;
 	}
 	/**
-	 * 교수 정보 수정
+	 * 교수 정보 수정,비활성화
 	 * 
 	 * @param String, ProfessorVO
 	 * @return String
 	 * @throws 
 	 */
 	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
-	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
-			ProfessorVO professorVO) {
+	public String proInfoUpdate(UsersVO usersVO, ProfessorVO professorVO) {
 		String url = "redirect:/emp/stuInfoList";
 		
-		memberManagerService.updateProInfo(professorVO, name);
+		memberManagerService.updateProInfo(professorVO, usersVO);
 		
 		return url;
 	}
 	
-	/**
-	 * 교수 정보 비활성화 ( on / off )
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/emp/proInfoOnOff", method = RequestMethod.GET)
-	public String proInfoOnOff() {
-		String url = "";
-		
-		return url;
-	}
+	
 
 
 }

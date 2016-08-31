@@ -123,24 +123,14 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 	
 	
-	/**
-	 * 교수 정보 조회
-	 * @param
-	 * @return 	List<ProfessorViewVO>
-	 * @throws 
-	 */
+	//교수정보조회
 	@Override
 	public List<ProfessorViewVO> getProInfoList() {
 		
 		return memberManageDAO.getProInfoList();
 	}
 
-	/**
-	 * 학과 정보 가져오기
-	 * @param
-	 * @return 	List<DepartmentVO>
-	 * @throws 
-	 */
+	//학과정보가져오기
 	@Override
 	public List<DepartmentVO> getDepartmentList() {
 		// TODO Auto-generated method stub
@@ -148,23 +138,18 @@ public class MemberManageServiceImpl implements MemberManageService{
 	}
 
 	
-	/**
-	 * 교수 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//교수정보등록
 	@Override
-	public void insertProInfo(ProfessorVO professorVO, String name) {
+	public void insertProInfo(ProfessorVO professorVO, UsersVO usersVO) {
 		
 		
-		UsersVO usersVO = new UsersVO();
+		
 		usersVO.setAuthority("ROLE_PRO");
 		usersVO.setUse_kind("professor");
-		usersVO.setUse_name(name);
 		usersVO.setUse_pwd(professorVO.getPro_regno1());
-		usersVO=memberManageDAO.insertUserProInfo(usersVO);
+		memberManageDAO.insertUserProInfo(usersVO);
 		professorVO.setPro_use_id(usersVO.getUse_id());
+		
 		memberManageDAO.insertProInfo(professorVO);
 		
 
@@ -177,28 +162,14 @@ public class MemberManageServiceImpl implements MemberManageService{
 		return memberManageDAO.getDetailProInfo(pro_use_id);
 		
 	}
-	/**
-	 * 교수 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//교수정보수정
 	@Override
-	public void updateProInfo(ProfessorVO professorVO, String name) {
-		memberManageDAO.updateProInfo(professorVO, name);
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
+		memberManageDAO.updateProInfo(professorVO, usersVO);
 		
 	}
-	/**
-	 * 교수 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateproInfoOnOff() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 	
 	private void readSheet(int columnindex, Sheet sheet) {

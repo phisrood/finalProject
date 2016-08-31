@@ -98,12 +98,7 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	
 	
 	
-	/**
-	 * 교수 정보 조회
-	 * @param
-	 * @return 	List<ProfessorViewVO>
-	 * @throws 
-	 */
+	//교수 정보 조회
 	@Override
 	public List<ProfessorViewVO> getProInfoList() {
 		List<ProfessorViewVO> proInfoList = 
@@ -112,7 +107,6 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 		return proInfoList;
 		
 	}
-
 
 	//학과번호 리스트불러오기
 	@Override
@@ -127,28 +121,24 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	}
 	
 	//USERS테이블에 교수정보 등록
-	@Override
 	public UsersVO insertUserProInfo(UsersVO usersVO) {
+		
+		
 		sqlSession.insert("Professor.userProInsert",usersVO);
 		
 		return usersVO;
 		
 	}
 	
-	/**
-	 * 교수 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//교수정보수정
 	@Override
-	public void updateProInfo(ProfessorVO professorVO, String name) {
-		UsersVO usersVO=new UsersVO();
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO) {
 		usersVO.setUse_id(professorVO.getPro_use_id());
-		usersVO.setUse_name(name);
 		sqlSession.update("Professor.userProUpdate",usersVO);
 		sqlSession.update("Professor.professorUpdate",professorVO);
 	}
+	
+	
 	/**
 	 * 교수 정보 비활성화
 	 * @param

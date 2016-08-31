@@ -96,11 +96,11 @@ public interface MemberManageDAO {
 	/**
 	 * 교수 정보 수정
 	 * 
-	 * @param
+	 * @param	ProfessorVO,UsersVO
 	 * @return
 	 * @throws
 	 */
-	public void updateProInfo(ProfessorVO professorVO, String name);
+	public void updateProInfo(ProfessorVO professorVO, UsersVO usersVO);
 
 	/**
 	 * 교수 정보 비활성화
