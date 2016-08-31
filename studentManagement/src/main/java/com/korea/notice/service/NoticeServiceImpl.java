@@ -1,4 +1,13 @@
 package com.korea.notice.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.dto.Colleage_NoticeVO;
+import com.korea.notice.dao.NoticeDAO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -16,7 +25,12 @@ package com.korea.notice.service;
  * </pre>
  */
 
+@Service
 public class NoticeServiceImpl implements NoticeService{
+	
+	@Autowired
+	NoticeDAO noticeDAO;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -24,9 +38,8 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeNewList() {
-		// TODO Auto-generated method stub
-		
+	public List<Colleage_NoticeVO> getNoticeNewList() {
+		return noticeDAO.getNoticeNewList();
 	}
 	/**
 	 * 개인 정보 조회

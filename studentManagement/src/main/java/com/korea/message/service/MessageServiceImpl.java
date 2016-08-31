@@ -69,9 +69,8 @@ public class MessageServiceImpl implements MessageService{
 	 * @throws 
 	 */
 	@Override
-	public void getMessageUserSearch() {
-		// TODO Auto-generated method stub
-		
+	public List<UsersVO> getMessageUserSearch() {
+		return dao.getMessageUserSearch();
 	}
 	/**
 	 * 개인 정보 조회

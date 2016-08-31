@@ -48,13 +48,14 @@ public interface MessageDAO {
 	//쪽지조회
 	public void getMessageInfo();
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수신사용자검색 다른쪽 VO 리턴
-	public void getMessageUserSearch();
+	public List<UsersVO> getMessageUserSearch();
 	/**
 	 * 개인 정보 조회
 	 * @param

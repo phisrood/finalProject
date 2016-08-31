@@ -1,10 +1,12 @@
 package com.korea.memberManage.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.bouncycastle.ocsp.RespID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
 import com.korea.memberManage.service.MemberManageService;
+import com.sun.mail.iap.Response;
 
 /**
  * @Class Name : MemberManageController.java
@@ -48,7 +54,7 @@ public class MemberManageController {
 
 	// 학생정보조회
 	/**
-	 * 학생 정보 조회
+	 * 학생 정보 조회화면 이동
 	 * 
 	 * @param
 	 * @return
@@ -56,14 +62,43 @@ public class MemberManageController {
 	 */
 
 	@RequestMapping(value = "/emp/stuInfoList", method = RequestMethod.GET)
-	public String stuInfoList(Model model) {
+	public String stuInfoList(Model model, HttpServletResponse response) {
 
 		String url = "redirect:/emp/proInfoList";
-		//String url = "/emp/stuInfoList";
+
 		List<StudentVO> studentList = memberManagerService.getStuInfoList();
 		model.addAttribute("studentList", studentList);
-		/*ObjectMapper jsonObject = new Object*/
+
 		return url;
+	}
+	/**
+	 * 학생 정보 조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	
+	@RequestMapping(value = "/emp/stuInfo", method = RequestMethod.GET)
+	public void stuInfo(Model model, HttpServletResponse response) {
+		
+		List<StudentVO> studentList = memberManagerService.getStuInfoList();
+		ObjectMapper jsonObject = new ObjectMapper();
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(studentList);
+			response.getWriter().print(str);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -98,6 +133,9 @@ public class MemberManageController {
 
 		return url;
 	}
+	
+	
+	
 
 	/**
 	 * 학생 정보 수정
@@ -146,6 +184,45 @@ public class MemberManageController {
 
 		return url;
 	}
+	/**
+	 * 교수 정보 상세보기
+	 * 
+	 * @param Model,String
+	 * @return String
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/proInfoDetail", method = RequestMethod.GET)
+	public String proInfoDetail(@RequestParam(value="pro_use_id", defaultValue = "")String pro_use_id,Model model) {
+		String url = "/emp/proInfoUpdate";
+		
+		System.out.println(pro_use_id);
+		ProfessorDetailViewVO professorDetailViewVO = memberManagerService.getDetailProInfo(pro_use_id);
+		List<DepartmentVO> departmentList = memberManagerService
+				.getDepartmentList();
+
+		model.addAttribute("departmentList", departmentList);
+		model.addAttribute("professorDetailViewVO",professorDetailViewVO);
+		
+		
+		return url;
+	}
+	/**
+	 * 교수 정보 수정
+	 * 
+	 * @param Model
+	 * @return String
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/proInfoUpdate", method = RequestMethod.POST)
+	public String proInfoUpdate(@RequestParam(value = "name", defaultValue = "") String name,
+			ProfessorVO professorVO) {
+		String url = "redirect:/emp/stuInfoList";
+		
+		memberManagerService.updateProInfo(professorVO, name);
+		
+		return url;
+	}
+	
 
 	/**
 	 * 교수정보등록Form, 학과번호 콤보박스list

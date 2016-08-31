@@ -17,10 +17,15 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import = "java.util.List" %>
-<%
+<%-- <%
 String id = request.getParameter("id");
+<<<<<<< HEAD
 IndivInfoManageDAO dao = new IndivInfoManageDAO();
 int re = dao.checkId(id);
+=======
+IndivInfoManageDAO dao;
+//int re = dao.checkId(id);
+>>>>>>> branch 'master' of https://github.com/phisrood/finalProject.git
 %>
-<%=re%>
+<%=re%> --%>
 

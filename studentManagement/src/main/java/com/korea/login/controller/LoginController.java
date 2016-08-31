@@ -29,10 +29,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.MessageVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
 import com.korea.message.service.MessageService;
+import com.korea.notice.service.NoticeService;
 
 @Controller
 public class LoginController {
@@ -42,6 +44,10 @@ public class LoginController {
 	
 	@Autowired
 	MessageService messageService;
+	
+	@Autowired
+	NoticeService noticeService;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -86,9 +92,12 @@ public class LoginController {
 		
 		//메인 로딩될때 메시지 리스트 출력
 		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
+		//메인 로딩될때 공지사항 리스트 출력
+		List<Colleage_NoticeVO> noticeNewList = noticeService.getNoticeNewList();
 		
 		model.addAttribute("messageNewList", messageNewList);
-
+		model.addAttribute("noticeNewList", noticeNewList);
+		
 		return url;
 	}
 	/**

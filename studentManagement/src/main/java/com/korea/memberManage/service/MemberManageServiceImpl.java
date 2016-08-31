@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
@@ -124,7 +125,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	/**
 	 * 교수 정보 조회
 	 * @param
-	 * @return 
+	 * @return 	List<ProfessorViewVO>
 	 * @throws 
 	 */
 	@Override
@@ -134,9 +135,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	}
 
 	/**
-	 * 교수 정보 등록
+	 * 학과 정보 가져오기
 	 * @param
-	 * @return 
+	 * @return 	List<DepartmentVO>
 	 * @throws 
 	 */
 	@Override
@@ -146,6 +147,12 @@ public class MemberManageServiceImpl implements MemberManageService{
 	}
 
 	
+	/**
+	 * 교수 정보 등록
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public void insertProInfo(ProfessorVO professorVO, String name) {
 		
@@ -170,9 +177,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 * @throws 
 	 */
 	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateProInfo(ProfessorVO professorVO, String name) {
+		memberManageDAO.updateProInfo(professorVO, name);
+		
 	}
 	/**
 	 * 교수 정보 비활성화
@@ -289,6 +296,33 @@ public class MemberManageServiceImpl implements MemberManageService{
 			System.out.println(columnHead[columnindex]+":"+value);
 		}
 		return value;
+	}
+	
+	//교수정보상세보기
+	@Override
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
+		return memberManageDAO.getDetailProInfo(pro_use_id);
+		
+	}
+	@Override
+	public String getEmpInfoList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String insertEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfoOnOff() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
