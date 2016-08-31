@@ -5,6 +5,8 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardVO;
@@ -106,7 +108,19 @@ public class AdviceDAOImpl implements AdviceDAO {
 		AdviceVO adviceVO = (AdviceVO) sqlSession.selectOne("adviceDAO.updateAdviceConfirm",ad_no);
 		return adviceVO;
 	}
-
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 신청 삭제
+	public void updateAdviceDelay(AdviceVO adviceVO) {
+		sqlSession.update("adviceDAO.updateAdviceDelay", adviceVO);
+	}
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * 

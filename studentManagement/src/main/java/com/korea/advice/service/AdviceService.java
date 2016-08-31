@@ -81,6 +81,15 @@ public interface AdviceService {
 	 */
 	// 상담신청 수정
 	public AdviceVO updateAdviceConfirm(int ad_no);
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 신청 삭제
+	public void updateAdviceDelay(AdviceVO adviceVO);
 	
 	/**
 	 * 교수가 받은 상담신청조회

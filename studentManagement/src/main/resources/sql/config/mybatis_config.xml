@@ -31,6 +31,8 @@
 		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
 		<typeAlias alias="IndivInfoManage" type="com.korea.dto.Student_InfoViewVO" />
 		<typeAlias alias="messageView" type="com.korea.dto.MessageViewVO" />
+		<typeAlias alias="professorInfo" type="com.korea.dto.Professor_InfoViewVO" />
+		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
 
 
 	</typeAliases>

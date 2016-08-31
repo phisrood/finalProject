@@ -42,6 +42,13 @@
 		SET AD_STAT = '대기'
 		WHERE AD_NO = #{ad_no}
 	</update>
-
+	
+	<update id="updateAdviceDelay" parameterType="adviceVO">
+		UPDATE ADVICE
+		SET AD_STAT = '연기',
+		AD_TIME = #{ad_time},
+		AD_RETURN = #{ad_return}
+		WHERE AD_NO = #{ad_no}
+	</update>
 
 </mapper>

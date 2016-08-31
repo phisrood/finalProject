@@ -31,7 +31,17 @@
 <script>
  function confirm(ad_no){
 	 var url = "/pro/updateAdviceConfirmForm?ad_no="+ad_no;
-	 window.open(url,'처리','옵션');  
+	 
+	 userwidth = (screen.width/2);
+	 userheight = (screen.height/2);
+	 
+	 wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+	 wTop = window.screenTop ? window.screenTop : window.screenY;
+	
+	 var left = wLeft + (window.innerWidth / 2) - (userwidth / 2);
+	 var top = wTop + (window.innerHeight / 2) - (userheight / 2);
+	
+	 window.open(url,'처리','width=' + userwidth + ', height=' + userheight + ', top=' + top + ', left=' + left +'');  
  }
 </script>
 

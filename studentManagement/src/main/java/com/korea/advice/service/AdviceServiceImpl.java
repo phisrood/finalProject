@@ -115,6 +115,19 @@ public class AdviceServiceImpl implements AdviceService {
 	 * @return
 	 * @throws
 	 */
+	// 상담 신청 삭제
+	public void updateAdviceDelay(AdviceVO adviceVO) {
+		adviceDAO.updateAdviceDelay(adviceVO);
+	}
+	
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
 	@Override
 	public void insertAdviceReply() {
 		// TODO Auto-generated method stub

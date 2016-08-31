@@ -47,15 +47,19 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지함 리스트 더보기 출력
+	@SuppressWarnings("unused")
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(HttpSession session, Model model){
 		String url="/common/messageAllList";
 		
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String id = usersVO.getUse_id();
-		
-		List<MessageVO> messageAllList = service.getMessageAllList(id);
-		
+		List<MessageVO> messageAllList = null;
+		if(usersVO != null){
+			messageAllList = service.getMessageAllList(id);
+		}else{
+			url="redirect:/common/loginForm";
+		}
 		model.addAttribute("messageAllList", messageAllList);
 		model.addAttribute("id",id);
 		
