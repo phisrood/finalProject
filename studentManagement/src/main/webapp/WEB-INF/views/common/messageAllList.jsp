@@ -39,6 +39,16 @@
 <!-- Custom Theme Style -->
 <link href="/stu/css/custom.min.css" rel="stylesheet">
 <script src="/common/js/notice.js"></script>
+<script src="/bootstrap/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function(){
+		$('#reciveTable').DataTable();
+		$('#sendTable').DataTable();
+	});
+</script>
 
 <!-- 쪽지함 -->
 
@@ -78,24 +88,12 @@
 					
 					<div id="myTabContent" class="tab-content">
 					
-					<!-- tab_content1 -->
+					<!-- 받은쪽지함 -->
 						<div role="tabpanel" class="tab-pane fade active in"
 							id="tab_content1" aria-labelledby="home-tab">
 							<div class="x_content">
-							<div style="text-align:right;">
-                    
-		                          <select style="width:100px; height:30px;">
-		                            <option>전체</option>
-		                            <option>발신자</option>
-		                            <option>내용</option>
-		                            <option>수신일</option>
-		                          </select>
-		                     <input type="text" style="width:200px; height:30px;">
-			                <button type="button" class="btn btn-dark">검색</button>
-                      
-                    		 </div>   
 				              
-								<table id="datatable"
+								<table id="reciveTable"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
 										<tr>
@@ -106,38 +104,22 @@
 										</tr>
 									</thead>
 
-
 									<tbody>
-										<tr>
-											<td><input type="checkbox" id="check-all" class=iCheck-helper></td>
-											<td>수덩이</td>
-											<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-											<td>2016/08/13</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox" id="check-all"></td>
-											<td>수덩이</td>
-											<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-											<td>2016/08/13</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox" id="check-all"></td>
-											<td>수덩이</td>
-											<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-											<td>2016/08/13</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox" id="check-all"></td>
-											<td>수덩이</td>
-											<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-											<td>2016/08/13</td>
-										</tr>
-										<tr>
-											<td><input type="checkbox" id="check-all"></td>
-											<td>수덩이</td>
-											<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-											<td>2016/08/13</td>
-										</tr>
+										<c:forEach var="messageAllList" items="${messageAllList }">
+											<c:if test="${id eq messageAllList.mes_recive_use_id }">
+												<tr>
+													<td></td>
+													<td>${messageAllList.mes_send_use_id }</td>
+													<td>${messageAllList.mes_title }</td>
+													<td>${messageAllList.mes_date }</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+										<c:if test="${empty messageAllList}">
+											<tr>
+												<td colspan='4'><strong>받은쪽지가 없습니다.</strong></td>
+											</tr>
+										</c:if>
 									</tbody>
 								</table>
 								
@@ -152,24 +134,12 @@
 							</div>
 							</div>
 							
-							<!-- tab_content2 -->
+							<!-- 보낸쪽지함 -->
 						<div role="tabpanel" class="tab-pane fade" 
 									id="tab_content2" aria-labelledby="profile-tab">
 							<div class="x_content">
-							 <div style="text-align:right;">
-                    
-		                          <select style="width:100px; height:30px;">
-		                            <option>전체</option>
-		                            <option>수신자</option>
-		                            <option>내용</option>
-		                            <option>수신일</option>
-		                          </select>
-		                     <input type="text" style="width:200px; height:30px;">
-			                <button type="button" class="btn btn-dark">검색</button>
-                      
-                    		 </div>   
 				              
-							<table id="datatable" class="table table-striped jambo_table bulk_action">
+							<table id="sendTable" class="table table-striped jambo_table bulk_action">
 								<thead>
 									<tr>
 										<th>삭제</th>
@@ -181,36 +151,21 @@
 
 
 								<tbody>
-									<tr>
-										<td><input type="checkbox" id="check-all"></td>
-										<td>수덩이</td>
-										<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-										<td>2016/08/13</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" id="check-all"></td>
-										<td>수덩이</td>
-										<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-										<td>2016/08/13</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" id="check-all"></td>
-										<td>수덩이</td>
-										<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-										<td>2016/08/13</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" id="check-all"></td>
-										<td>수덩이</td>
-										<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-										<td>2016/08/13</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox" id="check-all"></td>
-										<td>수덩이</td>
-										<td>쪽~~~~~~~~~지~~~~~~~~~~~~왔다</td>
-										<td>2016/08/13</td>
-									</tr>
+										<c:forEach var="messageAllList" items="${messageAllList }">
+											<c:if test="${id eq messageAllList.mes_send_use_id }">
+												<tr>
+													<td></td>
+													<td>${messageAllList.mes_recive_use_id }</td>
+													<td>${messageAllList.mes_title }</td>
+													<td>${messageAllList.mes_date }</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+										<c:if test="${empty messageAllList}">
+											<tr>
+												<td colspan='4'><strong>보낸쪽지가 없습니다.</strong></td>
+											</tr>
+										</c:if>
 								</tbody>
 							</table>
 								<div class="col-md-9 col-sm-9 col-xs-12">
@@ -351,42 +306,21 @@
 				<div id="notif-group" class="tabbed_notifications"></div>
 			</div>
 
-			<!-- jQuery -->
-			<script src="/stu/js/jquery.min.js"></script>
-			<!-- Bootstrap -->
-			<script src="/stu/js/bootstrap.min.js"></script>
-			<!-- FastClick -->
-			<script src="/stu/js/fastclick.js"></script>
-			<!-- NProgress -->
-			<script src="/stu/js/nprogress.js"></script>
-			<!-- iCheck -->
-			<script src="/stu/js/icheck.min.js"></script>
-			<!-- bootstrap-progressbar -->
-			<script src="/stu/js/bootstrap-progressbar.min.js"></script>
-			<!-- PNotify -->
-			<script src="/stu/js/pnotify.js"></script>
-			<script src="/stu/js/pnotify.buttons.js"></script>
-			<script src="/stu/js/pnotify.nonblock.js"></script>
-			
-			<!-- bootstrap-wysiwyg -->
-		    <script src="/stu/js/bootstrap-wysiwyg.min.js"></script>
-		    <script src="/stu/js/jquery.hotkeys.js"></script>
-		    <script src="/stu/js/prettify.js"></script>
-		    <!-- jQuery Tags Input -->
-		    <script src="/stu/js/jquery.tagsinput.js"></script>
-		    <!-- Switchery -->
-		    <script src="/stu/js/switchery.min.js"></script>
-		    <!-- Select2 -->
-		    <script src="/stu/js/select2.full.min.js"></script>
-		    <!-- Parsley -->
-		    <script src="/stu/js/parsley.min.js"></script>
-		    <!-- Autosize -->
-		    <script src="/stu/js/autosize.min.js"></script>
-		    <!-- jQuery autocomplete -->
-		    <script src="/stu/js/jquery.autocomplete.min.js"></script>
-		    <!-- starrr -->
-		    <script src="/stu/js/starrr.js"></script>
-			
-
-			<!-- Custom Theme Scripts -->
-			<script src="/stu/js/custom.min.js"></script>
+			<script src="/bootstrap/js/fastclick.js"></script>
+			<script src="/bootstrap/js/nprogress.js"></script>
+			<script src="/bootstrap/js/icheck.min.js"></script>
+			<script src="/bootstrap/js/bootstrap-progressbar.min.js"></script>
+			<script src="/bootstrap/js/pnotify.js"></script>
+			<script src="/bootstrap/js/pnotify.buttons.js"></script>
+			<script src="/bootstrap/js/pnotify.nonblock.js"></script>
+		    <script src="/bootstrap/js/bootstrap-wysiwyg.min.js"></script>
+		    <script src="/bootstrap/js/jquery.hotkeys.js"></script>
+		    <script src="/bootstrap/js/prettify.js"></script>
+		    <script src="/bootstrap/js/jquery.tagsinput.js"></script>
+		    <script src="/bootstrap/js/switchery.min.js"></script>
+		    <script src="/bootstrap/js/select2.full.min.js"></script>
+		    <script src="/bootstrap/js/parsley.min.js"></script>
+		    <script src="/bootstrap/js/autosize.min.js"></script>
+		    <script src="/bootstrap/js/jquery.autocomplete.min.js"></script>
+		    <script src="/bootstrap/js/starrr.js"></script>
+			<script src="/bootstrap/js/custom.min.js"></script>

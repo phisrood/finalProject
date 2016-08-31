@@ -33,27 +33,25 @@ public class MessageDAOImpl implements MessageDAO{
 	SqlSession session;
 	
 	/**
-	 * 개인 정보 조회
+	 * 새로운쪽지리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
 	public List<MessageVO> getMessageNewList(UsersVO usersVO) {
-
 		return session.selectList("Message.messageNewList", usersVO);
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지전체리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageAllList() {
-		// TODO Auto-generated method stub
-		
+	public List<MessageVO> getMessageAllList(String id) {
+		return session.selectList("Message.messageAllList", id);
 	}
 	/**
 	 * 개인 정보 조회
@@ -74,7 +72,6 @@ public class MessageDAOImpl implements MessageDAO{
 	 */
 	@Override
 	public List<MessageViewVO> getMessageUserSearch() {
-
 		return session.selectList("Message.messageUserSearch");
 	}
 	/**

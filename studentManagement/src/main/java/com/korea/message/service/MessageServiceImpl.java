@@ -48,8 +48,9 @@ public class MessageServiceImpl implements MessageService{
 	 * @throws 
 	 */
 	@Override
-	public void getMessageAllList() {
+	public List<MessageVO> getMessageAllList(String id) {
 		// TODO Auto-generated method stub
+		return dao.getMessageAllList(id);
 		
 	}
 	/**

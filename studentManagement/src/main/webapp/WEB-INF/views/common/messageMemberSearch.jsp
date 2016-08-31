@@ -40,7 +40,7 @@
 			success:function(data){
 				var htmlCode="";
 				$.each(data, function(index, value){
-					htmlCode+="<tr id="+value.use_id+">";
+					htmlCode+="<tr id="+value.use_id+" class='searchTr'>";
 					htmlCode+="<td>"+value.use_id+"</td>";
 					htmlCode+="<td>"+value.use_name+"</td>";
 					htmlCode+="<td>"+value.dep_name+"</td>";
@@ -68,6 +68,9 @@ html, body {
 h2 {
 	display : inline;
 }
+#searchTable .searchTr:hover{
+	background-color: #CECEF6;
+}
 </style>
 </head>
 <body>
@@ -80,7 +83,7 @@ h2 {
 	<hr>
     <div>
 		<div style="width:100%;" id="result">
-			<table id="searchTable">
+			<table id="searchTable" border="1" style="width:100%;">
 				<thead>
 					<tr>
 						<th>학번</th>

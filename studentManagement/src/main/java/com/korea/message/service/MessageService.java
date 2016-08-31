@@ -33,13 +33,14 @@ public interface MessageService {
 	//새로운 쪽지 리스트 안읽은쪽지만 출력
 	public List<MessageVO> getMessageNewList(UsersVO usersVO);
 	/**
+	 * @param id 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//전체 쪽지 리스트
-	public void getMessageAllList();
+	public List<MessageVO> getMessageAllList(String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
