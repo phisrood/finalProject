@@ -1,5 +1,7 @@
 package com.korea.crsesBook.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,14 +30,15 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	private SqlSession sqlSession;
 	
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesBookList() {
-		// TODO Auto-generated method stub
+	public List<Lecture_BreakeDownVO> getCrsesBookList() {
+		return sqlSession.selectList("crsesBook.getCrsesBookList");
 		
 	}
 	/**
@@ -70,11 +73,17 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	//학수번호체크
 	@Override
 	public String getLbNoMatch(String lbNo) {
 		String result = (String) sqlSession.selectOne("crsesBook.getLbNoMatch", lbNo);
-		System.out.println(result);
 		return result;
+	}
+	
+	//수강편람 가져오기(행정)
+	@Override
+	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp() {
+		return sqlSession.selectList("crsesBook.getCrsesBookListByEmp");
 	}
 
 }

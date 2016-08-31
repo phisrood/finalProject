@@ -1,5 +1,7 @@
 package com.korea.crsesBook.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,15 +31,15 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	private CrsesBookDAO crsesBookDAO;
 	
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesBookList() {
-		// TODO Auto-generated method stub
-		
+	public List<Lecture_BreakeDownVO> getCrsesBookList() {
+		return crsesBookDAO.getCrsesBookList();
 	}
 	/**
 	 * 수강편람 등록
@@ -79,6 +81,10 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp() {
+		return crsesBookDAO.getCrsesBookListByEmp();
 	}
 
 }

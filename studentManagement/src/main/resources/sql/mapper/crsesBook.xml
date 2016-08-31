@@ -23,4 +23,16 @@
 		FROM LECTURE_BREAKEDOWN
 		WHERE LB_NO = #{lbNo}
 	</select>
+	
+	<select id="getCrsesBookList" resultType="lb">
+		SELECT *
+		FROM LECTURE_BREAKEDOWN
+		WHERE LB_REVOKEYN='N'
+	</select>
+	<select id="getCrsesBookListByEmp" resultType="lb">
+		SELECT *
+		FROM LECTURE_BREAKEDOWN
+		WHERE LB_REVOKEYN='N'
+		AND LB_APPROVALYN = 'N'
+	</select>
 </mapper>
