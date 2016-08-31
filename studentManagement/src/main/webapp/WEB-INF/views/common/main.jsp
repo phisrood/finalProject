@@ -41,8 +41,8 @@
 		  
 		function showPreview(content) { 
 		    var text = ""; 
-		        text = '<table cellpadding="5" bgcolor="#ffffff" style="font-size:10pt;color:#005F8B;filter:alpha(opacity=90); border-width:1; border-color:yellow; border-style:solid; background-color:yellow;">'; 
-		        text += '<tr><td>--내용미리보기--<br>' + content + '</td></tr></table>'; 
+		        text = '<table cellpadding="5" bgcolor="#ffffff" style="font-size:10pt;color:#005F8B;filter:alpha(opacity=90); border-width:1; border-color:#3291BD; border-style:solid; background-color:white;">'; 
+		        text += "<tr style='text-align:center;'><td><strong>미리보기<strong><br>" + content + "</td></tr></table>"; 
 		        document.getElementById('preview').innerHTML = text; 
 		        document.getElementById('preview').style.visibility = 'visible';  
 		} 
