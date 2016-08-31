@@ -5,9 +5,35 @@
 
 <mapper namespace="indivInfoManageDAO">
 	<select id="getIndivInfo" parameterType="str" resultType="IndivInfoManage">
-		SELECT *
+		SELECT
+		*
 		FROM STUDENT_INFO
 		WHERE STUD_USE_ID = #{stud_use_id}
 	</select>
+
+
+	<update id="setIndivInfo" parameterType="student">
+
+	UPDATE STUDENT
+	SET
+	stud_birth=#{stud_birth},
+	stud_bltype=#{stud_bltype},
+	stud_hob=#{stud_hob},
+	stud_phone=#{stud_phone},
+	stud_email=#{stud_email}
+	WHERE
+	stud_use_id=#{stud_use_id}
+	</update>
+
+
+	<update id="setIndivPwd" parameterType="str">
+	UPDATE USERS
+	SET
+	use_pwd=#{password}
+	WHERE
+	use_id=#{use_id}
 	
+	
+	</update>
+
 </mapper>

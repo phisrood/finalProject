@@ -21,6 +21,7 @@ package com.korea.indivInfoManage.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
 
@@ -44,9 +45,8 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	 * @throws 
 	 */
 	@Override
-	public String updateIndiv() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateIndiv(StudentVO studentVO) {
+		return indivInfoManageDAO.updateIndiv(studentVO);
 	}
 	/**
 	 * 학적 변동 현황
@@ -63,6 +63,11 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	public String getIndivInfo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int updateIndiv(String password) {
+	
+		return indivInfoManageDAO.updateIndiv(password);
 	}
 
 }

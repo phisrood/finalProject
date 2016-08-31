@@ -20,6 +20,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 
 
@@ -51,9 +52,8 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String updateIndiv() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateIndiv(StudentVO studentVO) {
+		 return sqlSession.update("indivInfoManageDAO.setIndivInfo",studentVO);
 	}
 	/**
 	 * 학적 변동 현황
@@ -70,6 +70,12 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	public String getIndivInfo() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	@Override
+	public int updateIndiv(String password) {
+		
+		
+		return sqlSession.update("indivInfoManageDAO.setIndivPwd",password);
 	}
 	
 

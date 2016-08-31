@@ -4,6 +4,9 @@ package com.korea.dto;
  * 학생정보 VIEW_VO
  * 
  * @param
+ * 
+ * 
+ * 		
        *  USE_ID           아이디                        
        *  USE_KIND         사용자구분                    
        *  USE_NAME         이름                          
@@ -52,6 +55,37 @@ package com.korea.dto;
 
 public class Student_InfoViewVO {
 
+	
+	public int getAf_no() {
+		return af_no;
+	}
+	public void setAf_no(int af_no) {
+		this.af_no = af_no;
+	}
+	public String getAf_realname() {
+		return af_realname;
+	}
+	public void setAf_realname(String af_realname) {
+		this.af_realname = af_realname;
+	}
+	public String getAf_tername() {
+		return af_tername;
+	}
+	public void setAf_tername(String af_tername) {
+		this.af_tername = af_tername;
+	}
+	public String getAf_path() {
+		return af_path;
+	}
+	public void setAf_path(String af_path) {
+		this.af_path = af_path;
+	}
+	private int af_no;
+	private String af_realname;
+	private String af_tername;
+	private String af_path;
+	
+	
 	private String use_id;
 	private String use_kind;
 	private String use_name;

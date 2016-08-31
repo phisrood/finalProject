@@ -18,6 +18,7 @@ package com.korea.indivInfoManage.service;
  */
 
 
+import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 
 
@@ -42,8 +43,16 @@ public interface IndivInfoManageService {
 	public Student_InfoViewVO getIndivInfo(String stud_use_id);
 	
 	//개인신상정보 수정
-
-	public String updateIndiv();
+	public int updateIndiv(StudentVO studentVO);
+	/**
+	 * 학적 변동 현황
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	
+	//개인신상정보 수정
+	public int updateIndiv(String password);
 	/**
 	 * 학적 변동 현황
 	 * @param
