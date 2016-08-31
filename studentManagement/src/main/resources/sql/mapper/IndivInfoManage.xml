@@ -26,12 +26,12 @@
 	</update>
 
 
-	<update id="setIndivPwd" parameterType="str">
+	<update id="setIndivPwd" parameterType="map">
 	UPDATE USERS
 	SET
 	use_pwd=#{password}
 	WHERE
-	use_id=#{use_id}
+	use_id=#{stud_use_id}
 	
 	
 	</update>

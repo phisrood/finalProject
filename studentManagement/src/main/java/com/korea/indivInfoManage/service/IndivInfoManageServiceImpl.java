@@ -18,6 +18,8 @@ package com.korea.indivInfoManage.service;
  */
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,9 +67,9 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 		return null;
 	}
 	@Override
-	public int updateIndiv(String password) {
+	public int updateIndiv(Map<String, String> params) {
 	
-		return indivInfoManageDAO.updateIndiv(password);
+		return indivInfoManageDAO.updateIndiv(params);
 	}
 
 }

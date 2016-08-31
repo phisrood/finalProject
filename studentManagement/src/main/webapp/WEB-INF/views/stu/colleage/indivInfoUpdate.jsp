@@ -12,20 +12,7 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<%@page import="com.korea.indivInfoManage.dao.IndivInfoManageDAO"%>
-<%@ page language="java" contentType = "text/plain;  charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+<%@ page language="java" contentType = "text/plain;  charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-<%@ page import = "java.util.List" %>
-<%-- <%
-String id = request.getParameter("id");
-<<<<<<< HEAD
-IndivInfoManageDAO dao = new IndivInfoManageDAO();
-int re = dao.checkId(id);
-=======
-IndivInfoManageDAO dao;
-//int re = dao.checkId(id);
->>>>>>> branch 'master' of https://github.com/phisrood/finalProject.git
-%>
-<%=re%> --%>
 

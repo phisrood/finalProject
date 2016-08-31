@@ -17,6 +17,8 @@ package com.korea.indivInfoManage.controller;
  */
 
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +66,7 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivUpdate", method=RequestMethod.POST)
-	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO,
+	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO, 
 							@RequestParam(value="after_use_pwd1", defaultValue="")String password){
 		String url = "/stu/colleage/indivInfo";
 		
@@ -75,15 +77,14 @@ public class IndivInfoManageController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		
+		HashMap<String , String> params = new HashMap<String , String>();
+		params.put("stud_use_id",stud_use_id);
+		params.put("password",password);
 		
 		//받아온 아이디로 수정
 		indivInfoManageService.updateIndiv(studentVO);
-		
-		
-		indivInfoManageService.updateIndiv(password);
-		
-		
-		
+		indivInfoManageService.updateIndiv(params);
+
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentViewVO);

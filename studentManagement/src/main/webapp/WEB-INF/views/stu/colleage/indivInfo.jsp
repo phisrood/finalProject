@@ -27,7 +27,12 @@
     <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script language="javascript">
+  function PopupWindow()
+    {
+       window.open("views/stu/colleage/indivInfoUpdate.jsp","popup", "width=700, height=900, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
+    }
+</script>
 
 	<form action="/stu/indivUpdate" method="POST">
 	<div class="row">
@@ -43,7 +48,7 @@
                         		<img id="image" src="/common/images/img1.jpg"  alt="Picture">
                         </div><br>
                         <div align="center">
-                        	<input type="text" id="" required="required" size="15" value="학생 사진"  disabled="disabled" style="text-align: center;">
+                        	<button type="button" class="btn btn-dark btn-xs" id>&nbsp;사진수정&nbsp;</button>
                     	</div>
                 	</div>
                 </div>
