@@ -43,7 +43,7 @@ public class MessageController {
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지함 리스트 더보기 출력 제이쿼리구현
+	//쪽지함 리스트 더보기 출력
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(){
 		String url="/common/messageAllList";
