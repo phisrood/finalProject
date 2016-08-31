@@ -1,4 +1,11 @@
 package com.korea.crsesBook.dao;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Lecture_BreakeDownVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,7 +22,11 @@ package com.korea.crsesBook.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class CrsesBookDAOImpl implements CrsesBookDAO{
+	@Autowired
+	private SqlSession sqlSession;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -34,9 +45,8 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertCrsesBook() {
-		// TODO Auto-generated method stub
-		
+	public void insertCrsesBook(Lecture_BreakeDownVO lbVO) {
+		sqlSession.insert("crsesBook.insertLectureBreak", lbVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -59,6 +69,12 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	public void updateCrsesBookDecide() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public String getLbNoMatch(String lbNo) {
+		String result = (String) sqlSession.selectOne("crsesBook.getLbNoMatch", lbNo);
+		System.out.println(result);
+		return result;
 	}
 
 }

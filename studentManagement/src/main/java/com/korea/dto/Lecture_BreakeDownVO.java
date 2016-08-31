@@ -22,6 +22,14 @@ public class Lecture_BreakeDownVO {
 	private String lb_completekind;
 	private String lb_approvalyn;
 	private String lb_revokeyn;
+	private String lb_credit;
+	
+	public String getLb_credit() {
+		return lb_credit;
+	}
+	public void setLb_credit(String lb_credit) {
+		this.lb_credit = lb_credit;
+	}
 	public int getLb_no() {
 		return lb_no;
 	}

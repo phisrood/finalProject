@@ -26,6 +26,7 @@
 		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
 		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
+		<typeAlias alias="lb" type="com.korea.dto.Lecture_BreakeDownVO" />
 		
 
 	</typeAliases>
@@ -39,6 +40,7 @@
 		<mapper resource="sql/mapper/student.xml" />
 		<mapper resource="sql/mapper/message.xml" />
 		<mapper resource="sql/mapper/colleageNotice.xml" />
+		<mapper resource="sql/mapper/crsesBook.xml" />
 		
 		<!-- 상담 -->
 	

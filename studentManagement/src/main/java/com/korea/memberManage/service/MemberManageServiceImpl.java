@@ -155,8 +155,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 */
 	@Override
 	public void insertProInfo(ProfessorVO professorVO, String name) {
-		
-		
+
 		UsersVO usersVO = new UsersVO();
 		usersVO.setAuthority("ROLE_PRO");
 		usersVO.setUse_kind("professor");
