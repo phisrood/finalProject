@@ -16,6 +16,7 @@ package com.korea.login.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,18 +24,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.MessageVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.service.LoginService;
+import com.korea.message.service.MessageService;
+import com.korea.notice.service.NoticeService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	MessageService messageService;
+	
+	@Autowired
+	NoticeService noticeService;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -64,16 +77,28 @@ public class LoginController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 메인화면
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//메인
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
-	public String main(){
+	public String main(HttpSession session, Model model){
 		String url ="/common/main";
-				
+		
+		//세션정보
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		
+		//메인 로딩될때 메시지 리스트 출력
+		List<MessageVO> messageNewList = messageService.getMessageNewList(usersVO);
+		//메인 로딩될때 공지사항 리스트 출력
+		List<Colleage_NoticeVO> noticeNewList = noticeService.getNoticeNewList();
+		
+		model.addAttribute("messageNewList", messageNewList);
+		model.addAttribute("noticeNewList", noticeNewList);
+		model.addAttribute("loginUser", usersVO);
+		
 		return url;
 	}
 	/**
@@ -149,8 +174,7 @@ public class LoginController {
 	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
 							@RequestParam(value="birth", defaultValue="")String birth){
 		String url="redirect:/common/loginForm";
-		
-		service.getLoginPwdSearch(id, birth);
+		service.updateLoginPwdSearch(id, birth);
 		
 		
 		return url;

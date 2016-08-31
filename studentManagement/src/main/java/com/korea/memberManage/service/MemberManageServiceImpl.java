@@ -1,19 +1,9 @@
 package com.korea.memberManage.service;
 
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.korea.dto.DepartmentVO;
-import com.korea.dto.ProfessorVO;
-import com.korea.dto.UsersVO;
-import com.korea.memberManage.dao.MemberManageDAO;
-
-
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -26,13 +16,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.DepartmentVO;
+import com.korea.dto.ProfessorDetailViewVO;
+import com.korea.dto.ProfessorVO;
+import com.korea.dto.ProfessorViewVO;
+import com.korea.dto.StudentVO;
+import com.korea.dto.UsersVO;
 import com.korea.memberManage.dao.MemberManageDAO;
 
 
 
 /**
  * @Class Name : MemberManageServiceImpl.java
- * @Description : 학생 및 교수 및 교직원 정보 조회 / 등록 / 수정 / 비활성화
+ * @Description : 구성원 정보 조회 / 등록 / 수정 / 비활성화
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -43,6 +39,10 @@ import com.korea.memberManage.dao.MemberManageDAO;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.	김양문			학생등록
+ *    2016.08.29	이수정			교수등록 
+ *    2016.08.29	이수정			교수조회 
+ *    2016.08.30.	이수정			교수수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -65,9 +65,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	 */
 
 	@Override
-	public String getStuInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<StudentVO> getStuInfoList() {
+		return memberManageDAO.getStuInfoList();
+		
 	}
 	/**
 	 * 학생 정보 등록
@@ -126,109 +126,34 @@ public class MemberManageServiceImpl implements MemberManageService{
 	/**
 	 * 교수 정보 조회
 	 * @param
-	 * @return 
+	 * @return 	List<ProfessorViewVO>
 	 * @throws 
 	 */
 	@Override
-	public String getProInfoList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProfessorViewVO> getProInfoList() {
+		
+		return memberManageDAO.getProInfoList();
 	}
 
 	/**
-	 * 교수 정보 등록
+	 * 학과 정보 가져오기
 	 * @param
-	 * @return 
+	 * @return 	List<DepartmentVO>
 	 * @throws 
 	 */
-
-	/**
-	 * 교수 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateProInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교수 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateproInfoOnOff() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	
-	/**
-	 * 교직원 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getEmpInfoList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 등록
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String insertEmpInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateEmpInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 교직원 정보 비활성화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateEmpInfoOnOff() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	private void readSheet(int columnindex, Sheet sheet) {
-		int rowindex;
-		int rows = sheet.getPhysicalNumberOfRows();
-		System.out.println(rows);
-		for (rowindex = 2; rowindex < rows; rowindex++) {
-			// 행을읽는다
-			Row row = sheet.getRow(rowindex);
-			readRow(columnindex, row);
-		}
-	}
-
-
 	@Override
 	public List<DepartmentVO> getDepartmentList() {
 		// TODO Auto-generated method stub
 		return memberManageDAO.getDepartmentList();
 	}
 
+	
+	/**
+	 * 교수 정보 등록
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public void insertProInfo(ProfessorVO professorVO, String name) {
 		
@@ -245,6 +170,50 @@ public class MemberManageServiceImpl implements MemberManageService{
 
 		
 	}
+	
+	//교수정보상세보기
+	@Override
+	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
+		return memberManageDAO.getDetailProInfo(pro_use_id);
+		
+	}
+	/**
+	 * 교수 정보 수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void updateProInfo(ProfessorVO professorVO, String name) {
+		memberManageDAO.updateProInfo(professorVO, name);
+		
+	}
+	/**
+	 * 교수 정보 비활성화
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public String updateproInfoOnOff() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	private void readSheet(int columnindex, Sheet sheet) {
+		int rowindex;
+		int rows = sheet.getPhysicalNumberOfRows();
+		System.out.println(rows);
+		for (rowindex = 2; rowindex < rows; rowindex++) {
+			// 행을읽는다
+			Row row = sheet.getRow(rowindex);
+			readRow(columnindex, row);
+		}
+	}
+
+
+	
 
 
 	private void readRow(int columnindex, Row row) {
@@ -337,4 +306,28 @@ public class MemberManageServiceImpl implements MemberManageService{
 		}
 		return value;
 	}
+	
+	
+	@Override
+	public String getEmpInfoList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String insertEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String updateEmpInfoOnOff() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

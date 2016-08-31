@@ -39,6 +39,6 @@ public interface LoginService {
 	
 
 	//비밀번호찾기
-	public void getLoginPwdSearch(String id, String birth);
+	public void updateLoginPwdSearch(String id, String birth);
 
 }

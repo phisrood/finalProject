@@ -26,24 +26,19 @@ import com.korea.dto.StudentVO;
 
 @Repository
 public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Autowired
+	private SqlSession sqlSession;
 	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-
-
-
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-
-
-	@Autowired
-	private SqlSession sqlSession;
-	
-
 	@Override
 	public StudentVO getIndivInfo(String id) {
 		return (StudentVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",id);
@@ -75,5 +70,11 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int checkId(String usrid) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
+	
 }

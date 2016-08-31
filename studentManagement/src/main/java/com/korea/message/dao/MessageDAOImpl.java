@@ -1,4 +1,15 @@
 package com.korea.message.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.MessageVO;
+import com.korea.dto.MessageViewVO;
+import com.korea.dto.UsersVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,29 +26,32 @@ package com.korea.message.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-
+@Repository
 public class MessageDAOImpl implements MessageDAO{
+	
+	@Autowired
+	SqlSession session;
+	
 	/**
-	 * 개인 정보 조회
+	 * 새로운쪽지리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageNewList() {
-		// TODO Auto-generated method stub
+	public List<MessageVO> getMessageNewList(UsersVO usersVO) {
+		return session.selectList("Message.messageNewList", usersVO);
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지전체리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageAllList() {
-		// TODO Auto-generated method stub
-		
+	public List<MessageVO> getMessageAllList(String id) {
+		return session.selectList("Message.messageAllList", id);
 	}
 	/**
 	 * 개인 정보 조회
@@ -57,9 +71,8 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getMessageUserSearch() {
-		// TODO Auto-generated method stub
-		
+	public List<MessageViewVO> getMessageUserSearch() {
+		return session.selectList("Message.messageUserSearch");
 	}
 	/**
 	 * 개인 정보 조회

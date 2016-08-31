@@ -1,4 +1,13 @@
 package com.korea.notice.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Colleage_NoticeVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,8 +24,12 @@ package com.korea.notice.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-
+@Repository
 public class NoticeDAOImpl implements NoticeDAO{
+	
+	@Autowired
+	SqlSession sqlSession;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -24,9 +37,8 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getNoticeNewList() {
-		// TODO Auto-generated method stub
-		
+	public List<Colleage_NoticeVO> getNoticeNewList() {
+		return sqlSession.selectList("ColleageNotice.noticeNewList");
 	}
 	/**
 	 * 개인 정보 조회

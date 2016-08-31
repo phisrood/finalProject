@@ -13,25 +13,39 @@
 <mapper namespace="member">
 	<!-- Users insert -->
 	<insert id="insertUser" parameterType="map">
+		INSERT INTO USERS (USE_ID, USE_KIND, USE_NAME, ENABLED, AUTHORITY,USE_PWD)
+		VALUES (
+		trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(id_seq.nextval, '0000'),' ','')) <!-- 아이디 -->
+		,'학생' <!-- 사용자구분 -->
+		,#{name} <!-- 이름 -->
+		,'1' <!-- enabled -->
+		,'ROLE_STU'
+		,#{reg1}) <!-- 권한 -->
 		<selectKey keyProperty="use_id" resultType="String" order="AFTER">
-			INSERT INTO USERS (USE_ID, USE_KIND, USE_NAME, ENABLED, USE_PWD,
-			AUTHORITY)
-			VALUES (
-			trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(id_seq.nextval, '0000'),' ','')) <!-- 아이디 -->
-			,'학생' <!-- 사용자구분 -->
-			,#{name} <!-- 이름 -->
-			,'1' <!-- enabled -->
-			,'ROLE_STU') <!-- 권한 -->
+			SELECT TRIM(REPLACE(TO_CHAR(SYSDATE, 'yyyy')||TO_CHAR(ID_SEQ.CURRVAL, '0000'),' ','')) FROM DUAL
 		</selectKey>
 	</insert>
 	<!-- Student insert -->
 	<insert id="insertStudent" parameterType="map">
-		INSERT INTO STUDENT (STUD_USE_ID,STUD_STAT,
-		STUD_MAJCREDIT,STUD_BIRTH,STUD_PHONE,STUD_ZIPCODE,STUD_ADD,
-		STUD_ADDDETAIL, STUD_BLTYPE, STUD_HOB, STUD_GENDER,
-		STUD_ENGNAME,STUD_EMAIL, STUD_REGNO1, STUD_REGNO2)
-		VALUES (
-		#{use_id} <!-- 아이디 -->
+		INSERT INTO STUDENT (	
+		STUD_USE_ID
+		,STUD_AF_NO
+		,STUD_STAT
+		,STUD_MAJCREDIT
+		,STUD_BIRTH
+		,STUD_PHONE
+		,STUD_ZIPCODE
+		,STUD_ADD
+		,STUD_ADDDETAIL
+		,STUD_BLTYPE
+		,STUD_GENDER
+		,STUD_ENGNAME
+		,STUD_EMAIL
+		,STUD_REGNO1
+		,STUD_REGNO2)
+		VALUES (		
+		#{use_id} <!-- 	아이디 -->
+		,1
 		,'입학' <!-- 학적상태 -->
 		,0 <!-- 전공이수학점 -->
 		,#{reg1} <!-- 생년월일 -->
@@ -40,7 +54,6 @@
 		,#{add} <!-- 주소 -->
 		,#{addDetail} <!-- 상세주소 -->
 		,#{blType} <!-- 혈액형 -->
-		,#{hob} <!-- 취미 -->
 		,#{gender} <!-- 성별 -->
 		,#{engname} <!-- 영문명 -->
 		,#{email} <!-- 이메일 -->
@@ -60,8 +73,10 @@
 	</insert>
 	<!-- reg insert -->
 	<insert id="insertRegist" parameterType="map">
-		INSERT INTO REGIST (REG_NO, REG_STUD_USE_ID, REG_STAT,REG_PAYSTAT,
-		REG_PAYSUM, REG_SUM, REG_DATE)
+		INSERT INTO REGIST
+		(REG_NO, REG_STUD_USE_ID, REG_STAT,REG_PAYSTAT,
+		REG_PAYSUM, REG_SUM,
+		REG_DATE)
 		VALUES(
 		REG_NO_SEQ.NEXTVAL
 		,#{use_id}
@@ -69,12 +84,30 @@
 		,'납부'
 		,#{paySum}
 		,#{paySum}
-		,{regDate}
+		,#{regDate}
 		)
 	</insert>
 	<!-- crc insert -->
 	<insert id="insertCRC" parameterType="map">
-		INSERT INTO COLLEAGE_LEGISTER_CHANGE(CRC_NO, CRC_STUD_USE_ID,CRC_YEAR)
+		INSERT INTO
+		COLLEAGE_REGISTER_CHANGE(CRC_NO, CRC_STUD_USE_ID,CRC_YEAR,CRC_CEMESTER, CRC_CHANGEDATE,CRC_COLLEAGESTATUS,CRC_CHANGEREASON,CRC_SUBMITYN)
+		VALUES(
+		CRC_NO_SEQ.NEXTVAL
+		,#{use_id}
+		,SYSDATE
+		,'1'
+		,SYSDATE
+		,'입학'
+		,'입학'
+		,'Y'
+		)
 	</insert>
 
+	<!-- member.getStuInfoList -->
+	<!-- 학생목록 가져오기 -->
+	<select id="getStuInfoList" resultType="studentView">
+		SELECT *
+		FROM STUDENT_VIEW
+		ORDER BY USE_ID DESC
+	</select>
 </mapper>

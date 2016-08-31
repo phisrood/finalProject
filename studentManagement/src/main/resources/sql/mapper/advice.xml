@@ -42,4 +42,9 @@
 		SET AD_STAT = '대기'
 		WHERE AD_NO = #{ad_no}
 	</update>
+
+	
+	<select id="selectReqList" resultType="adviceVO">
+		SELECT * FROM ADVICE
+	</select>
 </mapper>

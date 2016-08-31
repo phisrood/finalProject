@@ -13,57 +13,122 @@
  * </pre>
 ===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <script src="/common/js/notice.js"></script>
 <style>
-html, body { 
-	overflow : hidden;
+html, body {
+	overflow: hidden;
 }
+
 h2 {
-	display : inline;
+	display: inline;
 }
 </style>
 </head>
 <body>
-	<div style="float: left; width: 85%;">
-		&nbsp;<h2><i class="fa fa-bullhorn"></i>학과정보관리</h2>
+
+	<div class="row">
+
+		<!-- page content -->
+		<div class="x_panel">
+			<div class="x_title">
+				<h2>교수정보등록</h2>
+
+				<div class="clearfix"></div>
+			</div>
+			<div class="x_content">
+				<br />
+				<form name="proInsertForm" class="form-horizontal form-label-left">
+
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">학수번호</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="학수번호"
+								name="lec_no">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">교과목명</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="교과목명"
+								name="lb_name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="개설학과"
+								name="lb_department">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="분반"
+								name="lec_placement">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="학점"
+								name="lec_credit">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">이수구분</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="이수구분"
+								name="pro_zipcode">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">교번</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="교번"
+								name="pro_add">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">담당교수</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="담당교수"
+								name="pro_adddetail">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">비고</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="비고"
+								name="pro_adddetail">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">수업계획서
+							첨부파일</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="수업계획서"
+								name="pro_hob">
+						</div>
+					</div>
+					<div style="text-align: center;">
+						<button type="button" class="btn btn-dark"
+							onclick="insertPro('proInsertForm');">등록</button>
+						<button type="button" class="btn btn-dark">취소</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<!-- /page content -->
 	</div>
-	<div style="text-align:right">
-		<button type="button" class="btn btn-dark">등록</button>
-		<button type="button" class="btn btn-dark">취소</button>
-	</div><br><br>
-	<hr>
-    <div>
-		<br><div style="float: left; width: 20%;">구분</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">학수번호</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">교과목명</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">개설학과</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">분반</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">학점</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">이수구분</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">교번</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br>
-		<br><div style="float: left; width: 20%;">담당교수</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br><br>
-		<div style="float: left; width: 20%;">비고</div>
-		<div style="float: left; width: 80%;"><textarea rows="5" cols="40" name="contents"></textarea></div>
-		<div style="float: left; width: 20%;"><br>수업계획서 첨부 파일</div>
-		<div style="float: left; width: 80%;"><br><input type="text" name="title" size="38">&nbsp;<a href="" style="text-decoration:none">찾기</a></div>
-		
-	</div>
+
 </body>
 </html>

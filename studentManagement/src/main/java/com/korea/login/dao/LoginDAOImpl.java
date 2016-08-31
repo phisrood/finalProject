@@ -50,8 +50,8 @@ public class LoginDAOImpl implements LoginDAO{
 	 * @throws 
 	 */
 	@Override
-	public StudentVO getLoginPwdSearchStu(Map<String, String> params) {
-		return (StudentVO) session.selectOne("Login.searchPwdStu", params);
+	public StudentVO getLoginPwdSearchStu(StudentVO studentVO) {
+		return (StudentVO) session.selectOne("Login.searchPwdStu", studentVO);
 	}
 	
 	/**
@@ -61,8 +61,8 @@ public class LoginDAOImpl implements LoginDAO{
 	 * @throws 
 	 */
 	@Override
-	public ProfessorVO getLoginPwdSearchPro(Map<String, String> params) {
-		return (ProfessorVO) session.selectOne("Login.searchPwdPro", params);
+	public ProfessorVO getLoginPwdSearchPro(ProfessorVO professorVO) {
+		return (ProfessorVO) session.selectOne("Login.searchPwdPro", professorVO);
 	}
 	
 	/**
@@ -72,8 +72,23 @@ public class LoginDAOImpl implements LoginDAO{
 	 * @throws 
 	 */
 	@Override
-	public School_PersonVO getLoginPwdSearchEmp(Map<String, String> params) {
-		return (School_PersonVO) session.selectOne("Login.searchPwdEmp", params);
+	public School_PersonVO getLoginPwdSearchEmp(School_PersonVO school_PersonVO) {
+		return (School_PersonVO) session.selectOne("Login.searchPwdEmp", school_PersonVO);
+	}
+
+	@Override
+	public void updatePwdChangeStu(StudentVO studentVO) {
+		session.update("Login.changePwdStu", studentVO);
+	}
+
+	@Override
+	public void updatePwdChangePro(ProfessorVO professorVO) {
+		session.update("Login.changePwdPro", professorVO);
+	}
+
+	@Override
+	public void updatePwdChangeEmp(School_PersonVO school_PersonVO) {
+		session.update("Login.changePwdEmp", school_PersonVO);
 	}
 
 
