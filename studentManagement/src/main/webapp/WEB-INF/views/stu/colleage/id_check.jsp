@@ -1,23 +1,25 @@
 <%--==============================================================
- * °³ÀÎ Á¤º¸ °ü¸® id È®ÀÎ left ¸Þ´º±¸¼º
- * @author Á¶Çö¿í
+ * ê°œì¸ ì •ë³´ ê´€ë¦¬ id í™•ì¸ left ë©”ë‰´êµ¬ì„±
+ * @author ì¡°í˜„ìš±
  * @since  2016.08.29.
  * @version 1.0
  * @see
  * <pre>
- * << °³Á¤ÀÌ·Â(Modification Information) >>
- *    	¼öÁ¤ÀÏ       	¼öÁ¤ÀÚ          		¼öÁ¤³»¿ë
+ * << ê°œì •ì´ë ¥(Modification Information) >>
+ *    	ìˆ˜ì •ì¼       	ìˆ˜ì •ìž          		ìˆ˜ì •ë‚´ìš©
  *    -------      -------     -------------------
- *    2016.08.29.  	Á¶Çö¿í      		ÃÖÃÊ»ý¼º
+ *    2016.08.29.  	ì¡°í˜„ìš±      		ìµœì´ˆìƒì„±
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
 <%@page import="com.korea.indivInfoManage.dao.IndivInfoManageDAO"%>
-<%@ page contentType = "text/plain; charset=euc-kr" %>
+<%@ page language="java" contentType = "text/plain;  charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ page import = "java.util.List" %>
 <%
 String id = request.getParameter("id");
-IndivInfoManageDAO dao;
+IndivInfoManageDAO dao = new IndivInfoManageDAO();
 int re = dao.checkId(id);
 %>
 <%=re%>
