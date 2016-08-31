@@ -48,4 +48,6 @@ public interface IndivInfoManageDAO {
 	 * @throws 
 	 */
 	public String getColleageChangeList();
+	
+	public int checkId(String usrid);
 }
