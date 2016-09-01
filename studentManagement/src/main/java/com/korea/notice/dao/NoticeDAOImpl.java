@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.DepartmentVO;
 import com.korea.dto.ProfessorViewVO;
@@ -96,8 +98,28 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertNotice() {
-		// TODO Auto-generated method stub
+	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO) {
+		
+		System.out.println(colleage_NoticeVO.getCn_no());
+		System.out.println(colleage_NoticeVO.getCn_af_no());
+		System.out.println(colleage_NoticeVO.getCn_sp_use_id());
+		System.out.println(colleage_NoticeVO.getCn_title());
+		System.out.println(colleage_NoticeVO.getCn_content());
+		System.out.println(colleage_NoticeVO.getCn_date());
+		sqlSession.insert("ColleageNotice.insertNotice",colleage_NoticeVO);
+		
+	}
+	/**
+	 * 공지사항 파일업로드
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO) {
+		sqlSession.insert("ColleageNotice.insertNoticeFile",attachment_FileVO);
+		
+		return attachment_FileVO;
 		
 	}
 	/**

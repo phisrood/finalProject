@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.notice.dao.NoticeDAO;
 
@@ -43,7 +45,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	/**
 	 * @return 
-	 * 개인 정보 조회
+	 * 공지상세보기
 	 * @param
 	 * @return 
 	 * @throws 
@@ -94,10 +96,18 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public void insertNotice() {
-		// TODO Auto-generated method stub
+	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO,Attachment_FileVO attachment_FileVO) {
 		
+		System.out.println(attachment_FileVO.getAf_realname());
+		System.out.println(attachment_FileVO.getAf_path());
+		if(attachment_FileVO.getAf_realname()!=null){
+			noticeDAO.insertNoticeFile(attachment_FileVO);
+			colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+		}
+		noticeDAO.insertNotice(colleage_NoticeVO);
 	}
+	
+
 	/**
 	 * 개인 정보 조회
 	 * @param

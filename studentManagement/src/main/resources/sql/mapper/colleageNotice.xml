@@ -29,5 +29,36 @@
 		FROM	COLLEAGE_NOTICE
 		WHERE 	CN_NO = #{cn_no}
 	</select>
+	<insert id="insertNoticeFile" parameterType="attachment">
+	INSERT INTO ATTACHMENT_FILE(AF_NO
+								,AF_REALNAME
+								,AF_AFTERNAME
+								,AF_PATH
+								)
+						VALUES(attachment_file_seq.nextval
+							  ,#{af_realname}
+							  ,#{af_aftername}
+							  ,#{af_path})
+	
+		<selectKey resultType="int" keyProperty="af_no" order="AFTER">
+			SELECT attachment_file_seq.currval 
+			FROM dual
+		</selectKey>
+	</insert>
+	<insert id="insertNotice" parameterType="colleageNotice">
+		INSERT INTO COLLEAGE_NOTICE(CN_NO
+									,CN_AF_NO
+									,CN_SP_USE_ID
+									,CN_TITLE
+									,CN_CONTENT)
+							VALUES(colleagenotice_seq.nextval
+								  ,#{cn_af_no}
+								  ,#{cn_sp_use_id}
+								  ,#{cn_title}
+								  ,#{cn_content})
+		
+									
+	</insert>
+
 	
 </mapper>

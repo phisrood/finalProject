@@ -34,6 +34,7 @@
 		<typeAlias alias="messageView" type="com.korea.dto.MessageViewVO" />
 		<typeAlias alias="professorInfo" type="com.korea.dto.Professor_InfoViewVO" />
 		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
+		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 
 
 	</typeAliases>
