@@ -11,7 +11,7 @@
 		LB_COMPLETEKIND,LB_CREDIT, LB_APPROVALYN, LB_REVOKEYN)
 		VALUES
 		(
-		TO_CHAR(#{lb_no}, '00000')
+		TRIM(TO_CHAR(#{lb_no}, '00000'))
 		,#{lb_name}
 		,#{lb_department}
 		,#{lb_completekind}
@@ -60,7 +60,7 @@
 	
 	<update id="updateCrsesBook" parameterType="lb">
 		UPDATE LECTURE_BREAKEDOWN
-		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit}, LB_COMPLETEKIND=#{lb_completekind}
+		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit}, LB_COMPLETEKIND=#{lb_completekind},LB_APPROVALYN='N'
 		WHERE LB_NO = #{lb_no}
 	</update>
 </mapper>

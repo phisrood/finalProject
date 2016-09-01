@@ -20,8 +20,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<head>
 
-<script src="/common/js/notice.js"></script>
 <style>
 html, body {
 	overflow: hidden;
@@ -33,97 +33,95 @@ h2 {
 </style>
 </head>
 <body>
-
+	<script src="/common/js/notice.js"></script>
+	<script src="/pro/js/default.js"></script>
+	
 	<div class="row">
-
 		<!-- page content -->
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>수강편람 등록</h2>
-
+				<h2>강의개설</h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
 				<br />
-				<form name="proInsertForm" class="form-horizontal form-label-left">
-
+				<form name="insertLectureForm" class="form-horizontal form-label-left">
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학수번호</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="학수번호"
-								name="lb_no">
+							<input type="text" class="form-control" id="lb_no" value="${lb.lb_no }"
+								name="lec_lb_no" readonly="readonly"> <span id="lbNoCheck">
+							</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">교과목명</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="교과목명"
-								name="lb_name">
+							<input type="text" class="form-control"  value="${lb.lb_name }"
+								readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="개설학과"
-								name="lb_department">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
-						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="분반"
-								name="lec_placement">
+							<input type="text" class="form-control"
+								value="${lb.lb_department }" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="학점"
-								name="lec_credit">
+							<input type="text" class="form-control"  value="${lb.lb_credit }"
+								readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">이수구분</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="이수구분"
-								name="lb_completekind">
+							<input type="text" class="form-control" value="${lb.lb_completekind }"
+								readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">교번</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="교번"
-								name="pro_use_id">
+							<input type="text" class="form-control" placeholder="강의실"		name="lec_ci_no" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">담당교수</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학기</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="담당교수"
-								name="pro_adddetail">
+							<select class="form-control" name="lec_makesemester" >
+								<option selected value="none">선택해주세요</option>
+								<option value="1">1학기</option>
+								<option value="2">2학기</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">비고</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의연도</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="비고"
-								name="pro_adddetail">
+							<input type="text" class="form-control" placeholder="강의연도" name="lec_makeyear" >
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">수업계획서
-							첨부파일</label>
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">인원</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="수업계획서"
-								name="pro_hob">
+							<input type="text" class="form-control" placeholder="인원" name=lec_persons" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">이수구분</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="학점" value="${lb.lb_completekind }"
+								name="lb_completekind" readonly="readonly">
 						</div>
 					</div>
 					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
-							onclick="insertPro('proInsertForm');">등록</button>
-						<button type="button" class="btn btn-dark">취소</button>
+							onclick="updateLB('this.form');">수정</button>
+						<button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
 					</div>
-
 				</form>
 			</div>
 		</div>
