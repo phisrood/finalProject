@@ -122,6 +122,96 @@ public class IndivInfoManageController {
 	}
 	
 	
+	@RequestMapping(value="/colleage/indivInfoImageInsert", method=RequestMethod.GET)
+	public String ImageInsert(){
+		String url = "/stu/colleage/indivInfoImageInsert";
+		return url;
+	}
+
+
+	//사진파일 등록(insert)
+	@RequestMapping(value="/stu/indivInfoImageUpdateInsert", method=RequestMethod.POST)
+	public String ImageUpdateInsert(
+			   @RequestParam("f") MultipartFile multipartFile,
+			   @RequestParam("title") String title, 
+			   Model model,
+			   HttpServletRequest request,
+			   HttpServletResponse response,
+			   HttpSession session,
+			   StudentVO studentVO) throws IOException{
+	
+		
+		String url = "/stu/colleage/indivInfoImageInsert";
+		
+		
+		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
+		
+		if (!multipartFile.isEmpty()) {
+		
+		
+		// 실제 저장
+		    System.out.println(("-------------파일 업로드 시작 -------------"));
+		    System.out.println(("ContentType : "+multipartFile.getContentType()));
+            System.out.println(("name : "+multipartFile.getName()));
+            System.out.println(("filename : "+multipartFile.getOriginalFilename()));
+            System.out.println(("size : "+multipartFile.getSize()));
+            System.out.println(("filerute : "+uploadPath));
+            System.out.println(("-------------파일 업로드 종료 --------------\n"));
+            
+            File file = new File(uploadPath, multipartFile.getOriginalFilename());
+            multipartFile.transferTo(file); // 실제저장.
+            model.addAttribute("title", title);
+            model.addAttribute("fileName", multipartFile.getOriginalFilename());
+            model.addAttribute("uploadPath", file.getAbsolutePath());
+		
+		
+            String realName = multipartFile.getOriginalFilename();
+            String afPath = uploadPath+"\\"+multipartFile.getOriginalFilename();
+            
+            
+        
+            HashMap<String, String> insertMap = new HashMap<String , String>();
+            insertMap.put("realName",realName);
+            insertMap.put("afPath", afPath);
+            
+            
+            //최초 학생 사진등록
+            indivInfoManageService.insertImage(insertMap);
+            
+            //등록한 af_no을 가져온 뒤 학생 stu_af_no 업데이트 해준다.
+            
+            
+            int afNo = indivInfoManageService.selectafno();
+            
+            
+          //세션 아이디 받아오기
+    		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+    		String stud_use_id = loginUser.getUse_id();
+    		
+    		HashMap<String , String> para = new HashMap<String , String>();
+    		para.put("stud_use_id",stud_use_id);
+    		para.put("afNo",afNo+"");
+    		
+            indivInfoManageService.updateafno(para);
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            return url;
+            
+		
+		}
+		return url;
+		
+		
+	}
 	/**
 	 * 학생사진파일 변경 ( 학생 )
 	 * @param
@@ -142,7 +232,7 @@ public class IndivInfoManageController {
 	
 		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
 		
-		if (!multipartFile.isEmpty()) {
+			if (!multipartFile.isEmpty()) {
 			
 			
 			// 실제 저장

@@ -44,5 +44,36 @@
 	WHERE
 	af_no=#{stuAfNo}
 	</update>
+	
+	
+	<insert id="insertImage" parameterType="map">
+	
+	
+	
+	INSERT INTO ATTACHMENT_FILE(af_no, af_realname, af_aftername, af_path)
+	
+	VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{realName},#{realName},#{afPath})
+	</insert>
+	
+	
+	<select id="selectafno" resultType="int">
+	
+	SELECT ATTACHMENT_FILE_SEQ.CURRVAL 
+	FROM dual
+	
+	
+	</select>
+	
+	<update id="updateafno" parameterType="int">
+	
+	UPDATE STUDENT
+	SET
+	stud_af_no = #{afNo}
+	WHERE
+	stud_use_id=#{stud_use_id}
+
+	</update>
+	
+	
 
 </mapper>

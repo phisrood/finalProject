@@ -18,12 +18,12 @@
 </head>
 <body>
 
-	<h3>사진파일 변경하기</h3>
+	<h3>사진변경하기</h3>
 	
 	<form action="/stu/indivInfoImageUpdate" method="POST" enctype="multipart/form-data">
 		제목: <input type="text" name="title"><br />
 		파일: <input type="file" name="f"><br /> 
-		<input type="submit" value="전송" />
+		<input type="submit" value="변경" />
 	</form>
 
 

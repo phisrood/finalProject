@@ -73,5 +73,25 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 		
 		return indivInfoManageDAO.updateImage(map);
 	}
+	
+	@Override
+	public int insertImage(Map<String, String> insertMap) {
+		return indivInfoManageDAO.insertImage(insertMap);
+	}
 
+	
+	
+	
+	//방금 등록된 사진의 af_no 가져오기
+	@Override
+	public int selectafno() {
+		return indivInfoManageDAO.selectafno();
+	}
+	
+	//방금 등록된 사진의 af_no 가져와서 업데이트
+	@Override
+	public int updateafno(Map<String, String> para) {
+		
+		return (int) indivInfoManageDAO.updateafno(para);
+	}
 }

@@ -69,6 +69,10 @@ public interface IndivInfoManageDAO {
 	 * @throws 
 	 */
 	public String getColleageChangeList();
+	public int insertImage(Map<String, String> insertMap);
 	
+	public int selectafno();
+	
+	public int updateafno(Map<String, String> para);
 
 }

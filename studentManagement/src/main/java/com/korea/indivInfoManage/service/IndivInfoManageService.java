@@ -73,5 +73,26 @@ public interface IndivInfoManageService {
 	 * @return 
 	 * @throws 
 	 */
+	
+	public int insertImage(Map<String, String> insertMap);
+	/**
+	 * 이미지
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public String getColleageChangeList();
+	
+	
+	//af_no 찾아오기
+	public int selectafno();
+	
+	//af_no 찾아온 값 업데이트
+	public int updateafno(Map<String, String> para);
+	
+	
+	
+	
+	
+	
 }

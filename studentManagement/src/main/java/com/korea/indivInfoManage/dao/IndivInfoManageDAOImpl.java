@@ -88,6 +88,27 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		return sqlSession.update("indivInfoManageDAO.updateImage",map);
 	}
 	
+	//파일이미지등록
+	@Override
+	public int insertImage(Map<String, String> insertMap) {
+		
+	 return sqlSession.insert("indivInfoManageDAO.insertImage",insertMap);
+	 
+	}
+	
+	//처음등록된 사진 가져오기
+	@Override
+	public int selectafno() {
+		
+	 return (int) sqlSession.selectOne("indivInfoManageDAO.selectafno");
+	 
+	}
+	@Override
+	public int updateafno(Map<String, String> para) {
+		
+		return (int) sqlSession.update("indivInfoManageDAO.updateafno",para);
+	}
+	
 
 	
 }

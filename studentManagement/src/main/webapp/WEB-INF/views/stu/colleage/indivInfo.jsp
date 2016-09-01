@@ -51,7 +51,15 @@
                         </div>
                         <br>
                         <div align="center">
-                        	<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','600','500')" />   
+                        	<c:choose>
+                        		<c:when test="${studentVO.stud_af_no == 1 }">
+	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','600','500')" />
+                        		</c:when>
+                        		<c:otherwise>
+	                        		<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','600','500')" />
+                        		</c:otherwise>
+                        	</c:choose>
+                        	   
                     	</div>
                 
                 </div>
