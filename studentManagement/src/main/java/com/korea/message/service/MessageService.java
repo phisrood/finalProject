@@ -71,13 +71,17 @@ public interface MessageService {
 	//쪽지발신
 	public void insertMessage(MessageVO messageVO);
 	/**
+	 * @param message_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지삭제
-	public void deleteMessage();
+	//받은쪽지삭제
+	public void updateSendMessageDel(int message_no, String delyn);
+	
+	//보낸쪽지삭제
+	public void updateReciveMessageDel(int message_no, String delyn);
 	
 	
 	

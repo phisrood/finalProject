@@ -171,16 +171,53 @@ public class MessageController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지삭제
-	@RequestMapping(value="/common/messageDelete", method=RequestMethod.GET)
-	public String messageDelete(){
-		String url="";
+	//받은쪽지삭제
+	@RequestMapping(value="/common/messageSendDelete", method=RequestMethod.GET)
+	public String messageSendDelete(@RequestParam(value="message_no", defaultValue="")int message_no,
+								@RequestParam(value="delyn")String delyn,
+								HttpSession session){
+		String url="redirect:/common/error";
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		
+		service.updateSendMessageDel(message_no, delyn);
+		
+		if(loginUser.getAuthority().equals("ROLE_STU")){
+			url = "redirect:/stu/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_PRO")){
+			url = "redirect:/pro/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_EMP")){
+			url = "redirect:/emp/messageAllList";
+		}
+		return url;
+	}
+	/**
+	 * 쪽지삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//보낸쪽지삭제
+	@RequestMapping(value="/common/messageReciveDelete", method=RequestMethod.GET)
+	public String messageReciveDelete(@RequestParam(value="message_no", defaultValue="")int message_no,
+			@RequestParam(value="delyn")String delyn,
+			HttpSession session){
+		String url="redirect:/common/error";
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		
+		service.updateReciveMessageDel(message_no, delyn);
+		
+		if(loginUser.getAuthority().equals("ROLE_STU")){
+			url = "redirect:/stu/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_PRO")){
+			url = "redirect:/pro/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_EMP")){
+			url = "redirect:/emp/messageAllList";
+		}
 		return url;
 	}
 	/**

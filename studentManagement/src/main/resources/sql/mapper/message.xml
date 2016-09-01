@@ -17,6 +17,7 @@
 			, mes_readyn
 			, mes_delyn from message
 			where mes_readyn = 'n'
+			and mes_delyn = '1' or mes_delyn='3'
 			order by mes_no desc
 			)
 			where rnum between 1 and 20 
@@ -31,6 +32,7 @@
 	<!-- 전체리스트 가져오기 -->
 	<select id="messageAllList" parameterType="str" resultType="message">
 		select * from message where mes_send_use_id =#{id} or mes_recive_use_id=#{id}
+		and mes_delyn != '4'
 	</select>
 	
 	<!-- 쪽지읽음처리 -->
@@ -48,4 +50,9 @@
 		insert into message(mes_no, mes_send_use_id, mes_recive_use_id, mes_title, mes_content)
 		 values(message_seq.nextval, #{mes_send_use_id}, #{mes_recive_use_id}, #{mes_title}, #{mes_content})
 	</insert>
+	
+	<!-- 받은쪽지삭제 -->
+	<update id="messageDelete" parameterType="message">
+		update message set mes_delyn = #{mes_delyn} where mes_no = #{mes_no}
+	</update>
 </mapper>

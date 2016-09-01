@@ -84,15 +84,15 @@ public class MessageDAOImpl implements MessageDAO{
 		session.insert("Message.messageInsert", messageVO);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void deleteMessage() {
+	public void updateMessageDel(MessageVO messageVO) {
 		// TODO Auto-generated method stub
-		
+		session.delete("Message.messageDelete", messageVO);
 	}
 	
 	/**

@@ -90,14 +90,51 @@ public class MessageServiceImpl implements MessageService{
 		dao.insertMessage(messageVO);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 받은쪽지삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void deleteMessage() {
-		// TODO Auto-generated method stub
+	public void updateSendMessageDel(int message_no, String delyn) {
+		String mes_delyn = "";
+		MessageVO messageVO = new MessageVO();
+		if(delyn.equals("1")){
+			mes_delyn = "2";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}else if(delyn.equals("3")){
+			mes_delyn = "4";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}
+		
+		
+	}
+	/**
+	 * 보낸쪽지삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void updateReciveMessageDel(int message_no, String delyn) {
+		String mes_delyn = "";
+		MessageVO messageVO = new MessageVO();
+		if(delyn.equals("1")){
+			mes_delyn = "3";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}else if(delyn.equals("2")){
+			mes_delyn = "4";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}
+		
 		
 	}
 	/**

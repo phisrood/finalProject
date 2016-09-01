@@ -53,8 +53,9 @@
 					var title = data.mes_title;
 					var content = data.mes_content;
 					var date = data.mes_date;
+					var delyn = data.mes_delyn;
 					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
-					sendBtn += "<button type='button' class='btn btn-dark'>삭제</button>";
+					sendBtn += "<button class='btn btn-dark' onclick=location.href='/common/messageSendDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(from+send);
 					$("#messageTitle").html(title);
@@ -77,13 +78,15 @@
 				type:"json",
 				data:{"message_no": message_no},
 				success:function(data){
-					var send = "TO."+data.mes_recive_use_id;
+					var to = "TO.";
+					var send = data.mes_recive_use_id;
 					var title = data.mes_title;
 					var content = data.mes_content;
 					var date = data.mes_date;
-					var reciveBtn = "<br><br><button type='button' class='btn btn-dark'>삭제</button>&nbsp";
+					var delyn = data.mes_delyn;
+					var reciveBtn = "<button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
-					$("#messageSend").html(send);
+					$("#messageSend").html(to+send);
 					$("#messageTitle").html(title);
 					$("#messageContent").html(content);
 					$("#messageDate").html(date);
@@ -162,25 +165,22 @@
 									<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_recive_use_id }">
-												<tr class="messageSendDetail" id="${messageAllList.mes_no }">
-													<td><input type="checkbox"></td>
-													<td>${messageAllList.mes_send_use_id }</td>
-													<td>${messageAllList.mes_title }</td>
-													<td>${messageAllList.mes_date }</td>
-													<c:if test="${messageAllList.mes_readyn == 'n' }">
-														<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
-													</c:if>
-													<c:if test="${messageAllList.mes_readyn == 'y' }">
-														<td><span id="${messageAllList.mes_no }readyn"></span></td>
-													</c:if>
-												</tr>
+												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '3' }">
+													<tr class="messageSendDetail" id="${messageAllList.mes_no }">
+														<td><input type="checkbox"></td>
+														<td>${messageAllList.mes_send_use_id }</td>
+														<td>${messageAllList.mes_title }</td>
+														<td>${messageAllList.mes_date }</td>
+														<c:if test="${messageAllList.mes_readyn == 'n' }">
+															<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
+														</c:if>
+														<c:if test="${messageAllList.mes_readyn == 'y' }">
+															<td><span id="${messageAllList.mes_no }readyn"></span></td>
+														</c:if>
+													</tr>
+												</c:if>
 											</c:if>
 										</c:forEach>
-<%-- 										<c:if test="${empty messageAllList}">
-											<tr>
-												<td colspan='4'><strong>받은쪽지가 없습니다.</strong></td>
-											</tr>
-										</c:if> --%>
 									</tbody>
 								</table>
 									<div style="text-align:right;">
@@ -209,19 +209,16 @@
 								<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_send_use_id }">
-												<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
-													<td><input type="checkbox"></td>
-													<td>${messageAllList.mes_recive_use_id }</td>
-													<td>${messageAllList.mes_title }</td>
-													<td>${messageAllList.mes_date }</td>
-												</tr>
+												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '2' }">
+													<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
+														<td><input type="checkbox"></td>
+														<td>${messageAllList.mes_recive_use_id }</td>
+														<td>${messageAllList.mes_title }</td>
+														<td>${messageAllList.mes_date }</td>
+													</tr>
+												</c:if>
 											</c:if>
 										</c:forEach>
-<%-- 										<c:if test="${empty messageAllList}">
-											<tr>
-												<td colspan='4'><strong>보낸쪽지가 없습니다.</strong></td>
-											</tr>
-										</c:if> --%>
 								</tbody>
 							</table>
 									<div style="text-align:right;">

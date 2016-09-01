@@ -61,7 +61,6 @@ public interface MessageDAO {
 	//수신사용자검색 다른쪽 VO 리턴
 	public List<MessageViewVO> getMessageUserSearch();
 	/**
-	 * @param messageVO 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
@@ -76,7 +75,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//쪽지삭제
-	public void deleteMessage();
+	public void updateMessageDel(MessageVO messageVO);
 	
 	//읽음처리
 	public void updateMessageRead(String message_no);
