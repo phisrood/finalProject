@@ -104,12 +104,13 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/crsesBookUpdatePage", method = RequestMethod.GET)
-	public String crsesBookUpdatePage(String lb_no,Model model) {
+	public String crsesBookUpdatePage(String lb_no, Model model) {
 		String url = "/pro/crsesBookUpdate";
-		Lecture_BreakeDownVO lb= crsesBookService.getCrsesBook(lb_no);
+		Lecture_BreakeDownVO lb = crsesBookService.getCrsesBook(lb_no);
 		model.addAttribute("lb", lb);
 		return url;
 	}
+
 	/**
 	 * 수강편람 수정
 	 * 
@@ -203,5 +204,19 @@ public class CrsesBookController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 강의개설
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/pro/openLecturePage", method = RequestMethod.GET)
+	public String openLecturePage(String lb_no) {
+		String url = "/pro/openLecture";
+		crsesBookService.getCrsesBook(lb_no);
+		return url;
 	}
 }

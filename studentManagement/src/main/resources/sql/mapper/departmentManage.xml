@@ -12,7 +12,7 @@
 		(DEPARTMENT_SEQ.NEXTVAL,#{dep_name},#{dep_majneedcredit},#{dep_minneedcredit},#{dep_mulcredit},#{dep_phone},#{dep_engname})
 	</insert>
 
-	<update id="updateDepartment" parameterType="depart -ment">
+	<update id="updateDepartment" parameterType="department">
 		UPDATE DEPARTMENT
 		SET
 		DEP_NAME = #{dep_name},
