@@ -17,8 +17,13 @@ package com.korea.indivInfoManage.controller;
  */
 
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +32,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
@@ -38,6 +45,10 @@ public class IndivInfoManageController {
 
 	@Autowired
 	IndivInfoManageService indivInfoManageService;
+	
+	
+	private String uploadPath = null;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -81,8 +92,11 @@ public class IndivInfoManageController {
 		params.put("stud_use_id",stud_use_id);
 		params.put("password",password);
 		
-		//받아온 아이디로 수정
+		//받아온 아이디로 개인정보수정
 		indivInfoManageService.updateIndiv(studentVO);
+		
+		
+		//받아온 아이디로 비밀번호수정
 		indivInfoManageService.updateIndiv(params);
 
 		//받아온 아이디로 검색결과 출력
@@ -94,6 +108,114 @@ public class IndivInfoManageController {
 		
 		return url;
 	}
+	
+	/**
+	 * 학생사진파일 변경하기위한 새로우창 URL 연결 ( 학생 )
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/colleage/indivInfoImage", method=RequestMethod.GET)
+	public String ImageUpdate(){
+		String url = "/stu/colleage/indivInfoImage";
+		return url;
+	}
+	
+	
+	/**
+	 * 학생사진파일 변경 ( 학생 )
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/stu/indivInfoImageUpdate", method=RequestMethod.POST)
+	public String ImageUpdateAfter(@RequestParam("f") MultipartFile multipartFile,
+								   @RequestParam("title") String title, 
+								   Model model,
+								   HttpServletRequest request,
+								   HttpServletResponse response,
+								   HttpSession session,
+								   StudentVO studentVO) throws IOException{
+		String url = "/stu/colleage/indivInfoImage";
+		response.setCharacterEncoding("EUC-KR");
+		PrintWriter writer = response.getWriter();
+	
+		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
+		
+		if (!multipartFile.isEmpty()) {
+			
+			
+			// 실제 저장
+			    System.out.println(("-------------파일 업로드 시작 -------------"));
+			    System.out.println(("ContentType : "+multipartFile.getContentType()));
+	            System.out.println(("name : "+multipartFile.getName()));
+	            System.out.println(("filename : "+multipartFile.getOriginalFilename()));
+	            System.out.println(("size : "+multipartFile.getSize()));
+	            System.out.println(("filerute : "+uploadPath));
+	            System.out.println(("-------------파일 업로드 종료 --------------\n"));
+	            
+	            File file = new File(uploadPath, multipartFile.getOriginalFilename());
+	            multipartFile.transferTo(file); // 실제저장.
+	            model.addAttribute("title", title);
+	            model.addAttribute("fileName", multipartFile.getOriginalFilename());
+	            model.addAttribute("uploadPath", file.getAbsolutePath());
+	        
+	            
+	            
+	            
+	            
+	            UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+	    		String stud_use_id = loginUser.getUse_id();
+	    
+	    		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
+	           
+	            //DB 찾기
+	            
+	            
+	             String stuAfNo = studentViewVO.getStud_af_no()+"";
+	            //String stuid = studentVO.getStud_use_id();
+	             String realName = multipartFile.getOriginalFilename();
+	             String afPath = uploadPath+"\\"+multipartFile.getOriginalFilename();
+	            
+	            
+	             System.out.println(afPath);
+	            
+	             // DB에 파일정보 저장
+	            HashMap<String, String> map = new HashMap<String , String>();
+	            map.put("realName",realName);
+	            map.put("stuAfNo",stuAfNo);
+	            map.put("afPath", afPath);
+	            indivInfoManageService.updateImage(map);
+	            
+	            
+	    		
+	            
+	            
+	      
+	            writer.println("<script type='text/javascript'>");
+	            writer.println("alert('정상적으로 등록되었습니다.');");
+	            writer.println("history.back();");
+	            writer.println("</script>");
+	            writer.flush();   
+	            
+	            return url;
+		}
+		
+		   //실패시
+		   writer.println("<script type='text/javascript'>");
+           writer.println("alert('등록의 실패하였습니다. 다시 시도해 주세요.');");
+           writer.println("history.go(0);");
+           writer.println("</script>");
+           writer.flush();  
+           
+           return url;
+          
+	}
+	
+	
+	
+	
+	
 	/**
 	 * 학적 변동 현황 ( 학생 )
 	 * @param
@@ -124,10 +246,15 @@ public class IndivInfoManageController {
 	 * @return 
 	 * @throws 
 	 */
+	
+	
 	@RequestMapping(value="/emp/colleageChangeList", method=RequestMethod.GET)
 	public String colleageChangeListByEmp(){
 		String url = "/emp/colleageChangeList";
 		
 		return url;
 	}
+	
+	
+
 }

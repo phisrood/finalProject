@@ -59,6 +59,15 @@ public interface IndivInfoManageDAO {
 	 * @return 
 	 * @throws 
 	 */
+	
+	
+	public int updateImage(Map<String, String> map);
+	/**
+	 * 학적 변동 현황
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public String getColleageChangeList();
 	
 

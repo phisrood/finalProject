@@ -32,8 +32,17 @@
 	use_pwd=#{password}
 	WHERE
 	use_id=#{stud_use_id}
+	</update>
 	
 	
+	<update id="updateImage" parameterType="map">
+   
+	UPDATE ATTACHMENT_FILE
+	SET
+	af_aftername=#{realName},
+	af_path=#{afPath}
+	WHERE
+	af_no=#{stuAfNo}
 	</update>
 
 </mapper>

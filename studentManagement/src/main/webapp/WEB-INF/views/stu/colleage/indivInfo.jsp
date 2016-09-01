@@ -27,17 +27,17 @@
     <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-<script language="javascript">
-  function PopupWindow()
-    {
-       window.open("views/stu/colleage/indivInfoUpdate.jsp","popup", "width=700, height=900, left=30, top=30, scrollbars=no,titlebar=no,status=no,resizable=no,fullscreen=no");
-    }
+
+<script>
+
 </script>
 
 	<form action="/stu/indivUpdate" method="POST">
 	<div class="row">
     	<div class="x_panel_big">
     		<!-- 학생 개인 정보 관리 -->
+    		
+    		
     			<div class="x_panel">
    					<i class="fa fa-arrow-circle-o-right"></i> &nbsp;학생 개인 정보 관리
                 </div>
@@ -45,12 +45,15 @@
                 <div class="col-md-55">
                 	<div class="thumbnail" align="center" style="padding: 13px;">
                 		<div align="center" class="img-container" style="border: 1px solid; width:180px;">
-                        		<img id="image" src="/common/images/img1.jpg"  alt="Picture">
-                        </div><br>
+                        		<img id="image" src="/stu/images/${studentVO.af_aftername}" alt="Picture" width="170px" height="150px">
+                        		
+                        		</div>                     
+                        </div>
+                        <br>
                         <div align="center">
-                        	<button type="button" class="btn btn-dark btn-xs" id>&nbsp;사진수정&nbsp;</button>
+                        	<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','600','500')" />   
                     	</div>
-                	</div>
+                
                 </div>
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
@@ -84,7 +87,11 @@
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;"></div><br><br>
 					</div>
 				</div>
-				<div class="clearfix"></div>
+				<div class="clearfix">
+				
+					
+				
+				</div>
 				
 			<!-- 학생 개인 정보-->
 				<div>

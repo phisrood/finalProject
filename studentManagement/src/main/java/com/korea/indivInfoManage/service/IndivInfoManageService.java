@@ -44,6 +44,8 @@ public interface IndivInfoManageService {
 	//개인신상정보 조회
 	public Student_InfoViewVO getIndivInfo(String stud_use_id);
 	
+	
+
 	//개인신상정보 수정
 	public int updateIndiv(StudentVO studentVO);
 	/**
@@ -57,6 +59,16 @@ public interface IndivInfoManageService {
 	public int updateIndiv(Map<String, String> params);
 	/**
 	 * 학적 변동 현황
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	
+	
+	
+	public int updateImage(Map<String, String> map);
+	/**
+	 * 이미지
 	 * @param
 	 * @return 
 	 * @throws 

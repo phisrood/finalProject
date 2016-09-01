@@ -50,12 +50,9 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	public int updateIndiv(StudentVO studentVO) {
 		return indivInfoManageDAO.updateIndiv(studentVO);
 	}
-	/**
-	 * 학적 변동 현황
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	
+
 	@Override
 	public String getColleageChangeList() {
 		// TODO Auto-generated method stub
@@ -70,6 +67,11 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	public int updateIndiv(Map<String, String> params) {
 	
 		return indivInfoManageDAO.updateIndiv(params);
+	}
+	@Override
+	public int updateImage(Map<String, String> map) {
+		
+		return indivInfoManageDAO.updateImage(map);
 	}
 
 }

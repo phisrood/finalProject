@@ -80,6 +80,14 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		return sqlSession.update("indivInfoManageDAO.setIndivPwd",params);
 	}
 	
+	
+	//파일이미지변경
+	@Override
+	public int updateImage(Map<String, String> map) {
+	
+		return sqlSession.update("indivInfoManageDAO.updateImage",map);
+	}
+	
 
 	
 }
