@@ -21,36 +21,56 @@
  * </pre>
 ===============================================================--%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title></title>
 <script src="/common/js/notice.js"></script>
-<style>
-html, body { 
-	overflow : hidden;
-}
-h2 {
-	display : inline;
-}
-</style>
-</head>
-<body>
-	<div style="float: left; width: 85%;">
-		&nbsp;<h2>공지 사항</h2>
-	</div>
-	<div style="float: right; width: 11%; padding: 7px;">
-		<input type="button" value="닫기" onclick="notice_close();">
-	</div><br><br>
-	<hr>
-    <div>
-		<br><div style="float: left; width: 20%;">공지 제목</div>
-		<div style="float: left; width: 80%;"><input type="text" name="title" size="38"></div><br><br><br>
-		<div style="float: left; width: 20%;">공지 내용</div>
-		<div style="float: left; width: 80%;"><textarea rows="5" cols="40" name="contents"></textarea></div>
-		<div style="float: left; width: 20%;"><br>첨부 파일</div>
-		<div style="float: left; width: 80%;"><br><a href="" style="text-decoration:none">첨부 파일.zip 다운로드</a></div>
-	</div>
-</body>
-</html>
+<!-- 공지상세보기 -->
+	
+	<div class="row">
+
+	<!-- page content -->
+	<div class="x_panel">
+                  <div class="x_title">
+                    <h2>공지사항</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form name="noticeDetailForm" class="form-horizontal form-label-left">
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="cn_title" value="${noticeDetailVO.cn_title}" style="width:1000px;">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea class="form-control" name="cn_content" style="width:1000px;height:500px;">${noticeDetailVO.cn_content}</textarea>
+                        </div>
+                      </div>
+                 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="file" class="form-control" name="cn_af_no" value="${noticeDetailVO.cn_af_no}" style="width:1000px;"
+                          	<c:if test="${noticeDetailVO.cn_af_no == 0 }">첨부파일이 없습니다.</c:if>
+                        			<c:if test="${noticeDetailVO.cn_af_no != 0 }">${noticeDetailVO.cn_af_no }</c:if> >
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      <div style="text-align:right;">
+		               <!--  <button type="button" class="btn btn-dark" onclick="updatePro('proUpdateForm');" >수정</button> -->
+		                <button type="button" class="btn btn-dark">확인</button>
+                      </div>   
+
+                    </form>
+                  </div>
+                </div>
+	
+
+			<!-- /page content -->
+		</div>
+	

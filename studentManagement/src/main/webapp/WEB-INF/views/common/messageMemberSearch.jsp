@@ -55,7 +55,7 @@
 		$("#result").on("click", "tr", function(){
 			var id = $(this).attr("id");
 			
-			$("#first-name2", opener.document).val(id);
+			$("#mes_recive_use_id", opener.document).val(id);
 			window.close();
 			
 		});

@@ -52,23 +52,14 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">직책</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_position">
-                          	<option selected>선택해주세요</option>
-                          	
-                            <option value="학과장"<c:if test="${professorDetailViewVO.pro_position=='학과장'}">selected</c:if> >학과장</option>
-                            <option value="일반교수"<c:if test="${professorDetailViewVO.pro_position=='일반교수'}">selected</c:if>>일반교수</option>
-                          </select>
+                        	<input type="text" class="form-control" name="pro_position"  readonly="readonly" value="${professorDetailViewVO.pro_position}">
+                          
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">학과번호</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_dep_no">
-                          	<option selected>학과번호선택</option>
-                          	<c:forEach var="department" items="${departmentList}">
-								<option value="${department.dep_no}" <c:if test="${professorDetailViewVO.pro_dep_no==department.dep_no}">selected</c:if> >${department.dep_no}</option>
-			               	</c:forEach>
-                          </select>
+                        	<input type="text" class="form-control" name="pro_dep_no" readonly="readonly" value="${professorDetailViewVO.pro_dep_no}">
                         </div>
                       </div>
                       <div class="form-group">
@@ -104,13 +95,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">혈액형</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_bltype" readonly="readonly" value="${professorDetailViewVO.pro_bltype}">
-                          	<option selected>선택해주세요</option>
-                            <option value="A" <c:if test="${professorDetailViewVO.pro_bltype=='A'}">selected</c:if>>A</option>
-                            <option value="B" <c:if test="${professorDetailViewVO.pro_bltype=='B'}">selected</c:if>>B</option>
-                            <option value="AB" <c:if test="${professorDetailViewVO.pro_bltype=='AB'}">selected</c:if>>AB</option>
-                            <option value="O" <c:if test="${professorDetailViewVO.pro_bltype=='O'}">selected</c:if>>O</option>
-                          </select>
+                        	<input type="text" class="form-control" name="pro_dep_no" readonly="readonly" value="${professorDetailViewVO.pro_bltype}">
                         </div>
                       </div>
                       <div class="form-group">
@@ -122,11 +107,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">성별</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_gender" readonly="readonly" value="${professorDetailViewVO.pro_gender}">
-                          	<option selected>선택해주세요</option>
-                            <option value="남자" <c:if test="${professorDetailViewVO.pro_gender=='남자'}">selected</c:if>>남자</option>
-                            <option value="여자" <c:if test="${professorDetailViewVO.pro_gender=='여자'}">selected</c:if>>여자</option>
-                          </select>
+                        	<input type="text" class="form-control" name="pro_gender" readonly="readonly" value="${professorDetailViewVO.pro_gender}">
                         </div>
                       </div>
                      

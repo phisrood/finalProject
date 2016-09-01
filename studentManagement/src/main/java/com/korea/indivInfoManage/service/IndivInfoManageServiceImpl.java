@@ -18,6 +18,8 @@ package com.korea.indivInfoManage.service;
  */
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,12 +50,9 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	public int updateIndiv(StudentVO studentVO) {
 		return indivInfoManageDAO.updateIndiv(studentVO);
 	}
-	/**
-	 * 학적 변동 현황
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	
+
 	@Override
 	public String getColleageChangeList() {
 		// TODO Auto-generated method stub
@@ -65,9 +64,34 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 		return null;
 	}
 	@Override
-	public int updateIndiv(String password) {
+	public int updateIndiv(Map<String, String> params) {
 	
-		return indivInfoManageDAO.updateIndiv(password);
+		return indivInfoManageDAO.updateIndiv(params);
+	}
+	@Override
+	public int updateImage(Map<String, String> map) {
+		
+		return indivInfoManageDAO.updateImage(map);
+	}
+	
+	@Override
+	public int insertImage(Map<String, String> insertMap) {
+		return indivInfoManageDAO.insertImage(insertMap);
 	}
 
+	
+	
+	
+	//방금 등록된 사진의 af_no 가져오기
+	@Override
+	public int selectafno() {
+		return indivInfoManageDAO.selectafno();
+	}
+	
+	//방금 등록된 사진의 af_no 가져와서 업데이트
+	@Override
+	public int updateafno(Map<String, String> para) {
+		
+		return (int) indivInfoManageDAO.updateafno(para);
+	}
 }

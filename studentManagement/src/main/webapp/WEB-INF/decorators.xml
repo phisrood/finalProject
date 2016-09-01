@@ -25,5 +25,6 @@
 		<pattern>/*/noticeDetail</pattern>
 		<pattern>/common/pwdSearch</pattern>
 		<pattern>/pro/updateAdviceConfirmForm*</pattern>
+		<pattern>/common/messageReplyForm</pattern>
 	</excludes>
 </decorators>
