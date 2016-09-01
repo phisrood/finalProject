@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.NoticeViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.notice.service.NoticeService;
 
@@ -79,7 +80,7 @@ public class NoticeController {
 	public String noticeAllList(Model model){
 		String url="/common/noticeAllList";
 		
-		List<Colleage_NoticeVO> noticeAllList = noticeManagerService.getNoticeAllList();
+		List<NoticeViewVO> noticeAllList = noticeManagerService.getNoticeAllList();
 		
 		model.addAttribute("noticeAllList", noticeAllList);
 		

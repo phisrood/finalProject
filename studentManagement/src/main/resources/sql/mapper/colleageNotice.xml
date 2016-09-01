@@ -18,9 +18,9 @@
 			where rnum between 1 and 20
 	</select>
 	
-	<select id="getNoticeAllList" resultType="colleageNotice">
+	<select id="getNoticeAllList" resultType="noticeView">
 		SELECT 	*  	
-		FROM	COLLEAGE_NOTICE
+		FROM	NOTICE_VIEW
 		ORDER BY CN_NO DESC
 	</select>
 	

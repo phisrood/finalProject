@@ -5,12 +5,10 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
-import com.korea.dto.DepartmentVO;
-import com.korea.dto.ProfessorViewVO;
+import com.korea.dto.NoticeViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -63,9 +61,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<Colleage_NoticeVO> getNoticeAllList() {
-		List<Colleage_NoticeVO> noticeAllList = 
-				(List<Colleage_NoticeVO>) sqlSession.selectList("ColleageNotice.getNoticeAllList");
+	public List<NoticeViewVO> getNoticeAllList() {
+		List<NoticeViewVO> noticeAllList = 
+				(List<NoticeViewVO>) sqlSession.selectList("ColleageNotice.getNoticeAllList");
 		return noticeAllList;
 		
 	}

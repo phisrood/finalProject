@@ -78,8 +78,8 @@
 				                    	</c:when>
 				                    </c:choose>
                         			</td>
-                        			<c:if test="${noticeAllList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
-                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td>${noticeAllList.cn_af_no }</td></c:if>
+                        			<c:if test="${noticeAllList.cn_af_no == 0 }"><td>-</td></c:if>
+                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td>${noticeAllList.af_realname }</td></c:if>
                         			<td>${noticeAllList.cn_date }</td>
                         		</tr>
                         	</c:forEach>

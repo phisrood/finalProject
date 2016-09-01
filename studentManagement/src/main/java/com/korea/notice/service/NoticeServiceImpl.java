@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.NoticeViewVO;
 import com.korea.notice.dao.NoticeDAO;
 
 /**
@@ -57,13 +57,13 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항전체리스트
 	 * @param
-	 * @return 
+	 * @return List<NoticeViewVO>
 	 * @throws 
 	 */
 	@Override
-	public List<Colleage_NoticeVO> getNoticeAllList() {
+	public List<NoticeViewVO> getNoticeAllList() {
 
 		return noticeDAO.getNoticeAllList();
 	}
