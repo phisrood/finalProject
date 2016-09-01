@@ -53,7 +53,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="file" class="form-control" name="cn_af_no" value="${noticeDetailVO.cn_af_no}" style="width:1000px;"
+                          <input type="text" class="btn btn-dark" name="af_after_name" value="${noticeDetailVO.cn_af_no}" 
                           	<c:if test="${noticeDetailVO.cn_af_no == 0 }">첨부파일이 없습니다.</c:if>
                         			<c:if test="${noticeDetailVO.cn_af_no != 0 }">${noticeDetailVO.cn_af_no }</c:if> >
                         </div>

@@ -4,3 +4,4 @@ function OpenWindow(url,intWidth,intHeight) {
 function notice_close(){
 	window.close();
 } 
+

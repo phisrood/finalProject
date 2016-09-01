@@ -88,6 +88,21 @@
                       </tbody>
                     </table>
                   </div>
+                  	<div style="text-align: right;">
+                  		<c:choose>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+	                       		<a href="/emp/noticeInsertForm">
+									<button type="button" class="btn btn-dark">등록</button>
+								</a>
+								<button type="button" class="btn btn-dark">삭제</button>
+	                    	</c:when>
+	                    </c:choose>
+						
+					</div>
                 </div>
               </div>
        

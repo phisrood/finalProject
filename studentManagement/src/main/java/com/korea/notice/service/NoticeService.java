@@ -2,6 +2,9 @@ package com.korea.notice.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 
 /**
@@ -66,13 +69,16 @@ public interface NoticeService {
 	//공지사항 삭제
 	public void deleteNotice();
 	/**
+	 * @param multipartFile 
+	 * @param colleage_NoticeVO 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 등록
-	public void insertNotice();
+	//공지사항 등록,파일업로드
+	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO,Attachment_FileVO attachment_FileVO);
+	
 	/**
 	 * 개인 정보 조회
 	 * @param

@@ -47,6 +47,7 @@
 		<typeAlias alias="IndivInfoManage" type="com.korea.dto.Student_InfoViewVO" />
 		<!-- 행정 정보 -->
 		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
+		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 
 
 	</typeAliases>

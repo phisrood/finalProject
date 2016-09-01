@@ -17,6 +17,7 @@ public class Attachment_FileVO {
 	private String af_realname;
 	private String af_aftername;
 	private String af_path;
+	
 	public int getAf_no() {
 		return af_no;
 	}

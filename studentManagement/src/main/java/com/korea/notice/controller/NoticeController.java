@@ -15,17 +15,24 @@ package com.korea.notice.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.UsersVO;
 import com.korea.notice.service.NoticeService;
@@ -97,6 +104,50 @@ public class NoticeController {
 		return url;
 	}
 	/**
+	 * 공지사항 등록Form이동
+	 * @param
+	 * @return String
+	 * @throws 
+	 */
+	@RequestMapping(value="/emp/noticeInsertForm")
+	public String noticeInsertForm(){
+		String url="/emp/noticeInsert";
+		
+		return url;
+	}
+	/**
+	 * 공지사항 등록
+	 * @param
+	 * @return String
+	 * @throws 
+	 */
+	@RequestMapping(value="/emp/noticeInsert",  method=RequestMethod.POST )
+	public String noticeInsert(Colleage_NoticeVO colleage_NoticeVO, 
+			Model model, HttpServletRequest request, HttpSession session,
+			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile)
+										throws IOException{
+		String url="redirect:/emp/noticeAllList";
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/emp/noticeAF");
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String id=usersVO.getUse_id();
+		colleage_NoticeVO.setCn_sp_use_id(id);
+		
+		Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
+		if(!multipartFile.isEmpty()){
+			File noticeFile= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(noticeFile);	
+			attachment_FileVO.setAf_aftername(noticeFile.getName());
+			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
+			attachment_FileVO.setAf_path(uploadPath);
+		}
+		
+		noticeManagerService.insertNotice(colleage_NoticeVO,attachment_FileVO);
+		 
+		
+		return url;
+	}
+	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
@@ -138,21 +189,7 @@ public class NoticeController {
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 등록 + 파일첨부
-	@RequestMapping(value="/emp/noticeInsert", method=RequestMethod.POST)
-	public String noticeInsert(){
-		String url="/emp/noticeInsert";
-		
-		//파일첨부 구현
-		
-		return url;
-	}
+	
 	/**
 	 * 개인 정보 조회
 	 * @param

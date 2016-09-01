@@ -1,17 +1,3 @@
-<%--==============================================================
- * 사이버 캠퍼스 자유 게시판 left 메뉴구성
- * @author 조현욱
- * @since  2016.08.29.
- * @version 1.0
- * @see
- * <pre>
- * << 개정이력(Modification Information) >>
- *    	수정일       	수정자          		수정내용
- *    -------      -------     -------------------
- *    2016.08.29.  	조현욱      		최초생성
- * Copyright (c) 2016 by DDIT  All right reserved
- * </pre>
-===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -20,67 +6,86 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--==============================================================
+ * 공지사항 상세보기
+ * @author 
+ * @since  2016.08.25.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
 
-	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
-    <div class="row">
-    	<!-- 공지 사항 게시글 등록 -->
-    		<div style="float: left; width: 100%;"><br></div>
-    		<div style="float: left; width: 1%;"></div>
-	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 200px; text-align: center;"><h2>공지 사항 ( 등록 )</h2></div>
-			</div>
-			<div style="float: left; width: 100%;"><br></div>
-			<div class="x_panel_big">
-				<table id="datatable" class="table table-striped table-bordered">
-					<tr>
-						<td>제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;<input name="title" type="text"  size="167"></td>
-					</tr>
-					<tr>
-						<td>
-							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;<input name="writer" type="text"  size="75">&nbsp;&nbsp;
-							등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text"  size="75">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><input name="file" type="file"></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
-			</div>
-			<div style="float: right; width: 6%;">
-				<button type="button" class="btn btn-default btn-sm">등 록</button>
-			</div>
-    </div>
-    <!-- Datatables -->
-    <script src="/stu/js/jquery.dataTables.min.js"></script>
-    <script src="/stu/js/dataTables.bootstrap.min.js"></script>
-    <script src="/stu/js/dataTables.buttons.min.js"></script>
-    <script src="/stu/js/buttons.bootstrap.min.js"></script>
-    <script src="/stu/js/buttons.flash.min.js"></script>
-    <script src="/stu/js/buttons.html5.min.js"></script>
-    <script src="/stu/js/buttons.print.min.js"></script>
-    <script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/stu/js/dataTables.keyTable.min.js"></script>
-    <script src="/stu/js/dataTables.responsive.min.js"></script>
-    <script src="/stu/js/responsive.bootstrap.js"></script>
-    <script src="/stu/js/datatables.scroller.min.js"></script>
-    <script src="/stu/js/jszip.min.js"></script>
-    <script src="/stu/js/pdfmake.min.js"></script>
-    <script src="/stu/js/vfs_fonts.js"></script>
+<script>
+function insertNotice(insertNoticeForm) {
+	if(document.insertNoticeForm.cn_title.value==""){
+		alert('제목을 입력해주세요');
+		document.insertNoticeForm.cn_title.focus();
+	}else if(document.insertNoticeForm.cn_content.value==""){
+		alert('내용을 입력해주세요');
+		document.insertNoticeForm.cn_content.focus();
+	}else{
+		document.insertNoticeForm.method="post";
+		document.insertNoticeForm.action="/emp/noticeInsert";
+		document.insertNoticeForm.submit();
+		
+	}  
+}
+</script>
+<!-- 공지상세보기 -->
+	
+	<div class="row">
+
+	<!-- page content -->
+	<div class="x_panel">
+                  <div class="x_title">
+                    <h2>공지사항</h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form name="insertNoticeForm" action="/common/noticeAllList" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left" >
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="cn_title" style="width:1000px;">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea class="form-control" name="cn_content" style="width:1000px;height:500px;"></textarea>
+                        </div>
+                      </div>
+                 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="file" id="noticeFileUp" class="btn btn-dark" name="file" >
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      <div style="text-align:right;">
+                  
+		               <!--  <button type="button" class="btn btn-dark" onclick="updatePro('proUpdateForm');" >수정</button> -->
+		                <button type="button" class="btn btn-dark" onclick="insertNotice('insertNoticeForm');">확인</button>
+		                <button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
+                      </div>   
+
+                    </form>
+                  </div>
+                </div>
+	
+
+			<!-- /page content -->
+		</div>
+	

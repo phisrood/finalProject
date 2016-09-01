@@ -144,7 +144,7 @@
                       
                       <div style="text-align:center;">
 		                <button type="button" class="btn btn-dark" onclick="updatePro('proUpdateForm');" >수정</button>
-		                <button type="button" class="btn btn-dark">취소</button>
+		                <button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
                       </div>   
 
                     </form>

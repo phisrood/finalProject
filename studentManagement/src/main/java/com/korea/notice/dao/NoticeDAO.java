@@ -2,6 +2,9 @@ package com.korea.notice.dao;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 
 /**
@@ -67,13 +70,26 @@ public interface NoticeDAO {
 	//공지사항 삭제
 	public void deleteNotice();
 	/**
+	 * @param multipartFile 
+	 * @param colleage_NoticeVO 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//공지사항 등록
-	public void insertNotice();
+	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO);
+	/**
+	 * @return 
+	 * @param multipartFile 
+	 * @param colleage_NoticeVO 
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//공지사항 등록
+	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -82,4 +98,5 @@ public interface NoticeDAO {
 	 */
 	//파일다운로드
 	public void getNoticeFileDown();
+	
 }
