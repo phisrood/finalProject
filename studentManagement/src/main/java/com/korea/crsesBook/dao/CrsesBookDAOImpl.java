@@ -1,6 +1,8 @@
 package com.korea.crsesBook.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,9 +60,8 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBook() {
-		// TODO Auto-generated method stub
-		
+	public void updateCrsesBook(Lecture_BreakeDownVO lb) {
+		sqlSession.update("crsesBook.updateCrsesBook", lb);		
 	}
 	/**
 	 * 개인 정보 조회
@@ -69,8 +70,11 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBookDecide(String[] checkedlbNo) {
-		sqlSession.update("crsesBook.updateCrsesBookDecide", checkedlbNo);
+	public int updateCrsesBookDecide(String[] checkedlbNo, String approve) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("array", checkedlbNo);
+		map.put("approve", approve);
+		return sqlSession.update("crsesBook.updateCrsesBookDecide", map);
 		
 	}
 	//학수번호체크
@@ -84,6 +88,10 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	@Override
 	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp() {
 		return sqlSession.selectList("crsesBook.getCrsesBookListByEmp");
+	}
+	@Override
+	public Lecture_BreakeDownVO getCrsesBook(String lb_no) {
+		return (Lecture_BreakeDownVO) sqlSession.selectOne("crsesBook.getCrsesBook", lb_no);
 	}
 
 }

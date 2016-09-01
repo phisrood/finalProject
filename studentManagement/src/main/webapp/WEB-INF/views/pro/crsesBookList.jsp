@@ -23,6 +23,7 @@
 
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="/pro/js/default.js"></script>
 <script>
 	$(function() {
 		$('#datatable').DataTable();
@@ -63,7 +64,7 @@
 					</thead>
 					<tbody>
 						<c:forEach var="lb" items="${crsesBookList}">
-							<tr>
+							<tr onclick="updateCrsesBook('${lb.lb_no}');">
 								<td>${lb.lb_no }</td>
 								<td>${lb.lb_name }</td>
 								<td>${lb.lb_department }</td>

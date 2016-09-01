@@ -52,15 +52,14 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 		crsesBookDAO.insertCrsesBook(lbVO);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강편람 수정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBook() {
-		// TODO Auto-generated method stub
-		
+	public void updateCrsesBook(Lecture_BreakeDownVO lb) {
+		crsesBookDAO.updateCrsesBook(lb);
 	}
 	/**
 	 * 개인 정보 조회
@@ -69,9 +68,9 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	 * @throws 
 	 */
 	@Override
-	public void updateCrsesBookDecide(String lbNo) {
+	public int updateCrsesBookDecide(String lbNo, String approve) {
 		String[] checkedlbNo =lbNo.split(",");
-		crsesBookDAO.updateCrsesBookDecide(checkedlbNo);
+		return crsesBookDAO.updateCrsesBookDecide(checkedlbNo,approve);
 	}
 	@Override
 	public boolean getLbNoMatch(String lbNo) {
@@ -86,5 +85,10 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp() {
 		return crsesBookDAO.getCrsesBookListByEmp();
 	}
+	@Override
+	public Lecture_BreakeDownVO getCrsesBook(String lb_no) {
+		return crsesBookDAO.getCrsesBook(lb_no);
+	}
+
 
 }

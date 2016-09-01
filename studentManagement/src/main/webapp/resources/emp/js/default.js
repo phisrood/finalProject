@@ -139,5 +139,21 @@ function approve(){
 
 //수강편람 반려
 function disapprove(){
-	
+	var checked= $(".checkLb:checked");
+	var data=new Array();
+	checked.each(function(){
+		data.push($(this).val());
+	});
+	$.ajax({
+		url : "/emp/crsesBookDisapprove",
+		type: "post",
+		data : {"data":data.toString()},
+		dataType:"json",
+		success:function(){
+			location.href="/emp/crsesBookDecide";
+		},
+		error:function(){
+			alert("에러얌");
+		}
+	});
 }

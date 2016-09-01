@@ -29,6 +29,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesBook.service.CrsesBookService;
 import com.korea.dto.Lecture_BreakeDownVO;
@@ -43,7 +44,7 @@ public class CrsesBookController {
 	private CrsesBookService crsesBookService;
 	@Autowired
 	private MemberManageService memberManageService;
-	
+
 	/**
 	 * 개인 정보 조회
 	 * 
@@ -52,7 +53,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	// 수강편람조회
-	@RequestMapping(value = {"/pro/crsesBookList"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/pro/crsesBookList" }, method = RequestMethod.GET)
 	public String crsesBookList(Model model) {
 		String url = "/pro/crsesBookList";
 		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList();
@@ -96,17 +97,30 @@ public class CrsesBookController {
 	}
 
 	/**
-	 * 개인 정보 조회
+	 * 수강편람 수정페이지 이동
 	 * 
 	 * @param
 	 * @return
 	 * @throws
 	 */
-	// 수강편람수정
+	@RequestMapping(value = "/pro/crsesBookUpdatePage", method = RequestMethod.GET)
+	public String crsesBookUpdatePage(String lb_no,Model model) {
+		String url = "/pro/crsesBookUpdate";
+		Lecture_BreakeDownVO lb= crsesBookService.getCrsesBook(lb_no);
+		model.addAttribute("lb", lb);
+		return url;
+	}
+	/**
+	 * 수강편람 수정
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
 	@RequestMapping(value = "/pro/crsesBookUpdate", method = RequestMethod.GET)
-	public String crsesBookUpdate() {
-		String url = "";
-
+	public String crsesBookUpdate(Lecture_BreakeDownVO lb) {
+		String url = "redirect:/pro/crsesBookList";
+		crsesBookService.updateCrsesBook(lb);
 		return url;
 	}
 
@@ -120,22 +134,56 @@ public class CrsesBookController {
 	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.GET)
 	public String crsesBookDecidePage(Model model) {
 		String url = "/emp/crsesBookDecide";
-		List<Lecture_BreakeDownVO> lbList =  crsesBookService.getCrsesBookListByEmp();
-		model.addAttribute("crsesBookList",lbList);
+		List<Lecture_BreakeDownVO> lbList = crsesBookService
+				.getCrsesBookListByEmp();
+		model.addAttribute("crsesBookList", lbList);
 		return url;
 	}
+
 	/**
-	 * 수강편람 승인반려
+	 * 수강편람 승인
 	 * 
 	 * @param
 	 * @return
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.POST)
-	public void crsesBookDecide(String data) {
-		
-		crsesBookService.updateCrsesBookDecide(data);
-		
+	public void crsesBookDecide(String data, HttpServletResponse response) {
+		String approve = "Y";
+		int result = crsesBookService.updateCrsesBookDecide(data, approve);
+		ObjectMapper json = new ObjectMapper();
+		try {
+			response.getWriter().print(json.writeValueAsString(result));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 수강편람 반려
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/emp/crsesBookDisapprove", method = RequestMethod.POST)
+	public void crsesBookDisapprove(String data, HttpServletResponse response) {
+		String approve = "R";
+		int result = crsesBookService.updateCrsesBookDecide(data, approve);
+		ObjectMapper json = new ObjectMapper();
+		try {
+			response.getWriter().print(json.writeValueAsString(result));
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**

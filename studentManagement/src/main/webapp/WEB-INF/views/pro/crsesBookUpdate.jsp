@@ -35,66 +35,29 @@ h2 {
 <body>
 	<script src="/common/js/notice.js"></script>
 	<script src="/pro/js/default.js"></script>
-	<script type="text/javascript">
-		var result = false;
-		$(function() {
-			$("#lb_no").blur(
-					function() {
-						if ($("#lb_no").val().length > 4
-								&& $("#lb_no").val().length < 6) {
-							var lbNo = $("#lb_no").val();
-							$.ajax({
-								url : "/pro/lbNoSearch",
-								method : "get",
-								dataType : "json",
-								data : {
-									"lbNo" : lbNo
-								},
-								success : function(obj) {
-									result = obj;
-									if (obj) {
-										$("#lbNoCheck").html("사용가능합니다");
-									} else {
-										$("#lbNoCheck").html("사용불가합니다");
-									}
-
-								},
-								error : function() {
-									alert("에러얌");
-								}
-							});
-						} else {
-							result = false;
-							$("#lbNoCheck").html("다섯자리로 입력하세요");
-						}
-					});
-		});
-	</script>
+	
 	<div class="row">
-
 		<!-- page content -->
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>수강편람 등록</h2>
-
+				<h2>수강편람 수정</h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
 				<br />
-				<form name="lbInsertForm" class="form-horizontal form-label-left">
-
+				<form name="lbUpdateForm" class="form-horizontal form-label-left">
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학수번호</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" id="lb_no"
-								placeholder="학수번호" name="lb_no"> <span id="lbNoCheck">
+							<input type="text" class="form-control" id="lb_no" value="${lb.lb_no }"
+								placeholder="학수번호" name="lb_no" readonly="readonly"> <span id="lbNoCheck">
 							</span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">교과목명</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="교과목명"
+							<input type="text" class="form-control" placeholder="교과목명" value="${lb.lb_name }"
 								name="lb_name">
 						</div>
 					</div>
@@ -102,14 +65,13 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" name="lb_department"
-								value="${pro.dep_name }" readonly="readonly">
+								value="${lb.lb_department }" readonly="readonly">
 						</div>
 					</div>
-
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="학점"
+							<input type="text" class="form-control" placeholder="학점" value="${lb.lb_credit }"
 								name="lb_credit">
 						</div>
 					</div>
@@ -125,7 +87,8 @@ h2 {
 					</div>
 					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
-							onclick="insertLB(this.form);">등록</button>
+							onclick="updateLB('this.form');">수정</button>
+						<button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
 					</div>
 				</form>
 			</div>

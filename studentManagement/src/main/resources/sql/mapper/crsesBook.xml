@@ -41,14 +41,26 @@
 		AND LB_APPROVALYN = 'N'
 	</select>
 
-	<update id="updateCrsesBookDecide">
+	<update id="updateCrsesBookDecide" parameterType="map">
 		UPDATE
 		LECTURE_BREAKEDOWN
-		SET LB_APPROVALYN = 'Y'
+		SET LB_APPROVALYN = #{approve}
 		WHERE LB_NO in
 		<foreach item="item" index="index" collection="array" open="("
 			separator="," close=")">
 			#{item}
 		</foreach>
+	</update>
+	
+	<select id="getCrsesBook" parameterType="str" resultType="lb">
+		SELECT *
+		FROM LECTURE_BREAKEDOWN
+		WHERE LB_NO = #{lb_no}
+	</select>
+	
+	<update id="updateCrsesBook" parameterType="lb">
+		UPDATE LECTURE_BREAKEDOWN
+		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit}, LB_COMPLETEKIND=#{lb_completekind}
+		WHERE LB_NO = #{lb_no}
 	</update>
 </mapper>
