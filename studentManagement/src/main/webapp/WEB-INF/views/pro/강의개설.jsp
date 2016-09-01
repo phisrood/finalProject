@@ -20,8 +20,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<head>
 
+<script src="/common/js/notice.js"></script>
 <style>
 html, body {
 	overflow: hidden;
@@ -33,43 +33,7 @@ h2 {
 </style>
 </head>
 <body>
-	<script src="/common/js/notice.js"></script>
-	<script src="/pro/js/default.js"></script>
-	<script type="text/javascript">
-		var result = false;
-		$(function() {
-			$("#lb_no").blur(
-					function() {
-						if ($("#lb_no").val().length > 4
-								&& $("#lb_no").val().length < 6) {
-							var lbNo = $("#lb_no").val();
-							$.ajax({
-								url : "/pro/lbNoSearch",
-								method : "get",
-								dataType : "json",
-								data : {
-									"lbNo" : lbNo
-								},
-								success : function(obj) {
-									result = obj;
-									if (obj) {
-										$("#lbNoCheck").html("사용가능합니다");
-									} else {
-										$("#lbNoCheck").html("사용불가합니다");
-									}
 
-								},
-								error : function() {
-									alert("에러얌");
-								}
-							});
-						} else {
-							result = false;
-							$("#lbNoCheck").html("다섯자리로 입력하세요");
-						}
-					});
-		});
-	</script>
 	<div class="row">
 
 		<!-- page content -->
@@ -81,14 +45,13 @@ h2 {
 			</div>
 			<div class="x_content">
 				<br />
-				<form name="lbInsertForm" class="form-horizontal form-label-left">
+				<form name="proInsertForm" class="form-horizontal form-label-left">
 
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학수번호</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" id="lb_no"
-								placeholder="학수번호" name="lb_no"> <span id="lbNoCheck">
-							</span>
+							<input type="text" class="form-control" placeholder="학수번호"
+								name="lb_no">
 						</div>
 					</div>
 					<div class="form-group">
@@ -101,33 +64,66 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" name="lb_department"
-								value="${pro.dep_name }" readonly="readonly">
+							<input type="text" class="form-control" placeholder="개설학과"
+								name="lb_department">
 						</div>
 					</div>
-
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="분반"
+								name="lec_placement">
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" placeholder="학점"
-								name="lb_credit">
+								name="lec_credit">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">이수구분</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<select class="form-control" name="lb_completekind">
-								<option selected>선택해주세요</option>
-								<option value="전공">전공</option>
-								<option value="교양">교양</option>
-							</select>
+							<input type="text" class="form-control" placeholder="이수구분"
+								name="lb_completekind">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">교번</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="교번"
+								name="pro_use_id">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">담당교수</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="담당교수"
+								name="pro_adddetail">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">비고</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="비고"
+								name="pro_adddetail">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">수업계획서
+							첨부파일</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="수업계획서"
+								name="pro_hob">
 						</div>
 					</div>
 					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
-							onclick="insertLB(this.form);">등록</button>
+							onclick="insertPro('proInsertForm');">등록</button>
 						<button type="button" class="btn btn-dark">취소</button>
 					</div>
+
 				</form>
 			</div>
 		</div>

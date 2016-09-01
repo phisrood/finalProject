@@ -54,15 +54,14 @@ public class MessageDAOImpl implements MessageDAO{
 		return session.selectList("Message.messageAllList", id);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getMessageInfo() {
-		// TODO Auto-generated method stub
-		
+	public MessageVO updateMessageInfo(String message_no) {
+		return (MessageVO) session.selectOne("Message.messageInfo", message_no);
 	}
 	/**
 	 * 개인 정보 조회
@@ -95,6 +94,10 @@ public class MessageDAOImpl implements MessageDAO{
 	public void deleteMessage() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public void updateMessageRead(String message_no) {
+		session.update("Message.messageReadUpdate",message_no);
 	}
 
 	

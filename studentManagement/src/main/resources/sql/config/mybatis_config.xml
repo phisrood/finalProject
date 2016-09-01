@@ -29,6 +29,8 @@
 		<typeAlias alias="message" type="com.korea.dto.MessageVO" />
 		<typeAlias alias="professorView" type="com.korea.dto.ProfessorViewVO" />
 		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
+		<typeAlias alias="lb" type="com.korea.dto.Lecture_BreakeDownVO" />
+		<typeAlias alias="colleageNotice" type="com.korea.dto.Colleage_NoticeVO" />
 		<typeAlias alias="IndivInfoManage" type="com.korea.dto.Student_InfoViewVO" />
 		<typeAlias alias="messageView" type="com.korea.dto.MessageViewVO" />
 		<typeAlias alias="professorInfo" type="com.korea.dto.Professor_InfoViewVO" />
@@ -46,9 +48,8 @@
 		<mapper resource="sql/mapper/student.xml" />
 		<mapper resource="sql/mapper/message.xml" />
 		<mapper resource="sql/mapper/colleageNotice.xml" />
+		<mapper resource="sql/mapper/crsesBook.xml" />
 		<mapper resource="sql/mapper/IndivInfoManage.xml" />
-		
-
 		<!-- 상담 -->
 		<mapper resource="sql/mapper/advice.xml" />
 		<mapper resource="sql/mapper/adviceBoard.xml" />

@@ -32,13 +32,15 @@ public interface NoticeService {
 	//공지사항 게시판 리스트 Select 최신 20~30개씩
 	public List<Colleage_NoticeVO> getNoticeNewList();
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * @param cn_no 
+	 * 공지사항 상세보기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 미리보기 Select + 조회
-	public void getNoticeInfo();
+	//공지사항 상세보기
+	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -46,7 +48,7 @@ public interface NoticeService {
 	 * @throws 
 	 */
 	//공지사항 게시판 리스트 Select 
-	public void getNoticeAllList();
+	public List<Colleage_NoticeVO> getNoticeAllList();
 	/**
 	 * 개인 정보 조회
 	 * @param

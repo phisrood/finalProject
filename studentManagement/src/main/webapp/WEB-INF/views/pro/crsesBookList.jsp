@@ -23,13 +23,12 @@
 
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
-<script src="/emp/js/default.js"></script>
 <script>
 	$(function() {
 		$('#datatable').DataTable();
 	})
 </script>
-<!-- 수강편람승인반려 -->
+<!-- 교과목수강명단조회 -->
 
 <div class="row">
 
@@ -40,7 +39,7 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 수강편람승인/반려
+				<i class="fa fa-calendar"></i> 수강편람조회
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>
@@ -59,26 +58,32 @@
 							<th>개설학과</th>
 							<th>이수구분</th>
 							<th>학점</th>
-							<th>승인/반려</th>
+							<th>승인여부</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${crsesBookList}" var="lb">
+						<c:forEach var="lb" items="${crsesBookList}">
 							<tr>
 								<td>${lb.lb_no }</td>
 								<td>${lb.lb_name }</td>
 								<td>${lb.lb_department }</td>
 								<td>${lb.lb_completekind }</td>
 								<td>${lb.lb_credit }</td>
-								<td><input type="checkbox" class="checkLb" value="${lb.lb_no }" /></td>
+								<td><c:choose>
+										<c:when test="${lb.lb_approvalyn=='Y'}">
+										승인
+									</c:when>
+										<c:when test="${lb.lb_approvalyn=='N' }">
+										대기
+									</c:when>
+										<c:otherwise>
+										반려
+									</c:otherwise>
+									</c:choose></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
-			</div>
-			<div style="text-align: right;">			
-				<button type="button" class="btn btn-dark" onclick="approve()">승인</button>
-				<button type="button" class="btn btn-dark" onclick="disapprove()" >반려</button>
 			</div>
 			<!-- x-content -->
 		</div>

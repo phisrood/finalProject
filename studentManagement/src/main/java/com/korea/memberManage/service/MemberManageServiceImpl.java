@@ -143,7 +143,6 @@ public class MemberManageServiceImpl implements MemberManageService{
 	public void insertProInfo(ProfessorVO professorVO, UsersVO usersVO) {
 		
 		
-		
 		usersVO.setAuthority("ROLE_PRO");
 		usersVO.setUse_kind("professor");
 		usersVO.setUse_pwd(professorVO.getPro_regno1());

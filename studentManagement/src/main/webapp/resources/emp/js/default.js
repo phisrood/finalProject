@@ -116,3 +116,28 @@ function updatePro(proUpdateForm) {
 		
 	}  
 }
+//수강편람 승인
+function approve(){
+	var checked= $(".checkLb:checked");
+	var data=new Array();
+	checked.each(function(){
+		data.push($(this).val());
+	});
+	$.ajax({
+		url : "/emp/crsesBookDecide",
+		type: "post",
+		data : {"data":data.toString()},
+		dataType:"json",
+		success:function(){
+			location.href="/emp/crsesBookDecide";
+		},
+		error:function(){
+			alert("에러얌");
+		}
+	});
+}
+
+//수강편람 반려
+function disapprove(){
+	
+}

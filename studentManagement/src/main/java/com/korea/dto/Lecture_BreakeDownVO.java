@@ -16,16 +16,24 @@ package com.korea.dto;
  */
 public class Lecture_BreakeDownVO {
 	
-	private int lb_no;
+	private String lb_no;
 	private String lb_name;
 	private String lb_department;
 	private String lb_completekind;
 	private String lb_approvalyn;
 	private String lb_revokeyn;
-	public int getLb_no() {
+	private String lb_credit;
+	
+	public String getLb_credit() {
+		return lb_credit;
+	}
+	public void setLb_credit(String lb_credit) {
+		this.lb_credit = lb_credit;
+	}
+	public String getLb_no() {
 		return lb_no;
 	}
-	public void setLb_no(int lb_no) {
+	public void setLb_no(String lb_no) {
 		this.lb_no = lb_no;
 	}
 	public String getLb_name() {

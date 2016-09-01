@@ -130,9 +130,9 @@ public class LoginController {
 		model.addAttribute("messageNewList", messageNewList);
 		model.addAttribute("noticeNewList", noticeNewList);
 		model.addAttribute("loginUser", usersVO);
-		model.addAttribute("studentInfo",studentInfo );
-		model.addAttribute("professorInfo",professorInfo );
-		model.addAttribute("employeeInfo",employeeInfo );
+		session.setAttribute("studentInfo", studentInfo);
+		session.setAttribute("professorInfo", professorInfo);
+		session.setAttribute("employeeInfo", employeeInfo);
 		
 		return url;
 	}

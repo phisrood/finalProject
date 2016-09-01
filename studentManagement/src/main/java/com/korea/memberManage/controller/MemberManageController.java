@@ -236,7 +236,7 @@ public class MemberManageController {
 	public String proInfoDetail(@RequestParam(value="pro_use_id", defaultValue = "")String pro_use_id,Model model) {
 		String url = "/emp/proInfoUpdate";
 		
-		System.out.println(pro_use_id);
+		
 		ProfessorDetailViewVO professorDetailViewVO = memberManagerService.getDetailProInfo(pro_use_id);
 		List<DepartmentVO> departmentList = memberManagerService
 				.getDepartmentList();

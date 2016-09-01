@@ -53,9 +53,7 @@
 				alert("에러얌");		
 			}
 		});
-		$("#profile-tab").click(function(){
 			$('#datatable2').DataTable();
-		});
 	});
 </script>
 
@@ -153,8 +151,8 @@
 										<tbody>
 											<tr>
 												<td>${sta.count}</td>
-												<td>${professor.use_name}</td>
-												<td><a href="/emp/proInfoDetail?pro_use_id=${professor.pro_use_id}">${professor.pro_use_id}</a></td>
+												<td><a href="/emp/proInfoDetail?pro_use_id=${professor.pro_use_id}">${professor.use_name}</a></td>
+												<td>${professor.pro_use_id}</td>
 												<td>${professor.dep_name}</td>
 												<td>${professor.pro_position}</td>
 												<td>${professor.pro_gender}</td>
