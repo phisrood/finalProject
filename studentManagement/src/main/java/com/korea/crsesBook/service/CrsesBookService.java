@@ -40,14 +40,16 @@ public interface CrsesBookService {
 	//수강편람등록
 	public void insertCrsesBook(Lecture_BreakeDownVO lbVO);
 	/**
+	 * @param lb 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강편람수정
-	public void updateCrsesBook();
+	public void updateCrsesBook(Lecture_BreakeDownVO lb);
 	/**
+	 * @return 
 	 * @param data 
 	 * 개인 정보 조회
 	 * @param
@@ -55,7 +57,7 @@ public interface CrsesBookService {
 	 * @throws 
 	 */
 	//수강편람승인/반려
-	public void updateCrsesBookDecide(String data);
+	public int updateCrsesBookDecide(String data, String approve);
 	
 	/**
 	 * 학수번호 체크
@@ -66,12 +68,19 @@ public interface CrsesBookService {
 	public boolean getLbNoMatch(String lbNo);
 	
 	/**
-	 * 수강편람가져오기(행정)
+	 * 수강편람리스트 가져오기(행정)
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	public List<Lecture_BreakeDownVO> getCrsesBookListByEmp();
+	/**
+	 * 수강편람리스트 가져오기(교수)
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public Lecture_BreakeDownVO getCrsesBook(String lb_no);
 	
 	
 }

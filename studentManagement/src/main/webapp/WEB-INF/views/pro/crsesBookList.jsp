@@ -23,12 +23,13 @@
 
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="/pro/js/default.js"></script>
 <script>
 	$(function() {
 		$('#datatable').DataTable();
 	})
 </script>
-<!-- 교과목수강명단조회 -->
+<!-- 수강편람조회 -->
 
 <div class="row">
 
@@ -59,11 +60,13 @@
 							<th>이수구분</th>
 							<th>학점</th>
 							<th>승인여부</th>
+							<th>수정</th>
+							<th>강의개설</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="lb" items="${crsesBookList}">
-							<tr>
+							<tr >
 								<td>${lb.lb_no }</td>
 								<td>${lb.lb_name }</td>
 								<td>${lb.lb_department }</td>
@@ -80,7 +83,12 @@
 										반려
 									</c:otherwise>
 									</c:choose></td>
+									<td>
+									<button onclick="updateCrsesBook('${lb.lb_no}');">수정</button></td>
+									<td ><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>								
+									
 							</tr>
+							
 						</c:forEach>
 					</tbody>
 				</table>

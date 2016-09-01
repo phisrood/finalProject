@@ -62,8 +62,10 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public MessageVO updateMessageInfo(String message_no) {
 		
+		//수신 완료
 		dao.updateMessageRead(message_no);
-		MessageVO messageVO = dao.updateMessageInfo(message_no);
+		//정보가져오기
+		MessageVO messageVO = dao.getMessageInfo(message_no);
 		
 		return messageVO;
 	}
@@ -78,26 +80,72 @@ public class MessageServiceImpl implements MessageService{
 		return dao.getMessageUserSearch();
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지발신
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void insertMessage() {
-		// TODO Auto-generated method stub
+	public void insertMessage(MessageVO messageVO) {
+		dao.insertMessage(messageVO);
+	}
+	/**
+	 * 받은쪽지삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void updateSendMessageDel(int message_no, String delyn) {
+		String mes_delyn = "";
+		MessageVO messageVO = new MessageVO();
+		if(delyn.equals("1")){
+			mes_delyn = "2";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}else if(delyn.equals("3")){
+			mes_delyn = "4";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}
+		
 		
 	}
 	/**
-	 * 개인 정보 조회
+	 * 보낸쪽지삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void deleteMessage() {
-		// TODO Auto-generated method stub
+	public void updateReciveMessageDel(int message_no, String delyn) {
+		String mes_delyn = "";
+		MessageVO messageVO = new MessageVO();
+		if(delyn.equals("1")){
+			mes_delyn = "3";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}else if(delyn.equals("2")){
+			mes_delyn = "4";
+			messageVO.setMes_no(message_no);
+			messageVO.setMes_delyn(mes_delyn);
+			dao.updateMessageDel(messageVO);
+		}
 		
+		
+	}
+	/**
+	 * 보낸쪽지조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public MessageVO getMessageInfo(String message_no) {
+		return dao.getMessageInfo(message_no);
 	}
 
 	

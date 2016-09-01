@@ -5,8 +5,14 @@ package com.korea.dto;
  * 
  * @param
  * 
- * 
  * 		
+ * 	      AF_NO           파일번호
+	      AF_REALNAME     원본이름
+	      AF_AFTERNAME      변경이름
+		  AF_PATH         경로
+ * 
+ * 
+ * 
        *  USE_ID           아이디                        
        *  USE_KIND         사용자구분                    
        *  USE_NAME         이름                          
@@ -48,7 +54,7 @@ package com.korea.dto;
  * 
  * 
  * @version 박진성, 1.0, 2016.08.29, 초기 작성
- * 			박진성, 1.0, 2016.08.31, 1차 수정
+ * 			박진성, 1.0, 2016.08.31, 1차 수정(첨부파일 추가)
  * @author 박진성
  *
  */
@@ -68,22 +74,24 @@ public class Student_InfoViewVO {
 	public void setAf_realname(String af_realname) {
 		this.af_realname = af_realname;
 	}
-	public String getAf_tername() {
-		return af_tername;
-	}
-	public void setAf_tername(String af_tername) {
-		this.af_tername = af_tername;
-	}
+
 	public String getAf_path() {
 		return af_path;
 	}
 	public void setAf_path(String af_path) {
 		this.af_path = af_path;
 	}
+
+	public String getAf_aftername() {
+		return af_aftername;
+	}
+	public void setAf_aftername(String af_aftername) {
+		this.af_aftername = af_aftername;
+	}
+	private String af_path;
 	private int af_no;
 	private String af_realname;
-	private String af_tername;
-	private String af_path;
+	private String af_aftername;
 	
 	
 	private String use_id;

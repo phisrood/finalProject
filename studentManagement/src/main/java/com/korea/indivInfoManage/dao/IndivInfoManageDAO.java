@@ -17,6 +17,8 @@ package com.korea.indivInfoManage.dao;
  * </pre>
  */
 
+import java.util.Map;
+
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 
@@ -50,7 +52,16 @@ public interface IndivInfoManageDAO {
 	 */
 	
 	
-	public int updateIndiv(String password);
+	public int updateIndiv(Map<String, String> params);
+	/**
+	 * 학적 변동 현황
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	
+	
+	public int updateImage(Map<String, String> map);
 	/**
 	 * 학적 변동 현황
 	 * @param
@@ -58,6 +69,10 @@ public interface IndivInfoManageDAO {
 	 * @throws 
 	 */
 	public String getColleageChangeList();
+	public int insertImage(Map<String, String> insertMap);
 	
+	public int selectafno();
+	
+	public int updateafno(Map<String, String> para);
 
 }

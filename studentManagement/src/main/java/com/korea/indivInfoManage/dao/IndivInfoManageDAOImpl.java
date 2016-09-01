@@ -16,6 +16,8 @@ package com.korea.indivInfoManage.dao;
  * </pre>
  */
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -72,10 +74,39 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 		return null;
 	}
 	@Override
-	public int updateIndiv(String password) {
+	public int updateIndiv(Map<String, String> params) {
 		
 		
-		return sqlSession.update("indivInfoManageDAO.setIndivPwd",password);
+		return sqlSession.update("indivInfoManageDAO.setIndivPwd",params);
+	}
+	
+	
+	//파일이미지변경
+	@Override
+	public int updateImage(Map<String, String> map) {
+	
+		return sqlSession.update("indivInfoManageDAO.updateImage",map);
+	}
+	
+	//파일이미지등록
+	@Override
+	public int insertImage(Map<String, String> insertMap) {
+		
+	 return sqlSession.insert("indivInfoManageDAO.insertImage",insertMap);
+	 
+	}
+	
+	//처음등록된 사진 가져오기
+	@Override
+	public int selectafno() {
+		
+	 return (int) sqlSession.selectOne("indivInfoManageDAO.selectafno");
+	 
+	}
+	@Override
+	public int updateafno(Map<String, String> para) {
+		
+		return (int) sqlSession.update("indivInfoManageDAO.updateafno",para);
 	}
 	
 

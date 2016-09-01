@@ -50,7 +50,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//쪽지조회
-	public MessageVO updateMessageInfo(String message_no);
+	public MessageVO getMessageInfo(String message_no);
 	/**
 	 * @return 
 	 * 개인 정보 조회
@@ -67,7 +67,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//쪽지발신
-	public void insertMessage();
+	public void insertMessage(MessageVO messageVO);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -75,7 +75,7 @@ public interface MessageDAO {
 	 * @throws 
 	 */
 	//쪽지삭제
-	public void deleteMessage();
+	public void updateMessageDel(MessageVO messageVO);
 	
 	//읽음처리
 	public void updateMessageRead(String message_no);

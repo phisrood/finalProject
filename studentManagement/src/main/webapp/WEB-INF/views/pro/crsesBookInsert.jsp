@@ -126,7 +126,6 @@ h2 {
 					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
 							onclick="insertLB(this.form);">등록</button>
-						<button type="button" class="btn btn-dark">취소</button>
 					</div>
 				</form>
 			</div>

@@ -26,14 +26,54 @@
 	</update>
 
 
-	<update id="setIndivPwd" parameterType="str">
+	<update id="setIndivPwd" parameterType="map">
 	UPDATE USERS
 	SET
 	use_pwd=#{password}
 	WHERE
-	use_id=#{use_id}
-	
-	
+	use_id=#{stud_use_id}
 	</update>
+	
+	
+	<update id="updateImage" parameterType="map">
+   
+	UPDATE ATTACHMENT_FILE
+	SET
+	af_aftername=#{realName},
+	af_path=#{afPath}
+	WHERE
+	af_no=#{stuAfNo}
+	</update>
+	
+	
+	<insert id="insertImage" parameterType="map">
+	
+	
+	
+	INSERT INTO ATTACHMENT_FILE(af_no, af_realname, af_aftername, af_path)
+	
+	VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{realName},#{realName},#{afPath})
+	</insert>
+	
+	
+	<select id="selectafno" resultType="int">
+	
+	SELECT ATTACHMENT_FILE_SEQ.CURRVAL 
+	FROM dual
+	
+	
+	</select>
+	
+	<update id="updateafno" parameterType="int">
+	
+	UPDATE STUDENT
+	SET
+	stud_af_no = #{afNo}
+	WHERE
+	stud_use_id=#{stud_use_id}
+
+	</update>
+	
+	
 
 </mapper>

@@ -43,19 +43,21 @@
 			var message_no = $(this).attr("id");
 			
 			$.ajax({
-				url:"/common/messageInfo",
+				url:"/common/messageSendInfo",
 				method:"get",
 				type:"json",
 				data:{"message_no": message_no},
 				success:function(data){
-					var send = "Form."+data.mes_send_use_id;;
+					var from = "From.";
+					var send = data.mes_send_use_id;
 					var title = data.mes_title;
 					var content = data.mes_content;
 					var date = data.mes_date;
-					var sendBtn = "<br><br><button type='button' class='btn btn-dark'>답장</button>&nbsp";
-					sendBtn += "<button type='button' class='btn btn-dark'>삭제</button>";
+					var delyn = data.mes_delyn;
+					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
+					sendBtn += "<button class='btn btn-dark' onclick=location.href='/common/messageSendDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
-					$("#messageSend").html(send);
+					$("#messageSend").html(from+send);
 					$("#messageTitle").html(title);
 					$("#messageContent").html(content);
 					$("#messageDate").html(date);
@@ -71,18 +73,20 @@
 			var message_no = $(this).attr("id");
 			
 			$.ajax({
-				url:"/common/messageInfo",
+				url:"/common/messageReciveInfo",
 				method:"get",
 				type:"json",
 				data:{"message_no": message_no},
 				success:function(data){
-					var send = "TO."+data.mes_recive_use_id;
+					var to = "TO.";
+					var send = data.mes_recive_use_id;
 					var title = data.mes_title;
 					var content = data.mes_content;
 					var date = data.mes_date;
-					var reciveBtn = "<br><br><button type='button' class='btn btn-dark'>삭제</button>&nbsp";
+					var delyn = data.mes_delyn;
+					var reciveBtn = "<button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
-					$("#messageSend").html(send);
+					$("#messageSend").html(to+send);
 					$("#messageTitle").html(title);
 					$("#messageContent").html(content);
 					$("#messageDate").html(date);
@@ -90,6 +94,15 @@
 				}
 			});
 		}); 
+		
+		$("#profile-tab2").click(function(){
+			$("#messageDe").html("");
+ 			$("#home-tab, #profile-tab").click(function(){
+				location.reload();
+			});
+		});
+		
+
 		
 	});
 </script>
@@ -152,25 +165,22 @@
 									<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_recive_use_id }">
-												<tr class="messageSendDetail" id="${messageAllList.mes_no }">
-													<td><input type="checkbox"></td>
-													<td>${messageAllList.mes_send_use_id }</td>
-													<td>${messageAllList.mes_title }</td>
-													<td>${messageAllList.mes_date }</td>
-													<c:if test="${messageAllList.mes_readyn == 'n' }">
-														<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
-													</c:if>
-													<c:if test="${messageAllList.mes_readyn == 'y' }">
-														<td><span id="${messageAllList.mes_no }readyn"></span></td>
-													</c:if>
-												</tr>
+												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '3' }">
+													<tr class="messageSendDetail" id="${messageAllList.mes_no }">
+														<td><input type="checkbox"></td>
+														<td>${messageAllList.mes_send_use_id }</td>
+														<td>${messageAllList.mes_title }</td>
+														<td>${messageAllList.mes_date }</td>
+														<c:if test="${messageAllList.mes_readyn == 'n' }">
+															<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
+														</c:if>
+														<c:if test="${messageAllList.mes_readyn == 'y' }">
+															<td><span id="${messageAllList.mes_no }readyn"></span></td>
+														</c:if>
+													</tr>
+												</c:if>
 											</c:if>
 										</c:forEach>
-										<c:if test="${empty messageAllList}">
-											<tr>
-												<td colspan='4'><strong>받은쪽지가 없습니다.</strong></td>
-											</tr>
-										</c:if>
 									</tbody>
 								</table>
 									<div style="text-align:right;">
@@ -199,19 +209,16 @@
 								<tbody>
 										<c:forEach var="messageAllList" items="${messageAllList }">
 											<c:if test="${id eq messageAllList.mes_send_use_id }">
-												<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
-													<td><input type="checkbox"></td>
-													<td>${messageAllList.mes_recive_use_id }</td>
-													<td>${messageAllList.mes_title }</td>
-													<td>${messageAllList.mes_date }</td>
-												</tr>
+												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '2' }">
+													<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
+														<td><input type="checkbox"></td>
+														<td>${messageAllList.mes_recive_use_id }</td>
+														<td>${messageAllList.mes_title }</td>
+														<td>${messageAllList.mes_date }</td>
+													</tr>
+												</c:if>
 											</c:if>
 										</c:forEach>
-										<c:if test="${empty messageAllList}">
-											<tr>
-												<td colspan='4'><strong>보낸쪽지가 없습니다.</strong></td>
-											</tr>
-										</c:if>
 								</tbody>
 							</table>
 									<div style="text-align:right;">
@@ -232,29 +239,29 @@
 			                  <ul class="nav navbar-right panel_toolbox">	                    
 			                  </ul>
 			                <div class="clearfix"></div>
-			                <form class="form-horizontal form-label-left">
+			                <form class="form-horizontal form-label-left" action="messageSend" method="post">
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="first-name">수신자 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" id="first-name2" required="required" class="col-md-7 col-xs-12" style="width:80%;">
+			                      <input type="text" id="mes_recive_use_id" name="mes_recive_use_id" required="required" class="col-md-7 col-xs-12" style="width:80%;" readonly="readonly">
 			                    </div>
 			                     <button type="button" class="btn btn-dark" onclick="javascript:OpenWindow('/common/messageUserSearchForm','600','500')" style="text-decoration:none">검색</button>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" id="last-name2" name="last-name" required="required" class="col-md-7 col-xs-12" style="width:80%;">
+			                      <input type="text" name="mes_title" required="required" class="col-md-7 col-xs-12" style="width:80%;">
 			                    </div>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">내용 </label>
 			                    <div class="col-md-7">
-			                      <textarea row="30" cols="30" id="last-name2" name="last-name" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
+			                      <textarea rows="30" cols="30" name="mes_content" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
 			                    </div>
 			                  </div>
 			                  <br/>
-		                  		<div style="text-align:right;">
-			                  		<button type="button" class="btn btn-dark">보내기</button>
+		                  		<div style="text-align:center; margin-left:13%">
+			                  		<input type="submit" class="btn btn-dark" value="보내기">
 			                  	</div>
 			                </form>
 		                	
@@ -270,10 +277,10 @@
 				<!-- x-content -->
 			</div>		
 		</div>
-			<div class="x_panel" style="float: right; width:40%; height:100%;">
+			<div class="x_panel" style="float: right; width:40%; height:100%;" id="messageDe">
 				<div class="x_title">
 					<h2>
-						<i class="fa fa-comment"></i> <span id="messageSend">쪽지상세</span>
+						<span id="messageSend">쪽지상세</span>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
