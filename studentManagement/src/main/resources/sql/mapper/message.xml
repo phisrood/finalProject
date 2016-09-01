@@ -42,4 +42,10 @@
 	<select id="messageInfo" parameterType="str" resultType="message">
 		select * from message where mes_no = #{message_no}
 	</select>
+	
+	<!-- 쪽지발신 -->
+	<insert id="messageInsert" parameterType="message">
+		insert into message(mes_no, mes_send_use_id, mes_recive_use_id, mes_title, mes_content)
+		 values(message_seq.nextval, #{mes_send_use_id}, #{mes_recive_use_id}, #{mes_title}, #{mes_content})
+	</insert>
 </mapper>

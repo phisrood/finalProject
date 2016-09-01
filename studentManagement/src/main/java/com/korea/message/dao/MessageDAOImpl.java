@@ -60,7 +60,7 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public MessageVO updateMessageInfo(String message_no) {
+	public MessageVO getMessageInfo(String message_no) {
 		return (MessageVO) session.selectOne("Message.messageInfo", message_no);
 	}
 	/**
@@ -80,9 +80,8 @@ public class MessageDAOImpl implements MessageDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertMessage() {
-		// TODO Auto-generated method stub
-		
+	public void insertMessage(MessageVO messageVO) {
+		session.insert("Message.messageInsert", messageVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -95,6 +94,13 @@ public class MessageDAOImpl implements MessageDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	/**
+	 * 수신처리
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public void updateMessageRead(String message_no) {
 		session.update("Message.messageReadUpdate",message_no);

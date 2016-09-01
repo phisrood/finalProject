@@ -71,12 +71,31 @@ public class MessageController {
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지조회
-	@RequestMapping(value="/common/messageInfo", method=RequestMethod.GET)
-	public void messageInfo(@RequestParam(value="message_no")String message_no,
+	//받은쪽지조회
+	@RequestMapping(value="/common/messageSendInfo", method=RequestMethod.GET)
+	public void messageSendInfo(@RequestParam(value="message_no")String message_no,
 			HttpServletResponse response){
 		
 		MessageVO messageInfo = service.updateMessageInfo(message_no);
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(messageInfo);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
+	//보낸쪽지조회
+	@RequestMapping(value="/common/messageReciveInfo", method=RequestMethod.GET)
+	public void messageReciveInfo(@RequestParam(value="message_no")String message_no,
+			HttpServletResponse response){
+		
+		MessageVO messageInfo = service.getMessageInfo(message_no);
 		ObjectMapper jsonObject = new ObjectMapper();
 		
 		try {
@@ -134,9 +153,20 @@ public class MessageController {
 	 * @throws 
 	 */
 	//쪽지발신
-	@RequestMapping(value="/common/messageSend", method=RequestMethod.GET)
-	public String messageSend(){
-		String url="";
+	@RequestMapping(value={"/stu/messageSend","/pro/messageSend", "/emp/messageSend", "/common/messageSend"}, method=RequestMethod.POST)
+	public String messageSend(MessageVO messageVO, HttpSession session){
+		String url="redirect:/common/error";
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		messageVO.setMes_send_use_id(loginUser.getUse_id());
+		service.insertMessage(messageVO);
+		if(loginUser.getAuthority().equals("ROLE_STU")){
+			url = "redirect:/stu/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_PRO")){
+			url = "redirect:/pro/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_EMP")){
+			url = "redirect:/emp/messageAllList";
+		}
+		
 		
 		return url;
 	}
@@ -151,6 +181,22 @@ public class MessageController {
 	public String messageDelete(){
 		String url="";
 		
+		return url;
+	}
+	/**
+	 * 쪽지답장폼
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//쪽지답장
+	@RequestMapping(value="/common/messageReplyForm", method=RequestMethod.GET)
+	public String messageReplyForm(String send, Model model, HttpSession session){
+		String url="/common/messageReply";
+		
+		session.setAttribute("loginUser",session.getAttribute("loginUser"));
+
+		model.addAttribute("send", send);
 		return url;
 	}
 }

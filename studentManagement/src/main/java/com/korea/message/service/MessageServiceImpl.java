@@ -62,8 +62,10 @@ public class MessageServiceImpl implements MessageService{
 	@Override
 	public MessageVO updateMessageInfo(String message_no) {
 		
+		//수신 완료
 		dao.updateMessageRead(message_no);
-		MessageVO messageVO = dao.updateMessageInfo(message_no);
+		//정보가져오기
+		MessageVO messageVO = dao.getMessageInfo(message_no);
 		
 		return messageVO;
 	}
@@ -78,15 +80,14 @@ public class MessageServiceImpl implements MessageService{
 		return dao.getMessageUserSearch();
 	}
 	/**
-	 * 개인 정보 조회
+	 * 쪽지발신
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void insertMessage() {
-		// TODO Auto-generated method stub
-		
+	public void insertMessage(MessageVO messageVO) {
+		dao.insertMessage(messageVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -98,6 +99,16 @@ public class MessageServiceImpl implements MessageService{
 	public void deleteMessage() {
 		// TODO Auto-generated method stub
 		
+	}
+	/**
+	 * 보낸쪽지조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public MessageVO getMessageInfo(String message_no) {
+		return dao.getMessageInfo(message_no);
 	}
 
 	
