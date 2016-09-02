@@ -12,8 +12,7 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -34,7 +33,7 @@ html, body {
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-<form name="frm" method="post" action="/stu/adviceBoardWrite">
+<form method="POST" action="/stu/adviceBoardWrite" enctype="multipart/form-data">
 	<div class="row">
 		<!-- 상담 게시글 작성 -->
 		<div class="x_title">
@@ -43,7 +42,7 @@ html, body {
 		</div>
 		<br>
 		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_title" size="50">
+			<input type="text" name="adb_title" size="50" />
 		</div>
 		<div style="float: right; width: 7%;">제목</div>
 		<br>
@@ -51,11 +50,10 @@ html, body {
 			<br>
 		</div>
 		<br> <br>
-		<div style="float: right; width: 50%;">작성일 : 
-			<input type="text" name="adb_date" value="2016-08-30 14:11:25.0" disabled="disabled">
-		</div>
-		<div style="float: right; width: 35%;">작성자명 : 
-			<input type="text" name="adb_stud_use_id" value="student" disabled="disabled">
+
+		<div style="float: right; width: 85%;">
+			작성자명 : ${stud_use_id } 
+			<input type="hidden" name="adb_stud_use_id" value="${stud_use_id }" />
 		</div>
 		<br> <br>
 		<div style="float: right; width: 15%;">
@@ -73,8 +71,9 @@ html, body {
 			<br>
 		</div>
 		<div align="center" style="float: right; width: 90%;">
-			<br> <input type="file" name="adb_af_no" /> <input
-				type="submit" class="btn btn-default btn-sm" value="등록" />
+			<br> 
+			<input type="file" name="adb_af_no" /> 
+			<input type="submit" class="btn btn-default btn-sm" value="등록" />
 		</div>
 		<div style="float: right; width: 20%;">
 			<br>
