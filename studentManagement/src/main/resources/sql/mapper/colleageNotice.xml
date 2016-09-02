@@ -18,15 +18,15 @@
 			where rnum between 1 and 20
 	</select>
 	
-	<select id="getNoticeAllList" resultType="colleageNotice">
+	<select id="getNoticeAllList" resultType="noticeView">
 		SELECT 	*  	
-		FROM	COLLEAGE_NOTICE
+		FROM	NOTICE_VIEW
 		ORDER BY CN_NO DESC
 	</select>
 	
-	<select id="noticeDetail" parameterType="int" resultType="colleageNotice">
+	<select id="noticeDetail" parameterType="int" resultType="noticeView">
 		SELECT 	* 
-		FROM	COLLEAGE_NOTICE
+		FROM	NOTICE_VIEW
 		WHERE 	CN_NO = #{cn_no}
 	</select>
 	<insert id="insertNoticeFile" parameterType="attachment">
@@ -59,6 +59,27 @@
 		
 									
 	</insert>
+
+	<!-- 공지수정 -->
+	<update id="noticeUpdate" parameterType="colleageNotice">
+		UPDATE	COLLEAGE_NOTICE
+		SET		CN_TITLE = #{cn_title}
+				,CN_CONTENT = #{cn_content}
+		WHERE	CN_NO = #{cn_no}
+	</update>
+<!-- 	<update id="attachUpdate" parameterType="colleageNotice">
+		UPDATE	COLLEAGE_NOTICE
+		SET		CN_TITLE = #{cn_title}
+				,CN_CONTENT = #{cn_content}
+				,CN_AF_NO = #{cn_af_no}
+		WHERE	CN_SP_USE_ID = #{cn_sp_use_id}
+	</update> -->
+	
+	<delete id="noticeDelete">
+   	    DELETE	FROM COLLEAGE_NOTICE  
+   	    WHERE	CN_NO=#{cn_no}
+    </delete>
+	
 
 	
 </mapper>

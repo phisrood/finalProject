@@ -22,6 +22,22 @@
 ===============================================================--%>
 
 <script src="/common/js/notice.js"></script>
+<script>
+function updateNotice(updateNoticeForm) {
+	if(document.updateNoticeForm.cn_title.value==""){
+		alert('제목을 입력해주세요');
+		document.updateNoticeForm.cn_title.focus();
+	}else if(document.updateNoticeForm.cn_content.value==""){
+		alert('내용을 입력해주세요');
+		document.updateNoticeForm.cn_content.focus();
+	}else{
+		document.updateNoticeForm.method="post";
+		document.updateNoticeForm.action="/emp/noticeUpdate";
+		document.updateNoticeForm.submit();
+		
+	}  
+}
+</script>
 <!-- 공지상세보기 -->
 	
 	<div class="row">
@@ -35,35 +51,45 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form name="noticeDetailForm" class="form-horizontal form-label-left">
-
+                    <form name="updateNoticeForm" class="form-horizontal form-label-left">
+						<input type="hidden" name="cn_no" value="${noticeDetailViewVO.cn_no }">
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" name="cn_title" value="${noticeDetailVO.cn_title}" style="width:1000px;">
+                          <input type="text" class="form-control" name="cn_title" value="${noticeDetailViewVO.cn_title}" style="width:1000px;">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <textarea class="form-control" name="cn_content" style="width:1000px;height:500px;">${noticeDetailVO.cn_content}</textarea>
+                          <textarea class="form-control" name="cn_content" style="width:1000px;height:500px;">${noticeDetailViewVO.cn_content}</textarea>
                         </div>
                       </div>
                  
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="btn btn-dark" name="af_after_name" value="${noticeDetailVO.cn_af_no}" 
-                          	<c:if test="${noticeDetailVO.cn_af_no == 0 }">첨부파일이 없습니다.</c:if>
-                        			<c:if test="${noticeDetailVO.cn_af_no != 0 }">${noticeDetailVO.cn_af_no }</c:if> >
+                         <c:if test="${noticeDetailViewVO.cn_af_no == 0 }"><input type="button" class="btn btn-dark" style="width:300px;" name="af_after_name" value="첨부파일이 없습니다."></c:if>
+                        <c:if test="${noticeDetailViewVO.cn_af_no != 0 }"><a href="${noticeDetailViewVO.af_path }"><input type="button" class="btn btn-dark" style="width:300px;" name="af_after_name" value="${noticeDetailViewVO.af_realname}"></a></c:if>
                         </div>
                       </div>
                       
                       
                       
                       <div style="text-align:right;">
-		               <!--  <button type="button" class="btn btn-dark" onclick="updatePro('proUpdateForm');" >수정</button> -->
-		                <button type="button" class="btn btn-dark">확인</button>
+                      <c:choose>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+	                       		
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+	                       		
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+			                <button type="button" class="btn btn-dark" onclick="updateNotice('updateNoticeForm');" >수정</button>
+			                <a href="/emp/noticeDelete?cn_no=${noticeDetailViewVO.cn_no }"><button type="button" class="btn btn-dark" >삭제</button></a>
+	                    	</c:when>
+				        </c:choose>
+		                <button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
                       </div>   
 
                     </form>

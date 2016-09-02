@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.NoticeViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.notice.service.NoticeService;
 
@@ -79,7 +80,7 @@ public class NoticeController {
 	public String noticeAllList(Model model){
 		String url="/common/noticeAllList";
 		
-		List<Colleage_NoticeVO> noticeAllList = noticeManagerService.getNoticeAllList();
+		List<NoticeViewVO> noticeAllList = noticeManagerService.getNoticeAllList();
 		
 		model.addAttribute("noticeAllList", noticeAllList);
 		
@@ -95,11 +96,11 @@ public class NoticeController {
 	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail","/emp/noticeDetail"}, method=RequestMethod.GET)
 	public String noticeDetail(int cn_no,Model model){
 		
-		String url="/common/noticeDetail";
+		String url="/common/noticeUpdate";
 	
-		Colleage_NoticeVO noticeDetailVO = noticeManagerService.getNoticeDetailInfo(cn_no);
+		NoticeViewVO noticeDetailViewVO = noticeManagerService.getNoticeDetailInfo(cn_no);
 		
-		model.addAttribute("noticeDetailVO", noticeDetailVO);
+		model.addAttribute("noticeDetailViewVO", noticeDetailViewVO);
 		System.out.println(url+"*****************************");
 		return url;
 	}
@@ -147,44 +148,37 @@ public class NoticeController {
 		
 		return url;
 	}
+	
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 수정
 	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 조회 Select
-	@RequestMapping(value="/stu/noticeInquiry", method=RequestMethod.POST)
-	public String noticeInquiry(){
-		String url="";
-		
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
+	 * @return  String
 	 * @throws 
 	 */
 	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
-	public String noticeUpdate(){
-		String url="";
-		
+	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpSession session ){
+		String url="redirect:/emp/noticeAllList";
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String id=usersVO.getUse_id();
+		colleage_NoticeVO.setCn_sp_use_id(id);
+		noticeManagerService.updateNotice(colleage_NoticeVO,attachment_FileVO);
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 삭제
 	 * @param
-	 * @return 
+	 * @return String
 	 * @throws 
 	 */
 	//공지사항 삭제
-	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.POST)
-	public String noticeDelete(){
-		String url="";
+	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.GET)
+	public String noticeDelete(Colleage_NoticeVO colleage_NoticeVO){
+		String url="redirect:/emp/noticeAllList";
+		
+		noticeManagerService.deleteNotice(colleage_NoticeVO);
+	
 		
 		
 		return url;

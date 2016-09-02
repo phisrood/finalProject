@@ -102,7 +102,30 @@
 			});
 		});
 		
-
+		//최상단 체크박스 클릭
+		$("#sendCheckAll").click(function(){
+		    //클릭되었으면
+		    if($("#sendCheckAll").prop("checked")){
+		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+		        $("input[name=sendChk]").prop("checked",true);
+		        //클릭이 안되있으면
+		    }else{
+		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+		        $("input[name=sendChk]").prop("checked",false);
+		    }
+		});
+		//최상단 체크박스 클릭
+		$("#reciveCheckAll").click(function(){
+		    //클릭되었으면
+		    if($("#reciveCheckAll").prop("checked")){
+		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+		        $("input[name=reciveChk]").prop("checked",true);
+		        //클릭이 안되있으면
+		    }else{
+		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+		        $("input[name=reciveChk]").prop("checked",false);
+		    }
+		});
 		
 	});
 </script>
@@ -149,12 +172,12 @@
 						<div role="tabpanel" class="tab-pane fade active in"
 							id="tab_content1" aria-labelledby="home-tab">
 							<div class="x_content">
-				              
+				              <form action="messageSendChkDel" method="post">
 								<table id="reciveTable"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
 										<tr>
-											<th>삭제</th>
+											<th><input type="checkbox" id="sendCheckAll"></th>
 											<th>발신자</th>
 											<th>제목</th>
 											<th>수신일</th>
@@ -167,7 +190,7 @@
 											<c:if test="${id eq messageAllList.mes_recive_use_id }">
 												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '3' }">
 													<tr class="messageSendDetail" id="${messageAllList.mes_no }">
-														<td><input type="checkbox"></td>
+														<td><input type="checkbox" name="sendChk" value="${messageAllList.mes_no }"></td>
 														<td>${messageAllList.mes_send_use_id }</td>
 														<td>${messageAllList.mes_title }</td>
 														<td>${messageAllList.mes_date }</td>
@@ -184,9 +207,9 @@
 									</tbody>
 								</table>
 									<div style="text-align:right;">
-										<button type="button" class="btn btn-dark">삭제</button>
+										<button type="submit" class="btn btn-dark">삭제</button>
 			                    	</div>
-								
+								</form>
 							</div>
 							</div>
 							
@@ -194,11 +217,11 @@
 						<div role="tabpanel" class="tab-pane fade" 
 									id="tab_content2" aria-labelledby="profile-tab">
 							<div class="x_content">
-				              
+				            <form action="messageReciveChkDel" method="post">
 							<table id="sendTable" class="table table-striped jambo_table bulk_action">
 								<thead>
 									<tr>
-										<th>삭제</th>
+										<th><input type="checkbox" id="reciveCheckAll"></th>
 										<th>수신자</th>
 										<th>제목</th>
 										<th>수신일</th>
@@ -211,7 +234,7 @@
 											<c:if test="${id eq messageAllList.mes_send_use_id }">
 												<c:if test="${messageAllList.mes_delyn == '1' || messageAllList.mes_delyn == '2' }">
 													<tr class="messageReciveDetail" id="${messageAllList.mes_no }">
-														<td><input type="checkbox"></td>
+														<td><input type="checkbox" name="reciveChk" value="${messageAllList.mes_no }"></td>
 														<td>${messageAllList.mes_recive_use_id }</td>
 														<td>${messageAllList.mes_title }</td>
 														<td>${messageAllList.mes_date }</td>
@@ -222,9 +245,10 @@
 								</tbody>
 							</table>
 									<div style="text-align:right;">
-										<button type="button" class="btn btn-dark">삭제</button>
+										<button type="submit" class="btn btn-dark">삭제</button>
 				                    
 				                    </div>
+				              </form>
 							  </div>
 							</div>
 						

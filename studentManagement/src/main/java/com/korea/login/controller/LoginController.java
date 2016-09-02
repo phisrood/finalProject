@@ -126,6 +126,7 @@ public class LoginController {
 			url = "redirect:/common/loginForm";
 		}
 		
+		int messageCount = messageNewList.size();
 		
 		model.addAttribute("messageNewList", messageNewList);
 		model.addAttribute("noticeNewList", noticeNewList);
@@ -133,6 +134,8 @@ public class LoginController {
 		session.setAttribute("studentInfo", studentInfo);
 		session.setAttribute("professorInfo", professorInfo);
 		session.setAttribute("employeeInfo", employeeInfo);
+		session.setAttribute("messageCount", messageCount);
+		
 		
 		return url;
 	}
