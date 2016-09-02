@@ -65,7 +65,7 @@
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="/common/images/${studentInfo.af_realname }" alt="..." class="img-circle profile_img">
+                <img src="/stu/images/${studentInfo.af_aftername}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>환영합니다,</span>
@@ -158,7 +158,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/common/images/${studentInfo.af_realname }" alt="">${studentInfo.use_name }
+                    <img src="/stu/images/${studentInfo.af_aftername}" alt="">${studentInfo.use_name }
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">

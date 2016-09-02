@@ -221,7 +221,7 @@
           }, {
             title: 'Click for Google',
             start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
+            end: new Date(y, m, 31),
             url: 'http://google.com/'
           }]
         });
