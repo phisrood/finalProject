@@ -85,7 +85,10 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="강의실"		name="lec_ci_no" >
+							<select class="form-control" name="lec_makesemester" >
+								<option selected value="none">선택해주세요</option>
+					
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

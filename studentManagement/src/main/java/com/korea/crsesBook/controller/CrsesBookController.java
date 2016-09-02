@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesBook.service.CrsesBookService;
+import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.UsersVO;
@@ -214,9 +215,11 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/openLecturePage", method = RequestMethod.GET)
-	public String openLecturePage(String lb_no) {
+	public String openLecturePage(String lb_no,Model model) {
 		String url = "/pro/openLecture";
-		crsesBookService.getCrsesBook(lb_no);
+		Lecture_BreakeDownVO lb = crsesBookService.getCrsesBook(lb_no);
+		List<ClassRoom_InfoVO> clarssRoomInfo = crsesBookService.getClassroomInfo();
+		model.addAttribute("lb", lb);
 		return url;
 	}
 }

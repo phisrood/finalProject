@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -92,6 +93,10 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	@Override
 	public Lecture_BreakeDownVO getCrsesBook(String lb_no) {
 		return (Lecture_BreakeDownVO) sqlSession.selectOne("crsesBook.getCrsesBook", lb_no);
+	}
+	@Override
+	public List<ClassRoom_InfoVO> getClassroomInfo() {
+		return sqlSession.selectList("crsesBook.getClassroomInfo");
 	}
 
 }
