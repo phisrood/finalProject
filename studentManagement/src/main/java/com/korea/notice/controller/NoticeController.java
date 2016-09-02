@@ -23,14 +23,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
@@ -39,7 +44,8 @@ import com.korea.dto.UsersVO;
 import com.korea.notice.service.NoticeService;
 
 @Controller
-public class NoticeController {
+public class NoticeController implements ApplicationContextAware {
+	private WebApplicationContext servletContext= null;
 	
 	@Autowired
 	private NoticeService noticeManagerService;
@@ -144,10 +150,39 @@ public class NoticeController {
 		}
 		
 		noticeManagerService.insertNotice(colleage_NoticeVO,attachment_FileVO);
-		 
 		
 		return url;
 	}
+	
+	//파일다운로드
+	private WebApplicationContext context= null;
+	
+	@RequestMapping("/emp/noticeFileDown")
+	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
+		File downloadFile = getFile(af_aftername);
+		if(downloadFile == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return new ModelAndView("download","downloadFile", downloadFile);
+	}
+	
+	private File getFile(String fileId) {
+		String baseDir = context.getServletContext().getRealPath("resources/emp/noticeAF");
+		//if(fileId.equals("1"))
+			return new File(baseDir,fileId);
+		//return null;
+	}
+	
+	
+	
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;
+	}
+	
+	
 	
 	/**
 	 * 공지사항 수정

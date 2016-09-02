@@ -39,6 +39,7 @@
 							  ,#{af_realname}
 							  ,#{af_aftername}
 							  ,#{af_path})
+
 	
 		<selectKey resultType="int" keyProperty="af_no" order="AFTER">
 			SELECT attachment_file_seq.currval 
