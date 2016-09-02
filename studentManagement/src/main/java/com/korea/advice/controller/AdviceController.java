@@ -1,8 +1,11 @@
 package com.korea.advice.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.advice.service.AdviceService;
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.UsersVO;
@@ -82,10 +86,6 @@ public class AdviceController {
 		List<ProfessorVO> professorList = adviceService.getProfessorList(stud_use_id);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
-		for(int i=0; i<adviceReqList.size();i++){
-			System.out.println("dd");
-		}
 
 		model.addAttribute("adviceReqList", adviceReqList);
 		model.addAttribute("professorList", professorList);
@@ -231,6 +231,8 @@ public class AdviceController {
 	}
 
 	/**
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
@@ -239,16 +241,27 @@ public class AdviceController {
 	 */
 	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
-	public String adviceBoardWrite(Advice_BoardVO adb
-			/*int adb_af_no,String adb_title,String adb_content,String adb_stud_use_id*/) {
-		String url = "redirect:/common/adviceBoard";
-		/*P
-		System.out.println(adb_af_no);
-		System.out.println(adb_title);
-		System.out.println(adb_content);
-		System.out.println(adb_stud_use_id);
-		*/
-		System.out.println(adb.getAdb_title());
+	public String adviceBoardWrite(Advice_BoardInsertVO adviceInsertVO,HttpServletRequest request) throws IllegalStateException, IOException {
+		String url = "/common/adviceBoard";
+		int af_no = 0;
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
+		
+		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
+		System.out.println("1");
+		if(!multipartFile.isEmpty()){
+			File file = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(file);
+			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());
+			adviceInsertVO.setAdb_afterName(System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			adviceInsertVO.setAdb_path(uploadPath);
+			af_no=adviceService.insertAdviceBoardAF(adviceInsertVO);
+			adviceInsertVO.setAdb_af_no(af_no);
+		}
+		System.out.println("2");
+		adviceService.insertAdviceBoard(adviceInsertVO);
+		
+		System.out.println("3");
 		return url;
 	}
 

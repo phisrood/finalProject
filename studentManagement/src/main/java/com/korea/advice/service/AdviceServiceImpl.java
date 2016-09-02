@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.korea.advice.dao.AdviceDAO;
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.ProfessorVO;
 
@@ -163,6 +164,16 @@ public class AdviceServiceImpl implements AdviceService {
 	public List<ProfessorVO> getProfessorList(String stud_use_id) {
 		List<ProfessorVO> professorList = adviceDAO.getProfessorList(stud_use_id);
 		return professorList;
+	}
+
+	@Override
+	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+		return adviceDAO.insertAdviceBoardAF(adviceInsertVO);
+	}
+
+	@Override
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO) {
+		adviceDAO.insertAdviceBoard(adviceInsertVO);
 	}
 
 }

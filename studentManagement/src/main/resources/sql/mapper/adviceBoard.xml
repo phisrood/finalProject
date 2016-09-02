@@ -7,4 +7,18 @@
 	<select id="selectAdviceBoardList" resultType="adviceBoardVO">
 		SELECT * FROM ADVICE_BOARD
 	</select>
+	
+	<insert id="insertAdviceBoardAF" parameterType="adviceBoardInsertVO">
+		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
+		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{adb_realName},{adb_afterName},{adb_path})
+	</insert>
+	
+	<select id="selectMax" resultType="int">
+		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
+	</select>
+	
+	<insert id="insertBoard" parameterType="adviceBoardInsertVO">
+		INSERT INTO (ADB_NO,ADB_STUD_USE_ID,ADB_AF_NO,ADB_TITLE,ADB_CONTENT,ADB_DATE,ADB_COMMENTSTAT)
+		VALUES (ADVICE_BOARD_SEQ.NEXTVAL,#{adb_stud_use_id},#{adb_af_no},#{adb_title},#{adb_content},sysdate,'N')
+	</insert>
 </mapper>

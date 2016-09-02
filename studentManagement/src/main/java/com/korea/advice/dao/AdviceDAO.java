@@ -3,6 +3,7 @@ package com.korea.advice.dao;
 import java.util.List;
 
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.ProfessorVO;
 
@@ -131,5 +132,10 @@ public interface AdviceDAO {
 	 */
 	// 상담가능일자 입력
 	public List<ProfessorVO> getProfessorList(String stud_use_id);
+
+	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO);
+
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO);
+
 
 }

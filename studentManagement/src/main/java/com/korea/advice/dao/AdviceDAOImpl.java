@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.ProfessorVO;
 
@@ -164,6 +165,17 @@ public class AdviceDAOImpl implements AdviceDAO {
 	public List<ProfessorVO> getProfessorList(String stud_use_id) {
 		List<ProfessorVO> professorList = (List<ProfessorVO>) sqlSession.selectList("adviceDAO.selectProfessorList",stud_use_id);
 		return professorList;
+	}
+
+	@Override
+	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+		sqlSession.insert("adviceBoardDAO.insertAdviceBoardAF", adviceInsertVO);
+		return (int) sqlSession.selectOne("adviceBoardDAO,selectMax");
+	}
+
+	@Override
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO) {
+		sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
 	}
 
 }
