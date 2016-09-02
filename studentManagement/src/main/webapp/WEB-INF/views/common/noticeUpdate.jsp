@@ -70,7 +70,7 @@ function updateNotice(updateNoticeForm) {
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                          <c:if test="${noticeDetailViewVO.cn_af_no == 0 }"><input type="button" class="btn btn-dark" style="width:300px;" name="af_after_name" value="첨부파일이 없습니다."></c:if>
-                        <c:if test="${noticeDetailViewVO.cn_af_no != 0 }"><a href="${noticeDetailViewVO.af_path }"><input type="button" class="btn btn-dark" style="width:300px;" name="af_after_name" value="${noticeDetailViewVO.af_realname}"></a></c:if>
+                        <c:if test="${noticeDetailViewVO.cn_af_no != 0 }"><a href="/emp/noticeFileDown?af_aftername=${noticeDetailViewVO.af_aftername}"><input type="button" class="btn btn-dark" style="width:300px;" name="af_aftername" value="${noticeDetailViewVO.af_realname}"></a></c:if>
                         </div>
                       </div>
                       

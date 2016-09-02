@@ -59,8 +59,7 @@ public class IndivInfoManageController {
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
 	public String indivInfo(HttpSession session, Model model, HttpServletRequest request){
 		String url = "/stu/colleage/indivInfo";
-	
-	
+
 	
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
 		
@@ -72,6 +71,7 @@ public class IndivInfoManageController {
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
+
 	
 		return url;
 	}

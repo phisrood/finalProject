@@ -92,7 +92,7 @@ public class NoticeServiceImpl implements NoticeService{
 		noticeDAO.deleteNotice(colleage_NoticeVO);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항등록
 	 * @param
 	 * @return 
 	 * @throws 
