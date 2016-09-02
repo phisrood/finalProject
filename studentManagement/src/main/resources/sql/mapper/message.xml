@@ -16,8 +16,8 @@
 			, mes_date
 			, mes_readyn
 			, mes_delyn from message
-			where mes_readyn = 'n'
-			and mes_delyn = '1' or mes_delyn='3'
+			where mes_delyn = '1' or mes_delyn='3'
+			and mes_readyn = 'n'
 			order by mes_no desc
 			)
 			where rnum between 1 and 20 
