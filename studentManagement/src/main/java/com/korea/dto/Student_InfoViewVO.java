@@ -6,94 +6,77 @@ package com.korea.dto;
  * @param
  * 
  * 		
- * 	      AF_NO           파일번호
-	      AF_REALNAME     원본이름
-	      AF_AFTERNAME      변경이름
-		  AF_PATH         경로
  * 
- * 
- * 
-       *  USE_ID           아이디                        
-       *  USE_KIND         사용자구분                    
-       *  USE_NAME         이름                          
-       *  ENABLED          사용유무                      
-       *  USE_PWD          패스워드                      
-       *  AUTHORITY        인증                          
-       *  STUD_USE_ID      아이디                        
-       *  STUD_AF_NO       사진                          
-       *  STUD_STAT        학적상태                      
-       *  STUD_MAJCREDIT   전공이수학점                  
-       *  STUD_LIBCREDIT   교양이수학점                  
-       *  STUD_BIRTH       생년월일                      
-       *  STUD_PHONE       핸드폰번호                    
-       *  STUD_ZIPCODE     우편번호                      
-       *  STUD_ADD         주소                          
-       *  STUD_ADDDETAIL   상세주소                      
-       *  STUD_BLTYPE      혈액형                        
-       *  STUD_HOB         취미                          
-       *  STUD_GENDER      성별                          
-       *  STUD_ENGNAME     영문명                        
-       *  STUD_EMAIL       이메일                        
-       *  STUD_REGNO1      주민등록번호 앞자리           
-       *  STUD_REGNO2      주민등록번호 뒷자리           
-       *  MA_STUD_USE_ID   아이디                        
-       *  MA_DEP_NO        학과번호                      
-       *  MA_MK_NO         전공구분코드                  
-       *  MA_CREDIT        이수학점                      
-       *  MK_NO            전공구분코드                  
-       *  MK_NAME          전공구분명                    
-       *  DEP_NO           학과번호                      
-       *  DEP_NAME         학과명                        
-       *  DEP_MAJNEEDCREDIT  주전공졸업학점              
-       *  DEP_MINNEEDCREDIT  부전공졸업학점              
-       *  DEP_MULCREDIT      다전공졸업학점              
-       *  DEP_REVOKEYN     폐지여부                      
-       *  DEP_PHONE        전화번호                      
-       *  DEP_ENGNAME      영문명                        
+ * 	   *  AF_NO                            파일번호
+	   *  AF_REALNAME                      원본이름
+	   *  AF_AFTERNAME                     변경이름
+	   *  AF_PATH                          경로  
+	   *  CRC_NO                           순번
+	   *  CRC_STUD_USE_ID                  아이디
+       *  CRC_YEAR                         연도
+       *  CRC_CEMESTER                     학기
+       *  CRC_CHANGEDATE                   변동일자
+       *  CRC_COLLEAGESTATUS               학적상태
+       *  CRC_COLLEAGECHANGESTATUS         학적변동
+       *  CRC_CHANGEREASON                 변동사유
+	   *  CRC_RETURNAPPOINTDATE            복학예정일자
+	   *  CRC_CANCELYN                     취소여부
+	   *  CRC_SUBMITYN                     승인여부
+       *  USE_ID                           아이디                        
+       *  USE_KIND                         사용자구분                    
+       *  USE_NAME                         이름                          
+       *  ENABLED                          사용유무                      
+       *  USE_PWD                          패스워드                      
+       *  AUTHORITY                        인증                          
+       *  STUD_USE_ID                      아이디                        
+       *  STUD_AF_NO                       사진                          
+       *  STUD_STAT                        학적상태                      
+       *  STUD_MAJCREDIT                   전공이수학점                  
+       *  STUD_LIBCREDIT                   교양이수학점                  
+       *  STUD_BIRTH                       생년월일                      
+       *  STUD_PHONE                       핸드폰번호                    
+       *  STUD_ZIPCODE                     우편번호                      
+       *  STUD_ADD                         주소                          
+       *  STUD_ADDDETAIL                   상세주소                      
+       *  STUD_BLTYPE                      혈액형                        
+       *  STUD_HOB                         취미                          
+       *  STUD_GENDER                      성별                          
+       *  STUD_ENGNAME                     영문명                        
+       *  STUD_EMAIL                       이메일                        
+       *  STUD_REGNO1                      주민등록번호 앞자리           
+       *  STUD_REGNO2                      주민등록번호 뒷자리           
+       *  MA_STUD_USE_ID                   아이디                        
+       *  MA_DEP_NO                        학과번호                      
+       *  MA_MK_NO                         전공구분코드                  
+       *  MA_CREDIT                        이수학점                      
+       *  MK_NO                            전공구분코드                  
+       *  MK_NAME                          전공구분명                    
+       *  DEP_NO                           학과번호                      
+       *  DEP_NAME                         학과명                        
+       *  DEP_MAJNEEDCREDIT                주전공졸업학점              
+       *  DEP_MINNEEDCREDIT                부전공졸업학점              
+       *  DEP_MULCREDIT                    다전공졸업학점              
+       *  DEP_REVOKEYN                     폐지여부                      
+       *  DEP_PHONE                        전화번호                      
+       *  DEP_ENGNAME                      영문명                        
  *
  * 
  * 
  * @version 박진성, 1.0, 2016.08.29, 초기 작성
- * 			박진성, 1.0, 2016.08.31, 1차 수정(첨부파일 추가)
+ * 			박진성, 1.1, 2016.08.31, 1차 수정(첨부파일관련 테이블)
+ * 			박진성, 1.2. 2016.09.01, 2차 수정(학적변동관련 테이블)
+ * 
  * @author 박진성
  *
  */
 
 public class Student_InfoViewVO {
 
-	
-	public int getAf_no() {
-		return af_no;
-	}
-	public void setAf_no(int af_no) {
-		this.af_no = af_no;
-	}
-	public String getAf_realname() {
-		return af_realname;
-	}
-	public void setAf_realname(String af_realname) {
-		this.af_realname = af_realname;
-	}
 
-	public String getAf_path() {
-		return af_path;
-	}
-	public void setAf_path(String af_path) {
-		this.af_path = af_path;
-	}
-
-	public String getAf_aftername() {
-		return af_aftername;
-	}
-	public void setAf_aftername(String af_aftername) {
-		this.af_aftername = af_aftername;
-	}
 	private String af_path;
 	private int af_no;
 	private String af_realname;
 	private String af_aftername;
-	
-	
 	private String use_id;
 	private String use_kind;
 	private String use_name;
@@ -123,6 +106,7 @@ public class Student_InfoViewVO {
 	private int ma_credit;
 	private int mk_no;
 	private String mk_name;
+	
 	private int dep_no;
 	private String dep_name;
 	private int dep_majneedcredit;
@@ -132,6 +116,34 @@ public class Student_InfoViewVO {
 	private String dep_phone;
 	private String dep_engname;
 	
+	
+	
+	
+	
+	public String getAf_path() {
+		return af_path;
+	}
+	public void setAf_path(String af_path) {
+		this.af_path = af_path;
+	}
+	public int getAf_no() {
+		return af_no;
+	}
+	public void setAf_no(int af_no) {
+		this.af_no = af_no;
+	}
+	public String getAf_realname() {
+		return af_realname;
+	}
+	public void setAf_realname(String af_realname) {
+		this.af_realname = af_realname;
+	}
+	public String getAf_aftername() {
+		return af_aftername;
+	}
+	public void setAf_aftername(String af_aftername) {
+		this.af_aftername = af_aftername;
+	}
 	public String getUse_id() {
 		return use_id;
 	}
@@ -354,6 +366,9 @@ public class Student_InfoViewVO {
 	public void setDep_engname(String dep_engname) {
 		this.dep_engname = dep_engname;
 	}
+
+
+
 
 
 }

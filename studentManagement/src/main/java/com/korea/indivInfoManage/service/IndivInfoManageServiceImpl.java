@@ -18,11 +18,13 @@ package com.korea.indivInfoManage.service;
  */
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.Colleage_Register_ChangeVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.indivInfoManage.dao.IndivInfoManageDAO;
@@ -52,11 +54,11 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 	}
 	
 	
-
+	//학적변동현황 불러오기
 	@Override
-	public String getColleageChangeList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Colleage_Register_ChangeVO> getColleageChangeList(String stud_use_id) {
+	
+		return indivInfoManageDAO.getColleageChangeList(stud_use_id);
 	}
 	@Override
 	public String getIndivInfo() {

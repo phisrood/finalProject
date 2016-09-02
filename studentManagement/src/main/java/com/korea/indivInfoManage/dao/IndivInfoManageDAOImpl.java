@@ -16,12 +16,14 @@ package com.korea.indivInfoManage.dao;
  * </pre>
  */
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Colleage_Register_ChangeVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 
@@ -63,10 +65,11 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	 * @return 
 	 * @throws 
 	 */
+	//학적변동현황 불러오기
 	@Override
-	public String getColleageChangeList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Colleage_Register_ChangeVO> getColleageChangeList(String stud_use_id) {
+		
+		return sqlSession.selectList("indivInfoManageDAO.selectColleageChangeList",stud_use_id);
 	}
 	@Override
 	public String getIndivInfo() {

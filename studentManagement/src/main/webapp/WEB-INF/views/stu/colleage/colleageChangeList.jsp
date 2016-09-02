@@ -9,6 +9,7 @@
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱      		최초생성
+ *	  2016.09.02.  	박진성,조현욱      	1차 수정(조회성공)
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -54,59 +55,41 @@
                           <th>취소구분</th>
                         </tr>
                       </thead>
-
-
+		
+  				
+                     
+		
+				<%-- 	<fmt:formatDate pattern="yyyy-MM-dd" value="${Colleage_Register_ChangeVO.crc_year}" /> --%>
                       <tbody>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>2012/03/02</td>
-                          <td>재학</td>
-                          <td>재학</td>
-                          <td>입학</td>
-                          <td></td>
-                          <td>없음</td>
+                      
+                  
+                      		
+                      		     
+                       	<c:choose>
+                      	     <c:when test="${empty Colleage_Register_ChangeVO}">
+	                        		<td colspan="8" align="center">학적변동 자료가 없습니다.</td>
+                        	</c:when>
+                     
+                      	
+                      	<c:otherwise>
+                      	
+                      	<c:forEach items="${Colleage_Register_ChangeVO}" var="Colleage_Register_ChangeVO">
+                        <tr>                                                         
+                          <td>${Colleage_Register_ChangeVO.crc_year}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_cemester}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_changedate}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_colleagestatus}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_colleagechangestatus}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_changereason}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_returnappointdate}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_cancelyn}</td>
                         </tr>
-                        <tr>
-                          <td>2013</td>
-                          <td>1</td>
-                          <td>2012/03/02</td>
-                          <td>재학</td>
-                          <td>휴학</td>
-                          <td>일반휴학</td>
-                          <td>2013/08/31</td>
-                          <td>없음</td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>2012/03/02</td>
-                          <td>재학</td>
-                          <td>재학</td>
-                          <td>입학</td>
-                          <td></td>
-                          <td>없음</td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>2012/03/02</td>
-                          <td>재학</td>
-                          <td>재학</td>
-                          <td>입학</td>
-                          <td></td>
-                          <td>없음</td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>2012/03/02</td>
-                          <td>재학</td>
-                          <td>재학</td>
-                          <td>입학</td>
-                          <td></td>
-                          <td>없음</td>
-                        </tr>
+                        
+                       </c:forEach>
+                        </c:otherwise>
+                        
+                         	</c:choose>	
+                 	
                         
                       </tbody>
                     </table>

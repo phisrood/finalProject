@@ -48,6 +48,8 @@
 		<!-- 행정 정보 -->
 		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
+		<!-- 학적 변동사항 -->
+		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 
 
 	</typeAliases>
