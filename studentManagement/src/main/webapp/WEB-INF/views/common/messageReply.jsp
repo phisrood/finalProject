@@ -57,7 +57,7 @@
 			                  <ul class="nav navbar-right panel_toolbox">                 
 			                  </ul>
 			                <div class="clearfix"></div>
-			                <form action="messageSend" method="post">
+			                <form action="messageReplySend" method="post">
 			                	<div>
 			                   	 	수 신 자 : <input type="text" readonly="readonly" required="required" style="width:78%;" value="${send }" name="mes_recive_use_id">
 			                   	</div>

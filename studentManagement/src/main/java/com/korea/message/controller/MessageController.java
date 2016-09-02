@@ -16,8 +16,10 @@ package com.korea.message.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -299,5 +301,23 @@ public class MessageController {
 
 		model.addAttribute("send", send);
 		return url;
+	}
+	
+	//쪽지답장보내기
+	@RequestMapping(value="/common/messageReplySend", method=RequestMethod.POST)
+	public void messageReplySend(MessageVO messageVO, HttpSession session, HttpServletResponse response){
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		messageVO.setMes_send_use_id(loginUser.getUse_id());
+		service.insertMessage(messageVO);
+
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.print("<script> window.close();</script>");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }
