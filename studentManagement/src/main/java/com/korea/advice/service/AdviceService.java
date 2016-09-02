@@ -1,6 +1,7 @@
 package com.korea.advice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
@@ -134,5 +135,12 @@ public interface AdviceService {
 
 	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO);
 
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no);
+
+	public Advice_BoardVO getAdviceBoard(int adb_no);
+
+	public void updateAdviceBoard(Map<String, String> params);
+
+	public void deleteAdviceBoard(int adb_no);
+
 }

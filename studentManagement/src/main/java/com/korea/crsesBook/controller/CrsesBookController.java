@@ -47,10 +47,10 @@ public class CrsesBookController {
 	private MemberManageService memberManageService;
 
 	/**
-	 * 개인 정보 조회
+	 * 수강편람 리스트
 	 * 
-	 * @param
-	 * @return
+	 * @param Model
+	 * @return String
 	 * @throws
 	 */
 	// 수강편람조회
@@ -65,8 +65,8 @@ public class CrsesBookController {
 	/**
 	 * 수강편람등록페이지 이동
 	 * 
-	 * @param
-	 * @return
+	 * @param HttpServletRequest, Model
+	 * @return String
 	 * @throws
 	 */
 	// 수강편람등록페이지 이동
@@ -84,8 +84,8 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 등록
 	 * 
-	 * @param
-	 * @return
+	 * @param Lecture_BreakeDownVO
+	 * @return String
 	 * @throws
 	 */
 	// 수강편람등록
@@ -100,8 +100,8 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 수정페이지 이동
 	 * 
-	 * @param
-	 * @return
+	 * @param String, Model
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/crsesBookUpdatePage", method = RequestMethod.GET)
@@ -115,8 +115,8 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 수정
 	 * 
-	 * @param
-	 * @return
+	 * @param Lecture_BreakeDownVO
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/crsesBookUpdate", method = RequestMethod.GET)
@@ -129,8 +129,8 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 승인반려페이지
 	 * 
-	 * @param
-	 * @return
+	 * @param Model
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.GET)
@@ -145,7 +145,7 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 승인
 	 * 
-	 * @param
+	 * @param String, HttpServletResponse
 	 * @return
 	 * @throws
 	 */
@@ -168,7 +168,7 @@ public class CrsesBookController {
 	/**
 	 * 수강편람 반려
 	 * 
-	 * @param
+	 * @param String, HttpServletResponse
 	 * @return
 	 * @throws
 	 */
@@ -191,7 +191,7 @@ public class CrsesBookController {
 	/**
 	 * 학수번호 검색
 	 * 
-	 * @param
+	 * @param String, HttpServletResponse
 	 * @return
 	 * @throws
 	 */
@@ -210,16 +210,17 @@ public class CrsesBookController {
 	/**
 	 * 강의개설
 	 * 
-	 * @param
-	 * @return
+	 * @param String, Model
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/openLecturePage", method = RequestMethod.GET)
 	public String openLecturePage(String lb_no,Model model) {
 		String url = "/pro/openLecture";
 		Lecture_BreakeDownVO lb = crsesBookService.getCrsesBook(lb_no);
-		List<ClassRoom_InfoVO> clarssRoomInfo = crsesBookService.getClassroomInfo();
+		List<ClassRoom_InfoVO> classRoomInfo = crsesBookService.getClassroomInfo();
 		model.addAttribute("lb", lb);
+		model.addAttribute("classroom", classRoomInfo);
 		return url;
 	}
 }

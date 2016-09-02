@@ -1,6 +1,7 @@
 package com.korea.advice.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,12 +171,32 @@ public class AdviceDAOImpl implements AdviceDAO {
 	@Override
 	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
 		sqlSession.insert("adviceBoardDAO.insertAdviceBoardAF", adviceInsertVO);
-		return (int) sqlSession.selectOne("adviceBoardDAO,selectMax");
+		return (int) sqlSession.selectOne("adviceBoardDAO.selectCurrval");
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO) {
-		sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
+		if(af_no == 0){
+			sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
+		}else{
+			sqlSession.insert("adviceBoardDAO.insertBoardAF", adviceInsertVO);			
+		}
+	}
+
+	@Override
+	public Advice_BoardVO getAdviceBoard(int adb_no) {
+		Advice_BoardVO adviceVO = (Advice_BoardVO) sqlSession.selectOne("adviceBoardDAO.getAdviceBoard", adb_no);
+		return adviceVO;
+	}
+
+	@Override
+	public void updateAdviceBoard(Map<String, String> params) {
+		sqlSession.update("adviceBoardDAO.updateAdviceBoard", params);
+	}
+
+	@Override
+	public void deleteAdviceBoard(int adb_no) {
+		sqlSession.delete("adviceBoardDAO.deleteAdviceBoard", adb_no);
 	}
 
 }

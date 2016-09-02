@@ -64,7 +64,8 @@
 		WHERE LB_NO = #{lb_no}
 	</update>
 	
-	<select id="getClassroomInfo" resultType="">
-	
+	<select id="getClassroomInfo" resultType="classroom">
+		SELECT *
+		FROM CLASSROOM_INFO
 	</select>
 </mapper>

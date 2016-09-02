@@ -85,10 +85,8 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<select class="form-control" name="lec_makesemester" >
-								<option selected value="none">선택해주세요</option>
-					
-							</select>
+								<input type="text" class="form-control" readonly="readonly">
+								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="float:left;">검색</button>
 						</div>
 					</div>
 					<div class="form-group">
@@ -110,7 +108,7 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">인원</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="인원" name=lec_persons" >
+							<input type="text" class="form-control" placeholder="인원" name="lec_persons" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -130,6 +128,25 @@ h2 {
 		</div>
 		<!-- /page content -->
 	</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">강의실</h4>
+      </div>
+      <div class="modal-body">
+        <p>라라라</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
 </html>

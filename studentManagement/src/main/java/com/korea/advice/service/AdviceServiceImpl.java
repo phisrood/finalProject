@@ -1,6 +1,7 @@
 package com.korea.advice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -172,8 +173,24 @@ public class AdviceServiceImpl implements AdviceService {
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO) {
-		adviceDAO.insertAdviceBoard(adviceInsertVO);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
+		adviceDAO.insertAdviceBoard(adviceInsertVO,af_no);
+	}
+
+	@Override
+	public Advice_BoardVO getAdviceBoard(int adb_no) {
+		Advice_BoardVO adviceVO = adviceDAO.getAdviceBoard(adb_no);
+		return adviceVO;
+	}
+
+	@Override
+	public void updateAdviceBoard(Map<String, String> params) {
+		adviceDAO.updateAdviceBoard(params);
+	}
+
+	@Override
+	public void deleteAdviceBoard(int adb_no) {
+		adviceDAO.deleteAdviceBoard(adb_no);
 	}
 
 }

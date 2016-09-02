@@ -65,10 +65,20 @@
 					<c:forEach var="adviceBoard" items="${adviceBoardList}">
 						<tr>
 							<td>${adviceBoard.adb_no }</td>
-							<td>${adviceBoard.adb_title }</td>
+							<td>
+								<a href="/stu/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
+								${adviceBoard.adb_title }</a>
+							</td>
 							<td>${adviceBoard.adb_stud_use_id }</td>
 							<td>${adviceBoard.adb_date }</td>
-							<td>${adviceBoard.adb_commentstat }</td>
+							<td>
+								<c:if test="${adviceBoard.adb_commentstat eq 'N'}">
+									없음
+								</c:if>
+								<c:if test="${adviceBoard.adb_commentstat eq 'Y'}">
+									있음
+								</c:if>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
