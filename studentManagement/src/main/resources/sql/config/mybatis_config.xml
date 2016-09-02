@@ -49,6 +49,8 @@
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 		<!-- 강의실-->
 		<typeAlias alias="classroom" type="com.korea.dto.ClassRoom_InfoVO" />
+		<!-- 강의실 사용시간 -->
+		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 
 
 	</typeAliases>

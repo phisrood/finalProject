@@ -3,6 +3,7 @@ package com.korea.crsesBook.dao;
 import java.util.List;
 
 import com.korea.dto.ClassRoom_InfoVO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -79,15 +80,23 @@ public interface CrsesBookDAO {
 	/**
 	 * 수강편람가져오기(교수)
 	 * @param
-	 * @return 
+	 * @return Lecture_BreakeDownVO
 	 * @throws 
 	 */
 	public Lecture_BreakeDownVO getCrsesBook(String lb_no);
 	/**
 	 * 강의실 정보 가져오기(교수)
 	 * @param
-	 * @return 
+	 * @return  List<ClassRoom_InfoVO>
 	 * @throws 
 	 */
 	public List<ClassRoom_InfoVO> getClassroomInfo();
+	
+	/**
+	 * 강의실 시간표 가져오기(교수)
+	 * @param String
+	 * @return ClassRoom_UsetimeVO
+	 * @throws 
+	 */
+	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom);
 }

@@ -3,6 +3,7 @@ package com.korea.crsesBook.service;
 import java.util.List;
 
 import com.korea.dto.ClassRoom_InfoVO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -90,6 +91,14 @@ public interface CrsesBookService {
 	 * @throws 
 	 */
 	public List<ClassRoom_InfoVO> getClassroomInfo();
+	
+	/**
+	 * 강의실 리스트 가져오기(교수)
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom);
 	
 	
 }

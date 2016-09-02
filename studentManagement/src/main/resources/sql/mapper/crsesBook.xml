@@ -67,5 +67,12 @@
 	<select id="getClassroomInfo" resultType="classroom">
 		SELECT *
 		FROM CLASSROOM_INFO
+		ORDER BY CI_ROOMNAME
+	</select>
+	
+	<select id="getClassroomTime" parameterType="classroom" resultType="classroomTime">
+		SELECT *
+		FROM CLASSROOM_USETIME
+		WHERE CU_CI_NO = #{ci_no}
 	</select>
 </mapper>
