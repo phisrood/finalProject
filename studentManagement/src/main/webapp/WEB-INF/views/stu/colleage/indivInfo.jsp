@@ -91,8 +91,11 @@
 				</div>
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
+                	
+
+  			
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="수저저저저저저저정" style="text-align: center;" readonly="readonly"></div><br><br>  
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="1학년(고정값 수정필요)" style="text-align: center;" readonly="readonly"></div><br><br>  
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
@@ -156,9 +159,9 @@
 	               		</div>
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">변경</div>
-		               		<div style="float: left; width: 37%;"><input type="password"  required="required" name="after_use_pwd" size="30"  style="text-align: center;"></div>
+		               		<div style="float: left; width: 37%;"><input type="password"  required="required" name="after_use_pwd" size="30"  placeholder="변경할 패스워드 입력" style="text-align: center;"></div>
 		               		<div style="float: left; width: 11%; padding: 3px;">변경(확인)</div>
-		               		<div style="float: left; width: 37%;"><input type="password"  required="required" size="30" name="after_use_pwd1"  style="text-align: center;"></div><br>
+		               		<div style="float: left; width: 37%;"><input type="password"  required="required" size="30" name="after_use_pwd1" placeholder="변경할 패스워드 확인"  style="text-align: center;"></div><br>
 		               	
 	               		</div>
 	               		
