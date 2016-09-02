@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +35,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.korea.dto.Colleage_Register_ChangeVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
@@ -55,8 +57,12 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
-	public String indivInfo(HttpSession session, Model model){
+	public String indivInfo(HttpSession session, Model model, HttpServletRequest request){
 		String url = "/stu/colleage/indivInfo";
+	
+	
+	
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
 		
 		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
@@ -312,8 +318,22 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/colleageChangeList", method=RequestMethod.GET)
-	public String colleageChangeList(){
+	public String colleageChangeList(HttpSession session, Model model ){
 		String url = "/stu/colleage/colleageChangeList";
+		
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = loginUser.getUse_id();
+		
+		
+		List<Colleage_Register_ChangeVO> Colleage_Register_ChangeVO = indivInfoManageService.getColleageChangeList(stud_use_id);
+		
+		System.out.println(Colleage_Register_ChangeVO);
+		model.addAttribute("Colleage_Register_ChangeVO",Colleage_Register_ChangeVO);
+		
+		
+		
+		
 		
 		return url;
 	}
