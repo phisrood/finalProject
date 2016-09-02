@@ -157,7 +157,7 @@ public class NoticeController implements ApplicationContextAware {
 	//파일다운로드
 	private WebApplicationContext context= null;
 	
-	@RequestMapping("/emp/noticeFileDown")
+	@RequestMapping(value={"/stu/noticeFileDown","/pro/noticeFileDown","/emp/noticeFileDown"})
 	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
 		File downloadFile = getFile(af_aftername);
 		if(downloadFile == null) {
@@ -219,20 +219,7 @@ public class NoticeController implements ApplicationContextAware {
 		return url;
 	}
 	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//파일다운로드
-	@RequestMapping(value="/stu/noticeFileDown", method=RequestMethod.GET)
-	public String noticeFileDown(){
-		String url="";
-		
-		return url;
-	}
-	
+
 	
 	
 }

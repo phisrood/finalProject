@@ -87,7 +87,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 */
 	@Override
 	public void updateNoticeFile(Attachment_FileVO attachment_FileVO) {
-		sqlSession.update("ColleageNotice.attachUpdate",attachment_FileVO);
+		sqlSession.update("ColleageNotice.noticeFileUpdate",attachment_FileVO);
 		
 	}
 	/**
