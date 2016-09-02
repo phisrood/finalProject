@@ -93,6 +93,7 @@ public class IndivInfoManageController {
 		String now_use_pwd = loginUser.getUse_pwd();
 		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		
+			
 		
 		if(now_use_pwd.equals(password1)) {
 				if(password.equals(password2)){
@@ -209,7 +210,7 @@ public class IndivInfoManageController {
             indivInfoManageService.insertImage(insertMap);
             //등록한 af_no을 가져온 뒤 학생 stu_af_no 업데이트 해준다.
             int afNo = indivInfoManageService.selectafno();
-            
+          
             
           //세션 아이디 받아오기
     		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");

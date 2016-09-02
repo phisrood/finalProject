@@ -38,7 +38,7 @@
 
 	<!-- page content -->
 	
-	
+
 		<div class="x_panel">
 		
 			<div class="x_title">
@@ -50,16 +50,15 @@
 			</div>
 			
 			<div class="x_content">
-			
+			    <form action="/stu/schoolReREQ" method="POST"> 
 			<div class="form-group">
-			
+				
                         <label>신청구분</label><br>
-                        
-                          <select class="form-control">
-                            <option>일반휴학</option>
-                            <option>군휴학</option>
-                            <option>일반복학</option>
-                            <option>제대복학</option>
+                          <select class="form-control" name="option">
+                            <option value="일반휴학">일반휴학</option>
+                            <option value="군휴학">군휴학</option>
+                            <option value="일반복학">일반복학</option>
+                            <option value="제대복학">제대복학</option>
                           </select>
                         <br/>
                         </div>
@@ -68,9 +67,9 @@
                         <fieldset>
                           <div class="control-group">
                             <div class="controls">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">휴학시작일자</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">시작일자</label>
                               <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
+                                <input type="text" name="ad_reqdate_start" class="form-control has-feedback-left"  OnClick="Calendar(this, 'top','no');">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>
@@ -80,9 +79,9 @@
                         <fieldset>
                           <div class="control-group">
                             <div class="controls">
-                        		<label class="control-label col-md-3 col-sm-3 col-xs-12">복학시작일자</label>
+                        		<label class="control-label col-md-3 col-sm-3 col-xs-12">종료일자</label>
                               <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                                <input type="text" class="form-control has-feedback-left" id="single_cal4" placeholder="First Name" aria-describedby="inputSuccess2Status4">
+                                <input type="text" OnClick="Calendar(this, 'top','no');" name="ad_reqdate_end" class="form-control has-feedback-left">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>
@@ -95,14 +94,17 @@
                   <div class="col-md-9 col-sm-9 col-xs-12">
 			        <div class="form-group">
                       <label>변동사유</label>
-                      <input type="text" class="form-control" placeholder="변동사유를 쓰시오">
+                      <input type="text" name="sayou" class="form-control" placeholder="변동사유를 쓰시오">
                     </div>
 			      </div>
                     	<div style="text-align:right;">
-			                      <button type="button" class="btn btn-dark">신청</button>
+			                      <button type="submit" class="btn btn-dark">신청</button>
                     	</div>
+                    	
+                    </form> 	
+                    
 			      <div class="x_content">
-			      
+			    
                     
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
@@ -163,12 +165,11 @@
 		</div>
 	</div>
 					<!-- /page content -->
-	</div>
+	
 			
 			
-		
-
-		
+	<!-- cal -->
+	<script src="/stu/js/click_cal.js"></script>
 	<!-- Ion.RangeSlider -->
     <script src="../vendors/ion.rangeSlider/js/ion.rangeSlider.min.js"></script>
     <!-- Bootstrap Colorpicker -->

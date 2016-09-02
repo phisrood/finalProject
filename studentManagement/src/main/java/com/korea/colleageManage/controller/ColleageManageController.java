@@ -15,9 +15,17 @@ package com.korea.colleageManage.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ColleageManageController {
@@ -28,13 +36,17 @@ public class ColleageManageController {
 	 * @throws 
 	 */
 	// 휴/복학 신청양식 출력
+	
+	
 	@RequestMapping(value="/stu/schoolReModel", method=RequestMethod.GET)
 	public String schoolReModel(){
 		String url = "/stu/schoolReModel";
 		
-		
 		return url;
 	}
+	
+
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -42,8 +54,17 @@ public class ColleageManageController {
 	 * @throws 
 	 */
 	// 휴/복학 신청
-	@RequestMapping(value="/stu/schoolReREQ", method=RequestMethod.GET)
-	public String schoolReREQ(){
+	@RequestMapping(value="/stu/schoolReREQ", method=RequestMethod.POST)
+	public String schoolReREQ(HttpSession session, Model model, @RequestParam(value="ad_reqdate_start", defaultValue="")String ad_reqdate_start,
+			@RequestParam(value="ad_reqdate_end", defaultValue="")String ad_reqdate_end){
+		
+		System.out.println(ad_reqdate_start+"@@@@@@@@@@@@@@@@@@");
+//		int start = Integer.parseInt(request.getParameter("ad_regdate_start"));
+//		System.out.println(start);
+//		int end = Integer.parseInt(request.getParameter("ad_regdate_end"));
+//		System.out.println(end);
+		
+		
 		String url="redirect:/stu/schoolReModel";
 		
 		return url;
