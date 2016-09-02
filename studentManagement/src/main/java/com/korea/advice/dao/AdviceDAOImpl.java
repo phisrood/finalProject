@@ -79,8 +79,8 @@ public class AdviceDAOImpl implements AdviceDAO {
 	 * @throws
 	 */
 	@Override
-	public void deleteAdviceREQ() {
-		
+	public void updateAdviceCancel(int ad_no) {
+		sqlSession.delete("adviceDAO.updateAdviceCancel",ad_no);
 	}
 
 	/**

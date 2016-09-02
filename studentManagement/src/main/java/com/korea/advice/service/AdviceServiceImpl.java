@@ -77,9 +77,8 @@ public class AdviceServiceImpl implements AdviceService {
 	 * @throws
 	 */
 	@Override
-	public void deleteAdviceREQ() {
-		// TODO Auto-generated method stub
-
+	public void updateAdviceCancel(int ad_no) {
+		adviceDAO.updateAdviceCancel(ad_no);
 	}
 
 	/**

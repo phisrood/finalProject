@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.crsesBook.dao.CrsesBookDAO;
+import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -88,6 +89,10 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	@Override
 	public Lecture_BreakeDownVO getCrsesBook(String lb_no) {
 		return crsesBookDAO.getCrsesBook(lb_no);
+	}
+	@Override
+	public List<ClassRoom_InfoVO> getClassroomInfo() {
+		return crsesBookDAO.getClassroomInfo();
 	}
 
 

@@ -24,6 +24,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
 <!-- 학과정보관리 -->
 
 <form>

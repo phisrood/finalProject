@@ -60,7 +60,7 @@ public interface AdviceService {
 	 * @throws
 	 */
 	// 상담신청 삭제
-	public void deleteAdviceREQ();
+	public void updateAdviceCancel(int ad_no);
 
 	/**
 	 * 교수가 받은 상담신청조회

@@ -27,7 +27,13 @@
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
 <script>
  function confirm(ad_no){
 	 var url = "/pro/updateAdviceConfirmForm?ad_no="+ad_no;
