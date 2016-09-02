@@ -18,8 +18,10 @@ package com.korea.indivInfoManage.service;
  */
 
 
+import java.util.List;
 import java.util.Map;
 
+import com.korea.dto.Colleage_Register_ChangeVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 
@@ -81,7 +83,10 @@ public interface IndivInfoManageService {
 	 * @return 
 	 * @throws 
 	 */
-	public String getColleageChangeList();
+	
+	
+	//학적변동현황 불러오기
+	public List<Colleage_Register_ChangeVO> getColleageChangeList(String stud_use_id);
 	
 	
 	//af_no 찾아오기
@@ -91,6 +96,7 @@ public interface IndivInfoManageService {
 	public int updateafno(Map<String, String> para);
 	
 	
+
 	
 	
 	

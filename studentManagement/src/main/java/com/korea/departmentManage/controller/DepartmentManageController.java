@@ -126,8 +126,7 @@ public class DepartmentManageController {
 		
 		//배열에 담긴 체크항목을 반복문을 통해 update
 		for (int i = 0; i < dep_no.length; i++) {
-			departmentManageService.updateDepartmentOnOff(Integer
-					.parseInt(dep_no[i]));
+			departmentManageService.updateDepartmentOnOff(Integer.parseInt(dep_no[i]));
 		}
 
 		return url;

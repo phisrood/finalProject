@@ -28,6 +28,14 @@
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
+
 <div class="row">
 	<div class="x_panel_big">
 		<!-- 상담 게시판 -->
@@ -40,19 +48,10 @@
 			본인과 담당 교수만 열람이 가능합니다.</div>
 		<div class="x_content">
 			<div style="text-align: right;">
+			<button type="button" class="btn btn-dark"><a href="/stu/adviceBoardWriteForm">작 성</a></button>
+  			</div>
 
-				<select style="width: 100px; height: 30px;">
-					<option>전체</option>
-					<option>제목</option>
-					<option>작성일</option>
-				</select> <input type="text" style="width: 200px; height: 30px;">
-				<button type="button" class="btn btn-dark">검색</button>
-				<button type="button" class="btn btn-dark"><a href="/stu/adviceBoardWriteForm">작 성</a></button>
-  
-			</div>
-
-			<table id="datatable"
-				class="table table-striped jambo_table bulk_action">
+			<table id="datatable" class="table table-striped jambo_table bulk_action">
 				<thead>
 					<tr>
 						<th>글번호</th>
@@ -74,10 +73,7 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<div align="center">
-				<a href="" style="text-decoration: none"> 이전 1 | 2 | 3 | 4 | 5 |
-					6 | 7 | 8 | 9 | 10 다음 </a>
-			</div>
+			
 			<br>
 		</div>
 	</div>

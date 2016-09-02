@@ -2,6 +2,7 @@ package com.korea.crsesBook.dao;
 
 import java.util.List;
 
+import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -82,4 +83,11 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	public Lecture_BreakeDownVO getCrsesBook(String lb_no);
+	/**
+	 * 강의실 정보 가져오기(교수)
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<ClassRoom_InfoVO> getClassroomInfo();
 }

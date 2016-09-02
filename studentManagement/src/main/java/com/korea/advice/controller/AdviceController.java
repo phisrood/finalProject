@@ -1,5 +1,6 @@
 package com.korea.advice.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.korea.advice.service.AdviceService;
 import com.korea.dto.AdviceVO;
@@ -76,10 +78,14 @@ public class AdviceController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = user.getUse_id();
 
-		List<AdviceVO> adviceReqList = adviceService
-				.getAdviceRequestList(stud_use_id);
-		List<ProfessorVO> professorList = adviceService
-				.getProfessorList(stud_use_id);
+		List<AdviceVO> adviceReqList = adviceService.getAdviceRequestList(stud_use_id);
+		List<ProfessorVO> professorList = adviceService.getProfessorList(stud_use_id);
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		for(int i=0; i<adviceReqList.size();i++){
+			System.out.println("dd");
+		}
 
 		model.addAttribute("adviceReqList", adviceReqList);
 		model.addAttribute("professorList", professorList);
@@ -131,9 +137,13 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 가능일자 입력
-	@RequestMapping(value = "/pro/adviceDate", method = RequestMethod.GET)
-	public String adviceDate() {
-		String url = "";
+	@RequestMapping(value = "/stu/adviceCancel", method = RequestMethod.POST)
+	public String adviceDate(String[] ad_no) {
+		String url = "redirect:/stu/adviceRequestList";
+		
+			for (int i = 0; i < ad_no.length; i++) {
+				adviceService.updateAdviceCancel(Integer.parseInt(ad_no[i]));
+			}
 
 		return url;
 	}
@@ -209,9 +219,14 @@ public class AdviceController {
 	 */
 	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWriteForm")
-	public String adviceBoardWriteForm() {
+	public String adviceBoardWriteForm(HttpSession session,Model model) {
 		String url = "/stu/adviceBoardWrite";
-
+		
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String stud_use_id = user.getUse_id();
+		
+		model.addAttribute("stud_use_id", stud_use_id);
 		return url;
 	}
 
@@ -224,8 +239,16 @@ public class AdviceController {
 	 */
 	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
-	public String adviceBoardWrite(Advice_BoardVO adviceBoardVO) {
+	public String adviceBoardWrite(Advice_BoardVO adb
+			/*int adb_af_no,String adb_title,String adb_content,String adb_stud_use_id*/) {
 		String url = "redirect:/common/adviceBoard";
+		/*P
+		System.out.println(adb_af_no);
+		System.out.println(adb_title);
+		System.out.println(adb_content);
+		System.out.println(adb_stud_use_id);
+		*/
+		System.out.println(adb.getAdb_title());
 		return url;
 	}
 
@@ -270,7 +293,7 @@ public class AdviceController {
 	@RequestMapping(value = "/stu/chatAdvice", method = RequestMethod.GET)
 	public String chatAdvice() {
 		String url = "/stu/chat_advice";
-
+		
 		return url;
 	}
 }

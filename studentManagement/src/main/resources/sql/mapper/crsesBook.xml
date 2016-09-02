@@ -63,4 +63,9 @@
 		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit}, LB_COMPLETEKIND=#{lb_completekind},LB_APPROVALYN='N'
 		WHERE LB_NO = #{lb_no}
 	</update>
+	
+	<select id="getClassroomInfo" resultType="classroom">
+		SELECT *
+		FROM CLASSROOM_INFO
+	</select>
 </mapper>

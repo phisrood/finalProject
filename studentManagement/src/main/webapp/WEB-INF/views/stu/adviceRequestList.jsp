@@ -28,6 +28,15 @@
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
+
+
 <div class="row">
 
 	<!-- 사이버 상담 신청 내역 -->
@@ -39,8 +48,7 @@
 					<div class="clearfix"></div>
 				</div>
 				<div>
-					학과교수 : 
-					<select name="ad_pro_use_id">
+					학과교수 : <select name="ad_pro_use_id">
 						<c:forEach var="professor" items="${professorList}">
 							<option value="${professor}">${professor}</option>
 						</c:forEach>
@@ -67,8 +75,8 @@
 				</div>
 				<br> <br>
 				<div>
-					일자 선택 
-					<input type="text" OnClick="Calendar(this, 'top','no');" name="ad_reqdate">
+					일자 선택 <input type="text" OnClick="Calendar(this, 'top','no');"
+						name="ad_reqdate">
 				</div>
 				<br>
 				<div>
@@ -117,34 +125,63 @@
 				완료 : 상담이 완료된 상태<br> 대기 : 담당 교수가 확인하여 상담일까지 대기하는 상태<br> 미처리
 				: 담당 교수가 확인하지 않은 상태<br> 연기 : 담당 교수 일정상 기간을 미룬 상태
 			</div>
-			<table id="datatable" class="table table-striped table-bordered">
-				<thead>
-					<tr>
-						<th>방법</th>
-						<th>구분</th>
-						<th>교수명</th>
-						<th>일자</th>
-						<th>시</th>
-						<th>상태</th>
-						<th>회신일</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<c:forEach var="adviceReq" items="${adviceReqList}">
+			<form>
+				<table id="datatable" class="table table-striped table-bordered">
+					<button type="button" class="btn btn-dark"
+						onclick='revoke(this.form);'>상담취소</button>
+					<thead>
 						<tr>
-							<td>${adviceReq.ad_way }</td>
-							<td>${adviceReq.ad_purpose }</td>
-							<td>${adviceReq.ad_pro_use_id }</td>
-							<td>${adviceReq.ad_reqdate }</td>
-							<td>${adviceReq.ad_time }</td>
-							<td>${adviceReq.ad_stat }</td>
-							<td>${adviceReq.ad_return }</td>
+							<th>구분</th>
+							<th>방법</th>
+							<th>구분</th>
+							<th>교수명</th>
+							<th>일자</th>
+							<th>시</th>
+							<th>상태</th>
+							<th>회신일</th>
 						</tr>
-					</c:forEach>
-				</tbody>
+					</thead>
 
-			</table>
+					<tbody>
+						<c:forEach var="adviceReq" items="${adviceReqList}">
+							<tr>
+								<td><c:if test="${adviceReq.ad_stat eq '미처리' }">
+										<input type="checkbox" name="ad_no" value="${adviceReq.ad_no}">
+									</c:if></td>
+
+								<script>
+									function revoke(form) {
+										var count = 0;
+
+										for (var i = 0; i < form.ad_no.length; i++) {
+											if (form.ad_no[i].checked == true) {
+												count++;
+											}
+										}
+
+										if (count == 0) {
+											alert("취소할 항목을 선택해 주세요.");
+										} else {
+											form.action = "/stu/adviceCancel";
+											form.method = "post";
+											form.submit();
+										}
+
+									}
+								</script>
+
+								<td>${adviceReq.ad_way }</td>
+								<td>${adviceReq.ad_purpose }</td>
+								<td>${adviceReq.ad_pro_use_id }</td>
+								<td>${adviceReq.ad_reqdate }</td>
+								<td>${adviceReq.ad_time }</td>
+								<td>${adviceReq.ad_stat }</td>
+								<td>${adviceReq.ad_return }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+					</form>
+				</table>
 		</div>
 	</div>
 </div>

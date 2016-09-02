@@ -3,7 +3,7 @@ package com.korea.acadeCal.service;
  * @interface Name : AcadeCalService.java
  * @Description : 학사일정관리 서비스 인터페이스
  * @Modification Information
- * @author 이영만
+ * @author 한돈희
  * @since  2016.08.25.
  * @version 1.0
  * @see
