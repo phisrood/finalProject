@@ -1,4 +1,14 @@
 package com.korea.colleageManage.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Colleage_Register_ChangeVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,17 +25,21 @@ package com.korea.colleageManage.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class ColleageManageDAOImpl implements ColleageManageDAO{
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	
+	
+	
+	
 	@Override
-	public String insertSchoolReREQ() {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertSchoolReREQ(Map<String, String> map) {
+	
+		return sqlSession.insert("ColleageManageDAO.insertREQ",map);
 	}
 	/**
 	 * 개인 정보 조회
@@ -34,9 +48,9 @@ public class ColleageManageDAOImpl implements ColleageManageDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getSchoolReREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public  List<Colleage_Register_ChangeVO> getSchoolReREQList(String stud_use_id) {
+		
+		return  (List<Colleage_Register_ChangeVO>) sqlSession.selectList("ColleageManageDAO.selectREQ",stud_use_id);
 	}
 	/**
 	 * 개인 정보 조회

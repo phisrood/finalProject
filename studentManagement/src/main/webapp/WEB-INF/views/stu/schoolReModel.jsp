@@ -105,54 +105,44 @@
                     
 			      <div class="x_content">
 			    
-                    
+        
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
-                          <th>NO</th>
+                          <th>접수번호</th>
                           <th>신청일자</th>
                           <th>신청구분</th>
-                          <th>휴/복학예정일자</th>
-                          <th>휴학종료예정일</th>
-                          <th>취소구분</th>
+                          <th>휴/복학 시작일자</th>
+                          <th>휴/복학 종료일자</th>
+                          <th>승인여부<th>
+                         <!--  <th>취소여부<th> -->
                         </tr>
                       </thead>
-
-
+                      
+                      
+  					<c:choose>
+                      	     <c:when test="${empty Colleage_Register_ChangeVO}">
+	                        		<td colspan="8" align="center">신청한 내역이 없습니다.</td>
+                        	</c:when>
+                     
+   					<c:otherwise>
                       <tbody>
+                       <c:forEach items="${Colleage_Register_ChangeVO}" var="Colleage_Register_ChangeVO">
                         <tr>
-                          <td>1</td>
-                          <td>2012/02/20</td>
-                          <td>휴학</td>
-                          <td>2012/03/02</td>
-                          <td>2012/08/31</td>
-                          <td>없음</td>
+                          <td>${Colleage_Register_ChangeVO.crc_no}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_year}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_colleagechangestatus}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_changedate}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_returnappointdate}</td>
+                          <td>${Colleage_Register_ChangeVO.crc_submityn}</td>
+                   <%--        <td>${Colleage_Register_ChangeVO.crc_cancelyn}</td> --%>
                         </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>2012/02/20</td>
-                          <td>휴학</td>
-                          <td>2012/03/02</td>
-                          <td>2012/08/31</td>
-                          <td>없음</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>2012/02/20</td>
-                          <td>휴학</td>
-                          <td>2012/03/02</td>
-                          <td>2012/08/31</td>
-                          <td>없음</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>2012/02/20</td>
-                          <td>휴학</td>
-                          <td>2012/03/02</td>
-                          <td>2012/08/31</td>
-                          <td>없음</td>
-                        </tr>
+							</c:forEach>
+						
+						 	</c:otherwise>
                         
+                         	</c:choose>	
+                 	
                       </tbody>
                     </table>
                   </div>
