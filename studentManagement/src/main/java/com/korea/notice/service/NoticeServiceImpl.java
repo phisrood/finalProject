@@ -2,6 +2,8 @@ package com.korea.notice.service;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,19 +46,6 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNoticeNewList();
 	}
 	/**
-	 * @return 
-	 * 공지상세보기
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no) {
-		return noticeDAO.getNoticeDetailInfo(cn_no);
-		
-		
-	}
-	/**
 	 * 공지사항전체리스트
 	 * @param
 	 * @return List<NoticeViewVO>
@@ -68,14 +57,16 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNoticeAllList();
 	}
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * 공지상세보기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void updateNotice() {
-		// TODO Auto-generated method stub
+	public NoticeViewVO getNoticeDetailInfo(int cn_no) {
+		return noticeDAO.getNoticeDetailInfo(cn_no);
+		
 		
 	}
 	/**
@@ -85,9 +76,20 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public void deleteNotice() {
-		// TODO Auto-generated method stub
-		
+	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO) {
+		noticeDAO.updateNotice(colleage_NoticeVO);
+		/*noticeDAO.updateNoticeFile(attachment_FileVO);*/
+	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO) {
+
+		noticeDAO.deleteNotice(colleage_NoticeVO);
 	}
 	/**
 	 * 개인 정보 조회

@@ -42,7 +42,7 @@ public interface NoticeDAO {
 	 * @throws 
 	 */
 	//공지 상세
-	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no);
+	public NoticeViewVO getNoticeDetailInfo(int cn_no);
 	/**
 	 * @return 
 	 * 개인 정보 조회
@@ -53,21 +53,24 @@ public interface NoticeDAO {
 	//공지사항 게시판 전체리스트 
 	public List<NoticeViewVO> getNoticeAllList();
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 수정
+	 * @param noticeViewVO 
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//공지사항 수정
-	public void updateNotice();
+	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO);
+	
+	public void updateNoticeFile(Attachment_FileVO attachment_FileVO);
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//공지사항 삭제
-	public void deleteNotice();
+	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO);
 	/**
 	 * @param multipartFile 
 	 * @param colleage_NoticeVO 
@@ -97,5 +100,6 @@ public interface NoticeDAO {
 	 */
 	//파일다운로드
 	public void getNoticeFileDown();
+	
 	
 }

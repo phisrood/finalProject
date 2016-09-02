@@ -48,6 +48,17 @@
                           <th>제목</th>
                           <th>첨부파일</th>
                           <th>작성일</th>
+                          <th><c:choose>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+				                       		작성자
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+				                       		작성자
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+				                       		삭제
+				                    	</c:when>
+				                    </c:choose></th>
                         </tr>
                       </thead>
 
@@ -79,8 +90,21 @@
 				                    </c:choose>
                         			</td>
                         			<c:if test="${noticeAllList.cn_af_no == 0 }"><td>-</td></c:if>
-                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td>${noticeAllList.af_realname }</td></c:if>
+                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td><a href="${noticeAllList.af_path }"> ${noticeAllList.af_realname } </a></td></c:if>
                         			<td>${noticeAllList.cn_date }</td>
+                        			<td>
+                        			<c:choose>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+				                       		${noticeAllList.cn_sp_use_id }
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+				                       		${noticeAllList.cn_sp_use_id }
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+				                       		<a href="#">삭제</a>
+				                    	</c:when>
+				                    </c:choose>
+                        			</td>
                         		</tr>
                         	</c:forEach>
                         </c:otherwise>
@@ -98,7 +122,6 @@
 	                       		<a href="/emp/noticeInsertForm">
 									<button type="button" class="btn btn-dark">등록</button>
 								</a>
-								<button type="button" class="btn btn-dark">삭제</button>
 	                    	</c:when>
 	                    </c:choose>
 						
