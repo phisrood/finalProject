@@ -9,6 +9,7 @@
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱      		최초생성
+ *	  2016.09.02.  	박진성,조현욱      	1차 수정(임시완료)
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -31,7 +32,7 @@
 <script>
 
 </script>
-
+			
 	<form action="/stu/indivUpdate" method="POST">
 	<div class="row">
     	<div class="x_panel_big">
@@ -45,6 +46,9 @@
                 <div class="col-md-55">
                 	<div class="thumbnail" align="center" style="padding: 13px;">
                 		<div align="center" class="img-container" style="border: 1px solid; width:180px;">
+                		
+                			
+                	
                         		<img id="image" src="/stu/images/${studentVO.af_aftername}" alt="Picture" width="170px" height="150px">
                         		
                         		</div>                     
@@ -66,11 +70,11 @@
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" name="stud_use_id" value="${studentVO.stud_use_id}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" name="stud_use_id" value="${studentVO.stud_use_id}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성명(한글)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.use_name}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.use_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">주민 &nbsp;번호</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_regno1}-${studentVO.stud_regno2}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_regno1}-${studentVO.stud_regno2}" readonly="readonly" style="text-align: center;"></div><br><br>
      
 					</div>
 				</div>
@@ -78,21 +82,24 @@
                 	<div class="thumbnail" style="padding:10px;">
              
                 		<div style="float: left; width: 35%; padding:3px;">성명(영어)</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_engname}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_engname}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">현재 &nbsp;학과</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                       		<div style="float: left; width: 35%; padding:3px;">학적 &nbsp;상태</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;"></div>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;" readonly="readonly"></div>
 					</div>
 				</div>
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
+                	
+
+  			
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="수저저저저저저저정" style="text-align: center;"></div><br><br>  
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="1학년(고정값 수정필요)" style="text-align: center;" readonly="readonly"></div><br><br>  
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
-                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;"></div><br><br>
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;" readonly="readonly"></div><br><br>
 					</div>
 				</div>
 				<div class="clearfix">
@@ -110,6 +117,8 @@
 						<div style="padding:3px;"></div>
 						<div style="float: left; width: 96%;">
 	   						<i class="fa fa-arrow-circle-o-right"></i> &nbsp;개인 정보 / 주소 정보 ( 하이포탈 비밀 번호 변경 )
+	   						
+	   				
 	   					</div>
 	   					<div style="float: right; width: 4%;">
 	   						<button type="submit" class="btn btn-dark btn-xs">&nbsp;저 장&nbsp;</button>
@@ -144,14 +153,15 @@
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">현재</div>
 		               		<div style="float: left; width: 37%;">
-		               		<input type="password"  required="required" size="15" value="${studentVO.use_pwd}" name="now_use_pwd" style="text-align: center;" readonly="readonly"></div>
-		               		<div style="float: left; width: 49%;"><br></div><br><br>
+		               		<input type="password"  required="required" size="30" name="now_use_pwd" style="text-align: center;" placeholder="현재 패스워드를 입력"></div>
+		               		
+		               		<div style="float: left; width: 49%;"></div><br><br>
 	               		</div>
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">변경</div>
-		               		<div style="float: left; width: 37%;"><input type="password"  required="required" name="after_use_pwd" size="15" value="" style="text-align: center;"></div>
+		               		<div style="float: left; width: 37%;"><input type="password"  required="required" name="after_use_pwd" size="30"  placeholder="변경할 패스워드 입력" style="text-align: center;"></div>
 		               		<div style="float: left; width: 11%; padding: 3px;">변경(확인)</div>
-		               		<div style="float: left; width: 37%;"><input type="password"  required="required" size="15" name="after_use_pwd1" value=""  style="text-align: center;"></div><br>
+		               		<div style="float: left; width: 37%;"><input type="password"  required="required" size="30" name="after_use_pwd1" placeholder="변경할 패스워드 확인"  style="text-align: center;"></div><br>
 		               	
 	               		</div>
 	               		

@@ -50,6 +50,7 @@
         <!-- /page content -->
 
     <!-- calendar modal -->
+    <!-- 생성 -->
     <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -83,6 +84,7 @@
         </div>
       </div>
     </div>
+    <!-- 수정 -->
     <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -114,6 +116,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
+            <button type="button" class="btn btn-primary antosubmit3">Delete</button>
           </div>
         </div>
       </div>
@@ -132,6 +135,7 @@
     <!-- FullCalendar -->
     <script>
       $(window).load(function() {
+    	var id = 0;
         var date = new Date(),
             d = date.getDate(),
             m = date.getMonth(),
@@ -158,18 +162,23 @@
               if (end) {
                 ended = end;
               }
+              $("#descr").val("");
 
               categoryClass = $("#event_type").val();
 
               if (title) {
+            	  // 이벤트 생성
                 calendar.fullCalendar('renderEvent', {
                     title: title,
                     start: started,
                     end: end,
-                    allDay: allDay
+                    allDay: allDay,
+                    id: id
                   },
                   true // make the event "stick"
                 );
+            	  id++;
+            	  alert(id);
               }
 
               $('#title').val('');
@@ -189,41 +198,29 @@
 
             $(".antosubmit2").on("click", function() {
               calEvent.title = $("#title2").val();
+              // 이벤트 수정
+              alert(calEvent.title);
+              alert(calEvent.id);
+              calendar.fullCalendar('updateEvent', calEvent.id);
+	          $('.antoclose2').click();
+              
+            }); 
 
-              calendar.fullCalendar('updateEvent', calEvent);
-              $('.antoclose2').click();
+            $(".antosubmit3").on("click", function() {
+              calEvent.title = $("#title2").val();
+              // 이벤트 삭제
+              calendar.fullCalendar('removeEvents', calEvent.id);
+	          $('.antoclose2').click();
+              
             });
-
+            
             calendar.fullCalendar('unselect');
+            
+            
+            
           },
           editable: true,
-          events: [{
-            title: 'All Day Event',
-            start: new Date(y, m, 1)
-          }, {
-            title: 'Long Event',
-            start: new Date(y, m, d - 5),
-            end: new Date(y, m, d - 2)
-          }, {
-            title: 'Meeting',
-            start: new Date(y, m, d, 10, 30),
-            allDay: false
-          }, {
-            title: 'Lunch',
-            start: new Date(y, m, d + 14, 12, 0),
-            end: new Date(y, m, d, 14, 0),
-            allDay: false
-          }, {
-            title: 'Birthday Party',
-            start: new Date(y, m, d + 1, 19, 0),
-            end: new Date(y, m, d + 1, 22, 30),
-            allDay: false
-          }, {
-            title: 'Click for Google',
-            start: new Date(y, m, 28),
-            end: new Date(y, m, 29),
-            url: 'http://google.com/'
-          }]
+          events: []
         });
       });
     </script>

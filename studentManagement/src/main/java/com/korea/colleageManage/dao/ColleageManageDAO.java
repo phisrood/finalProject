@@ -1,4 +1,10 @@
 package com.korea.colleageManage.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.korea.dto.Colleage_Register_ChangeVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -23,7 +29,7 @@ public interface ColleageManageDAO {
 	 * @throws 
 	 */
 	// 휴/복학 신청
-	public String insertSchoolReREQ();
+	public int insertSchoolReREQ(Map<String, String> map);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -31,7 +37,7 @@ public interface ColleageManageDAO {
 	 * @throws 
 	 */
 	// 휴/복학 신청현황조회
-	public String getSchoolReREQList();
+	public  List<Colleage_Register_ChangeVO> getSchoolReREQList(String stud_use_id);
 	/**
 	 * 개인 정보 조회
 	 * @param

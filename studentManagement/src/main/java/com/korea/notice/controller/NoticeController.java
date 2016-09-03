@@ -23,22 +23,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.NoticeViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.notice.service.NoticeService;
 
 @Controller
-public class NoticeController {
+public class NoticeController implements ApplicationContextAware {
+	private WebApplicationContext servletContext= null;
 	
 	@Autowired
 	private NoticeService noticeManagerService;
@@ -79,7 +86,7 @@ public class NoticeController {
 	public String noticeAllList(Model model){
 		String url="/common/noticeAllList";
 		
-		List<Colleage_NoticeVO> noticeAllList = noticeManagerService.getNoticeAllList();
+		List<NoticeViewVO> noticeAllList = noticeManagerService.getNoticeAllList();
 		
 		model.addAttribute("noticeAllList", noticeAllList);
 		
@@ -95,11 +102,11 @@ public class NoticeController {
 	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail","/emp/noticeDetail"}, method=RequestMethod.GET)
 	public String noticeDetail(int cn_no,Model model){
 		
-		String url="/common/noticeDetail";
+		String url="/common/noticeUpdate";
 	
-		Colleage_NoticeVO noticeDetailVO = noticeManagerService.getNoticeDetailInfo(cn_no);
+		NoticeViewVO noticeDetailViewVO = noticeManagerService.getNoticeDetailInfo(cn_no);
 		
-		model.addAttribute("noticeDetailVO", noticeDetailVO);
+		model.addAttribute("noticeDetailViewVO", noticeDetailViewVO);
 		System.out.println(url+"*****************************");
 		return url;
 	}
@@ -143,67 +150,76 @@ public class NoticeController {
 		}
 		
 		noticeManagerService.insertNotice(colleage_NoticeVO,attachment_FileVO);
-		 
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 조회 Select
-	@RequestMapping(value="/stu/noticeInquiry", method=RequestMethod.POST)
-	public String noticeInquiry(){
-		String url="";
-		
-		
-		return url;
+	
+	//파일다운로드
+	private WebApplicationContext context= null;
+	
+	@RequestMapping(value={"/stu/noticeFileDown","/pro/noticeFileDown","/emp/noticeFileDown"})
+	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
+		File downloadFile = getFile(af_aftername);
+		if(downloadFile == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return new ModelAndView("download","downloadFile", downloadFile);
 	}
+	
+	private File getFile(String fileId) {
+		String baseDir = context.getServletContext().getRealPath("resources/emp/noticeAF");
+		//if(fileId.equals("1"))
+			return new File(baseDir,fileId);
+		//return null;
+	}
+	
+	
+	
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;
+	}
+	
+	
+	
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 수정
 	 * @param
-	 * @return 
+	 * @return  String
 	 * @throws 
 	 */
 	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
-	public String noticeUpdate(){
-		String url="";
-		
+	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpSession session ){
+		String url="redirect:/emp/noticeAllList";
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String id=usersVO.getUse_id();
+		colleage_NoticeVO.setCn_sp_use_id(id);
+		noticeManagerService.updateNotice(colleage_NoticeVO,attachment_FileVO);
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 공지사항 삭제
 	 * @param
-	 * @return 
+	 * @return String
 	 * @throws 
 	 */
 	//공지사항 삭제
-	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.POST)
-	public String noticeDelete(){
-		String url="";
+	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.GET)
+	public String noticeDelete(Colleage_NoticeVO colleage_NoticeVO){
+		String url="redirect:/emp/noticeAllList";
+		
+		noticeManagerService.deleteNotice(colleage_NoticeVO);
+	
 		
 		
 		return url;
 	}
 	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//파일다운로드
-	@RequestMapping(value="/stu/noticeFileDown", method=RequestMethod.GET)
-	public String noticeFileDown(){
-		String url="";
-		
-		return url;
-	}
-	
+
 	
 	
 }

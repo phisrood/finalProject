@@ -57,7 +57,7 @@
 			                  <ul class="nav navbar-right panel_toolbox">                 
 			                  </ul>
 			                <div class="clearfix"></div>
-			                <form action="messageSend" method="post">
+			                <form action="messageReplySend" method="post">
 			                	<div>
 			                   	 	수 신 자 : <input type="text" readonly="readonly" required="required" style="width:78%;" value="${send }" name="mes_recive_use_id">
 			                   	</div>
@@ -70,7 +70,7 @@
 			                   	 <textarea rows="10" cols="40" name="mes_content" required="required" style="width:100%;" name="mes_content"></textarea>
 		                  		<div style="text-align:center;">
 		                  		<br>
-			                  		<input type="submit" class="btn btn-dark" value="보내기" id="sendBtn" onclick="notice_close();">
+			                  		<input type="submit" class="btn btn-dark" value="보내기" id="sendBtn">
 									<input type="button" class="btn btn-dark" value="닫기" onclick="notice_close();">
 			                  	</div>
 			                </form>

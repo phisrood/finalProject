@@ -2,12 +2,14 @@ package com.korea.notice.service;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
+import com.korea.dto.NoticeViewVO;
 import com.korea.notice.dao.NoticeDAO;
 
 /**
@@ -44,6 +46,17 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNoticeNewList();
 	}
 	/**
+	 * 공지사항전체리스트
+	 * @param
+	 * @return List<NoticeViewVO>
+	 * @throws 
+	 */
+	@Override
+	public List<NoticeViewVO> getNoticeAllList() {
+
+		return noticeDAO.getNoticeAllList();
+	}
+	/**
 	 * @return 
 	 * 공지상세보기
 	 * @param
@@ -51,7 +64,7 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no) {
+	public NoticeViewVO getNoticeDetailInfo(int cn_no) {
 		return noticeDAO.getNoticeDetailInfo(cn_no);
 		
 		
@@ -63,34 +76,23 @@ public class NoticeServiceImpl implements NoticeService{
 	 * @throws 
 	 */
 	@Override
-	public List<Colleage_NoticeVO> getNoticeAllList() {
+	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO) {
+		noticeDAO.updateNotice(colleage_NoticeVO);
+		/*noticeDAO.updateNoticeFile(attachment_FileVO);*/
+	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO) {
 
-		return noticeDAO.getNoticeAllList();
+		noticeDAO.deleteNotice(colleage_NoticeVO);
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void updateNotice() {
-		// TODO Auto-generated method stub
-		
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void deleteNotice() {
-		// TODO Auto-generated method stub
-		
-	}
-	/**
-	 * 개인 정보 조회
+	 * 공지사항등록
 	 * @param
 	 * @return 
 	 * @throws 
