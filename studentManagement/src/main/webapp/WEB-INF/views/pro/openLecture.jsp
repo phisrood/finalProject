@@ -86,8 +86,8 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control pull-left" id="classroom" readonly="readonly"
-							>&nbsp;&nbsp;
+							<input type="text" class="form-control pull-left" id="classroom"
+								readonly="readonly">&nbsp;&nbsp;
 							<button type="button" class="btn btn-info btn-sm" id="search"
 								data-toggle="modal" data-target="#myModal">검색</button>
 						</div>
@@ -246,7 +246,9 @@ h2 {
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									</tr>
-									<tr><td colspan='5' id="check"></td></tr>
+									<tr>
+										<td colspan='5' id="check"></td>
+									</tr>
 								</tbody>
 
 							</table>
@@ -254,47 +256,40 @@ h2 {
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" id="submit">확인</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="submit">확인</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script>
-
-	$("#myModal").on('show.bs.modal', function(e){
 		$("#classroomList").change(function() {
 			var classroom = $("#classroomList :selected").val();
-			var check = new Set();
+			var check = new Array();
+			$.each($("tr .timetable"), function(index) {
+				$(this).html('가능');
+				$(this).click(function(){
+					$(this).css('background-color','gray');
+				})
+			});
 			$.ajax({
 				url : "/pro/getClassroomTime",
-				data: {'classroom': classroom},
-				dataType: 'json',
-				success : function(obj){
-					$.each($("tr .timetable"), function(index, ele){
-						$(this).html('가능');
-						$(this).css("background-color","");
-						$(this).toggle(function(){
-							check.add(index);
-							$(this).css('background-color','gray');
-						},
-							function(){
-							check.delete(index);
-							$(this).css("background-color","");
-						});
-					});
-					$("#submit").click(function(){
-						check.forEach(function (item){
-							$("#classroom").val(item.toString());
-						});
+				data : {
+					'classroom' : classroom
+				},
+				dataType : 'json',
+				success : function(obj) {
+					
+					$("#submit").click(function() {
+
 					});
 				},
-				error : function(){
+				error : function() {
 					alert('양문이똥멍청이');
 				}
 			});
 		});
-	});
 	</script>
 </body>
 

@@ -22,11 +22,8 @@
 </head>
 <body>
 <script>
-	location.href="/common/loginForm"
+	
 </script> 
 </body>
 </html>
-
-
-
 
