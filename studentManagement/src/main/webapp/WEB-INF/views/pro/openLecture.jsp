@@ -30,12 +30,13 @@ html, body {
 h2 {
 	display: inline;
 }
+
 </style>
 </head>
 <body>
-	<script src="/common/js/notice.js"></script>
-	<script src="/pro/js/default.js"></script>
 
+	<script src="/common/js/notice.js"></script>
+	<script src="/pro/js/default.js"></script>	
 	<div class="row">
 		<!-- page content -->
 		<div class="x_panel">
@@ -263,14 +264,25 @@ h2 {
 			</div>
 		</div>
 	</div>
+	
 	<script>
 		$("#classroomList").change(function() {
 			var classroom = $("#classroomList :selected").val();
 			var check = new Array();
+		
 			$.each($("tr .timetable"), function(index) {
 				$(this).html('가능');
 				$(this).click(function(){
-					$(this).css('background-color','gray');
+					if(count%2==0){
+						$(this).css('background','gray');
+						
+					}else{
+						$(this).css('background','');
+						
+						
+					}
+				
+					$("#check").html(check);
 				})
 			});
 			$.ajax({
@@ -282,7 +294,7 @@ h2 {
 				success : function(obj) {
 					
 					$("#submit").click(function() {
-
+						
 					});
 				},
 				error : function() {
