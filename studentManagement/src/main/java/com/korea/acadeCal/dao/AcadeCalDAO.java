@@ -1,4 +1,9 @@
 package com.korea.acadeCal.dao;
+
+import java.util.List;
+
+import com.korea.dto.Colleage_CalendarVO;
+
 /**
  * @Interface Name : AcadeCalDAO.java
  * @Description : 학사일정 관련 DAO 클래스
@@ -23,7 +28,7 @@ public interface AcadeCalDAO {
 	 * @throws 
 	 */
 	//학사일정 조회
-	public String getAcadeCalList();
+	public List<Colleage_CalendarVO> getAcadeCalList();
 	/**
 	 * 학사일정 등록
 	 * @param

@@ -1,4 +1,13 @@
 package com.korea.acadeCal.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Colleage_CalendarVO;
+
 /**
  * @Class Name : AcadeCalDAO.java
  * @Description : 학사일정 관련 DAO 클래스
@@ -15,7 +24,13 @@ package com.korea.acadeCal.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+@Repository
 public class AcadeCalDAOImpl implements AcadeCalDAO{
+	
+	@Autowired
+	SqlSession session;
+	
 	/**
 	 * 학사일정 가져오기
 	 * @param
@@ -23,9 +38,8 @@ public class AcadeCalDAOImpl implements AcadeCalDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getAcadeCalList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Colleage_CalendarVO> getAcadeCalList() {
+		return session.selectList("AcadeCal.acadeList");
 	}
 	/**
 	 * 학사일정 등록
