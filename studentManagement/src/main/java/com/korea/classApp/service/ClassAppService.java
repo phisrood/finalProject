@@ -1,4 +1,9 @@
 package com.korea.classApp.service;
+
+import java.util.List;
+
+import com.korea.dto.Appraisal_ManageVO;
+
 /**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
@@ -48,4 +53,12 @@ public interface ClassAppService {
 	 */
 	//수업평가 입력
 	public void InsertClassAppInput();
+	/**
+	 * @return 
+	 * 수업평가항목 조회
+	 * @param
+	 * @return List<Appraisal_ManageVO>
+	 * @throws 
+	 */
+	public List<Appraisal_ManageVO> getClassAppList();
 }
