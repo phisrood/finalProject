@@ -15,9 +15,17 @@ package com.korea.crsesREQ.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.korea.dto.UsersVO;
 
 @Controller
 public class CrsesREQController {
@@ -61,15 +69,44 @@ public class CrsesREQController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청 로그인폼
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청 로그인
-	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.GET)
-	public String crsesLogin(){
+	@RequestMapping(value="/stu/crsesLoginForm", method=RequestMethod.GET)
+	public String crsesLoginForm(){
 		String url="/stu/crsesLogin";
+		
+		return url;
+	}
+	
+	/**
+	 * @throws IOException 
+	 * 수강신청 로그인
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.POST)
+	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd){
+		String url="redirect:/stu/crsesLoginForm";
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String chkId = null;
+		String chkPwd = null;
+		try {
+			chkId = usersVO.getUse_id();
+			chkPwd = usersVO.getUse_pwd();
+			
+		} catch (Exception e) {
+			url="redirect:/common/loginForm";
+		}
+		
+		if(id.equals(chkId)&&pwd.equals(chkPwd)){
+			System.out.println("일치");
+		}else{
+			System.out.println("불일치");
+		}
 		
 		return url;
 	}

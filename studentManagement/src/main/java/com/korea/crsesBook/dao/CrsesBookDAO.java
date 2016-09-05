@@ -7,6 +7,7 @@ import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -117,4 +118,20 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	public void insertClassroomUsetime(List<ClassRoom_UsetimeVO> timeList);
+	
+	/**
+	 * 강의조회(교수)
+	 * @param 
+	 * @return List<LectureViewVO>
+	 * @throws 
+	 */
+	public List<LectureViewVO> getLectureList();
+	
+	/**
+	 * 강의조회(교수)
+	 * @param 
+	 * @return List<LectureViewVO>
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getLectureTimeList();
 }

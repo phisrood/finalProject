@@ -85,14 +85,27 @@
 			SELECT LECTURE_SEQ.CURRVAL FROM DUAL
 		</selectKey>	
 	</insert>
+	
 	<insert id="insertClassroomUsetime" parameterType="list">
-		INSERT INTO CLASSROOM_USETIME
+		INSERT ALL
+		<foreach collection="list" item="item" >
+		INTO CLASSROOM_USETIME
 		(CU_CI_NO, CU_TT_NO, CU_LEC_NO)
-		VALUES(
-		#{cu_ci_no}
-		,#{cu_tt_no}
-		,#{cu_lec_no}
-		)
+		VALUES  
+           (#{item.cu_ci_no}, #{item.cu_tt_no},#{item.cu_lec_no})
+        </foreach>
+        SELECT * FROM DUAL
 	</insert>
+	
+	<select id="getLectureList" resultType="lectureView">
+		SELECT *
+		FROM
+		LECTURE_VIEW
+	</select>
+	
+	<select id="getLectureTimeList" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+	</select>
 	
 </mapper>

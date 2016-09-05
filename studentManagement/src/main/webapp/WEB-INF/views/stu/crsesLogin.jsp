@@ -41,7 +41,7 @@
     <!-- Custom Theme Style -->
     <link href="/stu/css/custom.min.css" rel="stylesheet">
   </head>
-
+  
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
@@ -50,16 +50,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action = "crsesLogin" method="post">
               <h1>LOGIN&nbsp;|&nbsp;수강신청</h1>
               <div>
-                <input type="text" class="form-control" placeholder="User ID" required="" />
+                <input type="text" class="form-control" id="id" name="id" placeholder="User ID" required="required" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required="required"	 />
               </div>
               <div>
-                <a class="btn btn-default submit" href="/common/login">LOGIN</a>
+                <button type="submit" >로그인</button>
               </div>
 
                 <div class="clearfix"></div>
@@ -69,7 +69,7 @@
                   <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
                   <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
                 </div>
-            	</form>
+           	</form>
           	</section>
            </div>
         </div>     
