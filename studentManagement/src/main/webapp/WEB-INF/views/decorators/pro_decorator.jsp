@@ -117,7 +117,7 @@
 		                  <li><a><i class="fa fa-clone"></i>상담신청 보기 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/pro/adviceResponsList">사이버 상담 신청 내역</a></li>
-		                      <li><a href="#">사이버 상담실</a></li>
+		                      <li><a href="/pro/camAdvice">사이버 상담실</a></li>
 		                      <li><a href="/pro/adviceBoard">상담게시판</a></li>
 		                    </ul>
 		                  </li>
@@ -153,56 +153,10 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a href="/pro/messageAllList">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
+                    <span class="badge bg-green">${messageCount }</span>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="/common/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </nav>

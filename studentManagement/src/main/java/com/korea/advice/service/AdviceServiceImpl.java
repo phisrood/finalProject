@@ -10,6 +10,7 @@ import com.korea.advice.dao.AdviceDAO;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 
 /**
@@ -191,6 +192,16 @@ public class AdviceServiceImpl implements AdviceService {
 	@Override
 	public void deleteAdviceBoard(int adb_no) {
 		adviceDAO.deleteAdviceBoard(adb_no);
+	}
+
+	@Override
+	public void updateAdviceComment(Advice_BoardVO adviceBoardVO) {
+		adviceDAO.updateAdviceComment(adviceBoardVO);
+	}
+
+	@Override
+	public Attachment_FileVO getAdviceBoardFile(int adb_af_no) {
+		return adviceDAO.getAdviceBoardFile(adb_af_no);
 	}
 
 }

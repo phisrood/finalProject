@@ -85,16 +85,37 @@ html, body {
 		
 		<div align="center" style="float: right; width: 90%;">
 			<br> 
-			<input type="file" name="adb_file" /> 
-			<input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='/stu/adviceBoard'"/>
+			<c:choose>
+			<c:when test="${adb_af_no != 0}">
+				첨부파일 : <a href="/common/adviceBoardFile?adb_af_no=${adb_af_no }">${filename }</a>
+			</c:when>
+			<c:otherwise>
+				첨부파일이 없습니다.
+			</c:otherwise>
+			</c:choose>
+			<input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='/pro/adviceBoard'"/>
 			<c:if test="${loginUser eq '작성자' }">
 			<input type="button" class="btn btn-default btn-sm" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
 			<input type="button" class="btn btn-default btn-sm" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
 			</c:if>
 		</div>
+		<form method="post" action="/pro/adviceBoardReply">
+		<input type="hidden" name="adb_no" value="${adb_no }"/>
 		<div style="float: right; width: 20%;">
 			<br>
+			<c:if test="${auth eq 'ROLE_PRO' }">
+				작성자 : ${loginUser } <br />
+				답변 내용 : <input type="text" name="adb_commentcontent" />
+				<br />
+				<c:if test="${adb_commentstat == 'N'}">
+					<input type="submit" class="btn btn-default btn-sm" value="답변등록"/>		
+				</c:if>
+				<c:if test="${adb_commentstat == 'Y'}">
+					<input type="submit" class="btn btn-default btn-sm" value="답변수정"/>		
+				</c:if>
+			</c:if>
 		</div>
+		</form>
 	</div>
 
 <!-- Datatables -->

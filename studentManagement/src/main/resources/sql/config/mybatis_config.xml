@@ -47,7 +47,14 @@
 		<!-- 행정 정보 -->
 		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
 		<!-- 첨부파일 -->
+		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
+		<!-- 파일 업로드 -->
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
+		<!-- 공지사항뷰 -->
+		<typeAlias alias="noticeView" type="com.korea.dto.NoticeViewVO" />
+
+		<!-- 학적 변동사항 -->
+		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 		<!-- 강의실-->
 		<typeAlias alias="classroom" type="com.korea.dto.ClassRoom_InfoVO" />
 
@@ -75,7 +82,6 @@
 		<mapper resource="sql/mapper/crsesBook.xml" />
 		<!-- 개인정보 -->
 		<mapper resource="sql/mapper/IndivInfoManage.xml" />
-
 		<!-- 상담 -->
 		<mapper resource="sql/mapper/advice.xml" />
 		<mapper resource="sql/mapper/adviceBoard.xml" />

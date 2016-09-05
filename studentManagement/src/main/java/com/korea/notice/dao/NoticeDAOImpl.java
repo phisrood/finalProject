@@ -5,12 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
-import com.korea.dto.DepartmentVO;
-import com.korea.dto.ProfessorViewVO;
+import com.korea.dto.NoticeViewVO;
+import com.korea.dto.UsersVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -52,8 +51,8 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public Colleage_NoticeVO getNoticeDetailInfo(int cn_no) {
-		return(Colleage_NoticeVO) sqlSession.selectOne("ColleageNotice.noticeDetail", cn_no);
+	public NoticeViewVO getNoticeDetailInfo(int cn_no) {
+		return(NoticeViewVO) sqlSession.selectOne("ColleageNotice.noticeDetail", cn_no);
 	}
 	/**
 	 * @return 
@@ -63,9 +62,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<Colleage_NoticeVO> getNoticeAllList() {
-		List<Colleage_NoticeVO> noticeAllList = 
-				(List<Colleage_NoticeVO>) sqlSession.selectList("ColleageNotice.getNoticeAllList");
+	public List<NoticeViewVO> getNoticeAllList() {
+		List<NoticeViewVO> noticeAllList = 
+				(List<NoticeViewVO>) sqlSession.selectList("ColleageNotice.getNoticeAllList");
 		return noticeAllList;
 		
 	}
@@ -76,8 +75,8 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateNotice() {
-		// TODO Auto-generated method stub
+	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO) {
+		sqlSession.update("ColleageNotice.noticeUpdate",colleage_NoticeVO);
 		
 	}
 	/**
@@ -87,8 +86,19 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 * @throws 
 	 */
 	@Override
-	public void deleteNotice() {
-		// TODO Auto-generated method stub
+	public void updateNoticeFile(Attachment_FileVO attachment_FileVO) {
+		sqlSession.update("ColleageNotice.attachUpdate",attachment_FileVO);
+		
+	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO) {
+		sqlSession.delete("ColleageNotice.noticeDelete",colleage_NoticeVO);
 		
 	}
 	/**

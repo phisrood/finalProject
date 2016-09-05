@@ -16,8 +16,10 @@ package com.korea.message.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -220,6 +222,70 @@ public class MessageController {
 		}
 		return url;
 	}
+	
+	/**
+	 * 선택삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//쪽지 체크삭제(받은)
+	@RequestMapping(value={"/stu/messageSendChkDel","/pro/messageSendChkDel", "/emp/messageSendChkDel"}, method=RequestMethod.POST)
+	public String messageSendChkDel(HttpSession session, @RequestParam("sendChk")String[] mes_no){
+		String url="redirect:/common/error";
+		MessageVO messageVO = new MessageVO();
+		String mes_delyn = "";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		for (int i = 0; i < mes_no.length; i++) {
+			messageVO = service.getMessageInfo(mes_no[i]);
+			mes_delyn = messageVO.getMes_delyn();
+			service.updateSendMessageDel(Integer.parseInt(mes_no[i]), mes_delyn);
+			
+		}
+		
+		if(loginUser.getAuthority().equals("ROLE_STU")){
+			url = "redirect:/stu/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_PRO")){
+			url = "redirect:/pro/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_EMP")){
+			url = "redirect:/emp/messageAllList";
+		}
+
+		return url;
+	}
+	/**
+	 * 선택삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//쪽지 체크삭제(보낸)
+	@RequestMapping(value={"/stu/messageReciveChkDel","/pro/messageReciveChkDel", "/emp/messageReciveChkDel"}, method=RequestMethod.POST)
+	public String messageReciveChkDel(HttpSession session, @RequestParam("reciveChk")String[] mes_no){
+		String url="redirect:/common/error";
+		MessageVO messageVO = new MessageVO();
+		String mes_delyn = "";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		for (int i = 0; i < mes_no.length; i++) {
+			messageVO = service.getMessageInfo(mes_no[i]);
+			mes_delyn = messageVO.getMes_delyn();
+			service.updateReciveMessageDel(Integer.parseInt(mes_no[i]), mes_delyn);
+			
+		}
+		
+		if(loginUser.getAuthority().equals("ROLE_STU")){
+			url = "redirect:/stu/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_PRO")){
+			url = "redirect:/pro/messageAllList";
+		}else if(loginUser.getAuthority().equals("ROLE_EMP")){
+			url = "redirect:/emp/messageAllList";
+		}
+		
+		return url;
+	}
+	
 	/**
 	 * 쪽지답장폼
 	 * @param
@@ -235,5 +301,23 @@ public class MessageController {
 
 		model.addAttribute("send", send);
 		return url;
+	}
+	
+	//쪽지답장보내기
+	@RequestMapping(value="/common/messageReplySend", method=RequestMethod.POST)
+	public void messageReplySend(MessageVO messageVO, HttpSession session, HttpServletResponse response){
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		messageVO.setMes_send_use_id(loginUser.getUse_id());
+		service.insertMessage(messageVO);
+
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.print("<script> window.close();</script>");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 
 /**
@@ -197,6 +198,16 @@ public class AdviceDAOImpl implements AdviceDAO {
 	@Override
 	public void deleteAdviceBoard(int adb_no) {
 		sqlSession.delete("adviceBoardDAO.deleteAdviceBoard", adb_no);
+	}
+
+	@Override
+	public void updateAdviceComment(Advice_BoardVO adviceBoardVO) {
+		sqlSession.update("adviceBoardDAO.updateAdviceComment",adviceBoardVO);
+	}
+
+	@Override
+	public Attachment_FileVO getAdviceBoardFile(int adb_af_no) {
+		return (Attachment_FileVO) sqlSession.selectOne("adviceBoardDAO.getAdviceBoardFile", adb_af_no);
 	}
 
 }

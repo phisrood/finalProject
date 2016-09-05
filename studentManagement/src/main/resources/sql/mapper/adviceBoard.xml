@@ -42,4 +42,17 @@
 		DELETE FROM ADVICE_BOARD
 		WHERE ADB_NO = #{adb_no}
 	</delete>
-</mapper>
+	
+	<update id="updateAdviceComment" parameterType="adviceBoardVO">
+		UPDATE ADVICE_BOARD
+		SET ADB_COMMENTSTAT = 'Y',
+		ADB_PRO_USE_ID = #{adb_pro_use_id},
+		ADB_COMMENTCONTENT = #{adb_commentcontent}
+		WHERE ADB_NO = #{adb_no}
+	</update>
+	
+	<select id="getAdviceBoardFile" parameterType="int" resultType="attachment">
+		SELECT * FROM ATTACHMENT_FILE WHERE AF_NO = #{adb_af_no}
+	</select>
+	
+	</mapper>

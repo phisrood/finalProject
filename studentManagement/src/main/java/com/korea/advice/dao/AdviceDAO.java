@@ -6,6 +6,7 @@ import java.util.Map;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 
 /**
@@ -143,6 +144,10 @@ public interface AdviceDAO {
 	public void updateAdviceBoard(Map<String, String> params);
 
 	public void deleteAdviceBoard(int adb_no);
+
+	public void updateAdviceComment(Advice_BoardVO adviceBoardVO);
+
+	public Attachment_FileVO getAdviceBoardFile(int adb_af_no);
 
 
 }

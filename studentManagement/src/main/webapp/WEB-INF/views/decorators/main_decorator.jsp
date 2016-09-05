@@ -65,7 +65,7 @@
             <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_pic">
-                <img src="/common/images/${studentInfo.af_realname }" alt="..." class="img-circle profile_img">
+                <img src="/stu/images/${studentInfo.af_aftername}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>환영합니다,</span>
@@ -158,7 +158,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="/common/images/${studentInfo.af_realname }" alt="">${studentInfo.use_name }
+                    <img src="/stu/images/${studentInfo.af_aftername}" alt="">${studentInfo.use_name }
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -169,56 +169,10 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <a href="/stu/messageAllList">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
+                    <span class="badge bg-green">${messageCount }</span>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="/common/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </nav>
