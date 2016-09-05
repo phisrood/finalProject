@@ -23,5 +23,10 @@ function updateLB(form){
 }
 function openLecture(lb_no){
 	location.href="/pro/openLecturePage?lb_no="+lb_no;
+}
+function insertLecture(form){
+	document.insertLectureForm.method="get";
+	document.insertLectureForm.action="/pro/openLecture";
+	document.insertLectureForm.submit();
 	
 }

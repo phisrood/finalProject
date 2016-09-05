@@ -1,5 +1,6 @@
 package com.korea.crsesBook.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.korea.crsesBook.dao.CrsesBookDAO;
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.LectureVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -101,6 +103,24 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	@Override
 	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom) {
 		return crsesBookDAO.getClassroomTime(classroom);
+	}
+	@Override
+	public String insertLecture(LectureVO lecture) {
+		return crsesBookDAO.insertLecture(lecture);
+		
+	}
+	@Override
+	public void insertClassroomUsetime(ClassRoom_UsetimeVO classroomUsetime) {
+		List<ClassRoom_UsetimeVO> timeList = new ArrayList<ClassRoom_UsetimeVO>();
+		String[] time = classroomUsetime.getCu_tt_no().split(",");
+		for(String tt_no: time){
+			ClassRoom_UsetimeVO usetimeVO = new ClassRoom_UsetimeVO();
+			usetimeVO.setCu_lec_no(classroomUsetime.getCu_lec_no());
+			usetimeVO.setCu_ci_no(classroomUsetime.getCu_ci_no());
+			usetimeVO.setCu_tt_no(tt_no);
+			timeList.add(usetimeVO);
+		}
+		crsesBookDAO.insertClassroomUsetime(timeList);
 	}
 
 

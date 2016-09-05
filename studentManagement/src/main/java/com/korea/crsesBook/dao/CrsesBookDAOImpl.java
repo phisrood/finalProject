@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.LectureVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -104,6 +105,15 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	@Override
 	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom) {
 		return sqlSession.selectList("crsesBook.getClassroomTime", classroom);
+	}
+	@Override
+	public String insertLecture(LectureVO lecture) {
+		sqlSession.insert("crsesBook.insertLecture", lecture);
+		return lecture.getLec_no();
+	}
+	@Override
+	public void insertClassroomUsetime(List<ClassRoom_UsetimeVO> classroomUsetime) {
+		sqlSession.insert("crsesBook.insertClassroomUsetime", classroomUsetime);	
 	}
 
 }

@@ -64,6 +64,8 @@
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
 		<typeAlias alias="calendar" type="com.korea.dto.Colleage_CalendarVO" />
+		<!-- 강의 -->
+		<typeAlias alias="lecture" type="com.korea.dto.LectureVO" />
 	</typeAliases>
 
 	<mappers>
