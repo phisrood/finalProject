@@ -1,4 +1,9 @@
 package com.korea.crsesInquiry.dao;
+
+import java.util.List;
+
+import com.korea.dto.Student_InquiryList_ViewVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -23,7 +28,7 @@ public interface CrsesInquiryDAO {
 	 * @throws 
 	 */
 	//현재학기 수강내역조회
-	public void getCrsesInquiryList();
+	public List<Student_InquiryList_ViewVO> getCrsesInquiryList(String stud_use_id);
 	/**
 	 * 개인 정보 조회
 	 * @param

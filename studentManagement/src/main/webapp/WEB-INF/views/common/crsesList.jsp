@@ -93,57 +93,31 @@
 
 				<!-- 과목누르면 사이버캠퍼스로 이동 -->
 
+
+<!-- 							
+		사용자이름 use_name;
+	학생아이디 stud_use_id;
+	학과명 dep_name;
+	전공구분 mk_name;
+	학점 lb_credit;
+	강의명 lb_name;
+	강의등록번호 lec_no;
+	학수번호 lec_lb_no; -->
+ 
                       <tbody>
+                      <c:forEach items="${student_InquiryList_ViewVO }" var="student_InquiryList_ViewVO">
                         <tr>
-                          <td>정보통신공학과</td>
+                          <td>${student_InquiryList_ViewVO.dep_name }</td>
                           <td>4</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
+                          <td>${student_InquiryList_ViewVO.lb_name }</td>
+                          <td>${student_InquiryList_ViewVO.mk_name }</td>
+                          <td>${student_InquiryList_ViewVO.lb_credit }</td>
                           <td>15:00-18:00</td>
                           <td>누군가</td>
                           <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
                         </tr>
-                        <tr>
-                          <td>정보통신공학과</td>
-                          <td>4</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>15:00-18:00</td>
-                          <td>누군가</td>
-                          <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
-                        <tr>
-                          <td>정보통신공학과</td>
-                          <td>4</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>15:00-18:00</td>
-                          <td>누군가</td>
-                          <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
-                        <tr>
-                          <td>정보통신공학과</td>
-                          <td>4</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>15:00-18:00</td>
-                          <td>누군가</td>
-                          <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
-                        <tr>
-                          <td>정보통신공학과</td>
-                          <td>4</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>15:00-18:00</td>
-                          <td>누군가</td>
-                          <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>      
+                        </c:forEach>
+                            
                       </tbody>
                     </table>
                   </div>
