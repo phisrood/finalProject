@@ -30,13 +30,12 @@ html, body {
 h2 {
 	display: inline;
 }
-
 </style>
 </head>
 <body>
 
 	<script src="/common/js/notice.js"></script>
-	<script src="/pro/js/default.js"></script>	
+	<script src="/pro/js/default.js"></script>
 	<div class="row">
 		<!-- page content -->
 		<div class="x_panel">
@@ -67,13 +66,19 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control"
-								value="${lb.lb_department }" readonly="readonly">
+								value="${lb.lb_department }" readonly="readonly" name="lb_department">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">교수번호</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" name="lec_ln_pro_use_id">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" value="${lb.lb_credit }"
+							<input type="text" class="form-control" value="${lb.lb_credit }" 
 								readonly="readonly">
 						</div>
 					</div>
@@ -88,7 +93,8 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control pull-left" id="classroom"
-								readonly="readonly">&nbsp;&nbsp;
+								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp;
+								<input type="text" id="ci_no" name="cu_ci_no">
 							<button type="button" class="btn btn-info btn-sm" id="search"
 								data-toggle="modal" data-target="#myModal">검색</button>
 						</div>
@@ -111,6 +117,13 @@ h2 {
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="분반"
+								name="lec_placement">
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">인원</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" placeholder="인원"
@@ -127,7 +140,7 @@ h2 {
 					</div>
 					<div style="text-align: center;">
 						<button type="button" class="btn btn-dark"
-							onclick="updateLB('this.form');">수정</button>
+							onclick="insertLecture('this.form');">등록</button>
 						<button type="button" class="btn btn-dark"
 							onclick="javascript:history.go(-1);">취소</button>
 					</div>
@@ -264,43 +277,55 @@ h2 {
 			</div>
 		</div>
 	</div>
+	<style>
+.choice {
 	
+}
+</style>
 	<script>
-		$("#classroomList").change(function() {
-			var classroom = $("#classroomList :selected").val();
+		$(function() {
 			var check = new Array();
-		
-			$.each($("tr .timetable"), function(index) {
-				$(this).html('가능');
-				$(this).click(function(){
-					if(count%2==0){
-						$(this).css('background','gray');
-						
-					}else{
-						$(this).css('background','');
-						
-						
+			$("#classroomList").change(function() {
+				var classroom = $("#classroomList :selected").val();
+
+				$.each($("tr .timetable"), function(index) {
+					$(this).html('가능');
+					$(this).click(function() {
+
+						if ($(this).attr('class').indexOf('choice') < 0) {
+							$(this).addClass('choice')
+							$(this).css('background-color', 'gray');
+							check.push(index);
+						} else {
+							$(this).removeClass('choice');
+							$(this).css('background-color', '');
+							check.splice(check.indexOf(index), 1);
+						}
+
+						$("#check").html(check + ",");
+
+					})
+				});
+				$("#submit").click(function() {
+					$("#classroom").val(check);
+					$("#ci_no").val(classroom);
+
+				});
+				$.ajax({
+					url : "/pro/getClassroomTime",
+					data : {
+						'classroom' : classroom
+					},
+					dataType : 'json',
+					success : function(obj) {
+
+					},
+					error : function() {
+						alert('양문이똥멍청이');
 					}
-				
-					$("#check").html(check);
-				})
+				});
 			});
-			$.ajax({
-				url : "/pro/getClassroomTime",
-				data : {
-					'classroom' : classroom
-				},
-				dataType : 'json',
-				success : function(obj) {
-					
-					$("#submit").click(function() {
-						
-					});
-				},
-				error : function() {
-					alert('양문이똥멍청이');
-				}
-			});
+			
 		});
 	</script>
 </body>

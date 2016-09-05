@@ -11,7 +11,6 @@
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="hashmap" type="java.util.HashMap"/>
 
-
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
@@ -65,8 +64,9 @@
 		<typeAlias alias="questionBoard" type="com.korea.dto.Question_BoardVO" />
 		<!-- 강의 -->
 		<typeAlias alias="lecture" type="com.korea.dto.LectureVO"/>
-		
-		
+		<!-- 캘린더 parameter -->
+		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
+
 	</typeAliases>
 
 	<mappers>

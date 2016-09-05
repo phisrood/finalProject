@@ -7,4 +7,32 @@
 	<select id="acadeList" resultType="calendar">
 		select * from colleage_calendar
 	</select>
+	
+	<insert id="acadeInsert" parameterType="calendarParam">
+		insert into colleage_calendar(cc_no, cc_title, cc_content, cc_start_date, cc_end_date)
+			 values(calendar_seq.nextval, #{title}, #{content}, #{start}, #{end})
+	</insert>
+	
+	<update id="acadeUpdate" parameterType="calendarParam">
+		update colleage_calendar set cc_title = #{title}
+									,cc_content = #{content}
+									,cc_start_date = #{start}
+									,cc_end_date = #{end}
+									where cc_no = #{id}
+	</update>
+	
+	<delete id="acadeDelete" parameterType="str">
+		delete from colleage_calendar where cc_no = #{id}
+	</delete>
+	
+	<update id="acadeDropUpdate" parameterType="calendarParam">
+		update colleage_calendar set cc_start_date = #{start}
+									,cc_end_date = #{end}
+									where cc_no = #{id}
+	</update>
+	
+	<update id="acadeResizeUpdate" parameterType="calendarParam">
+		update colleage_calendar set cc_end_date = #{end}
+									where cc_no = #{id}
+	</update>
 </mapper>

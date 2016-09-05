@@ -105,7 +105,7 @@
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">학사일정관리</a></li>
+		                      <li><a href="/emp/acadeCalList">학사일정관리</a></li>
 		                      <li><a href="/emp/classAppInsert">수업평가항목관리</a></li>
 		                      <li><a href="/emp/crsesBookDecide">수강편람승인관리</a></li>
 		                    </ul>

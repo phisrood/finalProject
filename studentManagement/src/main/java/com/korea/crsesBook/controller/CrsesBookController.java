@@ -34,6 +34,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesBook.service.CrsesBookService;
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.LectureVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.UsersVO;
@@ -56,7 +58,7 @@ public class CrsesBookController {
 	 */
 	// 수강편람조회
 	@RequestMapping(value = { "/pro/crsesBookList" }, method = RequestMethod.GET)
-	public String crsesBookList(Model model) {
+	public String getCrsesBookList(Model model) {
 		String url = "/pro/crsesBookList";
 		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList();
 		model.addAttribute("crsesBookList", lbList);
@@ -91,7 +93,7 @@ public class CrsesBookController {
 	 */
 	// 수강편람등록
 	@RequestMapping(value = "/pro/crsesBookInsert", method = RequestMethod.POST)
-	public String crsesBookInsert(Lecture_BreakeDownVO lbVO) {
+	public String insertCrsesBook(Lecture_BreakeDownVO lbVO) {
 		String url = "redirect:/pro/crsesBookList";
 		crsesBookService.insertCrsesBook(lbVO);
 
@@ -121,7 +123,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/crsesBookUpdate", method = RequestMethod.GET)
-	public String crsesBookUpdate(Lecture_BreakeDownVO lb) {
+	public String updateCrsesBook(Lecture_BreakeDownVO lb) {
 		String url = "redirect:/pro/crsesBookList";
 		crsesBookService.updateCrsesBook(lb);
 		return url;
@@ -151,7 +153,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/crsesBookDecide", method = RequestMethod.POST)
-	public void crsesBookDecide(String data, HttpServletResponse response) {
+	public void updateCrsesBookDecide(String data, HttpServletResponse response) {
 		String approve = "Y";
 		int result = crsesBookService.updateCrsesBookDecide(data, approve);
 		ObjectMapper json = new ObjectMapper();
@@ -174,7 +176,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/emp/crsesBookDisapprove", method = RequestMethod.POST)
-	public void crsesBookDisapprove(String data, HttpServletResponse response) {
+	public void updateCrsesBookDisapprove(String data, HttpServletResponse response) {
 		String approve = "R";
 		int result = crsesBookService.updateCrsesBookDecide(data, approve);
 		ObjectMapper json = new ObjectMapper();
@@ -197,7 +199,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/lbNoSearch", method = RequestMethod.GET)
-	public void lbNoSearch(String lbNo, HttpServletResponse response) {
+	public void getLbNoSearch(String lbNo, HttpServletResponse response) {
 		boolean result = crsesBookService.getLbNoMatch(lbNo);
 		ObjectMapper jsonObject = new ObjectMapper();
 		try {
@@ -242,5 +244,20 @@ public class CrsesBookController {
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+	/**
+	 * 강의개설
+	 * 
+	 * @param String
+	 * @return 
+	 * @throws
+	 */
+	@RequestMapping(value = "/pro/openLecture", method = RequestMethod.GET)
+	public String insertLecture(LectureVO lecture, ClassRoom_UsetimeVO classroomUsetime) {
+		String url = "/pro/crsesBookList";
+		String lec_no = crsesBookService.insertLecture(lecture);
+		classroomUsetime.setCu_lec_no(lec_no);
+		crsesBookService.insertClassroomUsetime(classroomUsetime);
+		return url;
 	}
 }

@@ -13,14 +13,14 @@ package com.korea.dto;
  */
 public class ClassRoom_UsetimeVO {
 
-	private int cu_ci_no;
+	private String cu_ci_no;
 	private String cu_tt_no;
 	private String cu_lec_no;
 	
-	public int getCu_ci_no() {
+	public String getCu_ci_no() {
 		return cu_ci_no;
 	}
-	public void setCu_ci_no(int cu_ci_no) {
+	public void setCu_ci_no(String cu_ci_no) {
 		this.cu_ci_no = cu_ci_no;
 	}
 	public String getCu_tt_no() {
