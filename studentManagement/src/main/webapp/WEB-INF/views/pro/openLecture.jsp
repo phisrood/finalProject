@@ -257,7 +257,7 @@ h2 {
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
@@ -289,9 +289,9 @@ h2 {
 				var classroom = $("#classroomList :selected").val();
 
 				$.each($("tr .timetable"), function(index) {
-					$(this).html('가능');
+					$(this).text('가능');
 					$(this).click(function() {
-
+						if($(this).text().indexOf('불가')<0){
 						if ($(this).attr('class').indexOf('choice') < 0) {
 							$(this).addClass('choice')
 							$(this).css('background-color', 'gray');
@@ -301,10 +301,10 @@ h2 {
 							$(this).css('background-color', '');
 							check.splice(check.indexOf(index), 1);
 						}
-
+					
 						$("#check").html(check + ",");
-
-					})
+						}
+					});
 				});
 				$("#submit").click(function() {
 					$("#classroom").val(check);
@@ -318,7 +318,11 @@ h2 {
 					},
 					dataType : 'json',
 					success : function(obj) {
-
+						$.each(obj.data, function(index, value){
+							var idx = parseInt(value.cu_tt_no);
+							$("tr .timetable").eq(idx).text('불가');
+							$("#check").text($("tr .timetable").attr('onclick'));
+						});
 					},
 					error : function() {
 						alert('양문이똥멍청이');
