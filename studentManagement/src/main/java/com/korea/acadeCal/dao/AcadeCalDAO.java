@@ -62,8 +62,6 @@ public interface AcadeCalDAO {
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 상세보기
-	public void getAcadeDetail();
 	//학사일정 드랍수정
 	public void updateAcadeDropCal(CalendarVO calendarVO);
 	

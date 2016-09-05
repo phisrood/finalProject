@@ -11,7 +11,6 @@
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="hashmap" type="java.util.HashMap"/>
 
-
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
@@ -53,23 +52,21 @@
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 		<!-- 공지사항뷰 -->
 		<typeAlias alias="noticeView" type="com.korea.dto.NoticeViewVO" />
-
 		<!-- 학적 변동사항 -->
 		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 		<!-- 강의실-->
 		<typeAlias alias="classroom" type="com.korea.dto.ClassRoom_InfoVO" />
-	
 		<!-- 강의실 사용시간 -->
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
 		<typeAlias alias="calendar" type="com.korea.dto.Colleage_CalendarVO" />
-
+		<!-- 사이버캠퍼스 QNA게시판 -->
+		<typeAlias alias="questionBoard" type="com.korea.dto.Question_BoardVO" />
 		<!-- 강의 -->
-		<typeAlias alias="lecture" type="com.korea.dto.LectureVO" />
-
+		<typeAlias alias="lecture" type="com.korea.dto.LectureVO"/>
 		<!-- 캘린더 parameter -->
 		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
-		
+
 	</typeAliases>
 
 	<mappers>
@@ -99,5 +96,8 @@
 		<mapper resource="sql/mapper/schoolReReq.xml" />
 		<!-- 캘린더 -->
 		<mapper resource="sql/mapper/acadeCal.xml" />
+		<!--  사이버캠퍼스 QNA게시판  -->
+		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
+		
 	</mappers>
 </configuration>

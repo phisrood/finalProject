@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CyberCamQnaBBSDao">
+	<select id="getCyberCamQnaBBSList" parameterType="str" resultType="questionBoard">
+		SELECT
+				QB_NO,
+				QB_STUD_USE_ID,
+				QB_LEC_NO,
+				QB_AF_NO,
+				QB_TITLE,
+				QB_CONTENT,
+				TO_CHAR(SYSDATE,'YYYY-MM-DD')QB_DATE
+
+		FROM QUESTION_BOARD
+		
+		WHERE qb_stud_use_id = #{stud_use_id}
+		ORDER BY QB_NO DESC
+	</select>
+	
+	<insert id="getCyberCamQnaBBSInsert" parameterType="attachment">
+		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
+		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_aftername},#{af_realname},#{af_path})
+		
+	</insert>
+	
+	<select id="getCyberCamQnaBBSSelectAF_NO" resultType="int">
+	SELECT ATTACHMENT_FILE_SEQ.CURRVAL 
+	FROM dual
+	</select>
+	
+	<select id="getlectureList" resultType="lecture">
+	SELECT *
+	FROM LECTURE
+	</select>
+	
+	<insert id="insertCyberCamQnaBBSFinal" parameterType="questionBoard">
+	INSERT INTO QUESTION_BOARD(
+	QB_NO,
+	QB_STUD_USE_ID,
+	QB_LEC_NO,
+	QB_AF_NO,
+	QB_TITLE,
+	QB_CONTENT,
+	QB_DATE)
+
+	VALUES(QUESTION_BOARD_SEQ.NEXTVAL
+	,#{qb_stud_use_id}
+	,#{qb_lec_no}
+	,#{qb_af_no}
+	,#{qb_title}
+	,#{qb_title}
+	,SYSDATE)
+	
+	
+	</insert>
+	
+
+</mapper>

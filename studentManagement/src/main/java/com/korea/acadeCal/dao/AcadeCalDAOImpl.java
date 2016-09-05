@@ -72,21 +72,23 @@ public class AcadeCalDAOImpl implements AcadeCalDAO{
 	public void deleteAcadeCal(String id) {
 		session.delete("AcadeCal.acadeDelete", id);
 	}
+
 	/**
-	 * 학사일정 상세보기
+	 * 학사일정 드랍수정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getAcadeDetail() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public void updateAcadeDropCal(CalendarVO calendarVO) {
 		session.update("AcadeCal.acadeDropUpdate", calendarVO);
 	}
+	/**
+	 * 학사일정 리사이즈 수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public void updateAcadeResizeCal(CalendarVO calendarVO) {
 		session.update("AcadeCal.acadeResizeUpdate", calendarVO);
