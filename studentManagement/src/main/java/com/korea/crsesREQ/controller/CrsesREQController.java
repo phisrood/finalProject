@@ -16,12 +16,11 @@ package com.korea.crsesREQ.controller;
  * </pre>
  */
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,9 +89,8 @@ public class CrsesREQController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.POST)
-	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd,
-			HttpServletResponse response) throws IOException{
-		String url="/stu/crsesLogin";
+	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd){
+		String url="redirect:/stu/crsesLoginForm";
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String chkId = null;
 		String chkPwd = null;
@@ -103,16 +101,11 @@ public class CrsesREQController {
 		} catch (Exception e) {
 			url="redirect:/common/loginForm";
 		}
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
 		
 		if(id.equals(chkId)&&pwd.equals(chkPwd)){
-			
+			System.out.println("일치");
 		}else{
-			//여기 확인
-			out.println("<script type='text/javascript'>");
-			out.println("alert('학번/패스워드 불일치 다시 로그인해주세요'); location.href='/stu/crsesLoginForm';");
-			out.println("</script>");
+			System.out.println("불일치");
 		}
 		
 		return url;
