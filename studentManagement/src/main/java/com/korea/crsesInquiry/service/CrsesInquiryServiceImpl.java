@@ -1,4 +1,13 @@
 package com.korea.crsesInquiry.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.crsesInquiry.dao.CrsesInquiryDAO;
+import com.korea.dto.Student_InquiryList_ViewVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,6 +24,7 @@ package com.korea.crsesInquiry.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Service
 public class CrsesInquiryServiceImpl implements CrsesInquiryService{
 	/**
 	 * 개인 정보 조회
@@ -22,9 +32,16 @@ public class CrsesInquiryServiceImpl implements CrsesInquiryService{
 	 * @return 
 	 * @throws 
 	 */
+	
+	@Autowired
+	private CrsesInquiryDAO crsesInquiryDAO;
+	
+	
 	@Override
-	public void getCrsesInquiryList() {
-		// TODO Auto-generated method stub
+	public List<Student_InquiryList_ViewVO> getCrsesInquiryList(String stud_use_id) {
+		
+		return crsesInquiryDAO.getCrsesInquiryList(stud_use_id);
+	
 		
 	}
 	/**
