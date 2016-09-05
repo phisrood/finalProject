@@ -41,7 +41,7 @@ public interface LoginService {
 	
 
 	//비밀번호찾기
-	public void updateLoginPwdSearch(String id, String birth);
+	public int updateLoginPwdSearch(String id, String birth);
 
 	//교수정보
 	public Professor_InfoViewVO getProdivInfo(String id);

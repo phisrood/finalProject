@@ -38,12 +38,9 @@ public class IndivInfoManageDAOImpl implements IndivInfoManageDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	
+	
 	@Override
 	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
 		return (Student_InfoViewVO) sqlSession.selectOne("indivInfoManageDAO.getIndivInfo",stud_use_id);

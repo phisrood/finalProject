@@ -7,21 +7,24 @@ import org.springframework.stereotype.Service;
 
 import com.korea.crsesBook.dao.CrsesBookDAO;
 import com.korea.dto.ClassRoom_InfoVO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : CrsesBookServiceImpl.java
+ * @Description : 수강편람/강의개설 관련 서비스
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
- * @version 1.0
+ * @version 1.2
  * @see
  * <pre>
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.09.01	김양문			수강편람 관련 메소드
+ *    2016.09.02	김양문			강의개설 관련 메소드
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -93,6 +96,11 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	@Override
 	public List<ClassRoom_InfoVO> getClassroomInfo() {
 		return crsesBookDAO.getClassroomInfo();
+	}
+	//강의실 시간표 가져오기
+	@Override
+	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom) {
+		return crsesBookDAO.getClassroomTime(classroom);
 	}
 
 

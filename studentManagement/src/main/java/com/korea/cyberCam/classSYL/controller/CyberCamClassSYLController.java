@@ -30,7 +30,7 @@ public class CyberCamClassSYLController {
 	//강의계획서 조회
 	@RequestMapping(value={"/cyberCampus/stu/cyberClassSYLInfo","/cyberCampus/pro/cyberClassSYLInfo"}, method=RequestMethod.GET)
 	public String cyberClassSYLInfo(){
-		String url="cyberCampus/common/cyberClassSYLInfo";
+		String url="cyberCampus/stu/lectureList";
 		
 		return url;
 	}

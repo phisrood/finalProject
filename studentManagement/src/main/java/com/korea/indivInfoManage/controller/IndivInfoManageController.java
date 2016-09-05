@@ -59,10 +59,10 @@ public class IndivInfoManageController {
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
 	public String indivInfo(HttpSession session, Model model, HttpServletRequest request){
 		String url = "/stu/colleage/indivInfo";
-		System.out.println("3");
+
+	
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
 		
-		System.out.println(uploadPath);
 		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
@@ -71,7 +71,7 @@ public class IndivInfoManageController {
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
-		System.out.println("4");
+
 	
 		return url;
 	}
@@ -82,64 +82,37 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivUpdate", method=RequestMethod.POST)
-	public String indivUpdate(HttpSession session,HttpServletResponse response, Model model, StudentVO studentVO, 
-							@RequestParam(value="after_use_pwd1", defaultValue="")String password,
-							@RequestParam(value="now_use_pwd", defaultValue="")String password1,
-							@RequestParam(value="after_use_pwd", defaultValue="")String password2) throws IOException{
+	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO, 
+							@RequestParam(value="after_use_pwd1", defaultValue="")String password){
 		String url = "/stu/colleage/indivInfo";
+		
+		
+		
+		
 		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
-		String now_use_pwd = loginUser.getUse_pwd();
-		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		
-			
-		
-		if(now_use_pwd.equals(password1)) {
-				if(password.equals(password2)){
 		HashMap<String , String> params = new HashMap<String , String>();
 		params.put("stud_use_id",stud_use_id);
 		params.put("password",password);
+		
 		//받아온 아이디로 개인정보수정
 		indivInfoManageService.updateIndiv(studentVO);
+		
+		
 		//받아온 아이디로 비밀번호수정
 		indivInfoManageService.updateIndiv(params);
-		//받아온 아이디로 검색결과 출력
-		
-		model.addAttribute("studentVO",studentViewVO);
-		return url;
-			}
-		}
-		if(!now_use_pwd.equals(password1)) {
-			model.addAttribute("studentVO",studentViewVO);
-			
-			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter writer = response.getWriter();
-			   writer.println("<script type='text/javascript'>");
-		       writer.println("alert('현재 비밀번호가 맞지 않습니다..');");
-		       writer.println("window.close();");
-		       writer.println("</script>");
-		       writer.flush();  
-		       
-		   		return url;
-		   }
-			if(!password.equals(password2)){
-				model.addAttribute("studentVO",studentViewVO);
-				
-				response.setContentType("text/html;charset=UTF-8");
-				PrintWriter writer = response.getWriter();
-				   writer.println("<script type='text/javascript'>");
-			       writer.println("alert('변경비밀 번호가 맞지 않습니다..');");
-			       writer.println("window.close();");
-			       writer.println("</script>");
-			       writer.flush();  
 
-			     return url;
-			}
-			 return url;
-		}
+		//받아온 아이디로 검색결과 출력
+		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
+		model.addAttribute("studentVO",studentViewVO);
 		
-	
+
+		
+		
+		return url;
+	}
 	
 	/**
 	 * 학생사진파일 변경하기위한 새로우창 URL 연결 ( 학생 )
@@ -171,16 +144,17 @@ public class IndivInfoManageController {
 			   HttpServletResponse response,
 			   HttpSession session,
 			   StudentVO studentVO) throws IOException{
-		response.setCharacterEncoding("EUC-KR");
-		PrintWriter writer = response.getWriter();
+	
 		
 		String url = "/stu/colleage/indivInfoImageInsert";
-		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
+		
+		
+		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
 		
 		if (!multipartFile.isEmpty()) {
 		
 		
-			// 실제 저장
+		// 실제 저장
 		    System.out.println(("-------------파일 업로드 시작 -------------"));
 		    System.out.println(("ContentType : "+multipartFile.getContentType()));
             System.out.println(("name : "+multipartFile.getName()));
@@ -208,9 +182,12 @@ public class IndivInfoManageController {
             
             //최초 학생 사진등록
             indivInfoManageService.insertImage(insertMap);
+            
             //등록한 af_no을 가져온 뒤 학생 stu_af_no 업데이트 해준다.
+            
+            
             int afNo = indivInfoManageService.selectafno();
-          
+            
             
           //세션 아이디 받아오기
     		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
@@ -231,26 +208,12 @@ public class IndivInfoManageController {
             
             
             
-            response.setContentType("text/html;charset=UTF-8");
-            writer.println("<script type='text/javascript'>");
-            writer.println("alert('정상적으로 등록되었습니다.');");
-            writer.println("window.close();");
-            writer.println("</script>");
-            writer.flush();   
             
             return url;
-	}
-	
-	   //실패시
-	   response.setContentType("text/html;charset=UTF-8");
-	   writer.println("<script type='text/javascript'>");
-       writer.println("alert('등록의 실패하였습니다. 다시 시도해 주세요.');");
-       writer.println("window.close();");
-       writer.println("</script>");
-       writer.flush();  
-       
-       return url;
-      
+            
+		
+		}
+		return url;
 		
 		
 	}
@@ -271,9 +234,8 @@ public class IndivInfoManageController {
 		String url = "/stu/colleage/indivInfoImage";
 		response.setCharacterEncoding("EUC-KR");
 		PrintWriter writer = response.getWriter();
-		
-		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
-		
+	
+		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
 		
 			if (!multipartFile.isEmpty()) {
 			
@@ -327,7 +289,7 @@ public class IndivInfoManageController {
 	      
 	            writer.println("<script type='text/javascript'>");
 	            writer.println("alert('정상적으로 등록되었습니다.');");
-	            writer.println("window.close();");
+	            writer.println("history.back();");
 	            writer.println("</script>");
 	            writer.flush();   
 	            
@@ -337,7 +299,7 @@ public class IndivInfoManageController {
 		   //실패시
 		   writer.println("<script type='text/javascript'>");
            writer.println("alert('등록의 실패하였습니다. 다시 시도해 주세요.');");
-           writer.println("window.close();");
+           writer.println("history.go(0);");
            writer.println("</script>");
            writer.flush();  
            
@@ -355,8 +317,6 @@ public class IndivInfoManageController {
 	 * @return 
 	 * @throws 
 	 */
-	
-	
 	@RequestMapping(value="/stu/colleageChangeList", method=RequestMethod.GET)
 	public String colleageChangeList(HttpSession session, Model model ){
 		String url = "/stu/colleage/colleageChangeList";
@@ -367,6 +327,8 @@ public class IndivInfoManageController {
 		
 		
 		List<Colleage_Register_ChangeVO> Colleage_Register_ChangeVO = indivInfoManageService.getColleageChangeList(stud_use_id);
+		
+		System.out.println(Colleage_Register_ChangeVO);
 		model.addAttribute("Colleage_Register_ChangeVO",Colleage_Register_ChangeVO);
 		
 		

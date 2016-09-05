@@ -16,7 +16,8 @@
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
  *    -------      -------     -------------------
- *    
+ *    2016.08.30.  	이수정      		최초생성
+ *    2016.09.1.  	이수정      		공지사항전체리스트
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -44,11 +45,11 @@
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
-                          <th>NO</th>
-                          <th>제목</th>
-                          <th>첨부파일</th>
-                          <th>작성일</th>
-                          <th><c:choose>
+                          <th style="width:7%;">NO</th>
+                          <th style="width:50%;">제목</th>
+                          <th style="width:20%;">첨부파일</th>
+                          <th style="width:15%;">작성일</th>
+                          <th style="width:8%;"><c:choose>
 				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
 				                       		작성자
 				                    	</c:when>
@@ -56,7 +57,7 @@
 				                       		작성자
 				                    	</c:when>
 				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-				                       		삭제
+				                       	
 				                    	</c:when>
 				                    </c:choose></th>
                         </tr>
@@ -89,9 +90,25 @@
 				                    	</c:when>
 				                    </c:choose>
                         			</td>
-                        			<c:if test="${noticeAllList.cn_af_no == 0 }"><td>-</td></c:if>
-                        			<c:if test="${noticeAllList.cn_af_no != 0 }"><td><a href="${noticeAllList.af_path }"> ${noticeAllList.af_realname } </a></td></c:if>
+                        			<td>
+                        			<c:choose>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
+                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/stu/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
+                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/pro/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
+				                    	</c:when>
+				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
+                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/emp/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
+				                    	</c:when>
+				                    </c:choose>
+				                    </td>
+                        			
                         			<td>${noticeAllList.cn_date }</td>
+                        			
                         			<td>
                         			<c:choose>
 				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
@@ -101,7 +118,6 @@
 				                       		${noticeAllList.cn_sp_use_id }
 				                    	</c:when>
 				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-				                       		<a href="#">삭제</a>
 				                    	</c:when>
 				                    </c:choose>
                         			</td>

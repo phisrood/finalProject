@@ -30,7 +30,7 @@ public class CyberCamCrsesStuController {
 	//수강생조회
 	@RequestMapping(value={"/cyberCampus/stu/cyberCrsesStuList","/cyberCampus/pro/cyberCrsesStuList"}, method=RequestMethod.GET)
 	public String cyberCrsesStuList(){
-		String url="cyberCampus/common/cyberCrsesStuList";
+		String url="cyberCampus/stu/cyberCrsesStuList";
 		
 		return url;
 	}
