@@ -218,7 +218,6 @@ h2 {
 			})
 		}
 		$(function() {
-
 			$("#close").click(function() {
 				$.each($("tr .timetable"), function() {
 					$("#classroomList").val('none');

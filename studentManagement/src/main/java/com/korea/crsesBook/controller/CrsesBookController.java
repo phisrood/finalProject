@@ -38,6 +38,7 @@ import com.korea.crsesBook.service.CrsesBookService;
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.UsersVO;
@@ -267,6 +268,21 @@ public class CrsesBookController {
 		String lec_no = crsesBookService.insertLecture(lecture);
 		classroomUsetime.setCu_lec_no(lec_no);
 		crsesBookService.insertClassroomUsetime(classroomUsetime);
+		return url;
+	}
+	/**
+	 * 강의조회
+	 * 
+	 * @param String
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/pro/lectureList", method = RequestMethod.GET)
+	public String getLectureList(Model model) {
+		String url = "/pro/lectureList";
+		List<LectureViewVO> list = crsesBookService.getLectureList();
+		model.addAttribute("lectureList", list);
+		
 		return url;
 	}
 }

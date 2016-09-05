@@ -97,4 +97,15 @@
         SELECT * FROM DUAL
 	</insert>
 	
+	<select id="getLectureList" resultType="lectureView">
+		SELECT *
+		FROM
+		LECTURE_VIEW
+	</select>
+	
+	<select id="getLectureTimeList" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+	</select>
+	
 </mapper>

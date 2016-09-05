@@ -64,6 +64,10 @@
 		<typeAlias alias="questionBoard" type="com.korea.dto.Question_BoardVO" />
 		<!-- 강의 -->
 		<typeAlias alias="lecture" type="com.korea.dto.LectureVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureView" type="com.korea.dto.LectureViewVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureTimeView" type="com.korea.dto.Lecture_Time_ViewVO"/>
 		<!-- 캘린더 parameter -->
 		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
 
