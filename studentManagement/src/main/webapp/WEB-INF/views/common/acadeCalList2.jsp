@@ -11,26 +11,6 @@
 
 <script>
 	$(document).ready(function(){
-/*  		//로딩될때 일정가져오기
-		$.ajax({
-			url:"/common/acadeCalAjax",
-			method:"get",
-			type:"json",
-			success:function(data){
-				alert("success");
-				var eventData;
-				$.each(data, function(index, value){
-					eventData = {
-						id:value.cc_no,
-						title:value.cc_title,
-						content:value.cc_content,
-						start:value.cc_start_date,
-						end:value.cc_end_date
-					};
-				});
-			}
-		}); */
-		
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
@@ -48,32 +28,33 @@
 			//셀렉트 시작날짜, 끝 날짜
 			select : function(start, end){
 				$("#fc_create").click();
+				//데이트 포맷
+				var started = start.format("YYYY-MM-DD");
+				var ended = end.format("YYYY-MM-DD");
 				
-				var started = start;
-				var ended = end;
+				$('#start').val(started);
+				$('#end').val(ended);
 				
-				$(".antosubmit").on("click", function(){
+				//생성버튼 클릭했을때
+				$("#insertBtn").on("click", function(){
 					var title = $("#title").val();
-					var descr = $("#descr").val();
+					var content = $("#content").val();
 					
-					if(end){
-						ended = end;
-					}
+					//데이터베이스 ajax통신 insert
+			 		$.ajax({
+						url:"/emp/acadeCalInsert",
+						method:"get",
+						data:{"start":started,"end":ended,"title":title,"content":content},
+			 			success:function(data){
+			 				alert("일정등록이 완료되었습니다.");	
+			 				
+			 			}
+					})
 					
-					categoryClass = $("#event_type").val();
-					//alert(started+"//"+ended)
+					location.reload();
 					
-					if(title){
-						calendar.fullCalendar('renderEvent', {
-							id : obj.id,
-							title : obj.title,
-							content : obj.content,
-							start : start,
-							end : end
-						},
-						true
-						);
-					}
+					//자동 닫기
+					$('.antoclose').click();
 				});
 			},
 			
@@ -81,21 +62,94 @@
 			eventClick : function(calEvent, jsEvent, view){
 				$("#fc_edit").click();
 				
-				$('#title2').val(calEvent.title);
-				$('#content2').val(calEvent.content);
+				var id = calEvent.id;
+				var start = calEvent.start.format("YYYY-MM-DD");
+				var end = calEvent.end.format("YYYY-MM-DD");
+				var title = calEvent.title;
+				var content = calEvent.content;
+				
+				//창에 값띄우기
+				$('#title2').val(title);
+				$('#content2').val(content);
+				$('#start2').val(start);
+				$('#end2').val(end);
+				
+		        // 이벤트 수정
+				$("#updateBtn").on("click", function() {
+		            var upStart = $("#start2").val();
+		            var upEnd = $("#end2").val();
+		            var upTitle = $("#title2").val();
+		            var upContent = $("#content2").val();
+		            
+		            
+					//데이터베이스 ajax통신 update
+			 		$.ajax({
+						url:"/emp/acadeCalUpdate",
+						method:"get",
+						data:{"id":id, "start":upStart,"end":upEnd,"title":upTitle,"content":upContent}
+					})
+		            location.reload();
+		            //자동닫기
+		            $('.antoclose2').click();
+		       	}); 
+		        
+		        // 이벤트 삭제
+				$("#deleteBtn").on("click", function() {
+		            
+					//데이터베이스 ajax통신 delete
+			 		$.ajax({
+						url:"/emp/acadeCalDelete",
+						method:"get",
+						data:{"id":id}
+					})
+		            location.reload();
+		            //자동닫기
+		            $('.antoclose2').click();
+		       	}); 
+		        
 			},
+			//이벤트 옮기기
+			eventDrop: function(event, delta, revertFunc) {
+				
+				var id = event.id;
+				var start = event.start.format("YYYY-MM-DD");
+				var end = event.end.format("YYYY-MM-DD");
+				var result = confirm("정말로"+start+"-"+end+"로 옮기시겠습니까?")
+				
+				//드랍업데이트 ajax
+		        if (result) {
+			        $.ajax({
+						url:"/emp/acadeCalDropUpdate",
+						method:"get",
+						data:{"id":id, "start":start,"end":end}
+					})
+		        } else{
+		            revertFunc();
+		        }
+			
+
+		    },
+		    //이벤트 치수조절하기
+		    eventResize: function(event, delta, revertFunc) {
+
+		        var id = event.id;
+		        var end = event.end.format("YYYY-MM-DD");
+				var result = confirm(end+"로 수정하시겠습니까?")
+				
+				//드랍업데이트 ajax
+		        if (result) {
+			        $.ajax({
+						url:"/emp/acadeCalResizeUpdate",
+						method:"get",
+						data:{"id":id, "end":end}
+					})
+		        } else{
+		            revertFunc();
+		        }
+		    },
 			editable: true,
 			eventLimit: true,
-			events : $(function(){
-				$.ajax({
-					url:"/common/acadeCalAjax",
-					method:"get",
-					type:"json",
-					success:function(data){
-					 	alert("success");
-					}
-				});
-			})
+			events : "/common/acadeCalAjax"
 				
 			
 		});
@@ -147,13 +201,25 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">제목</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" required="required">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">상세설명</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
+                    <textarea class="form-control" style="height:55px;" id="content" name="content" required="required"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">시작일</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="start" name="start">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">종료일</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="end" name="end">
                   </div>
                 </div>
               </form>
@@ -161,7 +227,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose" data-dismiss="modal">닫기</button>
-            <button type="button" class="btn btn-primary antosubmit">생성</button>
+            <button type="button" class="btn btn-primary antosubmit" id="insertBtn">생성</button>
           </div>
         </div>
       </div>
@@ -186,22 +252,34 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">제목</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title2" name="title2">
+                    <input type="text" class="form-control" id="title2" name="title2" required="required">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">상세설명</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
+                    <textarea class="form-control" style="height:55px;" id="content2" name="content2" required="required"></textarea>
                   </div>
                 </div>
-
+				<div class="form-group">
+                  <label class="col-sm-3 control-label">시작일</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="start2" name="start2" required="required">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">종료일</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="end2" name="end2" required="required">
+                  </div>
+                </div>
               </form>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">닫기</button>
-            <button type="button" class="btn btn-primary antosubmit2">수정</button>
+            <button type="button" class="btn btn-primary antosubmit2" id="updateBtn">수정</button>
+            <button type="button" class="btn btn-primary antosubmit3" id="deleteBtn">삭제</button>
           </div>
         </div>
       </div>

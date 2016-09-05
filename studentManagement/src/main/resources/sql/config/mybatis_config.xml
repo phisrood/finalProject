@@ -64,6 +64,9 @@
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
 		<typeAlias alias="calendar" type="com.korea.dto.Colleage_CalendarVO" />
+		<!-- 캘린더 parameter -->
+		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
+		
 	</typeAliases>
 
 	<mappers>
