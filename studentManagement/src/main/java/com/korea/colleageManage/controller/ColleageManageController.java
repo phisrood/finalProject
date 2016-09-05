@@ -61,7 +61,6 @@ public class ColleageManageController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		List<Colleage_Register_ChangeVO> Colleage_Register_ChangeVO=  colleageManageService.getSchoolReREQList(stud_use_id);
-		
 		model.addAttribute("Colleage_Register_ChangeVO", Colleage_Register_ChangeVO);
 		
 		return url;
