@@ -122,8 +122,6 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">닫기</button>
-            <button type="button" class="btn btn-primary antosubmit2" id="updateBtn">수정</button>
-            <button type="button" class="btn btn-primary antosubmit3" id="deleteBtn">삭제</button>
           </div>
         </div>
       </div>
