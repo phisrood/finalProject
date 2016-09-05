@@ -53,10 +53,18 @@ public class CyberCamTaskController {
 	 * @return 
 	 * @throws 
 	 */
-	//과제제출리스트
-	@RequestMapping(value="/pro/taskSubmitList", method=RequestMethod.GET)
+	//과제제출리스트(학생)
+	@RequestMapping(value="/cyberCampus/stu/taskSubmitList", method=RequestMethod.GET)
 	public String taskSubmitList(){
-		String url = "";
+		String url = "cyberCampus/stu/taskSubmitList";
+		
+		return url;
+	}
+	
+	//과제제출리스트(학과)
+	@RequestMapping(value="/cyberCampus/pro/taskSubmitList", method=RequestMethod.GET)
+	public String taskSubmitListPro(){
+		String url = "cyberCampus/pro/taskSubmitList";
 		
 		return url;
 	}
