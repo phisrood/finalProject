@@ -1,4 +1,13 @@
 package com.korea.acadeCal.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.acadeCal.dao.AcadeCalDAO;
+import com.korea.dto.Colleage_CalendarVO;
+
 /**
  * @Class Name : AcadeCalServiceImpl.java
  * @Description : 학사일정관리 서비스 클래스
@@ -15,7 +24,13 @@ package com.korea.acadeCal.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Service
 public class AcadeCalServiceImpl implements AcadeCalService{
+	
+	@Autowired
+	AcadeCalDAO acadeCalDAO;
+	
+	
 	/**
 	 * 학사일정 가져오기
 	 * @param
@@ -23,9 +38,9 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	 * @throws 
 	 */
 	@Override
-	public String getAcadeCalList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Colleage_CalendarVO> getAcadeCalList() {
+		
+		return acadeCalDAO.getAcadeCalList();
 	}
 	/**
 	 * 학사일정 입력

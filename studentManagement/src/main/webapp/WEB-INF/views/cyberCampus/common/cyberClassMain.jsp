@@ -15,7 +15,7 @@
  * <pre>
  * << 개정이력(Modification Information) >>
  *    수정일       수정자          수정내용
- *    -------      -------     -------------------
+ *2016.09.03   박진성        사이버캠퍼스 화면 연결
  *    
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>

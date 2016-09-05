@@ -1,4 +1,9 @@
 package com.korea.acadeCal.service;
+
+import java.util.List;
+
+import com.korea.dto.Colleage_CalendarVO;
+
 /**
  * @interface Name : AcadeCalService.java
  * @Description : 학사일정관리 서비스 인터페이스
@@ -23,7 +28,7 @@ public interface AcadeCalService {
 	 * @throws 
 	 */
 	//학사일정 조회
-	public String getAcadeCalList();
+	public List<Colleage_CalendarVO> getAcadeCalList();
 	/**
 	 * 학사일정 입력
 	 * @param

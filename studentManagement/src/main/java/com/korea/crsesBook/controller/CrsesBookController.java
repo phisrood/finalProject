@@ -33,6 +33,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesBook.service.CrsesBookService;
 import com.korea.dto.ClassRoom_InfoVO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.UsersVO;
@@ -222,5 +223,24 @@ public class CrsesBookController {
 		model.addAttribute("lb", lb);
 		model.addAttribute("classroom", classRoomInfo);
 		return url;
+	}
+	/**
+	 * 강의실 정보 가져오기
+	 * 
+	 * @param String
+	 * @return 
+	 * @throws
+	 */
+	@RequestMapping(value = "/pro/getClassroomTime", method = RequestMethod.GET)
+	public void getClassroomTime(String classroom, HttpServletResponse response) {
+		List<ClassRoom_UsetimeVO> usetimeList =  crsesBookService.getClassroomTime(classroom);
+		ObjectMapper json = new ObjectMapper();
+		try {
+			response.getWriter().print(json.writeValueAsString(usetimeList));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
 	}
 }

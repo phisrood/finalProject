@@ -15,6 +15,8 @@ package com.korea.login.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,36 +54,70 @@ public class LoginServiceImpl implements LoginService{
 	 * @throws 
 	 */
 	@Override
-	public void updateLoginPwdSearch(String id, String birth) {
+	public int updateLoginPwdSearch(String id, String birth) {
+		int chk = 0;
+		
+		
 		StudentVO studentVO = new StudentVO();
 		ProfessorVO professorVO = new ProfessorVO();
 		School_PersonVO school_PersonVO = new School_PersonVO();
+		
+		//임시비밀번호
+		String tempPwd = pwdTemp();
+		
+		//학생일때
 		if(id.length()==8){
-			studentVO.setStud_use_id(id);
-			studentVO.setStud_birth(birth);
-			studentVO = dao.getLoginPwdSearchStu(studentVO);
-			if(studentVO.getStud_email() != null){
-				MailSenderMain.sendMailInfoStu(studentVO);
-				dao.updatePwdChangeStu(studentVO);
+			try {
+				studentVO.setStud_use_id(id);
+				studentVO.setStud_birth(birth);
+				studentVO = dao.getLoginPwdSearchStu(studentVO);
+				if(studentVO.getStud_email() != null){
+					MailSenderMain.sendMailInfoStu(studentVO, tempPwd);
+					//그냥 아무vo에 임시비밀번호 넣어서 초기화
+					studentVO.setStud_regno1(tempPwd);
+					dao.updatePwdChangeStu(studentVO);
+					chk = 2;
+					
+				}				
+			} catch (Exception e) {
+				chk = 1;
 			}
+		//교수일때
 		}else if(id.length() == 7){
-			professorVO.setPro_use_id(id);
-			professorVO.setPro_birth(birth);
-			professorVO = dao.getLoginPwdSearchPro(professorVO);
-			if(professorVO.getPro_email() != null){
-				MailSenderMain.sendMailInfoPro(professorVO);
-				dao.updatePwdChangePro(professorVO);
-				
+			try {
+				professorVO.setPro_use_id(id);
+				professorVO.setPro_birth(birth);
+				professorVO = dao.getLoginPwdSearchPro(professorVO);
+				if(professorVO.getPro_email() != null){
+					MailSenderMain.sendMailInfoPro(professorVO, tempPwd);
+					
+					professorVO.setPro_regno1(tempPwd);
+					dao.updatePwdChangePro(professorVO);
+					chk = 2;
+				}
+			} catch (Exception e) {
+				chk = 1;
 			}
+		//행정일때
 		}else if(id.length() == 6){
-			school_PersonVO.setSp_use_id(id);
-			school_PersonVO.setSp_birth(birth);
-			school_PersonVO = dao.getLoginPwdSearchEmp(school_PersonVO);
-			if(school_PersonVO.getSp_email() != null){
-				MailSenderMain.sendMailInfoEmp(school_PersonVO);
-				dao.updatePwdChangeEmp(school_PersonVO);
+			
+			try {
+				school_PersonVO.setSp_use_id(id);
+				school_PersonVO.setSp_birth(birth);
+				school_PersonVO = dao.getLoginPwdSearchEmp(school_PersonVO);
+				if(school_PersonVO.getSp_email() != null){
+					MailSenderMain.sendMailInfoEmp(school_PersonVO, tempPwd);
+					
+					school_PersonVO.setSp_regno1(tempPwd);
+					dao.updatePwdChangeEmp(school_PersonVO);
+					chk=2;
+				}
+			} catch (Exception e) {
+				chk = 1;
 			}
 		}
+		
+		return chk;
 	}
 	@Override
 	public Professor_InfoViewVO getProdivInfo(String id) {
@@ -91,7 +127,20 @@ public class LoginServiceImpl implements LoginService{
 	public School_PersonInfoViewVO getEmpdivInfo(String id) {
 		return dao.getEmpdivInfo(id);
 	}
-
-
+	
+	//임시비밀번호
+	private static String pwdTemp(){
+		String tempPwd = "";
+		
+			for(int i = 0; i < 8; i++){
+				char lowerStr = (char)(Math.random() * 26 + 97);
+				if(i%2 == 0){
+				tempPwd += (int)(Math.random() * 10);
+				}else{
+				tempPwd += lowerStr;
+				}
+			}		
+		return tempPwd;
+	}
 
 }

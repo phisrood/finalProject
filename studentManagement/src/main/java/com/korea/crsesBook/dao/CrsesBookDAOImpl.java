@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ClassRoom_InfoVO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 
 /**
@@ -24,6 +25,8 @@ import com.korea.dto.Lecture_BreakeDownVO;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.09.01	김양문			수강편람 관련 메소드
+ *    2016.09.02	김양문			강의개설 관련 메소드
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -97,6 +100,10 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	@Override
 	public List<ClassRoom_InfoVO> getClassroomInfo() {
 		return sqlSession.selectList("crsesBook.getClassroomInfo");
+	}
+	@Override
+	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom) {
+		return sqlSession.selectList("crsesBook.getClassroomTime", classroom);
 	}
 
 }

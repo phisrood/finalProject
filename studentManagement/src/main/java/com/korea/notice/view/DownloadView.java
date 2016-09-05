@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.AbstractView;
 
 public class DownloadView extends AbstractView {
 	public DownloadView(){
-		setContentType("application/download;charset=utf-8");
+		setContentType("application/download;charset=UTF-8");
 	}
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model,
@@ -30,9 +30,9 @@ public class DownloadView extends AbstractView {
 		//true면 인터넷 익스플로러 입니다
 		String fileName = null;
 		if(ie){ //인터넷 익스플로러
-			fileName = URLEncoder.encode(file.getName(), "utf-8");
+			fileName = URLEncoder.encode(file.getName(), "UTF-8");
 		} else { //다른 브라우저
-			fileName = new String(file.getName().getBytes("utf-8"),"iso-8859-1");			
+			fileName = new String(file.getName().getBytes("UTF-8"),"ISO-8859-1");			
 		}
 		
 		response.setHeader("Content-Disposition", "attachment; filename=\""

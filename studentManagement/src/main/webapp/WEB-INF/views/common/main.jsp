@@ -79,10 +79,9 @@
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
-                          <th>NO</th>
-                          <th>제목</th>
-                          <th>첨부파일</th>
-                          <th>작성일</th>
+                          <th style="text-align:center;">NO</th>
+                          <th style="width:65%; text-align:center;">제목</th>
+                          <th style="text-align:center;">작성일</th>
                         </tr>
                       </thead>
 
@@ -112,8 +111,6 @@
 				                       		<a href="/emp/noticeDetail?cn_no=${noticeNewList.cn_no}">${noticeNewList.cn_title }</a>
 				                    	</c:when>
 				                    </c:choose></td>
-                        			<c:if test="${noticeNewList.cn_af_no == 0 }"><td>첨부파일이 없습니다.</td></c:if>
-                        			<c:if test="${noticeNewList.cn_af_no != 0 }"><td>${noticeNewList.cn_af_no }</td></c:if>
                         			<td>${noticeNewList.cn_date }</td>
                         		</tr>
                         	</c:forEach>

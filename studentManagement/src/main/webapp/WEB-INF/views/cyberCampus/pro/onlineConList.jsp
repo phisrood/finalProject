@@ -1,6 +1,6 @@
 <%--==============================================================
  * 사이버 캠퍼스 자유 게시판 left 메뉴구성
- * @author 박진성
+ * @author 조현욱
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -8,7 +8,7 @@
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	박진성      		최초생성
+ *    2016.08.29.  	조현욱      		최초생성
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -33,7 +33,7 @@
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"><br></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 100px; text-align: center;"><h2>온라인 콘텐츠</h2></div>
+				<div style="border: 1px solid; float: left; width: 100px; text-align: center;"><h2>강의</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 	     	<div class="x_panel_big">

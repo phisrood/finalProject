@@ -3,10 +3,12 @@ package com.korea.dto;
 public class Receiver {
 	private String email;
 	private String regno;
+	private String tempPwd; 
 
-	public Receiver(String email, String regno) {
+	public Receiver(String email, String regno, String tempPwd) {
 		this.email = email;
 		this.regno = regno;
+		this.tempPwd = tempPwd;
 	}
 	
 	public String getEmail() {
@@ -17,5 +19,10 @@ public class Receiver {
 		return regno;
 	}
 
+	public String getTempPwd() {
+		return tempPwd;
+	}
+
+	
 	
 }
