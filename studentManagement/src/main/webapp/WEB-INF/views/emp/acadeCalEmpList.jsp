@@ -96,6 +96,7 @@
 		        // 이벤트 삭제
 				$("#deleteBtn").on("click", function() {
 		            
+					alert(calEvent.id);
 					//데이터베이스 ajax통신 delete
 			 		$.ajax({
 						url:"/emp/acadeCalDelete",

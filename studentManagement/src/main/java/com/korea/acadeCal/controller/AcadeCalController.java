@@ -47,10 +47,17 @@ public class AcadeCalController {
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 조회
-	@RequestMapping(value={"/stu/acadeCalList","/emp/acadeCalList","/pro/acadeCalList"}, method=RequestMethod.GET)
+	//학사일정 조회(행정)
+	@RequestMapping(value="/emp/acadeCalList", method=RequestMethod.GET)
+	public String acadeCalEmpList(){
+		String url="/emp/acadeCalEmpList";
+		
+		return url;
+	}
+	//학사일정 조회(학생, 교수)
+	@RequestMapping(value={"/stu/acadeCalList","/pro/acadeCalList"}, method=RequestMethod.GET)
 	public String acadeCalList(){
-		String url="/common/acadeCalList2";
+		String url="/common/acadeCalList";
 		
 		return url;
 	}
