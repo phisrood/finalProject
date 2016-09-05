@@ -134,7 +134,7 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/crsesLogin">수강신청</a></li>                     
+		                      <li><a href="/stu/crsesLoginForm">수강신청</a></li>                     
 		                    </ul>
 		                  </li>
                 </ul>

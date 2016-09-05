@@ -100,35 +100,41 @@ public class LoginController {
 		
 		//세션정보
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-		
-		//개인정보아이디
-		String id = usersVO.getUse_id();
-		//권한
-		String authority = usersVO.getAuthority();
-		
+		String id = null;
+		String authority = null;
 		Student_InfoViewVO studentInfo = null;
 		Professor_InfoViewVO professorInfo = null;
 		School_PersonInfoViewVO employeeInfo = null;
 		
 		List<MessageVO> messageNewList = null;
 		List<Colleage_NoticeVO> noticeNewList = null;
-		if(usersVO != null){
-			//메인 로딩될때 메시지 리스트 출력
-			messageNewList = messageService.getMessageNewList(usersVO);
-			//메인 로딩될때 공지사항 리스트 출력
-			noticeNewList = noticeService.getNoticeNewList();
-			if(authority.equals("ROLE_STU")){
-				studentInfo = indivInfoManageService.getIndivInfo(id);				
-			}else if(authority.equals("ROLE_PRO")){
-				professorInfo = service.getProdivInfo(id);
-			}else if(authority.equals("ROLE_EMP")){
-				employeeInfo = service.getEmpdivInfo(id);
+		int messageCount = 0;
+		try {
+			//개인정보아이디
+			id = usersVO.getUse_id();
+			//권한
+			authority = usersVO.getAuthority();
+			
+			if(usersVO != null){
+				//메인 로딩될때 메시지 리스트 출력
+				messageNewList = messageService.getMessageNewList(usersVO);
+				//메인 로딩될때 공지사항 리스트 출력
+				noticeNewList = noticeService.getNoticeNewList();
+				if(authority.equals("ROLE_STU")){
+					studentInfo = indivInfoManageService.getIndivInfo(id);				
+				}else if(authority.equals("ROLE_PRO")){
+					professorInfo = service.getProdivInfo(id);
+				}else if(authority.equals("ROLE_EMP")){
+					employeeInfo = service.getEmpdivInfo(id);
+				}
+			}else{
+				url = "redirect:/common/loginForm";
 			}
-		}else{
+			
+			messageCount = messageNewList.size();
+		} catch (Exception e) {
 			url = "redirect:/common/loginForm";
 		}
-		
-		int messageCount = messageNewList.size();
 		
 		model.addAttribute("messageNewList", messageNewList);
 		model.addAttribute("noticeNewList", noticeNewList);
@@ -217,7 +223,6 @@ public class LoginController {
 		int index = service.updateLoginPwdSearch(id, birth);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		System.out.println(index+"@@@@@@@@@@");
 		if(index == 0){
 			//아이디 학생 8자리 교수 7자리 행정 6자리의 만족을 일치하지 않음
 		     out.println("<script type='text/javascript'>");
