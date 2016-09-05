@@ -105,7 +105,6 @@ public class AcadeCalController {
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 등록
 	@RequestMapping(value="/emp/acadeCalInsert", method=RequestMethod.GET)
 	public void acadeCalInsertAjax(CalendarVO calendarVO, HttpServletResponse response){
 		service.insertAcadeCal(calendarVO);
@@ -132,7 +131,6 @@ public class AcadeCalController {
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 수정
 	@RequestMapping(value="/emp/acadeCalUpdate", method=RequestMethod.GET)
 	public void acadeCalUpdate(CalendarVO calendarVO){
 		service.updateAcadeCal(calendarVO);
@@ -144,46 +142,30 @@ public class AcadeCalController {
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 삭제
 	@RequestMapping(value="/emp/acadeCalDelete", method=RequestMethod.GET)
 	public void acadeCalDelete(@RequestParam(value="id")String id){
 		service.deleteAcadeCal(id);
 	}
 	/**
-	 * 학사일정 삭제
+	 * 학사일정 드랍업데이트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 드랍업데이트
 	@RequestMapping(value="/emp/acadeCalDropUpdate", method=RequestMethod.GET)
 	public void acadeCalDropUpdate(CalendarVO calendarVO){
 		service.updateAcadeDropCal(calendarVO);
 	}
 	
 	/**
-	 * 학사일정 삭제
+	 * 학사일정 리사이즈 업데이트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 드랍업데이트
 	@RequestMapping(value="/emp/acadeCalResizeUpdate", method=RequestMethod.GET)
 	public void acadeCalResize(CalendarVO calendarVO){
 		service.updateAcadeResizeCal(calendarVO);
-	}
-	/**
-	 * 학사일정 상세보기
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//학사일정 상세보기
-	@RequestMapping(value="/common/acadeDetail", method=RequestMethod.GET)
-	public String acadeCalDetail(){
-		String url="";
-		
-		return url;
 	}
 	
 	

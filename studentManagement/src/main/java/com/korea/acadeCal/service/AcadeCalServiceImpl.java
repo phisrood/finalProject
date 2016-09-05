@@ -74,17 +74,7 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	public void deleteAcadeCal(String id) {
 		acadeCalDAO.deleteAcadeCal(id);
 	}
-	/**
-	 * 학사일정 상세보기
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void getAcadeDetail() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	/**
 	 * 학사일정 드랍수정
 	 * @param

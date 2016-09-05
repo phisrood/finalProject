@@ -58,16 +58,19 @@ public interface AcadeCalService {
 	//학사일정 삭제
 	public void deleteAcadeCal(String id);
 	/**
-	 * 학사일정 상세보기
+	 * 학사일정 드랍업데이트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 상세보기
-	public void getAcadeDetail();
-	
 	//학사일정 드랍
 	public void updateAcadeDropCal(CalendarVO calendarVO);
+	/**
+	 * 학사일정 리사이즈업데이트
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	//학사일정 resize
 	public void updateAcadeResizeCal(CalendarVO calendarVO);
 }

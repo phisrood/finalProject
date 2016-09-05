@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- FullCalendar -->
     <link href="/bootstrap/css/fullcalendar.min.css" rel="stylesheet">
     <link href="/bootstrap/css/fullcalendar.print.css" rel="stylesheet" media="print">
@@ -39,6 +40,8 @@
 				$("#insertBtn").on("click", function(){
 					var title = $("#title").val();
 					var content = $("#content").val();
+					started = $("#start").val();
+					ended = $("#end").val();
 					
 					//데이터베이스 ajax통신 insert
 			 		$.ajax({
@@ -154,6 +157,94 @@
 				
 			
 		});
+		
+		$("#calendarlist").click(function(){
+			$("#fc_list").click();
+			var one = "2016-01";
+			var two = "2016-02";
+			var three = "2016-03";
+			var four = "2016-04";
+			var five = "2016-05";
+			var six = "2016-06";
+			var seven = "2016-07";
+			var eight = "2016-08";
+			var nine = "2016-09";
+			var ten = "2016-10";
+			var eleven = "2016-11";
+			var twelve = "2016-12";
+			
+			$.ajax({
+				url:"/common/acadeCalAjax",
+				method:"get",
+				type:"json",
+				success:function(data){
+					var oneData = "";
+					var twoData = "";
+					var threeData = "";
+					var fourData = "";
+					var fiveData = "";
+					var sixData = "";
+					var sevenData = "";
+					var eightData = "";
+					var nineData = "";
+					var tenData = "";
+					var elevenData = "";
+					var twelveData = "";
+					$.each(data, function(index, value){
+						if(value.start.indexOf(one) >= 0){
+							oneData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(two) >= 0){
+							twoData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(three) >= 0){
+							threeData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(four) >= 0){
+							fourData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(five) >= 0){
+							fiveData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(six) >= 0){
+							sixData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(seven) >= 0){
+							sevenData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(eight) >= 0){
+							eightData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(nine) >= 0){
+							nineData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(ten) >= 0){
+							tenData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(eleven) >= 0){
+							elevenData += value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						if(value.start.indexOf(twelve) >= 0){
+							twelveData = value.start+" ~ "+value.end+"  "+value.title+"<br>";
+						}
+						
+					});
+					$("#1월").html(oneData);
+					$("#2월").html(twoData);
+					$("#3월").html(threeData);
+					$("#4월").html(fourData);
+					$("#5월").html(fiveData);
+					$("#6월").html(sixData);
+					$("#7월").html(sevenData);
+					$("#8월").html(eightData);
+					$("#9월").html(nineData);
+					$("#10월").html(tenData);
+					$("#11월").html(elevenData);
+					$("#12월").html(twelveData);
+				}
+			});
+			
+		})
 	});
 
 </script>
@@ -166,7 +257,7 @@
 			</div>
 			<div class="x_content">
 				<div style="text-align:right;">
-					<button type="button" class="btn btn-dark">리스트보기</button>
+					<button type="button" class="btn btn-dark" id="calendarlist">리스트보기</button>
 				</div>
                	<!-- 풀캘린더 div #calendar -->
 				<div id='calendar'>
@@ -185,6 +276,7 @@
 	<!-- 생성창, 수정창 -->
     <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
     <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
+    <div id="fc_list" data-toggle="modal" data-target="#CalenderList"></div>
     
     
     <!-- 생성모달창 -->
@@ -288,3 +380,33 @@
 
 
     <!-- /calendar modal -->
+    
+    <!-- calendar list -->
+    <div id="CalenderList" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel2">일정 리스트</h4>
+          </div>
+          <div class="modal-body">
+
+            <div id="testmodal2" style="padding: 5px 20px;">
+                <div class="form-group">
+                  <c:forEach var="i" begin="1" end="12" step="1">
+	                  <h4>${i}월</h4>
+	                  <div class="col-sm-9" id="${i}월" style="width:100%;">
+	                  
+	                  </div>
+	                  <br>
+                  </c:forEach>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
