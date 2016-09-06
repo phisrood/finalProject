@@ -81,8 +81,8 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 	//강의계획서
 	@Override
 	public Class_SYLLBUSVO getClassSYLInfo(String lec_no) {
-		Class_SYLLBUSVO class_SYL =  classSYLDAO.getClassSYLInfo();
-		return null;
+		return  classSYLDAO.getClassSYLInfo(lec_no);
+		
 	}
 
 

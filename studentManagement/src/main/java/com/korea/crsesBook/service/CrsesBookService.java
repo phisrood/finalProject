@@ -120,12 +120,13 @@ public interface CrsesBookService {
 	public void insertClassroomUsetime(ClassRoom_UsetimeVO classroomUsetime);
 	
 	/**
+	 * @param use_id 
 	 * 강의실 사용시간(교수)
 	 * @param ClassRoom_UsetimeVO
 	 * @return 
 	 * @throws 
 	 */
-	public List<LectureViewVO> getLectureList();
+	public List<LectureViewVO> getLectureList(String use_id);
 
 
 	

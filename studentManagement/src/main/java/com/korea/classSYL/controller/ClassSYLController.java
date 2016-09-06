@@ -20,8 +20,11 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +53,7 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 import com.korea.classSYL.service.ClassSYLService;
 import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.UsersVO;
 
 @Controller
 public class ClassSYLController {
@@ -93,11 +97,12 @@ public class ClassSYLController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/classSYL", method = RequestMethod.GET)
-	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
+	public String getLecturePlan(String lec_no, Model model, HttpSession session) throws IOException, DocumentException {
 		String url = "/common/classSYL";
 		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
 		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
 		model.addAttribute("lecture", lecture);
+		model.addAttribute("classSYL", classSYL);
 		return url;
 	}
 	/**

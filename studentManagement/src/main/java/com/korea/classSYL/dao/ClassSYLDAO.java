@@ -48,6 +48,7 @@ public interface ClassSYLDAO {
 	//강의계획서 삭제
 	public void deleteClassSYL();
 	/**
+	 * @param lec_no 
 	 * @return 
 	 * 개인 정보 조회
 	 * @param
@@ -55,7 +56,7 @@ public interface ClassSYLDAO {
 	 * @throws 
 	 */
 	//강의계획서 조회
-	public Class_SYLLBUSVO getClassSYLInfo();
+	public Class_SYLLBUSVO getClassSYLInfo(String lec_no);
 	
 	/**
 	 * 강의계획서(교수)
