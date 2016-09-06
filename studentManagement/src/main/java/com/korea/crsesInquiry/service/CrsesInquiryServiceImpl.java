@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.crsesInquiry.dao.CrsesInquiryDAO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Student_InquiryList_ViewVO;
 
 /**
@@ -54,6 +55,11 @@ public class CrsesInquiryServiceImpl implements CrsesInquiryService{
 	public void getCyberCamMove() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public Professor_InquiryList_ViewVO getCrsesInquiryProList(int lec_no){
+		
+		return crsesInquiryDAO.getCrsesInquiryProList(lec_no);
 	}
 
 }

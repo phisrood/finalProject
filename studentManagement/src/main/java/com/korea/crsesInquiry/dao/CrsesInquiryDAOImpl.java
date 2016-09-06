@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Student_InquiryList_ViewVO;
 
 /**
@@ -60,5 +61,12 @@ public class CrsesInquiryDAOImpl implements CrsesInquiryDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Professor_InquiryList_ViewVO getCrsesInquiryProList(int lec_no) {
+		
+		return (Professor_InquiryList_ViewVO) sqlSession.selectOne("inquiryDao.getInquiryListPro",lec_no);
+	}
+	
+	
 
 }

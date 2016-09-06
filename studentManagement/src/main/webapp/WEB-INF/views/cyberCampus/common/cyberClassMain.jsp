@@ -42,7 +42,7 @@
                     	<h2>공지 사항</h2>
                     	<div class="clearfix"></div>
                   	</div>
-	                <table id="datatable" class="table table-striped table-bordered">
+	                <table id="datatable" class="table table-striped jambo_table bulk_action">
 	                   	<thead>
 	                   		<tr>
 	                       		<th>No</th>
@@ -98,7 +98,7 @@
                     	<h2>자유 게시판</h2>
                     	<div class="clearfix"></div>
                   	</div>
-	                <table id="datatable" class="table table-striped table-bordered">
+	                <table id="datatable" class="table table-striped jambo_table bulk_action">
 	                   	<thead>
 	                   		<tr>
 	                       		<th>No</th>
@@ -153,7 +153,7 @@
                    	<h2>출결 관리</h2>
                    	<div class="clearfix"></div>
                 </div>
-                <table id="datatable" class="table table-striped table-bordered">
+                <table id="datatable" class="table table-striped jambo_table bulk_action">
                    	<thead>
                    		<tr>
                        		<th>순번</th>
