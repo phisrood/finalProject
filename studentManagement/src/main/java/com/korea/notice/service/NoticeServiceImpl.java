@@ -36,9 +36,9 @@ public class NoticeServiceImpl implements NoticeService{
 	NoticeDAO noticeDAO;
 	
 	/**
-	 * 개인 정보 조회
+	 * 공지사항새글리스트
 	 * @param
-	 * @return 
+	 * @return List<Colleage_NoticeVO>
 	 * @throws 
 	 */
 	@Override
@@ -57,10 +57,9 @@ public class NoticeServiceImpl implements NoticeService{
 		return noticeDAO.getNoticeAllList();
 	}
 	/**
-	 * @return 
 	 * 공지상세보기
-	 * @param
-	 * @return 
+	 * @param	int
+	 * @return 	NoticeViewVO
 	 * @throws 
 	 */
 	@Override
@@ -70,15 +69,20 @@ public class NoticeServiceImpl implements NoticeService{
 		
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
+	 * 공지사항수정
+	 * @param	Colleage_NoticeVO,Attachment_FileVO
+	 * @return	 
 	 * @throws 
 	 */
 	@Override
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO) {
-		noticeDAO.updateNotice(colleage_NoticeVO);
-		/*noticeDAO.updateNoticeFile(attachment_FileVO);*/
+		System.out.println(attachment_FileVO.getAf_realname());
+		System.out.println(attachment_FileVO.getAf_path());
+		if(attachment_FileVO.getAf_realname()!=null){
+			noticeDAO.updateNoticeFile(attachment_FileVO);
+			colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+		}
+			noticeDAO.updateNotice(colleage_NoticeVO);
 	}
 	/**
 	 * 개인 정보 조회

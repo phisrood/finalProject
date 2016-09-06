@@ -53,7 +53,7 @@
 		</div>
 		<div class="x_content">
 			<br />
-			<form name="updateNoticeForm" class="form-horizontal form-label-left">
+			<form name="updateNoticeForm" action="/emp/noticeUpdate" method="post" class="form-horizontal form-label-left" enctype="multipart/form-data" >
 				<input type="hidden" name="cn_no"
 					value="${noticeDetailViewVO.cn_no }">
 				<div class="form-group">
