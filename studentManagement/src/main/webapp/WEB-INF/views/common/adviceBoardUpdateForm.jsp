@@ -40,7 +40,7 @@ html, body {
 			<div class="clearfix"></div>
 		</div>
 		<br>
-			<form action="/stu/adviceBoardUpdate" method="post">
+			<form action="/stu/adviceBoardUpdate" method="post" enctype="multipart/form-data">
 			<%-- <c:forEach var="adviceBoard" items="${adviceBoardVO }"> --%>
 			<input type="hidden" name="adb_no" value="${adb_no }"/>
 			<div style="float: right; width: 78%;">

@@ -76,6 +76,8 @@ public class ColleageManageController {
 			@RequestParam(value="ad_reqdate_end", defaultValue="")String ad_reqdate_end,
 			HttpServletRequest request, HttpServletResponse response
 			)throws IOException{
+		
+		
 		String url="redirect:/stu/schoolReModel";
 		  
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");

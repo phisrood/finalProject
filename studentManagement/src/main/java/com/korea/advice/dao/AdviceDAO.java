@@ -149,5 +149,11 @@ public interface AdviceDAO {
 
 	public Attachment_FileVO getAdviceBoardFile(int adb_af_no);
 
+	public int updateAdviceBoardFile(Map<String, String> paramsFile);
+
+	public List<AdviceVO> getMyAdviceRequestList(String loginUser);
+
+	public List<AdviceVO> getMyAdviceResponseList(String use_id);
+
 
 }

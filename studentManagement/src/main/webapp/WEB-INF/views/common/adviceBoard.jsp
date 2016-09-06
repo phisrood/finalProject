@@ -48,9 +48,9 @@
 			본인과 담당 교수만 열람이 가능합니다.</div>
 		<div class="x_content">
 			<div style="text-align: right;">
-			<c:if test="${auth eq 'ROLE_STU' }">
+			<%-- <c:if test="${auth eq 'ROLE_STU' }"> --%>
 				<button type="button" class="btn btn-dark"><a href="/stu/adviceBoardWriteForm">작 성</a></button>
-  			</c:if>
+  			<%-- </c:if> --%>
   			</div>
 
 			<table id="datatable" class="table table-striped jambo_table bulk_action">

@@ -1,4 +1,11 @@
 package com.korea.cyberCam.onlineCon.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Online_ContentsVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,7 +22,11 @@ package com.korea.cyberCam.onlineCon.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO{
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -23,9 +34,8 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertOnlineCon() {
-		// TODO Auto-generated method stub
-		
+	public void insertOnlineCon(Online_ContentsVO onlineContentsVO) {
+		sqlSession.insert("CyberCamOnlineContentsDAO.insertOnlineCon", onlineContentsVO);
 	}
 	/**
 	 * 개인 정보 조회
