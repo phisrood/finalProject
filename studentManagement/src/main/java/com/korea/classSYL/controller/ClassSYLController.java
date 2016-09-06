@@ -48,6 +48,7 @@ import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
 import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 import com.korea.classSYL.service.ClassSYLService;
+import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
 
 @Controller
@@ -80,32 +81,8 @@ public class ClassSYLController {
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//강의계획서 삭제
-	@RequestMapping(value="/pro/classSYLDelete", method=RequestMethod.GET)
-	public String classSYLDelete(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//강의계획서 조회
-	@RequestMapping(value="/pro/classSYLInfo", method=RequestMethod.GET)
-	public String classSYLInfo(){
-		String url="";
-		
-		return url;
-	}
+	
+
 	/**
 	 * @throws DocumentException 
 	 * @throws IOException 
@@ -119,7 +96,7 @@ public class ClassSYLController {
 	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
 		String url = "/common/classSYL";
 		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
-		System.out.print(lecture.getLb_name());
+		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
 		model.addAttribute("lecture", lecture);
 		return url;
 	}

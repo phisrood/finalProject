@@ -11,10 +11,6 @@ package com.korea.dto;
  * lec_credit : 학점<br>
  * lec_placement : 분반<br>
  * lec_persons : 인원<br>
- * lec_first : 첫번째교시<br>
- * lec_second : 두번째교시<br>
- * lec_third : 세번째교시<br>
- * lec_fourth : 네번째교시
  * 
  * 
  * @version 한돈희, 1.0, 2016.08.24, 초기 작성

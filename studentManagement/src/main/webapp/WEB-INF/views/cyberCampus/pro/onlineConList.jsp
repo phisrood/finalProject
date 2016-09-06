@@ -24,7 +24,7 @@
 			<div style="float: left; width: 100%;"><br></div>
 			<div class="x_panel_big">
 				<br>
-				<form method="post" action="/pro/onlineConReg" enctype="multipart/form-data">>
+				<form method="post" action="/pro/onlineConReg" enctype="multipart/form-data">
 				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
 						<td>
