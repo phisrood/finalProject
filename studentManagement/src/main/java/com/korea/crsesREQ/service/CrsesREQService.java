@@ -89,4 +89,7 @@ public interface CrsesREQService {
 	//시간표중복배제
 	public void timeTableOverlap();
 	
+	//직전학기 성적조회
+	public float getScoreCalcu(String id);
+	
 }
