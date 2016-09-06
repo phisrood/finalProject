@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="LearningRoom">
+
+	<select id="getStudyBBSAllList" resultType="learningRoomViewVO">
+		SELECT	*
+		FROM 	LEARNINGROOM_VIEW
+		ORDER BY LR_NO DESC
+	</select>
+	
+	<insert id="insertStudyBBSFile" parameterType="attachment">
+		INSERT INTO ATTACHMENT_FILE(AF_NO
+								,AF_REALNAME
+								,AF_AFTERNAME
+								,AF_PATH
+								)
+						VALUES(attachment_file_seq.nextval
+							  ,#{af_realname}
+							  ,#{af_aftername}
+							  ,#{af_path})
+							  
+		<selectKey resultType="int" keyProperty="af_no" order="AFTER">
+			SELECT attachment_file_seq.currval 
+			FROM dual
+		</selectKey>
+	</insert>
+	
+	<insert id="insertStudyBBS" parameterType="cyberStudyBoard">
+		INSERT INTO LEARNING_ROOM(LR_NO
+								 ,LR_LEC_NO
+								 ,LR_PRO_USE_ID
+								 ,LR_AF_NO
+								 ,LR_TITLE
+								 ,LR_CONTENT)
+						VALUES(learningroom_seq.nextval)
+							 ,lecture_seq.nextval
+							 ,#{lr_pro_use_id}
+							 ,#{lr_af_no}
+							 ,#{lr_title}
+							 ,#{lr_content})
+	</insert>
+
+</mapper>

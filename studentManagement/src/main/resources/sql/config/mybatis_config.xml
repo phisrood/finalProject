@@ -77,9 +77,16 @@
 		<!-- 학생 수강 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
 		<!-- 교수 강의 내역 조회 view -->
-		<typeAlias alias="inquiryListProViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
+		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
+		<!-- 사이버캠퍼스 학습자료게시판 -->
+		<typeAlias alias="cyberStudyBoard" type="com.korea.dto.Learning_RoomVO" />
+		<!-- 사이버캠퍼스 학습자료 view -->	
+		<typeAlias alias="learningRoomViewVO" type="com.korea.dto.LearningRoomViewVO" />
+
 		<!-- 사이버캠퍼스 온라인콘텐츠  -->
 		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
+		<!-- 성적조회 view  -->
+		<typeAlias alias="scoreView" type="com.korea.dto.ScoreViewVO" />
 
 	</typeAliases>
 
@@ -112,11 +119,16 @@
 		<mapper resource="sql/mapper/acadeCal.xml" />
 		<!--  사이버캠퍼스 QNA게시판  -->
 		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
+		<!--  사이버캠퍼스 학습자료게시판  -->
+		<mapper resource="sql/mapper/cyberCamStudyBBS.xml"/>
+
 		<!--수업평가 -->
 		<mapper resource="sql/mapper/classApp.xml"/>
 		<!--  학생수강내역조회  -->
 		<mapper resource="sql/mapper/inquiryList.xml"/>
 		<!--  온라인콘텐츠  -->
 		<mapper resource="sql/mapper/cyberCamOnlineCotents.xml"/>
+		<!--  수강신청  -->
+		<mapper resource="sql/mapper/crsesREQ.xml"/>
 	</mappers>
 </configuration>
