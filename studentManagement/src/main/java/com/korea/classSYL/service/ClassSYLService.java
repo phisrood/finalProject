@@ -1,4 +1,7 @@
 package com.korea.classSYL.service;
+
+import com.korea.dto.LectureViewVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -48,4 +51,13 @@ public interface ClassSYLService {
 	 */
 	//강의계획서 조회
 	public void getClassSYLInfo();
+	
+	/**
+	 * 강의계획서 조회(교수)
+	 * @param LectureViewVO
+	 * @return 
+	 * @throws 
+	 */
+	public LectureViewVO getLectureInfo(String lec_no);
+	
 }

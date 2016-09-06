@@ -91,20 +91,8 @@
 				                    </c:choose>
                         			</td>
                         			<td>
-                        			<c:choose>
-				                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
 				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
-                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/stu/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
-				                    	</c:when>
-				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
-				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
-                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/pro/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
-				                    	</c:when>
-				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-				                       		<c:if test="${noticeAllList.cn_af_no == 0 }">-</c:if>
-                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/emp/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
-				                    	</c:when>
-				                    </c:choose>
+                        					<c:if test="${noticeAllList.cn_af_no != 0 }"><a href="/common/noticeFileDown?af_aftername=${noticeAllList.af_aftername}"> ${noticeAllList.af_realname } </a></c:if>
 				                    </td>
                         			
                         			<td>${noticeAllList.cn_date }</td>

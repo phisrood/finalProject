@@ -51,17 +51,18 @@
 	</tr>
 </table>
 </div>
-
+<c:if test="${loginUser.authority eq 'ROLE_PRO' }"></c:if>
 <button onclick="updatePlan('${lecture.lec_no }');">강의계획서 변경</button>
 <form name="pdfForm">
 <input type=hidden id="htmlTag" name="htmlTag"/>
 <button onclick="toPdf()">pdf로 보기</button>	
 </form>
+
 <script type="text/javascript">
 	function toPdf(){
 		$("#htmlTag").val($("#tbl").html());
 		document.pdfForm.method="post";
-		document.pdfForm.action="/pro/lecturePlantoPdf";
+		document.pdfForm.action="/pro/classSYLtoPdf";
 		document.pdfForm.target="_blank";
 		document.pdfForm.submit(); 
 	}
