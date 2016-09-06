@@ -44,6 +44,7 @@ public class CyberCamMainController {
          session.setAttribute("stu_lec_no", stu_lec_no);
       }else if(user.getAuthority().equals("ROLE_PRO")){
          System.out.println("교수");
+         System.out.println(pro_lec_no+"!!!!!!!!!@@@@@@@@@");
          session.setAttribute("pro_lec_no", pro_lec_no);
       }
       
