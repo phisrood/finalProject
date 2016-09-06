@@ -189,11 +189,11 @@ public class LoginController {
 		session.setAttribute("loginUser", usersVO);
 		
 		//화면분기
-		if(usersVO.getUse_kind().equals("student")){
+		if(usersVO.getAuthority().equals("ROLE_STU")){
 			url="redirect:/stu/main";
-		}else if(usersVO.getUse_kind().equals("professor")){
+		}else if(usersVO.getAuthority().equals("ROLE_PRO")){
 			url="redirect:/pro/main";
-		}else if(usersVO.getUse_kind().equals("employee")){
+		}else if(usersVO.getAuthority().equals("ROLE_EMP")){
 			url="redirect:/emp/main";
 		}
 		

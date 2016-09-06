@@ -8,7 +8,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
       <!-- page content -->
-      <div class="right_col" role="main">
 
 
          <div class="row">
@@ -128,4 +127,3 @@
          </div>
       </div>
       <!-- /page content -->
-   </div>
