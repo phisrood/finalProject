@@ -2,6 +2,7 @@ package com.korea.crsesInquiry.dao;
 
 import java.util.List;
 
+import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Student_InquiryList_ViewVO;
 
 /**
@@ -37,4 +38,5 @@ public interface CrsesInquiryDAO {
 	 */
 	//사이버캠퍼스이동
 	public void getCyberCamMove();
+	public Professor_InquiryList_ViewVO getCrsesInquiryProList(int lec_no);
 }

@@ -73,7 +73,7 @@
 		<!-- 학생 수강 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
 		<!-- 교수 강의 내역 조회 view -->
-		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
+		<typeAlias alias="inquiryListProViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
 
 	</typeAliases>
 
