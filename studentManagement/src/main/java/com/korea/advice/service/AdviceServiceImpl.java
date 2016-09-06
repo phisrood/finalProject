@@ -204,4 +204,19 @@ public class AdviceServiceImpl implements AdviceService {
 		return adviceDAO.getAdviceBoardFile(adb_af_no);
 	}
 
+	@Override
+	public int updateAdviceBoardFile(Map<String, String> paramsFile) {
+		return adviceDAO.updateAdviceBoardFile(paramsFile);
+	}
+
+	@Override
+	public List<AdviceVO> getMyAdviceReqeustList(String loginUser) {
+		return adviceDAO.getMyAdviceRequestList(loginUser);
+	}
+
+	@Override
+	public List<AdviceVO> getMyAdviceResponseList(String use_id) {
+		return adviceDAO.getMyAdviceResponseList(use_id);
+	}
+
 }

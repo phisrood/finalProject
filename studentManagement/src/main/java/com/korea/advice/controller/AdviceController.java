@@ -251,13 +251,13 @@ public class AdviceController {
 		int af_no=0;
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		
 		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
 		if(!multipartFile.isEmpty()){
 			File file = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
 			multipartFile.transferTo(file);
 			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());
-			adviceInsertVO.setAdb_afterName(System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			String adb_after_name = System.currentTimeMillis()+multipartFile.getOriginalFilename();
+			adviceInsertVO.setAdb_afterName(adb_after_name);
 			adviceInsertVO.setAdb_path(uploadPath);
 			af_no=adviceService.insertAdviceBoardAF(adviceInsertVO);
 			adviceInsertVO.setAdb_af_no(af_no);
@@ -323,10 +323,8 @@ public class AdviceController {
 		Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adb_af_no);
 		
 		String path = request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		System.out.println("파일번호 : "+adb_af_no);
-		System.out.println("다운경로 : "+path);
 		
-		File file = new File(path,fileVO.getAf_realname());
+		File file = new File(path,fileVO.getAf_aftername());
 		
 		if(file == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -370,14 +368,33 @@ public class AdviceController {
 	 */
 	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardUpdate", method = RequestMethod.POST)
-	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_content) {
+	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_content,MultipartFile adb_file,HttpServletRequest request) throws IOException{
 		String url = "redirect:/stu/adviceBoard";
+		
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("adb_no", adb_no+"");
 		params.put("adb_title", adb_title);
 		params.put("adb_content", adb_content);
 		
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
+		if(!adb_file.isEmpty()){
+			int adb_af_no = adviceService.getAdviceBoard(adb_no).getAdb_af_no();
+			
+			File file = new File(uploadPath,System.currentTimeMillis()+adb_file.getOriginalFilename());
+			adb_file.transferTo(file);
+			Map<String,String> paramsFile = new HashMap<String,String>();
+			paramsFile.put("adb_realname", adb_file.getOriginalFilename());
+			String adb_after_name = System.currentTimeMillis()+adb_file.getOriginalFilename();
+			paramsFile.put("adb_aftername", adb_after_name);
+			paramsFile.put("adb_path", uploadPath);
+			paramsFile.put("adb_af_no", adb_af_no+"");
+			adviceService.updateAdviceBoardFile(paramsFile);
+		}
+		
+
 		adviceService.updateAdviceBoard(params);
+				
 		return url;
 	}
 	/**
@@ -430,8 +447,11 @@ public class AdviceController {
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String loginUser = user.getAuthority();
-		model.addAttribute("auth", loginUser);
 		
+		List<AdviceVO> adviceList = adviceService.getMyAdviceReqeustList(user.getUse_id());
+		
+		model.addAttribute("auth", loginUser);
+		model.addAttribute("adviceList", adviceList);
 		return url;
 	}
 	
@@ -450,8 +470,11 @@ public class AdviceController {
 			// 세션
 			UsersVO user = (UsersVO) session.getAttribute("loginUser");
 			String loginUser = user.getAuthority();
-			model.addAttribute("auth", loginUser);
 			
+			List<AdviceVO> adviceList = adviceService.getMyAdviceResponseList(user.getUse_id());
+			
+			model.addAttribute("auth", loginUser);
+			model.addAttribute("adviceList", adviceList);
 			return url;
 		}
 

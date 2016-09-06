@@ -56,6 +56,8 @@
 		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 		<!-- 강의실-->
 		<typeAlias alias="classroom" type="com.korea.dto.ClassRoom_InfoVO" />
+		<!-- 강의실-->
+		<typeAlias alias="classroom" type="com.korea.dto.ClassRoom_InfoVO" />
 		<!-- 강의실 사용시간 -->
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
@@ -72,12 +74,12 @@
 		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
 		<!-- 수업평가항목 -->
 		<typeAlias alias="classApp" type="com.korea.dto.Appraisal_ManageVO" />
-
 		<!-- 학생 수강 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
 		<!-- 교수 강의 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
-
+		<!-- 사이버캠퍼스 온라인콘텐츠  -->
+		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
 	</typeAliases>
 
 	<mappers>
@@ -109,12 +111,11 @@
 		<mapper resource="sql/mapper/acadeCal.xml" />
 		<!--  사이버캠퍼스 QNA게시판  -->
 		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
-
 		<!--수업평가 -->
 		<mapper resource="sql/mapper/classApp.xml"/>
-
 		<!--  학생수강내역조회  -->
 		<mapper resource="sql/mapper/inquiryList.xml"/>
-		
+		<!--  온라인콘텐츠  -->
+		<mapper resource="sql/mapper/cyberCamOnlineCotents.xml"/>
 	</mappers>
 </configuration>

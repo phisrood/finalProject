@@ -63,12 +63,13 @@
 							<th>분반</th>
 							<th>인원</th>
 							<th>시간</th>
+							<th>사이버캠퍼스</th>
 							<th>강의계획서</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="lecture" items="${lectureList}">
-							<tr >
+							<tr>
 								<td>${lecture.lec_lb_no }</td>
 								<td>${lecture.lb_name }</td>
 								<td>${lecture.lb_department }</td>
@@ -78,6 +79,12 @@
 								<td>${lecture.lec_placement }</td>
 								<td>${lecture.lec_persons }</td>
 								<td>${lecture.classroom }</td>
+								<td>
+									<form method="post" action="/cyberCampus/pro/cyberClassMain">
+										<input type="hidden" name="lec_no" value="${lecture.lec_no }"/>
+										<input type="submit" value="이동"/>
+									</form>
+								</td>
 								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>
 							</tr>
 						
