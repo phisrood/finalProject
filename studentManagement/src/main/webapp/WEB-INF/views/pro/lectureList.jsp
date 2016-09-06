@@ -81,7 +81,7 @@
 								<td>${lecture.classroom }</td>
 								<td>
 									<form method="post" action="/cyberCampus/pro/cyberClassMain">
-										<input type="hidden" name="lec_no" value="${lecture.lec_no }"/>
+										<input type="hidden" name="pro_lec_no" value="${lecture.lec_no }"/>
 										<input type="submit" value="이동"/>
 									</form>
 								</td>
