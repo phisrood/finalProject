@@ -80,6 +80,8 @@
 		<typeAlias alias="inquiryListProViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
 		<!-- 사이버캠퍼스 온라인콘텐츠  -->
 		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
+		<!-- 성적조회 view  -->
+		<typeAlias alias="scoreView" type="com.korea.dto.ScoreViewVO" />
 
 	</typeAliases>
 
@@ -118,5 +120,7 @@
 		<mapper resource="sql/mapper/inquiryList.xml"/>
 		<!--  온라인콘텐츠  -->
 		<mapper resource="sql/mapper/cyberCamOnlineCotents.xml"/>
+		<!--  수강신청  -->
+		<mapper resource="sql/mapper/crsesREQ.xml"/>
 	</mappers>
 </configuration>
