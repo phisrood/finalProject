@@ -63,6 +63,7 @@
 							<th>분반</th>
 							<th>인원</th>
 							<th>시간</th>
+							<th>강의계획서</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -77,8 +78,9 @@
 								<td>${lecture.lec_placement }</td>
 								<td>${lecture.lec_persons }</td>
 								<td>${lecture.classroom }</td>
+								<td><button class="btn btn-dark">강의계획서</button></td>
 							</tr>
-							
+						
 						</c:forEach>
 					</tbody>
 				</table>
