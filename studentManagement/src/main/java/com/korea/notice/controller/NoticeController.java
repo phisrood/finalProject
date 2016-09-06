@@ -29,7 +29,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,33 +47,10 @@ public class NoticeController implements ApplicationContextAware {
 	
 	@Autowired
 	private NoticeService noticeManagerService;
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 게시판 리스트 Select 최신 20개만
-	@RequestMapping(value="/stu/noticeNewList", method=RequestMethod.GET)
-	public String noticeNewList(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 미리보기 Select
-	@RequestMapping(value="/stu/noticeInfo", method=RequestMethod.POST)
-	public String noticeContentInfo(){
-		String url="";
-		
-		
-		return url;
-	}
+	
+	//파일다운로드
+	private WebApplicationContext context= null;
+
 	/**
 	 * 공지사항 전체리스트
 	 * @param
@@ -101,12 +77,11 @@ public class NoticeController implements ApplicationContextAware {
 	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail","/emp/noticeDetail"}, method=RequestMethod.GET)
 	public String noticeDetail(int cn_no,Model model){
 		
-		String url="/common/noticeUpdate";
+		String url="/common/noticeDetail";
 	
 		NoticeViewVO noticeDetailViewVO = noticeManagerService.getNoticeDetailInfo(cn_no);
 		
 		model.addAttribute("noticeDetailViewVO", noticeDetailViewVO);
-		System.out.println(url+"*****************************");
 		return url;
 	}
 	/**
@@ -153,10 +128,13 @@ public class NoticeController implements ApplicationContextAware {
 		return url;
 	}
 	
-	//파일다운로드
-	private WebApplicationContext context= null;
-	
-	@RequestMapping(value={"/stu/noticeFileDown","/pro/noticeFileDown","/emp/noticeFileDown"})
+	/**
+	 * 공지사항 첨부파일다운로드
+	 * @param
+	 * @return String
+	 * @throws 
+	 */
+	@RequestMapping(value="/common/noticeFileDown")
 	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
 		File downloadFile = getFile(af_aftername);
 		if(downloadFile == null) {
@@ -174,11 +152,15 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	
 	
-	
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		this.context=(WebApplicationContext)applicationContext;
+	//공지사항 수정 폼이동
+	@RequestMapping(value="/emp/noticeUpdateForm", method=RequestMethod.GET)
+	public String updateNoticeForm(@RequestParam(value="notice_no")String notice_no, Model model){
+		String url="emp/noticeUpdate";
+		NoticeViewVO noticeVO= noticeManagerService.getNoticeDetailInfo(Integer.parseInt(notice_no));
+		
+		model.addAttribute("noticeDetailViewVO", noticeVO);
+		
+		return url;
 	}
 	
 	
@@ -233,6 +215,11 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;
+	}
 	
 	
 }
