@@ -55,8 +55,13 @@ public class CrsesREQController {
 			url="redirect:/common/loginForm";
 		}
 		
-			//직전학기 성적조회
+		//직전학기 성적조회
 		float score = crsesREQService.getScoreCalcu(id);
+		
+		int limitSemes = crsesREQService.crsesLimit(score);
+		
+		model.addAttribute("score", score);
+		model.addAttribute("limitSemes", limitSemes);
 		
 		return url;
 	}
