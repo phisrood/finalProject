@@ -1,9 +1,12 @@
 package com.korea.cyberCam.onlineCon.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.cyberCam.onlineCon.dao.CyberCamOnlineConDAO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_ContentsVO;
 
 /**
@@ -65,8 +68,15 @@ public class CyberCamOnlineConServiceImpl implements CyberCamOnlineConService{
 	 * @throws 
 	 */
 	@Override
+	public List<Online_ContentsVO> getOnlineConList(String lec_no) {
+		return cyberCamOnlineConDAO.getOnlineConList(lec_no);
+	}
+	@Override
+	public int insertOnlineConFile(Attachment_FileVO attachFileVO) {
+		return cyberCamOnlineConDAO.insertOnlineConFile(attachFileVO);
+	}
+	@Override
 	public void getOnlineConList() {
-		// TODO Auto-generated method stub
 		
 	}
 

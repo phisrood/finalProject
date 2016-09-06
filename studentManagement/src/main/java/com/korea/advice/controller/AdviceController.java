@@ -63,8 +63,7 @@ public class AdviceController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String pro_use_id = user.getUse_id();
 
-		List<AdviceVO> adviceResList = adviceService
-				.getAdviceResponsList(pro_use_id);
+		List<AdviceVO> adviceResList = adviceService.getAdviceResponsList(pro_use_id);
 
 		model.addAttribute("adviceResList", adviceResList);
 
@@ -253,11 +252,10 @@ public class AdviceController {
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
 		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
 		if(!multipartFile.isEmpty()){
-			File file = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
-			multipartFile.transferTo(file);
-			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());
 			String adb_after_name = System.currentTimeMillis()+multipartFile.getOriginalFilename();
-			adviceInsertVO.setAdb_afterName(adb_after_name);
+			File file = new File(uploadPath,adb_after_name);
+			multipartFile.transferTo(file);
+			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());			adviceInsertVO.setAdb_afterName(adb_after_name);
 			adviceInsertVO.setAdb_path(uploadPath);
 			af_no=adviceService.insertAdviceBoardAF(adviceInsertVO);
 			adviceInsertVO.setAdb_af_no(af_no);
