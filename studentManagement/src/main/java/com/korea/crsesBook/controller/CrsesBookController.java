@@ -301,8 +301,9 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/lectureList", method = RequestMethod.GET)
-	public String getLectureList(Model model) {
+	public String getLectureList(Model model, HttpSession session) {
 		String url = "/pro/lectureList";
+		/*String dep_no = session.get*/
 		List<LectureViewVO> list = crsesBookService.getLectureList();
 		model.addAttribute("lectureList", list);
 		
@@ -321,7 +322,6 @@ public class CrsesBookController {
 	@RequestMapping(value = "/pro/lecturePlan", method = RequestMethod.GET)
 	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
 		String url = "/common/lecturePlan";
-		System.out.println(lec_no);
 		LectureViewVO lecture = crsesBookService.getLectureInfo(lec_no);
 		System.out.print(lecture.getLb_name());
 		model.addAttribute("lecture", lecture);
@@ -338,7 +338,6 @@ public class CrsesBookController {
 	 */
 	@RequestMapping(value = "/pro/lecturePlantoPdf", method = RequestMethod.POST)
 	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response) throws IOException, DocumentException {
-		System.out.print(htmlTag);
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
 		     
