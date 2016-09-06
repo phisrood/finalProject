@@ -1,4 +1,15 @@
 package com.korea.cyberCam.qnaBBS.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.cyberCam.qnaBBS.dao.CyberCamQnaBBSDAO;
+import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.LectureVO;
+import com.korea.dto.Question_BoardVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,6 +26,8 @@ package com.korea.cyberCam.qnaBBS.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+@Service
 public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	/**
 	 * 개인 정보 조회
@@ -22,9 +35,15 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	 * @return 
 	 * @throws 
 	 */
+	
+	@Autowired
+	private CyberCamQnaBBSDAO cyberCamQnaBBSDAO;
+
+	
+	
 	@Override
-	public void getQnaBBSList() {
-		// TODO Auto-generated method stub
+	public List<Question_BoardVO> getQnaBBSList(String stud_use_id) {
+		return cyberCamQnaBBSDAO.getQnaBBSList(stud_use_id);
 		
 	}
 	/**
@@ -33,11 +52,7 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	 * @return 
 	 * @throws 
 	 */
-	@Override
-	public void getQnaBBSDetail() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -45,16 +60,23 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void insertQnaBBS() {
-		// TODO Auto-generated method stub
+	public void insertQnaBBS(Attachment_FileVO attachment_FileVO) {
+		cyberCamQnaBBSDAO.insertQnaBBS(attachment_FileVO);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+
+	@Override
+	public int selectQnaBBSAF_NO() {
+		return cyberCamQnaBBSDAO.selectQnaBBSAF_NO();
+	}
+
+	
+	
+	
+	
+	
+	
 	@Override
 	public void deleteQnaBBS() {
 		// TODO Auto-generated method stub
@@ -69,6 +91,26 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	@Override
 	public void updateQnaBBS() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getQnaBBSDetail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//강의목록 조회
+	@Override
+	public List<LectureVO> selectlectureList() {
+		return cyberCamQnaBBSDAO.selectlectureList();
+	}
+
+
+
+	@Override
+	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO) {
+		cyberCamQnaBBSDAO.insertQnaBBSFinal(question_BoardVO);
 		
 	}
 

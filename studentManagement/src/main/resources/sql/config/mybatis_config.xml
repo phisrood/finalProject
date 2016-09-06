@@ -11,7 +11,6 @@
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="hashmap" type="java.util.HashMap"/>
 
-
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
@@ -53,7 +52,6 @@
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 		<!-- 공지사항뷰 -->
 		<typeAlias alias="noticeView" type="com.korea.dto.NoticeViewVO" />
-
 		<!-- 학적 변동사항 -->
 		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 		<!-- 강의실-->
@@ -64,6 +62,24 @@
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
 		<typeAlias alias="calendar" type="com.korea.dto.Colleage_CalendarVO" />
+		<!-- 사이버캠퍼스 QNA게시판 -->
+		<typeAlias alias="questionBoard" type="com.korea.dto.Question_BoardVO" />
+		<!-- 강의 -->
+		<typeAlias alias="lecture" type="com.korea.dto.LectureVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureView" type="com.korea.dto.LectureViewVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureTimeView" type="com.korea.dto.Lecture_Time_ViewVO"/>
+		<!-- 캘린더 parameter -->
+		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
+		<!-- 수업평가항목 -->
+		<typeAlias alias="classApp" type="com.korea.dto.Appraisal_ManageVO" />
+		<!-- 학생 수강 내역 조회 view -->
+		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
+		<!-- 교수 강의 내역 조회 view -->
+		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
+		<!-- 사이버캠퍼스 온라인콘텐츠  -->
+		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
 	</typeAliases>
 
 	<mappers>
@@ -93,5 +109,13 @@
 		<mapper resource="sql/mapper/schoolReReq.xml" />
 		<!-- 캘린더 -->
 		<mapper resource="sql/mapper/acadeCal.xml" />
+		<!--  사이버캠퍼스 QNA게시판  -->
+		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
+		<!--수업평가 -->
+		<mapper resource="sql/mapper/classApp.xml"/>
+		<!--  학생수강내역조회  -->
+		<mapper resource="sql/mapper/inquiryList.xml"/>
+		<!--  온라인콘텐츠  -->
+		<mapper resource="sql/mapper/cyberCamOnlineCotents.xml"/>
 	</mappers>
 </configuration>

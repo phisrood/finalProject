@@ -251,7 +251,6 @@ public class AdviceController {
 		int af_no=0;
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		System.out.println(uploadPath);
 		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
 		if(!multipartFile.isEmpty()){
 			File file = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
@@ -324,8 +323,6 @@ public class AdviceController {
 		Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adb_af_no);
 		
 		String path = request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		System.out.println("파일번호 : "+adb_af_no);
-		System.out.println("다운경로 : "+path);
 		
 		File file = new File(path,fileVO.getAf_aftername());
 		

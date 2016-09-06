@@ -1,4 +1,15 @@
 package com.korea.cyberCam.qnaBBS.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.LectureVO;
+import com.korea.dto.Question_BoardVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,16 +26,23 @@ package com.korea.cyberCam.qnaBBS.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	
 	@Override
-	public void getQnaBBSList() {
-		// TODO Auto-generated method stub
+	public List<Question_BoardVO> getQnaBBSList(String stud_use_id) {
+		
+		
+		return (List<Question_BoardVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",stud_use_id);
 		
 	}
 	/**
@@ -45,8 +63,8 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertQnaBBS() {
-		// TODO Auto-generated method stub
+	public void insertQnaBBS(Attachment_FileVO attachment_FileVO) {
+		sqlSession.insert("CyberCamQnaBBSDao.getCyberCamQnaBBSInsert",attachment_FileVO);
 		
 	}
 	/**
@@ -71,5 +89,20 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
+	@Override
+	public int selectQnaBBSAF_NO() {
+		return (int) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSSelectAF_NO");
+		
+	}
+	@Override
+	public List<LectureVO>  selectlectureList() {
+	
+		return (List<LectureVO>) sqlSession.selectList("CyberCamQnaBBSDao.getlectureList");
+	}
+	@Override
+	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO) {
+		sqlSession.insert("CyberCamQnaBBSDao.insertCyberCamQnaBBSFinal",question_BoardVO);
+	}
 }

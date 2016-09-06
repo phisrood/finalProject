@@ -10,7 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.LectureVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -104,6 +107,23 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	@Override
 	public List<ClassRoom_UsetimeVO> getClassroomTime(String classroom) {
 		return sqlSession.selectList("crsesBook.getClassroomTime", classroom);
+	}
+	@Override
+	public String insertLecture(LectureVO lecture) {
+		sqlSession.insert("crsesBook.insertLecture", lecture);
+		return lecture.getLec_no();
+	}
+	@Override
+	public void insertClassroomUsetime(List<ClassRoom_UsetimeVO> classroomUsetime) {
+		sqlSession.insert("crsesBook.insertClassroomUsetime", classroomUsetime);	
+	}
+	@Override
+	public List<LectureViewVO> getLectureList() {
+		return sqlSession.selectList("crsesBook.getLectureList");
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getLectureTimeList() {
+		return sqlSession.selectList("crsesBook.getLectureTimeList");
 	}
 
 }

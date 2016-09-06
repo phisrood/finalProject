@@ -15,64 +15,42 @@
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
     <div class="row">
-    	<!-- 인터넷 강의 등록 -->
+    	<!-- 과제 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"><br></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>강의 등록</h2></div>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>과제 등록</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 			<div class="x_panel_big">
-				<br>
-				<form method="post" action="/pro/onlineConReg" enctype="multipart/form-data">>
-				<table id="datatable" class="table table-striped table-bordered">
-					<tr>
-						<td>
-							강의 제목 &nbsp;: &nbsp;
-							<input name="oc_content" type="text" size="165">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							학습 시작 기간 &nbsp;: &nbsp;
-							<input name="oc_startdate" type="text" size="165" OnClick="Calendar(this, 'top','no');">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							학습 마감 기간 &nbsp;: &nbsp;
-							<input name="oc_enddate" type="text" size="165" OnClick="Calendar(this, 'down','no');">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div style="float: left; width: 7%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 93%;">
-							<input type="file" name="file" accept="video/*"></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							출석 인정 시간 &nbsp;: &nbsp;
-							<input name="oc_time" type="text" size="161">
-						</td>
-					</tr>
-				</table>
-				<div style="float: left; width: 1%;"><br></div>
-				<div style="float: left; width: 89%;">
-					<button type="button" class="btn btn-default btn-sm">목 록</button>
+				<div style="float: left; width: 100%;"><br></div>
+				<div style="float: left; width: 100%;">
+					과 &nbsp;제 &nbsp;명 &nbsp;: &nbsp;<input name="title" type="text" size="169">
 				</div>
-				<div style="float: right; width: 5%;">
-					<button type="button" class="btn btn-default btn-sm">수 정</button>
+				<div style="float: left; width: 100%;"><br></div>
+				<div style="float: left; width: 100%;">
+					제출 기한 &nbsp;: &nbsp;<input name="title" type="text" size="169">
 				</div>
-				<div style="float: right; width: 5%;">
-					<input type="submit" class="btn btn-default btn-sm" value="등록"/>
+				<div style="float: left; width: 100%;"><br></div>
+				<div style="float: left; width: 100%;">
+					<div style="float: left; width: 6%;">첨부 파일 &nbsp;: &nbsp;</div>
+					<div style="float: left; width: 94%;"><input name="file" type="file"></div>
 				</div>
-				</form>
+				<div style="float: left; width: 100%;"><br></div>
+				<div style="float: left; width: 100%;">
+					과제 내용 &nbsp;: &nbsp;
+				</div>
+				<div style="float: left; width: 100%;"><br></div>
+				<div>
+					<div class="x_panel_big"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+				</div>
+				<div style="float: left; width: 96%;"><br></div>
+				<div style="float: right; width: 4%;">
+					<button type="button" class="btn btn-default btn-sm">등 록</button>
+				</div>
 			</div>
     </div>
     <!-- Datatables -->
-    <script src="/stu/js/click_cal.js"></script>
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>
     <script src="/stu/js/dataTables.buttons.min.js"></script>

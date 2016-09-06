@@ -45,7 +45,6 @@ import com.korea.notice.service.NoticeService;
 
 @Controller
 public class NoticeController implements ApplicationContextAware {
-	private WebApplicationContext servletContext= null;
 	
 	@Autowired
 	private NoticeService noticeManagerService;
@@ -192,15 +191,29 @@ public class NoticeController implements ApplicationContextAware {
 	 */
 	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
-	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpSession session ){
+	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpServletRequest request, HttpSession session,
+			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile) throws IOException{
 		String url="redirect:/emp/noticeAllList";
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/emp/noticeAF");
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String id=usersVO.getUse_id();
 		colleage_NoticeVO.setCn_sp_use_id(id);
+		
+		if(!multipartFile.isEmpty()){
+			File noticeFile= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(noticeFile);	
+			attachment_FileVO.setAf_aftername(noticeFile.getName());
+			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
+			attachment_FileVO.setAf_path(uploadPath);
+		}
+		
+		
 		noticeManagerService.updateNotice(colleage_NoticeVO,attachment_FileVO);
 		
 		return url;
 	}
+	
 	/**
 	 * 공지사항 삭제
 	 * @param

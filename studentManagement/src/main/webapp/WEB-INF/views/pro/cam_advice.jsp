@@ -101,7 +101,6 @@
 						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '방문'}">
-					
 					</c:when>
 					</c:choose>
 				</td>

@@ -75,4 +75,37 @@
 		FROM CLASSROOM_USETIME
 		WHERE CU_CI_NO = #{ci_no}
 	</select>
+	
+	<insert id="insertLecture" parameterType="lecture">
+		INSERT INTO LECTURE
+		(LEC_NO, LEC_LB_NO, LEC_LN_PRO_USE_ID, LEC_MAKESEMESTER, LEC_MAKEYEAR,LEC_PLACEMENT,LEC_PERSONS)
+		VALUES
+		(LECTURE_SEQ.NEXTVAL,TRIM(#{lec_lb_no}),#{lec_ln_pro_use_id},#{lec_makesemester},TO_DATE(#{lec_makeyear},'yyyy'),#{lec_placement},#{lec_persons})
+		<selectKey keyProperty="lec_no" resultType="String" order="AFTER">
+			SELECT LECTURE_SEQ.CURRVAL FROM DUAL
+		</selectKey>	
+	</insert>
+	
+	<insert id="insertClassroomUsetime" parameterType="list">
+		INSERT ALL
+		<foreach collection="list" item="item" >
+		INTO CLASSROOM_USETIME
+		(CU_CI_NO, CU_TT_NO, CU_LEC_NO)
+		VALUES  
+           (#{item.cu_ci_no}, #{item.cu_tt_no},#{item.cu_lec_no})
+        </foreach>
+        SELECT * FROM DUAL
+	</insert>
+	
+	<select id="getLectureList" resultType="lectureView">
+		SELECT *
+		FROM
+		LECTURE_VIEW
+	</select>
+	
+	<select id="getLectureTimeList" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+	</select>
+	
 </mapper>

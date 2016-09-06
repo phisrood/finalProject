@@ -102,7 +102,8 @@
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
-		                      <li><a href="/stu/crsesList">수강신청조회</a></li>
+		                      <li><a href="/stu/crsesInquiryList">수강신청조회</a></li>
+		                      
 		                      <li><a href="#">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
@@ -134,7 +135,7 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/crsesLogin">수강신청</a></li>                     
+		                      <li><a href="/stu/crsesLoginForm">수강신청</a></li>                     
 		                    </ul>
 		                  </li>
                 </ul>

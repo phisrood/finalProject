@@ -28,10 +28,9 @@ public class CyberCamMainController {
 	 * @throws 
 	 */
 	//사이버캠퍼스 메인
-	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method=RequestMethod.GET)
-	public String cyberClassMainByStu(){
+	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method=RequestMethod.POST)
+	public String cyberClassMainByStu(String lec_no){
 		String url="/cyberCampus/common/cyberClassMain";
-		
 		return url;
 	}
 	

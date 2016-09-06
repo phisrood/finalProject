@@ -1,4 +1,13 @@
 package com.korea.crsesInquiry.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Student_InquiryList_ViewVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,6 +24,8 @@ package com.korea.crsesInquiry.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+
+@Repository
 public class CrsesInquiryDAOImpl implements CrsesInquiryDAO{
 	/**
 	 * 개인 정보 조회
@@ -22,9 +33,20 @@ public class CrsesInquiryDAOImpl implements CrsesInquiryDAO{
 	 * @return 
 	 * @throws 
 	 */
+	
+
+	@Autowired
+	private SqlSession sqlSession;
+	
+	
+	
+	
+	
+	
 	@Override
-	public void getCrsesInquiryList() {
-		// TODO Auto-generated method stub
+	public List<Student_InquiryList_ViewVO> getCrsesInquiryList(String stud_use_id) {
+		
+		return sqlSession.selectList("inquiryDao.getInquiryList",stud_use_id);
 		
 	}
 	/**

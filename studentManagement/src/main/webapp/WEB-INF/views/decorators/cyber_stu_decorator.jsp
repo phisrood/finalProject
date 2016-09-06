@@ -106,21 +106,21 @@
 		                  </li>
 		                  <li><a><i class="fa fa-clone"></i>강의게시판 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/adviceResponsList">공지사항</a></li>
-		                      <li><a href="#">강의Q&A</a></li>
-		                      <li><a href="/stu/adviceBoard">자유게시판</a></li>
-		                      <li><a href="/stu/adviceBoard">학습자료실</a></li>
+		                      <li><a href="/cyberCampus/stu/cyberNoticeList">공지사항</a></li>
+		                      <li><a href="/cyberCampus/stu/qnaBBSList">강의Q&A</a></li>
+		                      <li><a href="/cyberCampus/stu/freeBBSList">자유게시판</a></li>
+		                      <li><a href="/cyberCampus/stu/studyBBSList">학습자료실</a></li>
 		                    </ul>
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/stu/onlineConList">온라인콘텐츠 조회</a></li>
+		                      <li><a href="/cyberCampus/stu/onlineConList">온라인콘텐츠등록</a></li>
 		                    
 		                    </ul>
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/adviceResponsList">과제조회</a></li>
+		                      <li><a href="/cyberCampus/stu/taskSubmitList">과제조회</a></li>
 		                    </ul>
 		                  </li>
                 </ul>
