@@ -15,17 +15,20 @@ package com.korea.crsesInquiry.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.crsesInquiry.service.CrsesInquiryService;
+import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Student_InquiryList_ViewVO;
 import com.korea.dto.UsersVO;
 
@@ -40,22 +43,27 @@ public class CrsesInquiryController {
 	
 	//현재학기 수강내역조회
 	@RequestMapping(value="/stu/crsesInquiryList", method=RequestMethod.GET)
-	public String crsesInquiryList(HttpSession session, Model model){
+	public String crsesInquiryList(HttpSession session, Model model
+			){
 		String url="/common/crsesList";
 		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
-	
-		
-		
-		
+
 		
 		List<Student_InquiryList_ViewVO> student_InquiryList_ViewVO = crsesInquiryService.getCrsesInquiryList(stud_use_id);
-		
-		
-		
+//		List<Professor_InquiryList_ViewVO> professorList = new ArrayList<Professor_InquiryList_ViewVO>();
+//	
+//		for (int i = 0; i < student_InquiryList_ViewVO.size(); i++) {
+//			Professor_InquiryList_ViewVO professor_InquiryList_ViewVO = new Professor_InquiryList_ViewVO();
+//			lec_no = student_InquiryList_ViewVO.get(i).getLec_no();
+//			professor_InquiryList_ViewVO = crsesInquiryService.getCrsesInquiryProList(lec_no);
+//			
+//			professorList.add(i, professor_InquiryList_ViewVO);
+//		}
+	
 		model.addAttribute("student_InquiryList_ViewVO",student_InquiryList_ViewVO);
-		
+	
 		return url;
 	}
 	/**

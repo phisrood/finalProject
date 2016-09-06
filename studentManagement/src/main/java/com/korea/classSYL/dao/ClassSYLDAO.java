@@ -1,4 +1,10 @@
 package com.korea.classSYL.dao;
+
+import java.util.List;
+
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -48,4 +54,20 @@ public interface ClassSYLDAO {
 	 */
 	//강의계획서 조회
 	public void getClassSYLInfo();
+	
+	/**
+	 * 강의계획서(교수)
+	 * @param String
+	 * @return LectureViewVO
+	 * @throws 
+	 */
+	public LectureViewVO getLectureInfo(String lec_no);
+	
+	/**
+	 * 강의계획서 강의실 시간표(교수)
+	 * @param String
+	 * @return List<Lecture_Time_ViewVO>
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getLectureTime(String lec_no);
 }

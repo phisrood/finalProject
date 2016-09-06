@@ -15,22 +15,51 @@ package com.korea.crsesREQ.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.crsesREQ.service.CrsesREQService;
 import com.korea.dto.UsersVO;
 
 @Controller
 public class CrsesREQController {
+	
+	@Autowired
+	CrsesREQService crsesREQService;
+	
+	/**
+	 * 메인화면
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/crses/stu/crsesREQMain", method=RequestMethod.GET)
+	public String crsesREQMain(Model model, HttpSession session){
+		String url="/stu/crsesREQMain";
+		String id = "";
+		
+		
+		try {
+			UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+			id = loginUser.getUse_id();
+			
+		} catch (Exception e) {
+			//세션 널값
+			url="redirect:/common/loginForm";
+		}
+		
+			//직전학기 성적조회
+		float score = crsesREQService.getScoreCalcu(id);
+		
+		return url;
+	}
 	/**
 	 * 수강리스트조회
 	 * @param
@@ -52,20 +81,6 @@ public class CrsesREQController {
 	@RequestMapping(value="/crses/stu/crsesSearch", method=RequestMethod.GET)
 	public String crsesSearch(){
 		String url="";
-		
-		return url;
-	}
-	/**
-	 * @throws IOException 
-	 * 수강신청
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@RequestMapping(value="/crses/stu/crsesREQMain", method=RequestMethod.GET)
-	public String crsesREQMain() throws IOException{
-		String url="/stu/crsesREQMain";
-		
 		
 		return url;
 	}

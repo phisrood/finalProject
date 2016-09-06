@@ -1,6 +1,7 @@
 package com.korea.cyberCam.qnaBBS.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,10 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	
 	
 	@Override
-	public List<Question_BoardVO> getQnaBBSList(String stud_use_id) {
+	public List<Question_BoardVO> getQnaBBSList(Map<String, String> lecNoInContext) {
 		
 		
-		return (List<Question_BoardVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",stud_use_id);
+		return (List<Question_BoardVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",lecNoInContext);
 		
 	}
 	/**

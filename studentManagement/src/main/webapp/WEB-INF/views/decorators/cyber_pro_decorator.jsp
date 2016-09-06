@@ -9,15 +9,15 @@
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%--==============================================================
  * 교수 데코레이터
- * @author 
+ * @author 한돈희
  * @since  2016.08.25.
  * @version 1.0
  * @see
  * <pre>
  * << 개정이력(Modification Information) >>
- *    수정일       수정자          수정내용
+ *    수정일      		수정자          수정내용
  *    -------      -------     -------------------
- *    
+ *  2016.09.06		김양문		과제게시판 추가  
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -110,6 +110,7 @@
 		                      <li><a href="/cyberCampus/pro/qnaBBSList">강의Q&A</a></li>
 		                      <li><a href="/cyberCampus/pro/freeBBSList">자유게시판</a></li>
 		                      <li><a href="/cyberCampus/pro/studyBBSList">학습자료실</a></li>
+		                      <li><a href="/cyberCampus/pro/taskSubmitList">과제게시판</a></li>
 		                    </ul>
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>

@@ -97,7 +97,7 @@ public class LoginController {
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
 	public String main(HttpSession session, Model model){
 		String url ="/common/main";
-		
+
 		//세션정보
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String id = null;

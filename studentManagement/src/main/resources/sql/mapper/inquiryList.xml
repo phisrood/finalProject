@@ -21,4 +21,10 @@
 	</select>
 	
 	
+	<select id="getInquiryListPro" parameterType="int" resultType="inquiryListProViewVO">
+		SELECT *
+		FROM PROFESSOR_INQUIRYLIST_VIEW
+		WHERE lec_no = #{lec_no}
+	</select>
+	
 </mapper>

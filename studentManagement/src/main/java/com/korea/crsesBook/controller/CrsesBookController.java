@@ -301,92 +301,14 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/lectureList", method = RequestMethod.GET)
-	public String getLectureList(Model model) {
+	public String getLectureList(Model model, HttpSession session) {
 		String url = "/pro/lectureList";
+		/*String dep_no = session.get*/
 		List<LectureViewVO> list = crsesBookService.getLectureList();
 		model.addAttribute("lectureList", list);
 		
 		return url;
 	}
 	
-	/**
-	 * @throws DocumentException 
-	 * @throws IOException 
-	 * 강의계획서
-	 * 
-	 * @param String
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/pro/lecturePlan", method = RequestMethod.GET)
-	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
-		String url = "/common/lecturePlan";
-		System.out.println(lec_no);
-		LectureViewVO lecture = crsesBookService.getLectureInfo(lec_no);
-		System.out.print(lecture.getLb_name());
-		model.addAttribute("lecture", lecture);
-		return url;
-	}
-	/**
-	 * @throws DocumentException 
-	 * @throws IOException 
-	 * 강의계획서
-	 * 
-	 * @param String
-	 * @return
-	 * @throws
-	 */
-	@RequestMapping(value = "/pro/lecturePlantoPdf", method = RequestMethod.POST)
-	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response) throws IOException, DocumentException {
-		System.out.print(htmlTag);
-		// Document 생성
-		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
-		     
-		// PdfWriter 생성
-		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/test.pdf")); // 바로 다운로드.
-		PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
-		writer.setInitialLeading(12.5f);
-		 
-		// 파일 다운로드 설정
-		response.setContentType("application/pdf");
-		String fileName = URLEncoder.encode("/common/pdf/lecturePlan.jsp", "UTF-8"); // 파일명이 한글일 땐 인코딩 필요
-		response.setHeader("Content-Transper-Encoding", "binary");
-		response.setHeader("Content-Disposition", "inline; filename=" + fileName + ".pdf");
-		 
-		// Document 오픈
-		document.open();
-		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
-		     
-		// CSS
-		CSSResolver cssResolver = new StyleAttrCSSResolver();
-		CssFile cssFile = helper.getCSS(new FileInputStream("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/common/css/default.css"));
-		cssResolver.addCss(cssFile);
-		     
-		// HTML, 폰트 설정
-		XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider(XMLWorkerFontProvider.DONTLOOKFORFONTS);
-		fontProvider.register("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/fonts/MALGUN.TTF", "MalgunGothic"); // MalgunGothic은 alias,
-		CssAppliers cssAppliers = new CssAppliersImpl(fontProvider);
-		 
-		HtmlPipelineContext htmlContext = new HtmlPipelineContext(cssAppliers);
-		htmlContext.setTagFactory(Tags.getHtmlTagProcessorFactory());
-		 
-		// Pipelines
-		PdfWriterPipeline pdf = new PdfWriterPipeline(document, writer);
-		HtmlPipeline html = new HtmlPipeline(htmlContext, pdf);
-		CssResolverPipeline css = new CssResolverPipeline(cssResolver, html);
-		 
-		XMLWorker worker = new XMLWorker(css, true);
-		
-		XMLParser xmlParser = new XMLParser(worker, Charset.forName("UTF-8"));
-		 
-		// 폰트 설정에서 별칭으로 줬던 "MalgunGothic"을 html 안에 폰트로 지정한다.
-		String htmlStr = htmlTag;
-		StringReader strReader = new StringReader(htmlStr);
-		xmlParser.parse(strReader);
-		
-		 
-		document.close();
-		writer.close();
-
-	}
+	
 }

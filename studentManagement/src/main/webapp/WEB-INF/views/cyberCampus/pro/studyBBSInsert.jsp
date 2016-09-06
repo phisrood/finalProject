@@ -21,13 +21,23 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
+
+ <script>
+function insertStudyBBS(insertStudyBBSForm) {
+	if(document.insertStudyBBSForm.lr_title.value==""){
+		alert('제목을 입력해주세요');
+		document.insertStudyBBSForm.lr_title.focus();
+	}else if(document.insertStudyBBSForm.lr_content.value==""){
+		alert('내용을 입력해주세요');
+		document.insertStudyBBSForm.lr_content.focus();
+	}else{
+		document.insertStudyBBSForm.method="post";
+		document.insertStudyBBSForm.action="/cyberCampus/pro/studyBBSInsert";
+		document.insertStudyBBSForm.submit();
+		
+	}  
+}
+</script>   
     <div class="row">
     	<!-- 학습 자료실 게시물 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -37,50 +47,38 @@
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 			<div class="x_panel_big">
-				<table id="datatable" class="table table-striped table-bordered">
-					<tr>
-						<td>제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;<input name="title" type="text"  size="167"></td>
-					</tr>
-					<tr>
-						<td>
-							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;<input name="writer" type="text"  size="75">&nbsp;&nbsp;
-							등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text"  size="75">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><input name="file" type="file"></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-						</td>
-					</tr>
-				</table>
+				<form name="insertStudyBBSForm" action="cyberCampus/common/studyBBSList" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left" >
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="text" class="form-control" name="lr_title" style="width:1000px;">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea class="form-control" name="lr_content" style="width:1000px;height:500px;"></textarea>
+                        </div>
+                      </div>
+                 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <input type="file" id="studyBBSFileUp" class="btn btn-dark" name="file" >
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      <div style="text-align:right;">
+                  
+		                <button type="button" class="btn btn-dark" onclick="insertStudyBBS('insertStudyBBSForm');">확인</button>
+		                <button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">취소</button>
+                      </div>   
+
+                    </form>
 			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
-			</div>
-			<div style="float: right; width: 6%;">
-				<button type="button" class="btn btn-default btn-sm">등 록</button>
-			</div>
+			
     </div>
-    <!-- Datatables -->
-    <script src="/stu/js/jquery.dataTables.min.js"></script>
-    <script src="/stu/js/dataTables.bootstrap.min.js"></script>
-    <script src="/stu/js/dataTables.buttons.min.js"></script>
-    <script src="/stu/js/buttons.bootstrap.min.js"></script>
-    <script src="/stu/js/buttons.flash.min.js"></script>
-    <script src="/stu/js/buttons.html5.min.js"></script>
-    <script src="/stu/js/buttons.print.min.js"></script>
-    <script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/stu/js/dataTables.keyTable.min.js"></script>
-    <script src="/stu/js/dataTables.responsive.min.js"></script>
-    <script src="/stu/js/responsive.bootstrap.js"></script>
-    <script src="/stu/js/datatables.scroller.min.js"></script>
-    <script src="/stu/js/jszip.min.js"></script>
-    <script src="/stu/js/pdfmake.min.js"></script>
-    <script src="/stu/js/vfs_fonts.js"></script>
+   

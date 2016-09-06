@@ -127,13 +127,6 @@ public interface CrsesBookService {
 	 */
 	public List<LectureViewVO> getLectureList();
 
-	/**
-	 * 강의계획서 조회(교수)
-	 * @param LectureViewVO
-	 * @return 
-	 * @throws 
-	 */
-	public LectureViewVO getLectureInfo(String lec_no);
-	
+
 	
 }

@@ -9,9 +9,9 @@ package com.korea.cyberCam.commonController;
  * @see
  * <pre>
  * << 개정이력(Modification Information) >>
- *    	수정일       	수정자          		수정내용
+ *       수정일          수정자                수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.     조현욱              최초생성
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -49,10 +49,4 @@ public class CyberCamMainController {
 		
 		return url;
 	}
-	
-	
-	
-	
-
-	
 }

@@ -57,7 +57,17 @@ public class CyberCamQnaBBSController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		
-		List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(stud_use_id);
+		String stu_lec_no = (String) session.getAttribute("stu_lec_no");
+		
+		
+		Map<String, String> lecNoInContext = new HashMap<String, String>();
+		lecNoInContext.put("stu_lec_no", stu_lec_no);
+		lecNoInContext.put("stud_use_id", stud_use_id);
+		
+		
+		
+		List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);
+		
 		model.addAttribute("question_BoardVO",question_BoardVO);
 		
 		return url;
@@ -115,6 +125,7 @@ public class CyberCamQnaBBSController {
 			String stud_use_id = loginUser.getUse_id();
 			
 			
+			
 			Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
 			if(!multipartFile.isEmpty()){
 				File file= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
@@ -147,8 +158,8 @@ public class CyberCamQnaBBSController {
 			
 			
 	
-			List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(stud_use_id);
-			model.addAttribute("question_BoardVO",question_BoardVO);
+		/*	List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);*/
+		/*	model.addAttribute("question_BoardVO",question_BoardVO);*/
 			
 			return url;
 		}

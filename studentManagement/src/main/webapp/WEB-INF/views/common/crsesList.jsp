@@ -31,6 +31,7 @@
     <link href="../vendors/cropper/dist/cropper.min.css" rel="stylesheet">
 	<!-- Custom Theme Style -->
 	<link href="/stu/css/custom.min.css" rel="stylesheet">
+	
 
 
 	<div class="row">
@@ -81,13 +82,16 @@
                       <thead>
                         <tr>
                           <th>학과</th>
-                          <th>학년</th>
+                          <th>강의등록번호</th>
+                          <th>학수번호</th>
+                          <th>개설학기</th>
+                          <th>개설년도</th>
                           <th>과목명</th>
                           <th>이수구분</th>
                           <th>학점</th>
                           <th>강의시간</th>
                           <th>교수</th>
-                          <th>강의계획서</th>
+                          <th>사이버캠퍼스</th>
                         </tr>
                       </thead>
 
@@ -103,19 +107,29 @@
 	강의명 lb_name;
 	강의등록번호 lec_no;
 	학수번호 lec_lb_no; -->
- 
+<!--  lec_makesemester 개설학기
+	lec_makeyear  -->
+	
+	
                       <tbody>
                       <c:forEach items="${student_InquiryList_ViewVO }" var="student_InquiryList_ViewVO">
-                        <tr>
+                       <form action="/cyberCampus/stu/cyberClassMain" method="post">
+                       <tr>	
                           <td>${student_InquiryList_ViewVO.dep_name }</td>
-                          <td>4</td>
+                          <td>${student_InquiryList_ViewVO.lec_no }</td>
+                          <td>${student_InquiryList_ViewVO.lec_makesemester }</td>
+                          <td>${student_InquiryList_ViewVO.lec_makeyear }</td>
+                          <td>${student_InquiryList_ViewVO.lec_lb_no }</td>
                           <td>${student_InquiryList_ViewVO.lb_name }</td>
                           <td>${student_InquiryList_ViewVO.mk_name }</td>
                           <td>${student_InquiryList_ViewVO.lb_credit }</td>
-                          <td>15:00-18:00</td>
-                          <td>누군가</td>
-                          <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
+                          <td>${student_InquiryList_ViewVO.tt_time }</td>
+                          <td>${student_InquiryList_ViewVO.use_name }</td>
+                          <td><input type="submit" value ="사이버캠퍼스 이동" class="btn btn-info btn-xs">
+                          	<input type="hidden" name="lec_no" value="${student_InquiryList_ViewVO.lec_no }"/>
+                          </td>
+                      </tr>
+                         </form>
                         </c:forEach>
                             
                       </tbody>

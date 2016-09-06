@@ -1,6 +1,7 @@
 package com.korea.cyberCam.qnaBBS.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
@@ -31,7 +32,7 @@ public interface CyberCamQnaBBSService {
 	 * @throws 
 	 */
 	//qna게시판 리스트
-	public List<Question_BoardVO> getQnaBBSList(String stud_use_id);
+	public List<Question_BoardVO> getQnaBBSList(Map<String, String> lecNoInContext);
 	/**
 	 * 개인 정보 조회
 	 * @param
