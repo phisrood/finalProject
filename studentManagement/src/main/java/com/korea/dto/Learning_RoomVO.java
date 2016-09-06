@@ -20,11 +20,12 @@ public class Learning_RoomVO {
 
 	private int lr_no;
 	private int lr_lec_no;
-	private int lr_pro_use_id;
-	private String lr_af_no;
-	private int lr_title;
+	private String lr_pro_use_id;
+	private int lr_af_no;
+	private String lr_title;
 	private String lr_content;
 	private String lr_date;
+	
 	public int getLr_no() {
 		return lr_no;
 	}
@@ -37,22 +38,22 @@ public class Learning_RoomVO {
 	public void setLr_lec_no(int lr_lec_no) {
 		this.lr_lec_no = lr_lec_no;
 	}
-	public int getLr_pro_use_id() {
-		return lr_pro_use_id;
-	}
-	public void setLr_pro_use_id(int lr_pro_use_id) {
-		this.lr_pro_use_id = lr_pro_use_id;
-	}
-	public String getLr_af_no() {
+	public int getLr_af_no() {
 		return lr_af_no;
 	}
-	public void setLr_af_no(String lr_af_no) {
+	public void setLr_af_no(int lr_af_no) {
 		this.lr_af_no = lr_af_no;
 	}
-	public int getLr_title() {
+	public String getLr_pro_use_id() {
+		return lr_pro_use_id;
+	}
+	public void setLr_pro_use_id(String lr_pro_use_id) {
+		this.lr_pro_use_id = lr_pro_use_id;
+	}
+	public String getLr_title() {
 		return lr_title;
 	}
-	public void setLr_title(int lr_title) {
+	public void setLr_title(String lr_title) {
 		this.lr_title = lr_title;
 	}
 	public String getLr_content() {

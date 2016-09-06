@@ -77,7 +77,10 @@
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
 		<!-- 교수 강의 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
-
+		<!-- 사이버캠퍼스 학습자료게시판 -->
+		<typeAlias alias="cyberStudyBoard" type="com.korea.dto.Learning_RoomVO" />
+		
+		<typeAlias alias="learningRoomViewVO" type="com.korea.dto.LearningRoomViewVO" />
 	</typeAliases>
 
 	<mappers>
@@ -109,6 +112,8 @@
 		<mapper resource="sql/mapper/acadeCal.xml" />
 		<!--  사이버캠퍼스 QNA게시판  -->
 		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
+		<!--  사이버캠퍼스 학습자료게시판  -->
+		<mapper resource="sql/mapper/cyberCamStudyBBS.xml"/>
 
 		<!--수업평가 -->
 		<mapper resource="sql/mapper/classApp.xml"/>
