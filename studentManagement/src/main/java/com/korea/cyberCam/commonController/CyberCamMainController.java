@@ -37,7 +37,6 @@ public class CyberCamMainController {
 	public String cyberClassMainByStu(HttpSession session,String pro_lec_no,@RequestParam(value="lec_no" ,defaultValue="")int stu_lec_no){
 		String url="/cyberCampus/common/cyberClassMain";
 		
-
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		if(user.getAuthority().equals("ROLE_STU")){

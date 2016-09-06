@@ -5,8 +5,14 @@
 
 <mapper namespace="CyberCamOnlineContentsDAO">
 	<insert id="insertOnlineCon" parameterType="onlineContentsVO">
-		INSERT INTO ONLINE_CONTENTS (OC_NO,OC_LEC_NO,OC_CONTENT,OC_STARTDATE,OC_ENDDATE,OC_TIME,OC_DATE)
-		VALUES (online_contents_seq.nextval,11,#{oc_content},sysdate,sysdate,#{oc_time},sysdate) 
+		INSERT INTO ONLINE_CONTENTS (OC_NO,OC_LEC_NO,OC_CONTENT,OC_STARTDATE,OC_ENDDATE,OC_TIME,OC_DATE,OC_AF_NO)
+		VALUES (online_contents_seq.nextval,11,#{oc_content},sysdate,sysdate,#{oc_time},sysdate,#{oc_af_no}) 
 	</insert>
-
+	<insert id="insertOnlineConFile" parameterType="attachment">
+		INSERT INTO ATTACHMENT_FILE (AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
+		VALUES (ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_realname},#{af_aftername},#{af_path})
+	</insert>
+	<select id="getCurrval" resultType="int">
+		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
+	</select>
 </mapper>
