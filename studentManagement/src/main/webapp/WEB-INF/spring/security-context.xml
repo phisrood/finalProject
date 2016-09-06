@@ -60,6 +60,8 @@
 		<intercept-url pattern="/stu/**" access="hasRole('ROLE_STU')"/>
 		<intercept-url pattern="/pro/**" access="hasRole('ROLE_PRO')"/>
 		<intercept-url pattern="/emp/**" access="hasRole('ROLE_EMP')"/>
+		<intercept-url pattern="/cyberCampus/**" access="hasAnyRole('ROLE_STU', 'ROLE_PRO')"/>
+		<intercept-url pattern="/crses/stu/**" access="hasRole('ROLE_STU')"/>
 		<intercept-url pattern="/common/**" access="permitAll"/>
 	</http>
 </beans:beans>

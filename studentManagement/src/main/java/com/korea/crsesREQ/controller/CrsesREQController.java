@@ -30,39 +30,36 @@ import com.korea.dto.UsersVO;
 @Controller
 public class CrsesREQController {
 	/**
-	 * 개인 정보 조회
+	 * 수강리스트조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강리스트 조회
-	@RequestMapping(value="/stu/crsesList", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesList", method=RequestMethod.GET)
 	public String crsesList(){
 		String url="/stu/crsesList";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강검색
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 검색
-	@RequestMapping(value="/stu/crsesSearch", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesSearch", method=RequestMethod.GET)
 	public String crsesSearch(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청
-	@RequestMapping(value="/stu/crsesREQ", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesREQ", method=RequestMethod.GET)
 	public String crsesREQ(){
 		String url="/stu/crsesREQ";
 		
@@ -90,7 +87,7 @@ public class CrsesREQController {
 	 */
 	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.POST)
 	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd){
-		String url="redirect:/stu/crsesLoginForm";
+		String url="redirect:/crses/stu/crsesREQ";
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
 		String chkId = null;
 		String chkPwd = null;
@@ -111,51 +108,47 @@ public class CrsesREQController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청취소
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청취소
-	@RequestMapping(value="/stu/crsesDelete", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesDelete", method=RequestMethod.GET)
 	public String crsesDelete(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청한리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청한 리스트조회
-	@RequestMapping(value="/stu/crsesREQList", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesREQList", method=RequestMethod.GET)
 	public String crsesREQList(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강시간표 조회(중복배제)
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//신청한 수강시간표 조회(중복배제 service구현)
-	@RequestMapping(value="/stu/crsesREQTimeTablePDF", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesREQTimeTablePDF", method=RequestMethod.GET)
 	public String crsesREQTimeTablePDF(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청기간설정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청 기간설정
 	@RequestMapping(value="/emp/crsesREQPeriod", method=RequestMethod.GET)
 	public String crsesREQPeriod(){
 		String url="";
@@ -163,12 +156,11 @@ public class CrsesREQController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청기간예외페이지
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청 기간설정
 	@RequestMapping(value="/stu/crsesREQPeriodError", method=RequestMethod.GET)
 	public String crsesREQPeriodError(){
 		String url="/stu/crsesREQPeriodError";
