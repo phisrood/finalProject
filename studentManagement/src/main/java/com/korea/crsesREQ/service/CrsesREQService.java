@@ -73,13 +73,15 @@ public interface CrsesREQService {
 	//수간신청기간설정
 	public void insertCrsesREQPeriod();
 	/**
+	 * @return 
+	 * @param score 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학점제한
-	public void crsesLimit();
+	public int crsesLimit(float score);
 	/**
 	 * 개인 정보 조회
 	 * @param

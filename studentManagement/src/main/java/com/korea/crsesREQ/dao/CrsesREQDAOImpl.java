@@ -1,6 +1,7 @@
 package com.korea.crsesREQ.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,8 +115,9 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<ScoreViewVO> getScoreCalcu(String id) {
-		return session.selectList("CrsesREQ.getScoreViewList", id);
+	public List<ScoreViewVO> getScoreCalcu(Map<String, String> params) {
+		
+		return session.selectList("CrsesREQ.getScoreViewList", params);
 	}
 
 }
