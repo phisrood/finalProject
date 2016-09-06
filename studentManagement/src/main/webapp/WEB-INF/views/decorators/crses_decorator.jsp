@@ -22,7 +22,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 
-<!-- 부트스트랩 css -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hanguk University! | </title>
+
 	<!-- 부트스트랩 css -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
@@ -33,104 +43,102 @@
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
     
-<script src="/common/js/notice.js"></script>
-<script src="/bootstrap/js/jquery.min.js"></script>
-<script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/common/js/notice.js"></script>
+    <script src="/bootstrap/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 
 
-</head>
+  
+  </head>
+<style>
+	#stuInfo tr{
+		color:white;
+		height: 60px;
+	}
+	
+	#stuInfo tr th{
+		font-size:15px;
+	}
+	#stuInfo tr td{
+		font-size:12px;
+	}
+
+</style> 
+
 
 <body class="nav-md">
-   
+    <div class="container body">
       <div class="main_container">
-         <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-               <div class="navbar nav_title" style="border: 0;">
-                  <a href="/stu/main" class="site_title"><i class="fa fa-paw"></i>
-                     <span>Hanguk University</span></a>
-               </div>
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/crses/stu/crsesREQMain" class="site_title"><span>한국대학교 수강신청</span></a>
+            </div> 
 
-
-               <!-- menu profile quick info -->
-
-               <div class="profile_info">
-                  <span>2016학년도 2학기</span>
-                  <table style="width:210px;height:400px; background:#2A3F54;">
-                  	<tbody>
-                     <tr>
-                        <td>학과</td>
-                        <td>멀티미디어공학</td>
-                     </tr>
-                     <tr>
-                        <td>학년</td>
-                        <td>4학년</td>
-                     </tr>
-                     <tr>
-                        <td>학번</td>
-                        <td>20101231</td>
-                     </tr>
-                     <tr>
-                        <td>학생이름</td>
-                        <td>한도니</td>
-                     </tr>
-                     <tr>
-                        <td>이수가능학점</td>
-                        <td>21점</td>
-                     </tr>
-                     <tr>
-                        <td>신청한학점</td>
-                        <td>15</td>
-
-                     </tr>
-                     <tr>
-                        <td colspan="2" style="text-align:center;">
-                           <button type="button" class="btn btn-dark" >신청한과목 조회</button>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td colspan="2" style="text-align:center;">
-                           <button type="button" class="btn btn-dark">시간표보기 조회</button>
-                        </td>
-                     </tr>
-                  	</tbody>
-                  </table>
-               </div>
-            </div>
-            <!-- /menu profile quick info -->
+            <div class="clearfix"></div>
 
             <br />
 
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <br>
+                <div style="text-align: center; width: 100%; padding-left: 10%; padding-top: 10%;">
+					<table id="stuInfo"> 
+						<tr>
+							<th>학과</th>
+							<td>${studentInfo.dep_name }</td>
+						</tr>
+						<tr>
+							<th>학년</th>
+							<td>????</td>
+						</tr>
+						<tr>
+							<th>학번</th>
+							<td>${studentInfo.use_id }</td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td>${studentInfo.use_name }</td>
+						</tr>
+						<tr>
+							<th>이수가능학점</th>
+							<td>????</td>
+						</tr>
+						<tr>
+							<th>직전학기성적</th>
+							<td>????</td>
+						</tr>
+						<tr>
+							<td colspan="2"><button type="button" class="btn btn-dark">시간표보기 조회</button></td>
+						</tr>
+						
+					</table>
+				</div>
+              </div>
+             
+            </div>
+            <!-- /sidebar menu -->
 
-
-
-         </div>
-      </div>
-
-        <div class="right_col" role="main">
-          <decorator:body />
+        
+          </div>
         </div>
 
-
-
-
-
-
-
-   <!-- /page content -->
-
-   <!-- footer content -->
-   <footer>
-      <div class="pull-right">HanGuk University - StudentManagement</div>
-      <div class="clearfix"></div>
-   </footer>
-   <!-- /footer content -->
+        
+        
+        <!-- page content -->
+        <div class="right_col"> 
+          <decorator:body />
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
 
 
 
 
 </body>
 
-</html>
   	<!-- 부트스트랩js -->
     <script src="/bootstrap/js/fastclick.js"></script>
     <script src="/bootstrap/js/nprogress.js"></script>
@@ -149,8 +157,9 @@
     <script src="/bootstrap/js/curvedLines.js"></script>
     <script src="/bootstrap/js/date.js"></script>
     <script src="/bootstrap/js/jquery.vmap.js"></script>
-    <script src="/bootstrap/js/jquery.vmap.world.js"></script>
+    <script src="/bootstrap/js/jquery.vmap.world.js"></script> 
     <script src="/bootstrap/js/jquery.vmap.sampledata.js"></script>
     <script src="/bootstrap/js/moment.min.js"></script>
     <script src="/bootstrap/js/daterangepicker.js"></script>
     <script src="/bootstrap/js/custom.min.js"></script>
+</html>
