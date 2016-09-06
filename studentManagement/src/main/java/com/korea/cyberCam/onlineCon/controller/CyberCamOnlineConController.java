@@ -15,7 +15,12 @@ package com.korea.cyberCam.onlineCon.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +29,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.cyberCam.onlineCon.service.CyberCamOnlineConService;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_ContentsVO;
+import com.korea.dto.UsersVO;
 
 @Controller
 public class CyberCamOnlineConController {
@@ -33,6 +40,8 @@ public class CyberCamOnlineConController {
 	CyberCamOnlineConService cyberCamOnlineConService;
 	
 	/**
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
@@ -40,13 +49,25 @@ public class CyberCamOnlineConController {
 	 */
 	//온라인콘텐츠 등록
 	@RequestMapping(value="/pro/onlineConReg", method=RequestMethod.POST)
-	public String onlineConReg(Online_ContentsVO onlineContentsVO,HttpServletRequest request){
+	public String onlineConReg(Online_ContentsVO onlineContentsVO,HttpServletRequest request) throws IllegalStateException, IOException {
 		String url = "/cyberCampus/pro/onlineConList";
-		cyberCamOnlineConService.insertOnlineCon(onlineContentsVO);
+		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/onlineContentsAF");
+		MultipartFile multipartFile = onlineContentsVO.getFile();
 		
+		if(!multipartFile.isEmpty()){
+			String aftername=System.currentTimeMillis()+multipartFile.getOriginalFilename();
+			File file = new File(uploadPath,aftername);
+			multipartFile.transferTo(file);
+			Attachment_FileVO attachFileVO = new Attachment_FileVO();
+			attachFileVO.setAf_realname(multipartFile.getOriginalFilename());
+			attachFileVO.setAf_aftername(aftername);
+			attachFileVO.setAf_path(uploadPath);
+			int oc_af_no = cyberCamOnlineConService.insertOnlineConFile(attachFileVO);
+			onlineContentsVO.setOc_af_no(oc_af_no);
+		}
 		
-		
+		cyberCamOnlineConService.insertOnlineCon(onlineContentsVO);
 		return url;
 	}
 	/**
@@ -82,9 +103,12 @@ public class CyberCamOnlineConController {
 	 * @throws 
 	 */
 	//온라인콘텐츠 조회(학생)
-	@RequestMapping(value={"/cyberCampus/stu/onlineConList"}, method=RequestMethod.GET)
-	public String onlineConListStu(){
-		String url = "/cyberCampus/stu/onlineConList";
+	@RequestMapping(value={"/cyberCampus/common/onlineConList"})
+	public String onlineConListStu(HttpSession session){
+		String url = "/cyberCampus/common/onlineConList";
+		String lec_no  =  (String) session.getAttribute("pro_lec_no");
+		
+		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
 		
 		return url;
 	}

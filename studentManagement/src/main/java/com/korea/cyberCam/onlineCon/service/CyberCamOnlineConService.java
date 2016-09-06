@@ -1,5 +1,8 @@
 package com.korea.cyberCam.onlineCon.service;
 
+import java.util.List;
+
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_ContentsVO;
 
 /**
@@ -44,12 +47,23 @@ public interface CyberCamOnlineConService {
 	//온라인콘텐츠 삭제
 	public void deleteOnlineCon();
 	/**
+	 * @param lec_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//온라인콘텐츠 조회
-	public void getOnlineConList();
+	public List<Online_ContentsVO> getOnlineConList(String lec_no);
+	
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//온라인콘텐츠 조회
+	public int insertOnlineConFile(Attachment_FileVO attachFileVO);
+	void getOnlineConList();
 	
 }
