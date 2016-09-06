@@ -54,5 +54,18 @@
 	<update id="updateAdviceCancel" parameterType="int">
 		DELETE FROM ADVICE WHERE AD_NO = #{ad_no}
 	</update>
-
+	
+	<select id="getMyAdviceRequestList" parameterType="str" resultType="adviceVO">
+		SELECT * 
+		FROM ADVICE 
+		WHERE AD_STUD_USE_ID = #{loginUser}
+		AND AD_STAT = '대기'
+	</select>
+	
+	<select id="getMyAdviceResponseList" parameterType="str" resultType="adviceVO">
+		SELECT * 
+		FROM ADVICE 
+		WHERE AD_PRO_USE_ID = #{loginUser}
+		AND AD_STAT = '대기'
+	</select>
 </mapper>

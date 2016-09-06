@@ -29,7 +29,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,37 +44,13 @@ import com.korea.notice.service.NoticeService;
 
 @Controller
 public class NoticeController implements ApplicationContextAware {
-	private WebApplicationContext servletContext= null;
 	
 	@Autowired
 	private NoticeService noticeManagerService;
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 게시판 리스트 Select 최신 20개만
-	@RequestMapping(value="/stu/noticeNewList", method=RequestMethod.GET)
-	public String noticeNewList(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//공지사항 미리보기 Select
-	@RequestMapping(value="/stu/noticeInfo", method=RequestMethod.POST)
-	public String noticeContentInfo(){
-		String url="";
-		
-		
-		return url;
-	}
+	
+	//파일다운로드
+	private WebApplicationContext context= null;
+
 	/**
 	 * 공지사항 전체리스트
 	 * @param
@@ -102,12 +77,11 @@ public class NoticeController implements ApplicationContextAware {
 	@RequestMapping(value={"/stu/noticeDetail","/pro/noticeDetail","/emp/noticeDetail"}, method=RequestMethod.GET)
 	public String noticeDetail(int cn_no,Model model){
 		
-		String url="/common/noticeUpdate";
+		String url="/common/noticeDetail";
 	
 		NoticeViewVO noticeDetailViewVO = noticeManagerService.getNoticeDetailInfo(cn_no);
 		
 		model.addAttribute("noticeDetailViewVO", noticeDetailViewVO);
-		System.out.println(url+"*****************************");
 		return url;
 	}
 	/**
@@ -154,10 +128,13 @@ public class NoticeController implements ApplicationContextAware {
 		return url;
 	}
 	
-	//파일다운로드
-	private WebApplicationContext context= null;
-	
-	@RequestMapping(value={"/stu/noticeFileDown","/pro/noticeFileDown","/emp/noticeFileDown"})
+	/**
+	 * 공지사항 첨부파일다운로드
+	 * @param
+	 * @return String
+	 * @throws 
+	 */
+	@RequestMapping(value="/common/noticeFileDown")
 	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
 		File downloadFile = getFile(af_aftername);
 		if(downloadFile == null) {
@@ -175,11 +152,15 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	
 	
-	
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		this.context=(WebApplicationContext)applicationContext;
+	//공지사항 수정 폼이동
+	@RequestMapping(value="/emp/noticeUpdateForm", method=RequestMethod.GET)
+	public String updateNoticeForm(@RequestParam(value="notice_no")String notice_no, Model model){
+		String url="emp/noticeUpdate";
+		NoticeViewVO noticeVO= noticeManagerService.getNoticeDetailInfo(Integer.parseInt(notice_no));
+		
+		model.addAttribute("noticeDetailViewVO", noticeVO);
+		
+		return url;
 	}
 	
 	
@@ -192,15 +173,36 @@ public class NoticeController implements ApplicationContextAware {
 	 */
 	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
-	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpSession session ){
+	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpServletRequest request, HttpSession session,
+			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile, @RequestParam(value="file_no", defaultValue="0")String file_no) throws IOException{
 		String url="redirect:/emp/noticeAllList";
+		
+		//실제저장경로 잡기
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/emp/noticeAF");
+		//세션값 
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		//아이디
 		String id=usersVO.getUse_id();
+		//VO에 아이디넣어서
 		colleage_NoticeVO.setCn_sp_use_id(id);
+		
+		if(!multipartFile.isEmpty()){
+			File noticeFile= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			//업로드한파일을 지정된 파일로 저장
+			multipartFile.transferTo(noticeFile);
+			//수정이름
+			attachment_FileVO.setAf_aftername(noticeFile.getName());
+			//원조파일이름
+			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
+			//리얼 경로
+			attachment_FileVO.setAf_path(uploadPath);
+		}
+		
 		noticeManagerService.updateNotice(colleage_NoticeVO,attachment_FileVO);
 		
 		return url;
 	}
+	
 	/**
 	 * 공지사항 삭제
 	 * @param
@@ -220,6 +222,11 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;
+	}
 	
 	
 }

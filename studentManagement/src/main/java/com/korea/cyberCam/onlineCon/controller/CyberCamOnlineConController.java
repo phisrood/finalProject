@@ -15,12 +15,23 @@ package com.korea.cyberCam.onlineCon.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.korea.cyberCam.onlineCon.service.CyberCamOnlineConService;
+import com.korea.dto.Online_ContentsVO;
 
 @Controller
 public class CyberCamOnlineConController {
+	
+	@Autowired
+	CyberCamOnlineConService cyberCamOnlineConService;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -28,9 +39,13 @@ public class CyberCamOnlineConController {
 	 * @throws 
 	 */
 	//온라인콘텐츠 등록
-	@RequestMapping(value="/pro/onlineConReg", method=RequestMethod.GET)
-	public String onlineConReg(){
-		String url = "";
+	@RequestMapping(value="/pro/onlineConReg", method=RequestMethod.POST)
+	public String onlineConReg(Online_ContentsVO onlineContentsVO,HttpServletRequest request){
+		String url = "/cyberCampus/pro/onlineConList";
+		cyberCamOnlineConService.insertOnlineCon(onlineContentsVO);
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/onlineContentsAF");
+		
+		
 		
 		return url;
 	}

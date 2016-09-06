@@ -16,7 +16,9 @@ package com.korea.crsesREQ.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -30,41 +32,40 @@ import com.korea.dto.UsersVO;
 @Controller
 public class CrsesREQController {
 	/**
-	 * 개인 정보 조회
+	 * 수강리스트조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강리스트 조회
-	@RequestMapping(value="/stu/crsesList", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesList", method=RequestMethod.GET)
 	public String crsesList(){
 		String url="/stu/crsesList";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강검색
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 검색
-	@RequestMapping(value="/stu/crsesSearch", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesSearch", method=RequestMethod.GET)
 	public String crsesSearch(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * @throws IOException 
+	 * 수강신청
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청
-	@RequestMapping(value="/stu/crsesREQ", method=RequestMethod.GET)
-	public String crsesREQ(){
-		String url="/stu/crsesREQ";
+	@RequestMapping(value="/crses/stu/crsesREQMain", method=RequestMethod.GET)
+	public String crsesREQMain() throws IOException{
+		String url="/stu/crsesREQMain";
+		
 		
 		return url;
 	}
@@ -82,18 +83,21 @@ public class CrsesREQController {
 	}
 	
 	/**
-	 * @throws IOException 
+	 * @throws 
 	 * 수강신청 로그인
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/crsesLogin", method=RequestMethod.POST)
-	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd){
-		String url="redirect:/stu/crsesLoginForm";
+	public String crsesLogin(HttpSession session, @RequestParam("id")String id, @RequestParam("pwd")String pwd,
+			HttpServletResponse response, Model model){
+		String url="/stu/crsesLogin";
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-		String chkId = null;
-		String chkPwd = null;
+		
+		String chkId = "";
+		String chkPwd = "";
+		int chk = 1;
 		try {
 			chkId = usersVO.getUse_id();
 			chkPwd = usersVO.getUse_pwd();
@@ -103,59 +107,58 @@ public class CrsesREQController {
 		}
 		
 		if(id.equals(chkId)&&pwd.equals(chkPwd)){
-			System.out.println("일치");
+			chk = 2;
 		}else{
-			System.out.println("불일치");
+			chk = 1;
 		}
+		
+		model.addAttribute("chk", chk);
+		
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청취소
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청취소
-	@RequestMapping(value="/stu/crsesDelete", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesDelete", method=RequestMethod.GET)
 	public String crsesDelete(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청한리스트
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강 신청한 리스트조회
-	@RequestMapping(value="/stu/crsesREQList", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesREQList", method=RequestMethod.GET)
 	public String crsesREQList(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강시간표 조회(중복배제)
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//신청한 수강시간표 조회(중복배제 service구현)
-	@RequestMapping(value="/stu/crsesREQTimeTablePDF", method=RequestMethod.GET)
+	@RequestMapping(value="/crses/stu/crsesREQTimeTablePDF", method=RequestMethod.GET)
 	public String crsesREQTimeTablePDF(){
 		String url="";
 		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청기간설정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청 기간설정
 	@RequestMapping(value="/emp/crsesREQPeriod", method=RequestMethod.GET)
 	public String crsesREQPeriod(){
 		String url="";
@@ -163,12 +166,11 @@ public class CrsesREQController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 수강신청기간예외페이지
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청 기간설정
 	@RequestMapping(value="/stu/crsesREQPeriodError", method=RequestMethod.GET)
 	public String crsesREQPeriodError(){
 		String url="/stu/crsesREQPeriodError";

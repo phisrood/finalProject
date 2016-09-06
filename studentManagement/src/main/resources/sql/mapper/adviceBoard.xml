@@ -55,4 +55,12 @@
 		SELECT * FROM ATTACHMENT_FILE WHERE AF_NO = #{adb_af_no}
 	</select>
 	
+	<update id="updateAdviceBoardFile" parameterType="map">
+		UPDATE ATTACHMENT_FILE 
+		SET AF_REALNAME = #{adb_realname},
+		AF_AFTERNAME = #{adb_aftername},
+		AF_PATH = #{adb_path}
+		WHERE AF_NO = #{adb_af_no}		
+	</update>
+	
 	</mapper>

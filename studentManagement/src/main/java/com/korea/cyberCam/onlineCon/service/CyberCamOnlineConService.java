@@ -1,4 +1,7 @@
 package com.korea.cyberCam.onlineCon.service;
+
+import com.korea.dto.Online_ContentsVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -23,7 +26,7 @@ public interface CyberCamOnlineConService {
 	 * @throws 
 	 */
 	//온라인콘텐츠 등록
-	public void insertOnlineCon();
+	public void insertOnlineCon(Online_ContentsVO onlineContentsVO);
 	/**
 	 * 개인 정보 조회
 	 * @param

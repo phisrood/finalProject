@@ -43,6 +43,15 @@
   </head>
   
   <body class="login">
+  <script type="text/javascript">
+  	var chk = "${chk}";
+  	if(chk==1){
+  		alert("학번/비밀번호를 확인후 재입력바랍니다.");
+  	}else if(chk==2){
+  		window.open('/crses/stu/crsesREQMain', "_blank", "width=1400, height=900, resizable=0, scrollbars=1") ;
+  		
+  	}
+  </script>
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>

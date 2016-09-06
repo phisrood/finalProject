@@ -66,15 +66,21 @@
 		UPDATE	COLLEAGE_NOTICE
 		SET		CN_TITLE = #{cn_title}
 				,CN_CONTENT = #{cn_content}
+				,CN_AF_NO = #{cn_af_no}
 		WHERE	CN_NO = #{cn_no}
+		
 	</update>
+	
 	<update id="noticeFileUpdate" parameterType="attachment">
 		UPDATE	ATTACHMENT_FILE 
 		SET		AF_REALNAME = #{af_realname}
 				,AF_AFTERNAME = #{af_aftername}
 				,AF_PATH = #{af_path}
-		WHERE	AF_NO = #{af_no}
+		WHERE	AF_NO = #{af_no}		
+		
 	</update>
+	
+	
 	
 	<delete id="noticeDelete">
    	    DELETE	FROM COLLEAGE_NOTICE  

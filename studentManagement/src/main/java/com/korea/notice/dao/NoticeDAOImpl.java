@@ -110,12 +110,6 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		
-		System.out.println(colleage_NoticeVO.getCn_no());
-		System.out.println(colleage_NoticeVO.getCn_af_no());
-		System.out.println(colleage_NoticeVO.getCn_sp_use_id());
-		System.out.println(colleage_NoticeVO.getCn_title());
-		System.out.println(colleage_NoticeVO.getCn_content());
-		System.out.println(colleage_NoticeVO.getCn_date());
 		sqlSession.insert("ColleageNotice.insertNotice",colleage_NoticeVO);
 		
 	}

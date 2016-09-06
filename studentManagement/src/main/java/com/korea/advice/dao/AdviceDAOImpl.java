@@ -210,4 +210,20 @@ public class AdviceDAOImpl implements AdviceDAO {
 		return (Attachment_FileVO) sqlSession.selectOne("adviceBoardDAO.getAdviceBoardFile", adb_af_no);
 	}
 
+	@Override
+	public int updateAdviceBoardFile(Map<String, String> paramsFile) {
+		sqlSession.update("adviceBoardDAO.updateAdviceBoardFile", paramsFile);
+		return 0;
+	}
+
+	@Override
+	public List<AdviceVO> getMyAdviceRequestList(String loginUser) {
+		return (List<AdviceVO>) sqlSession.selectList("adviceDAO.getMyAdviceRequestList", loginUser);
+	}
+
+	@Override
+	public List<AdviceVO> getMyAdviceResponseList(String use_id) {
+		return (List<AdviceVO>) sqlSession.selectList("adviceDAO.getMyAdviceResponseList",use_id);
+	}
+
 }

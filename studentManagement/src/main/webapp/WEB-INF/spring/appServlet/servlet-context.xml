@@ -44,6 +44,7 @@
 	<resources mapping="/stu/css/**" location="/resources/stu/css/" />
 	<resources mapping="/bootstrap/css/**" location="/resources/bootstrap/css/" />
 
+	<resources mapping="/common/pdf/**" location="/resources/common/pdf/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
