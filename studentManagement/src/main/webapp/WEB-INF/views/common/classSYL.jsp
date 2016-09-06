@@ -62,7 +62,7 @@
 	function toPdf(){
 		$("#htmlTag").val($("#tbl").html());
 		document.pdfForm.method="post";
-		document.pdfForm.action="/pro/lecturePlantoPdf";
+		document.pdfForm.action="/pro/classSYLtoPdf";
 		document.pdfForm.target="_blank";
 		document.pdfForm.submit(); 
 	}

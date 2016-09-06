@@ -91,7 +91,7 @@
 </div>
 <script>
 function lecturePlan(lec_no){
-	window.open('/pro/lecturePlan?lec_no='+lec_no,'_blank');
+	window.open('/pro/classSYL?lec_no='+lec_no,'_blank');
 }
 </script>
 <!-- /page content -->
