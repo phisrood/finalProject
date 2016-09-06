@@ -45,14 +45,51 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="4">
-			${lecture.lec_plan }
+		<th colspan="4">
+			강의설명
+		</th>
+	</tr>
+	<tr>
+		<th colspan="4">
+			강의설명내용
+		</th>
+	</tr>
+	<tr>
+		<th colspan="4">
+			진행방식
+		</th>
+	</tr>
+	<tr>
+		<th colspan="4">
+			진행방식내용
+		</th>
+	</tr>
+	<tr>
+		<th>
+			교재
+		</th>
+		<td colspan='3'>
+			도서명,저자, 판사항,출판사
 		</td>
 	</tr>
+	<tr>
+		<th>중간고사</th>
+		<td>30%</td>
+		<th>기말고사</th>
+		<td>30%</td>
+	</tr>
+	<tr>
+		<th>과제</th>
+		<td>20%</td>
+		<th>출석</th>
+		<td>20%</td>
+	</tr>
+
 </table>
 </div>
-<c:if test="${loginUser.authority eq 'ROLE_PRO' }"></c:if>
+<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
 <button onclick="updatePlan('${lecture.lec_no }');">강의계획서 변경</button>
+</c:if>
 <form name="pdfForm">
 <input type=hidden id="htmlTag" name="htmlTag"/>
 <button onclick="toPdf()">pdf로 보기</button>	

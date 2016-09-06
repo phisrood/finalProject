@@ -2,6 +2,7 @@ package com.korea.classSYL.dao;
 
 import java.util.List;
 
+import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 
@@ -47,13 +48,14 @@ public interface ClassSYLDAO {
 	//강의계획서 삭제
 	public void deleteClassSYL();
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//강의계획서 조회
-	public void getClassSYLInfo();
+	public Class_SYLLBUSVO getClassSYLInfo();
 	
 	/**
 	 * 강의계획서(교수)

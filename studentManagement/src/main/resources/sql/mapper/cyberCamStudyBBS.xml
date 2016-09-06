@@ -35,8 +35,8 @@
 								 ,LR_AF_NO
 								 ,LR_TITLE
 								 ,LR_CONTENT)
-						VALUES(learningroom_seq.nextval)
-							 ,lecture_seq.nextval
+						VALUES(learningroom_seq.nextval
+							 ,#{lr_lec_no}
 							 ,#{lr_pro_use_id}
 							 ,#{lr_af_no}
 							 ,#{lr_title}
