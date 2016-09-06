@@ -1,6 +1,7 @@
 package com.korea.cyberCam.qnaBBS.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,8 +43,8 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	
 	
 	@Override
-	public List<Question_BoardVO> getQnaBBSList(String stud_use_id) {
-		return cyberCamQnaBBSDAO.getQnaBBSList(stud_use_id);
+	public List<Question_BoardVO> getQnaBBSList(Map<String, String> lecNoInContext) {
+		return cyberCamQnaBBSDAO.getQnaBBSList(lecNoInContext);
 		
 	}
 	/**

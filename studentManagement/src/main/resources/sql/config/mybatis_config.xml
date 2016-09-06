@@ -80,7 +80,7 @@
 		<typeAlias alias="inquiryListProViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
 		<!-- 사이버캠퍼스 온라인콘텐츠  -->
 		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
-
+Question_BoardListVO.java
 	</typeAliases>
 
 	<mappers>
