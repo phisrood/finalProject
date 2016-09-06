@@ -76,7 +76,7 @@ public class CrsesREQController {
 	 */
 	@RequestMapping(value="/stu/crsesLoginForm", method=RequestMethod.GET)
 	public String crsesLoginForm(){
-		String url="/stu/crsesLogin";
+		String url="/stu/crsesREQ";
 		
 		return url;
 	}
