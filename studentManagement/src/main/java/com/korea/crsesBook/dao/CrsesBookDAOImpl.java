@@ -125,5 +125,13 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	public List<Lecture_Time_ViewVO> getLectureTimeList() {
 		return sqlSession.selectList("crsesBook.getLectureTimeList");
 	}
+	@Override
+	public LectureViewVO getLectureInfo(String lec_no) {
+		return (LectureViewVO) sqlSession.selectOne("crsesBook.getLectureInfo", lec_no);
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getLectureTime(String lec_no) {
+		return sqlSession.selectList("crsesBook.getLectureTime", lec_no);
+	}
 
 }

@@ -319,9 +319,12 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/lecturePlan", method = RequestMethod.GET)
-	public String getLecturePlan(HttpServletResponse response) throws IOException, DocumentException {
+	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
 		String url = "/common/lecturePlan";
-		
+		System.out.println(lec_no);
+		LectureViewVO lecture = crsesBookService.getLectureInfo(lec_no);
+		System.out.print(lecture.getLb_name());
+		model.addAttribute("lecture", lecture);
 		return url;
 	}
 	/**

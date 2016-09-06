@@ -108,4 +108,15 @@
 		FROM LECTURE_TIME_VIEW
 	</select>
 	
+	<select id="getLectureInfo" parameterType="str" resultType="lectureView">
+		SELECT *
+		FROM LECTURE_VIEW
+		WHERE LEC_NO = #{lec_no}
+	</select>
+	
+	<select id="getLectureTime" parameterType="str" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+		WHERE LEC_NO=#{lec_no}
+	</select>
 </mapper>

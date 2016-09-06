@@ -78,7 +78,7 @@
 								<td>${lecture.lec_placement }</td>
 								<td>${lecture.lec_persons }</td>
 								<td>${lecture.classroom }</td>
-								<td><button class="btn btn-dark">강의계획서</button></td>
+								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>
 							</tr>
 						
 						</c:forEach>
@@ -89,5 +89,10 @@
 		</div>
 	</div>
 </div>
+<script>
+function lecturePlan(lec_no){
+	window.open('/pro/lecturePlan?lec_no='+lec_no,'_blank');
+}
+</script>
 <!-- /page content -->
 

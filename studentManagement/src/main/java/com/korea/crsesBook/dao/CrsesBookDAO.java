@@ -134,4 +134,20 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	public List<Lecture_Time_ViewVO> getLectureTimeList();
+	
+	/**
+	 * 강의계획서(교수)
+	 * @param String
+	 * @return LectureViewVO
+	 * @throws 
+	 */
+	public LectureViewVO getLectureInfo(String lec_no);
+	
+	/**
+	 * 강의계획서 강의실 시간표(교수)
+	 * @param String
+	 * @return List<Lecture_Time_ViewVO>
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getLectureTime(String lec_no);
 }

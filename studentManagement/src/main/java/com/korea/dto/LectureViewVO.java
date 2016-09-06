@@ -14,8 +14,15 @@ public class LectureViewVO {
 	private String lb_completekind;
 	private String classroom;
 	private String lb_credit;
+	private String lec_plan;
+
 	
-	
+	public String getLec_plan() {
+		return lec_plan;
+	}
+	public void setLec_plan(String lec_plan) {
+		this.lec_plan = lec_plan;
+	}
 	public String getLb_credit() {
 		return lb_credit;
 	}
