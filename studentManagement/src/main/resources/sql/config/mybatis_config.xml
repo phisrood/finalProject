@@ -77,7 +77,7 @@
 		<!-- 학생 수강 내역 조회 view -->
 		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
 		<!-- 교수 강의 내역 조회 view -->
-		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
+		<typeAlias alias="inquiryListProViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
 		<!-- 사이버캠퍼스 학습자료게시판 -->
 		<typeAlias alias="cyberStudyBoard" type="com.korea.dto.Learning_RoomVO" />
 		<!-- 사이버캠퍼스 학습자료 view -->	
