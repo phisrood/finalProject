@@ -82,6 +82,8 @@
 		<typeAlias alias="cyberStudyBoard" type="com.korea.dto.Learning_RoomVO" />
 		<!-- 사이버캠퍼스 학습자료 view -->	
 		<typeAlias alias="learningRoomViewVO" type="com.korea.dto.LearningRoomViewVO" />
+		<!-- 사이버캠퍼스 학습자료 view -->	
+		<typeAlias alias="question_BoardListVO" type="com.korea.dto.Question_BoardListVO" />
 
 		<!-- 사이버캠퍼스 온라인콘텐츠  -->
 		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
