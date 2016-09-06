@@ -31,6 +31,22 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+	<script type="text/javascript">
+	function serverCam() {
+		window.open("http://localhost:8888/NewFile", "화상",
+				"width=800, height=700");
+	}
+	function clientCam() {
+		window.open("http://192.168.206.124:8888/NewFile", "화상",
+				"width=800, height=700");
+	}
+	function chat() {
+		window.open("http://192.168.0.2:8888", "채팅",
+				"width=450, height=450");
+	}
+</script>
+	
 <style>
 .local-video {
 	width: 80px;
@@ -63,34 +79,34 @@
 				<th>입장</th>
 			</tr>
 		</thead>
-		<tbody>
+		<c:forEach var="adviceVO" items="${adviceList}">
 			<tr>
-				<td>화상</td>
-				<td>취업</td>
-				<td>이건원</td>
-				<td>2016-08-10</td>
-				<td>12</td>
-				<td>대기</td>
+				<td>${adviceVO.ad_way }</td>
+				<td>${adviceVO.ad_purpose }</td>
+				<td>${adviceVO.ad_pro_use_id }</td>
+				<td>${adviceVO.ad_reqdate }</td>
+				<td>${adviceVO.ad_time }</td>
+				<td>${adviceVO.ad_stat }</td>
 				<td>
-					<c:if test="${auth eq 'ROLE_PRO' }">
-						<button type="button" class="btn btn-dark" onClick="Cam1();">입 장</button>
-					</c:if>
-					<c:if test="${auth eq 'ROLE_STU' }">
-						<button type="button" class="btn btn-dark" onClick="Cam2();">입 장</button>
-					</c:if>
+					<c:choose>
+					<c:when test="${adviceVO.ad_way eq '화상'}">
+						<c:if test="${auth eq 'ROLE_PRO' }">
+							<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
+						</c:if>
+						<c:if test="${auth eq 'ROLE_STU' }">
+							<button type="button" class="btn btn-dark" onClick="clientCam();">입 장</button>
+						</c:if>
+					</c:when>
+					<c:when test="${adviceVO.ad_way eq '채팅'}">
+						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+					</c:when>
+					<c:when test="${adviceVO.ad_way eq '방문'}">
 					
-					
-					<script type="text/javascript">
-						function Cam1(){
-							 window.open("http://localhost:8888/NewFile", "화상", "width=800, height=700" );
-						}
-						function Cam2(){
-							 window.open("http://192.168.206.124:8888/NewFile", "화상", "width=800, height=700" );
-						}
-					</script>
-					
+					</c:when>
+					</c:choose>
 				</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	<div class="x_panel_big">

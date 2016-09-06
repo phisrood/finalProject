@@ -12,6 +12,7 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -31,6 +32,22 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<script type="text/javascript">
+	function serverCam() {
+		window.open("http://localhost:8888/NewFile", "화상",
+				"width=800, height=700");
+	}
+	function clientCam() {
+		window.open("http://192.168.206.124:8888/NewFile", "화상",
+				"width=800, height=700");
+	}
+	function chat() {
+		window.open("http://192.168.0.2:8888", "채팅",
+				"width=450, height=450");
+	}
+</script>
+
 <style>
 .local-video {
 	width: 80px;
@@ -56,43 +73,46 @@
 			<tr>
 				<th>방법</th>
 				<th>구분</th>
-				<th>학생명</th>
+				<th>교수명</th>
 				<th>일자</th>
 				<th>시</th>
 				<th>상태</th>
 				<th>입장</th>
 			</tr>
 		</thead>
+		
 		<tbody>
+			<c:forEach var="adviceVO" items="${adviceList}">
 			<tr>
-				<td>화상</td>
-				<td>취업</td>
-				<td>이건원</td>
-				<td>2016-08-10</td>
-				<td>12</td>
-				<td>대기</td>
+				<td>${adviceVO.ad_way }</td>
+				<td>${adviceVO.ad_purpose }</td>
+				<td>${adviceVO.ad_pro_use_id }</td>
+				<td>${adviceVO.ad_reqdate }</td>
+				<td>${adviceVO.ad_time }</td>
+				<td>${adviceVO.ad_stat }</td>
 				<td>
-					<c:if test="${auth eq 'ROLE_PRO' }">
-						<button type="button" class="btn btn-dark" onClick="Cam1();">입 장</button>
-					</c:if>
-					<c:if test="${auth eq 'ROLE_STU' }">
-						<button type="button" class="btn btn-dark" onClick="Cam2();">입 장</button>
-					</c:if>
+					<c:choose>
+					<c:when test="${adviceVO.ad_way eq '화상'}">
+						<c:if test="${auth eq 'ROLE_PRO' }">
+							<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
+						</c:if>
+						<c:if test="${auth eq 'ROLE_STU' }">
+							<button type="button" class="btn btn-dark" onClick="clientCam();">입 장</button>
+						</c:if>
+					</c:when>
+					<c:when test="${adviceVO.ad_way eq '채팅'}">
+						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+					</c:when>
+					<c:when test="${adviceVO.ad_way eq '방문'}">
 					
-					
-					<script type="text/javascript">
-						function Cam1(){
-							 window.open("http://localhost:8888/NewFile", "화상", "width=800, height=700" );
-						}
-						function Cam2(){
-							 window.open("http://192.168.206.124:8888/NewFile", "화상", "width=800, height=700" );
-						}
-					</script>
-					
+					</c:when>
+					</c:choose>
 				</td>
 			</tr>
+			</c:forEach>
 		</tbody>
 	</table>
+	
 	<div class="x_panel_big">
 		<div class="x_title">
 			<h2>&nbsp;&nbsp;</h2>
@@ -107,113 +127,18 @@
 					<h1 class="page-header">사이버 상담실</h1>
 				</div>
 
-				<div class="col-md-6">
-					<h2 class="h3">Caller</h2>
-					<h3 class="h4">Create and Connect Channel</h3>
-					<form class="form-inline">
-						<div class="form-group">
-							<label class="sr-only" for="createChannelId">Channel Id</label> <input
-								class="form-control" type="text" id="createChannelId"
-								placeholder="Create and connect the channel." value="" readonly>
-						</div>
-						<button class="btn btn-default" id="createChannel">
-							<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
-							Create Channel
-						</button>
-					</form>
-
-					<video class="remote-video center-block" id="callerRemoteVideo"></video>
-					<video class="local-video pull-right" id="callerLocalVideo"></video>
-
+				<div class="col-md-6" id="adviceRoom">
+					
 				</div>
 
-				<div class="col-md-6">
-					<h2 class="h3">Callee</h2>
-					<h3 class="h4">Connect Channel</h3>
-					<form class="form-inline">
-						<div class="form-group">
-							<label class="sr-only" for="connectChannelId">Channel Id</label>
-							<input class="form-control" type="text" id="connectChannelId"
-								placeholder="Enter the channel id." value="">
-						</div>
-						<button class="btn btn-default" id="connectChannel">
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-							Connect Channel
-						</button>
-					</form>
-
-					<video class="remote-video center-block" id="calleeRemoteVideo"></video>
-					<video class="local-video pull-right" id="calleeLocalVideo"></video>
-					<script src="http://www.playrtc.com/sdk/js/playrtc.js"></script>
-					<script>
-					    'use strict';
-					
-					    var createChannelButton = document.querySelector('#createChannel');
-					    var createChannelId = document.querySelector('#createChannelId');
-					    var appCaller;
-					
-					    appCaller = new PlayRTC({
-					      projectKey: "0e3823c3-2e00-4ed9-a38d-ab113f07eab1",
-					      localMediaTarget: "callerLocalVideo",
-					      remoteMediaTarget: "callerRemoteVideo"
-					    });
-					
-					    appCaller.on('connectChannel', function(channelId) {
-					      createChannelId.value = channelId;
-					    });
-					
-					    createChannelButton.addEventListener('click', function(e) {
-					      e.preventDefault();
-					      appCaller.createChannel();
-					    }, false);
-					  </script>
-					<script>
-						'use strict';
-
-						var connectChannelId = document
-								.querySelector('#connectChannelId');
-						var connectChannelButton = document
-								.querySelector('#connectChannel');
-						var appCallee;
-
-						appCallee = new PlayRTC(
-								{
-									projectKey : "0e3823c3-2e00-4ed9-a38d-ab113f07eab1",
-									localMediaTarget : "calleeLocalVideo",
-									remoteMediaTarget : "calleeRemoteVideo"
-								});
-
-						connectChannelButton.addEventListener('click',
-								function(e) {
-									e.preventDefault();
-									var channelId = connectChannelId.value;
-									if (!channelId) {
-										return
-									}
-									;
-									appCallee.connectChannel(channelId);
-								}, false);
-					</script>
-				</div>
+				<div class="col-md-6"></div>
 
 			</div>
 		</div>
 
-
 	</div>
 	<div style="float: left; width: 2%;">
 		<br>
-	</div>
-	<div style="float: left; width: 25%;">
-		<div class="x_panel_big">
-			단순 메모<br> 저장 x<br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br>
-		</div>
-		<div class="x_panel_big">
-			<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br>
-		</div>
 	</div>
 </div>
 
