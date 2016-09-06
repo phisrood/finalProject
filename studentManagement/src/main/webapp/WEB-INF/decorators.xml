@@ -16,6 +16,9 @@
 	<decorator name="main_cyberPro" page="cyber_pro_decorator.jsp">
 		<pattern>/cyberCampus/pro/*</pattern>
 	</decorator>
+	<decorator name="main_crses" page="crses_decorator.jsp">
+		<pattern>/crses/stu/*</pattern>
+	</decorator>
 	
 
 	<excludes>
@@ -26,5 +29,6 @@
 		<pattern>/common/pwdSearch</pattern>
 		<pattern>/pro/updateAdviceConfirmForm*</pattern>
 		<pattern>/common/messageReplyForm</pattern>
+		<pattern>/**/lecturePlan*</pattern>
 	</excludes>
 </decorators>

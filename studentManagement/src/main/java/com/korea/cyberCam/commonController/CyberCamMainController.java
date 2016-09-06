@@ -18,6 +18,7 @@ package com.korea.cyberCam.commonController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CyberCamMainController {
@@ -29,8 +30,9 @@ public class CyberCamMainController {
 	 */
 	//사이버캠퍼스 메인
 	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method=RequestMethod.POST)
-	public String cyberClassMainByStu(String lec_no){
+	public String cyberClassMainByStu(int pro_lec_no,@RequestParam(value="lec_no" ,defaultValue="")int stu_lec_no){
 		String url="/cyberCampus/common/cyberClassMain";
+		
 		return url;
 	}
 	

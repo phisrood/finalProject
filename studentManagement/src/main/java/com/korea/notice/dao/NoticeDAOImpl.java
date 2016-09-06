@@ -77,7 +77,6 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		sqlSession.update("ColleageNotice.noticeUpdate",colleage_NoticeVO);
-		sqlSession.selectOne("ColleageNotice.noticeDetailAFNO", colleage_NoticeVO);
 		
 	}
 	/**
@@ -88,9 +87,6 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 */
 	@Override
 	public void updateNoticeFile(Attachment_FileVO attachment_FileVO) {
-		System.out.println(attachment_FileVO.getAf_no());
-		System.out.println(attachment_FileVO.getAf_realname());
-		System.out.println(attachment_FileVO.getAf_path());
 		sqlSession.update("ColleageNotice.noticeFileUpdate",attachment_FileVO);
 		
 	}
@@ -114,12 +110,6 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Override
 	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		
-		System.out.println(colleage_NoticeVO.getCn_no());
-		System.out.println(colleage_NoticeVO.getCn_af_no());
-		System.out.println(colleage_NoticeVO.getCn_sp_use_id());
-		System.out.println(colleage_NoticeVO.getCn_title());
-		System.out.println(colleage_NoticeVO.getCn_content());
-		System.out.println(colleage_NoticeVO.getCn_date());
 		sqlSession.insert("ColleageNotice.insertNotice",colleage_NoticeVO);
 		
 	}

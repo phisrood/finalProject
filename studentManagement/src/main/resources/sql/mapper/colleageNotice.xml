@@ -70,11 +70,6 @@
 		WHERE	CN_NO = #{cn_no}
 		
 	</update>
-	<select id="noticeDetailAFNO">
-		SELECT	CN_AF_NO
-		FROM	COLLEAGE_NOTICE
-		WHERE	CN_NO = #{cn_no}
-	</select>
 	
 	<update id="noticeFileUpdate" parameterType="attachment">
 		UPDATE	ATTACHMENT_FILE 

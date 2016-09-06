@@ -64,6 +64,7 @@
 							<th>인원</th>
 							<th>시간</th>
 							<th>사이버캠퍼스</th>
+							<th>강의계획서</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -84,8 +85,9 @@
 										<input type="submit" value="이동"/>
 									</form>
 								</td>
+								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>
 							</tr>
-							
+						
 						</c:forEach>
 					</tbody>
 				</table>
@@ -94,5 +96,10 @@
 		</div>
 	</div>
 </div>
+<script>
+function lecturePlan(lec_no){
+	window.open('/pro/lecturePlan?lec_no='+lec_no,'_blank');
+}
+</script>
 <!-- /page content -->
 

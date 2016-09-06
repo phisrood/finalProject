@@ -139,6 +139,21 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 		}
 		return lectureList;
 	}
+	
+	//강의계획서
+	@Override
+	public LectureViewVO getLectureInfo(String lec_no) {
+		LectureViewVO lecture = crsesBookDAO.getLectureInfo(lec_no);
+		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTime(lec_no);
+		String classroom = "";
+		for(Lecture_Time_ViewVO time : timeList){
+			if(lecture.getLec_no().equals(time.getLec_no())){
+				classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>"; 
+			}
+		}
+		lecture.setClassroom(classroom);
+		return lecture;
+	}
 
 
 }

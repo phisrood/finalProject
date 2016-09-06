@@ -76,13 +76,23 @@ public class NoticeServiceImpl implements NoticeService{
 	 */
 	@Override
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO) {
-		System.out.println(attachment_FileVO.getAf_realname());
-		System.out.println(attachment_FileVO.getAf_path());
-		if(attachment_FileVO.getAf_realname()!=null){
-			noticeDAO.updateNoticeFile(attachment_FileVO);
+		int cn_af_no = colleage_NoticeVO.getCn_af_no();
+		
+		//파일이 없을때
+		if(cn_af_no == 0){
+			//파일 인서트
+			noticeDAO.insertNoticeFile(attachment_FileVO);
+			//파일번호 삽입
 			colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+			
+		//파일이 있을때
+		}else if(cn_af_no != 0){
+			//파일 업데이트
+			noticeDAO.updateNoticeFile(attachment_FileVO);
+			
 		}
-			noticeDAO.updateNotice(colleage_NoticeVO);
+		//하고 공지사항 업데이트
+		noticeDAO.updateNotice(colleage_NoticeVO);
 	}
 	/**
 	 * 개인 정보 조회
