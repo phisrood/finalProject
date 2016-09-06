@@ -59,6 +59,7 @@
 				<div class="form-group" style="height: 10%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
+						<input type="hidden" name="cn_no" value="${noticeDetailViewVO.cn_no }">
 						<input type="text" class="form-control" name="cn_title"
 							value="${noticeDetailViewVO.cn_title}" style="width: 100%;">
 					</div>
@@ -82,6 +83,8 @@
 										value="${noticeDetailViewVO.af_realname}">
 								</a>
 							</c:if>
+							<input type="hidden" name="file_no" value="${noticeDetailViewVO.cn_af_no }">
+							<input type="file" id="noticeFileUp" class="btn btn-dark" name="file" >
 					</div>
 				</div>
 

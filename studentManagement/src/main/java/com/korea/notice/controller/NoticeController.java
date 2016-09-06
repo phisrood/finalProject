@@ -174,22 +174,29 @@ public class NoticeController implements ApplicationContextAware {
 	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
 	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpServletRequest request, HttpSession session,
-			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile) throws IOException{
+			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile, @RequestParam(value="file_no", defaultValue="0")String file_no) throws IOException{
 		String url="redirect:/emp/noticeAllList";
 		
+		//실제저장경로 잡기
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/emp/noticeAF");
+		//세션값 
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		//아이디
 		String id=usersVO.getUse_id();
+		//VO에 아이디넣어서
 		colleage_NoticeVO.setCn_sp_use_id(id);
 		
 		if(!multipartFile.isEmpty()){
 			File noticeFile= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
-			multipartFile.transferTo(noticeFile);	
+			//업로드한파일을 지정된 파일로 저장
+			multipartFile.transferTo(noticeFile);
+			//수정이름
 			attachment_FileVO.setAf_aftername(noticeFile.getName());
+			//원조파일이름
 			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
+			//리얼 경로
 			attachment_FileVO.setAf_path(uploadPath);
 		}
-		
 		
 		noticeManagerService.updateNotice(colleage_NoticeVO,attachment_FileVO);
 		
