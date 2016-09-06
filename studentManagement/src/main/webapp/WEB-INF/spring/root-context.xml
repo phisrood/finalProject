@@ -51,7 +51,4 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="servicePublicMethod" />
 	</aop:config>
 
-	
-
-
 </beans>

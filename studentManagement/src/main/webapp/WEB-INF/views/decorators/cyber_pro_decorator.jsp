@@ -85,38 +85,42 @@
                 <br>
                 <ul class="nav side-menu">
                
-	                  	  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+	                <li><a><i class="fa fa-clone"></i> 강의계획서 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/noticeAllList">공지사항</a></li>
-		                      <li><a href="/pro/messageAllList">쪽지함</a></li>
-		                  
+		                      <li><a href="/cyberCampus/pro/cyberClassSYLInfo">강의계획서 조회</a></li>
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
+		                  <li><a><i class="fa fa-clone"></i> 수강생조회 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/colleageChangeList">학적변동현황 조회</a></li>
-		                      <li><a href="/pro/belongMinorREQList">학과 부/다전공 신청</a></li>
-		                      <li><a href="/pro/othersMinorREQList">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">휴/복학 신청 현황</a></li>
-		                      <li><a href="#">졸업요건</a></li>
+		                      <li><a href="/cyberCampus/pro/cyberCrsesStuList">수강생조회</a></li>	        
+		                    <!--   <li><a href="#">휴/복학 신청 현황</a></li>
+		                      <li><a href="#">졸업요건</a></li> -->
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
+		                  <li><a><i class="fa fa-clone"></i> 출석관리 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>
-		                      <li><a href="#">수업평가통계</a></li>
-		                      <li><a href="#">수강편람등록</a></li>
-		                      <li><a href="#">수강생성적조회</a></li>
-		                      <li><a href="#">학과생성적조회</a></li>
-		                      <li><a href="#">성적입력</a></li>
+		                    <!--   <li><a href="/stu/acadeCalList">학사일정조회</a></li> -->
+		                      <li><a href="/cyberCampus/pro/cyberCrsesStuAttend">출석조회</a></li>
 		                      
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-clone"></i>상담신청 보기 <span class="fa fa-chevron-down"></span></a>
+		                  <li><a><i class="fa fa-clone"></i>강의게시판 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/adviceResponsList">사이버 상담 신청 내역</a></li>
-		                      <li><a href="#">사이버 상담실</a></li>
-		                      <li><a href="/pro/adviceBoard">상담게시판</a></li>
+		                      <li><a href="/cyberCampus/pro/cyberNoticeList">공지사항</a></li>
+		                      <li><a href="/cyberCampus/pro/qnaBBSList">강의Q&A</a></li>
+		                      <li><a href="/cyberCampus/pro/freeBBSList">자유게시판</a></li>
+		                      <li><a href="/cyberCampus/pro/studyBBSList">학습자료실</a></li>
+		                    </ul>
+		                  </li>
+		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
+		                    <ul class="nav child_menu">
+		                      <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 등록</a></li>
+		                    
+		                    </ul>
+		                  </li>
+		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>
+		                    <ul class="nav child_menu">
+		                      <li><a href="/cyberCampus/pro/taskSubmitList">과제등록</a></li>	                 
 		                    </ul>
 		                  </li>
                 </ul>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.acadeCal.dao.AcadeCalDAO;
+import com.korea.dto.CalendarVO;
 import com.korea.dto.Colleage_CalendarVO;
 
 /**
@@ -49,9 +50,9 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	 * @throws 
 	 */
 	@Override
-	public String insertAcadeCal() {
-		// TODO Auto-generated method stub
-		return null;
+	public void insertAcadeCal(CalendarVO calendarVO) {
+		acadeCalDAO.insertAcadeCal(calendarVO);
+		
 	}
 	/**
 	 * 학사일정 수정
@@ -60,9 +61,8 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	 * @throws 
 	 */
 	@Override
-	public String updateAcadeCal() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateAcadeCal(CalendarVO calendarVO) {
+		acadeCalDAO.updateAcadeCal(calendarVO);
 	}
 	/**
 	 * 학사일정 삭제
@@ -71,20 +71,30 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	 * @throws 
 	 */
 	@Override
-	public String deleteAcadeCal() {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteAcadeCal(String id) {
+		acadeCalDAO.deleteAcadeCal(id);
 	}
+
 	/**
-	 * 학사일정 상세보기
+	 * 학사일정 드랍수정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getAcadeDetail() {
-		// TODO Auto-generated method stub
-		
+	public void updateAcadeDropCal(CalendarVO calendarVO) {
+		acadeCalDAO.updateAcadeDropCal(calendarVO);
+	}
+	
+	/**
+	 * 학사일정 리사이즈
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public void updateAcadeResizeCal(CalendarVO calendarVO) {
+		acadeCalDAO.updateAcadeResizeCal(calendarVO);
 	}
 
 }

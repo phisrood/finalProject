@@ -20,7 +20,7 @@ package com.korea.dto;
  * 
  */
 public class Advice_BoardVO {
-
+	
 	private int adb_no;
 	private String adb_pro_use_id;
 	private String adb_stud_use_id;
@@ -30,7 +30,7 @@ public class Advice_BoardVO {
 	private String adb_date;
 	private String adb_commentcontent;
 	private String adb_commentstat;
-
+	
 	public int getAdb_no() {
 		return adb_no;
 	}

@@ -51,96 +51,27 @@
 			<div style="float: left; width: 100%;"><br></div>
             <table id="datatable" class="table table-striped table-bordered">
                	<thead>
+               	
                		<tr>
                    		<th>No</th>
                    		<th>제목</th>
-                   		<th>파일</th>
                    		<th>등록일</th>
                    		<th>작성자</th>
                  	</tr>
                	</thead>
                	<tbody>
+               	 <c:forEach items="${question_BoardVO }" var="question_BoardVO">
                  	<tr>
-                 	  	<td>4</td>
-                   		<td>과제입니다.</td>
-                   		<td>a.jpg</td>
-                   		<td>2016-08-08</td>
-                   		<td>이영만</td>
+                 	  	<td>${question_BoardVO.qb_no}</td>
+                   		<td>${question_BoardVO.qb_title}</td>
+                   		<td>${question_BoardVO.qb_date}</td>
+                   		<td>${question_BoardVO.qb_stud_use_id}</td>
                  	</tr>
-                 	<tr>
-                   		<td>3</td>
-                   		<td>기말 고사 안내</td>
-                   		<td>없음</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td>2</td>
-                   		<td>과제입니다.</td>
-                   		<td>a.jpg</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td>1</td>
-                   		<td>중간 고사 안내</td>
-                   		<td>없음</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
+                 </c:forEach>
                	</tbody>
            	</table>
            	<div style="float: right; width: 5%;">
-				<button type="button" class="btn btn-default btn-sm">글쓰기</button>
+				<a href="/cyberCampus/stu/qnaBBSInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>

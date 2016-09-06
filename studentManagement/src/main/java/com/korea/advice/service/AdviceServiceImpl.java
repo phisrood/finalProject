@@ -1,13 +1,16 @@
 package com.korea.advice.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.advice.dao.AdviceDAO;
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 
 /**
@@ -163,6 +166,42 @@ public class AdviceServiceImpl implements AdviceService {
 	public List<ProfessorVO> getProfessorList(String stud_use_id) {
 		List<ProfessorVO> professorList = adviceDAO.getProfessorList(stud_use_id);
 		return professorList;
+	}
+
+	@Override
+	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+		return adviceDAO.insertAdviceBoardAF(adviceInsertVO);
+	}
+
+	@Override
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
+		adviceDAO.insertAdviceBoard(adviceInsertVO,af_no);
+	}
+
+	@Override
+	public Advice_BoardVO getAdviceBoard(int adb_no) {
+		Advice_BoardVO adviceVO = adviceDAO.getAdviceBoard(adb_no);
+		return adviceVO;
+	}
+
+	@Override
+	public void updateAdviceBoard(Map<String, String> params) {
+		adviceDAO.updateAdviceBoard(params);
+	}
+
+	@Override
+	public void deleteAdviceBoard(int adb_no) {
+		adviceDAO.deleteAdviceBoard(adb_no);
+	}
+
+	@Override
+	public void updateAdviceComment(Advice_BoardVO adviceBoardVO) {
+		adviceDAO.updateAdviceComment(adviceBoardVO);
+	}
+
+	@Override
+	public Attachment_FileVO getAdviceBoardFile(int adb_af_no) {
+		return adviceDAO.getAdviceBoardFile(adb_af_no);
 	}
 
 }

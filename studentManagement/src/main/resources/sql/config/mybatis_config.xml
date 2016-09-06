@@ -11,11 +11,11 @@
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="hashmap" type="java.util.HashMap"/>
 
-
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
 		<typeAlias alias="adviceBoardVO" type="com.korea.dto.Advice_BoardVO" />
+		<typeAlias alias="adviceBoardInsertVO" type="com.korea.dto.Advice_BoardInsertVO" />
 		<!-- 사용자 -->
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
 		<!-- 학생 -->
@@ -46,12 +46,12 @@
 		<typeAlias alias="IndivInfoManage" type="com.korea.dto.Student_InfoViewVO" />
 		<!-- 행정 정보 -->
 		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
-
+		<!-- 첨부파일 -->
+		<typeAlias alias="employeeInfo" type="com.korea.dto.School_PersonInfoViewVO" />
 		<!-- 파일 업로드 -->
 		<typeAlias alias="attachment" type="com.korea.dto.Attachment_FileVO" />
 		<!-- 공지사항뷰 -->
 		<typeAlias alias="noticeView" type="com.korea.dto.NoticeViewVO" />
-
 		<!-- 학적 변동사항 -->
 		<typeAlias alias="colleageRegister" type="com.korea.dto.Colleage_Register_ChangeVO"/>
 		<!-- 강의실-->
@@ -60,9 +60,23 @@
 		<typeAlias alias="classroomTime" type="com.korea.dto.ClassRoom_UsetimeVO" />
 		<!-- 캘린더 -->
 		<typeAlias alias="calendar" type="com.korea.dto.Colleage_CalendarVO" />
-		
+		<!-- 사이버캠퍼스 QNA게시판 -->
+		<typeAlias alias="questionBoard" type="com.korea.dto.Question_BoardVO" />
+		<!-- 강의 -->
+		<typeAlias alias="lecture" type="com.korea.dto.LectureVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureView" type="com.korea.dto.LectureViewVO"/>
+		<!-- 강의 view -->
+		<typeAlias alias="lectureTimeView" type="com.korea.dto.Lecture_Time_ViewVO"/>
+		<!-- 캘린더 parameter -->
+		<typeAlias alias="calendarParam" type="com.korea.dto.CalendarVO" />
+		<!-- 수업평가항목 -->
+		<typeAlias alias="classApp" type="com.korea.dto.Appraisal_ManageVO" />
 
-
+		<!-- 학생 수강 내역 조회 view -->
+		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Student_InquiryList_ViewVO" />
+		<!-- 교수 강의 내역 조회 view -->
+		<typeAlias alias="inquiryListViewVO" type="com.korea.dto.Professor_InquiryList_ViewVO" />
 
 	</typeAliases>
 
@@ -70,12 +84,10 @@
 
 		<!-- 로그인 -->
 		<mapper resource="sql/mapper/login.xml" />
-
 		<!-- 학과 -->
 		<mapper resource="sql/mapper/department.xml" />
 		<!-- 교수 -->
 		<mapper resource="sql/mapper/professor.xml" />
-
 		<!-- 학과관리 -->
 		<mapper resource="sql/mapper/departmentManage.xml" />
 		<!-- 학생 -->
@@ -90,12 +102,19 @@
 		<mapper resource="sql/mapper/IndivInfoManage.xml" />
 		<!-- 상담 -->
 		<mapper resource="sql/mapper/advice.xml" />
-
 		<mapper resource="sql/mapper/adviceBoard.xml" />
-		
 		<!-- 휴복학 -->
 		<mapper resource="sql/mapper/schoolReReq.xml" />
 		<!-- 캘린더 -->
 		<mapper resource="sql/mapper/acadeCal.xml" />
+		<!--  사이버캠퍼스 QNA게시판  -->
+		<mapper resource="sql/mapper/cyberCamQnaBBS.xml"/>
+
+		<!--수업평가 -->
+		<mapper resource="sql/mapper/classApp.xml"/>
+
+		<!--  학생수강내역조회  -->
+		<mapper resource="sql/mapper/inquiryList.xml"/>
+		
 	</mappers>
 </configuration>

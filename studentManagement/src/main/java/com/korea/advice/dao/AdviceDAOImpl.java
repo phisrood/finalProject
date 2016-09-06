@@ -1,6 +1,7 @@
 package com.korea.advice.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 
 /**
@@ -164,6 +167,47 @@ public class AdviceDAOImpl implements AdviceDAO {
 	public List<ProfessorVO> getProfessorList(String stud_use_id) {
 		List<ProfessorVO> professorList = (List<ProfessorVO>) sqlSession.selectList("adviceDAO.selectProfessorList",stud_use_id);
 		return professorList;
+	}
+
+	@Override
+	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+		sqlSession.insert("adviceBoardDAO.insertAdviceBoardAF", adviceInsertVO);
+		return (int) sqlSession.selectOne("adviceBoardDAO.selectCurrval");
+	}
+
+	@Override
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
+		if(af_no == 0){
+			sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
+		}else{
+			sqlSession.insert("adviceBoardDAO.insertBoardAF", adviceInsertVO);			
+		}
+	}
+
+	@Override
+	public Advice_BoardVO getAdviceBoard(int adb_no) {
+		Advice_BoardVO adviceVO = (Advice_BoardVO) sqlSession.selectOne("adviceBoardDAO.getAdviceBoard", adb_no);
+		return adviceVO;
+	}
+
+	@Override
+	public void updateAdviceBoard(Map<String, String> params) {
+		sqlSession.update("adviceBoardDAO.updateAdviceBoard", params);
+	}
+
+	@Override
+	public void deleteAdviceBoard(int adb_no) {
+		sqlSession.delete("adviceBoardDAO.deleteAdviceBoard", adb_no);
+	}
+
+	@Override
+	public void updateAdviceComment(Advice_BoardVO adviceBoardVO) {
+		sqlSession.update("adviceBoardDAO.updateAdviceComment",adviceBoardVO);
+	}
+
+	@Override
+	public Attachment_FileVO getAdviceBoardFile(int adb_af_no) {
+		return (Attachment_FileVO) sqlSession.selectOne("adviceBoardDAO.getAdviceBoardFile", adb_af_no);
 	}
 
 }

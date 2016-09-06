@@ -9,6 +9,7 @@
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.09.01.  	김양문			최초생성
+ *    2016.09.05.  	김양문			강의개설 script
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -30,13 +31,12 @@ html, body {
 h2 {
 	display: inline;
 }
-
 </style>
 </head>
 <body>
 
 	<script src="/common/js/notice.js"></script>
-	<script src="/pro/js/default.js"></script>	
+	<script src="/pro/js/default.js"></script>
 	<div class="row">
 		<!-- page content -->
 		<div class="x_panel">
@@ -67,7 +67,14 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">개설학과</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control"
-								value="${lb.lb_department }" readonly="readonly">
+								value="${lb.lb_department }" readonly="readonly"
+								name="lb_department">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">교수번호</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" name="lec_ln_pro_use_id">
 						</div>
 					</div>
 					<div class="form-group">
@@ -88,7 +95,8 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control pull-left" id="classroom"
-								readonly="readonly">&nbsp;&nbsp;
+								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp; <input
+								type="text" id="ci_no" name="cu_ci_no">
 							<button type="button" class="btn btn-info btn-sm" id="search"
 								data-toggle="modal" data-target="#myModal">검색</button>
 						</div>
@@ -111,6 +119,13 @@ h2 {
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
+						<div class="col-md-9 col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="분반"
+								name="lec_placement">
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">인원</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" placeholder="인원"
@@ -126,8 +141,9 @@ h2 {
 						</div>
 					</div>
 					<div style="text-align: center;">
+
 						<button type="button" class="btn btn-dark"
-							onclick="updateLB('this.form');">수정</button>
+							onclick="insertLecture('this.form');">등록</button>
 						<button type="button" class="btn btn-dark"
 							onclick="javascript:history.go(-1);">취소</button>
 					</div>
@@ -167,89 +183,7 @@ h2 {
 									</tr>
 								</thead>
 								<tbody id="stuTbody">
-									<tr>
-										<td>09:00~10:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>10:00~11:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>11:00~12:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>12:00~13:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>13:00~14:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>14:00~15:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>15:00~16:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>16:00~17:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>17:00~18:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td>18:00~19:00</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-										<td class="timetable">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td colspan='5' id="check"></td>
-									</tr>
+
 								</tbody>
 
 							</table>
@@ -257,50 +191,186 @@ h2 {
 					</div>
 				</div>
 				<div class="modal-footer">
+					<button type="button" class="btn btn-default" onclick="reset();">초기화</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal"
 						id="submit">확인</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="close">닫기</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<style>
+.choice {
 	
+}
+</style>
 	<script>
-		$("#classroomList").change(function() {
-			var classroom = $("#classroomList :selected").val();
-			var check = new Array();
-		
-			$.each($("tr .timetable"), function(index) {
-				$(this).html('가능');
-				$(this).click(function(){
-					if(count%2==0){
-						$(this).css('background','gray');
-						
-					}else{
-						$(this).css('background','');
-						
-						
-					}
-				
-					$("#check").html(check);
+	var check = new Array();
+		function reset() {
+			check = new Array();
+			$("#check").html('');
+			$("#classroomList").val('none');
+			$.each($("tr .timetable"), function() {
+				$(this).text('가능');
+				$(this).removeClass('choice');
+				$(this).css('background-color', '');
+			})
+		}
+		$(function() {
+			$("#close").click(function() {
+				$.each($("tr .timetable"), function() {
+					$("#classroomList").val('none');
+					$(this).text('가능');
+					$(this).removeClass('choice');
+					$(this).css('background-color', '');
 				})
 			});
-			$.ajax({
-				url : "/pro/getClassroomTime",
-				data : {
-					'classroom' : classroom
-				},
-				dataType : 'json',
-				success : function(obj) {
-					
-					$("#submit").click(function() {
-						
+
+			function tableGen() {
+				$("#stuTbody")
+						.html(
+								"<tr><td>09:00~10:00</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>"
+										+ "<tr>"
+										+ "	<td>10:00~11:00</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>11:00~12:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>12:00~13:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>13:00~14:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>14:00~15:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>15:00~16:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>16:00~17:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>17:00~18:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td>18:00~19:00</td>                                                       "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    "
+										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+										+ "</tr>                                                                          "
+										+ "<tr>                                                                           "
+										+ "	<td colspan='5' id=\"check\"></td> "
+										+ "</tr>")
+			}
+			;
+			$("#classroomList").change(
+					function() {
+						var classroom = $("#classroomList :selected").val();
+						tableGen();
+						$.each($("tr .timetable"), function(index) {
+							$(this).text('가능');
+							$(this).removeClass('choice');
+							$(this).css('background-color', '');
+							$(this).click(
+									function() {
+										if ($(this).text().indexOf('불가') < 0) {
+											if ($(this).attr('class').indexOf(
+													'choice') < 0) {
+												$(this).addClass('choice')
+												$(this).css('background-color',
+														'gray');
+												check.push(index);
+											} else {
+												$(this).removeClass('choice');
+												$(this).css('background-color',
+														'');
+												check.splice(check
+														.indexOf(index), 1);
+											}
+
+											$("#check").html(check + ",");
+										}
+									});
+						});
+						$("#submit").click(function() {
+							$("#classroom").val(check);
+							$("#ci_no").val($("#classroomList").val());
+
+						});
+						$.ajax({
+							url : "/pro/getClassroomTime",
+							data : {
+								'classroom' : classroom
+							},
+							dataType : 'json',
+							success : function(obj) {
+								$.each(obj.data,
+										function(index, value) {
+											var idx = parseInt(value.cu_tt_no);
+											$("tr .timetable").eq(idx).text(
+													'불가');
+											$("#check").text(
+													$("tr .timetable").attr(
+															'onclick'));
+										});
+							},
+							error : function() {
+								alert('양문이똥멍청이');
+							}
+						});
 					});
-				},
-				error : function() {
-					alert('양문이똥멍청이');
-				}
-			});
+
 		});
 	</script>
 </body>

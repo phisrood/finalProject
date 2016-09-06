@@ -28,7 +28,7 @@ public class CyberCamNoticeBBSController {
 	 * @throws 
 	 */
 	//공지사항게시판 리스트
-	@RequestMapping(value={"/cyberCampus/stu/cyberNoticeList","/pro/cyberCampus/cyberNoticeList"}, method=RequestMethod.GET)
+	@RequestMapping(value={"/cyberCampus/stu/cyberNoticeList","/cyberCampus/pro/cyberNoticeList"}, method=RequestMethod.GET)
 	public String noticeBBSList(){
 		String url="/cyberCampus/common/cyberNoticeList";
 		

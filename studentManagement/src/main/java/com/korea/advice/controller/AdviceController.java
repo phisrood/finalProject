@@ -1,8 +1,14 @@
 package com.korea.advice.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +16,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.advice.service.AdviceService;
 import com.korea.dto.AdviceVO;
+import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
+import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.UsersVO;
 
@@ -82,10 +91,6 @@ public class AdviceController {
 		List<ProfessorVO> professorList = adviceService.getProfessorList(stud_use_id);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		
-		for(int i=0; i<adviceReqList.size();i++){
-			System.out.println("dd");
-		}
 
 		model.addAttribute("adviceReqList", adviceReqList);
 		model.addAttribute("professorList", professorList);
@@ -231,6 +236,8 @@ public class AdviceController {
 	}
 
 	/**
+	 * @throws IOException 
+	 * @throws IllegalStateException 
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
@@ -239,19 +246,27 @@ public class AdviceController {
 	 */
 	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
-	public String adviceBoardWrite(Advice_BoardVO adb
-			/*int adb_af_no,String adb_title,String adb_content,String adb_stud_use_id*/) {
-		String url = "redirect:/common/adviceBoard";
-		/*P
-		System.out.println(adb_af_no);
-		System.out.println(adb_title);
-		System.out.println(adb_content);
-		System.out.println(adb_stud_use_id);
-		*/
-		System.out.println(adb.getAdb_title());
+	public String adviceBoardWrite(Advice_BoardInsertVO adviceInsertVO,HttpServletRequest request) throws IllegalStateException, IOException {
+		String url = "redirect:/stu/adviceBoard";
+		int af_no=0;
+		
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
+		
+		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
+		if(!multipartFile.isEmpty()){
+			File file = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(file);
+			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());
+			adviceInsertVO.setAdb_afterName(System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			adviceInsertVO.setAdb_path(uploadPath);
+			af_no=adviceService.insertAdviceBoardAF(adviceInsertVO);
+			adviceInsertVO.setAdb_af_no(af_no);
+		}
+		adviceService.insertAdviceBoard(adviceInsertVO,af_no);
+		
 		return url;
 	}
-
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * 
@@ -260,10 +275,143 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 게시판 답변 작성
-	@RequestMapping(value = "/pro/adviceBoardReply", method = RequestMethod.GET)
-	public String adviceREQUpdate() {
-		String url = "/pro/adviceBoardReply";
-
+	@RequestMapping(value = "/common/adviceBoardUpdateDetail", method = RequestMethod.GET)
+	public String adviceBoardUpdateDetail(int adb_no,Model model,HttpSession session,HttpServletRequest request) {
+		String url = "/common/adviceBoardUpdateDetail";
+		Advice_BoardVO adviceBoardVO = adviceService.getAdviceBoard(adb_no);
+		
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String loginUser = user.getUse_id();
+		if(loginUser.equals(adviceBoardVO.getAdb_stud_use_id())){
+			loginUser="작성자";
+		}
+		
+		if(adviceBoardVO.getAdb_af_no()!=0){
+			Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adviceBoardVO.getAdb_af_no());		
+			model.addAttribute("filename", fileVO.getAf_realname());
+		}
+		
+		model.addAttribute("auth", user.getAuthority());
+		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("adb_no", adviceBoardVO.getAdb_no());
+		model.addAttribute("adb_pro_use_id", adviceBoardVO.getAdb_pro_use_id());
+		model.addAttribute("adb_stud_use_id", adviceBoardVO.getAdb_stud_use_id());
+		model.addAttribute("adb_af_no", adviceBoardVO.getAdb_af_no());
+		model.addAttribute("adb_title", adviceBoardVO.getAdb_title());
+		model.addAttribute("adb_content", adviceBoardVO.getAdb_content());
+		model.addAttribute("adb_date", adviceBoardVO.getAdb_date());
+		model.addAttribute("adb_commentcontent", adviceBoardVO.getAdb_commentcontent());
+		model.addAttribute("adb_commentstat", adviceBoardVO.getAdb_commentstat());
+		
+		
+		//model.addAttribute("adviceBoardVO", adviceBoardVO);
+		return url;
+	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 답변 작성
+	@RequestMapping(value = "/common/adviceBoardFile", method = RequestMethod.GET)
+	public ModelAndView adviceBoardFile(HttpServletRequest request,int adb_af_no, HttpServletResponse response) throws IOException {
+		
+		Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adb_af_no);
+		
+		String path = request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
+		System.out.println("파일번호 : "+adb_af_no);
+		System.out.println("다운경로 : "+path);
+		
+		File file = new File(path,fileVO.getAf_realname());
+		
+		if(file == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		
+		return new ModelAndView("download", "downloadFile", file);
+	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 답변 작성
+	@RequestMapping(value = "/stu/adviceBoardUpdateForm", method = RequestMethod.GET)
+	public String adviceBoardUpdateForm(int adb_no,Model model) {
+		String url = "/common/adviceBoardUpdateForm";
+		Advice_BoardVO adviceBoardVO = adviceService.getAdviceBoard(adb_no);
+		
+		model.addAttribute("adb_no", adviceBoardVO.getAdb_no());
+		model.addAttribute("adb_pro_use_id", adviceBoardVO.getAdb_pro_use_id());
+		model.addAttribute("adb_stud_use_id", adviceBoardVO.getAdb_stud_use_id());
+		model.addAttribute("adb_af_no", adviceBoardVO.getAdb_af_no());
+		model.addAttribute("adb_title", adviceBoardVO.getAdb_title());
+		model.addAttribute("adb_content", adviceBoardVO.getAdb_content());
+		model.addAttribute("adb_date", adviceBoardVO.getAdb_date());
+		model.addAttribute("adb_commentcontent", adviceBoardVO.getAdb_commentcontent());
+		model.addAttribute("adb_commentstat", adviceBoardVO.getAdb_commentstat());
+			
+		return url;
+	}
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 답변 작성
+	@RequestMapping(value = "/stu/adviceBoardUpdate", method = RequestMethod.POST)
+	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_content) {
+		String url = "redirect:/stu/adviceBoard";
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("adb_no", adb_no+"");
+		params.put("adb_title", adb_title);
+		params.put("adb_content", adb_content);
+		
+		adviceService.updateAdviceBoard(params);
+		return url;
+	}
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 답변 작성
+	@RequestMapping(value = "/stu/adviceBoardDelete", method = RequestMethod.GET)
+	public String adviceBoardDelete(int adb_no) {
+		String url = "redirect:/stu/adviceBoard";
+		
+		adviceService.deleteAdviceBoard(adb_no);
+		
+		return url;
+	}
+	/**
+	 * 교수가 받은 상담신청조회
+	 * 
+	 * @param
+	 * @return
+	 * @throws
+	 */
+	// 상담 게시판 답변 작성
+	@RequestMapping(value = "/pro/adviceBoardReply", method = RequestMethod.POST)
+	public String adviceREQUpdate(HttpSession session,Advice_BoardVO adviceBoardVO) {
+		String url = "redirect:/pro/adviceBoard";
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String pro_use_id = user.getUse_id();
+		adviceBoardVO.setAdb_pro_use_id(pro_use_id);
+		adviceService.updateAdviceComment(adviceBoardVO);
 		return url;
 	}
 
@@ -277,11 +425,35 @@ public class AdviceController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/stu/camAdvice", method = RequestMethod.GET)
-	public String camAdvice() {
+	public String camAdviceStu(Model model,HttpSession session) {
 		String url = "/stu/cam_advice";
-
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String loginUser = user.getAuthority();
+		model.addAttribute("auth", loginUser);
+		
 		return url;
 	}
+	
+	// //////////////////////////////화상상담추가//////////////////////////////
+
+		/**
+		 * 교수가 받은 상담신청조회
+		 * 
+		 * @param
+		 * @return
+		 * @throws
+		 */
+		@RequestMapping(value = "/pro/camAdvice", method = RequestMethod.GET)
+		public String camAdvicePro(Model model,HttpSession session) {
+			String url = "/pro/cam_advice";
+			// 세션
+			UsersVO user = (UsersVO) session.getAttribute("loginUser");
+			String loginUser = user.getAuthority();
+			model.addAttribute("auth", loginUser);
+			
+			return url;
+		}
 
 	/**
 	 * 교수가 받은 상담신청조회

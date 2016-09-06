@@ -72,7 +72,7 @@ html, body {
 		</div>
 		<div align="center" style="float: right; width: 90%;">
 			<br> 
-			<input type="file" name="adb_af_no" /> 
+			<input type="file" name="adb_file" /> 
 			<input type="submit" class="btn btn-default btn-sm" value="등록" />
 		</div>
 		<div style="float: right; width: 20%;">

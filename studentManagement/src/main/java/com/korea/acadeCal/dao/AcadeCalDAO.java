@@ -2,6 +2,7 @@ package com.korea.acadeCal.dao;
 
 import java.util.List;
 
+import com.korea.dto.CalendarVO;
 import com.korea.dto.Colleage_CalendarVO;
 
 /**
@@ -30,21 +31,23 @@ public interface AcadeCalDAO {
 	//학사일정 조회
 	public List<Colleage_CalendarVO> getAcadeCalList();
 	/**
+	 * @param calendarVO 
 	 * 학사일정 등록
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학사일정 등록
-	public String insertAcadeCal();
+	public void insertAcadeCal(CalendarVO calendarVO);
 	/**
+	 * @param calendarVO 
 	 * 학사일정 수정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학사일정 수정 
-	public String updateAcadeCal();
+	public void updateAcadeCal(CalendarVO calendarVO);
 	/**
 	 * 학사일정 삭제
 	 * @param
@@ -52,13 +55,16 @@ public interface AcadeCalDAO {
 	 * @throws 
 	 */
 	//학사일정 삭제
-	public String deleteAcadeCal();
+	public void deleteAcadeCal(String id);
 	/**
 	 * 학사일정 상세보기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//학사일정 상세보기
-	public void getAcadeDetail();
+	//학사일정 드랍수정
+	public void updateAcadeDropCal(CalendarVO calendarVO);
+	
+	//학사일정 리사이즈
+	public void updateAcadeResizeCal(CalendarVO calendarVO);
 }

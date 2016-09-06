@@ -23,29 +23,24 @@ package com.korea.dto;
  */
 public class LectureVO {
 
-	private int lec_no;
-	private int lec_lb_no;
+	private String lec_no;
+	private String lec_lb_no;
 	private String lec_ln_pro_use_id;
-	private int lec_ci_no;
 	private int lec_makesemester;
 	private String lec_makeyear;
 	private int lec_credit;
 	private int lec_placement;
 	private int lec_persons;
-	private int lec_first;
-	private int lec_second;
-	private int lec_third;
-	private int lec_fourth;
-	public int getLec_no() {
+	public String getLec_no() {
 		return lec_no;
 	}
-	public void setLec_no(int lec_no) {
+	public void setLec_no(String lec_no) {
 		this.lec_no = lec_no;
 	}
-	public int getLec_lb_no() {
+	public String getLec_lb_no() {
 		return lec_lb_no;
 	}
-	public void setLec_lb_no(int lec_lb_no) {
+	public void setLec_lb_no(String lec_lb_no) {
 		this.lec_lb_no = lec_lb_no;
 	}
 	public String getLec_ln_pro_use_id() {
@@ -54,12 +49,7 @@ public class LectureVO {
 	public void setLec_ln_pro_use_id(String lec_ln_pro_use_id) {
 		this.lec_ln_pro_use_id = lec_ln_pro_use_id;
 	}
-	public int getLec_ci_no() {
-		return lec_ci_no;
-	}
-	public void setLec_ci_no(int lec_ci_no) {
-		this.lec_ci_no = lec_ci_no;
-	}
+
 	public int getLec_makesemester() {
 		return lec_makesemester;
 	}
@@ -90,30 +80,5 @@ public class LectureVO {
 	public void setLec_persons(int lec_persons) {
 		this.lec_persons = lec_persons;
 	}
-	public int getLec_first() {
-		return lec_first;
-	}
-	public void setLec_first(int lec_first) {
-		this.lec_first = lec_first;
-	}
-	public int getLec_second() {
-		return lec_second;
-	}
-	public void setLec_second(int lec_second) {
-		this.lec_second = lec_second;
-	}
-	public int getLec_third() {
-		return lec_third;
-	}
-	public void setLec_third(int lec_third) {
-		this.lec_third = lec_third;
-	}
-	public int getLec_fourth() {
-		return lec_fourth;
-	}
-	public void setLec_fourth(int lec_fourth) {
-		this.lec_fourth = lec_fourth;
-	}
-	
 	
 }

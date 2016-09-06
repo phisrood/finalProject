@@ -108,6 +108,7 @@
 		                      <li><a href="/pro/classAppStat">수업평가통계</a></li>
 		                      <li><a href="/pro/crsesBookInsert">수강편람등록</a></li>
 		                      <li><a href="/pro/crsesBookList">수강편람조회</a></li>
+		                      <li><a href="/pro/lectureList">강의조회</a></li>
 		                      <li><a href="#">수강생성적조회</a></li>
 		                      <li><a href="#">학과생성적조회</a></li>
 		                      <li><a href="#">성적입력</a></li>
@@ -117,7 +118,7 @@
 		                  <li><a><i class="fa fa-clone"></i>상담신청 보기 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/pro/adviceResponsList">사이버 상담 신청 내역</a></li>
-		                      <li><a href="#">사이버 상담실</a></li>
+		                      <li><a href="/pro/camAdvice">사이버 상담실</a></li>
 		                      <li><a href="/pro/adviceBoard">상담게시판</a></li>
 		                    </ul>
 		                  </li>
