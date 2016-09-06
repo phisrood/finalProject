@@ -90,8 +90,10 @@ public class CyberCamStudyBBSController {
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/pro/studyBBSAF");
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
 		String id=usersVO.getUse_id();
 		learning_RoomVO.setLr_pro_use_id(id);
+		learning_RoomVO.setLr_lec_no(Integer.parseInt(pro_lec_no.trim()));
 		
 		Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
 		if(!multipartFile.isEmpty()){
