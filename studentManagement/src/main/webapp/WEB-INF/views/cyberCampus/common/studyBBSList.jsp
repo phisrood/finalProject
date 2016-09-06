@@ -42,7 +42,7 @@
                           <th style="width:50%;">제목</th>
                           <th style="width:20%;">첨부파일</th>
                           <th style="width:15%;">작성일</th>
-                          <th style="width:8%;">작성일</th>
+                          <th style="width:8%;">작성자</th>
                          
                         </tr>
                       </thead>

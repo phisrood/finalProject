@@ -42,5 +42,17 @@
 							 ,#{lr_title}
 							 ,#{lr_content})
 	</insert>
+	
+	<select id="studyBBSDetail">
+		SELECT	*
+		FROM	LEARNINGROOM_VIEW
+		WHERE	LR_NO = #{lr_no}
+	</select>
+	
+	<delete id="studyBBSDelete">
+		DELETE 	
+		FROM 	LEARNING_ROOM
+		WHERE	LR_NO=#{lr_no}
+	</delete>
 
 </mapper>

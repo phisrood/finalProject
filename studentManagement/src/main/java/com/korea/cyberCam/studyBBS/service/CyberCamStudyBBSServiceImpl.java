@@ -50,9 +50,8 @@ public class CyberCamStudyBBSServiceImpl implements CyberCamStudyBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void getStudyBBSDetail() {
-		// TODO Auto-generated method stub
-		
+	public LearningRoomViewVO getStudyBBSDetail(int lr_no) {
+		return cyberCamStudyBBSDAO.getStudyBBSDetail(lr_no);
 	}
 	/**
 	 * 개인 정보 조회
@@ -76,9 +75,9 @@ public class CyberCamStudyBBSServiceImpl implements CyberCamStudyBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void deleteStudyBBS() {
-		// TODO Auto-generated method stub
+	public void deleteStudyBBS(Learning_RoomVO learning_RoomVO) {
 		
+		cyberCamStudyBBSDAO.deleteStudyBBS(learning_RoomVO);
 	}
 	/**
 	 * 개인 정보 조회

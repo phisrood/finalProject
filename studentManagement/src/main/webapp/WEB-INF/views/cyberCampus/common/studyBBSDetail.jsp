@@ -28,59 +28,71 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
-    <div class="row">
+ 
+			<div class="row" >
     	<!-- 학습 자료실 게시물 상세 -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 250px; text-align: center;"><h2>학습 자료실 ( 상세 )</h2></div>
+				<div style="border: 1px solid; float: left; width: 250px; text-align: center;"><h2>학습 자료실</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-			<div class="x_panel_big">
-				<table id="datatable" class="table table-striped table-bordered">
-					<tr>
-						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" value="중간 고사 강의실 질문">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							<input name="writer" type="text" size="75" value="한돈희">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="75" value="2016-08-09 09:00:00">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big">중간 고사 강의실이 090511이 맞나여?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-							<div align="center" style="float: left; width: 6%;"><br><br>
-                        		<input type="text" id="" required="required" size="5" value="한돈희"  disabled="disabled" style="text-align: center;">
-                    		</div>
-							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br></div>
-							<div style="float: right; width: 4%;">
-								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 87%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
-			</div>
-			<div style="float: right; width: 6%;">
-				<button type="button" class="btn btn-default btn-sm">삭 제</button>
-			</div>
-			<div style="float: right; width: 5%;">
-				<button type="button" class="btn btn-default btn-sm">수 정</button>
-			</div>
-    </div>
+
+	<!-- page content -->
+	<div class="x_panel_big" style="height:600px;">
+		
+		<div class="x_content" style="height: 70%">
+			<br />
+				<input type="hidden" name="lr_no"
+					value="${learningRoomViewVO.lr_no }">
+				<div class="form-group" style="height: 10%;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<p>${learningRoomViewVO.lr_title}</p>
+					</div>
+				</div>
+				<div class="form-group" style="height: 90%;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<p>${learningRoomViewVO.lr_content}</p>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+							<c:if test="${learningRoomViewVO.lr_af_no == 0 }">
+								<input type="button" class="btn btn-dark" style="width: 200px;" name="af_aftername" value="첨부파일이 없습니다.">
+							</c:if>
+							<c:if test="${learningRoomViewVO.lr_af_no != 0 }">
+								<a href="/cyberCampus/common/studyBBSFileDown?af_aftername=${learningRoomViewVO.af_aftername}">
+									<input type="button" class="btn btn-dark" style="width: 300px;" name="af_aftername"
+										value="${learningRoomViewVO.af_realname}">
+								</a>
+							</c:if>
+					</div>
+				</div>
+
+
+
+
+		</div>
+		</div>    
+		<!-- x-content 끝 -->
+				<div style="text-align: right; height: 30%">
+					<c:if test="${loginUser.authority eq 'ROLE_EMP' }">
+						<button class="btn btn-dark" onclick="location.href='cyberCampus/pro/studyBBSUpdateForm?studyBBS_no=${learningRoomViewVO.lr_no }'">수정</button>
+							<a href="cyberCampus/pro/studyBBSDelete?lr_no=${learningRoomViewVO.lr_no }">
+								<button type="button" class="btn btn-dark">삭제</button>
+							</a>
+					</c:if>
+					<button type="button" class="btn btn-dark"
+						onclick="javascript:history.go(-1);">뒤로</button>
+				</div>
+	</div>
+
+
+	<!-- /page content -->
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

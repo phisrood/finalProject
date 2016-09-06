@@ -86,7 +86,7 @@ public class CyberCamStudyBBSController {
 	@RequestMapping(value="/cyberCampus/pro/studyBBSInsert", method=RequestMethod.POST)
 	public String studyBBSInsert(Learning_RoomVO learning_RoomVO, Model model, HttpServletRequest request, HttpSession session,
 			@RequestParam(value="file", defaultValue="")MultipartFile multipartFile) throws IOException{
-		String url="redirect:/cyberCampus/common/studyBBSList";
+		String url="redirect:/cyberCampus/pro/studyBBSList";
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/pro/studyBBSAF");
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
@@ -116,23 +116,28 @@ public class CyberCamStudyBBSController {
 	 */
 	//학습게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/studyBBSDetail","/cyberCampus/pro/studyBBSDetail"}, method=RequestMethod.GET)
-	public String studyBBSDetail(){
+	public String studyBBSDetail(int lr_no,Model model){
 		String url = "/cyberCampus/common/studyBBSDetail";
+		
+		LearningRoomViewVO learningRoomViewVO = cyberCamStudyBBSService.getStudyBBSDetail(lr_no);
+		
+		model.addAttribute("learningRoomViewVO", learningRoomViewVO);
 		
 		return url;
 	}
 	
 	/**
-	 * 개인 정보 조회
+	 * 학습게시판삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학습게시판삭제
-	@RequestMapping(value="/common/studyBBSDelete", method=RequestMethod.GET)
-	public String studyBBSDelete(){
-		String url="";
+	@RequestMapping(value="/cyberCompus/pro/studyBBSDelete", method=RequestMethod.GET)
+	public String studyBBSDelete(Learning_RoomVO learning_RoomVO){
+		String url="redirect:/cyberCampus/pro/studyBBSList";
 		
+		cyberCamStudyBBSService.deleteStudyBBS(learning_RoomVO);
 		return url;
 	}
 	/**

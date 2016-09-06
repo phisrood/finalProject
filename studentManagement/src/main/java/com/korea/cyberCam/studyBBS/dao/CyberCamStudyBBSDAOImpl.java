@@ -53,8 +53,8 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getStudyBBSDetail() {
-		
+	public LearningRoomViewVO getStudyBBSDetail(int lr_no) {
+		return (LearningRoomViewVO) sqlSession.selectOne("LearningRoom.studyBBSDetail",lr_no);
 	}
 	/**
 	 * 학습자료실 등록
@@ -84,9 +84,8 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void deleteStudyBBS() {
-		// TODO Auto-generated method stub
-		
+	public void deleteStudyBBS(Learning_RoomVO learning_RoomVO) {
+		sqlSession.delete("LearningRoom.studyBBSDelete",learning_RoomVO);
 	}
 	/**
 	 * 개인 정보 조회
