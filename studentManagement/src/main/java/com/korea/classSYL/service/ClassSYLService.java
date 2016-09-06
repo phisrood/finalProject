@@ -1,5 +1,6 @@
 package com.korea.classSYL.service;
 
+import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
 
 /**
@@ -43,15 +44,7 @@ public interface ClassSYLService {
 	 */
 	//강의계획서 삭제
 	public void deleteClassSYL();
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//강의계획서 조회
-	public void getClassSYLInfo();
-	
+
 	/**
 	 * 강의계획서 조회(교수)
 	 * @param LectureViewVO
@@ -59,5 +52,13 @@ public interface ClassSYLService {
 	 * @throws 
 	 */
 	public LectureViewVO getLectureInfo(String lec_no);
+	
+	/**
+	 * 강의계획서 조회(교수)
+	 * @param Class_SYLLBUSVO
+	 * @return 
+	 * @throws 
+	 */
+	public Class_SYLLBUSVO getClassSYLInfo(String lec_no);
 	
 }

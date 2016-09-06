@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 
@@ -63,14 +64,15 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 		
 	}
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getClassSYLInfo() {
-		// TODO Auto-generated method stub
+	public Class_SYLLBUSVO getClassSYLInfo() {
+		return null;
 		
 	}
 	@Override
