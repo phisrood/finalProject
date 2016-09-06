@@ -34,7 +34,7 @@ public class CyberCamMainController {
 	 */
 	//사이버캠퍼스 메인
 	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method=RequestMethod.POST)
-	public String cyberClassMainByStu(HttpSession session,String pro_lec_no,@RequestParam(value="lec_no" ,defaultValue="")int stu_lec_no){
+	public String cyberClassMainByStu(HttpSession session,String pro_lec_no,@RequestParam(value="lec_no" ,defaultValue= "0",required=false)int stu_lec_no){
 		String url="/cyberCampus/common/cyberClassMain";
 		
 		// 세션
