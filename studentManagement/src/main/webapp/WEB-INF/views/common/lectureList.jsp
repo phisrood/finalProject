@@ -40,7 +40,7 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 수강편람조회
+				<i class="fa fa-calendar"></i> 강의조회
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>
@@ -59,40 +59,28 @@
 							<th>개설학과</th>
 							<th>이수구분</th>
 							<th>학점</th>
-							<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-								<th>승인여부</th>
-								<th>수정</th>
-								<th>강의개설</th>
-							</c:if>
+							<th>담당교수</th>
+							<th>분반</th>
+							<th>인원</th>
+							<th>시간</th>
+							<th>강의계획서</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="lb" items="${crsesBookList}">
+						<c:forEach var="lecture" items="${lectureList}">
 							<tr>
-								<td>${lb.lb_no }</td>
-								<td>${lb.lb_name }</td>
-								<td>${lb.lb_department }</td>
-								<td>${lb.lb_completekind }</td>
-								<td>${lb.lb_credit }</td>
-								<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-									<td><c:choose>
-											<c:when test="${lb.lb_approvalyn=='Y'}">
-										승인
-									</c:when>
-											<c:when test="${lb.lb_approvalyn=='N' }">
-										대기
-									</c:when>
-											<c:otherwise>
-										반려
-									</c:otherwise>
-										</c:choose></td>
-									<td>
-										<button onclick="updateCrsesBook('${lb.lb_no}');">수정</button>
-									</td>
-									<td><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>
-								</c:if>
+								<td>${lecture.lec_lb_no }</td>
+								<td>${lecture.lb_name }</td>
+								<td>${lecture.lb_department }</td>
+								<td>${lecture.lb_completekind }</td>
+								<td>${lecture.lb_credit }</td>
+								<td>${lecture.use_name }</td>
+								<td>${lecture.lec_placement }</td>
+								<td>${lecture.lec_persons }</td>
+								<td>${lecture.classroom }</td>
+								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>
 							</tr>
-
+						
 						</c:forEach>
 					</tbody>
 				</table>
@@ -101,5 +89,10 @@
 		</div>
 	</div>
 </div>
+<script>
+function lecturePlan(lec_no){
+	location.href='/stu/classSYL?lec_no='+lec_no;
+}
+</script>
 <!-- /page content -->
 

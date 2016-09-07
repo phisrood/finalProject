@@ -108,7 +108,7 @@
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
-		                      <li><a href="crsesBookList">수강편람조회</a></li>
+		                      <li><a href="/stu/lectureList">강의조회</a></li>
 		                      
 		                    </ul>
 		                  </li>

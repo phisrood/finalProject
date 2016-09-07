@@ -122,7 +122,7 @@ public class ClassSYLController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/pro/classSYL", method = RequestMethod.GET)
+	@RequestMapping(value = {"/pro/classSYL","/stu/classSYL"}, method = RequestMethod.GET)
 	public String getLecturePlan(String lec_no, Model model, HttpSession session) throws IOException, DocumentException {
 		String url = "/common/classSYL";
 		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
@@ -140,7 +140,7 @@ public class ClassSYLController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/pro/classSYLtoPdf", method = RequestMethod.POST)
+	@RequestMapping(value = {"/pro/classSYLtoPdf","/stu/classSYLtoPdf"}, method = RequestMethod.POST)
 	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
