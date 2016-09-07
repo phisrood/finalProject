@@ -57,6 +57,7 @@ System.out.print(referer);
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/pro/js/default.js"></script>
     
 
 
@@ -82,18 +83,18 @@ System.out.print(referer);
               <div class="profile_info">
                 <span>환영합니다,</span>
                 <h2>${professorInfo.use_name }</h2>
-                <br>
+                <br/>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
-            <br />
+            <br/>
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>${professorInfo.dep_name } &nbsp; ${professorInfo.pro_position }${professorInfo.pro_stat }중</h3>  <!-- 학과 -->
-                <br>
+                <br/>
                 <ul class="nav side-menu">
                
 	                  	  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>

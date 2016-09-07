@@ -20,9 +20,8 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -141,7 +140,7 @@ public class ClassSYLController {
 	 * @throws
 	 */
 	@RequestMapping(value = {"/pro/classSYLtoPdf","/stu/classSYLtoPdf"}, method = RequestMethod.POST)
-	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response) throws IOException, DocumentException {
+	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
 		     
@@ -158,16 +157,18 @@ public class ClassSYLController {
 		 
 		// Document 오픈
 		document.open();
-		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
+		
 		     
 		// CSS
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
-		CssFile cssFile = helper.getCSS(new FileInputStream("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/common/css/default.css"));
+		String cssPath = request.getServletContext().getRealPath("/resources/common/css/default.css");
+		CssFile cssFile = XMLWorkerHelper.getCSS(new FileInputStream(cssPath));
 		cssResolver.addCss(cssFile);
 		     
 		// HTML, 폰트 설정
 		XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider(XMLWorkerFontProvider.DONTLOOKFORFONTS);
-		fontProvider.register("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/fonts/MALGUN.TTF", "MalgunGothic"); // MalgunGothic은 alias,
+		String fontPath = request.getServletContext().getRealPath("/resources/fonts");
+		fontProvider.register(fontPath+"/MALGUN.TTF", "MalgunGothic"); // MalgunGothic은 alias,
 		CssAppliers cssAppliers = new CssAppliersImpl(fontProvider);
 		 
 		HtmlPipelineContext htmlContext = new HtmlPipelineContext(cssAppliers);

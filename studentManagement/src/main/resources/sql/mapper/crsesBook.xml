@@ -109,16 +109,16 @@
 		SELECT *
 		FROM
 		LECTURE_VIEW
-		<if test="use_id != null">
-			WHERE LEC_LN_PRO_USE_ID = #{use_id}
+		<if test="_parameter != null">
+			WHERE LEC_LN_PRO_USE_ID = #{_parameter}
 		</if>
 	</select>
 
 	<select id="getLectureTimeList" parameterType="str" resultType="lectureTimeView">
 		SELECT *
 		FROM LECTURE_TIME_VIEW
-		<if test="use_id != null">
-			WHERE LEC_LN_PRO_USE_ID = #{use_id}
+		<if test="_parameter != null">
+			WHERE LEC_LN_PRO_USE_ID = #{_parameter}
 		</if>
 	</select>
 

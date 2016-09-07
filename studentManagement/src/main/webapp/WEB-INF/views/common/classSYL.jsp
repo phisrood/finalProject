@@ -70,8 +70,8 @@
 			교재
 		</th>
 		<td colspan='3'>
-			서명:${classSYL.cs_bookname },${classSYL.cs_bookversion }<br/>
-			저자:${classSYL.cs_writer }<br/>
+			서명:<p>${classSYL.cs_bookname },${classSYL.cs_bookversion }</p>
+			저자:<p>${classSYL.cs_writer }</p>
 			출판사:${classSYL.cs_publisher }
 		</td>
 	</tr>
@@ -87,7 +87,6 @@
 		<th>출석</th>
 		<td>${classSYL.cs_attent }</td>
 	</tr>
-
 </table>
 </div>
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
@@ -99,17 +98,8 @@
 </form>
 <a href="/pro/lectureList"><button>뒤로</button></a>
 <script type="text/javascript">
-	function updateSyl(lec_no){
-		location.href='/pro/updateSyl?lec_no='+lec_no;
-	};
-	function toPdf(){
-		$("#htmlTag").val($("#tbl").html());
-		document.pdfForm.method="post";
-		document.pdfForm.action="/stu/classSYLtoPdf";
-		document.pdfForm.target="_blank";
-		document.pdfForm.submit(); 
-	}
-	
+	$("#htmlTag").val($("#tbl").html());
+	alert($("#htmlTag").val());
 </script>
 </body>
 
