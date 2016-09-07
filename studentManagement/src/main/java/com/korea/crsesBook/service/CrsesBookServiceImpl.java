@@ -125,9 +125,9 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 		crsesBookDAO.insertClassroomUsetime(timeList);
 	}
 	@Override
-	public List<LectureViewVO> getLectureList() {
-		List<LectureViewVO> lectureList = crsesBookDAO.getLectureList();
-		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTimeList();
+	public List<LectureViewVO> getLectureList(String use_id) {
+		List<LectureViewVO> lectureList = crsesBookDAO.getLectureList(use_id);
+		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTimeList(use_id);
 		for(LectureViewVO lecture : lectureList){
 			String classroom = "";
 			for(Lecture_Time_ViewVO time : timeList){

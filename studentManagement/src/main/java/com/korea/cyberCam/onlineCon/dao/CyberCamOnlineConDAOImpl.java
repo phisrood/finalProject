@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 
 /**
@@ -76,7 +77,7 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	 * @throws
 	 */
 	@Override
-	public List<Online_ContentsVO> getOnlineConList(String lec_no) {
+	public List<Online_ContentsVO> getOnlineConList(int lec_no) {
 		return (List<Online_ContentsVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConList", lec_no);
 	}
 
@@ -84,6 +85,16 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	public int insertOnlineConFile(Attachment_FileVO attachFileVO) {
 		sqlSession.insert("CyberCamOnlineContentsDAO.insertOnlineConFile",attachFileVO);
 		return (int) sqlSession.selectOne("CyberCamOnlineContentsDAO.getCurrval");
+	}
+
+	@Override
+	public List<Online_Con_ViewVO> getOnlineConWatchList(int lec_no) {
+		return (List<Online_Con_ViewVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConWatchList", lec_no);
+	}
+
+	@Override
+	public Attachment_FileVO getAF(int af_no) {
+		return (Attachment_FileVO) sqlSession.selectOne("CyberCamOnlineContentsDAO.getAF", af_no);
 	}
 
 }

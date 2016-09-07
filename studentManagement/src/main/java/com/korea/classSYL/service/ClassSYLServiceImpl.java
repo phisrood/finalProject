@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.classSYL.dao.ClassSYLDAO;
+import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 
@@ -62,17 +63,6 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 		// TODO Auto-generated method stub
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void getClassSYLInfo() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	//강의계획서
 	@Override
@@ -88,5 +78,12 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 		lecture.setClassroom(classroom);
 		return lecture;
 	}
+	//강의계획서
+	@Override
+	public Class_SYLLBUSVO getClassSYLInfo(String lec_no) {
+		return  classSYLDAO.getClassSYLInfo(lec_no);
+		
+	}
+
 
 }

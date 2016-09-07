@@ -103,14 +103,15 @@
 						</tr>
 						<tr>
 							<th>이수가능학점</th>
-							<td>????</td>
+							<td>${limitSemes }학점
+							<c:if test="${limitSemes > 18 }"><br>(성적우수 +2)</c:if></td>
 						</tr>
 						<tr>
 							<th>직전학기성적</th>
-							<td>????</td>
+							<td>${score }</td>
 						</tr>
 						<tr>
-							<td colspan="2"><button type="button" class="btn btn-dark">시간표보기 조회</button></td>
+							<td colspan="2"><button type="button" class="btn btn-dark">시간표 확인</button></td>
 						</tr>
 						
 					</table>

@@ -120,12 +120,13 @@ public interface CrsesBookDAO {
 	public void insertClassroomUsetime(List<ClassRoom_UsetimeVO> timeList);
 	
 	/**
+	 * @param use_id 
 	 * 강의조회(교수)
 	 * @param 
 	 * @return List<LectureViewVO>
 	 * @throws 
 	 */
-	public List<LectureViewVO> getLectureList();
+	public List<LectureViewVO> getLectureList(String use_id);
 	
 	/**
 	 * 강의조회(교수)
@@ -133,7 +134,7 @@ public interface CrsesBookDAO {
 	 * @return List<LectureViewVO>
 	 * @throws 
 	 */
-	public List<Lecture_Time_ViewVO> getLectureTimeList();
+	public List<Lecture_Time_ViewVO> getLectureTimeList(String use_id);
 	
 	
 }

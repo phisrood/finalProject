@@ -15,7 +15,13 @@
 	<select id="getCurrval" resultType="int">
 		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
 	</select>
-	<select id="getOnlineConList" parameterType="str" resultType="onlineContentsVO">
+	<select id="getOnlineConList" parameterType="int" resultType="onlineContentsVO">
 		SELECT * FROM ONLINE_CONTENTS WHERE OC_LEC_NO = #{lec_no}
+	</select>
+	<select id="getOnlineConWatchList" parameterType="int" resultType="onlineContentWatchVO">
+		SELECT * FROM ONLINE_CON_VIEW WHERE WS_OC_LEC_NO = #{lec_no}
+	</select>
+	<select id="getAF" parameterType="int" resultType="attachment">
+		SELECT * FROM ATTACHMENT_FILE WHERE AF_NO = #{af_no}
 	</select>
 </mapper>

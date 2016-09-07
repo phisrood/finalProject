@@ -13,7 +13,30 @@
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script>
+	$(function(){
+		$("#search").click(function(){
+			var afno = $(this).attr("name");
+			$.ajax({
+				method:"get",
+				type : "json",
+				url : "/cyberCampus/stu/onlineConView",
+				dataType : "text",
+				data:{"af_no":afno},
+				error : function(){
+					alert("에러!");
+				},
+				success : function(data){
+					var html = "<video src=";
+					html += "'"+data+"'";
+					html += " controls loop autoplay/>";
+					alert(data);
+					$("#onlineVideo").html(html);
+				}
+			});
+		});
+	});
+</script>
 <div class="row">
 	<!-- 온라인 콘텐츠 ( 학과 ) -->
 	<div style="float: left; width: 100%;">
@@ -49,13 +72,16 @@
 		<table id="datatable" class="table table-striped table-bordered">
 			<thead>
 				<tr>
-					<th>학습 내용</th>
+					<th>강의 제목</th>
 					<th>학습 기간 / 출석 인정 시간</th>
-					<th>진도</th>
+					<th>출석</th>
 					<th>강의 보기</th>
-					<th>삭제</th>
 				</tr>
 			</thead>
+			
+			<c:forEach var="onlineConWatch" items="${onlineConWatchList }">
+				${onlineConWatch.ws_oc_no},${onlineConWatch.ws_stud_use_id},${onlineConWatch.ws_oc_lec_no},${onlineConWatch.ws_attendyn},${onlineConWatch.ws_watchtime}
+			</c:forEach>
 			
 			<tbody>
 			<c:forEach var="onlineCon" items="${onlineConList }">
@@ -65,18 +91,15 @@
 				<tr>
 					<td>${onlineCon.oc_content }</td>
 					<td> 
-						${onlineCon.oc_startdate } ~ ${onlineCon.oc_enddate }  /  ${onlineCon.oc_time } 시간
+						${onlineCon.oc_startdate } ~ ${onlineCon.oc_enddate }  /  ${onlineCon.oc_time } 분
 					</td>
 					<td>x</td>
-					<td><button onclick="onlineConView();">보기</button></td>
-					<td><button>삭제</button></td>
-				</tr>
-			</c:forEach>
-				<tr>
-					<td colspan="5">
-						<a href="" style="text-decoration: none">강의 등록</a>
+					<td>
+					<button type="button" class="btn btn-info btn-sm" id="search" name="${onlineCon.oc_af_no}"
+						data-toggle="modal" data-target="#myModal" onclick="modalVideo(${onlineCon.oc_af_no});">보기</button>
 					</td>
 				</tr>
+			</c:forEach>
 				<tr>
 					<td colspan="5"><br>
 					<br>
@@ -96,6 +119,26 @@
 				+ ",resizable=1,scrollbars=1");
 	}
 </script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="title">온라인콘텐츠</h4>
+			</div>
+			<div id="onlineVideo" class="modal-body">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					id="close">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script src="/stu/js/jquery.dataTables.min.js"></script>
 <script src="/stu/js/dataTables.bootstrap.min.js"></script>
 <script src="/stu/js/dataTables.buttons.min.js"></script>

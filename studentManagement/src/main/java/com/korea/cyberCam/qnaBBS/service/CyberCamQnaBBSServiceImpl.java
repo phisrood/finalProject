@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.korea.cyberCam.qnaBBS.dao.CyberCamQnaBBSDAO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
 /**
@@ -43,7 +44,7 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	
 	
 	@Override
-	public List<Question_BoardVO> getQnaBBSList(Map<String, String> lecNoInContext) {
+	public	List<Question_BoardListVO> getQnaBBSList(Map<String, String> lecNoInContext) {
 		return cyberCamQnaBBSDAO.getQnaBBSList(lecNoInContext);
 		
 	}

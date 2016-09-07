@@ -60,12 +60,12 @@
                  	</tr>
                	</thead>
                	<tbody>
-               	 <c:forEach items="${question_BoardVO }" var="question_BoardVO">
+               	 <c:forEach items="${question_BoardListVO }" var="question_BoardListVO">
                  	<tr>
-                 	  	<td>${question_BoardVO.qb_no}</td>
-                   		<td>${question_BoardVO.qb_title}</td>
-                   		<td>${question_BoardVO.qb_date}</td>
-                   		<td>${question_BoardVO.qb_stud_use_id}</td>
+                 	  	<td>${question_BoardListVO.qb_no}</td>
+                   		<td>${question_BoardListVO.qb_title}</td>
+                   		<td>${question_BoardListVO.qb_date}</td>
+                   		<td>${question_BoardListVO.qb_stud_use_id}</td>
                  	</tr>
                  </c:forEach>
                	</tbody>

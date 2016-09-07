@@ -32,6 +32,5 @@
 		<pattern>/common/pwdSearch</pattern>
 		<pattern>/pro/updateAdviceConfirmForm*</pattern>
 		<pattern>/common/messageReplyForm</pattern>
-		<pattern>/**/lecturePlan*</pattern>
 	</excludes>
 </decorators>
