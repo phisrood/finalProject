@@ -172,7 +172,7 @@ public class AdviceController {
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
-	 * @return
+	 * @return0
 	 * @throws
 	 */
 	// 상담 신청 삭제

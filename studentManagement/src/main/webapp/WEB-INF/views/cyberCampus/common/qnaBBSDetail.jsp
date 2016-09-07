@@ -39,40 +39,58 @@
 			<div class="x_panel_big">
 				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
+					
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" value="중간 고사 강의실 질문">
+							<input name="title" type="text" size="167" readonly="readonly" value="${question_BoardVO.qb_title }">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							<input name="writer" type="text" size="75" value="한돈희">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="75" value="2016-08-09 09:00:00">
+							<input name="writer" type="text" size="75" value="${question_BoardVO.qb_stud_use_id }">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="45" value="${question_BoardVO.qb_date }"">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
+							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">${question_BoardVO.qb_af_no }</a></div>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div class="x_panel_big">중간 고사 강의실이 090511이 맞나여?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+							<div class="x_panel_big">${question_BoardVO.qb_content }<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 							<div align="center" style="float: left; width: 6%;"><br><br>
-                        		<input type="text" id="" required="required" size="5" value="한돈희"  disabled="disabled" style="text-align: center;">
+                        		<input type="text" id="" required="required" size="5" value="${question_BoardVO.qb_stud_use_id }"  disabled="disabled" style="text-align: center;">
                     		</div>
-							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br></div>
-							<div style="float: right; width: 4%;">
-								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
+							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br>
+							<c:if test="${auth eq 'ROLE_PRO'}">	
+								<input type="text" name="comment" style="float: left; width: 90%;" />
+							</c:if>
+							<c:if test="${auth eq 'ROLE_STU'}">	
+								<input type="text" name="comment" readonly="readonly" style="float: left; width: 90%;" />
+							</c:if>
 							</div>
+							
+							
+							<div  style="float: right; width: 4%;">
+							<c:if test="${auth eq 'ROLE_PRO'}">
+								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
+							</c:if>
+							</div>
+							
 						</td>
 					</tr>
 				</table>
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 86%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<a href="/cyberCampus/stu/qnaBBSList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				</c:if>
+				<c:if test="${auth eq 'ROLE_PRO'}">	
+				<a href="/cyberCampus/pro/qnaBBSList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
 				
