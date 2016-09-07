@@ -99,7 +99,7 @@
 <a href="/pro/lectureList"><button>뒤로</button></a>
 <script type="text/javascript">
 	$("#htmlTag").val($("#tbl").html());
-	alert($("#htmlTag").val());
+
 </script>
 </body>
 

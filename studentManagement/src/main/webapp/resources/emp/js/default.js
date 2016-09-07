@@ -163,9 +163,9 @@ function updateClassApp(form){
 function updateSyl(lec_no){
 	location.href='/emp/updateSyl?lec_no='+lec_no;
 };
-function toPdf(lec_no){
+function toPdf(){
 	document.pdfForm.method="post";
-	document.pdfForm.action="/emp/classSYLtoPdf?lec_no="+lec_no;
+	document.pdfForm.action="/emp/classSYLtoPdf";
 	document.pdfForm.target="_blank";
 	document.pdfForm.submit(); 
 }
