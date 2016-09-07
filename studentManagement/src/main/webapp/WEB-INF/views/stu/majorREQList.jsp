@@ -42,21 +42,57 @@
 	
 	$(function(){
 		$.ajax({
-			url:"",
-			method:"",
-			type:"",
+			url:"/stu/minorList",
+			method:"get",
+			type:"json",
 			success:function(data){
-				alert("success");
-			},
-			error:function(){
-				alert("에러");
+				var htmlCode = "";
+				
+				$.each(data, function(index, value){
+					htmlCode += "<tr>"; 
+					htmlCode += "<td>"+(index+1)+"</td>"; //순번
+					if(value.sb_mk_no == '2'){ //1.주전공 2.부전공 3.다전공
+						htmlCode += "<td>부전공신청</td>"; 
+					}else if(value.sb_mk_no =='3'){
+						htmlCode += "<td>다전공신청</td>";
+					}
+					htmlCode += "<td>"+value.sb_requestdate+"</td>"; //신청일자
+					htmlCode += "<td>${loginUser.use_name}</td>"; //신청인
+					htmlCode += "<td>"+value.sb_majordepartment+"</td>"; //소속학과
+					htmlCode += "<td>"+value.sb_dep_name+"</td>"; //신청학과
+					
+					//소속학과 승인
+					if(value.sb_majordepartmentsubmityn == '0'){
+						htmlCode += "<td class='sub0'>승인대기</td>"; 
+					}else if(value.sb_majordepartmentsubmityn =='1'){
+						htmlCode += "<td class='sub1'>승인</td>";
+					}else if(value.sb_majordepartmentsubmityn =='2'){
+						htmlCode += "<td class='sub2'>반려</td>";
+					}
+					
+					//신청학과 승인
+					if(value.sb_requestdepartmentyn == '0'){
+						htmlCode += "<td class='sub0'>승인대기</td>";
+					}else if(value.sb_requestdepartmentyn =='1'){
+						htmlCode += "<td class='sub1'>승인</td>";
+					}else if(value.sb_requestdepartmentyn =='2'){
+						htmlCode += "<td class='sub2'>반려</td>";
+					}
+					
+					htmlCode += "</tr>";
+				});
+				
+				$("#result").html(htmlCode);
 			}
-			
 		});
 		
 	});
 </script>
-			
+<style>
+	.sub0{color:#00af00;}
+	.sub1{color:blue;}
+	.sub2{color:red;}
+</style>
            
             <div class="row">
             <!-- 학적변동현황:학생 -->
@@ -71,26 +107,19 @@
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
+                          <th>순번</th>
                           <th>구분</th>
-                          <th>년도</th>
-                          <th>학기</th>
+                          <th>신청일자</th>
                           <th>신청인</th>
+                          <th>소속학과</th>
                           <th>신청학과</th>
                           <th>소속학과승인</th>
                           <th>신청학과승인</th>
                         </tr>
                       </thead>
 		
-                      <tbody>
-                      	<tr>
-                      	  <td>1</td>
-                      	  <td>2016</td>
-                          <td>2</td>
-                          <td>한돈희</td>
-                          <td>컴퓨터공학과</td>
-                          <td>승인대기</td>
-                          <td>승인완료</td>
-                        </tr>
+                      <tbody id="result">
+
                       </tbody>
                     </table>
                   </div>

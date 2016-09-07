@@ -103,9 +103,8 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getBelongMajorREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SubmitVO> getBelongMajorREQList(String dep_no) {
+		return session.selectList("Major.getBelongREQList", dep_no);
 	}
 	/**
 	 * 개인 정보 조회
@@ -125,9 +124,8 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public String getOthorsMajorREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SubmitVO> getOthorsMajorREQList(String dep_no) {
+		return session.selectList("Major.getOthorsREQList", dep_no);
 	}
 	/**
 	 * 개인 정보 조회

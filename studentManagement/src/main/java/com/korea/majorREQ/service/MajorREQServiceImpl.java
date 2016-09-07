@@ -42,15 +42,11 @@ public class MajorREQServiceImpl implements MajorREQService{
 	@Override
 	public void insertBelongMinorREQ(Student_InfoViewVO studentInfo, SubmitVO submitVO, int selec) {
 		
-		if(selec == 1){//부전공
 			submitVO.setSb_stud_use_id(studentInfo.getUse_id()); //신청자
 			submitVO.setSb_major_dep_no(studentInfo.getDep_no()); //전공 번호
 			submitVO.setSb_majordepartment(studentInfo.getDep_name()); //전공 이름
-			
+			submitVO.setSb_mk_no(Integer.toString(selec));
 			dao.insertBelongMinorREQ(submitVO);
-		}else if(selec == 2){//다전공
-			
-		}
 	}
 	/**
 	 * 개인 정보 조회
@@ -114,9 +110,8 @@ public class MajorREQServiceImpl implements MajorREQService{
 	 * @throws 
 	 */
 	@Override
-	public String getBelongMajorREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SubmitVO> getBelongMajorREQList(String depno) {
+		return dao.getBelongMajorREQList(depno);
 	}
 	/**
 	 * 개인 정보 조회
@@ -136,9 +131,9 @@ public class MajorREQServiceImpl implements MajorREQService{
 	 * @throws 
 	 */
 	@Override
-	public String getOthorsMajorREQList() {
+	public List<SubmitVO> getOthorsMajorREQList(String depno) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getOthorsMajorREQList(depno);
 	}
 	/**
 	 * 개인 정보 조회
@@ -222,4 +217,5 @@ public class MajorREQServiceImpl implements MajorREQService{
 	public List<SubmitVO> getReqList(String id) {
 		return dao.getReqList(id);
 	}
+
 }
