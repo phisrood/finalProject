@@ -110,11 +110,10 @@
 </div>
 <div class="button-location">
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-<button  onclick="updatePlan('${lecture.lec_no }');">강의계획서 변경</button>
 <button class="btn btn-dark" onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
 </c:if>
+<a href="/pro/lectureList"><button class="btn btn-dark">뒤로</button></a>
 </div>
-<a href="/pro/lectureList"><button>뒤로</button></a>
 <script type="text/javascript">
 	$("#htmlTag").val($("#tbl").html());
 
