@@ -5,3 +5,20 @@
 .kor{
 	font-family: MalgunGothic;
 }
+.button-location {
+	text-align:right;
+	
+}
+#classSYL{
+	border: 1px solid #6E6D93;
+}
+#classSYL th,td{
+	font-size:15px;
+	height:40px;
+}
+#classSYL th{
+	background:#DAD9FF;
+}
+.lectureContent{
+	height:100px;
+}

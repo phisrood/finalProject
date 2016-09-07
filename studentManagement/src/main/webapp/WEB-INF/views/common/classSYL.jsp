@@ -9,8 +9,22 @@
 <title></title>
 </head>
 <body >
-<div id="tbl">
-<table border='1' class='kor'>
+<div class="row">
+		<div class="x_panel_big">
+			<div class="x_panel">
+
+				<div class="x_title">
+					<h2>강의계획서</h2>
+					<div class="clearfix"></div>
+				</div>
+		<div class="button-location">
+			<form name="pdfForm">
+			<input type=hidden id="htmlTag" name="htmlTag"/>
+			<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>	
+			</form>
+		</div>
+
+<table id="classSYL" class='kor table table-striped table-bordered dataTable no-footer' >
 	<tr>
 		<th>개설년도/학기</th>
 		<td>${lecture.lec_makeyear }/${lecture.lec_makesemester }학기</td>
@@ -36,13 +50,14 @@
 		<td>${lecture.lec_persons }</td>
 	</tr>
 	<tr>
-		<th colspan="2">담당교수</th>
-		<td colspan="2">${lecture.use_name }</td>
-	</tr>
-	<tr>
-		<th colspan="4">
-			강의계획서
+		<th>담당교수</th>
+		<td>${lecture.use_name }</td>
+		<th>
+			교재
 		</th>
+		<td>
+			도서명,저자, 판사항,출판사
+		</td>
 	</tr>
 	<tr>
 		<th colspan="4">
@@ -50,9 +65,9 @@
 		</th>
 	</tr>
 	<tr>
-		<th colspan="4">
+		<td colspan="4" class="lectureContent">
 			강의설명내용
-		</th>
+		</td>
 	</tr>
 	<tr>
 		<th colspan="4">
@@ -60,16 +75,8 @@
 		</th>
 	</tr>
 	<tr>
-		<th colspan="4">
+		<td colspan="4" class="lectureContent">
 			진행방식내용
-		</th>
-	</tr>
-	<tr>
-		<th>
-			교재
-		</th>
-		<td colspan='3'>
-			도서명,저자, 판사항,출판사
 		</td>
 	</tr>
 	<tr>
@@ -87,13 +94,13 @@
 
 </table>
 </div>
+</div>
+</div>
+<div class="button-location">
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-<button onclick="updatePlan('${lecture.lec_no }');">강의계획서 변경</button>
+<button class="btn btn-dark" onclick="updatePlan('${lecture.lec_no }');">강의계획서 변경</button>
 </c:if>
-<form name="pdfForm">
-<input type=hidden id="htmlTag" name="htmlTag"/>
-<button onclick="toPdf()">pdf로 보기</button>	
-</form>
+</div>
 
 <script type="text/javascript">
 	function toPdf(){

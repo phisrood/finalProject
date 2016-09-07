@@ -31,7 +31,7 @@ public interface CyberCamStudyBBSService {
 	 * @throws 
 	 */
 	//학습게시판 리스트
-	public List<LearningRoomViewVO> getStudyBBSList();
+	public List<LearningRoomViewVO> getStudyBBSList(String pro_lec_no);
 	/**
 	 * 학습자료게시판 상세보기
 	 * @param lr_no 
@@ -50,22 +50,23 @@ public interface CyberCamStudyBBSService {
 	//학습게시판 등록,파일업로드
 	public void insertStudyBBS(Learning_RoomVO learning_RoomVO, Attachment_FileVO attachment_FileVO);
 	/**
+	 * 학습게시판 수정
+	 * @param attachment_FileVO ,learning_RoomVO
+	 * @return 
+	 * @throws 
+	 */
+	//학습게시판 수정
+	public void updateStudyBBS(Learning_RoomVO learning_RoomVO, Attachment_FileVO attachment_FileVO);
+	/**
 	 * @param learning_RoomVO 
-	 * 개인 정보 조회
+	 * 학습게시판 삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학습게시판 삭제
 	public void deleteStudyBBS(Learning_RoomVO learning_RoomVO);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//학습게시판 수정
-	public void updateStudyBBS();
+	
 	/**
 	 * 개인 정보 조회
 	 * @param

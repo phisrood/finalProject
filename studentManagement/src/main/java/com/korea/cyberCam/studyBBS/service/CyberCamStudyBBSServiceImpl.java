@@ -39,9 +39,9 @@ public class CyberCamStudyBBSServiceImpl implements CyberCamStudyBBSService{
 	 * @throws 
 	 */
 	@Override
-	public List<LearningRoomViewVO> getStudyBBSList() {
+	public List<LearningRoomViewVO> getStudyBBSList(String pro_lec_no) {
 		
-		return cyberCamStudyBBSDAO.getStudyBBSList();
+		return cyberCamStudyBBSDAO.getStudyBBSList(pro_lec_no);
 	}
 	/**
 	 * 개인 정보 조회
@@ -86,9 +86,17 @@ public class CyberCamStudyBBSServiceImpl implements CyberCamStudyBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void updateStudyBBS() {
-		// TODO Auto-generated method stub
+	public void updateStudyBBS(Learning_RoomVO learning_RoomVO,
+			Attachment_FileVO attachment_FileVO) {
+		int lr_af_no = learning_RoomVO.getLr_af_no();
 		
+		if(lr_af_no == 0){
+			cyberCamStudyBBSDAO.insertStudyBBSFile(attachment_FileVO);
+			learning_RoomVO.setLr_af_no(attachment_FileVO.getAf_no());
+		} else if(lr_af_no != 0){
+			cyberCamStudyBBSDAO.updateStudyBBSFile(attachment_FileVO);
+		}
+		cyberCamStudyBBSDAO.updateStudyBBS(learning_RoomVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -101,5 +109,6 @@ public class CyberCamStudyBBSServiceImpl implements CyberCamStudyBBSService{
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }

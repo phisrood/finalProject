@@ -79,15 +79,6 @@ public interface NoticeService {
 	 */
 	//공지사항 등록,파일업로드
 	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO,Attachment_FileVO attachment_FileVO);
-	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//파일다운로드
-	public void getNoticeFileDown();
-	
+
 	
 }

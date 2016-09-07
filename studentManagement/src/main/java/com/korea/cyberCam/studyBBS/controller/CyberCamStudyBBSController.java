@@ -20,9 +20,13 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.cyberCam.studyBBS.service.CyberCamStudyBBSService;
 import com.korea.dto.Attachment_FileVO;
@@ -39,7 +44,7 @@ import com.korea.dto.NoticeViewVO;
 import com.korea.dto.UsersVO;
 
 @Controller
-public class CyberCamStudyBBSController {
+public class CyberCamStudyBBSController implements ApplicationContextAware {
 	
 	
 	@Autowired
@@ -55,11 +60,12 @@ public class CyberCamStudyBBSController {
 	 */
 	//학습게시판 리스트
 	@RequestMapping(value={"/cyberCampus/stu/studyBBSList","/cyberCampus/pro/studyBBSList"}, method=RequestMethod.GET)
-	public String studyBBSList(Model model){
+	public String studyBBSList(Model model, HttpSession session){
 		String url="/cyberCampus/common/studyBBSList";
 		
-		List<LearningRoomViewVO> studyBBSList = cyberCamStudyBBSService.getStudyBBSList();
+		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
 		
+		List<LearningRoomViewVO> studyBBSList = cyberCamStudyBBSService.getStudyBBSList(pro_lec_no);
 		model.addAttribute("studyBBSList", studyBBSList);
 		
 		return url;
@@ -67,7 +73,7 @@ public class CyberCamStudyBBSController {
 	/**
 	 * 학습게시판 등록FORM이동
 	 * @param
-	 * @return 
+	 * @return 	String
 	 * @throws 
 	 */
 	@RequestMapping(value="/cyberCampus/pro/studyBBSInsertForm")
@@ -79,7 +85,7 @@ public class CyberCamStudyBBSController {
 	/**
 	 * 학습게시판 등록
 	 * @param
-	 * @return 
+	 * @return  String
 	 * @throws 
 	 */
 	//학습게시판 등록
@@ -109,6 +115,33 @@ public class CyberCamStudyBBSController {
 		return url;
 	}
 	/**
+	 * 학습게시판 파일다운로드
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//학습게시판 파일다운로드
+	@RequestMapping(value="/cyberCampus/common/studyBBSFileDown", method=RequestMethod.GET)
+	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
+		File downloadFile = getFile(af_aftername);
+		if(downloadFile == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return new ModelAndView("download","downloadFile", downloadFile);
+	}
+	
+	private File getFile(String fileId) {
+		String baseDir = context.getServletContext().getRealPath("resources/pro/studyBBSAF");
+			return new File(baseDir,fileId);
+	}
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;		
+	}
+	
+	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
@@ -125,6 +158,54 @@ public class CyberCamStudyBBSController {
 		
 		return url;
 	}
+	/**
+	 * 학습게시판수정 폼이동
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/cyberCampus/pro/studyBBSUpdateForm", method=RequestMethod.GET)
+	public String updateStudyBBSForm(@RequestParam(value="studyBBS_no")String studyBBS_no, Model model){
+		String url="/cyberCampus/pro/studyBBSUpdate";
+		LearningRoomViewVO studyBBSVO= cyberCamStudyBBSService.getStudyBBSDetail(Integer.parseInt(studyBBS_no));
+		
+		model.addAttribute("studyBBSDetailViewVO", studyBBSVO);
+		
+		return url;
+	}
+	/**
+	 * 학습게시판수정
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//학습게시판수정
+	@RequestMapping(value="/cyberCampus/pro/studyBBSUpdate", method=RequestMethod.POST)
+	public String studyBBSUpdate(Learning_RoomVO learning_RoomVO, Attachment_FileVO attachment_FileVO,HttpServletRequest request, HttpSession session,
+			@RequestParam(value="file", defaultValue="")MultipartFile multipartFile, @RequestParam(value="file_no", defaultValue="0")String file_no) throws IOException{
+		String url="redirect:/cyberCampus/pro/studyBBSList";
+		
+		String uploadPath = request.getSession().getServletContext().getRealPath("resources/pro/studyBBSAF");
+		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
+		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
+		String id= usersVO.getUse_id();
+		
+		learning_RoomVO.setLr_pro_use_id(id);
+		learning_RoomVO.setLr_lec_no(Integer.parseInt(pro_lec_no.trim()));
+		if(!multipartFile.isEmpty()){
+			File studyBBSFile = new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(studyBBSFile);
+			attachment_FileVO.setAf_aftername(studyBBSFile.getName());
+			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
+			attachment_FileVO.setAf_path(uploadPath);
+		
+		}
+		
+		cyberCamStudyBBSService.updateStudyBBS(learning_RoomVO, attachment_FileVO);
+		
+		return url;
+	}
+	
 	
 	/**
 	 * 학습게시판삭제
@@ -140,30 +221,7 @@ public class CyberCamStudyBBSController {
 		cyberCamStudyBBSService.deleteStudyBBS(learning_RoomVO);
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//학습게시판수정
-	@RequestMapping(value="/common/studyBBSUpdate", method=RequestMethod.GET)
-	public String studyBBSUpdate(){
-		String url="";
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//학습게시판 파일다운로드
-	@RequestMapping(value="/common/studyBBSFileDown", method=RequestMethod.GET)
-	public String studyBBSFileDown(){
-		String url ="";
-		
-		return url;
-	}
+	
+	
+	
 }

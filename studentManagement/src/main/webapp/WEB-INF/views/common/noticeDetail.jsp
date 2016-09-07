@@ -18,28 +18,12 @@
  *    -------      -------     -------------------
  *    2016.08.30.  	이수정      		최초생성
  *    2016.09.01.  	이수정      		공지상세보기
- *    2016.09.02.  	이수정      		공지사항수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
 
 <script src="/common/js/notice.js"></script>
-<script>
-	function updateNotice(updateNoticeForm) {
-		if (document.updateNoticeForm.cn_title.value == "") {
-			alert('제목을 입력해주세요');
-			document.updateNoticeForm.cn_title.focus();
-		} else if (document.updateNoticeForm.cn_content.value == "") {
-			alert('내용을 입력해주세요');
-			document.updateNoticeForm.cn_content.focus();
-		} else {
-			document.updateNoticeForm.method = "post";
-			document.updateNoticeForm.action = "/emp/noticeUpdate";
-			document.updateNoticeForm.submit();
 
-		}
-	}
-</script>
 <!-- 공지상세보기 -->
 
 <div class="row" style="width:70%; margin-left:15%; margin-top:8%;">

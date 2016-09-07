@@ -5,9 +5,10 @@
 
 <mapper namespace="LearningRoom">
 
-	<select id="getStudyBBSAllList" resultType="learningRoomViewVO">
+	<select id="getStudyBBSAllList" parameterType="str" resultType="learningRoomViewVO">
 		SELECT	*
 		FROM 	LEARNINGROOM_VIEW
+		WHERE 	LR_LEC_NO = #{lr_lec_no}
 		ORDER BY LR_NO DESC
 	</select>
 	
@@ -43,16 +44,32 @@
 							 ,#{lr_content})
 	</insert>
 	
-	<select id="studyBBSDetail">
+	<select id="studyBBSDetail" parameterType="int" resultType="learningRoomViewVO">
 		SELECT	*
 		FROM	LEARNINGROOM_VIEW
 		WHERE	LR_NO = #{lr_no}
 	</select>
 	
+	<update id="studyBBSUpdate" parameterType="cyberStudyBoard">
+		UPDATE	LEARNING_ROOM
+		SET		LR_AF_NO = #{lr_af_no}
+			   ,LR_TITLE = #{lr_title}
+			   ,LR_CONTENT = #{lr_content}
+		WHERE	LR_NO = #{lr_no}
+	</update>
+	
+	<update id="studyBBSFileUpdate" parameterType="attachment">
+		UPDATE	ATTACHMENT_FILE
+		SET		AF_REALNAME = #{af_realname}
+				,AF_AFTERNAME = #{af_aftername}
+				,AF_PATH = #{af_path}
+		WHERE	AF_NO = #{af_no}	
+	</update>
+	
 	<delete id="studyBBSDelete">
 		DELETE 	
 		FROM 	LEARNING_ROOM
-		WHERE	LR_NO=#{lr_no}
+		WHERE	LR_NO = #{lr_no}
 	</delete>
 
 </mapper>

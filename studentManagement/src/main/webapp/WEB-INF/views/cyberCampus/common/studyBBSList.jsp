@@ -76,7 +76,7 @@
                         			</td>
                         			<td>
 				                       		<c:if test="${studyBBSList.lr_af_no == 0 }">-</c:if>
-                        					<c:if test="${studyBBSList.lr_af_no != 0 }"><a href="/common/studyBBSFileDown?af_aftername=${studyBBSList.af_aftername}"> ${studyBBSList.af_realname } </a></c:if>
+                        					<c:if test="${studyBBSList.lr_af_no != 0 }"><a href="/cyberCampus/common/studyBBSFileDown?af_aftername=${studyBBSList.af_aftername}"> ${studyBBSList.af_realname } </a></c:if>
 				                    </td>
                         			
                         			<td>${studyBBSList.lr_date }</td>

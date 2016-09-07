@@ -31,7 +31,7 @@ public interface CyberCamStudyBBSDAO {
 	 * @throws 
 	 */
 	//학습게시판 리스트
-	public List<LearningRoomViewVO> getStudyBBSList();
+	public List<LearningRoomViewVO> getStudyBBSList(String pro_lec_no);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -66,7 +66,9 @@ public interface CyberCamStudyBBSDAO {
 	 * @throws 
 	 */
 	//학습게시판 수정
-	public void updateStudyBBS();
+	public void updateStudyBBS(Learning_RoomVO learning_RoomVO);
+	//학습게시판 파일수정
+	public void updateStudyBBSFile(Attachment_FileVO attachment_FileVO);
 	/**
 	 * 개인 정보 조회
 	 * @param

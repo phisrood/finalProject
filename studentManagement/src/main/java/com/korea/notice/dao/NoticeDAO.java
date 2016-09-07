@@ -92,14 +92,5 @@ public interface NoticeDAO {
 	 */
 	//공지사항 등록
 	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//파일다운로드
-	public void getNoticeFileDown();
-	
-	
+
 }
