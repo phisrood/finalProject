@@ -78,12 +78,18 @@ public class CyberCamQnaBBSController {
 	 */
 	//qna게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
-	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no){
+	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no, Model model,HttpSession session){
 		String url = "/cyberCampus/common/qnaBBSDetail";
 			
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		
+		String auth = loginUser.getAuthority();
+		
 		
 		  Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
-				
+		  
+		  model.addAttribute("question_BoardVO",question_BoardVO);
+		  model.addAttribute("auth",auth);
 
 		return url;
 	}

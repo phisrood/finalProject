@@ -25,6 +25,15 @@ public class SubmitVO {
 	private String sb_majordepartment;
 	private String sb_majordepartmentsubmityn;
 	private String sb_requestdepartmentyn;
+	private int sb_major_dep_no;
+	
+	
+	public int getSb_major_dep_no() {
+		return sb_major_dep_no;
+	}
+	public void setSb_major_dep_no(int sb_major_dep_no) {
+		this.sb_major_dep_no = sb_major_dep_no;
+	}
 	public int getSb_no() {
 		return sb_no;
 	}

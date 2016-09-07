@@ -23,6 +23,8 @@
 	<select id="getCyberCamQnaBBSDetail" parameterType="int" resultType="questionBoard">
 	
 		SELECT *
+		FROM QUESTION_BOARD
+		WHERE qb_no =#{qb_no}
 		
 		
 	
