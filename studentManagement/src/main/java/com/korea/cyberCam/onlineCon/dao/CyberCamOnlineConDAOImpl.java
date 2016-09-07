@@ -77,7 +77,7 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	 */
 	@Override
 	public List<Online_ContentsVO> getOnlineConList(String lec_no) {
-		return null;
+		return (List<Online_ContentsVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConList", lec_no);
 	}
 
 	@Override

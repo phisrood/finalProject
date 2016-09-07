@@ -15,4 +15,7 @@
 	<select id="getCurrval" resultType="int">
 		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
 	</select>
+	<select id="getOnlineConList" parameterType="str" resultType="onlineContentsVO">
+		SELECT * FROM ONLINE_CONTENTS WHERE OC_LEC_NO = #{lec_no}
+	</select>
 </mapper>

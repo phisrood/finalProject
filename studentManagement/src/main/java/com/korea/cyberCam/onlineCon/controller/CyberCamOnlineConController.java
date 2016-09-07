@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -104,12 +105,14 @@ public class CyberCamOnlineConController {
 	 */
 	//온라인콘텐츠 조회(학생)
 	@RequestMapping(value={"/cyberCampus/common/onlineConList"})
-	public String onlineConListStu(HttpSession session){
-		String url = "/cyberCampus/common/onlineConList";
+	public String onlineConListStu(HttpSession session,Model model){
+		String url = "/cyberCampus/stu/onlineConList";
 		String lec_no  =  (String) session.getAttribute("pro_lec_no");
 		
 		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
 		
+		
+		model.addAttribute("onlineConList", onlineConList);
 		return url;
 	}
 	

@@ -56,46 +56,26 @@
 					<th>삭제</th>
 				</tr>
 			</thead>
+			
 			<tbody>
+			<c:forEach var="onlineCon" items="${onlineConList }">
 				<tr>
 					<td colspan="5">1 주차</td>
 				</tr>
 				<tr>
-					<td>알고리즘 1</td>
-					<td>2016/08/08 00시00분 ~ 2016/08/09 23시59분</td>
-					<td>0분 / 25분</td>
-					<td><a
-						href="javascript:OpenWindow('UI-CC-021.jsp','800','600')"
-						style="text-decoration: none"> 보기</a></td>
-					<td><a href="" style="text-decoration: none"> 삭제</a></td>
+					<td>${onlineCon.oc_content }</td>
+					<td> 
+						${onlineCon.oc_startdate } ~ ${onlineCon.oc_enddate }  /  ${onlineCon.oc_time } 시간
+					</td>
+					<td>x</td>
+					<td><button onclick="onlineConView();">보기</button></td>
+					<td><button>삭제</button></td>
 				</tr>
+			</c:forEach>
 				<tr>
-					<td colspan="5">2 주차</td>
-				</tr>
-				<tr>
-					<td colspan="5"><a href="" style="text-decoration: none">
-							강의 등록</a></td>
-				</tr>
-				<tr>
-					<td colspan="5">3 주차</td>
-				</tr>
-				<tr>
-					<td colspan="5"><a href="" style="text-decoration: none">
-							강의 등록</a></td>
-				</tr>
-				<tr>
-					<td colspan="5">4 주차<br></td>
-				</tr>
-				<tr>
-					<td colspan="5"><a href="" style="text-decoration: none">
-							강의 등록</a></td>
-				</tr>
-				<tr>
-					<td colspan="5">5 주차</td>
-				</tr>
-				<tr>
-					<td colspan="5"><a href="" style="text-decoration: none">
-							강의 등록</a></td>
+					<td colspan="5">
+						<a href="" style="text-decoration: none">강의 등록</a>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="5"><br>
