@@ -1,4 +1,11 @@
 package com.korea.majorREQ.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.korea.dto.Student_InfoViewVO;
+import com.korea.dto.SubmitVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -20,13 +27,16 @@ public interface MajorREQService {
 	///////////////////////부전공///////////////////////
 	
 	/**
+	 * @param selec 
+	 * @param submitVO 
+	 * @param studentInfo 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//부전공 신청
-	public String insertBelongMinorREQ();
+	public void insertBelongMinorREQ(Student_InfoViewVO studentInfo, SubmitVO submitVO, int selec);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -102,4 +112,9 @@ public interface MajorREQService {
 	 */
 	//타학과 다전공 신청 승인/반려
 	public String getOthorsMajorREQDecide();
+	
+	//점수
+	public Map<String, Object> getScore(String id);
+	//부/다전공 신청리스트출력
+	public List<SubmitVO> getReqList(String id);
 }

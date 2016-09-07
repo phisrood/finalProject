@@ -1,4 +1,10 @@
 package com.korea.majorREQ.dao;
+
+import java.util.List;
+
+import com.korea.dto.ScoreViewVO;
+import com.korea.dto.SubmitVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -26,7 +32,7 @@ public interface MajorREQDAO {
 	 * @throws 
 	 */
 	//부전공 신청
-	public String insertBelongMinorREQ();
+	public void insertBelongMinorREQ(SubmitVO submitVO);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -102,4 +108,9 @@ public interface MajorREQDAO {
 	 */
 	//타학과 다전공 신청 승인/반려
 	public String getOthorsMajorREQDecide();
+	
+	//전체성적구하기
+	public List<ScoreViewVO> getScoreList(String id);
+	//리스트
+	public List<SubmitVO> getReqList(String id);
 }
