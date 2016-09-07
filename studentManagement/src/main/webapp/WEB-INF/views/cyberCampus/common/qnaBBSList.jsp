@@ -63,7 +63,7 @@
                	 <c:forEach items="${question_BoardListVO }" var="question_BoardListVO">
                  	<tr>
                  	  	<td>${question_BoardListVO.qb_no}</td>
-                   		<td>${question_BoardListVO.qb_title}</td>
+                   		<td><a href="/cyberCampus/stu/qnaBBSDetail?qb_no=${question_BoardListVO.qb_no}">${question_BoardListVO.qb_title}</a></td>
                    		<td>${question_BoardListVO.qb_date}</td>
                    		<td>${question_BoardListVO.qb_stud_use_id}</td>
                  	</tr>

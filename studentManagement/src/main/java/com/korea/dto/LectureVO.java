@@ -11,7 +11,7 @@ package com.korea.dto;
  * lec_credit : 학점<br>
  * lec_placement : 분반<br>
  * lec_persons : 인원<br>
- * 
+ * lec_persons_count : 신청인원
  * 
  * @version 한돈희, 1.0, 2016.08.24, 초기 작성
  * @author 한돈희
@@ -27,6 +27,18 @@ public class LectureVO {
 	private int lec_credit;
 	private int lec_placement;
 	private int lec_persons;
+	private String lec_persons_count;
+	
+	public String getLec_persons_count() {
+		return lec_persons_count;
+	}
+	public void setLec_persons_count(String lec_persons_count) {
+		this.lec_persons_count = lec_persons_count;
+	}
+	
+	
+	
+	
 	public String getLec_no() {
 		return lec_no;
 	}

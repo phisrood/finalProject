@@ -35,13 +35,18 @@ public interface CyberCamQnaBBSService {
 	//qna게시판 리스트
 	public 	List<Question_BoardListVO> getQnaBBSList(Map<String, String> lecNoInContext);
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//qna게시판 상세보기
-	public void getQnaBBSDetail();
+	public Question_BoardVO getQnaBBSDetail(int qb_no);
+	
+	
+	
+	
 	/**
 	 * 개인 정보 조회
 	 * @param

@@ -71,11 +71,16 @@
 				</table>
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
+			<div style="float: left; width: 86%;">
 				<button type="button" class="btn btn-default btn-sm">목 록</button>
 			</div>
 			<div style="float: right; width: 6%;">
+				
 				<button type="button" class="btn btn-default btn-sm">삭 제</button>
+			</div>
+			<div style="float: right; width: 6%;">
+				
+				<button type="button" class="btn btn-default btn-sm">수 정</button>
 			</div>
     </div>
     <!-- Datatables -->

@@ -119,9 +119,19 @@
 	학수번호 lec_lb_no; -->
 <!--  lec_makesemester 개설학기
 	lec_makeyear  -->
-	
+					
 	
                       <tbody>
+                      <c:choose>
+                      	<c:when test="${empty student_InquiryList_ViewVO}">
+                      		<tr>
+								<td colspan='11' align="center">
+									수강신청 내역이 없습니다.
+								</td>                      		
+                      		</tr>
+                      	</c:when>
+                      
+                      	<c:otherwise>
                       <c:forEach items="${student_InquiryList_ViewVO }" var="student_InquiryList_ViewVO">
                        <form action="/cyberCampus/stu/cyberClassMain" method="post">
                        <tr>	
@@ -141,7 +151,8 @@
                       </tr>
                          </form>
                         </c:forEach>
-                            
+                            </c:otherwise>
+                            	</c:choose>
                       </tbody>
                     </table>
                   </div>
