@@ -7,5 +7,8 @@
 	<select id="getScoreViewList" parameterType="map" resultType="scoreView">
 		select * from score_view where use_id = #{id} and lec_makeyear = #{year} and lec_makesemester = #{semes}
 	</select>
-
+	
+	<select id="crsesAllList" parameterType="map" resultType="crsesListView">
+		select * from crseslist_view where lec_makeyear = #{year} and lec_makesemester = #{semes}
+	</select>
 </mapper>
