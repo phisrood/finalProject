@@ -41,7 +41,7 @@ public interface CyberCamQnaBBSDAO {
 	 * @throws 
 	 */
 	//qna게시판 상세보기
-	public void getQnaBBSDetail();
+	public  Question_BoardVO getQnaBBSDetail(int qb_no);
 	/**
 	 * 개인 정보 조회
 	 * @param

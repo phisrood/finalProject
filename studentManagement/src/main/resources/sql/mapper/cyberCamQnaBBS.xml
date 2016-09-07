@@ -20,11 +20,19 @@
 		AND  qb_lec_no = #{stu_lec_no}
 		ORDER BY QB_NO DESC
 	</select>
+	<select id="getCyberCamQnaBBSDetail" parameterType="int" resultType="questionBoard">
+	
+		SELECT *
+		
+		
+	
+	
+	</select>
 	
 	<insert id="getCyberCamQnaBBSInsert" parameterType="attachment">
 		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
 		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_aftername},#{af_realname},#{af_path})
-		
+
 	</insert>
 	
 	<select id="getCyberCamQnaBBSSelectAF_NO" resultType="int">

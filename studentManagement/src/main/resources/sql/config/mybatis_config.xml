@@ -93,6 +93,9 @@
 		<typeAlias alias="classSYLVO" type="com.korea.dto.Class_SYLLBUSVO" />
 		<!-- 온라인콘텐츠 시청현황  -->
 		<typeAlias alias="onlineContentWatchVO" type="com.korea.dto.Online_Con_ViewVO" />
+		<!-- 수강리스트 View  -->
+		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
+
 	</typeAliases>
 
 	<mappers>

@@ -34,7 +34,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
-import com.korea.dto.LectureVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 import com.korea.dto.UsersVO;
@@ -79,9 +78,13 @@ public class CyberCamQnaBBSController {
 	 */
 	//qna게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
-	public String qnaBBSDetail(){
+	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no){
 		String url = "/cyberCampus/common/qnaBBSDetail";
+			
 		
+		  Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
+				
+
 		return url;
 	}
 	/**

@@ -97,8 +97,8 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	}
 
 	@Override
-	public void getQnaBBSDetail() {
-		// TODO Auto-generated method stub
+	public Question_BoardVO getQnaBBSDetail(int qb_no) {
+		return cyberCamQnaBBSDAO.getQnaBBSDetail(qb_no);
 		
 	}
 

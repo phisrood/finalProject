@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.crsesREQ.dao.CrsesREQDAO;
+import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -34,15 +35,19 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 	CrsesREQDAO crsesREQDAO;
 	
 	/**
-	 * 개인 정보 조회
+	 * 수강전체리스트 가져오기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesList() {
-		// TODO Auto-generated method stub
+	public List<CrsesListViewVO> getCrsesAllList() {
 		
+		Map<String, String> params = semesOperation();
+		
+		List<CrsesListViewVO> crsesAllList = crsesREQDAO.getCrsesAllList(params);
+		
+		return crsesAllList;
 	}
 	/**
 	 * 개인 정보 조회
@@ -134,7 +139,7 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		Map<String, String> params = new HashMap<String, String>();
 		
 		
-		params = semesOperation();
+		params = semesBeforeOperation();
 		params.put("id", id);
 		
 		
@@ -149,9 +154,32 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		return score;
 	}
 	
-	
-	//직전학기 계산 메서드
+	//현재학기 계산 메서드
 	private Map semesOperation() {
+		//현재 연도/월 가져옴
+		Date date = new Date();
+		
+		int year = date.getYear()+1900;
+		int month = date.getMonth()+1;
+		
+		int semes = 0; //학기
+		
+		
+		//6월까지 1학기, 7월부터 2학기
+		if(month < 7){//1학기 ex) 2016 1학기의 직전학기 ==> 2015 2학기 == 년도 -1 학기 +1
+			semes = 1; //1학기
+		}else if(month >=6){//2학기 ex) 2016 2학기의 직전학기 ==> 2016 1학기 == 년도 그대로 / 학기 -1
+			semes = 2; //2학기
+		}
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("year", Integer.toString(year));
+		params.put("semes", Integer.toString(semes));
+		
+		return params;
+	}
+	//직전학기 계산 메서드
+	private Map semesBeforeOperation() {
 		//현재 연도/월 가져옴
 		Date date = new Date();
 		
