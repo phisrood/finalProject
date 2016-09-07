@@ -24,7 +24,7 @@
 			<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>	
 			</form>
 		</div>
-
+<div id="tbl">
 <table id="classSYL" class='kor table table-striped table-bordered dataTable no-footer' >
 	<tr>
 		<th>개설년도/학기</th>
@@ -108,6 +108,7 @@
 </div>
 </div>
 </div>
+</div>
 <div class="button-location">
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
 <button class="btn btn-dark" onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
@@ -116,7 +117,7 @@
 </div>
 <script type="text/javascript">
 	$("#htmlTag").val($("#tbl").html());
-
+	alert($("#htmlTag").val());
 </script>
 </body>
 
