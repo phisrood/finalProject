@@ -59,9 +59,9 @@
                       		<td align="center">신청구분</td>
                         	<td colspan="3"> 
 								<select name="selec" style="margin-left:25px;">
-								    <option value="0" selected>선택해주세요</option>
-								    <option value="1">부전공</option>
-								    <option value="2">다전공</option>
+								    <option value="1" selected>선택해주세요</option>
+								    <option value="2">부전공</option>
+								    <option value="3">다전공</option>
 								</select>
 							</td>		
                         </tr>

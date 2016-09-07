@@ -77,13 +77,14 @@ public interface MajorREQDAO {
 	//다전공 신청
 	public String insertBelongMajorREQ();
 	/**
+	 * @param depno 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//소속학과 다전공 신청내역 출력
-	public String getBelongMajorREQList();
+	public List<SubmitVO> getBelongMajorREQList(String depno);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -93,13 +94,14 @@ public interface MajorREQDAO {
 	//소속학과 다전공 신청 승인/반려
 	public String updateBelongMajorREQDecide();
 	/**
+	 * @param depno 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//타학과 다전공 신청내역 출력
-	public String getOthorsMajorREQList();
+	public List<SubmitVO> getOthorsMajorREQList(String depno);
 	/**
 	 * 개인 정보 조회
 	 * @param

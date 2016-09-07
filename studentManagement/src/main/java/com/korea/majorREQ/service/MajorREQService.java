@@ -81,13 +81,14 @@ public interface MajorREQService {
 	//다전공 신청
 	public String insertBelongMajorREQ();
 	/**
+	 * @param depno 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//소속학과 다전공 신청내역 출력
-	public String getBelongMajorREQList();
+	//소속학과 신청내역 출력
+	public List<SubmitVO> getBelongMajorREQList(String depno);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -97,13 +98,14 @@ public interface MajorREQService {
 	//소속학과 다전공 신청 승인/반려
 	public String updateBelongMajorREQDecide();
 	/**
+	 * @param depno 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//타학과 다전공 신청내역 출력
-	public String getOthorsMajorREQList();
+	//타학과 신청내역 출력
+	public List<SubmitVO> getOthorsMajorREQList(String depno);
 	/**
 	 * 개인 정보 조회
 	 * @param

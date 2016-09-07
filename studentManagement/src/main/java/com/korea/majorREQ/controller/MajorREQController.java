@@ -33,6 +33,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.departmentManage.service.DepartmentManageService;
 import com.korea.dto.DepartmentVO;
+import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.SubmitVO;
 import com.korea.dto.UsersVO;
@@ -104,10 +105,9 @@ public class MajorREQController {
 			ei.printStackTrace();
 		}
 	}
-	///////////////////////// 부전공 ////////////////////////////
 	
 	/**
-	 * 개인 정보 조회
+	 * 신청
 	 * @param
 	 * @return 
 	 * @throws 
@@ -118,9 +118,16 @@ public class MajorREQController {
 			Model model){
 		String url="/stu/majorREQList";
 		Student_InfoViewVO studentInfo = (Student_InfoViewVO) session.getAttribute("studentInfo");
-		int chk = 1;
+		List<DepartmentVO> departmentList = departmentManageService.getDepartmentInfoList();
+		//같은 과번호를 찾아서 넣어
+		for (int i = 0; i < departmentList.size(); i++) {
+			if(departmentList.get(i).getDep_no() == submitVO.getSb_dep_no()){
+				submitVO.setSb_dep_name(departmentList.get(i).getDep_name());
+			}
+		}
+		int chk = 1; //window.close()를 위한 변수
 		
-		if(selec != 0){
+		if(selec != 1){//부전공/다전공 신청이면 가서 신청
 			majorREQService.insertBelongMinorREQ(studentInfo, submitVO, selec);
 		}
 		
@@ -135,8 +142,14 @@ public class MajorREQController {
 	 */
 	//소속학과 부전공 신청내역 출력
 	@RequestMapping(value="/pro/belongMinorREQList", method=RequestMethod.GET)
-	public String belongMinorREQList(){
-		String url="/pro/belongMinorREQList";
+	public String belongMinorREQList(HttpSession session, Model model){
+		String url="/pro/belongREQList";
+		
+		Professor_InfoViewVO proInfo = (Professor_InfoViewVO) session.getAttribute("professorInfo");
+		String depno = proInfo.getDep_no();
+		List<SubmitVO> reqList =majorREQService.getBelongMajorREQList(depno);
+		
+		model.addAttribute("reqList", reqList);
 		
 		return url;
 	}
@@ -159,10 +172,16 @@ public class MajorREQController {
 	 * @return 
 	 * @throws 
 	 */
-	//타학과 부전공 신청내역 출력
+	//타학과 신청내역 출력
 	@RequestMapping(value="/pro/othersMinorREQList", method=RequestMethod.GET)
-	public String othersMinorREQList(){
-		String url="/pro/othersMinorREQList";
+	public String othersMinorREQList(HttpSession session, Model model){
+		String url="/pro/othersREQList";
+		
+		Professor_InfoViewVO proInfo = (Professor_InfoViewVO) session.getAttribute("professorInfo");
+		String depno = proInfo.getDep_no();
+		List<SubmitVO> reqList =majorREQService.getOthorsMajorREQList(depno);
+		
+		model.addAttribute("reqList", reqList);
 		
 		return url;
 	}
