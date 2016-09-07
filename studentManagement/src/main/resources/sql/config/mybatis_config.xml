@@ -140,5 +140,7 @@
 		<mapper resource="sql/mapper/crsesREQ.xml"/>
 		<!--  강의계획서  -->
 		<mapper resource="sql/mapper/classSYL.xml"/>
+		<!--  강의계획서  -->
+		<mapper resource="sql/mapper/major.xml"/>
 	</mappers>
 </configuration>
