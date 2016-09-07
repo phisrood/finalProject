@@ -117,24 +117,6 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 	 * @throws 
 	 */
 	@Override
-	public int crsesLimit(float score) {
-		int limit = 0;
-		
-		if(score >= 4.0){
-			limit = 21;
-		}else{
-			limit = 18;
-		}
-		
-		return limit;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
 	public void timeTableOverlap() {
 		// TODO Auto-generated method stub
 		
@@ -233,6 +215,24 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		
 		
 		return scoreAvg;
+	}
+	/**
+	 * 학점제한
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public int crsesLimit(float score) {
+		int limit = 0;
+		
+		if(score >= 4.0){
+			limit = 21;
+		}else{
+			limit = 18;
+		}
+		
+		return limit;
 	}
 
 }

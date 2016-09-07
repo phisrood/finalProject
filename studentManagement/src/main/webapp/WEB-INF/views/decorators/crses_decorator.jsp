@@ -111,7 +111,7 @@
 							<td>${score }</td>
 						</tr>
 						<tr>
-							<td colspan="2"><button type="button" class="btn btn-dark">시간표보기 조회</button></td>
+							<td colspan="2"><button type="button" class="btn btn-dark">시간표 확인</button></td>
 						</tr>
 						
 					</table>
