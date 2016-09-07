@@ -21,13 +21,14 @@ import com.korea.dto.LectureViewVO;
  */
 public interface ClassSYLService {
 	/**
+	 * @param classSyl 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//강의계획서 등록
-	public void insertClassSYL();
+	public void insertClassSYL(Class_SYLLBUSVO classSyl);
 	/**
 	 * @param classSyl 
 	 * 개인 정보 조회

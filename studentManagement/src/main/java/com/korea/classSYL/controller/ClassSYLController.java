@@ -98,9 +98,17 @@ public class ClassSYLController {
 	 */
 	//강의계획서 수정
 	@RequestMapping(value="/pro/updateSylConfirm", method=RequestMethod.GET)
-	public String classSYLUpdateConfirm(Class_SYLLBUSVO classSyl){
-		String url="redirect:/pro/classSYL";
-		classSYLService.updateClassSYL(classSyl);
+	public String classSYLUpdateConfirm(Class_SYLLBUSVO classSyl,Model model,HttpSession session){
+		String url="redirect:/pro/classSYL?lec_no="+classSyl.getCs_lec_no();
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		classSyl.setCs_pro_use_id(user.getUse_id());
+		Class_SYLLBUSVO classSYL2 = classSYLService.getClassSYLInfo(String.valueOf(classSyl.getCs_lec_no()));
+		if(classSYL2==null){
+			classSYLService.insertClassSYL(classSyl);
+		}else{
+			classSYLService.updateClassSYL(classSyl);
+		}
+		
 		return url;
 	}
 	

@@ -97,7 +97,7 @@
 <input type=hidden id="htmlTag" name="htmlTag"/>
 <button onclick="toPdf()">pdf로 보기</button>	
 </form>
-<button onclick="javascript:history.go(-1)">뒤로</button>
+<a href="/pro/lectureList"><button>뒤로</button></a>
 <script type="text/javascript">
 	function updateSyl(lec_no){
 		location.href='/pro/updateSyl?lec_no='+lec_no;

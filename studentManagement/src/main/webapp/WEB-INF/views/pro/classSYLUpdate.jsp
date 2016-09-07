@@ -80,25 +80,26 @@
 		<th>중간고사</th>
 		<td><input type="text" name="cs_midterm" value="${classSYL.cs_midterm }"/></td>
 		<th>기말고사</th>
-		<td><input type="text" name="cs_midterm" value="${classSYL.cs_final }"/></td>
+		<td><input type="text" name="cs_final" value="${classSYL.cs_final }"/></td>
 	</tr>
 	<tr>
 		<th>과제</th>
-		<td><input type="text" name="cs_midterm" value="${classSYL.cs_homework }"/></td>
+		<td><input type="text" name="cs_homework" value="${classSYL.cs_homework }"/></td>
 		<th>출석</th>
-		<td><input type="text" name="cs_midterm" value="${classSYL.cs_attent }"/></td>
+		<td><input type="text" name="cs_attent" value="${classSYL.cs_attent }"/></td>
 	</tr>
-
+	
 </table>
 </div>
-
-<button onclick="updateSYLConfirm('${lecture.lec_no }');">강의계획서 저장</button>
+<input type="hidden" name="cs_lec_no" value="${lecture.lec_no }">
+<button onclick="updateSYLConfirm();">강의계획서 저장</button>
 <button onclick="javascript:history.go(-1)">취소</button>	
 </form>
 <script>
-	function updateSYLConfirm(lec_no){
+	function updateSYLConfirm(){
 		document.updateSyl.method="get";
-		document.updateSyl.
+		document.updateSyl.action="/pro/updateSylConfirm?cs_lec_no=";
+		document.updateSyl.submit();
 	}
 </script>
 </body>

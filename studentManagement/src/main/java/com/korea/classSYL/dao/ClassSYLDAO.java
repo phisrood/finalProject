@@ -25,13 +25,14 @@ import com.korea.dto.Lecture_Time_ViewVO;
  */
 public interface ClassSYLDAO {
 	/**
+	 * @param classSyl 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//강의계획서 등록
-	public void insertClassSYL();
+	public void insertClassSYL(Class_SYLLBUSVO classSyl);
 	/**
 	 * @param classSyl 
 	 * 강의계획서 수정

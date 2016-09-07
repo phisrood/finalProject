@@ -37,9 +37,8 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassSYL() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassSYL(Class_SYLLBUSVO classSyl) {
+		sqlSession.insert("classSYL.insertClassSYL", classSyl);
 	}
 	/**
 	 * 개인 정보 조회
@@ -49,8 +48,7 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 */
 	@Override
 	public void updateClassSYL(Class_SYLLBUSVO classSyl) {
-	
-		
+		sqlSession.update("classSYL.updateClassSYL", classSyl);		
 	}
 	/**
 	 * 개인 정보 조회

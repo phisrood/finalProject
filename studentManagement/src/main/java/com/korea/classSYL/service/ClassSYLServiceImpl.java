@@ -38,9 +38,8 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassSYL() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassSYL(Class_SYLLBUSVO classSyl) {
+		classSYLDAO.insertClassSYL(classSyl);
 	}
 	/**
 	 * 개인 정보 조회
