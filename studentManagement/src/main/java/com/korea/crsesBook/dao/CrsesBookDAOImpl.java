@@ -118,11 +118,19 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 		sqlSession.insert("crsesBook.insertClassroomUsetime", classroomUsetime);	
 	}
 	@Override
-	public List<LectureViewVO> getLectureList() {
+	public List<LectureViewVO> getLectureList(String use_id) {
+		return sqlSession.selectList("crsesBook.getLectureList",use_id);
+	}
+	@Override
+	public List<LectureViewVO> getLectureListByStu() {
 		return sqlSession.selectList("crsesBook.getLectureList");
 	}
 	@Override
-	public List<Lecture_Time_ViewVO> getLectureTimeList() {
+	public List<Lecture_Time_ViewVO> getLectureTimeList(String use_id) {
+		return sqlSession.selectList("crsesBook.getLectureTimeList", use_id);
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getLectureTimeListByStu() {
 		return sqlSession.selectList("crsesBook.getLectureTimeList");
 	}
 

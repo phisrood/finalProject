@@ -16,12 +16,7 @@ package com.korea.crsesBook.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.StringReader;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,24 +34,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.tool.xml.XMLWorker;
-import com.itextpdf.tool.xml.XMLWorkerFontProvider;
-import com.itextpdf.tool.xml.XMLWorkerHelper;
-import com.itextpdf.tool.xml.css.CssFile;
-import com.itextpdf.tool.xml.css.StyleAttrCSSResolver;
-import com.itextpdf.tool.xml.html.CssAppliers;
-import com.itextpdf.tool.xml.html.CssAppliersImpl;
-import com.itextpdf.tool.xml.html.Tags;
-import com.itextpdf.tool.xml.parser.XMLParser;
-import com.itextpdf.tool.xml.pipeline.css.CSSResolver;
-import com.itextpdf.tool.xml.pipeline.css.CssResolverPipeline;
-import com.itextpdf.tool.xml.pipeline.end.PdfWriterPipeline;
-import com.itextpdf.tool.xml.pipeline.html.HtmlPipeline;
-import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 import com.korea.crsesBook.service.CrsesBookService;
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
@@ -83,7 +60,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	// 수강편람조회
-	@RequestMapping(value = { "/pro/crsesBookList" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/pro/crsesBookList"}, method = RequestMethod.GET)
 	public String getCrsesBookList(Model model) {
 		String url = "/pro/crsesBookList";
 		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList();
@@ -303,8 +280,23 @@ public class CrsesBookController {
 	@RequestMapping(value = "/pro/lectureList", method = RequestMethod.GET)
 	public String getLectureList(Model model, HttpSession session) {
 		String url = "/pro/lectureList";
-		/*String dep_no = session.get*/
-		List<LectureViewVO> list = crsesBookService.getLectureList();
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		List<LectureViewVO> list = crsesBookService.getLectureList(user.getUse_id());
+		model.addAttribute("lectureList", list);
+		
+		return url;
+	}
+	/**
+	 * 강의조회학생
+	 * 
+	 * @param String
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/stu/lectureList", method = RequestMethod.GET)
+	public String getLectureListByStu(Model model) {
+		String url = "/common/lectureList";
+		List<LectureViewVO> list = crsesBookService.getLectureListByStu();
 		model.addAttribute("lectureList", list);
 		
 		return url;

@@ -37,9 +37,8 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassSYL() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassSYL(Class_SYLLBUSVO classSyl) {
+		sqlSession.insert("classSYL.insertClassSYL", classSyl);
 	}
 	/**
 	 * 개인 정보 조회
@@ -48,9 +47,8 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateClassSYL() {
-		// TODO Auto-generated method stub
-		
+	public void updateClassSYL(Class_SYLLBUSVO classSyl) {
+		sqlSession.update("classSYL.updateClassSYL", classSyl);		
 	}
 	/**
 	 * 개인 정보 조회
@@ -71,16 +69,16 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public Class_SYLLBUSVO getClassSYLInfo() {
-		return null;
+	public Class_SYLLBUSVO getClassSYLInfo(String lec_no) {
+		return (Class_SYLLBUSVO) sqlSession.selectOne("classSYL.getClassSYLInfo", lec_no);
 		
 	}
 	@Override
 	public LectureViewVO getLectureInfo(String lec_no) {
-		return (LectureViewVO) sqlSession.selectOne("crsesBook.getLectureInfo", lec_no);
+		return (LectureViewVO) sqlSession.selectOne("classSYL.getLectureInfo", lec_no);
 	}
 	@Override
 	public List<Lecture_Time_ViewVO> getLectureTime(String lec_no) {
-		return sqlSession.selectList("crsesBook.getLectureTime", lec_no);
+		return sqlSession.selectList("classSYL.getLectureTime", lec_no);
 	}
 }

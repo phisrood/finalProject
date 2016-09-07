@@ -1,7 +1,9 @@
 package com.korea.crsesREQ.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -22,13 +24,14 @@ import com.korea.dto.ScoreViewVO;
  */
 public interface CrsesREQDAO {
 	/**
+	 * @param params 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강리스트 조회
-	public void getCrsesList();
+	public List<CrsesListViewVO> getCrsesAllList(Map<String, String> params);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -79,5 +82,5 @@ public interface CrsesREQDAO {
 	public void insertCrsesREQPeriod();
 	
 	//직전학기 성적조회
-	public List<ScoreViewVO> getScoreCalcu(String id);
+	public List<ScoreViewVO> getScoreCalcu(Map<String, String> params);
 }

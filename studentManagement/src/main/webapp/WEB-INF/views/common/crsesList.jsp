@@ -32,8 +32,18 @@
 	<!-- Custom Theme Style -->
 	<link href="/stu/css/custom.min.css" rel="stylesheet">
 	
+	<script>
+ 
+	
+	 function cycamGo(form){
+	      var cycam = window.open('about:blank','cyberCam','width=1400,height=900');
+	      form.action = '/cyberCampus/stu/cyberClassMain';
+	      form.target = "cyberCam";
+	      form.method = "post";
+	      form.submit();
+	   }
 
-
+	</script>
 	<div class="row">
 
 	<!-- page content -->
@@ -109,9 +119,19 @@
 	학수번호 lec_lb_no; -->
 <!--  lec_makesemester 개설학기
 	lec_makeyear  -->
-	
+					
 	
                       <tbody>
+                      <c:choose>
+                      	<c:when test="${empty student_InquiryList_ViewVO}">
+                      		<tr>
+								<td colspan='11' align="center">
+									수강신청 내역이 없습니다.
+								</td>                      		
+                      		</tr>
+                      	</c:when>
+                      
+                      	<c:otherwise>
                       <c:forEach items="${student_InquiryList_ViewVO }" var="student_InquiryList_ViewVO">
                        <form action="/cyberCampus/stu/cyberClassMain" method="post">
                        <tr>	
@@ -125,13 +145,14 @@
                           <td>${student_InquiryList_ViewVO.lb_credit }</td>
                           <td>${student_InquiryList_ViewVO.tt_time }</td>
                           <td>${student_InquiryList_ViewVO.use_name }</td>
-                          <td><input type="submit" value ="사이버캠퍼스 이동" class="btn btn-info btn-xs">
+                          <td><input type="submit" value ="사이버캠퍼스 이동"  onclick="cycamGo(this.form)" class="btn btn-info btn-xs">
                           	<input type="hidden" name="lec_no" value="${student_InquiryList_ViewVO.lec_no }"/>
                           </td>
                       </tr>
                          </form>
                         </c:forEach>
-                            
+                            </c:otherwise>
+                            	</c:choose>
                       </tbody>
                     </table>
                   </div>

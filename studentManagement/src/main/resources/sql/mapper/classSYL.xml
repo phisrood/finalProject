@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="classSYL">
+
+	<select id="getLectureInfo" parameterType="str" resultType="lectureView">
+		SELECT *
+		FROM LECTURE_VIEW
+		WHERE LEC_NO = #{lec_no}
+	</select>
+
+	<select id="getLectureTime" parameterType="str" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+		WHERE LEC_NO=#{lec_no}
+	</select>
+
+	<select id="getClassSYLInfo" parameterType="str" resultType="classSYLVO">
+		SELECT *
+		FROM CLASS_SYLLBUS
+		WHERE CS_LEC_NO=#{lec_no}
+	</select>
+	<update id="updateClassSYL" parameterType="classSYLVO">
+		UPDATE
+		CLASS_SYLLBUS
+		SET CS_CONTENT	= #{cs_content}
+		,CS_PROGRESS	= #{cs_progress}
+		,CS_WRITER		= #{cs_writer}
+		,CS_BOOKVERSION = #{cs_bookversion}
+		,CS_BOOKNAME    = #{cs_bookname}
+		,CS_PUBLISHER   = #{cs_publisher}
+		,CS_MIDTERM     = #{cs_midterm}
+		,CS_FINAL       = #{cs_final}
+		,CS_HOMEWORK    = #{cs_homework}
+		,CS_ATTENT      = #{cs_attent}
+		WHERE CS_LEC_NO = #{cs_lec_no}
+	</update>
+	<insert id="insertClassSYL" parameterType="classSYLVO">
+		INSERT INTO CLASS_SYLLBUS
+		( 
+			CS_LEC_NO
+			,CS_PRO_USE_ID
+			,CS_CONTENT		
+			,CS_PROGRESS	
+			,CS_WRITER		
+			,CS_BOOKVERSION
+			,CS_BOOKNAME   
+			,CS_PUBLISHER  
+			,CS_MIDTERM    
+			,CS_FINAL      
+			,CS_HOMEWORK   
+			,CS_ATTENT )    
+		VALUES(
+			#{cs_lec_no}
+			,#{cs_pro_use_id}
+			,#{cs_content}
+			,#{cs_progress}
+			,#{cs_writer}
+			,#{cs_bookversion}
+			,#{cs_bookname}
+			,#{cs_publisher}
+			,#{cs_midterm}
+			,#{cs_final}
+			,#{cs_homework}
+			,#{cs_attent}
+			)
+	</insert>
+</mapper>

@@ -1,11 +1,13 @@
 package com.korea.crsesREQ.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -37,9 +39,9 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesList() {
+	public List<CrsesListViewVO> getCrsesAllList(Map<String, String> params) {
 		// TODO Auto-generated method stub
-		
+		return session.selectList("CrsesREQ.crsesAllList", params);
 	}
 	/**
 	 * 개인 정보 조회
@@ -114,8 +116,9 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<ScoreViewVO> getScoreCalcu(String id) {
-		return session.selectList("CrsesREQ.getScoreViewList", id);
+	public List<ScoreViewVO> getScoreCalcu(Map<String, String> params) {
+		
+		return session.selectList("CrsesREQ.getScoreViewList", params);
 	}
 
 }

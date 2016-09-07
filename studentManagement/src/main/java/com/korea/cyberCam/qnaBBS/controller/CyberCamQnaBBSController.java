@@ -34,7 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
-import com.korea.dto.LectureVO;
+import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 import com.korea.dto.UsersVO;
 
@@ -57,18 +57,16 @@ public class CyberCamQnaBBSController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		
-		String stu_lec_no = (String) session.getAttribute("stu_lec_no");
+		int stu_lec_no = (int) session.getAttribute("stu_lec_no");
 		
 		
 		Map<String, String> lecNoInContext = new HashMap<String, String>();
-		lecNoInContext.put("stu_lec_no", stu_lec_no);
+		lecNoInContext.put("stu_lec_no", stu_lec_no+"");
 		lecNoInContext.put("stud_use_id", stud_use_id);
 		
-		
-		
-		List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);
-		
-		model.addAttribute("question_BoardVO",question_BoardVO);
+	
+		List<Question_BoardListVO> question_BoardListVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);
+		model.addAttribute("question_BoardListVO",question_BoardListVO);
 		
 		return url;
 	}
@@ -80,9 +78,19 @@ public class CyberCamQnaBBSController {
 	 */
 	//qna게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
-	public String qnaBBSDetail(){
+	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no, Model model,HttpSession session){
 		String url = "/cyberCampus/common/qnaBBSDetail";
+			
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		
+		String auth = loginUser.getAuthority();
+		
+		
+		  Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
+		  
+		  model.addAttribute("question_BoardVO",question_BoardVO);
+		  model.addAttribute("auth",auth);
+
 		return url;
 	}
 	/**
@@ -97,9 +105,9 @@ public class CyberCamQnaBBSController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		
-		List<LectureVO> lectureVO = cyberCamQnaBBSService.selectlectureList();
+		
 	
-		model.addAttribute("lectureVO", lectureVO);
+		model.addAttribute("stud_use_id", stud_use_id);
 		
 		String url="/cyberCampus/common/qnaBBSInsert";
 		return url;
@@ -112,10 +120,6 @@ public class CyberCamQnaBBSController {
 					
 				@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile
 				
-			
-				/*,
-				@RequestParam(value="title", defaultValue="")String title,
-				@RequestParam(value="writer", defaultValue="")String writer*/
 				) throws IOException{
 			
 			String url="/cyberCampus/common/qnaBBSList";
@@ -123,6 +127,7 @@ public class CyberCamQnaBBSController {
 			String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/qnaAF");
 			UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 			String stud_use_id = loginUser.getUse_id();
+			int stu_lec_no = (int) session.getAttribute("stu_lec_no");
 			
 			
 			
@@ -139,28 +144,18 @@ public class CyberCamQnaBBSController {
 				
 				Question_BoardVO question_BoardVO = new Question_BoardVO();
 				question_BoardVO.setQb_stud_use_id(stud_use_id);
-				question_BoardVO.setQb_lec_no(Integer.parseInt(request.getParameter("lectureList")));
+				question_BoardVO.setQb_lec_no(stu_lec_no);
 				question_BoardVO.setQb_af_no(af_no);
 				question_BoardVO.setQb_title(request.getParameter("title"));
 				question_BoardVO.setQb_content(request.getParameter("content"));
 				cyberCamQnaBBSService.insertQnaBBSFinal(question_BoardVO);
+				
+				return url;
 			}
 			
-			/////////하다말음
-			
-			
-			
-			System.out.println(uploadPath);
-			Map<String, String> map = new HashMap<String,String>();
-			
-			
-			
-			
-			
+
 	
-		/*	List<Question_BoardVO> question_BoardVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);*/
-		/*	model.addAttribute("question_BoardVO",question_BoardVO);*/
-			
+
 			return url;
 		}
 	/**

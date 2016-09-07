@@ -170,8 +170,7 @@ h2 {
 					</select>
 					<div class="x_content">
 						<div id="paging">
-							<table id="datatable"
-								class="table table-bordered jambo_table bulk_action">
+							<table id="datatable" class="table table-bordered jambo_table bulk_action">
 								<thead>
 									<tr align="center">
 										<th>시간</th>

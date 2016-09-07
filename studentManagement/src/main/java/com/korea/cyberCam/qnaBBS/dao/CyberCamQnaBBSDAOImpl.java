@@ -7,8 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
 /**
@@ -40,10 +42,10 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	
 	
 	@Override
-	public List<Question_BoardVO> getQnaBBSList(Map<String, String> lecNoInContext) {
+	public	List<Question_BoardListVO> getQnaBBSList(Map<String, String> lecNoInContext) {
 		
 		
-		return (List<Question_BoardVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",lecNoInContext);
+		return (List<Question_BoardListVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",lecNoInContext);
 		
 	}
 	/**
@@ -53,8 +55,8 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getQnaBBSDetail() {
-		// TODO Auto-generated method stub
+	public  Question_BoardVO getQnaBBSDetail(int qb_no) {
+		return (Question_BoardVO) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSDetail", qb_no);
 		
 	}
 	/**

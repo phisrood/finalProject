@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.korea.cyberCam.onlineCon.dao.CyberCamOnlineConDAO;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 
 /**
@@ -68,16 +69,48 @@ public class CyberCamOnlineConServiceImpl implements CyberCamOnlineConService{
 	 * @throws 
 	 */
 	@Override
-	public List<Online_ContentsVO> getOnlineConList(String lec_no) {
+	public List<Online_ContentsVO> getOnlineConList(int lec_no) {
 		return cyberCamOnlineConDAO.getOnlineConList(lec_no);
 	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public int insertOnlineConFile(Attachment_FileVO attachFileVO) {
 		return cyberCamOnlineConDAO.insertOnlineConFile(attachFileVO);
 	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	@Override
 	public void getOnlineConList() {
 		
+	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public List<Online_Con_ViewVO> getOnlineConWatchList(int lec_no) {
+		return cyberCamOnlineConDAO.getOnlineConWatchList(lec_no);
+	}
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@Override
+	public Attachment_FileVO getAF(int af_no) {
+		return cyberCamOnlineConDAO.getAF(af_no);
 	}
 
 }

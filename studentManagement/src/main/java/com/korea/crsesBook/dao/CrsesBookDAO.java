@@ -120,20 +120,36 @@ public interface CrsesBookDAO {
 	public void insertClassroomUsetime(List<ClassRoom_UsetimeVO> timeList);
 	
 	/**
+	 * @param use_id 
 	 * 강의조회(교수)
 	 * @param 
 	 * @return List<LectureViewVO>
 	 * @throws 
 	 */
-	public List<LectureViewVO> getLectureList();
+	public List<LectureViewVO> getLectureList(String use_id);
+	/**
+	 * @param 
+	 * 강의조회(학생)
+	 * @param 
+	 * @return List<LectureViewVO>
+	 * @throws 
+	 */
+	public List<LectureViewVO> getLectureListByStu();
 	
 	/**
 	 * 강의조회(교수)
+	 * @param String use_id
+	 * @return List<LectureViewVO>
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getLectureTimeList(String use_id);
+	/**
+	 * 강의조회(학생)
 	 * @param 
 	 * @return List<LectureViewVO>
 	 * @throws 
 	 */
-	public List<Lecture_Time_ViewVO> getLectureTimeList();
+	public List<Lecture_Time_ViewVO> getLectureTimeListByStu();
 	
 	
 }

@@ -41,7 +41,6 @@
                         <tr>
                           <th>NO</th>
                           <th>이름</th>
-                          <th>학년</th>
                           <th>학번</th>
                           <th>연락처</th>
                           <th>학과</th>
@@ -51,35 +50,16 @@
 
 
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>이수정</td>
-                          <td>2</td>
-                          <td>20122750</td>
-                          <td>010-1234-5678</td>
-                          <td>정보통신공학과</td>
-                          <td>신청</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>한돈희</td>
-                          <td>2</td>
-                          <td>20121234</td>
-                          <td>010-1234-5678</td>
-                          <td>정보통신공학과</td>
-                          <td>신청</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>김양문</td>
-                          <td>2</td>
-                          <td>20124567</td>
-                          <td>010-1234-5678</td>
-                          <td>정보통신공학과</td>
-                          <td>신청</td>
-                        </tr>
-                        
-                      
+                        <c:forEach var="req" items="${reqList}" varStatus="index">
+                        	<tr>
+                        		<td>${index.count }</td>
+                        		<td></td>
+                        		<td>${req.sb_stud_use_id }</td>
+                        		<td></td>
+                        		<td></td>
+                        		<td>신청</td>
+                        	</tr>
+                        </c:forEach>
                       </tbody>
                     </table>
                   </div>

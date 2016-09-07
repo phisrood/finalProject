@@ -59,36 +59,40 @@
 							<th>개설학과</th>
 							<th>이수구분</th>
 							<th>학점</th>
-							<th>승인여부</th>
-							<th>수정</th>
-							<th>강의개설</th>
+							<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
+								<th>승인여부</th>
+								<th>수정</th>
+								<th>강의개설</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="lb" items="${crsesBookList}">
-							<tr >
+							<tr>
 								<td>${lb.lb_no }</td>
 								<td>${lb.lb_name }</td>
 								<td>${lb.lb_department }</td>
 								<td>${lb.lb_completekind }</td>
 								<td>${lb.lb_credit }</td>
-								<td><c:choose>
-										<c:when test="${lb.lb_approvalyn=='Y'}">
+								<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
+									<td><c:choose>
+											<c:when test="${lb.lb_approvalyn=='Y'}">
 										승인
 									</c:when>
-										<c:when test="${lb.lb_approvalyn=='N' }">
+											<c:when test="${lb.lb_approvalyn=='N' }">
 										대기
 									</c:when>
-										<c:otherwise>
+											<c:otherwise>
 										반려
 									</c:otherwise>
-									</c:choose></td>
+										</c:choose></td>
 									<td>
-									<button onclick="updateCrsesBook('${lb.lb_no}');">수정</button></td>
-									<td ><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>								
-									
+										<button onclick="updateCrsesBook('${lb.lb_no}');">수정</button>
+									</td>
+									<td><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>
+								</c:if>
 							</tr>
-							
+
 						</c:forEach>
 					</tbody>
 				</table>

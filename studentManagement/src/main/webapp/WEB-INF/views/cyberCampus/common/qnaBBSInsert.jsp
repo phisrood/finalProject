@@ -37,7 +37,7 @@
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 상세 )</h2></div>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 글쓰기 )</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 			
@@ -56,18 +56,9 @@
 					</tr>
 					<tr>
 						<td>
-							강 &nbsp;의 &nbsp;목&nbsp;록&nbsp;: &nbsp;
-							 	
-							 	 
-									<select name="lectureList">
-									 <c:forEach items="${lectureVO }" var="lectureVO">
-   										<option value="${lectureVO.lec_no}">${lectureVO.lec_no}</option>
-   									 </c:forEach>
-									</select>
-									 
-							 	 
+					
 						
-							&nbsp;&nbsp;작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;<input name="registration_day" readonly="readonly" type="text" size="75" value="박진성">
+							&nbsp;작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;<input name="writer" readonly="readonly"  type="text" size="25" value="${stud_use_id}">
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +80,7 @@
 				<button type="button" class="btn btn-default btn-sm">목 록</button>
 			</div>
 			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" value="제출">
+				<input type="submit" class="btn btn-default btn-sm" value="등록">
 				
 			</div>
 			

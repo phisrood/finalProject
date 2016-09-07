@@ -21,7 +21,9 @@ import java.io.StringReader;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +52,7 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 import com.korea.classSYL.service.ClassSYLService;
 import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.UsersVO;
 
 @Controller
 public class ClassSYLController {
@@ -69,15 +72,41 @@ public class ClassSYLController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
+	 * 강의계획서 수정
+	 * @param String
+	 * @param Model
+	 * @return String
 	 * @throws 
 	 */
 	//강의계획서 수정
-	@RequestMapping(value="/pro/classSYLUpdate", method=RequestMethod.GET)
-	public String classSYLUpdate(){
-		String url="";
+	@RequestMapping(value="/pro/updateSyl", method=RequestMethod.GET)
+	public String classSYLUpdate(String lec_no,Model model){
+		String url="/pro/classSYLUpdate";
+		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
+		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
+		model.addAttribute("lecture", lecture);
+		model.addAttribute("classSYL", classSYL);
+		return url;
+	}
+	/**
+	 * 강의계획서 저장
+	 * @param String
+	 * @param Model
+	 * @return String
+	 * @throws 
+	 */
+	//강의계획서 수정
+	@RequestMapping(value="/pro/updateSylConfirm", method=RequestMethod.GET)
+	public String classSYLUpdateConfirm(Class_SYLLBUSVO classSyl,Model model,HttpSession session){
+		String url="redirect:/pro/classSYL?lec_no="+classSyl.getCs_lec_no();
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		classSyl.setCs_pro_use_id(user.getUse_id());
+		Class_SYLLBUSVO classSYL2 = classSYLService.getClassSYLInfo(String.valueOf(classSyl.getCs_lec_no()));
+		if(classSYL2==null){
+			classSYLService.insertClassSYL(classSyl);
+		}else{
+			classSYLService.updateClassSYL(classSyl);
+		}
 		
 		return url;
 	}
@@ -89,15 +118,16 @@ public class ClassSYLController {
 	 * 강의계획서
 	 * 
 	 * @param String
-	 * @return
+	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/pro/classSYL", method = RequestMethod.GET)
-	public String getLecturePlan(String lec_no, Model model) throws IOException, DocumentException {
+	@RequestMapping(value = {"/pro/classSYL","/stu/classSYL"}, method = RequestMethod.GET)
+	public String getLecturePlan(String lec_no, Model model, HttpSession session) throws IOException, DocumentException {
 		String url = "/common/classSYL";
 		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
 		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
 		model.addAttribute("lecture", lecture);
+		model.addAttribute("classSYL", classSYL);
 		return url;
 	}
 	/**
@@ -109,8 +139,8 @@ public class ClassSYLController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/pro/classSYLtoPdf", method = RequestMethod.POST)
-	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response) throws IOException, DocumentException {
+	@RequestMapping(value = {"/pro/classSYLtoPdf","/stu/classSYLtoPdf"}, method = RequestMethod.POST)
+	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
 		     
@@ -127,16 +157,18 @@ public class ClassSYLController {
 		 
 		// Document 오픈
 		document.open();
-		XMLWorkerHelper helper = XMLWorkerHelper.getInstance();
+		
 		     
 		// CSS
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
-		CssFile cssFile = helper.getCSS(new FileInputStream("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/common/css/default.css"));
+		String cssPath = request.getServletContext().getRealPath("/resources/common/css/default.css");
+		CssFile cssFile = XMLWorkerHelper.getCSS(new FileInputStream(cssPath));
 		cssResolver.addCss(cssFile);
 		     
 		// HTML, 폰트 설정
 		XMLWorkerFontProvider fontProvider = new XMLWorkerFontProvider(XMLWorkerFontProvider.DONTLOOKFORFONTS);
-		fontProvider.register("C:/Users/pc05/git/finalProject/studentManagement/src/main/webapp/resources/fonts/MALGUN.TTF", "MalgunGothic"); // MalgunGothic은 alias,
+		String fontPath = request.getServletContext().getRealPath("/resources/fonts");
+		fontProvider.register(fontPath+"/MALGUN.TTF", "MalgunGothic"); // MalgunGothic은 alias,
 		CssAppliers cssAppliers = new CssAppliersImpl(fontProvider);
 		 
 		HtmlPipelineContext htmlContext = new HtmlPipelineContext(cssAppliers);

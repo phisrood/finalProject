@@ -95,7 +95,7 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
 		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
-		                      <li><a href="/stu/minorModel">부/다 전공신청</a></li>
+		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
 		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
 		                    </ul>
 		                  </li>
@@ -108,7 +108,7 @@
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
-		                      <li><a href="crsesBookList">수강편람조회</a></li>
+		                      <li><a href="/stu/lectureList">강의조회</a></li>
 		                      
 		                    </ul>
 		                  </li>

@@ -125,14 +125,29 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 		crsesBookDAO.insertClassroomUsetime(timeList);
 	}
 	@Override
-	public List<LectureViewVO> getLectureList() {
-		List<LectureViewVO> lectureList = crsesBookDAO.getLectureList();
-		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTimeList();
+	public List<LectureViewVO> getLectureList(String use_id) {
+		List<LectureViewVO> lectureList = crsesBookDAO.getLectureList(use_id);
+		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTimeList(use_id);
 		for(LectureViewVO lecture : lectureList){
 			String classroom = "";
 			for(Lecture_Time_ViewVO time : timeList){
 				if(lecture.getLec_no().equals(time.getLec_no())){
-					classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>"; 
+					classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>";
+				}
+			}
+			lecture.setClassroom(classroom);
+		}
+		return lectureList;
+	}
+	@Override
+	public List<LectureViewVO> getLectureListByStu() {
+		List<LectureViewVO> lectureList = crsesBookDAO.getLectureListByStu();
+		List<Lecture_Time_ViewVO> timeList = crsesBookDAO.getLectureTimeListByStu();
+		for(LectureViewVO lecture : lectureList){
+			String classroom = "";
+			for(Lecture_Time_ViewVO time : timeList){
+				if(lecture.getLec_no().equals(time.getLec_no())){
+					classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>";
 				}
 			}
 			lecture.setClassroom(classroom);

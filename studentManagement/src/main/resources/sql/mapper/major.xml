@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Major">
+	<select id="getScoreView" parameterType="str" resultType="scoreView">
+		select * from score_view where use_id = #{id}
+	</select>
+	
+	<insert id="submitInsert" parameterType="submit">
+		insert into submit(sb_no, sb_dep_no, sb_stud_use_id, sb_majordepartment, sb_major_dep_no, sb_dep_name, sb_mk_no)
+		values(submit_seq.nextval, #{sb_dep_no}, #{sb_stud_use_id}, #{sb_majordepartment}, #{sb_major_dep_no}, #{sb_dep_name}, #{sb_mk_no})
+	</insert>
+	
+	<select id="getReqList" parameterType="str" resultType="submit">
+		select * from submit where sb_stud_use_id = #{id}
+	</select>
+	
+	<select id="getBelongREQList" parameterType="str" resultType="submit">
+		select * from submit where sb_major_dep_no = #{dep_no}
+	</select>
+	<select id="getOthorsREQList" parameterType="str" resultType="submit">
+		select * from submit where sb_dep_no = #{dep_no}
+	</select>
+</mapper>

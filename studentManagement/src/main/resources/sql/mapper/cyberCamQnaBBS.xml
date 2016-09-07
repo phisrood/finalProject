@@ -4,7 +4,7 @@
 				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="CyberCamQnaBBSDao">
-	<select id="getCyberCamQnaBBSList" parameterType="map" resultType="questionBoard">
+	<select id="getCyberCamQnaBBSList" parameterType="map" resultType="question_BoardListVO">
 		SELECT
 				QB_NO,
 				QB_STUD_USE_ID,
@@ -20,11 +20,21 @@
 		AND  qb_lec_no = #{stu_lec_no}
 		ORDER BY QB_NO DESC
 	</select>
+	<select id="getCyberCamQnaBBSDetail" parameterType="int" resultType="questionBoard">
+	
+		SELECT *
+		FROM QUESTION_BOARD
+		WHERE qb_no =#{qb_no}
+		
+		
+	
+	
+	</select>
 	
 	<insert id="getCyberCamQnaBBSInsert" parameterType="attachment">
 		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
 		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_aftername},#{af_realname},#{af_path})
-		
+
 	</insert>
 	
 	<select id="getCyberCamQnaBBSSelectAF_NO" resultType="int">
