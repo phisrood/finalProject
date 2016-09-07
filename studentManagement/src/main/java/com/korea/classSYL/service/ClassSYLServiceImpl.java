@@ -11,10 +11,10 @@ import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : ClassSYLServiceImpl.java
+ * @Description : 강의계획서 관리
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -22,7 +22,8 @@ import com.korea.dto.Lecture_Time_ViewVO;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.07	김양문			강의계획서 조회, 등록, 수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -48,9 +49,8 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 	 * @throws 
 	 */
 	@Override
-	public void updateClassSYL() {
-		// TODO Auto-generated method stub
-		
+	public void updateClassSYL(Class_SYLLBUSVO classSyl) {
+		classSYLDAO.updateClassSYL(classSyl);
 	}
 	/**
 	 * 개인 정보 조회
@@ -84,6 +84,7 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 		return  classSYLDAO.getClassSYLInfo(lec_no);
 		
 	}
+
 
 
 }

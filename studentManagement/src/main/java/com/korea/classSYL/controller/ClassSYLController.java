@@ -73,16 +73,34 @@ public class ClassSYLController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
+	 * 강의계획서 수정
+	 * @param String
+	 * @param Model
+	 * @return String
 	 * @throws 
 	 */
 	//강의계획서 수정
-	@RequestMapping(value="/pro/classSYLUpdate", method=RequestMethod.GET)
-	public String classSYLUpdate(){
-		String url="";
-		
+	@RequestMapping(value="/pro/updateSyl", method=RequestMethod.GET)
+	public String classSYLUpdate(String lec_no,Model model){
+		String url="/pro/classSYLUpdate";
+		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
+		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
+		model.addAttribute("lecture", lecture);
+		model.addAttribute("classSYL", classSYL);
+		return url;
+	}
+	/**
+	 * 강의계획서 저장
+	 * @param String
+	 * @param Model
+	 * @return String
+	 * @throws 
+	 */
+	//강의계획서 수정
+	@RequestMapping(value="/pro/updateSylConfirm", method=RequestMethod.GET)
+	public String classSYLUpdateConfirm(Class_SYLLBUSVO classSyl){
+		String url="redirect:/pro/classSYL";
+		classSYLService.updateClassSYL(classSyl);
 		return url;
 	}
 	
@@ -93,7 +111,7 @@ public class ClassSYLController {
 	 * 강의계획서
 	 * 
 	 * @param String
-	 * @return
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/classSYL", method = RequestMethod.GET)

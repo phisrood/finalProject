@@ -9,6 +9,7 @@
 <title></title>
 </head>
 <body >
+<form name="updateSyl">
 <div id="tbl">
 <table border='1' class='kor'>
 	<tr>
@@ -51,7 +52,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			${classSYL.cs_content }
+			<textarea rows="10" cols="200" style="resize:none;" name="cs_content">${classSYL.cs_content }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -61,7 +62,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			${classSYL.cs_progress }
+			<textarea rows="10" cols="200" style="resize:none;" name="cs_progress">${classSYL.cs_progress }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -69,46 +70,36 @@
 			교재
 		</th>
 		<td colspan='3'>
-			서명:${classSYL.cs_bookname },${classSYL.cs_bookversion }<br/>
-			저자:${classSYL.cs_writer }<br/>
-			출판사:${classSYL.cs_publisher }
+			서명:<input type="text" name="cs_bookname" value="${classSYL.cs_bookname }"/>
+			판사항:<input type="text" name="cs_bookversion" value="${classSYL.cs_bookversion }"/><br/>
+			저자:<input type="text" name="cs_writer" value="${classSYL.cs_writer }"/><br/>
+			출판사:<input type="text" name="cs_publisher" value="${classSYL.cs_publisher }"/>
 		</td>
 	</tr>
 	<tr>
 		<th>중간고사</th>
-		<td>${classSYL.cs_midterm }</td>
+		<td><input type="text" name="cs_midterm" value="${classSYL.cs_midterm }"/></td>
 		<th>기말고사</th>
-		<td>${classSYL.cs_final }</td>
+		<td><input type="text" name="cs_midterm" value="${classSYL.cs_final }"/></td>
 	</tr>
 	<tr>
 		<th>과제</th>
-		<td>${classSYL.cs_homework }</td>
+		<td><input type="text" name="cs_midterm" value="${classSYL.cs_homework }"/></td>
 		<th>출석</th>
-		<td>${classSYL.cs_attent }</td>
+		<td><input type="text" name="cs_midterm" value="${classSYL.cs_attent }"/></td>
 	</tr>
 
 </table>
 </div>
-<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-<button onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
-</c:if>
-<form name="pdfForm">
-<input type=hidden id="htmlTag" name="htmlTag"/>
-<button onclick="toPdf()">pdf로 보기</button>	
+
+<button onclick="updateSYLConfirm('${lecture.lec_no }');">강의계획서 저장</button>
+<button onclick="javascript:history.go(-1)">취소</button>	
 </form>
-<button onclick="javascript:history.go(-1)">뒤로</button>
-<script type="text/javascript">
-	function updateSyl(lec_no){
-		location.href='/pro/updateSyl?lec_no='+lec_no;
-	};
-	function toPdf(){
-		$("#htmlTag").val($("#tbl").html());
-		document.pdfForm.method="post";
-		document.pdfForm.action="/pro/classSYLtoPdf";
-		document.pdfForm.target="_blank";
-		document.pdfForm.submit(); 
+<script>
+	function updateSYLConfirm(lec_no){
+		document.updateSyl.method="get";
+		document.updateSyl.
 	}
-	
 </script>
 </body>
 

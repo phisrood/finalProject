@@ -48,8 +48,8 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateClassSYL() {
-		// TODO Auto-generated method stub
+	public void updateClassSYL(Class_SYLLBUSVO classSyl) {
+	
 		
 	}
 	/**

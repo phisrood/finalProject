@@ -98,7 +98,7 @@
 </div>
 <script>
 function lecturePlan(lec_no){
-	window.open('/pro/classSYL?lec_no='+lec_no);
+	location.href='/pro/classSYL?lec_no='+lec_no;
 }
 </script>
 <!-- /page content -->

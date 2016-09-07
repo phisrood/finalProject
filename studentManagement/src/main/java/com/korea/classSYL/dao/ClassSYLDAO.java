@@ -7,10 +7,10 @@ import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 
 /**
- * @Interface Name : IndivInfoManageDAO.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Interface Name : ClassSYLDAO.java
+ * @Description : 강의계획서 관리 DAO
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -18,7 +18,8 @@ import com.korea.dto.Lecture_Time_ViewVO;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.07	김양문			강의계획서 수정, 조회, 등록
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -32,13 +33,14 @@ public interface ClassSYLDAO {
 	//강의계획서 등록
 	public void insertClassSYL();
 	/**
-	 * 개인 정보 조회
+	 * @param classSyl 
+	 * 강의계획서 수정
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//강의계획서 수정
-	public void updateClassSYL();
+	public void updateClassSYL(Class_SYLLBUSVO classSyl);
 	/**
 	 * 개인 정보 조회
 	 * @param
