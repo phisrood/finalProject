@@ -49,7 +49,7 @@
 		<div class="x_content">
 			<div style="text-align: right;">
 			<%-- <c:if test="${auth eq 'ROLE_STU' }"> --%>
-				<button type="button" class="btn btn-dark"><a href="/stu/adviceBoardWriteForm">작 성</a></button>
+				<a href="/stu/adviceBoardWriteForm"><button type="button" class="btn btn-dark">작 성</button></a>
   			<%-- </c:if> --%>
   			</div>
 

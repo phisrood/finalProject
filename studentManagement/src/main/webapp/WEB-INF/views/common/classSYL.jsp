@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,9 +51,9 @@
 		</th>
 	</tr>
 	<tr>
-		<th colspan="4">
-			강의설명내용
-		</th>
+		<td colspan="4">
+			${classSYL.cs_content }
+		</td>
 	</tr>
 	<tr>
 		<th colspan="4">
@@ -60,29 +61,31 @@
 		</th>
 	</tr>
 	<tr>
-		<th colspan="4">
-			진행방식내용
-		</th>
+		<td colspan="4">
+			${classSYL.cs_progress }
+		</td>
 	</tr>
 	<tr>
 		<th>
 			교재
 		</th>
 		<td colspan='3'>
-			도서명,저자, 판사항,출판사
+			서명:${classSYL.cs_bookname },${classSYL.cs_bookversion }<br/>
+			저자:${classSYL.cs_writer }<br/>
+			출판사:${classSYL.cs_publisher }
 		</td>
 	</tr>
 	<tr>
 		<th>중간고사</th>
-		<td>30%</td>
+		<td>${classSYL.cs_midterm }</td>
 		<th>기말고사</th>
-		<td>30%</td>
+		<td>${classSYL.cs_final }</td>
 	</tr>
 	<tr>
 		<th>과제</th>
-		<td>20%</td>
+		<td>${classSYL.cs_homework }</td>
 		<th>출석</th>
-		<td>20%</td>
+		<td>${classSYL.cs_attent }</td>
 	</tr>
 
 </table>

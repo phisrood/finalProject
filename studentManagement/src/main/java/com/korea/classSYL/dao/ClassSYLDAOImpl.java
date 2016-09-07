@@ -71,16 +71,16 @@ public class ClassSYLDAOImpl implements ClassSYLDAO{
 	 * @throws 
 	 */
 	@Override
-	public Class_SYLLBUSVO getClassSYLInfo() {
-		return null;
+	public Class_SYLLBUSVO getClassSYLInfo(String lec_no) {
+		return (Class_SYLLBUSVO) sqlSession.selectOne("classSYL.getClassSYLInfo", lec_no);
 		
 	}
 	@Override
 	public LectureViewVO getLectureInfo(String lec_no) {
-		return (LectureViewVO) sqlSession.selectOne("crsesBook.getLectureInfo", lec_no);
+		return (LectureViewVO) sqlSession.selectOne("classSYL.getLectureInfo", lec_no);
 	}
 	@Override
 	public List<Lecture_Time_ViewVO> getLectureTime(String lec_no) {
-		return sqlSession.selectList("crsesBook.getLectureTime", lec_no);
+		return sqlSession.selectList("classSYL.getLectureTime", lec_no);
 	}
 }

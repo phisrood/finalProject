@@ -139,7 +139,6 @@
                        		<li><a href="/emp/messageAllList">더보기+</a></li>
                     	</c:when>
                     </c:choose>
-                      </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="classSYL">
+	
+	<select id="getLectureInfo" parameterType="str" resultType="lectureView">
+		SELECT *
+		FROM LECTURE_VIEW
+		WHERE LEC_NO = #{lec_no}
+	</select>
+	
+	<select id="getLectureTime" parameterType="str" resultType="lectureTimeView">
+		SELECT *
+		FROM LECTURE_TIME_VIEW
+		WHERE LEC_NO=#{lec_no}
+	</select>
+	
+	<select id="getClassSYLInfo" parameterType="str" resultType="classSYLVO">
+		SELECT *
+		FROM CLASS_SYLLBUS
+		WHERE CS_LEC_NO=#{lec_no}
+	</select>
+</mapper>

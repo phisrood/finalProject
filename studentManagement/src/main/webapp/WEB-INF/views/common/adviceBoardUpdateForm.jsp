@@ -90,12 +90,12 @@ html, body {
 			<input type="button" class="btn btn-default btn-sm" value="취소" />
 			<input type="submit" class="btn btn-default btn-sm" value="수정"/>
 		</div>
+			</form>
 		<div style="float: right; width: 20%;">
 			<br>
 		</div>
 	</div>
 
-	</form>
 <!-- Datatables -->
 <script src="/stu/js/click_cal.js"></script>
 <script src="/stu/js/jquery.dataTables.min.js"></script>
