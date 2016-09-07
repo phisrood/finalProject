@@ -15,6 +15,9 @@ package com.korea.crsesREQ.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -25,7 +28,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesREQ.service.CrsesREQService;
+import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.UsersVO;
 
 @Controller
@@ -71,11 +77,23 @@ public class CrsesREQController {
 	 * @return 
 	 * @throws 
 	 */
-	@RequestMapping(value="/crses/stu/crsesList", method=RequestMethod.GET)
-	public String crsesList(){
-		String url="/stu/crsesList";
+	@RequestMapping(value="/crses/stu/crsesAllList", method=RequestMethod.GET)
+	public void crsesAllList(HttpServletResponse response){
 		
-		return url;
+		
+		List<CrsesListViewVO> crsesAllList = crsesREQService.getCrsesAllList();
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(crsesAllList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 	/**
 	 * 수강검색

@@ -20,16 +20,22 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.cyberCam.onlineCon.service.CyberCamOnlineConService;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.UsersVO;
 
@@ -104,22 +110,36 @@ public class CyberCamOnlineConController {
 	 */
 	//온라인콘텐츠 조회(학생)
 	@RequestMapping(value={"/cyberCampus/common/onlineConList"})
-	public String onlineConListStu(HttpSession session){
-		String url = "/cyberCampus/common/onlineConList";
-		String lec_no  =  (String) session.getAttribute("pro_lec_no");
+	public String onlineConListStu(HttpSession session,Model model){
+		String url = "/cyberCampus/stu/onlineConList";
+		int lec_no  =  (int) session.getAttribute("stu_lec_no");
 		
 		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
+		List<Online_Con_ViewVO> onlineConWatchList = cyberCamOnlineConService.getOnlineConWatchList(lec_no);
 		
+		model.addAttribute("onlineConList", onlineConList);
+		model.addAttribute("onlineConWatchList", onlineConWatchList);
 		return url;
 	}
 	
 
 	//온라인콘텐츠 조회(학과)
-	@RequestMapping(value={"/cyberCampus/pro/onlineConList"}, method=RequestMethod.GET)
-	public String onlineConListPro(){
-		String url = "/cyberCampus/pro/onlineConList";
+	@RequestMapping(value={"/cyberCampus/stu/onlineConView"}, method=RequestMethod.GET)
+	public void onlineConListPro(@RequestParam(value="af_no")String af_no, HttpServletResponse response){
+		Attachment_FileVO file = cyberCamOnlineConService.getAF(Integer.parseInt(af_no));
+		String path = file.getAf_path()+"\\"+file.getAf_aftername();
 		
-		return url;
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(path);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 	
 	//온라인콘텐츠 진도체크

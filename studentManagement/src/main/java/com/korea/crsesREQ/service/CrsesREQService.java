@@ -1,4 +1,9 @@
 package com.korea.crsesREQ.service;
+
+import java.util.List;
+
+import com.korea.dto.CrsesListViewVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -23,7 +28,7 @@ public interface CrsesREQService {
 	 * @throws 
 	 */
 	//수강리스트 조회
-	public void getCrsesList();
+	public List<CrsesListViewVO> getCrsesAllList();
 	/**
 	 * 개인 정보 조회
 	 * @param

@@ -28,6 +28,13 @@
 	$(function() {
 		$('#datatable').DataTable();
 	})
+	function cycamGo(form){
+		var cycam = window.open('about:blank','cyberCam','width=1400,height=900');
+		form.action = '/cyberCampus/pro/cyberClassMain';
+		form.target = "cyberCam";
+		form.method = "post";
+		form.submit();
+	}
 </script>
 <!-- 수강편람조회 -->
 
@@ -80,9 +87,9 @@
 								<td>${lecture.lec_persons }</td>
 								<td>${lecture.classroom }</td>
 								<td>
-									<form method="post" action="/cyberCampus/pro/cyberClassMain">
+									<form>
 										<input type="hidden" name="pro_lec_no" value="${lecture.lec_no }"/>
-										<input type="submit" value="이동"/>
+										<button value="이동" onclick="cycamGo(this.form);">이동</button>
 									</form>
 								</td>
 								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>
@@ -98,7 +105,7 @@
 </div>
 <script>
 function lecturePlan(lec_no){
-	window.open('/pro/classSYL?lec_no='+lec_no);
+	location.href='/pro/classSYL?lec_no='+lec_no;
 }
 </script>
 <!-- /page content -->

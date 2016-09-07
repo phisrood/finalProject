@@ -73,15 +73,41 @@ public class ClassSYLController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
+	 * 강의계획서 수정
+	 * @param String
+	 * @param Model
+	 * @return String
 	 * @throws 
 	 */
 	//강의계획서 수정
-	@RequestMapping(value="/pro/classSYLUpdate", method=RequestMethod.GET)
-	public String classSYLUpdate(){
-		String url="";
+	@RequestMapping(value="/pro/updateSyl", method=RequestMethod.GET)
+	public String classSYLUpdate(String lec_no,Model model){
+		String url="/pro/classSYLUpdate";
+		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
+		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
+		model.addAttribute("lecture", lecture);
+		model.addAttribute("classSYL", classSYL);
+		return url;
+	}
+	/**
+	 * 강의계획서 저장
+	 * @param String
+	 * @param Model
+	 * @return String
+	 * @throws 
+	 */
+	//강의계획서 수정
+	@RequestMapping(value="/pro/updateSylConfirm", method=RequestMethod.GET)
+	public String classSYLUpdateConfirm(Class_SYLLBUSVO classSyl,Model model,HttpSession session){
+		String url="redirect:/pro/classSYL?lec_no="+classSyl.getCs_lec_no();
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		classSyl.setCs_pro_use_id(user.getUse_id());
+		Class_SYLLBUSVO classSYL2 = classSYLService.getClassSYLInfo(String.valueOf(classSyl.getCs_lec_no()));
+		if(classSYL2==null){
+			classSYLService.insertClassSYL(classSyl);
+		}else{
+			classSYLService.updateClassSYL(classSyl);
+		}
 		
 		return url;
 	}
@@ -93,7 +119,7 @@ public class ClassSYLController {
 	 * 강의계획서
 	 * 
 	 * @param String
-	 * @return
+	 * @return String
 	 * @throws
 	 */
 	@RequestMapping(value = "/pro/classSYL", method = RequestMethod.GET)
