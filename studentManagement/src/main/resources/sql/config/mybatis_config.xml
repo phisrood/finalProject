@@ -95,7 +95,9 @@
 		<typeAlias alias="onlineContentWatchVO" type="com.korea.dto.Online_Con_ViewVO" />
 		<!-- 수강리스트 View  -->
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
-
+		
+		<!-- submitVO  -->
+		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 	</typeAliases>
 
 	<mappers>
