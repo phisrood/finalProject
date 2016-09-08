@@ -11,17 +11,6 @@ package com.korea.dto;
 	   *  AF_REALNAME                      원본이름
 	   *  AF_AFTERNAME                     변경이름
 	   *  AF_PATH                          경로  
-	   *  CRC_NO                           순번
-	   *  CRC_STUD_USE_ID                  아이디
-       *  CRC_YEAR                         연도
-       *  CRC_CEMESTER                     학기
-       *  CRC_CHANGEDATE                   변동일자
-       *  CRC_COLLEAGESTATUS               학적상태
-       *  CRC_COLLEAGECHANGESTATUS         학적변동
-       *  CRC_CHANGEREASON                 변동사유
-	   *  CRC_RETURNAPPOINTDATE            복학예정일자
-	   *  CRC_CANCELYN                     취소여부
-	   *  CRC_SUBMITYN                     승인여부
        *  USE_ID                           아이디                        
        *  USE_KIND                         사용자구분                    
        *  USE_NAME                         이름                          

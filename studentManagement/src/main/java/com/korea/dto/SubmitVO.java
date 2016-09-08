@@ -28,7 +28,16 @@ public class SubmitVO {
 	private int sb_major_dep_no;
 	private String sb_dep_name;
 	private String sb_mk_no;
+	private float score;
 	
+	
+	
+	public float getScore() {
+		return score;
+	}
+	public void setScore(float score) {
+		this.score = score;
+	}
 	public String getSb_mk_no() {
 		return sb_mk_no;
 	}

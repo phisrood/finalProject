@@ -94,6 +94,7 @@
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
 		<!-- submitVO  -->
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
+		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
 
 	</typeAliases>
 

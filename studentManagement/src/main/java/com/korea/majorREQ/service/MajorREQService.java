@@ -35,49 +35,8 @@ public interface MajorREQService {
 	 */
 	//부전공 신청
 	public void insertBelongMinorREQ(Student_InfoViewVO studentInfo, SubmitVO submitVO, int selec);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//소속학과 부전공 신청내역 출력
-	public String getBelongMinorREQList();
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//소속학과 부전공 신청 승인/반려
-	public String updateBelongMinorREQDecide();
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//타학과 부전공 신청내역 출력
-	public String getOthorsMinorREQList();
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//타학과 부전공 신청 승인/반려
-	public String getOthorsMinorREQDecide();
-	
-	///////////////////////다전공///////////////////////
-	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//다전공 신청
-	public String insertBelongMajorREQ();
+
+
 	/**
 	 * @param depno 
 	 * 개인 정보 조회
@@ -87,14 +46,7 @@ public interface MajorREQService {
 	 */
 	//소속학과 신청내역 출력
 	public List<SubmitVO> getBelongMajorREQList(String depno);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//소속학과 다전공 신청 승인/반려
-	public String updateBelongMajorREQDecide();
+
 	/**
 	 * @param depno 
 	 * 개인 정보 조회
@@ -104,17 +56,18 @@ public interface MajorREQService {
 	 */
 	//타학과 신청내역 출력
 	public List<SubmitVO> getOthorsMajorREQList(String depno);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//타학과 다전공 신청 승인/반려
-	public String getOthorsMajorREQDecide();
 	
 	//점수
 	public Map<String, Object> getScore(String id);
 	//부/다전공 신청리스트출력
 	public List<SubmitVO> getReqList(String id);
+
+	//신청한 학생 정보 가져오기
+	public Student_InfoViewVO getREQPersonInfo(String id);
+
+	//신청정보 가져오기
+	public SubmitVO getReqStuInfo(String sb_no);
+
+	//
+	public int updateReqDecide(String sb_no, int result);
 }
