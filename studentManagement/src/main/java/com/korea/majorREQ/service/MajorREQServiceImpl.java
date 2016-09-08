@@ -48,63 +48,10 @@ public class MajorREQServiceImpl implements MajorREQService{
 			submitVO.setSb_mk_no(Integer.toString(selec));
 			dao.insertBelongMinorREQ(submitVO);
 	}
+
+
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getBelongMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateBelongMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String insertBelongMajorREQ() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
+	 * 소속학과 부/다전공신청리스트
 	 * @param
 	 * @return 
 	 * @throws 
@@ -113,19 +60,9 @@ public class MajorREQServiceImpl implements MajorREQService{
 	public List<SubmitVO> getBelongMajorREQList(String depno) {
 		return dao.getBelongMajorREQList(depno);
 	}
+
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateBelongMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
+	 * 타학과 부/다전공 신청리스트
 	 * @param
 	 * @return 
 	 * @throws 
@@ -135,17 +72,8 @@ public class MajorREQServiceImpl implements MajorREQService{
 		// TODO Auto-generated method stub
 		return dao.getOthorsMajorREQList(depno);
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	//평균학점, 이수한 학기 계산메서드
 	@Override
 	public Map<String, Object> getScore(String id) {
 		float score = 0;
@@ -216,6 +144,55 @@ public class MajorREQServiceImpl implements MajorREQService{
 	@Override
 	public List<SubmitVO> getReqList(String id) {
 		return dao.getReqList(id);
+	}
+
+
+	@Override
+	public String getBelongMinorREQList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String updateBelongMinorREQDecide() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getOthorsMinorREQList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getOthorsMinorREQDecide() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String insertBelongMajorREQ() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String updateBelongMajorREQDecide() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public String getOthorsMajorREQDecide() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

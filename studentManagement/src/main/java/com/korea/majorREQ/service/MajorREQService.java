@@ -24,8 +24,6 @@ import com.korea.dto.SubmitVO;
  */
 public interface MajorREQService {
 
-	///////////////////////부전공///////////////////////
-	
 	/**
 	 * @param selec 
 	 * @param submitVO 
