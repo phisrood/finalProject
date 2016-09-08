@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -119,6 +121,14 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	public List<ScoreViewVO> getScoreCalcu(Map<String, String> params) {
 		
 		return session.selectList("CrsesREQ.getScoreViewList", params);
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getClassroom(Map<String, String> params) {
+		return session.selectList("CrsesREQ.getClassroom", params);
+	}
+	@Override
+	public int getSemester(String id) {
+		return (int) session.selectOne("CrsesREQ.getSemester", id);
 	}
 
 }

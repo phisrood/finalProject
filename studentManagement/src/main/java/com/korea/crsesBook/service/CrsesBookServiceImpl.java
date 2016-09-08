@@ -108,6 +108,7 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	}
 	@Override
 	public String insertLecture(LectureVO lecture) {
+		lecture.setLec_placement(crsesBookDAO.getPlacement(lecture));
 		return crsesBookDAO.insertLecture(lecture);
 		
 	}

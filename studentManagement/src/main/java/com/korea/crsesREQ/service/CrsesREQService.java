@@ -96,7 +96,20 @@ public interface CrsesREQService {
 	//시간표중복배제
 	public void timeTableOverlap();
 	
-	//직전학기 성적조회
+	/**
+	 * 직전학기 성적조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public float getScoreCalcu(String id);
+	
+	/**
+	 * 학기가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public int getSemester(String id);
 	
 }

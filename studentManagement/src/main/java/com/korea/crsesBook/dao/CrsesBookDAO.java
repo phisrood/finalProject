@@ -150,6 +150,13 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	public List<Lecture_Time_ViewVO> getLectureTimeListByStu();
+	/**
+	 * 분반번호 가져오기
+	 * @param LectureVO lecture
+	 * @return int
+	 * @throws 
+	 */
+	public int getPlacement(LectureVO lecture);
 	
 	
 }

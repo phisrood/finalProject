@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.Question_BoardListVO;
