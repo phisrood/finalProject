@@ -22,18 +22,22 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 import com.korea.dto.UsersVO;
@@ -49,13 +53,17 @@ public class CyberCamQnaBBSController {
 	
 	
 	
-	//qna게시판 리스트
+	//qna게시판 리스트(학생)
 	@RequestMapping(value="/cyberCampus/stu/qnaBBSList", method=RequestMethod.GET)
 	public String qnaBBSList(Model model, HttpSession session){
 		String url="/cyberCampus/common/qnaBBSList";
 		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
+		
+		
+		String auth = loginUser.getAuthority();
+		
 		
 		int stu_lec_no = (int) session.getAttribute("stu_lec_no");
 
@@ -65,10 +73,12 @@ public class CyberCamQnaBBSController {
 		
 		List<Question_BoardListVO> question_BoardListVO = cyberCamQnaBBSService.getQnaBBSList(lecNoInContext);
 		model.addAttribute("question_BoardListVO",question_BoardListVO);
+		model.addAttribute("auth",auth);
+		
 		
 		return url;
 	}
-	
+	//qna게시판 리스트(선생)
 	@RequestMapping(value="/cyberCampus/pro/qnaBBSList", method=RequestMethod.GET)
 	public String qnaBBSListPro(Model model, HttpSession session){
 		String url="/cyberCampus/common/qnaBBSListPro";
@@ -77,28 +87,31 @@ public class CyberCamQnaBBSController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
 
-		
-		
+		String auth = loginUser.getAuthority();
+	
 		
 		List<Question_BoardListVO> question_BoardListVO = cyberCamQnaBBSService.getQnaBBSListPro(pro_lec_no);
 		model.addAttribute("question_BoardListVO",question_BoardListVO);
-		
+		model.addAttribute("auth",auth);
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
 	//qna게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
-	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no, Model model,HttpSession session){
+	public String qnaBBSDetail(
+			@RequestParam(value="qb_no" , defaultValue="0")int qb_no,
+			Model model,HttpSession session){
 		String url = "/cyberCampus/common/qnaBBSDetail";
 			
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+
+		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
 		
+		
+	
+		
+		Professor_InquiryList_ViewVO Professor_InquiryList_ViewVO = new Professor_InquiryList_ViewVO();
 		String auth = loginUser.getAuthority();
 		
 			
@@ -118,12 +131,8 @@ public class CyberCamQnaBBSController {
 
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	
 	//qna게시판 등록페이지 이동
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSInsert","/cyberCampus/pro/qnaBBSInsert"}, method=RequestMethod.GET)
 	public String qnaBBSInsert(Model model, HttpSession session){
@@ -138,8 +147,29 @@ public class CyberCamQnaBBSController {
 		return url;
 	}
 	
+	//qna게시판 리스트(게시판 파일 다운로드)
+	@RequestMapping(value={"/cyberCampus/stu/qnaBBSFileDownload","/cyberCampus/pro/qnaBBSFileDownload"}, method=RequestMethod.GET)
+	public ModelAndView qnaBBSFileDownload(Model model, HttpSession session, int af_no,HttpServletRequest request, HttpServletResponse response)
+	
+		throws IOException{
+		Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
+		
+		attachment_FileVO = cyberCamQnaBBSService.getQnaBBSDetailAf_no(af_no);
+		
 
-	//qna게시판 글 등록
+		String downloadpath = request.getSession().getServletContext().getRealPath("resources/stu/qnaAF");
+		
+		File file = new File(downloadpath,attachment_FileVO.getAf_aftername());
+		
+		if(file == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		
+		return new ModelAndView("download", "downloadFile", file);
+	}
+
+	//qna게시판 글 등록(학생)
 		@RequestMapping(value={"/cyberCampus/stu/qnaBBSsetInsert","/cyberCampus/pro/qnaBBSInsert"}, method=RequestMethod.POST)
 		public String qnaBBSsetInsert(HttpSession session, Model model,   HttpServletRequest request,
 					
@@ -183,12 +213,7 @@ public class CyberCamQnaBBSController {
 
 			return url;
 		}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
 	//qna게시판삭제
 	@RequestMapping(value="/common/qnaBBSDelete", method=RequestMethod.GET)
 	public String qnaBBSDelete(@RequestParam(value="qb_no")int qb_no){
@@ -201,13 +226,8 @@ public class CyberCamQnaBBSController {
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//qna게시판수정
+
+	//qna게시판수정(학생)
 	@RequestMapping(value="/common/qnaBBSUpdate", method=RequestMethod.POST)
 	public String qnaBBSUpdate(HttpSession session, HttpServletRequest request,
 		    @RequestParam(value="content", defaultValue="")String content,
