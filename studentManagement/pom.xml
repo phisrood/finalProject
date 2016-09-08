@@ -114,8 +114,15 @@
       <dependency>
          <groupId>com.lowagie</groupId>
          <artifactId>itext</artifactId>
-         <version>2.1.7</version>
+         <version>4.2.2</version>
+         <type>pom</type>
       </dependency>
+      <!-- https://mvnrepository.com/artifact/com.itextpdf.tool/xmlworker -->
+		<dependency>
+			<groupId>com.itextpdf.tool</groupId>
+			<artifactId>xmlworker</artifactId>
+			<version>5.4.1</version>
+		</dependency>
 		<!-- 추가 Excel poi dependency -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -126,18 +133,6 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.9</version>
-		</dependency>
-		<!-- 추가 itext dependency -->
-		<dependency>
-			<groupId>com.lowagie</groupId>
-			<artifactId>itext</artifactId>
-			<version>2.1.7</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.itextpdf.tool/xmlworker -->
-		<dependency>
-			<groupId>com.itextpdf.tool</groupId>
-			<artifactId>xmlworker</artifactId>
-			<version>5.4.1</version>
 		</dependency>
 
       <!-- 추가 Transaction dependency -->

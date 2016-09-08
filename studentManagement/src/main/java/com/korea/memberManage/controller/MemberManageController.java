@@ -3,10 +3,8 @@ package com.korea.memberManage.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.bouncycastle.ocsp.RespID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +24,6 @@ import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
 import com.korea.memberManage.service.MemberManageService;
-import com.sun.mail.iap.Response;
 
 /**
  * @Class Name : MemberManageController.java
