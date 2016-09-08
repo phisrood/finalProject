@@ -30,7 +30,7 @@ public class TimeTableController {
 	//수업시간표 조회
 	@RequestMapping(value="/stu/timeTableList", method=RequestMethod.GET)
 	public String timeTableList(){
-		String url="";
+		String url="/stu/timeTable";
 		
 		return url;
 	}
