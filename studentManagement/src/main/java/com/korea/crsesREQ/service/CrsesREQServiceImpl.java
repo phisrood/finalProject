@@ -1,5 +1,6 @@
 package com.korea.crsesREQ.service;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesREQ.dao.CrsesREQDAO;
 import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.CrsesListViewVO;
@@ -72,17 +74,7 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		// TODO Auto-generated method stub
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void insertCrsesREQ() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -277,6 +269,16 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 	@Override
 	public int getSemester(String id) {
 		return crsesREQDAO.getSemester(id);
+	}
+	@Override
+	public void insertCrsesREQ(String lec_no, String id) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("lec_no", lec_no);
+		map.put("id", id);
+
+			crsesREQDAO.insertCrsesREQ(map);
+	
+		
 	}
 
 }

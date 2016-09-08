@@ -40,6 +40,22 @@
 
     <!-- Custom Theme Style -->
     <link href="/stu/css/custom.min.css" rel="stylesheet">
+    	<!-- 부트스트랩 css -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+    <link href="/bootstrap/css/green.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+    <link href="/common/css/default.css" rel="stylesheet">
+    
+    <script src="/stu/js/default.js"></script>
+    <script src="/common/js/notice.js"></script>
+    <script src="/bootstrap/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    
   </head>
   
   <body class="login">
@@ -48,7 +64,7 @@
   	if(chk==1){
   		alert("학번/비밀번호를 확인후 재입력바랍니다.");
   	}else if(chk==2){
-  		window.open('/crses/stu/crsesREQMain', "_blank", "width=1400, height=900, resizable=0, scrollbars=1") ;
+  		window.open('/crses/stu/crsesREQMain', "_self", "width=1400, height=900, resizable=0, scrollbars=1") ;
   		
   	}
   </script>

@@ -33,5 +33,6 @@
 		<pattern>/common/pwdSearch</pattern>
 		<pattern>/pro/updateAdviceConfirmForm*</pattern>
 		<pattern>/common/messageReplyForm</pattern>
+		<pattern>/stu/crsesLoginForm</pattern>
 	</excludes>
 </decorators>

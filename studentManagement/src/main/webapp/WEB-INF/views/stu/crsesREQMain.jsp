@@ -38,6 +38,23 @@
 </style>
 
 <script>
+function classSyl(lec_no){
+	window.open("/stu/classSYL?lec_no="+lec_no,"newWindow");
+}
+function reqClass(lec_no){
+	$.ajax({
+		url:"/crses/stu/insertCrsesREQ",
+		method: "get",
+		data: {"lec_no":lec_no},
+		type: "json",
+		success:function(data){
+			alert("신청되었습니다");
+		},
+		error:function(){
+			 alert("에러야!!");
+		}
+	})
+}
 	$(function(){
 		var max = 0;
 		var min = 0;
@@ -50,8 +67,6 @@
 			success:function(data){
 				var htmlCode = "";
 				//계산
-				
-				
 				$.each(data, function(index, value){
 					max = value.lec_persons;
 					min = value.lec_persons_count;
@@ -64,23 +79,18 @@
 					htmlCode += "<td>"+value.lb_credit+"</td>";
 					htmlCode += "<td>"+value.lb_completekind+"</td>";
 					htmlCode += "<td>"+(max-min)+"</td>";
-					htmlCode += "<td><button id='reqBtn' class='reqBtn'>신청</td>";
-					htmlCode += "<td><button id='sylBtn' class='sylBtn btn btn-info btn-xs'>강의계획서</td>";
+					htmlCode += "<td><button class='reqBtn' onclick='reqClass("+value.lec_no+")'>신청</td>";
+					htmlCode += "<td><button class='sylBtn btn btn-info btn-xs' onclick='classSyl("+value.lec_no+");'>강의계획서</td>";
 					htmlCode += "</tr>";
 				});
 				$("#resultList").html(htmlCode);
-				$(".sylBtn").on("click",function(){ //강의계획서버튼
-					alert("뜨나요");
-				});
-				$(".reqBtn").on("click",function(){ //신청버튼
-					alert("뜨나요");
-				});
 			},
 			error:function(){
 				alert("에러");
 			}
 			
 		});
+		
 	});
 </script>
 
