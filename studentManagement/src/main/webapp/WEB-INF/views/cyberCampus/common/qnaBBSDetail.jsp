@@ -66,7 +66,7 @@
                       		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
                       	</c:when>   
                       	<c:otherwise>
-							<div style="float: left; width: 6%;">현재 첨부 파일 ${attachment_FileVO.af_aftername} </div>
+							<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername} </div>
 							<div style="float: left; width: 94%;">
 						
 							<c:if test="${auth eq 'ROLE_STU'}">	
