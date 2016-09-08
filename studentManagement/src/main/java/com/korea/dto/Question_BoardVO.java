@@ -24,6 +24,9 @@ public class Question_BoardVO {
 	private String qb_title;
 	private String qb_content;
 	private String qb_date;
+	
+	
+	
 	public int getQb_no() {
 		return qb_no;
 	}
