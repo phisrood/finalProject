@@ -62,11 +62,66 @@
 	,#{qb_lec_no}
 	,#{qb_af_no}
 	,#{qb_title}
-	,#{qb_title}
+	,#{qb_content}
 	,SYSDATE)
 	
 	
 	</insert>
+	<update id="updateCyberCamQnaBBSAttachContentUpdate" parameterType="questionBoard">
+	UPDATE QUESTION_BOARD
+	
+	SET                      
+	QB_TITLE = #{qb_title},
+	QB_CONTENT = #{qb_content}
+	
+	WHERE QB_NO = #{qb_no}
+	
+	
+	
+	
+	</update>
+
+	<update id="updateCyberCamQnaBBSAttachFileUpdate" parameterType="attachment">
+		UPDATE	ATTACHMENT_FILE 
+		SET		AF_REALNAME = #{af_realname},
+				AF_AFTERNAME = #{af_aftername},
+				AF_PATH = #{af_path}
+		WHERE	AF_NO = #{af_no}	
+	</update>
+	
+	<delete id="deleteQnaBBS" parameterType="int">
+	DELETE FROM QUESTION_BOARD where QB_NO = #{qb_no}
+	</delete>
+	
+	<select id="getCyberCamQnaBBSListPro" parameterType="int" resultType="question_BoardListVO">
+	SELECT *
+	FROM QUESTION_BOARD
+	WHERE QB_LEC_NO = #{pro_lec_no}	
+	</select>
+	
+	
+	<select id="getCyberCamQnaBBSDetailAfNo" parameterType="int" resultType="attachment">
+	
+	SELECT
+	
+	AF_NO,
+	AF_REALNAME,
+	AF_AFTERNAME,
+	AF_PATH
+	
+	FROM ATTACHMENT_FILE
+	
+	WHERE AF_NO = #{af_no}
+	
+
+	</select>
+	
+	
+	
+	
+	
+	
+	
 	
 
 </mapper>

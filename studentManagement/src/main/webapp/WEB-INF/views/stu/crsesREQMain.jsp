@@ -42,6 +42,7 @@
 		var max = 0;
 		var min = 0;
 		//로딩시 리스트 출력
+		
 		$.ajax({
 			url:"/crses/stu/crsesAllList",
 			method:"get",
@@ -56,19 +57,24 @@
 					min = value.lec_persons_count;
 					htmlCode += "<tr>";
 					htmlCode += "<td>"+value.lb_no+"</td>";
+					htmlCode += "<td>"+value.lec_placement+"</td>";
 					htmlCode += "<td>"+value.lb_name+"</td>";
-					htmlCode += "<td>"+value.tt_time+"</td>";
-					htmlCode += "<td>"+value.ci_roomname+value.ci_roomnumber+"</td>";
+					htmlCode += "<td>"+value.classroom+"</td>";
 					htmlCode += "<td>"+value.use_name+"</td>";
 					htmlCode += "<td>"+value.lb_credit+"</td>";
 					htmlCode += "<td>"+value.lb_completekind+"</td>";
 					htmlCode += "<td>"+(max-min)+"</td>";
-					htmlCode += "<td><button id='reqBtn'>신청</td>";
-					htmlCode += "<td><button id='sylBtn' class='btn btn-info btn-xs'>강의계획서</td>";
+					htmlCode += "<td><button id='reqBtn' class='reqBtn'>신청</td>";
+					htmlCode += "<td><button id='sylBtn' class='sylBtn btn btn-info btn-xs'>강의계획서</td>";
 					htmlCode += "</tr>";
 				});
-				
 				$("#resultList").html(htmlCode);
+				$(".sylBtn").on("click",function(){ //강의계획서버튼
+					alert("뜨나요");
+				});
+				$(".reqBtn").on("click",function(){ //신청버튼
+					alert("뜨나요");
+				});
 			},
 			error:function(){
 				alert("에러");
@@ -104,9 +110,9 @@
                      <thead> 
                         <tr>
                            <th>학수번호</th>
+                           <th>분반</th>
                            <th>과목명</th>
-                           <th>수업시간</th>
-                           <th>강의실</th>
+                           <th>수업시간, 강의실</th>
                            <th>교수명</th>
                            <th>학점</th>
                            <th>이수구분</th>

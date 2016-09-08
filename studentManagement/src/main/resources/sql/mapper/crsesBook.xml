@@ -94,6 +94,12 @@
 		</selectKey>
 	</insert>
 
+	<select id="getPlacement" parameterType="lecture" resultType="int">
+		SELECT MAX(LEC_PLACEMENT)+1
+		FROM LECTURE
+		WHERE LEC_LB_NO = #{lec_lb_no}
+	</select>
+
 	<insert id="insertClassroomUsetime" parameterType="list">
 		INSERT ALL
 		<foreach collection="list" item="item">

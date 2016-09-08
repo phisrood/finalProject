@@ -63,12 +63,12 @@ public class CrsesREQController {
 		
 		//직전학기 성적조회
 		float score = crsesREQService.getScoreCalcu(id);
-		
+		int semester = crsesREQService.getSemester(id);
 		int limitSemes = crsesREQService.crsesLimit(score);
 		
 		model.addAttribute("score", score);
 		model.addAttribute("limitSemes", limitSemes);
-		
+		model.addAttribute("semester", semester);
 		return url;
 	}
 	/**
