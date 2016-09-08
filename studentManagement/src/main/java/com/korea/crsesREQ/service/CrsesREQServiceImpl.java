@@ -13,10 +13,10 @@ import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : CrsesREQServiceImpl.java
+ * @Description : 수강신청 관련 service
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -24,7 +24,8 @@ import com.korea.dto.ScoreViewVO;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.07	김양문			수강신청 가능 리스트
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */

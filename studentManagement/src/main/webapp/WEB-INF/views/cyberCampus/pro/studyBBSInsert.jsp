@@ -30,6 +30,9 @@ function insertStudyBBS(insertStudyBBSForm) {
 	}else if(document.insertStudyBBSForm.lr_content.value==""){
 		alert('내용을 입력해주세요');
 		document.insertStudyBBSForm.lr_content.focus();
+	}else if(document.updateStudyBBSForm.file.value == "") {
+		alert('첨부파일을 넣어주세요');
+		document.updateStudyBBSForm.file.focus();
 	}else{
 		document.insertStudyBBSForm.method="post";
 		document.insertStudyBBSForm.action="/cyberCampus/pro/studyBBSInsert";

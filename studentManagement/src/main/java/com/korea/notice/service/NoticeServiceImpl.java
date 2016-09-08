@@ -124,18 +124,5 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void getNoticeFileDown() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 
 }

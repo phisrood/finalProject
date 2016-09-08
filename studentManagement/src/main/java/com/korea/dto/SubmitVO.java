@@ -25,6 +25,22 @@ public class SubmitVO {
 	private String sb_majordepartment;
 	private String sb_majordepartmentsubmityn;
 	private String sb_requestdepartmentyn;
+	private int sb_major_dep_no;
+	private String sb_dep_name;
+	private String sb_mk_no;
+	
+	public String getSb_mk_no() {
+		return sb_mk_no;
+	}
+	public void setSb_mk_no(String sb_mk_no) {
+		this.sb_mk_no = sb_mk_no;
+	}
+	public int getSb_major_dep_no() {
+		return sb_major_dep_no;
+	}
+	public void setSb_major_dep_no(int sb_major_dep_no) {
+		this.sb_major_dep_no = sb_major_dep_no;
+	}
 	public int getSb_no() {
 		return sb_no;
 	}
@@ -66,6 +82,12 @@ public class SubmitVO {
 	}
 	public void setSb_requestdepartmentyn(String sb_requestdepartmentyn) {
 		this.sb_requestdepartmentyn = sb_requestdepartmentyn;
+	}
+	public String getSb_dep_name() {
+		return sb_dep_name;
+	}
+	public void setSb_dep_name(String sb_dep_name) {
+		this.sb_dep_name = sb_dep_name;
 	}
 	
 }

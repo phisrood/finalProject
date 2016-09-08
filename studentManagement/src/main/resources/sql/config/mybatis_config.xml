@@ -10,7 +10,6 @@
 		<typeAlias alias="str" type="java.lang.String" />
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="hashmap" type="java.util.HashMap"/>
-
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
@@ -84,7 +83,6 @@
 		<typeAlias alias="learningRoomViewVO" type="com.korea.dto.LearningRoomViewVO" />
 		<!-- 사이버캠퍼스 학습자료 view -->	
 		<typeAlias alias="question_BoardListVO" type="com.korea.dto.Question_BoardListVO" />
-
 		<!-- 사이버캠퍼스 온라인콘텐츠  -->
 		<typeAlias alias="onlineContentsVO" type="com.korea.dto.Online_ContentsVO" />
 		<!-- 성적조회 view  -->
@@ -95,7 +93,8 @@
 		<typeAlias alias="onlineContentWatchVO" type="com.korea.dto.Online_Con_ViewVO" />
 		<!-- 수강리스트 View  -->
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
-		
+		<!-- submitVO  -->
+		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 
 	</typeAliases>
 
@@ -141,5 +140,7 @@
 		<mapper resource="sql/mapper/crsesREQ.xml"/>
 		<!--  강의계획서  -->
 		<mapper resource="sql/mapper/classSYL.xml"/>
+		<!--  강의계획서  -->
+		<mapper resource="sql/mapper/major.xml"/>
 	</mappers>
 </configuration>

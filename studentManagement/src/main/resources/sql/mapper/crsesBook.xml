@@ -52,71 +52,82 @@
 			#{item}
 		</foreach>
 	</update>
-	
+
 	<select id="getCrsesBook" parameterType="str" resultType="lb">
-		SELECT *
+		SELECT
+		*
 		FROM LECTURE_BREAKEDOWN
 		WHERE LB_NO = #{lb_no}
 	</select>
-	
+
 	<update id="updateCrsesBook" parameterType="lb">
-		UPDATE LECTURE_BREAKEDOWN
-		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit}, LB_COMPLETEKIND=#{lb_completekind},LB_APPROVALYN='N'
-		WHERE LB_NO = #{lb_no}
+		UPDATE
+		LECTURE_BREAKEDOWN
+		SET LB_NAME = #{lb_name}, LB_CREDIT=#{lb_credit},
+		LB_COMPLETEKIND=#{lb_completekind},LB_APPROVALYN='N'
+		WHERE LB_NO =
+		#{lb_no}
 	</update>
-	
+
 	<select id="getClassroomInfo" resultType="classroom">
 		SELECT *
-		FROM CLASSROOM_INFO
+		FROM
+		CLASSROOM_INFO
 		ORDER BY CI_ROOMNAME
 	</select>
-	
-	<select id="getClassroomTime" parameterType="classroom" resultType="classroomTime">
+
+	<select id="getClassroomTime" parameterType="classroom"
+		resultType="classroomTime">
 		SELECT *
 		FROM CLASSROOM_USETIME
 		WHERE CU_CI_NO = #{ci_no}
 	</select>
-	
+
 	<insert id="insertLecture" parameterType="lecture">
 		INSERT INTO LECTURE
-		(LEC_NO, LEC_LB_NO, LEC_LN_PRO_USE_ID, LEC_MAKESEMESTER, LEC_MAKEYEAR,LEC_PLACEMENT,LEC_PERSONS)
+		(LEC_NO, LEC_LB_NO, LEC_LN_PRO_USE_ID,
+		LEC_MAKESEMESTER, LEC_MAKEYEAR,LEC_PLACEMENT,LEC_PERSONS)
 		VALUES
 		(LECTURE_SEQ.NEXTVAL,TRIM(#{lec_lb_no}),#{lec_ln_pro_use_id},#{lec_makesemester},TO_DATE(#{lec_makeyear},'yyyy'),#{lec_placement},#{lec_persons})
 		<selectKey keyProperty="lec_no" resultType="String" order="AFTER">
 			SELECT LECTURE_SEQ.CURRVAL FROM DUAL
-		</selectKey>	
+		</selectKey>
 	</insert>
-	
+
 	<insert id="insertClassroomUsetime" parameterType="list">
 		INSERT ALL
-		<foreach collection="list" item="item" >
-		INTO CLASSROOM_USETIME
-		(CU_CI_NO, CU_TT_NO, CU_LEC_NO)
-		VALUES  
-           (#{item.cu_ci_no}, #{item.cu_tt_no},#{item.cu_lec_no})
-        </foreach>
-        SELECT * FROM DUAL
+		<foreach collection="list" item="item">
+			INTO CLASSROOM_USETIME
+			(CU_CI_NO, CU_TT_NO, CU_LEC_NO)
+			VALUES
+			(#{item.cu_ci_no}, #{item.cu_tt_no},#{item.cu_lec_no})
+		</foreach>
+		SELECT * FROM DUAL
 	</insert>
-	
+
 	<select id="getLectureList" parameterType="str" resultType="lectureView">
 		SELECT *
 		FROM
 		LECTURE_VIEW
-		WHERE LEC_LN_PRO_USE_ID = #{use_id}
+		<if test="_parameter != null">
+			WHERE LEC_LN_PRO_USE_ID = #{_parameter}
+		</if>
 	</select>
-	
+
 	<select id="getLectureTimeList" parameterType="str" resultType="lectureTimeView">
 		SELECT *
 		FROM LECTURE_TIME_VIEW
-		WHERE LEC_LN_PRO_USE_ID = #{use_id}
+		<if test="_parameter != null">
+			WHERE LEC_LN_PRO_USE_ID = #{_parameter}
+		</if>
 	</select>
-	
+
 	<select id="getLectureInfo" parameterType="str" resultType="lectureView">
 		SELECT *
 		FROM LECTURE_VIEW
 		WHERE LEC_NO = #{lec_no}
 	</select>
-	
+
 	<select id="getLectureTime" parameterType="str" resultType="lectureTimeView">
 		SELECT *
 		FROM LECTURE_TIME_VIEW

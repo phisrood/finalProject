@@ -25,6 +25,7 @@
 	
 
 	<excludes>
+		<pattern>/stu/minorModel</pattern>
 		<pattern>/common/loginForm</pattern>
 		<pattern>/error</pattern>
 		<pattern>/main.jsp</pattern>

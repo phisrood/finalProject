@@ -10,8 +10,22 @@
 <title></title>
 </head>
 <body >
+<div class="row">
+		<div class="x_panel_big">
+			<div class="x_panel">
+
+				<div class="x_title">
+					<h2>강의계획서</h2>
+					<div class="clearfix"></div>
+				</div>
+		<div class="button-location">
+			<form name="pdfForm">
+			<input type=hidden id="htmlTag" name="htmlTag"/>
+			<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>	
+			</form>
+		</div>
 <div id="tbl">
-<table border='1' class='kor'>
+<table id="classSYL" class='kor table table-striped table-bordered dataTable no-footer' >
 	<tr>
 		<th>개설년도/학기</th>
 		<td>${lecture.lec_makeyear }/${lecture.lec_makesemester }학기</td>
@@ -37,13 +51,14 @@
 		<td>${lecture.lec_persons }</td>
 	</tr>
 	<tr>
-		<th colspan="2">담당교수</th>
-		<td colspan="2">${lecture.use_name }</td>
-	</tr>
-	<tr>
-		<th colspan="4">
-			강의계획서
+		<th>담당교수</th>
+		<td>${lecture.use_name }</td>
+		<th>
+			교재
 		</th>
+		<td>
+			도서명,저자, 판사항,출판사
+		</td>
 	</tr>
 	<tr>
 		<th colspan="4">
@@ -51,7 +66,8 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="4">
+		<td colspan="4" class="lectureContent">
+			강의설명내용
 			${classSYL.cs_content }
 		</td>
 	</tr>
@@ -61,7 +77,8 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="4">
+		<td colspan="4" class="lectureContent">
+			진행방식내용
 			${classSYL.cs_progress }
 		</td>
 	</tr>
@@ -70,8 +87,8 @@
 			교재
 		</th>
 		<td colspan='3'>
-			서명:${classSYL.cs_bookname },${classSYL.cs_bookversion }<br/>
-			저자:${classSYL.cs_writer }<br/>
+			서명:<p>${classSYL.cs_bookname },${classSYL.cs_bookversion }</p>
+			저자:<p>${classSYL.cs_writer }</p>
 			출판사:${classSYL.cs_publisher }
 		</td>
 	</tr>
@@ -87,29 +104,20 @@
 		<th>출석</th>
 		<td>${classSYL.cs_attent }</td>
 	</tr>
-
 </table>
 </div>
+</div>
+</div>
+</div>
+<div class="button-location">
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-<button onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
+<button class="btn btn-dark" onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
 </c:if>
-<form name="pdfForm">
-<input type=hidden id="htmlTag" name="htmlTag"/>
-<button onclick="toPdf()">pdf로 보기</button>	
-</form>
-<a href="/pro/lectureList"><button>뒤로</button></a>
+<a href="/pro/lectureList"><button class="btn btn-dark">뒤로</button></a>
+</div>
 <script type="text/javascript">
-	function updateSyl(lec_no){
-		location.href='/pro/updateSyl?lec_no='+lec_no;
-	};
-	function toPdf(){
-		$("#htmlTag").val($("#tbl").html());
-		document.pdfForm.method="post";
-		document.pdfForm.action="/pro/classSYLtoPdf";
-		document.pdfForm.target="_blank";
-		document.pdfForm.submit(); 
-	}
-	
+	$("#htmlTag").val($("#tbl").html());
+	alert($("#htmlTag").val());
 </script>
 </body>
 
