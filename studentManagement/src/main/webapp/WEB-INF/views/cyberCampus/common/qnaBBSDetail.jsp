@@ -36,34 +36,59 @@
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 상세 )</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
+			<form method="post" action="/common/qnaBBSUpdate" enctype="multipart/form-data">
 			<div class="x_panel_big">
+			
 				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
-					
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" readonly="readonly" value="${question_BoardVO.qb_title }">
+							<input name="title" type="text" size="50"  value="${question_BoardVO.qb_title }">
+							<input name="qb_no" type="hidden" value="${question_BoardVO.qb_no }">
+							<input name="qb_lec_no" type="hidden" value="${question_BoardVO.qb_lec_no }">
+							<input name="qb_af_no" type="hidden" value="${question_BoardVO.qb_af_no }">
+							<input name="qb_date" type="hidden" value="${question_BoardVO.qb_date }">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							<input name="writer" type="text" size="75" value="${question_BoardVO.qb_stud_use_id }">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="45" value="${question_BoardVO.qb_date }"">
+							<input name="writer" type="text" readonly="readonly" size="30" value="${question_BoardVO.qb_stud_use_id }">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="45" readonly="readonly" value="${question_BoardVO.qb_date }"">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">${question_BoardVO.qb_af_no }</a></div>
+					
+							
+							
+						<c:choose>
+                      	<c:when test="${empty attachment_FileVO}">
+                      		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
+                      	</c:when>   
+                      	<c:otherwise>
+							<div style="float: left; width: 6%;">현재 첨부 파일 ${attachment_FileVO.af_aftername} </div>
+							<div style="float: left; width: 94%;">
+						
+							<c:if test="${auth eq 'ROLE_STU'}">	
+							
+							<input type="file" name="file">
+							
+							</c:if>
+							</div>
+						</c:otherwise>
+						</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div class="x_panel_big">${question_BoardVO.qb_content }<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+						
+							<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
 							<div align="center" style="float: left; width: 6%;"><br><br>
                         		<input type="text" id="" required="required" size="5" value="${question_BoardVO.qb_stud_use_id }"  disabled="disabled" style="text-align: center;">
                     		</div>
 							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br>
+							
+							
 							<c:if test="${auth eq 'ROLE_PRO'}">	
 								<input type="text" name="comment" style="float: left; width: 90%;" />
 							</c:if>
@@ -82,6 +107,7 @@
 						</td>
 					</tr>
 				</table>
+				
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 86%;">
@@ -93,14 +119,19 @@
 				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
-				
-				<button type="button" class="btn btn-default btn-sm">삭 제</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<a href="/common/qnaBBSDelete?qb_no=${question_BoardVO.qb_no }"><button type="button" class="btn btn-default btn-sm">삭 제</button></a>
+				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
-				
-				<button type="button" class="btn btn-default btn-sm">수 정</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<button type="submit" class="btn btn-default btn-sm">수 정</button>
+				</c:if>
 			</div>
+			</form>
+			  
     </div>
+ 
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

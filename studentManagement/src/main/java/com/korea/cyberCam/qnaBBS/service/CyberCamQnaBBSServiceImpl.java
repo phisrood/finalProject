@@ -45,22 +45,12 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	
 	@Override
 	public	List<Question_BoardListVO> getQnaBBSList(Map<String, String> lecNoInContext) {
-		return cyberCamQnaBBSDAO.getQnaBBSList(lecNoInContext);
-		
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+		 
 	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+		return cyberCamQnaBBSDAO.getQnaBBSList(lecNoInContext);
+	
+	}
+
 	@Override
 	public void insertQnaBBS(Attachment_FileVO attachment_FileVO) {
 		cyberCamQnaBBSDAO.insertQnaBBS(attachment_FileVO);
@@ -72,32 +62,22 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	public int selectQnaBBSAF_NO() {
 		return cyberCamQnaBBSDAO.selectQnaBBSAF_NO();
 	}
-
-	
-	
-	
-	
-	
 	
 	@Override
-	public void deleteQnaBBS() {
-		// TODO Auto-generated method stub
-		
+	public void deleteQnaBBS(int qb_no) {
+		cyberCamQnaBBSDAO.deleteQnaBBS(qb_no);
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	@Override
-	public void updateQnaBBS() {
-		// TODO Auto-generated method stub
-		
+	public void updateQnaBBS(Attachment_FileVO attachment_FileVO,Question_BoardVO question_BoardVO) {
+		cyberCamQnaBBSDAO.updateQnaBBS(attachment_FileVO);
+		cyberCamQnaBBSDAO.updatetQnaBBSFinal(question_BoardVO);
 	}
 
 	@Override
 	public Question_BoardVO getQnaBBSDetail(int qb_no) {
+	
+		
 		return cyberCamQnaBBSDAO.getQnaBBSDetail(qb_no);
 		
 	}
@@ -115,5 +95,21 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 		cyberCamQnaBBSDAO.insertQnaBBSFinal(question_BoardVO);
 		
 	}
+
+	@Override
+	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no) {
+		
+		return cyberCamQnaBBSDAO.getQnaBBSListPro(pro_lec_no);
+	}
+
+	@Override
+	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no) {
+		
+		return cyberCamQnaBBSDAO.getQnaBBSDetailAf_no(af_no);
+	}
+
+
+
+	
 
 }
