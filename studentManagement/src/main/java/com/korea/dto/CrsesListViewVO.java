@@ -21,6 +21,13 @@ public class CrsesListViewVO {
 	private String use_name; //교수이름
 	private String ci_roomname; //단과대
 	private String ci_roomnumber; //번호
+	private String classroom; //시간, 강의실
+	public String getClassroom() {
+		return classroom;
+	}
+	public void setClassroom(String classroom) {
+		this.classroom = classroom;
+	}
 	public String getLec_no() {
 		return lec_no;
 	}

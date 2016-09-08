@@ -143,7 +143,7 @@ public class ClassSYLController {
 	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
-		     
+		
 		// PdfWriter 생성
 		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/test.pdf")); // 바로 다운로드.
 		PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
@@ -158,7 +158,6 @@ public class ClassSYLController {
 		// Document 오픈
 		document.open();
 		
-		     
 		// CSS
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
 		String cssPath = request.getServletContext().getRealPath("/resources/common/css/default.css");

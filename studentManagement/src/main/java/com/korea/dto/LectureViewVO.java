@@ -15,8 +15,16 @@ public class LectureViewVO {
 	private String classroom;
 	private String lb_credit;
 	private String lec_plan;
+	private String lec_persons_count;
+	
 
 	
+	public String getLec_persons_count() {
+		return lec_persons_count;
+	}
+	public void setLec_persons_count(String lec_persons_count) {
+		this.lec_persons_count = lec_persons_count;
+	}
 	public String getLec_plan() {
 		return lec_plan;
 	}

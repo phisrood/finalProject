@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.crsesREQ.dao.CrsesREQDAO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -47,7 +49,16 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		Map<String, String> params = semesOperation();
 		
 		List<CrsesListViewVO> crsesAllList = crsesREQDAO.getCrsesAllList(params);
-		
+		List<Lecture_Time_ViewVO> classroomList = crsesREQDAO.getClassroom(params);
+		for(CrsesListViewVO crses : crsesAllList){
+			String classroom = "";
+			for(Lecture_Time_ViewVO time : classroomList){
+				if(crses.getLec_no().equals(time.getLec_no())){
+					classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>";
+				}
+			}
+			crses.setClassroom(classroom);
+		}
 		return crsesAllList;
 	}
 	/**
@@ -240,7 +251,7 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 			scoreSum += score*semes; //학점*점수 총점수에 저장
 		}
 		
-		scoreAvg = (float)((int)((scoreSum/semesSum)*100+1))/100; //나누기~ 평균학점에저장
+		scoreAvg = (float)((int)((scoreSum/semesSum)*100))/100; //나누기~ 평균학점에저장
 		
 		
 		return scoreAvg;
@@ -262,6 +273,10 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		}
 		
 		return limit;
+	}
+	@Override
+	public int getSemester(String id) {
+		return crsesREQDAO.getSemester(id);
 	}
 
 }

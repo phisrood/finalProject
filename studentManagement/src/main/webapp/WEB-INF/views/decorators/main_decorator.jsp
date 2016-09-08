@@ -43,6 +43,7 @@
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
     
+    <script src="/stu/js/default.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>

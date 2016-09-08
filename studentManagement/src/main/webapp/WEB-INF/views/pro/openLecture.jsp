@@ -119,13 +119,6 @@ h2 {
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-md-3 col-sm-3 col-xs-12">분반</label>
-						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="분반"
-								name="lec_placement">
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">인원</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" placeholder="인원"
