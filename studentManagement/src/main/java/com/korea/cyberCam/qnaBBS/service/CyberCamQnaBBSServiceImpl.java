@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.korea.cyberCam.qnaBBS.dao.CyberCamQnaBBSDAO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
@@ -107,6 +109,33 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 		
 		return cyberCamQnaBBSDAO.getQnaBBSDetailAf_no(af_no);
 	}
+
+	@Override
+	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no) {
+		
+		return cyberCamQnaBBSDAO.selectProInquiryList(pro_lec_no);
+	}
+
+	@Override
+	public Quesbbs_ViewVO insertComment(Map<String, String> params) {
+		
+		//insert 하고
+		cyberCamQnaBBSDAO.insertComment(params);
+		
+		//댓글달린 게시판의 정보를 받아와서 
+		Quesbbs_ViewVO vo = cyberCamQnaBBSDAO.getQuesBBSVO(params.get("qb_no"));
+		
+		//리턴
+		return vo;
+	}
+
+	@Override
+	public Quesbbs_ViewVO getCommentVO(int qb_no) {
+		
+		return cyberCamQnaBBSDAO.getQuesBBSVO(Integer.toString(qb_no));
+	}
+
+
 
 
 

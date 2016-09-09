@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
@@ -80,6 +82,11 @@ public interface CyberCamQnaBBSService {
 	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO);
 	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no);
 	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no);
+	public Professor_InquiryList_ViewVO selectProInquiryList(
+			String pro_lec_no);
+	//댓글 인서트
+	public Quesbbs_ViewVO insertComment(Map<String, String> params);
+	public Quesbbs_ViewVO getCommentVO(int qb_no);
 
 	
 }

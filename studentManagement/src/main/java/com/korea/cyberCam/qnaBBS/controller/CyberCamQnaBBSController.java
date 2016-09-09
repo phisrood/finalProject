@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +34,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 import com.korea.dto.UsersVO;
@@ -50,6 +52,39 @@ public class CyberCamQnaBBSController {
 	@Autowired
 	CyberCamQnaBBSService cyberCamQnaBBSService;
 	
+	
+							
+	@RequestMapping(value="/cyberCampus/pro/qnaCommentInsert", method=RequestMethod.GET)
+	public void qnaCommentInsertPro( HttpSession session, HttpServletResponse response,
+			@RequestParam(value="qb_no") String qb_no,		
+			@RequestParam(value="comment") String comment
+			){
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		Map<String, String> params = new HashMap<String, String>();
+		
+		params.put("qb_no", qb_no);
+		params.put("comment", comment);
+		params.put("id", id);
+		
+		Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.insertComment(params);
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(quesVO);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	
+		
+	}
 	
 	
 	
@@ -99,35 +134,38 @@ public class CyberCamQnaBBSController {
 	
 	//qna게시판 상세보기
 	@RequestMapping(value={"/cyberCampus/stu/qnaBBSDetail","/cyberCampus/pro/qnaBBSDetail"}, method=RequestMethod.GET)
-	public String qnaBBSDetail(
-			@RequestParam(value="qb_no" , defaultValue="0")int qb_no,
+	public String qnaBBSDetail(@RequestParam(value="qb_no" , defaultValue="0")int qb_no,
 			Model model,HttpSession session){
 		String url = "/cyberCampus/common/qnaBBSDetail";
 			
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 
-		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
-		
-		
-	
 		
 		Professor_InquiryList_ViewVO Professor_InquiryList_ViewVO = new Professor_InquiryList_ViewVO();
-		String auth = loginUser.getAuthority();
 		
+		
+		String auth = loginUser.getAuthority();
+	
+		if(auth.equals("ROLE_PRO")){
+			String pro_lec_no = (String) session.getAttribute("pro_lec_no");
+			Professor_InquiryList_ViewVO = cyberCamQnaBBSService.selectProInquiryList(pro_lec_no);
+
+		}
 			
-		  Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
+		 Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
 		
 		  
 		 int af_no = question_BoardVO.getQb_af_no();
 		 Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
-		
-		attachment_FileVO = cyberCamQnaBBSService.getQnaBBSDetailAf_no(af_no);
-		
+		 attachment_FileVO = cyberCamQnaBBSService.getQnaBBSDetailAf_no(af_no);
+		 Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.getCommentVO(qb_no);
 		
 		  
 		  model.addAttribute("question_BoardVO",question_BoardVO);
 		  model.addAttribute("auth",auth);
 		  model.addAttribute("attachment_FileVO",attachment_FileVO);
+		  model.addAttribute("Professor_InquiryList_ViewVO",Professor_InquiryList_ViewVO);
+		  model.addAttribute("quesVO",quesVO);
 
 		return url;
 	}
