@@ -136,11 +136,11 @@ public interface AdviceService {
 
 	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO);
 
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO);
 
 	public Advice_BoardVO getAdviceBoard(int adb_no);
 
-	public void updateAdviceBoard(Map<String, String> params);
+	public void updateAdviceBoard(Map<String, String> params,Map<String,String> paramsFile);
 
 	public void deleteAdviceBoard(int adb_no);
 

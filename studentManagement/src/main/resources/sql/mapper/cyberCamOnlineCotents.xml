@@ -24,4 +24,37 @@
 	<select id="getAF" parameterType="int" resultType="attachment">
 		SELECT * FROM ATTACHMENT_FILE WHERE AF_NO = #{af_no}
 	</select>
+	<select id="getOnlinConStudents" parameterType="int" resultType="online_Con_StudentListVO">
+		SELECT CB_STUD_USE_ID
+		FROM ONLINE_CONTENTS_STUDENT_VIEW
+		WHERE OC_LEC_NO = #{oc_lec_no}
+	</select>
+	<select id="getOnlineCurrval" resultType="int">
+		SELECT ONLINE_CONTENTS_SEQ.CURRVAL FROM DUAL
+	</select>
+	<insert id="insertOnlineConStudentList" parameterType="watchStudentsVO">
+		INSERT INTO WATCH_STATUS (WS_OC_NO, WS_STUD_USE_ID, WS_OC_LEC_NO, WS_ATTENDYN, WS_WATCHTIME)
+		VALUES (#{ws_oc_no},#{ws_stud_use_id},#{ws_oc_lec_no},'N',0)
+	</insert>
+	<update id="updateOnlineConTime" parameterType="onlineContentWatchVO">
+		UPDATE WATCH_STATUS W
+		SET W.WS_WATCHTIME = W.WS_WATCHTIME + 1
+		WHERE W.WS_OC_LEC_NO = #{ws_oc_lec_no}
+		AND W.WS_OC_NO = #{ws_oc_no}
+		AND W.WS_STUD_USE_ID = #{ws_stud_use_id}
+	</update>
+	<select id="getWatchTime" parameterType="onlineContentWatchVO" resultType="int">
+		SELECT WS_WATCHTIME
+		FROM WATCH_STATUS
+		WHERE WS_OC_LEC_NO = #{ws_oc_lec_no}
+		AND WS_OC_NO = #{ws_oc_no}
+		AND WS_STUD_USE_ID = #{ws_stud_use_id}
+	</select>
+	<update id="updateOnlineConAttendyn" parameterType="onlineContentWatchVO">
+		UPDATE WATCH_STATUS
+		SET WS_ATTENDYN = 'Y'
+		WHERE WS_OC_LEC_NO = #{ws_oc_lec_no}
+		AND WS_OC_NO = #{ws_oc_no}
+		AND WS_STUD_USE_ID = #{ws_stud_use_id}
+	</update>
 </mapper>

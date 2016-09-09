@@ -23,7 +23,6 @@
 <body>
 
 <script>
-
 	location.href="/common/loginForm"
 </script> 
 
