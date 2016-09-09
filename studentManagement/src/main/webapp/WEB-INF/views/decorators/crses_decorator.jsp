@@ -90,8 +90,8 @@
 							<td>${studentInfo.dep_name }</td>
 						</tr>
 						<tr>
-							<th>학년</th>
-							<td>????</td>
+							<th>학년/학기</th>
+							<td>${semseter/2<1? "1학년":(semester/2)+"학년"}/${semester%2==0? "2학기":"1학기"  }</td>
 						</tr>
 						<tr>
 							<th>학번</th>
@@ -104,14 +104,14 @@
 						<tr>
 							<th>이수가능학점</th>
 							<td>${limitSemes }학점
-							<c:if test="${limitSemes > 18 }"><br>(성적우수 +2)</c:if></td>
+							<c:if test="${limitSemes > 18 }"><br>(성적우수 +3)</c:if></td>
 						</tr>
 						<tr>
 							<th>직전학기성적</th>
 							<td>${score }</td>
 						</tr>
 						<tr>
-							<td colspan="2"><button type="button" class="btn btn-dark">시간표 확인</button></td>
+							<td colspan="2"><button type="button" class="btn btn-dark"><a href="/stu/timeTableList">시간표 확인</a></button></td>
 						</tr>
 						
 					</table>

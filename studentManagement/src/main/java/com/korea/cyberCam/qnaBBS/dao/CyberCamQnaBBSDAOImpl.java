@@ -7,9 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
@@ -48,56 +49,30 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 		return (List<Question_BoardListVO>) sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSList",lecNoInContext);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	
+
+	
 	@Override
 	public  Question_BoardVO getQnaBBSDetail(int qb_no) {
 		return (Question_BoardVO) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSDetail", qb_no);
-		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	@Override
 	public void insertQnaBBS(Attachment_FileVO attachment_FileVO) {
 		sqlSession.insert("CyberCamQnaBBSDao.getCyberCamQnaBBSInsert",attachment_FileVO);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
 	@Override
-	public void deleteQnaBBS() {
-		// TODO Auto-generated method stub
+	public void deleteQnaBBS(int qb_no) {
+		sqlSession.delete("CyberCamQnaBBSDao.deleteQnaBBS",qb_no);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void updateQnaBBS() {
-		// TODO Auto-generated method stub
-		
-	}
-	
+
 	
 	@Override
 	public int selectQnaBBSAF_NO() {
 		return (int) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSSelectAF_NO");
-		
 	}
 	@Override
 	public List<LectureVO>  selectlectureList() {
@@ -107,5 +82,59 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	@Override
 	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO) {
 		sqlSession.insert("CyberCamQnaBBSDao.insertCyberCamQnaBBSFinal",question_BoardVO);
+	}
+	@Override
+	public void updateQnaBBS(Attachment_FileVO attachment_FileVO) {
+		sqlSession.update("CyberCamQnaBBSDao.updateCyberCamQnaBBSAttachFileUpdate",attachment_FileVO);
+		
+	}
+	@Override
+	public void updatetQnaBBSFinal(Question_BoardVO question_BoardVO) {
+		sqlSession.update("CyberCamQnaBBSDao.updateCyberCamQnaBBSAttachContentUpdate",question_BoardVO);
+		
+	}
+
+
+
+
+	@Override
+	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no) {
+		
+		return sqlSession.selectList("CyberCamQnaBBSDao.getCyberCamQnaBBSListPro",pro_lec_no);
+	}
+
+
+
+
+	@Override
+	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no) {
+		
+		return (Attachment_FileVO) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSDetailAfNo",af_no);
+	
+	}
+
+
+
+
+	@Override
+	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no) {
+		
+		return (Professor_InquiryList_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getselectProInquiryList",pro_lec_no);
+	}
+
+
+
+
+	@Override
+	public void insertComment(Map<String, String> params) {
+		sqlSession.insert("CyberCamQnaBBSDao.insertComment", params);
+	}
+
+
+
+
+	@Override
+	public Quesbbs_ViewVO getQuesBBSVO(String qb_no) {
+		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getQuesBBS", qb_no);
 	}
 }

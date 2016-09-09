@@ -60,16 +60,14 @@
                  	</tr>
                	</thead>
                	<tbody>
-               	<c:if test="${loginUser.authority eq 'ROLE_STU' }">
                	 <c:forEach items="${question_BoardListVO }" var="question_BoardListVO">
                  	<tr>
                  	  	<td>${question_BoardListVO.qb_no}</td>
-                   		<td><a href="/cyberCampus/stu/qnaBBSDetail?qb_no=${question_BoardListVO.qb_no}">${question_BoardListVO.qb_title}</a></td>
+                   		<td><a href="/cyberCampus/pro/qnaBBSDetail?qb_no=${question_BoardListVO.qb_no}">${question_BoardListVO.qb_title}</a></td>
                    		<td>${question_BoardListVO.qb_date}</td>
                    		<td>${question_BoardListVO.qb_stud_use_id}</td>
                  	</tr>
                  </c:forEach>
-                 </c:if>
                	</tbody>
            	</table>
            	<div style="float: right; width: 5%;">

@@ -60,7 +60,7 @@ public class CrsesBookController {
 	 * @throws
 	 */
 	// 수강편람조회
-	@RequestMapping(value = { "/pro/crsesBookList" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/pro/crsesBookList"}, method = RequestMethod.GET)
 	public String getCrsesBookList(Model model) {
 		String url = "/pro/crsesBookList";
 		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList();
@@ -282,6 +282,21 @@ public class CrsesBookController {
 		String url = "/pro/lectureList";
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		List<LectureViewVO> list = crsesBookService.getLectureList(user.getUse_id());
+		model.addAttribute("lectureList", list);
+		
+		return url;
+	}
+	/**
+	 * 강의조회학생
+	 * 
+	 * @param String
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/stu/lectureList", method = RequestMethod.GET)
+	public String getLectureListByStu(Model model) {
+		String url = "/common/lectureList";
+		List<LectureViewVO> list = crsesBookService.getLectureListByStu();
 		model.addAttribute("lectureList", list);
 		
 		return url;

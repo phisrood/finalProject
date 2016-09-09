@@ -9,6 +9,7 @@
 		*
 		FROM STUDENT_INFO
 		WHERE STUD_USE_ID = #{stud_use_id}
+		AND MK_NO = 1
 	</select>
 
 

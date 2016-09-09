@@ -28,6 +28,39 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
+    <script>
+     
+    $(function(){
+    	
+    	$("#commentbtn").click(function(){
+    		var comment = $("#coment").val();
+    		var qb_no = $("#qb_no").val();
+    		
+    		$.ajax({
+    			url:"/cyberCampus/pro/qnaCommentInsert",
+    			method:"get",
+    			type:"json",
+    			data:{"comment":comment, "qb_no":qb_no},
+    			success:function(data){
+    				alert("등록이 완료되었습니다.");
+    				var htmlCode = "";
+    				var btn="<input type='button' id='updatetbtn' value='수정'>";
+    				htmlCode+="댓글 : "+data.qc_content;
+    				
+    				$("#result").html(htmlCode);
+    				$("#resultBtn").html(btn);
+    				$("#coment").val(" ");
+    			},
+    			error:function(){
+    				alert("error");
+    			}
+    			
+    			
+    		});
+    	});
+    });
+    
+    </script>
     <div class="row">
     	<!-- Q & A 게시글 상세 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -36,53 +69,106 @@
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 상세 )</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
+			<form method="post" name="insert" action="/common/qnaBBSUpdate" enctype="multipart/form-data">
 			<div class="x_panel_big">
+			
 				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" value="중간 고사 강의실 질문">
+							<input name="title" type="text" size="50"  value="${question_BoardVO.qb_title }">
+							<input name="qb_no" type="hidden" id="qb_no" value="${question_BoardVO.qb_no }">
+							<input name="qb_lec_no" type="hidden" value="${question_BoardVO.qb_lec_no }">
+							<input name="qb_af_no" type="hidden" value="${question_BoardVO.qb_af_no }">
+							<input name="qb_date" type="hidden" value="${question_BoardVO.qb_date }">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							<input name="writer" type="text" size="75" value="한돈희">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="75" value="2016-08-09 09:00:00">
+							<input name="writer" type="text" readonly="readonly" size="30" value="${question_BoardVO.qb_stud_use_id }">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="45" readonly="readonly" value="${question_BoardVO.qb_date }"">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big">중간 고사 강의실이 090511이 맞나여?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-							<div align="center" style="float: left; width: 6%;"><br><br>
-                        		<input type="text" id="" required="required" size="5" value="한돈희"  disabled="disabled" style="text-align: center;">
-                    		</div>
-							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br></div>
-							<div style="float: right; width: 4%;">
-								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
+					
+							
+							
+						<c:choose>
+                      	<c:when test="${empty attachment_FileVO}">
+                      		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
+                      	</c:when>   
+                      	<c:otherwise>
+							<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>
+							<div style="float: left; width: 94%;">
+						
+							<c:if test="${auth eq 'ROLE_STU'}">	
+							
+							<input type="file" name="file">
+							
+							</c:if>
 							</div>
+						</c:otherwise>
+						</c:choose>
+						</td>
+					</tr>
+					<tr>
+						<td>
+						
+							<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
+							<div class="x_panel_big" style="float: left; width: 90%;" id="result">
+							<c:if test="${not empty quesVO.qc_content }">
+								댓글 : ${quesVO.qc_content }
+							</c:if>
+							<c:if test="${empty quesVO.qc_content }">
+								등록된 댓글이 없습니다.
+							</c:if>
+							
+							</div>
+							<c:if test="${auth eq 'ROLE_PRO'}">	
+								<input type="text" id="coment" style="float: left; width: 90%;" />
+							</c:if>
+							
+							<div  style="float: right; width: 4%;" id="resultBtn">
+
+							<c:if test="${auth eq 'ROLE_PRO'}">
+								<c:if test="${empty quesVO.qc_no }">
+									<input type="button" id="commentbtn" value="등록">
+								</c:if>
+								<c:if test="${not empty quesVO.qc_no }">
+									<input type="button" id="updatetbtn" value="수정">
+								</c:if>
+							</c:if>
+							</div>
+							
 						</td>
 					</tr>
 				</table>
+				
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 86%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<a href="/cyberCampus/stu/qnaBBSList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				</c:if>
+				<c:if test="${auth eq 'ROLE_PRO'}">	
+				<a href="/cyberCampus/pro/qnaBBSList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
-				
-				<button type="button" class="btn btn-default btn-sm">삭 제</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<a href="/common/qnaBBSDelete?qb_no=${question_BoardVO.qb_no }"><button type="button" class="btn btn-default btn-sm">삭 제</button></a>
+				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
-				
-				<button type="button" class="btn btn-default btn-sm">수 정</button>
+				<c:if test="${auth eq 'ROLE_STU'}">	
+				<button type="submit" class="btn btn-default btn-sm">수 정</button>
+				</c:if>
 			</div>
+			</form>
+			  
     </div>
+ 
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

@@ -36,10 +36,13 @@
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function(){
+		$('#messageDe').hide();
+		
 		$('#reciveTable').DataTable();
 		$('#sendTable').DataTable();
 		
 		$(".messageSendDetail").click(function(){
+			$('#messageDe').show();
 			var message_no = $(this).attr("id");
 			
 			$.ajax({
@@ -70,6 +73,7 @@
 		}); 
 		
 		$(".messageReciveDetail").click(function(){
+			$('#messageDe').show();
 			var message_no = $(this).attr("id");
 			
 			$.ajax({
@@ -96,10 +100,7 @@
 		}); 
 		
 		$("#profile-tab2").click(function(){
-			$("#messageDe").html("");
- 			$("#home-tab, #profile-tab").click(function(){
-				location.reload();
-			});
+			$("#messageDe").hide();
 		});
 		
 		//최상단 체크박스 클릭

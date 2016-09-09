@@ -63,12 +63,12 @@ public class CrsesREQController {
 		
 		//직전학기 성적조회
 		float score = crsesREQService.getScoreCalcu(id);
-		
+		int semester = crsesREQService.getSemester(id);
 		int limitSemes = crsesREQService.crsesLimit(score);
 		
 		model.addAttribute("score", score);
 		model.addAttribute("limitSemes", limitSemes);
-		
+		model.addAttribute("semester", semester);
 		return url;
 	}
 	/**
@@ -214,6 +214,18 @@ public class CrsesREQController {
 		String url="/stu/crsesREQPeriodError";
 		
 		return url;
+	}
+	/**
+	 * 수강신청하기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/crses/stu/insertCrsesREQ", method=RequestMethod.GET)
+	public void insertCrsesREQ(String lec_no, HttpSession session, HttpServletResponse response){
+		UsersVO user =  (UsersVO) session.getAttribute("loginUser");
+		crsesREQService.insertCrsesREQ(lec_no, user.getUse_id());
+	
 	}
 
 	

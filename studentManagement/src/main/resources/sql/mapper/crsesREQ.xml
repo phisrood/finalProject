@@ -5,10 +5,51 @@
 
 <mapper namespace="CrsesREQ">
 	<select id="getScoreViewList" parameterType="map" resultType="scoreView">
-		select * from score_view where use_id = #{id} and lec_makeyear = #{year} and lec_makesemester = #{semes}
+		select *
+		from score_view
+		where use_id = #{id}
+		and lec_makeyear = #{year}
+		and lec_makesemester = #{semes}
+		and CB_ACQUISTIONYN = 'Y'
 	</select>
-	
+
 	<select id="crsesAllList" parameterType="map" resultType="crsesListView">
-		select * from crseslist_view where lec_makeyear = #{year} and lec_makesemester = #{semes}
+		select
+		*
+		from crseslist_view
+		where lec_makeyear = #{year}
+		and lec_makesemester = #{semes}
+		ORDER BY LB_NO, LEC_PLACEMENT
 	</select>
+
+	<select id="getClassroom" parameterType="map" resultType="lectureTimeView">
+		SELECT
+		CI_ROOMNAME, CI_ROOMNUMBER, LEC_NO, TT_NO, CI_NO, LEC_LN_PRO_USE_ID,
+		TT_TIME
+		FROM LECTURE_TIME_VIEW
+		WHERE lec_makeyear = #{year}
+		and lec_makesemester = #{semes}
+
+	</select>
+
+	<select id="getSemester" parameterType="str" resultType="int">
+		SELECT
+		CRC_CEMESTER
+		FROM COLLEAGE_REGISTER_CHANGE
+		WHERE CRC_STUD_USE_ID =
+		#{use_id}
+	</select>
+
+	<insert id="insertCrses" parameterType="map">
+		INSERT INTO
+		COURSE_BREAKDOWN
+		(CB_STUD_USE_ID
+		,CB_LEC_NO
+		,CB_ACQUISTIONYN)
+		VALUES(
+		 #{id}
+		,#{lec_no}
+		,'N'
+		)
+	</insert>
 </mapper>

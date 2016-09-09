@@ -27,6 +27,15 @@ public class Professor_InfoViewVO {
 	private String pro_position;
 	private String pro_stat;
 	private String dep_name;
+	private String dep_no;
+	
+	
+	public String getDep_no() {
+		return dep_no;
+	}
+	public void setDep_no(String dep_no) {
+		this.dep_no = dep_no;
+	}
 	public String getUse_id() {
 		return use_id;
 	}

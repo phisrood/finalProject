@@ -10,106 +10,112 @@
 <title></title>
 </head>
 <body >
+<div class="row">
+		<div class="x_panel_big">
+			<div class="x_panel" id="lecture_panel">
+
+				<div class="x_title">
+					<h2>강의계획서</h2>
+					<div class="clearfix"></div>
+				</div>
+		<div class="button-location">
+			<form name="pdfForm">
+			<input type=hidden id="htmlTag" name="htmlTag"/>
+			<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>	
+			</form>
+		</div>
 <div id="tbl">
-<table border='1' class='kor'>
+<table  style="border-collapse: collapse;width:100%;" id="classSYL" class='kor table table-striped table-bordered dataTable no-footer' >
 	<tr>
-		<th>개설년도/학기</th>
-		<td>${lecture.lec_makeyear }/${lecture.lec_makesemester }학기</td>
-		<th>개설학과</th>
-		<td>${lecture.lb_department }</td>
+		<th class="lecture-border table-th" >이수구분</th>
+		<td class="lecture-border" >${lecture.lb_completekind }</td>
+		<th class="lecture-border table-th" >학점</th>
+		<td class="lecture-border" >${lecture.lb_credit }</td>
+		<th class="lecture-border table-th" >강의정원</th>
+		<td class="lecture-border" >${lecture.lec_persons }</td>
 	</tr>
 	<tr>
-		<th>학수번호</th>
-		<td>${lecture.lec_lb_no }</td>
-		<th>분반</th>
-		<td>${lecture.lec_placement }</td>
+		<th class="lecture-border table-th" >개설년도/학기</th>
+		<td class="lecture-border " >${lecture.lec_makeyear }/${lecture.lec_makesemester }학기</td>
+		<th class="lecture-border table-th" >개설학과</th>
+		<td class="lecture-border" >${lecture.lb_department }</td>
+		<th class="lecture-border table-th" >담당교수</th>
+		<td class="lecture-border" >${lecture.use_name }</td>
 	</tr>
 	<tr>
-		<th>교과목명</th>
-		<td>${lecture.lb_name }</td>
-		<th>이수구분</th>
-		<td>${lecture.lb_completekind }</td>
+		<th class="lecture-border table-th" >교과목명</th>
+		<td class="lecture-border" >${lecture.lb_name }</td>
+		<th class="lecture-border table-th" >학수번호</th>
+		<td class="lecture-border" >${lecture.lec_lb_no }</td>
+		<th class="lecture-border table-th" >분반</th>
+		<td class="lecture-border" >${lecture.lec_placement }</td>
 	</tr>
 	<tr>
-		<th>학점</th>
-		<td>${lecture.lb_credit }</td>
-		<th>강의정원</th>
-		<td>${lecture.lec_persons }</td>
-	</tr>
-	<tr>
-		<th colspan="2">담당교수</th>
-		<td colspan="2">${lecture.use_name }</td>
-	</tr>
-	<tr>
-		<th colspan="4">
-			강의계획서
+		<th class="lecture-border table-th"  colspan="3">
+			강의시간
+		</th>
+		<th class="lecture-border table-th"  colspan="3">
+			강의교재
 		</th>
 	</tr>
 	<tr>
-		<th colspan="4">
+		<td colspan="3"   class="lectureContent lecture-border">
+			강의시간내용
+		</td>
+		<td colspan="3"   class="lectureContent lecture-border">
+			서명:<p>${classSYL.cs_bookname },${classSYL.cs_bookversion }</p>
+			저자:<p>${classSYL.cs_writer }</p>
+			출판사:${classSYL.cs_publisher }
+		</td>
+	</tr>
+	
+	<tr>
+		<th class="lecture-border table-th"  colspan="6">
 			강의설명
 		</th>
 	</tr>
 	<tr>
-		<td colspan="4">
+		<td colspan="6"   class="lectureContent lecture-border">
+			강의설명내용
 			${classSYL.cs_content }
 		</td>
 	</tr>
 	<tr>
-		<th colspan="4">
+		<th colspan="6"    class="lecture-border table-th">
 			진행방식
 		</th>
 	</tr>
 	<tr>
-		<td colspan="4">
+		<td colspan="6"  class="lectureContent lecture-border">
+			진행방식내용
 			${classSYL.cs_progress }
 		</td>
 	</tr>
 	<tr>
-		<th>
-			교재
-		</th>
-		<td colspan='3'>
-			서명:${classSYL.cs_bookname },${classSYL.cs_bookversion }<br/>
-			저자:${classSYL.cs_writer }<br/>
-			출판사:${classSYL.cs_publisher }
-		</td>
+		<th class="lecture-border table-th"  >중간고사</th>
+		<td colspan="2" class="lecture-border" >${classSYL.cs_midterm }</td>
+		<th class="lecture-border table-th" >기말고사</th>
+		<td colspan="2" class="lecture-border" >${classSYL.cs_final }</td>
 	</tr>
 	<tr>
-		<th>중간고사</th>
-		<td>${classSYL.cs_midterm }</td>
-		<th>기말고사</th>
-		<td>${classSYL.cs_final }</td>
+		<th class="lecture-border table-th" >과제</th>
+		<td colspan="2" class="lecture-border" >${classSYL.cs_homework }</td>
+		<th class="lecture-border table-th" >출석</th>
+		<td colspan="2" class="lecture-border" >${classSYL.cs_attent }</td>
 	</tr>
-	<tr>
-		<th>과제</th>
-		<td>${classSYL.cs_homework }</td>
-		<th>출석</th>
-		<td>${classSYL.cs_attent }</td>
-	</tr>
-
 </table>
 </div>
+</div>
+</div>
+</div>
+<div class="button-location">
 <c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-<button onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
+<button class="btn btn-dark" onclick="updateSyl('${lecture.lec_no }');">강의계획서 변경</button>
 </c:if>
-<form name="pdfForm">
-<input type=hidden id="htmlTag" name="htmlTag"/>
-<button onclick="toPdf()">pdf로 보기</button>	
-</form>
-<a href="/pro/lectureList"><button>뒤로</button></a>
+<a href="/pro/lectureList"><button class="btn btn-dark">뒤로</button></a>
+</div>
 <script type="text/javascript">
-	function updateSyl(lec_no){
-		location.href='/pro/updateSyl?lec_no='+lec_no;
-	};
-	function toPdf(){
-		$("#htmlTag").val($("#tbl").html());
-		document.pdfForm.method="post";
-		document.pdfForm.action="/pro/classSYLtoPdf";
-		document.pdfForm.target="_blank";
-		document.pdfForm.submit(); 
-	}
-	
+	$("#htmlTag").val($("#tbl").html());
 </script>
 </body>
 

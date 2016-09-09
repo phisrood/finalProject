@@ -30,3 +30,12 @@ function insertLecture(form){
 	document.insertLectureForm.submit();
 	
 }
+function updateSyl(lec_no){
+	location.href='/pro/updateSyl?lec_no='+lec_no;
+};
+function toPdf(){
+	document.pdfForm.method="post";
+	document.pdfForm.action="/pro/classSYLtoPdf";
+	document.pdfForm.target="_blank";
+	document.pdfForm.submit(); 
+}

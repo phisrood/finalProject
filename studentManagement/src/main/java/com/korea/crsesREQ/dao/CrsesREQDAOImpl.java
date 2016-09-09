@@ -1,5 +1,6 @@
 package com.korea.crsesREQ.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -7,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
@@ -61,9 +64,8 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertCrsesREQ() {
-		// TODO Auto-generated method stub
-		
+	public void insertCrsesREQ(Map<String, String> map) {
+		session.insert("CrsesREQ.insertCrses", map);	
 	}
 	/**
 	 * 개인 정보 조회
@@ -119,6 +121,14 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	public List<ScoreViewVO> getScoreCalcu(Map<String, String> params) {
 		
 		return session.selectList("CrsesREQ.getScoreViewList", params);
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getClassroom(Map<String, String> params) {
+		return session.selectList("CrsesREQ.getClassroom", params);
+	}
+	@Override
+	public int getSemester(String id) {
+		return (int) session.selectOne("CrsesREQ.getSemester", id);
 	}
 
 }

@@ -40,9 +40,9 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<LearningRoomViewVO> getStudyBBSList() {
+	public List<LearningRoomViewVO> getStudyBBSList(String pro_lec_no) {
 		List<LearningRoomViewVO> studyBBSAllList = 
-				(List<LearningRoomViewVO>) sqlSession.selectList("LearningRoom.getStudyBBSAllList");
+				(List<LearningRoomViewVO>) sqlSession.selectList("LearningRoom.getStudyBBSAllList",pro_lec_no);
 		return studyBBSAllList;
 		
 	}
@@ -53,8 +53,8 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getStudyBBSDetail() {
-		
+	public LearningRoomViewVO getStudyBBSDetail(int lr_no) {
+		return (LearningRoomViewVO) sqlSession.selectOne("LearningRoom.studyBBSDetail",lr_no);
 	}
 	/**
 	 * 학습자료실 등록
@@ -84,9 +84,8 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void deleteStudyBBS() {
-		// TODO Auto-generated method stub
-		
+	public void deleteStudyBBS(Learning_RoomVO learning_RoomVO) {
+		sqlSession.delete("LearningRoom.studyBBSDelete",learning_RoomVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -95,9 +94,13 @@ public class CyberCamStudyBBSDAOImpl implements CyberCamStudyBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void updateStudyBBS() {
-		// TODO Auto-generated method stub
+	public void updateStudyBBS(Learning_RoomVO learning_RoomVO) {
+		sqlSession.update("LearningRoom.studyBBSUpdate",learning_RoomVO);
 		
+	}
+	@Override
+	public void updateStudyBBSFile(Attachment_FileVO attachment_FileVO) {
+		sqlSession.update("LearningRoom.studyBBSFileUpdate",attachment_FileVO);
 	}
 	/**
 	 * 개인 정보 조회

@@ -45,7 +45,7 @@
 <div class="row" style="width:70%; margin-left:15%; margin-top:8%;">
 
 	<!-- page content -->
-	<div class="x_panel" style="height:700px;">
+	<div class="x_panel" style="height:680px;">
 		<div class="x_title">
 			<h2>공지사항</h2>
 
@@ -67,7 +67,7 @@
 				<div class="form-group" style="height: 60%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<textarea class="form-control" name="cn_content">${noticeDetailViewVO.cn_content}</textarea>
+						<textarea class="form-control" name="cn_content" style="width:1000px;height:500px;">${noticeDetailViewVO.cn_content}</textarea>
 					</div>
 				</div>
 

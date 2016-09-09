@@ -1,5 +1,6 @@
 package com.korea.crsesREQ.service;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -8,15 +9,18 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesREQ.dao.CrsesREQDAO;
+import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : CrsesREQServiceImpl.java
+ * @Description : 수강신청 관련 service
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -24,7 +28,8 @@ import com.korea.dto.ScoreViewVO;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.07	김양문			수강신청 가능 리스트
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -46,7 +51,16 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		Map<String, String> params = semesOperation();
 		
 		List<CrsesListViewVO> crsesAllList = crsesREQDAO.getCrsesAllList(params);
-		
+		List<Lecture_Time_ViewVO> classroomList = crsesREQDAO.getClassroom(params);
+		for(CrsesListViewVO crses : crsesAllList){
+			String classroom = "";
+			for(Lecture_Time_ViewVO time : classroomList){
+				if(crses.getLec_no().equals(time.getLec_no())){
+					classroom += time.getTt_time()+","+ time.getCi_roomname()+":"+time.getCi_roomnumber()+"<br>";
+				}
+			}
+			crses.setClassroom(classroom);
+		}
 		return crsesAllList;
 	}
 	/**
@@ -60,17 +74,7 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		// TODO Auto-generated method stub
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public void insertCrsesREQ() {
-		// TODO Auto-generated method stub
-		
-	}
+
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -239,7 +243,7 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 			scoreSum += score*semes; //학점*점수 총점수에 저장
 		}
 		
-		scoreAvg = (float)((int)((scoreSum/semesSum)*100+1))/100; //나누기~ 평균학점에저장
+		scoreAvg = (float)((int)((scoreSum/semesSum)*100))/100; //나누기~ 평균학점에저장
 		
 		
 		return scoreAvg;
@@ -261,6 +265,20 @@ public class CrsesREQServiceImpl implements CrsesREQService{
 		}
 		
 		return limit;
+	}
+	@Override
+	public int getSemester(String id) {
+		return crsesREQDAO.getSemester(id);
+	}
+	@Override
+	public void insertCrsesREQ(String lec_no, String id) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("lec_no", lec_no);
+		map.put("id", id);
+
+			crsesREQDAO.insertCrsesREQ(map);
+	
+		
 	}
 
 }

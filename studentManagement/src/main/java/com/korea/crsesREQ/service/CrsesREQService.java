@@ -38,13 +38,14 @@ public interface CrsesREQService {
 	//수강리스트 검색
 	public void getCrsesSearch();
 	/**
+	 * @param string 
+	 * @param lec_no 
 	 * 개인 정보 조회
 	 * @param
-	 * @return 
 	 * @throws 
 	 */
 	//수강신청(수강신청 가능 학점 배제)
-	public void insertCrsesREQ();
+	public void insertCrsesREQ(String lec_no, String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -96,7 +97,21 @@ public interface CrsesREQService {
 	//시간표중복배제
 	public void timeTableOverlap();
 	
-	//직전학기 성적조회
+	/**
+	 * 직전학기 성적조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public float getScoreCalcu(String id);
+	
+	/**
+	 * 학기가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public int getSemester(String id);
+
 	
 }

@@ -57,7 +57,7 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivInfo", method=RequestMethod.GET)
-	public String indivInfo(HttpSession session, Model model, HttpServletRequest request){
+	public String getIndivInfo(HttpSession session, Model model, HttpServletRequest request){
 		String url = "/stu/colleage/indivInfo";
 
 	

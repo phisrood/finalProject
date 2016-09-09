@@ -43,6 +43,7 @@
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
     
+    <script src="/stu/js/default.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -95,7 +96,7 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
 		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
-		                      <li><a href="/stu/minorModel">부/다 전공신청</a></li>
+		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
 		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
 		                    </ul>
 		                  </li>
@@ -108,7 +109,7 @@
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
-		                      <li><a href="crsesBookList">수강편람조회</a></li>
+		                      <li><a href="/stu/lectureList">강의조회</a></li>
 		                      
 		                    </ul>
 		                  </li>
@@ -135,7 +136,7 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/crsesLoginForm">수강신청</a></li>                     
+		                      <li><a href="/stu/crsesLoginForm" target="_blank">수강신청</a></li>                     
 		                    </ul>
 		                  </li>
                 </ul>
