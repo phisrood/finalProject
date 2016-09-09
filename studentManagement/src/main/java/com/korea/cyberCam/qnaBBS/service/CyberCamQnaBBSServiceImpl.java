@@ -10,6 +10,7 @@ import com.korea.cyberCam.qnaBBS.dao.CyberCamQnaBBSDAO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Ques_CommentsVO;
 import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
@@ -133,6 +134,25 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	public Quesbbs_ViewVO getCommentVO(int qb_no) {
 		
 		return cyberCamQnaBBSDAO.getQuesBBSVO(Integer.toString(qb_no));
+	}
+
+	@Override
+	public int updateCommentQnaBBS(Map<String, String> params) {
+	
+	
+		return cyberCamQnaBBSDAO.updateCommentQnaBBS(params);
+	}
+
+	@Override
+	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no) {
+		
+		return cyberCamQnaBBSDAO.selectCommentQnaBBS(qb_no);
+	}
+
+	@Override
+	public void updateQnaBBSNoAttachment(Question_BoardVO question_BoardVO) {
+		cyberCamQnaBBSDAO.updatetQnaBBSFinal(question_BoardVO);
+		
 	}
 
 

@@ -13,6 +13,8 @@ public class Quesbbs_ViewVO {
 	private String qc_pro_use_id;
 	private String qc_date;
 	private String qc_content;
+	
+	
 	public String getQb_no() {
 		return qb_no;
 	}

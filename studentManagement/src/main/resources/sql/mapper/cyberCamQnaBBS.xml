@@ -133,8 +133,22 @@
 	<select id="getQuesBBS" parameterType="str" resultType="quesbbsView">
 		select * from quesbbs_view where qb_no = #{qb_no}
 	</select>
+	<update id="updateCommentQnaBBS" parameterType="map">
+	UPDATE QUES_COMMENTS
+	SET
+	qc_content = #{comment}
+	 
+	WHERE 
+	qc_qb_no = #{qb_no}		
+	
+	</update>
 	
 	
+	<select id="selectComment" parameterType="str" resultType="quesbbsView">
+	
+	select * from quesbbs_view where qb_no = #{qb_no}
+	
+	</select>
 	
 	
 	

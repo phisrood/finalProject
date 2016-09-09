@@ -43,13 +43,15 @@
     			data:{"comment":comment, "qb_no":qb_no},
     			success:function(data){
     				alert("등록이 완료되었습니다.");
+    				
     				var htmlCode = "";
     				var btn="<input type='button' id='updatetbtn' value='수정'>";
-    				htmlCode+="댓글 : "+data.qc_content;
+    				htmlCode+="답변 : "+data.qc_content;
     				
     				$("#result").html(htmlCode);
     				$("#resultBtn").html(btn);
     				$("#coment").val(" ");
+    				location.reload();
     			},
     			error:function(){
     				alert("error");
@@ -57,6 +59,29 @@
     			
     			
     		});
+    	});
+    	
+    	$("#updatetbtn").click(function(){
+    		
+    		var comment = $("#coment").val();
+    		var qb_no = $("#qb_no").val();
+    		
+    		$.ajax({
+    			url:"/cyberCampus/pro/qnaCommentUpdate",
+    			method:"get",
+    			type:"json",
+    			data:{"comment":comment, "qb_no":qb_no},
+    			success:function(data){
+    				alert("수정 되었습니다.");
+    				var htmlCode="";
+    				htmlCode+="답변 : "+data.qc_content;
+    				$("#result").html(htmlCode);			
+    				$("#coment").val(" ");
+    			}
+    			
+    		});
+    		
+    		
     	});
     });
     
@@ -92,14 +117,18 @@
 					<tr>
 						<td>
 					
-							
+					
 							
 						<c:choose>
-                      	<c:when test="${empty attachment_FileVO}">
+                      	<c:when test="${attachment_FileVO.af_aftername eq 'default'}">
                       		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
-                      	</c:when>   
+                      		<c:if test="${auth eq 'ROLE_STU'}">	
+                      		<input type="file" name="file">
+                      		</c:if>
+                       </c:when>
                       	<c:otherwise>
-							<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>
+                      
+                      		<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>                  	
 							<div style="float: left; width: 94%;">
 						
 							<c:if test="${auth eq 'ROLE_STU'}">	
@@ -108,6 +137,8 @@
 							
 							</c:if>
 							</div>
+							
+							
 						</c:otherwise>
 						</c:choose>
 						</td>
@@ -118,7 +149,7 @@
 							<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
 							<div class="x_panel_big" style="float: left; width: 90%;" id="result">
 							<c:if test="${not empty quesVO.qc_content }">
-								댓글 : ${quesVO.qc_content }
+								답변 : ${quesVO.qc_content }
 							</c:if>
 							<c:if test="${empty quesVO.qc_content }">
 								등록된 댓글이 없습니다.

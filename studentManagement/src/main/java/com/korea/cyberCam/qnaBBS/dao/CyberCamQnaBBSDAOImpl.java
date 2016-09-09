@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Ques_CommentsVO;
 import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
@@ -136,5 +137,23 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 	@Override
 	public Quesbbs_ViewVO getQuesBBSVO(String qb_no) {
 		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getQuesBBS", qb_no);
+	}
+
+
+
+
+	@Override
+	public int updateCommentQnaBBS(Map<String, String> params) {
+		
+		return sqlSession.update("CyberCamQnaBBSDao.updateCommentQnaBBS",params);
+	}
+
+
+
+
+	@Override
+	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no) {
+		
+		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.selectComment", qb_no);
 	}
 }
