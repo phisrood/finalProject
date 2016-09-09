@@ -36,9 +36,8 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassApp() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassApp(String content) {
+		sqlSession.insert("classApp.insertClassApp", content);
 	}
 	/**
 	 * 교수가 받은 상담신청조회
