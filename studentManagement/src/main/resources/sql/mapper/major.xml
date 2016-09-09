@@ -20,7 +20,30 @@
 	<select id="getBelongREQList" parameterType="str" resultType="submit">
 		select * from submit where sb_major_dep_no = #{dep_no}
 	</select>
+	
 	<select id="getOthorsREQList" parameterType="str" resultType="submit">
 		select * from submit where sb_dep_no = #{dep_no}
 	</select>
+	
+	<select id="getReqStuList" parameterType="str" resultType="IndivInfoManage">
+		select * from student_info where use_id = #{id}
+	</select>
+	
+	<select id="getReqStuInfo" parameterType="str" resultType="submit">
+		select * from submit where sb_no = #{sb_no}
+	</select>
+	
+	<update id="updateReqBelong" parameterType="map">
+		update submit set sb_majordepartmentsubmityn = #{confirm} where sb_no = #{sb_no}
+	</update>
+	
+	<update id="updateReqOthers" parameterType="map">
+		update submit set sb_requestdepartmentyn = #{confirm} where sb_no = #{sb_no}
+	</update>
+	
+	<insert id="insertMajor" parameterType="ma_as">
+		insert into major_assign(ma_stud_use_id, ma_dep_no, ma_mk_no, ma_credit)
+			values(#{ma_stud_use_id},#{ma_dep_no},#{ma_mk_no},#{ma_credit})
+	</insert>
+	
 </mapper>

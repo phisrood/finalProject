@@ -133,6 +133,7 @@ public class LoginController {
 			
 			messageCount = messageNewList.size();
 		} catch (Exception e) {
+			e.printStackTrace();
 			url = "redirect:/common/loginForm";
 		}
 		

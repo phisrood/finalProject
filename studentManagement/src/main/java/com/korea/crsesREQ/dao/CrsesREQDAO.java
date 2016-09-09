@@ -1,5 +1,6 @@
 package com.korea.crsesREQ.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -43,13 +44,16 @@ public interface CrsesREQDAO {
 	//수강리스트 검색
 	public void getCrsesSearch();
 	/**
+	 * @throws SQLException 
+	 * @param id 
+	 * @param lec_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강신청(수강신청 가능 학점 배제)
-	public void insertCrsesREQ();
+	public void insertCrsesREQ(Map<String,String> map) ;
 	/**
 	 * 개인 정보 조회
 	 * @param

@@ -1,5 +1,6 @@
 package com.korea.crsesREQ.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -63,9 +64,8 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertCrsesREQ() {
-		// TODO Auto-generated method stub
-		
+	public void insertCrsesREQ(Map<String, String> map) {
+		session.insert("CrsesREQ.insertCrses", map);	
 	}
 	/**
 	 * 개인 정보 조회

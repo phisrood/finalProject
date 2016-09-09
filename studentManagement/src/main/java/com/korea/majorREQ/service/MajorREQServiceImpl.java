@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.Major_AssignVO;
 import com.korea.dto.ScoreViewVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.SubmitVO;
@@ -125,7 +126,7 @@ public class MajorREQServiceImpl implements MajorREQService{
 			scoreSum += score*semes; //학점*점수 총점수에 저장
 		}
 		
-		scoreAvg = (float)((int)((scoreSum/semesSum)*100+1))/100; //나누기~ 평균학점에저장
+		scoreAvg = (float)((int)((scoreSum/semesSum)*100))/100; //나누기~ 평균학점에저장
 		
 		
 		return scoreAvg;
@@ -148,51 +149,70 @@ public class MajorREQServiceImpl implements MajorREQService{
 
 
 	@Override
-	public String getBelongMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public Student_InfoViewVO getREQPersonInfo(String id) {
+		return dao.getREQPersonInfo(id);
 	}
 
 
 	@Override
-	public String updateBelongMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
+	public SubmitVO getReqStuInfo(String sb_no) {
+		return dao.getReqStuInfo(sb_no);
 	}
 
 
 	@Override
-	public String getOthorsMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateReqDecide(String sb_no, int result) {
+		
+		int confirm = 0;
+		int semes = 0;
+		if(result <= 2){//소속학과
+			if(result == 1){//소속학과 승인일때
+				confirm = 1;
+			}else if(result == 2){//소속학과 반려일때	
+				confirm = 2;
+			}
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("sb_no", sb_no);
+			params.put("confirm", confirm);
+			dao.updateReqBelongDecide(params);
+			
+		}else if(result > 2){//타학과
+			if(result == 3){//타학과 승인일때
+				confirm = 1;
+				
+			}else if(result == 4){//타학과 반려일때
+				confirm = 2;
+				
+			}			
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("sb_no", sb_no);
+			params.put("confirm", confirm);
+			dao.updateReqOthersDecide(params);
+		}
+		
+		SubmitVO submit = dao.getReqStuInfo(sb_no);
+		int belong = Integer.parseInt(submit.getSb_majordepartmentsubmityn());//소속학과 승인여부
+		int others = Integer.parseInt(submit.getSb_requestdepartmentyn());//타학과 승인여부
+		
+		if(belong==1 && others==1){//둘다 승인일때
+			//인서트구현
+			List<ScoreViewVO> scoreViewList = dao.getScoreList(submit.getSb_stud_use_id());
+			if(scoreViewList.size() != 0){
+				semes = semesOperation(scoreViewList);
+			}
+			Major_AssignVO major_AssignVO = new Major_AssignVO();
+			major_AssignVO.setMa_stud_use_id(submit.getSb_stud_use_id());
+			major_AssignVO.setMa_dep_no(submit.getSb_dep_no());
+			major_AssignVO.setMa_mk_no(Integer.parseInt(submit.getSb_mk_no()));
+			major_AssignVO.setMa_credit(semes);
+			
+			dao.insertMajor_Assign(major_AssignVO);
+		}
+		
+		
+		return confirm;
 	}
 
 
-	@Override
-	public String getOthorsMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String insertBelongMajorREQ() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String updateBelongMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public String getOthorsMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
