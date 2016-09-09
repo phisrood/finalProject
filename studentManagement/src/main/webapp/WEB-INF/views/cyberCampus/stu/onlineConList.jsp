@@ -14,28 +14,77 @@
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 <script>
-	$(function(){
-		$("#search").click(function(){
-			var afno = $(this).attr("name");
+		function search(af_no,oc_time,oc_no,oc_lec_no,loginUser){
 			$.ajax({
 				method:"get",
-				type : "json",
+				contentType : "application/json",
 				url : "/cyberCampus/stu/onlineConView",
-				dataType : "text",
-				data:{"af_no":afno},
-				error : function(){
-					alert("에러!");
+				dataType : "json",
+				data:{
+					"af_no":af_no,
+					 "oc_no" : oc_no,
+					  "oc_lec_no" : oc_lec_no,
+					  "loginUser" : loginUser
 				},
 				success : function(data){
-					var html = "<video src=";
-					html += "'"+data+"'";
-					html += " controls loop autoplay/>";
-					alert(data);
+					clearInterval(timer);
+					
+					var minute = oc_time-1;
+					var second = 59;
+					
+					$(".countTimeMinute").html(minute);
+					$(".countTimeSecond").html(second);
+					
+					var timer = setInterval(function () {
+							
+							$(".countTimeMinute").html(minute-data.watchTime);
+							$(".countTimeSecond").html(second);
+							
+							if(second == 0 && minute == 0){
+								alert('수업이 종료되었습니다.');
+								clearInterval(timer);
+							}else{
+								second--;
+								if(second < 0){
+									$.ajax({
+										method:"post",
+										url : "/cyberCampus/stu/timeCheck",
+										dataType : "text",
+										data:{
+											"oc_time":1,
+											"loginUser":loginUser,
+											"oc_no":oc_no,
+											"oc_lec_no":oc_lec_no,
+											"full_time" : full_time
+										},
+										error : function(){
+											/* alert("에러!"); */
+										},
+										success : function(data){
+											clearInterval(timer);
+										}
+									});
+									minute--;
+									second = 59;
+								}
+								if(minute < 0){
+									if(hour > 0){
+										hour--;
+										minute = 59;
+									}
+								}
+							}
+				    	}, 1000);
+					
+					var html = "";
+					html += "<video src=\""+data.path+"\" controls loop autoplay/>";
 					$("#onlineVideo").html(html);
+				},
+				error : function(){
+					alert("에러!");
 				}
 			});
-		});
-	});
+		};
 </script>
 <div class="row">
 	<!-- 온라인 콘텐츠 ( 학과 ) -->
@@ -79,14 +128,10 @@
 				</tr>
 			</thead>
 			
-			<c:forEach var="onlineConWatch" items="${onlineConWatchList }">
-				${onlineConWatch.ws_oc_no},${onlineConWatch.ws_stud_use_id},${onlineConWatch.ws_oc_lec_no},${onlineConWatch.ws_attendyn},${onlineConWatch.ws_watchtime}
-			</c:forEach>
-			
 			<tbody>
-			<c:forEach var="onlineCon" items="${onlineConList }">
+			<c:forEach var="onlineCon" items="${onlineConList }" varStatus="sta">
 				<tr>
-					<td colspan="5">1 주차</td>
+					<td colspan="5">${sta.index+1 } 주차</td>
 				</tr>
 				<tr>
 					<td>${onlineCon.oc_content }</td>
@@ -95,8 +140,9 @@
 					</td>
 					<td>x</td>
 					<td>
-					<button type="button" class="btn btn-info btn-sm" id="search" name="${onlineCon.oc_af_no}"
-						data-toggle="modal" data-target="#myModal" onclick="modalVideo(${onlineCon.oc_af_no});">보기</button>
+					<button type="button" class="btn btn-info btn-sm" 
+						data-toggle="modal" data-target="#myModal" 
+						onclick="search('${onlineCon.oc_af_no}','${onlineCon.oc_time }','${onlineCon.oc_no }','${onlineCon.oc_lec_no }','${loginUser }')">보기</button>
 					</td>
 				</tr>
 			</c:forEach>
@@ -129,11 +175,16 @@
 				<h4 class="modal-title" id="title">온라인콘텐츠</h4>
 			</div>
 			<div id="onlineVideo" class="modal-body">
-				
+			</div>
+			<div id="remain">
+					<h1>
+					출석인정까지 남은 시간 :
+					<span class="countTimeMinute"></span>분
+					<span class="countTimeSecond"></span>초
+					</h1>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="close">닫기</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">닫기</button>
 			</div>
 		</div>
 	</div>

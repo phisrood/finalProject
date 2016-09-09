@@ -92,11 +92,16 @@
 		<typeAlias alias="onlineContentWatchVO" type="com.korea.dto.Online_Con_ViewVO" />
 		<!-- 수강리스트 View  -->
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
+		<!-- 수강학생 리스트 View  -->
+		<typeAlias alias="watchStudentsVO" type="com.korea.dto.WatchStudentsVO" />
+		<!-- 수강학생 리스트 View  -->
+		<typeAlias alias="online_Con_StudentListVO" type="com.korea.dto.Online_Con_StudentListVO" />
+		<!-- 수강리스트 View  -->
+		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
 		<!-- submitVO  -->
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
-
 	</typeAliases>
 
 	<mappers>

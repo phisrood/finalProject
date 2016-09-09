@@ -23,7 +23,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/resources/fonts/**" location="/resources/fonts" />
-
+	<resources mapping="/resources/common/**" location="/resources/common" />
 	<!-- images mapping -->
 	<resources mapping="/common/images/**" location="/resources/common/images/" />
 	<resources mapping="/emp/images/**" location="/resources/emp/images/" />

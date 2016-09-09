@@ -1,13 +1,19 @@
 package com.korea.classApp.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.classApp.service.ClassAppService;
 import com.korea.dto.Appraisal_ManageVO;
 /**
@@ -38,13 +44,63 @@ public class ClassAppController {
 	 * @throws 
 	 */
 	//수업평가 항목 등록
-	@RequestMapping(value="/emp/classAppInsert", method=RequestMethod.GET)
+	@RequestMapping(value="/emp/classAppInsertForm", method=RequestMethod.GET)
 	public String classAppInsertPage(Model model){
 		String url="/emp/classAppInsert";
-		List<Appraisal_ManageVO> appList= classAppService.getClassAppList();
-		model.addAttribute("appraisalList", appList);
+		
 		return url;
 	}
+	/**
+	 * 수업평가 항목 관리
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//수업평가 항목 등록
+	@RequestMapping(value="/emp/classAppInsert", method=RequestMethod.GET)
+	public void classAppInsert(HttpServletResponse response, @RequestParam("content")String content){
+		
+		classAppService.insertClassApp(content);
+		
+		List<Appraisal_ManageVO> appList = classAppService.getClassAppList();
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
+	/**
+	 * 리스트 ajax
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value={"/emp/classAppList","/stu/classAppList"}, method=RequestMethod.GET)
+	public void classAppList(HttpServletResponse response){
+		List<Appraisal_ManageVO> appList = classAppService.getClassAppList();
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param

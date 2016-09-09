@@ -176,7 +176,7 @@ public class AdviceDAOImpl implements AdviceDAO {
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO) {
 		if(af_no == 0){
 			sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
 		}else{

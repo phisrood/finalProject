@@ -35,11 +35,11 @@
 
 <script type="text/javascript">
 	function serverCam() {
-		window.open("http://localhost:8888/NewFile", "화상",
+		window.open("https://192.168.0.2:8888/index", "화상",
 				"width=800, height=700");
 	}
 	function clientCam() {
-		window.open("http://192.168.206.124:8888/NewFile", "화상",
+		window.open("https://192.168.0.2:8888/index", "화상",
 				"width=800, height=700");
 	}
 	function chat() {

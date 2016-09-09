@@ -8,4 +8,8 @@
 		SELECT *
 		FROM APPRAISAL_MANAGE
 	</select>
+	
+	<insert id="insertClassApp" parameterType="str">
+		insert into appraisal_manage(am_no, am_content) values(classapp_seq.nextval, #{content})
+	</insert>
 </mapper>

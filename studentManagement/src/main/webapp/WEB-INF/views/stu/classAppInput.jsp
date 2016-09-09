@@ -13,169 +13,115 @@
  * </pre>
 ===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-	<!-- Ion.RangeSlider -->
-    <link href="/stu/css/normalize.css" rel="stylesheet">
-    <link href="/stu/css/ion.rangeSlider.css" rel="stylesheet">
-    <link href="/stu/css/ion.rangeSlider.skinFlat.css" rel="stylesheet">
-    <!-- Bootstrap Colorpicker -->
-    <link href="/stu/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<script>
+	$(function(){
+		var indexVal=0;
+		$.ajax({
+			url:"/stu/classAppList",
+			method:"get",
+			type:"json",
+			success:function(data){
+				var htmlCode="";
+				
+				$.each(data, function(index, value){
+					htmlCode+="<tr>";
+					htmlCode+="<td>"+(index+1)+"</td>";
+					htmlCode+="<td>"+value.am_content+"</td>";
+					htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
+					htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
+					htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
+					htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
+					htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
+					htmlCode+="</tr>";
+					indexVal = index+1;
+				});
+				
+				$("#appTable").html(htmlCode);
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+		$("#saveBtn").click(function(){
+			for (var i = 0; i < indexVal; i++) {
+				var checkedValue = $("input[type=radio][name=check"+i+"]:checked").val();
+				alert(checkedValue);
+				
+			}
+		});
+	})
+	
+</script>
 
-    <link href="/stu/css/cropper.min.css" rel="stylesheet">
-<!-- Custom Theme Style -->
-<link href="/stu/css/custom.min.css" rel="stylesheet">
+<style>
+	.textbox{
+		width:80%;
+	}
+</style>
 
-<!-- 수업평가 -->
-
-	<div class="row">
+<!-- 수업평가항목추가:행정 -->
+<div class="row">
 
 	<!-- page content -->
-	
-	
-		<div class="x_panel">
-		
-			<div class="x_title">
-				<h2>
-					<i class="fa fa-calendar"></i> 수업평가
-				</h2>
-				<ul class="nav navbar-right panel_toolbox"></ul>
-				<div class="clearfix"></div>
-			</div>
-			
-			
-			<div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">년도</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                          </select>
-                        </div>
-                       
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">학기</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
-                            <option>1학기</option>
-                            <option>2학기</option>
-                          </select>
-                        </div>
-      
-      			<div style="text-align:right;">
-                	<button type="button" class="btn btn-dark">조회</button>
-                </div>
-                        
-           <!-- 과목누를시 수업평가 -->
-			      
-			<div class="x_content">
-			      <div class="x_content">
-                    
-                    <table id="datatable" class="table table-striped jambo_table bulk_action">
-                      <thead>
-                        <tr>
-                          <th>구분</th>
-                          <th>학과</th>
-                          <th>과목</th>
-                          <th>분반</th>
-                          <th>교수</th>
-                          <th>이수구분</th>
-                          <th>학점</th>
-                          <th>비고</th>
-                        </tr>
-                      </thead>
 
-				
 
-                      <tbody>
-                        <tr>
-                          <td></td>
-                          <td>정보통신공학과</td>
-                          <td>데이터통신</td>
-                          <td>02</td>
-                          <td>누군가</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>정보통신공학과</td>
-                          <td>데이터통신</td>
-                          <td>02</td>
-                          <td>누군가</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>정보통신공학과</td>
-                          <td>데이터통신</td>
-                          <td>02</td>
-                          <td>누군가</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>정보통신공학과</td>
-                          <td>데이터통신</td>
-                          <td>02</td>
-                          <td>누군가</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td>정보통신공학과</td>
-                          <td>데이터통신</td>
-                          <td>02</td>
-                          <td>누군가</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td></td>
-                        </tr>
-                        
-                      </tbody>
-                    </table>
-                  </div>
-                     
-       
-			
+	<div class="x_panel">
 
-				<!-- x-content -->
-			</div>		
+		<div class="x_title">
+			<h2>
+				<i class="fa fa-calendar"></i> 수업평가
+			</h2>
+			<ul class="nav navbar-right panel_toolbox"></ul>
+			<div class="clearfix"></div>
 		</div>
-	</div>
-					<!-- /page content -->
-	</div>
 
-		
 
-		
-	<!-- Ion.RangeSlider -->
-    <script src="/stu/js/ion.rangeSlider.min.js"></script>
-    <!-- Bootstrap Colorpicker -->
-    <script src="/stu/js/bootstrap-colorpicker.min.js"></script>
-    <!-- jquery.inputmask -->
-    <script src="/stu/js/jquery.inputmask.bundle.min.js"></script>
-    <!-- jQuery Knob -->
-    <script src="/stu/js/jquery.knob.min.js"></script>
-    <!-- Cropper -->
-    <script src="/stu/js/cropper.min.js"></script>
-		
-			<!-- Custom Theme Scripts -->
-			<script src="/stu/js/custom.min.js"></script>
-	
-	
+
+
+
+		<div class="x_content">
+			<div class="x_content">
+				<table id="datatable"
+					class="table table-striped jambo_table bulk_action">
+					<thead>
+						<tr id="btnGorup">
+							<th>구분</th>
+							<th style="width: 50%;">평가문항</th>
+							<th>매우그렇다(5점)</th>
+							<th>그렇다(4점)</th>
+							<th>보통이다(3점)</th>
+							<th>그렇지않다(2점)</th>
+							<th>매우그렇지않다(1점)</th>
+						</tr>
+					</thead>
+					<tbody id="appTable">
+
+					</tbody>
+				</table>
+
+				<br />
+				<div style="text-align: right;">
+					<button type="button" class="btn btn-info btn-s" id="saveBtn">저장</button>
+				</div>
+
+
+			</div>
+
+			<!-- x-content -->
+		</div>
+
+	</div>
+	<!-- /page content -->
+</div>
+
+
+
+
