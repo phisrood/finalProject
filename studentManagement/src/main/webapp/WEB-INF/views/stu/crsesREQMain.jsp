@@ -41,56 +41,94 @@
 function classSyl(lec_no){
 	window.open("/stu/classSYL?lec_no="+lec_no,"newWindow");
 }
-function reqClass(lec_no){
+function reqClass(lec_no,lb_no){
 	$.ajax({
 		url:"/crses/stu/insertCrsesREQ",
 		method: "get",
-		data: {"lec_no":lec_no},
-		type: "json",
+		data: {"lec_no":lec_no,
+			"lb_no":lb_no},
+		type: "text",
 		success:function(data){
-			alert("신청되었습니다");
+			if(data=="fail"){
+				alert("이미 신청한 강의입니다.");
+			}else{
+				crsesListRefresh();
+				crsesAllList();
+			}
 		},
 		error:function(){
-			 alert("에러야!!");
+			 alert("이미 신청한 강의입니다.");
 		}
 	})
 }
+function crsesListRefresh(){
+	$.ajax({
+		url:"/crses/stu/getCrsesREQList",
+		method:"get",
+		type:"json",
+		success:function(data){
+			var htmlCode = "";
+			//계산
+			$.each(data, function(index, value){
+				max = value.lec_persons;
+				min = value.lec_persons_count;
+				htmlCode += "<tr>";
+				htmlCode += "<td>"+value.lb_no+"</td>";
+				htmlCode += "<td>"+value.lb_placement+"</td>";
+				htmlCode += "<td>"+value.lb_name+"</td>";
+				htmlCode += "<td>"+value.classroom+"</td>";
+				htmlCode += "<td>"+value.use_name+"</td>";
+				htmlCode += "<td>"+value.lb_credit+"</td>";
+				htmlCode += "<td>"+value.lb_completekind+"</td>";
+				htmlCode += "<td>"+(max-min)+"</td>";
+				htmlCode += "<td><button class='sylBtn btn btn-info btn-xs' onclick='classSyl("+value.lec_no+");'>강의계획서</td>";
+				htmlCode += "</tr>";
+			});
+			$("#reqList").html(htmlCode);
+		},
+		error:function(){
+			alert("신청리스트 에러러");
+		}
+	});
+}
+function crsesAllList(){
+	var max = 0;
+	var min = 0;
+	//로딩시 리스트 출력
+
+	$.ajax({
+		url:"/crses/stu/crsesAllList",
+		method:"get",
+		type:"json",
+		success:function(data){
+			var htmlCode = "";
+			//계산
+			$.each(data, function(index, value){
+				max = value.lec_persons;
+				min = value.lec_persons_count;
+				htmlCode += "<tr>";
+				htmlCode += "<td>"+value.lb_no+"</td>";
+				htmlCode += "<td>"+value.lec_placement+"</td>";
+				htmlCode += "<td>"+value.lb_name+"</td>";
+				htmlCode += "<td>"+value.classroom+"</td>";
+				htmlCode += "<td>"+value.use_name+"</td>";
+				htmlCode += "<td>"+value.lb_credit+"</td>";
+				htmlCode += "<td>"+value.lb_completekind+"</td>";
+				htmlCode += "<td>"+(max-min)+"</td>";
+				htmlCode += "<td><button class='reqBtn' onclick='reqClass("+value.lec_no+","+value.lb_no+")'>신청</td>";
+				htmlCode += "<td><button class='sylBtn btn btn-info btn-xs' onclick='classSyl("+value.lec_no+");'>강의계획서</td>";
+				htmlCode += "</tr>";
+			});
+			$("#resultList").html(htmlCode);
+		},
+		error:function(){
+			alert("에러");
+		}	
+	});
+}
 	$(function(){
-		var max = 0;
-		var min = 0;
-		//로딩시 리스트 출력
-		
-		$.ajax({
-			url:"/crses/stu/crsesAllList",
-			method:"get",
-			type:"json",
-			success:function(data){
-				var htmlCode = "";
-				//계산
-				$.each(data, function(index, value){
-					max = value.lec_persons;
-					min = value.lec_persons_count;
-					htmlCode += "<tr>";
-					htmlCode += "<td>"+value.lb_no+"</td>";
-					htmlCode += "<td>"+value.lec_placement+"</td>";
-					htmlCode += "<td>"+value.lb_name+"</td>";
-					htmlCode += "<td>"+value.classroom+"</td>";
-					htmlCode += "<td>"+value.use_name+"</td>";
-					htmlCode += "<td>"+value.lb_credit+"</td>";
-					htmlCode += "<td>"+value.lb_completekind+"</td>";
-					htmlCode += "<td>"+(max-min)+"</td>";
-					htmlCode += "<td><button class='reqBtn' onclick='reqClass("+value.lec_no+")'>신청</td>";
-					htmlCode += "<td><button class='sylBtn btn btn-info btn-xs' onclick='classSyl("+value.lec_no+");'>강의계획서</td>";
-					htmlCode += "</tr>";
-				});
-				$("#resultList").html(htmlCode);
-			},
-			error:function(){
-				alert("에러");
-			}
-			
-		});
-		
+		crsesListRefresh();
+		crsesAllList();
 	});
 </script>
 
@@ -115,7 +153,7 @@ function reqClass(lec_no){
 			</div>
             <!-- page content 1 -->
             <div class="x_content" style="height: 45%; overflow:auto;" >
-               
+               <h4>과목목록</h4>
                   <table id="datatable" class="table table-striped jambo_table bulk_action">
                      <thead> 
                         <tr>
@@ -146,9 +184,9 @@ function reqClass(lec_no){
                      <thead>
                         <tr>
                            <th>학수번호</th>
+                           <th>분반</th>
                            <th>과목명</th>
-                           <th>수업시간</th>
-                           <th>강의실</th>
+                           <th>수업시간,강의실</th>
                            <th>교수명</th>
                            <th>학점</th>
                            <th>이수구분</th>
@@ -157,30 +195,9 @@ function reqClass(lec_no){
                         </tr>
                      </thead>
 
-                     <tbody>
-                        <tr>
-                           <td>JAVA</td>
-                           <td>12321</td>
-                           <td>월/금1~2</td>
-                           <td>701호</td>
-                           <td>박진성</td>
-                           <td>3학점</td>
-                           <td>전선</td>
-                           <td><input type="button" value="취소"></td>
-                           <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
-                        <tr>
-                           <td>SPRING</td>
-                           <td>12321</td>
-                           <td>월/금1~2</td>
-                           <td>701호</td>
-                           <td>박진성</td>
-                           <td>3학점</td>
-                           <td>전선</td>
-                           <td><input type="button" value="취소"></td>
-                           <td><button type="button" class="btn btn-info btn-xs">강의계획서</button></td>
-                        </tr>
-                     
+                     <tbody id="reqList">
+                     <!-- 신청내역 -->
+                        
                      </tbody>
                   </table>
                </div>

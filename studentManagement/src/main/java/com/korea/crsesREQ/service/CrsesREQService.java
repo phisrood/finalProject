@@ -2,7 +2,11 @@ package com.korea.crsesREQ.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.CrsesList_stu_ViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -45,7 +49,7 @@ public interface CrsesREQService {
 	 * @throws 
 	 */
 	//수강신청(수강신청 가능 학점 배제)
-	public void insertCrsesREQ(String lec_no, String id);
+	public void insertCrsesREQ(String lec_no, String lb_no,String id,HttpServletResponse response);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -55,13 +59,15 @@ public interface CrsesREQService {
 	//수강신청취소
 	public void deleteCrsesREQ();
 	/**
+	 * @return 
+	 * @param string 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강신청한 리스트
-	public void getCrsesREQList();
+	public List<CrsesList_stu_ViewVO> getCrsesREQList(String string);
 	/**
 	 * 개인 정보 조회
 	 * @param

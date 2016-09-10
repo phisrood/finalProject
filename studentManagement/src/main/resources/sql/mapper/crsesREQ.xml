@@ -52,4 +52,16 @@
 		,'N'
 		)
 	</insert>
+	
+	<update id="updatePersonCount" parameterType="str">
+		UPDATE LECTURE
+		SET LEC_PERSONS_COUNT = LEC_PERSONS_COUNT+1
+		WHERE LEC_NO = #{lec_no}
+	</update>
+	
+	<select id="getCrsesList" parameterType="str" resultType="crsesREQVO">
+		SELECT *
+		FROM CRSESLIST_STU_VIEW
+		WHERE CB_STUD_USE_ID = #{id}
+	</select>
 </mapper>

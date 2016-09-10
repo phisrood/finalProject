@@ -22,6 +22,21 @@
 ===============================================================--%>
 
  <link href="resources/common/css/default.css" rel="stylesheet">
+ 	<!-- 부트스트랩 css -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+    <link href="/bootstrap/css/green.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+    <link href="/common/css/default.css" rel="stylesheet">
+    
+    <script src="/stu/js/default.js"></script>
+    <script src="/common/js/notice.js"></script>
+    <script src="/bootstrap/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+ 
 <!-- 시간표 -->
 	
 	<div class="row">

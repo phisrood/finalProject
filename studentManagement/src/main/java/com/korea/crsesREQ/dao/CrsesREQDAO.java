@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
@@ -63,13 +65,14 @@ public interface CrsesREQDAO {
 	//수강신청취소
 	public void deleteCrsesREQ();
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * @param id 
+	 * 수강신청한 리스트 
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청한 리스트
-	public void getCrsesREQList();
+	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -105,4 +108,12 @@ public interface CrsesREQDAO {
 	 * @throws 
 	 */
 	public int getSemester(String id);
+	
+	/**
+	 * @return String id
+	 * 학생수 가져오기
+	 * @param int
+	 * @throws 
+	 */
+	public void updatePersonCount(String lec_no);
 }

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
@@ -79,15 +81,15 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 		
 	}
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesREQList() {
-		// TODO Auto-generated method stub
-		
+	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id) {
+		return session.selectList("CrsesREQ.getCrsesList", id);		
 	}
 	/**
 	 * 개인 정보 조회
@@ -129,6 +131,10 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	@Override
 	public int getSemester(String id) {
 		return (int) session.selectOne("CrsesREQ.getSemester", id);
+	}
+	@Override
+	public void updatePersonCount(String lec_no) {
+		session.update("CrsesREQ.updatePersonCount", lec_no);
 	}
 
 }

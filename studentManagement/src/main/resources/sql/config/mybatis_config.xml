@@ -94,6 +94,8 @@
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
 		<!-- submitVO  -->
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
+		<!-- 수강내역VO  -->
+		<typeAlias alias="crsesREQVO" type="com.korea.dto.CrsesList_stu_ViewVO" />
 
 	</typeAliases>
 

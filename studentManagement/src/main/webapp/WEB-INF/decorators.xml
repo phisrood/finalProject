@@ -34,5 +34,6 @@
 		<pattern>/pro/updateAdviceConfirmForm*</pattern>
 		<pattern>/common/messageReplyForm</pattern>
 		<pattern>/stu/crsesLoginForm</pattern>
+		<pattern>/stu/timeTableList</pattern>
 	</excludes>
 </decorators>
