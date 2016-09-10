@@ -47,7 +47,7 @@
 			
 			
 			
-				<table id="datatable" class="table table-striped table-bordered">
+				<table id="datatable" class="table table-striped jambo_table bulk_action">
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;

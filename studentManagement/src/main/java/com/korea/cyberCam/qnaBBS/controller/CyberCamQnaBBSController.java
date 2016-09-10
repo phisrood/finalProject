@@ -278,13 +278,20 @@ public class CyberCamQnaBBSController {
 				
 				return url;
 			}
+			File file= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(file);	
+			attachment_FileVO.setAf_aftername("default");
+			attachment_FileVO.setAf_realname("default");
+			attachment_FileVO.setAf_path("default");
 			
+			cyberCamQnaBBSService.insertQnaBBS(attachment_FileVO);
+			int af_no = cyberCamQnaBBSService.selectQnaBBSAF_NO();	
 				
 			
 			Question_BoardVO question_BoardVO = new Question_BoardVO();
 			question_BoardVO.setQb_stud_use_id(stud_use_id);
 			question_BoardVO.setQb_lec_no(stu_lec_no);
-			question_BoardVO.setQb_af_no(af_not_no);
+			question_BoardVO.setQb_af_no(af_no);
 			question_BoardVO.setQb_title(request.getParameter("title"));
 			question_BoardVO.setQb_content(request.getParameter("content"));
 			cyberCamQnaBBSService.insertQnaBBSFinal(question_BoardVO);

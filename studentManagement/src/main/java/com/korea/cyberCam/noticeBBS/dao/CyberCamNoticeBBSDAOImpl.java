@@ -1,4 +1,14 @@
 package com.korea.cyberCam.noticeBBS.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Cyber_LectureNoticeViewVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,13 +25,18 @@ package com.korea.cyberCam.noticeBBS.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class CyberCamNoticeBBSDAOImpl implements CyberCamNoticeBBSDAO{
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	@Autowired
+	private SqlSession sqlSession;
+	
+	
 	@Override
 	public void getNoticeBBSList() {
 		// TODO Auto-generated method stub
@@ -77,5 +92,16 @@ public class CyberCamNoticeBBSDAOImpl implements CyberCamNoticeBBSDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public List<Cyber_LectureNoticeViewVO>  getNoticeBBSList(int stu_lec_no) {
+		
+		return (List<Cyber_LectureNoticeViewVO>) sqlSession.selectList("cyberCamLectureNoticeBBS.getLectureNoticeListStu",stu_lec_no);
+	}
+	@Override
+	public List<Cyber_LectureNoticeViewVO> getNoticeBBSDetail(int ln_no) {
+		
+		return sqlSession.selectList("cyberCamLectureNoticeBBS.getLectureNoticeListStuDetail",ln_no);
+	}
+	
 
 }

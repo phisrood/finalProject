@@ -102,7 +102,13 @@
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
+		
+		<!-- 사이버 캠퍼스 공지사항 -->
+		<typeAlias alias="lecture_NoticeVO" type="com.korea.dto.Lecture_NoticeVO" />
+		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
+	
 	</typeAliases>
+	
 
 	<mappers>
 

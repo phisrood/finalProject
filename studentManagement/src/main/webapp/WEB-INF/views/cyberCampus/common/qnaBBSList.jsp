@@ -49,7 +49,7 @@
 				</select>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-            <table id="datatable" class="table table-striped table-bordered">
+            <table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
                	
                		<tr>

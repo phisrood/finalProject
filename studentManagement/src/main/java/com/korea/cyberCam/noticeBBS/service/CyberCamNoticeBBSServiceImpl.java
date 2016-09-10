@@ -1,4 +1,15 @@
 package com.korea.cyberCam.noticeBBS.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.korea.cyberCam.noticeBBS.dao.CyberCamNoticeBBSDAO;
+import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Cyber_LectureNoticeViewVO;
+import com.korea.dto.Lecture_NoticeVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,13 +26,14 @@ package com.korea.cyberCam.noticeBBS.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Service
 public class CyberCamNoticeBBSServiceImpl implements CyberCamNoticeBBSService{
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	@Autowired
+	private CyberCamNoticeBBSDAO cyberCamNoticeBBSDAO;
+	
+	
+	
 	@Override
 	public void getNoticeBBSList() {
 		// TODO Auto-generated method stub
@@ -82,5 +94,17 @@ public class CyberCamNoticeBBSServiceImpl implements CyberCamNoticeBBSService{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public List<Cyber_LectureNoticeViewVO>  getNoticeBBSList(int stu_lec_no) {
+	
+		return cyberCamNoticeBBSDAO.getNoticeBBSList(stu_lec_no);
+	}
+	@Override
+	public List<Cyber_LectureNoticeViewVO> getNoticeBBSDetail(int ln_no) {
+		
+		return cyberCamNoticeBBSDAO.getNoticeBBSDetail(ln_no);
+	}
+
+	
 
 }

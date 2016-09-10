@@ -1,4 +1,11 @@
 package com.korea.cyberCam.noticeBBS.service;
+
+import java.util.List;
+
+import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Cyber_LectureNoticeViewVO;
+import com.korea.dto.Lecture_NoticeVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -64,4 +71,11 @@ public interface CyberCamNoticeBBSService {
 	 */
 	//공지사항 파일다운로드
 	public void getNoticeFileDown();
+	
+	//리스트/상세보기 학생,교수
+	public List<Cyber_LectureNoticeViewVO>  getNoticeBBSList(int stu_lec_no);
+	public List<Cyber_LectureNoticeViewVO> getNoticeBBSDetail(int ln_no);
+	
+
+	
 }

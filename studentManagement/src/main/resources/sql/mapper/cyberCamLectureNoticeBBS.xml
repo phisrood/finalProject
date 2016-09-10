@@ -5,7 +5,44 @@
 
 <mapper namespace="cyberCamLectureNoticeBBS">
 	
+	<select id="getLectureNoticeListStu" parameterType="int" resultType="cyber_LectureNoticeViewVO">
+	SELECT 
+
+	USE_NAME,
+	LN_NO,
+	LN_PRO_USE_ID,
+	AF_NO,LN_LEC_NO,
+	LN_TITLE,
+	LN_CONTENT,
+	AF_AFTERNAME,
+	AF_PATH,
+	TO_CHAR(SYSDATE,'YYYY-MM-DD')LN_DATE
 	
+	FROM CYBER_LECTURENOTICEVIEWVO
+	WHERE LN_LEC_NO = #{stu_lec_no}
+	
+	</select>
+	
+	<select id="getLectureNoticeListStuDetail" parameterType="int" resultType="cyber_LectureNoticeViewVO">
+	
+	SELECT 
+
+	USE_NAME,
+	LN_NO,
+	LN_PRO_USE_ID,
+	AF_NO,
+	LN_LEC_NO,
+	LN_TITLE,
+	LN_CONTENT,
+	AF_AFTERNAME,
+	AF_PATH,
+	TO_CHAR(SYSDATE,'YYYY-MM-DD')LN_DATE
+	
+	FROM CYBER_LECTURENOTICEVIEWVO
+	WHERE LN_NO = #{ln_no}
+	
+	
+	</select>
 	
 	
 
