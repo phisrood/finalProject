@@ -15,9 +15,15 @@ package com.korea.cyberCam.noticeBBS.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.korea.dto.UsersVO;
 
 @Controller
 public class CyberCamNoticeBBSController {
@@ -28,18 +34,44 @@ public class CyberCamNoticeBBSController {
 	 * @throws 
 	 */
 	//공지사항게시판 리스트
-	@RequestMapping(value={"/cyberCampus/stu/cyberNoticeList","/cyberCampus/pro/cyberNoticeList"}, method=RequestMethod.GET)
-	public String noticeBBSList(){
+	@RequestMapping(value="/cyberCampus/stu/cyberNoticeList", method=RequestMethod.GET)
+	public String noticeBBSList(HttpSession session, Model model){
+		
 		String url="/cyberCampus/common/cyberNoticeList";
+		
+		UsersVO loginuser = (UsersVO) session.getAttribute("loginUser");
+		String stuId = loginuser.getUse_id();
+		// 사이버캠퍼스 이동시 CyberCamMainController 에 심어둔 lec_no를 가져온다.
+		int stu_lec_no = (int) session.getAttribute("stu_lec_no");
+		
+		
+		
+		
+		
+
+	
+		
+		
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//공지사항게시판 리스트
+	@RequestMapping(value="/cyberCampus/pro/cyberNoticeList", method=RequestMethod.GET)
+	public String noticeBBSListPro(){
+		String url="/cyberCampus/common/cyberNoticeListPro";
+		
+		return url;
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
 	//공지사항게시판 상세보기
 	@RequestMapping(value="/cyberCampus/stu/cyberNoticeDetail", method=RequestMethod.GET)
 	public String noticeBBSDetail(){
