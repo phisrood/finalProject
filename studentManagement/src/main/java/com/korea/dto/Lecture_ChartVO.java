@@ -15,32 +15,34 @@ package com.korea.dto;
 public class Lecture_ChartVO {
 
 	private int lc_no;
-	private int lc_lec_no;
-	private String lc_appraisalquestion;
-	private int lc_questionscore;
+	private String lc_lec_no;
+	private int lc_appraisalquestion;
+	private float lc_questionscore;
 	public int getLc_no() {
 		return lc_no;
 	}
 	public void setLc_no(int lc_no) {
 		this.lc_no = lc_no;
 	}
-	public int getLc_lec_no() {
+	public String getLc_lec_no() {
 		return lc_lec_no;
 	}
-	public void setLc_lec_no(int lc_lec_no) {
+	public void setLc_lec_no(String lc_lec_no) {
 		this.lc_lec_no = lc_lec_no;
 	}
-	public String getLc_appraisalquestion() {
+	public int getLc_appraisalquestion() {
 		return lc_appraisalquestion;
 	}
-	public void setLc_appraisalquestion(String lc_appraisalquestion) {
+	public void setLc_appraisalquestion(int lc_appraisalquestion) {
 		this.lc_appraisalquestion = lc_appraisalquestion;
 	}
-	public int getLc_questionscore() {
+	public float getLc_questionscore() {
 		return lc_questionscore;
 	}
-	public void setLc_questionscore(int lc_questionscore) {
+	public void setLc_questionscore(float lc_questionscore) {
 		this.lc_questionscore = lc_questionscore;
 	}
+
+	
 	
 }

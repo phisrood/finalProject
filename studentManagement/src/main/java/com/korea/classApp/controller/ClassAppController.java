@@ -128,6 +128,16 @@ public class ClassAppController {
 		}
 	}
 	
+	@RequestMapping(value="/emp/classAppSave")
+	public String classAppSave(){
+		
+		String url = "";
+		
+		classAppService.insertAppProSave();
+		
+		return url;
+	}
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param

@@ -109,6 +109,8 @@
 		<!-- 사이버 캠퍼스 공지사항 -->
 		<typeAlias alias="lecture_NoticeVO" type="com.korea.dto.Lecture_NoticeVO" />
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
+		<!-- lecture VO -->
+		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
 
 	</typeAliases>
 	
