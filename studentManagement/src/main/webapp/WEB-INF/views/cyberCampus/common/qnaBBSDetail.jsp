@@ -27,7 +27,67 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+
+    <script>
     
+     
+    $(function(){
+    	
+    	$("#commentbtn").click(function(){
+    		var comment = $("#coment").val();
+    		var qb_no = $("#qb_no").val();
+    		
+    		$.ajax({
+    			url:"/cyberCampus/pro/qnaCommentInsert",
+    			method:"get",
+    			type:"json",
+    			data:{"comment":comment, "qb_no":qb_no},
+    			success:function(data){
+    				alert("등록이 완료되었습니다.");
+    				
+    				var htmlCode = "";
+    				var btn="<input type='button' id='updatetbtn' value='수정'>";
+    				htmlCode+="답변 : "+data.qc_content;
+    				
+    				$("#result").html(htmlCode);
+    				$("#resultBtn").html(btn);
+    				$("#coment").val(" ");
+    				location.reload();
+    			},
+    			error:function(){
+    				alert("error");
+    			}
+    			
+    			
+    		});
+    	});
+    	
+    	$("#updatetbtn").click(function(){
+    		
+    		var comment = $("#coment").val();
+    		var qb_no = $("#qb_no").val();
+    		
+    		$.ajax({
+    			url:"/cyberCampus/pro/qnaCommentUpdate",
+    			method:"get",
+    			type:"json",
+    			data:{"comment":comment, "qb_no":qb_no},
+    			success:function(data){
+    				alert("수정 되었습니다.");
+    				var htmlCode="";
+    				htmlCode+="답변 : "+data.qc_content;
+    				$("#result").html(htmlCode);			
+    				$("#coment").val(" ");
+    			}
+    			
+    		});
+    		
+    		
+    	});
+    });
+    
+    </script>
     <div class="row">
     	<!-- Q & A 게시글 상세 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -36,15 +96,15 @@
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 상세 )</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-			<form method="post" action="/common/qnaBBSUpdate" enctype="multipart/form-data">
+			<form method="post" name="insert" action="/common/qnaBBSUpdate" enctype="multipart/form-data">
 			<div class="x_panel_big">
 			
-				<table id="datatable" class="table table-striped table-bordered">
+				<table id="datatable" class="table table-striped jambo_table bulk_action">
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
 							<input name="title" type="text" size="50"  value="${question_BoardVO.qb_title }">
-							<input name="qb_no" type="hidden" value="${question_BoardVO.qb_no }">
+							<input name="qb_no" type="hidden" id="qb_no" value="${question_BoardVO.qb_no }">
 							<input name="qb_lec_no" type="hidden" value="${question_BoardVO.qb_lec_no }">
 							<input name="qb_af_no" type="hidden" value="${question_BoardVO.qb_af_no }">
 							<input name="qb_date" type="hidden" value="${question_BoardVO.qb_date }">
@@ -59,14 +119,18 @@
 					<tr>
 						<td>
 					
-							
+					
 							
 						<c:choose>
-                      	<c:when test="${empty attachment_FileVO}">
+                      	<c:when test="${attachment_FileVO.af_aftername eq 'default'}">
                       		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
-                      	</c:when>   
+                      		<c:if test="${auth eq 'ROLE_STU'}">	
+                      		<input type="file" name="file">
+                      		</c:if>
+                       </c:when>
                       	<c:otherwise>
-							<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername} </div>
+                      
+                      		<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>                  	
 							<div style="float: left; width: 94%;">
 						
 							<c:if test="${auth eq 'ROLE_STU'}">	
@@ -75,6 +139,8 @@
 							
 							</c:if>
 							</div>
+							
+							
 						</c:otherwise>
 						</c:choose>
 						</td>
@@ -83,24 +149,28 @@
 						<td>
 						
 							<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
-							<div align="center" style="float: left; width: 6%;"><br><br>
-                        		<input type="text" id="" required="required" size="5" value="${question_BoardVO.qb_stud_use_id }"  disabled="disabled" style="text-align: center;">
-                    		</div>
-							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br>
-							
-							
-							<c:if test="${auth eq 'ROLE_PRO'}">	
-								<input type="text" name="comment" style="float: left; width: 90%;" />
+							<div class="x_panel_big" style="float: left; width: 90%;" id="result">
+							<c:if test="${not empty quesVO.qc_content }">
+								답변 : ${quesVO.qc_content }
 							</c:if>
-							<c:if test="${auth eq 'ROLE_STU'}">	
-								<input type="text" name="comment" readonly="readonly" style="float: left; width: 90%;" />
+							<c:if test="${empty quesVO.qc_content }">
+								등록된 댓글이 없습니다.
 							</c:if>
+							
 							</div>
+							<c:if test="${auth eq 'ROLE_PRO'}">	
+								<input type="text" id="coment" style="float: left; width: 90%;" />
+							</c:if>
 							
-							
-							<div  style="float: right; width: 4%;">
+							<div  style="float: right; width: 4%;" id="resultBtn">
+
 							<c:if test="${auth eq 'ROLE_PRO'}">
-								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
+								<c:if test="${empty quesVO.qc_no }">
+									<input type="button" id="commentbtn" value="등록">
+								</c:if>
+								<c:if test="${not empty quesVO.qc_no }">
+									<input type="button" id="updatetbtn" value="수정">
+								</c:if>
 							</c:if>
 							</div>
 							

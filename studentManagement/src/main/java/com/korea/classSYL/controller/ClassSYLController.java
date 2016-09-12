@@ -139,7 +139,7 @@ public class ClassSYLController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = {"/pro/classSYLtoPdf","/stu/classSYLtoPdf"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"/pro/toPdf","/stu/toPdf"}, method = RequestMethod.POST)
 	public void getLecturePlantoPdf(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정

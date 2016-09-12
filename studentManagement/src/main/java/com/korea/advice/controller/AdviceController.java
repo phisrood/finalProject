@@ -66,7 +66,13 @@ public class AdviceController {
 		List<AdviceVO> adviceResList = adviceService.getAdviceResponsList(pro_use_id);
 
 		model.addAttribute("adviceResList", adviceResList);
-
+		
+		System.out.println(adviceResList.size());
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
+		for(int i=0; i<adviceResList.size();i++){
+			System.out.println(adviceResList.get(i).getUse_name());
+		}
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
 		return url;
 	}
 
@@ -88,8 +94,6 @@ public class AdviceController {
 
 		List<AdviceVO> adviceReqList = adviceService.getAdviceRequestList(stud_use_id);
 		List<ProfessorVO> professorList = adviceService.getProfessorList(stud_use_id);
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		model.addAttribute("adviceReqList", adviceReqList);
 		model.addAttribute("professorList", professorList);
@@ -248,6 +252,7 @@ public class AdviceController {
 	public String adviceBoardWrite(Advice_BoardInsertVO adviceInsertVO,HttpServletRequest request) throws IllegalStateException, IOException {
 		String url = "redirect:/stu/adviceBoard";
 		int af_no=0;
+		Advice_BoardInsertVO adviceInsertAFVO = adviceInsertVO;
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
 		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
@@ -255,12 +260,12 @@ public class AdviceController {
 			String adb_after_name = System.currentTimeMillis()+multipartFile.getOriginalFilename();
 			File file = new File(uploadPath,adb_after_name);
 			multipartFile.transferTo(file);
-			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());			adviceInsertVO.setAdb_afterName(adb_after_name);
+			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());			
+			adviceInsertVO.setAdb_afterName(adb_after_name);
 			adviceInsertVO.setAdb_path(uploadPath);
-			af_no=adviceService.insertAdviceBoardAF(adviceInsertVO);
-			adviceInsertVO.setAdb_af_no(af_no);
 		}
-		adviceService.insertAdviceBoard(adviceInsertVO,af_no);
+		
+		adviceService.insertAdviceBoard(adviceInsertVO,af_no,adviceInsertAFVO);
 		
 		return url;
 	}
@@ -303,7 +308,6 @@ public class AdviceController {
 		model.addAttribute("adb_commentstat", adviceBoardVO.getAdb_commentstat());
 		
 		
-		//model.addAttribute("adviceBoardVO", adviceBoardVO);
 		return url;
 	}
 	
@@ -376,22 +380,22 @@ public class AdviceController {
 		
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
+		Map<String,String> paramsFile = new HashMap<String,String>();
 		if(!adb_file.isEmpty()){
 			int adb_af_no = adviceService.getAdviceBoard(adb_no).getAdb_af_no();
 			
 			File file = new File(uploadPath,System.currentTimeMillis()+adb_file.getOriginalFilename());
 			adb_file.transferTo(file);
-			Map<String,String> paramsFile = new HashMap<String,String>();
+			
 			paramsFile.put("adb_realname", adb_file.getOriginalFilename());
 			String adb_after_name = System.currentTimeMillis()+adb_file.getOriginalFilename();
 			paramsFile.put("adb_aftername", adb_after_name);
 			paramsFile.put("adb_path", uploadPath);
 			paramsFile.put("adb_af_no", adb_af_no+"");
-			adviceService.updateAdviceBoardFile(paramsFile);
 		}
 		
 
-		adviceService.updateAdviceBoard(params);
+		adviceService.updateAdviceBoard(params,paramsFile);
 				
 		return url;
 	}

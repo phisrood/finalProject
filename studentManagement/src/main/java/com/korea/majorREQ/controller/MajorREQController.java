@@ -16,6 +16,7 @@ package com.korea.majorREQ.controller;
  * </pre>
  */
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -112,7 +113,7 @@ public class MajorREQController {
 	 * @return 
 	 * @throws 
 	 */
-	//부전공 신청
+	//부/다전공 신청
 	@RequestMapping(value="/stu/belongMinorREQ", method=RequestMethod.POST)
 	public String belongMinorREQ(SubmitVO submitVO, @RequestParam("selec")int selec, HttpSession session,
 			Model model){
@@ -140,29 +141,24 @@ public class MajorREQController {
 	 * @return 
 	 * @throws 
 	 */
-	//소속학과 부전공 신청내역 출력
+	//소속학과 신청내역 출력
 	@RequestMapping(value="/pro/belongMinorREQList", method=RequestMethod.GET)
 	public String belongMinorREQList(HttpSession session, Model model){
 		String url="/pro/belongREQList";
 		
 		Professor_InfoViewVO proInfo = (Professor_InfoViewVO) session.getAttribute("professorInfo");
-		String depno = proInfo.getDep_no();
-		List<SubmitVO> reqList =majorREQService.getBelongMajorREQList(depno);
+		String depno = proInfo.getDep_no();//신청한 기본키가져와서
+		List<SubmitVO> reqList =majorREQService.getBelongMajorREQList(depno); //소속학과 리스트를 꺼내온다 
+		List<Student_InfoViewVO> reqStuList = new ArrayList<Student_InfoViewVO>();//신청한 학생의 정보를 담을 리스트
+		for (int i = 0; i < reqList.size(); i++) { // 신청한 사이즈만큼 돌리는데
+			String id = reqList.get(i).getSb_stud_use_id(); //아이디 빼서
+			Student_InfoViewVO basket = new Student_InfoViewVO(); //학생정보 담을 곳
+			basket = majorREQService.getREQPersonInfo(id); //담아
+			basket.setAf_no(reqList.get(i).getSb_no()); //담고 임시로 신청 기본키 af_no에 삽입 @@@@ 중요
+			reqStuList.add(i, basket); //리스트에 삽입 
+		}
 		
-		model.addAttribute("reqList", reqList);
-		
-		return url;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//소속학과 부전공신청내역 승인/반려
-	@RequestMapping(value="/pro/belongMinorREQDecide", method=RequestMethod.GET)
-	public String belongMinorREQDecide(){
-		String url="";
+		model.addAttribute("reqStuList", reqStuList);
 		
 		return url;
 	}
@@ -180,21 +176,74 @@ public class MajorREQController {
 		Professor_InfoViewVO proInfo = (Professor_InfoViewVO) session.getAttribute("professorInfo");
 		String depno = proInfo.getDep_no();
 		List<SubmitVO> reqList =majorREQService.getOthorsMajorREQList(depno);
+		List<Student_InfoViewVO> reqStuList = new ArrayList<Student_InfoViewVO>();
+		for (int i = 0; i < reqList.size(); i++) {
+			String id = reqList.get(i).getSb_stud_use_id();
+			Student_InfoViewVO basket = new Student_InfoViewVO();
+			basket = majorREQService.getREQPersonInfo(id);
+			basket.setAf_no(reqList.get(i).getSb_no()); //담고 임시로 신청 기본키 af_no에 삽입 @@@@ 중요
+			reqStuList.add(i, basket);
+		}
 		
-		model.addAttribute("reqList", reqList);
+		model.addAttribute("reqStuList", reqStuList);
 		
 		return url;
 	}
+	
+	//신청정보확인
+	@RequestMapping(value="/pro/reqInfoDetail", method=RequestMethod.GET)
+	public void reqStuDetail(HttpServletResponse response, @RequestParam("sb_no")String sb_no){
+		SubmitVO submitInfo = majorREQService.getReqStuInfo(sb_no);
+		String id = submitInfo.getSb_stud_use_id();
+		Map<String, Object> result = majorREQService.getScore(id);
+		int semes = (int) result.get("semes");
+		float score = (float) result.get("score");
+		
+		submitInfo.setSb_dep_no(semes);//임시 이수핛점
+		submitInfo.setScore(score); //평균학점
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(submitInfo);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+		
+	}
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//타학과 부전공신청내역 승인/반려
-	@RequestMapping(value="/pro/othersMinorREQDecide", method=RequestMethod.GET)
-	public String othersMinorREQDecide(){
-		String url="";
+	//소속학과 부전공신청내역 승인/반려
+	@RequestMapping(value="/pro/belongREQDecide", method=RequestMethod.GET)
+	public String belongMinorREQDecide(@RequestParam("sb_no")String sb_no, 
+										@RequestParam("result")int result, Model model){
+		String url="redirect:/pro/belongMinorREQList";
+		
+		int resultChk = majorREQService.updateReqDecide(sb_no, result);
+		
+		model.addAttribute("resultChk", resultChk);
+		
+		return url;
+	}
+	//소속학과 부전공신청내역 승인/반려
+	@RequestMapping(value="/pro/othersREQDecide", method=RequestMethod.GET)
+	public String othersMinorREQDecide(@RequestParam("sb_no")String sb_no, 
+			@RequestParam("result")int result, Model model){
+		String url="redirect:/pro/othersMinorREQList";
+		
+		int resultChk = majorREQService.updateReqDecide(sb_no, result);
+		
+		model.addAttribute("resultChk", resultChk);
 		
 		return url;
 	}

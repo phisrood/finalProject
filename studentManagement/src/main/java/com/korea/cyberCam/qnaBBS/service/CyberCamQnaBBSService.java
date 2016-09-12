@@ -5,6 +5,9 @@ import java.util.Map;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Ques_CommentsVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
@@ -61,25 +64,24 @@ public interface CyberCamQnaBBSService {
 	
 	
 	public int selectQnaBBSAF_NO();
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	//qna게시판 삭제
 	public void deleteQnaBBS(int qb_no);
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	//qna게시판 수정
 	public void updateQnaBBS(Attachment_FileVO attachment_FileVO, Question_BoardVO question_BoardVO);
 	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO);
 	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no);
 	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no);
+	public Professor_InquiryList_ViewVO selectProInquiryList(
+			String pro_lec_no);
+	//댓글 인서트
+	public Quesbbs_ViewVO insertComment(Map<String, String> params);
+	public Quesbbs_ViewVO getCommentVO(int qb_no);
+	//댓글 수정
+	public int updateCommentQnaBBS(Map<String, String> params);
+	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no);
+	public void updateQnaBBSNoAttachment(Question_BoardVO question_BoardVO);
 
 	
 }

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LectureVO;
+import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Ques_CommentsVO;
+import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
 
@@ -109,5 +112,48 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 		
 		return (Attachment_FileVO) sqlSession.selectOne("CyberCamQnaBBSDao.getCyberCamQnaBBSDetailAfNo",af_no);
 	
+	}
+
+
+
+
+	@Override
+	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no) {
+		
+		return (Professor_InquiryList_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getselectProInquiryList",pro_lec_no);
+	}
+
+
+
+
+	@Override
+	public void insertComment(Map<String, String> params) {
+		sqlSession.insert("CyberCamQnaBBSDao.insertComment", params);
+	}
+
+
+
+
+	@Override
+	public Quesbbs_ViewVO getQuesBBSVO(String qb_no) {
+		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getQuesBBS", qb_no);
+	}
+
+
+
+
+	@Override
+	public int updateCommentQnaBBS(Map<String, String> params) {
+		
+		return sqlSession.update("CyberCamQnaBBSDao.updateCommentQnaBBS",params);
+	}
+
+
+
+
+	@Override
+	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no) {
+		
+		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.selectComment", qb_no);
 	}
 }

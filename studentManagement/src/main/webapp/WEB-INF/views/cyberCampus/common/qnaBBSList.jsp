@@ -28,6 +28,13 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
+    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
     <div class="row">
     	<!-- Q & A 게시판 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -49,7 +56,7 @@
 				</select>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-            <table id="datatable" class="table table-striped table-bordered">
+            <table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
                	
                		<tr>

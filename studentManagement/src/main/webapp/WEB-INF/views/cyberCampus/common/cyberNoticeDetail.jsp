@@ -27,7 +27,7 @@
     <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
+
     <div class="row">
     	<!-- 공지 사항 게시글 상세 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -37,42 +37,50 @@
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 			<div class="x_panel_big">
-				<table id="datatable" class="table table-striped table-bordered">
+			
+			<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
+				<table id="datatable" class="table table-striped jambo_table bulk_action">
 					<tr>
 						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" value="중간 고사 강의실 질문">
+							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;:
+							${cyber_LectureNoticeViewVO.ln_title}
 						</td>
 					</tr>
 					<tr>
 						<td>
 							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							<input name="writer" type="text" size="75" value="한돈희">&nbsp;&nbsp;등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;<input name="registration_day" type="text" size="75" value="2016-08-09 09:00:00">
+							${cyber_LectureNoticeViewVO.use_name}
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;${cyber_LectureNoticeViewVO.ln_date}
+						</td>
+					</tr>
+					<tr>
+						<td>	
+							<c:choose>													
+							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
+							<div style="float: left; width: 94%;">첨부 파일이 없습니다.</div>
+							</c:when>
+							<c:otherwise>
+							<div style="float: left; width: 94%;">첨부파일 :  <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}"> ${cyber_LectureNoticeViewVO.af_aftername}</a></div>
+							</c:otherwise>
+							</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big">중간 고사 강의실이 090511이 맞나여?<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-							<div align="center" style="float: left; width: 6%;"><br><br>
-                        		<input type="text" id="" required="required" size="5" value="한돈희"  disabled="disabled" style="text-align: center;">
-                    		</div>
-							<div class="x_panel_big" style="float: left; width: 90%;"><br><br><br><br><br></div>
-							<div style="float: right; width: 4%;">
-								<button type="button" class="btn btn-default btn-sm"><br><br>등 록<br><br><br></button>
-							</div>
+							<div class="x_panel_big">${cyber_LectureNoticeViewVO.ln_content}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+							
+						
 						</td>
 					</tr>
 				</table>
+				</c:forEach>
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 98%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
+				<a href="/cyberCampus/stu/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
 			</div>
     </div>
     <!-- Datatables -->

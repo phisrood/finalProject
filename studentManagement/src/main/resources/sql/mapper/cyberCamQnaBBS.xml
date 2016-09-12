@@ -32,8 +32,16 @@
 	</select>
 	
 	<insert id="getCyberCamQnaBBSInsert" parameterType="attachment">
-		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
-		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_aftername},#{af_realname},#{af_path})
+		INSERT INTO ATTACHMENT_FILE
+		(AF_NO,
+		AF_REALNAME,
+		AF_AFTERNAME,
+		AF_PATH)
+		VALUES
+		(ATTACHMENT_FILE_SEQ.NEXTVAL,
+		#{af_aftername},
+		#{af_realname},
+		#{af_path})
 
 	</insert>
 	
@@ -117,8 +125,38 @@
 	</select>
 	
 	
+	<select id="getselectProInquiryList" parameterType="str" resultType="inquiryListProViewVO">
+	
+	SELECT *
+	FROM PROFESSOR_INQUIRYLIST_VIEW
+	WHERE LEC_NO = #{pro_lec_no}
+
+	</select>
+	
+	<insert id="insertComment" parameterType="map">
+		insert into ques_comments(qc_no, qc_qb_no, qc_pro_use_id, qc_content)
+						 values(ques_comments_seq.nextval, #{qb_no}, #{id}, #{comment})
+	</insert>
+	
+	<select id="getQuesBBS" parameterType="str" resultType="quesbbsView">
+		select * from quesbbs_view where qb_no = #{qb_no}
+	</select>
+	<update id="updateCommentQnaBBS" parameterType="map">
+	UPDATE QUES_COMMENTS
+	SET
+	qc_content = #{comment}
+	 
+	WHERE 
+	qc_qb_no = #{qb_no}		
+	
+	</update>
 	
 	
+	<select id="selectComment" parameterType="str" resultType="quesbbsView">
+	
+	select * from quesbbs_view where qb_no = #{qb_no}
+	
+	</select>
 	
 	
 	

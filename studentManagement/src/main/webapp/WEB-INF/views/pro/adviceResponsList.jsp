@@ -78,7 +78,7 @@
 						<input type="hidden" name="ad_no" value="${adviceRes.ad_no }"/>
 						<td>${adviceRes.ad_way }</td>
 						<td>${adviceRes.ad_purpose }</td>
-						<td>${adviceRes.ad_stud_use_id }</td>
+						<td>${adviceRes.use_name }</td>
 						<td>${adviceRes.ad_reqdate }</td>  
 						<td>${adviceRes.ad_time }</td>
 						<c:choose>

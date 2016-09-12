@@ -62,3 +62,34 @@
 	text-align: center;
 	height: 40px;
 }
+
+#cer-table{
+	border: 1px solid black;
+	margin-left: 150px;
+	width: 65%;
+	height: 1200px;
+	color: black;
+}
+.cer-no{
+	text-align:left;
+}
+.cer-title{
+	text-align: center;
+}
+.cer-tit{
+	font-size: 50px;
+}
+.cer-context{
+}
+.cer-ingam{
+	background-image: url("/common/images/ingam3.jpg"); 
+	background-size: 100% 65px;
+}
+.cer-span{
+	font-size: 25px;
+	margin-left: 150px;
+}
+.cer-tr{
+	height: 30px;
+	
+}

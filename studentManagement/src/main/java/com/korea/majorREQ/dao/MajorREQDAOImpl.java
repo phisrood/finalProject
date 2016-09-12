@@ -1,12 +1,15 @@
 package com.korea.majorREQ.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Major_AssignVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.SubmitVO;
 
 /**
@@ -41,61 +44,7 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	public void insertBelongMinorREQ(SubmitVO submitVO) {
 		session.insert("Major.submitInsert",submitVO);
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getBelongMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateBelongMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMinorREQList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMinorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String insertBelongMajorREQ() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -106,17 +55,7 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	public List<SubmitVO> getBelongMajorREQList(String dep_no) {
 		return session.selectList("Major.getBelongREQList", dep_no);
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String updateBelongMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -126,17 +65,6 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	@Override
 	public List<SubmitVO> getOthorsMajorREQList(String dep_no) {
 		return session.selectList("Major.getOthorsREQList", dep_no);
-	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	@Override
-	public String getOthorsMajorREQDecide() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	/**
@@ -152,6 +80,31 @@ public class MajorREQDAOImpl implements MajorREQDAO{
 	@Override
 	public List<SubmitVO> getReqList(String id) {
 		return session.selectList("Major.getReqList", id);
+	}
+
+	@Override
+	public Student_InfoViewVO getREQPersonInfo(String id) {
+		return (Student_InfoViewVO) session.selectOne("Major.getReqStuList", id);
+	}
+
+	@Override
+	public SubmitVO getReqStuInfo(String sb_no) {
+		return (SubmitVO) session.selectOne("Major.getReqStuInfo", sb_no);
+	}
+
+	@Override
+	public void updateReqBelongDecide(Map<String, Object> params) {
+		session.update("Major.updateReqBelong", params);
+	}
+
+	@Override
+	public void updateReqOthersDecide(Map<String, Object> params) {
+		session.update("Major.updateReqOthers", params);
+	}
+
+	@Override
+	public void insertMajor_Assign(Major_AssignVO major_AssignVO) {
+		session.insert("Major.insertMajor", major_AssignVO);
 	}
 
 }

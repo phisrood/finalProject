@@ -174,8 +174,10 @@ public class AdviceServiceImpl implements AdviceService {
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no) {
-		adviceDAO.insertAdviceBoard(adviceInsertVO,af_no);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO) {
+		af_no=adviceDAO.insertAdviceBoardAF(adviceInsertAFVO);
+		adviceInsertVO.setAdb_af_no(af_no);
+		adviceDAO.insertAdviceBoard(adviceInsertVO,af_no,adviceInsertAFVO);
 	}
 
 	@Override
@@ -185,8 +187,11 @@ public class AdviceServiceImpl implements AdviceService {
 	}
 
 	@Override
-	public void updateAdviceBoard(Map<String, String> params) {
+	public void updateAdviceBoard(Map<String, String> params,Map<String,String> paramsFile) {
 		adviceDAO.updateAdviceBoard(params);
+		if(paramsFile!=null){
+			adviceDAO.updateAdviceBoardFile(paramsFile);
+		}
 	}
 
 	@Override

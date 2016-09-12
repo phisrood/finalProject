@@ -15,21 +15,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta http-equiv="refresh" content="0;url=/common/loginForm" charset="UTF-8">
 <title></title>
 </head>
-<body>
+<body>'
+
 
 <script>
-
 	location.href="/common/loginForm"
 </script> 
 
 
+
 </body>
 </html>
+
+
 
 
 
