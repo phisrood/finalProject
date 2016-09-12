@@ -114,7 +114,7 @@
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/common/onlineConList">온라인콘텐츠보기</a></li>
+		                      <li><a href="/cyberCampus/stu/onlineConList">온라인콘텐츠보기</a></li>
 		                    
 		                    </ul>
 		                  </li>

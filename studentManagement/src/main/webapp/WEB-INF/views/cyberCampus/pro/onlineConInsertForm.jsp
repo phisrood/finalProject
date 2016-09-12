@@ -1,17 +1,3 @@
-<%--==============================================================
- * 사이버 캠퍼스 자유 게시판 left 메뉴구성
- * @author 조현욱
- * @since  2016.08.29.
- * @version 1.0
- * @see
- * <pre>
- * << 개정이력(Modification Information) >>
- *    	수정일       	수정자          		수정내용
- *    -------      -------     -------------------
- *    2016.08.29.  	조현욱      		최초생성
- * Copyright (c) 2016 by DDIT  All right reserved
- * </pre>
-===============================================================--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
@@ -27,65 +13,66 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-
-	
-			<form action="/cyberCampus/stu/qnaBBSsetInsert" method="POST" enctype="multipart/form-data">
+    
     <div class="row">
-    	<!-- Q & A 게시글 상세 ( 학과 ) -->
+    	<!-- 인터넷 강의 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
-    		<div style="float: left; width: 1%;"></div>
+    		<div style="float: left; width: 1%;"><br></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A ( 글쓰기 )</h2></div>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>강의 등록</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-			
-			
-		
 			<div class="x_panel_big">
-			
-			
-			
-				<table id="datatable" class="table table-striped jambo_table bulk_action">
+				<br>
+				<form method="post" action="/cyberCampus/pro/onlineConReg" enctype="multipart/form-data">
+				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
 						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" >
+							강의 제목 &nbsp;: &nbsp;
+							<input name="oc_content" type="text" size="165">
 						</td>
 					</tr>
 					<tr>
 						<td>
-					
-						
-							&nbsp;작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;<input name="writer" readonly="readonly"  type="text" size="25" value="${stud_use_id}">
+							학습 시작 기간 &nbsp;: &nbsp;
+							<input name="oc_startdate" type="text" size="165" OnClick="Calendar(this, 'top','no');">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div style="float: left; width: 6%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 94%;"><input type="file" name="file" /></div>
+							학습 마감 기간 &nbsp;: &nbsp;
+							<input name="oc_enddate" type="text" size="165" OnClick="Calendar(this, 'down','no');">
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<textarea rows="5" cols="200" name="content"></textarea>
-							
+							<div style="float: left; width: 7%;">첨부 파일 &nbsp;: </div>
+							<div style="float: left; width: 93%;">
+							<input type="file" name="file" accept="video/*"></div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							출석 인정 시간 &nbsp;: &nbsp;
+							<input name="oc_time" type="text" size="161">
 						</td>
 					</tr>
 				</table>
+				<div style="float: left; width: 1%;"><br></div>
+				<div style="float: left; width: 89%;">
+					<button type="button" class="btn btn-default btn-sm">목 록</button>
+				</div>
+				<div style="float: right; width: 5%;">
+					<button type="button" class="btn btn-default btn-sm">수 정</button>
+				</div>
+				<div style="float: right; width: 5%;">
+					<input type="submit" class="btn btn-default btn-sm" value="등록"/>
+				</div>
+				</form>
 			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
-			</div>
-			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" value="등록">
-				
-			</div>
-			
     </div>
-    </form>
     <!-- Datatables -->
+    <script src="/stu/js/click_cal.js"></script>
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>
     <script src="/stu/js/dataTables.buttons.min.js"></script>

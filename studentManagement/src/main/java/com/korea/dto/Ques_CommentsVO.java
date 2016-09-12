@@ -9,8 +9,9 @@ package com.korea.dto;
  * qc_date : 작성일<br>
  * qc_content : 댓글내용
  * 
- * @version 한돈희, 1.0, 2016.08.24, 초기 작성
- * @author 한돈희
+ * @version 박진성, 1.0, 2016.09.09, 초기 작성
+ * @author 박진성
+ *
  *
  */
 public class Ques_CommentsVO {

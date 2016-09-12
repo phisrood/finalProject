@@ -115,8 +115,8 @@
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 등록</a></li>
-		                      <li><a href="/cyberCampus/common/onlineConList">온라인콘텐츠 목록</a></li>
+		                      <li><a href="/cyberCampus/pro/onlineConInsertForm">온라인콘텐츠 등록</a></li>
+		                      <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 출석확인</a></li>
 		                    </ul>
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>

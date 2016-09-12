@@ -27,7 +27,8 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+    
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function() {
@@ -35,11 +36,11 @@
 	});
 </script>
     <div class="row">
-    	<!-- Q & A 게시판 ( 학과 ) -->
+    	<!-- 공지 사항 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A 게시판</h2></div>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지 사항</h2></div>
 			</div>
 			<div style="float: left; width: 71%;"></div>
 			<div style="float: right; width: 4%;">
@@ -57,7 +58,6 @@
 			<div style="float: left; width: 100%;"><br></div>
             <table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
-               	
                		<tr>
                    		<th>No</th>
                    		<th>제목</th>
@@ -65,19 +65,22 @@
                    		<th>작성자</th>
                  	</tr>
                	</thead>
+               	<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
                	<tbody>
-               	 <c:forEach items="${question_BoardListVO }" var="question_BoardListVO">
                  	<tr>
-                 	  	<td>${question_BoardListVO.qb_no}</td>
-                   		<td><a href="/cyberCampus/pro/qnaBBSDetail?qb_no=${question_BoardListVO.qb_no}">${question_BoardListVO.qb_title}</a></td>
-                   		<td>${question_BoardListVO.qb_date}</td>
-                   		<td>${question_BoardListVO.qb_stud_use_id}</td>
+                 	  	<td>${cyber_LectureNoticeViewVO.ln_no }</td>
+                   		<td><a href="/cyberCampus/pro/cyberNoticeDetailPro?ln_no=${cyber_LectureNoticeViewVO.ln_no }">${cyber_LectureNoticeViewVO.ln_title }.</a></td>
+                   		<td>${cyber_LectureNoticeViewVO.ln_date}</td>
+                   		<td>${cyber_LectureNoticeViewVO.use_name}</td>
                  	</tr>
-                 </c:forEach>
+                 	
                	</tbody>
+               	</c:forEach>
            	</table>
            	<div style="float: right; width: 5%;">
-		
+         	<c:if test="${auth eq 'ROLE_PRO' }">
+			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
+			</c:if>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>

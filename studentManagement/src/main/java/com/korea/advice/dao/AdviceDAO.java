@@ -137,7 +137,7 @@ public interface AdviceDAO {
 
 	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO);
 
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no);
+	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO);
 
 	public Advice_BoardVO getAdviceBoard(int adb_no);
 

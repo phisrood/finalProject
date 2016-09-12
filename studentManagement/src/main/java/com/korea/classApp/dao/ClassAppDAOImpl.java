@@ -1,6 +1,7 @@
 package com.korea.classApp.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_ChartVO;
 
 /**
  * @Class Name : ClassAppDAOImpl.java
@@ -36,9 +39,8 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassApp() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassApp(String content) {
+		sqlSession.insert("classApp.insertClassApp", content);
 	}
 	/**
 	 * 교수가 받은 상담신청조회
@@ -76,6 +78,19 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	@Override
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return sqlSession.selectList("classApp.getClassAppList");
+	}
+	
+	@Override
+	public void deleteClassApp(String am_no) {
+		sqlSession.delete("classApp.deleteClassApp", am_no);
+	}
+	@Override
+	public List<LectureViewVO> getLectureList(Map<String, String> params) {
+		return sqlSession.selectList("classApp.lectureList", params);
+	}
+	@Override
+	public void insertProClassApp(Lecture_ChartVO chart) {
+		sqlSession.insert("classApp.insertProClassApp", chart);
 	}
 
 }

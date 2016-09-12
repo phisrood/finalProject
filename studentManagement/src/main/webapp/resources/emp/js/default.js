@@ -157,9 +157,6 @@ function disapprove(){
 		}
 	});
 }
-function updateClassApp(form){
-	
-}
 function updateSyl(lec_no){
 	location.href='/emp/updateSyl?lec_no='+lec_no;
 };

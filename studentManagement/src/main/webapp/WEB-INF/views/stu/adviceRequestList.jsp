@@ -50,7 +50,7 @@
 				<div>
 					학과교수 : <select name="ad_pro_use_id">
 						<c:forEach var="professor" items="${professorList}">
-							<option value="${professor}">${professor}</option>
+							<option value="${professor.pro_use_id}">${professor.use_name}</option>
 						</c:forEach>
 					</select>
 
@@ -172,7 +172,7 @@
 
 								<td>${adviceReq.ad_way }</td>
 								<td>${adviceReq.ad_purpose }</td>
-								<td>${adviceReq.ad_pro_use_id }</td>
+								<td>${adviceReq.use_name }</td>
 								<td>${adviceReq.ad_reqdate }</td>
 								<td>${adviceReq.ad_time }</td>
 								<td>${adviceReq.ad_stat }</td>

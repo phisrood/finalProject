@@ -27,60 +27,76 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
-<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
-<script>
-	$(function() {
-		$('#datatable').DataTable();
-	});
-</script>
-    <div class="row">
-    	<!-- Q & A 게시판 ( 학과 ) -->
+
+
+	
+			<form action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdateGo" method="POST" enctype="multipart/form-data">
+    	<div class="row">
+    	
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>Q & A 게시판</h2></div>
-			</div>
-			<div style="float: left; width: 71%;"></div>
-			<div style="float: right; width: 4%;">
-				<button type="button" class="btn btn-default btn-xs">검 색</button>
-			</div>
-               <div style="float: right; width: 19%;">
-				<input name="seach" type="text"  size="30">
-			</div>
-			<div style="float: right; width: 6%;">
-				<select name="notice_select">
-					<option value="제목">제목</option>
-					<option value="작성자">작성자</option>
-				</select>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지사항 ( 수정 )</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-            <table id="datatable" class="table table-striped jambo_table bulk_action">
-               	<thead>
-               	
-               		<tr>
-                   		<th>No</th>
-                   		<th>제목</th>
-                   		<th>등록일</th>
-                   		<th>작성자</th>
-                 	</tr>
-               	</thead>
-               	<tbody>
-               	 <c:forEach items="${question_BoardListVO }" var="question_BoardListVO">
-                 	<tr>
-                 	  	<td>${question_BoardListVO.qb_no}</td>
-                   		<td><a href="/cyberCampus/pro/qnaBBSDetail?qb_no=${question_BoardListVO.qb_no}">${question_BoardListVO.qb_title}</a></td>
-                   		<td>${question_BoardListVO.qb_date}</td>
-                   		<td>${question_BoardListVO.qb_stud_use_id}</td>
-                 	</tr>
-                 </c:forEach>
-               	</tbody>
-           	</table>
-           	<div style="float: right; width: 5%;">
+			
+			
 		
+			<div class="x_panel_big">
+			
+			
+			<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
+				<table id="datatable" class="table table-striped jambo_table bulk_action">
+					<tr>
+						<td>
+							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
+							<input name="title" type="text" size="50" value="${cyber_LectureNoticeViewVO.ln_title}">
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+						<div style="float: left; width: 94%;"><input type="file" name="file" />
+						<c:choose>
+						<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'defalut'}">
+						현재 첨부파일이 없습니다.
+						</c:when>
+						<c:otherwise>
+						현재 첨부파일 : ${cyber_LectureNoticeViewVO.af_aftername}
+						
+						</c:otherwise>
+						</c:choose>
+						<input type="hidden" name="af_no" value="${cyber_LectureNoticeViewVO.af_no}"/>
+						<input type="hidden" name="af_aftername" value="${cyber_LectureNoticeViewVO.af_aftername}"/>
+						<input type="hidden" name="af_realname" value="${cyber_LectureNoticeViewVO.af_realname}"/>
+						<input type="hidden" name="af_path" value="${cyber_LectureNoticeViewVO.af_path}"/>
+						<input type="hidden" name="ln_no" value="${cyber_LectureNoticeViewVO.ln_no}"/>
+
+						</div>
+							
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea rows="5" cols="200" name="content" >${cyber_LectureNoticeViewVO.ln_content}</textarea>
+							
+						</td>
+					</tr>
+				</table>
+				 </c:forEach>
 			</div>
-			<div style="float: right; width: 95%;"><br></div>
+			<div style="float: left; width: 2%;"><br></div>
+			<div style="float: left; width: 92%;">
+				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+			</div>
+			<div style="float: right; width: 6%;">
+				<input type="submit" class="btn btn-default btn-sm" value="수정">
+				
+			</div>
+			
     </div>
+    </form>
+   
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

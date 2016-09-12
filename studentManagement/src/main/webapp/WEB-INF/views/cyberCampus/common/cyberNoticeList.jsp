@@ -28,6 +28,15 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
+    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
+
+		
     <div class="row">
     	<!-- 공지 사항 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -49,102 +58,41 @@
 				</select>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-            <table id="datatable" class="table table-striped table-bordered">
+            <table id="datatable" class="table table-striped jambo_table bulk_action">
+            							
                	<thead>
                		<tr>
                    		<th>No</th>
                    		<th>제목</th>
-                   		<th>파일</th>
                    		<th>등록일</th>
                    		<th>작성자</th>
                  	</tr>
                	</thead>
+               		<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
                	<tbody>
+               
                  	<tr>
-                 	  	<td>4</td>
-                   		<td>과제입니다.</td>
-                   		<td>a.jpg</td>
-                   		<td>2016-08-08</td>
-                   		<td>이영만</td>
+                 	  	<td>${cyber_LectureNoticeViewVO.ln_no }</td>
+                   		<td><a href="/cyberCampus/stu/cyberNoticeDetail?ln_no=${cyber_LectureNoticeViewVO.ln_no }">${cyber_LectureNoticeViewVO.ln_title }.</a></td>
+                   		<td>${cyber_LectureNoticeViewVO.ln_date}</td>
+                   		<td>${cyber_LectureNoticeViewVO.use_name}</td>
                  	</tr>
-                 	<tr>
-                   		<td>3</td>
-                   		<td>기말 고사 안내</td>
-                   		<td>없음</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td>2</td>
-                   		<td>과제입니다.</td>
-                   		<td>a.jpg</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td>1</td>
-                   		<td>중간 고사 안내</td>
-                   		<td>없음</td>
-                   		<td>2016-08-07</td>
-                   		<td>이영만</td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
-                 	<tr>
-                   		<td><br></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                   		<td></td>
-                 	</tr>
+          			
                	</tbody>
+               	</c:forEach>
            	</table>
-           	<div style="float: right; width: 5%;">
-				<button type="button" class="btn btn-default btn-sm">글쓰기</button>
+           	
+           	<div style="float: right; width: 5%;">  
+           	<c:if test="${auth eq 'ROLE_PRO' }">
+			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
+			</c:if>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>
+
     <!-- Datatables -->
+   
+
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>
     <script src="/stu/js/dataTables.buttons.min.js"></script>

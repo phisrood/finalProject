@@ -51,13 +51,13 @@
 				var menu="";
 				if(str == '확인'){
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 80%;\">학생명 : ${adviceVO.ad_stud_use_id }</div>";
+					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
 					menu+="<div style=\"float: right; width: 30%;\">상담 내용 : ${adviceVO.ad_purpose }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 30%;\">날짜 : ${adviceVO.ad_reqdate }</div>";
-					menu+="<div style=\"float: right; width: 30%;\">시간 : ${adviceVO.ad_time }</div>";
+					menu+="<div style=\"float: right; width: 30%;\">시간 : ${adviceVO.ad_time } 시</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 50%;\"></div>";
 					menu+="<div style=\"float: right; width: 20%;\">";
@@ -70,7 +70,7 @@
 					menu+="<form method=\"post\" action=\"/pro/updateAdviceDelay\">";		
 					menu+="<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>";		
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 80%;\">학생명 : ${adviceVO.ad_stud_use_id }</div>";
+					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
 					menu+="<div style=\"float: right; width: 30%;\">상담 내용 : ${adviceVO.ad_purpose }</div>";

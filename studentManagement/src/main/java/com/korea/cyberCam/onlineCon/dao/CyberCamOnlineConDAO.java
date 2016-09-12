@@ -1,10 +1,15 @@
 package com.korea.cyberCam.onlineCon.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.korea.cyberCam.onlineCon.controller.CyberCamOnlineConController;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Online_Con_StudentListVO;
 import com.korea.dto.Online_Con_ViewVO;
+import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
+import com.korea.dto.WatchStudentsVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -30,7 +35,7 @@ public interface CyberCamOnlineConDAO {
 	 * @throws 
 	 */
 	//온라인콘텐츠 등록
-	public void insertOnlineCon(Online_ContentsVO onlineContentsVO);
+	public int insertOnlineCon(Online_ContentsVO onlineContentsVO,Attachment_FileVO attachFileVO);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -90,4 +95,41 @@ public interface CyberCamOnlineConDAO {
 	 */
 	//온라인콘텐츠 조회
 	public Attachment_FileVO getAF(int af_no);
+	
+	/**
+	 * @return 
+	 * @param lec_no 
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//온라인콘텐츠 조회
+	public String updateOnlineConTime(Map<String,String> params);
+	/**
+	 * @return 
+	 * @param lec_no 
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//온라인콘텐츠 조회
+	public List<Online_Con_StudentListVO> getOnlinConStudents(int oc_lec_no);
+	
+	/**
+	 * @return 
+	 * @param lec_no 
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//온라인콘텐츠 조회
+	public void insertOnlineConStudentList(List<WatchStudentsVO> watchList);
+	public int getWatchTime(Map<String, String> params);
+	public void updateOnlineConAttendyn(Map<String, String> params);
+	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
+	public String getAttendList(Online_Con_ViewVO attend);
+	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
 }

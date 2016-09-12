@@ -1,12 +1,17 @@
 package com.korea.classApp.service;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.classApp.dao.ClassAppDAO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_ChartVO;
 
 /**
  * @Class Name : ClassAppServiceImpl.java
@@ -37,8 +42,8 @@ public class ClassAppServiceImpl implements ClassAppService{
 	 */
 	//수업평가 등록
 	@Override
-	public void insertClassApp() {
-		// TODO Auto-generated method stub
+	public void insertClassApp(String content) {
+		classAppDAO.insertClassApp(content);
 		
 	}
 	/**
@@ -80,6 +85,62 @@ public class ClassAppServiceImpl implements ClassAppService{
 	@Override
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return classAppDAO.getClassAppList();
+	}
+	
+	
+	//수업평가 삭제
+	@Override
+	public void deleteClassApp(String am_no) {
+		classAppDAO.deleteClassApp(am_no);
+	}
+	
+	//행정에서 저장하면 -> 교수쪽으로 데이터 이동
+	@Override
+	public void insertAppProSave() {
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params = semesOperation();
+		
+		//수업평가 목록을 리스트에 가져옴
+		List<Appraisal_ManageVO> appList = classAppDAO.getClassAppList();
+		
+		List<LectureViewVO> lectureList = classAppDAO.getLectureList(params);
+		
+		for (int i = 0; i < lectureList.size(); i++) {
+			
+			for (int j = 0; j < appList.size(); j++) {
+				Lecture_ChartVO chart = new Lecture_ChartVO();
+				chart.setLc_lec_no(lectureList.get(i).getLec_no());
+				chart.setLc_appraisalquestion(appList.get(j).getAm_no());
+				classAppDAO.insertProClassApp(chart);
+			}
+		}
+				
+	}
+	
+	//현재학기 계산 메서드
+	private Map semesOperation() {
+		//현재 연도/월 가져옴
+		Date date = new Date();
+		
+		int year = date.getYear()+1900;
+		int month = date.getMonth()+1;
+		
+		int semes = 0; //학기
+		
+		
+		//6월까지 1학기, 7월부터 2학기
+		if(month < 7){//1학기 ex) 2016 1학기의 직전학기 ==> 2015 2학기 == 년도 -1 학기 +1
+			semes = 1; //1학기
+		}else if(month >=6){//2학기 ex) 2016 2학기의 직전학기 ==> 2016 1학기 == 년도 그대로 / 학기 -1
+			semes = 2; //2학기
+		}
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("year", Integer.toString(year));
+		params.put("semes", Integer.toString(semes));
+		
+		return params;
 	}
 
 }
