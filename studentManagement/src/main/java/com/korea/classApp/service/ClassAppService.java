@@ -22,13 +22,14 @@ import com.korea.dto.Appraisal_ManageVO;
  */
 public interface ClassAppService {
 	/**
+	 * @param content 
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수업평가 등록
-	public void insertClassApp();
+	public void insertClassApp(String content);
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
@@ -61,4 +62,7 @@ public interface ClassAppService {
 	 * @throws 
 	 */
 	public List<Appraisal_ManageVO> getClassAppList();
+	
+	//삭제
+	public void deleteClassApp(String am_no);
 }

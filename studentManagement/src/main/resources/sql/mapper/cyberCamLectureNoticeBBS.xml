@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cyberCamLectureNoticeBBS">
+	
+	<select id="getLectureNoticeListStu" parameterType="int" resultType="cyber_LectureNoticeViewVO">
+	SELECT 
+
+	USE_NAME,
+	LN_NO,
+	LN_PRO_USE_ID,
+	AF_NO,LN_LEC_NO,
+	LN_TITLE,
+	LN_CONTENT,
+	AF_AFTERNAME,
+	AF_PATH,
+	TO_CHAR(SYSDATE,'YYYY-MM-DD')LN_DATE
+	
+	FROM CYBER_LECTURENOTICEVIEWVO
+	WHERE LN_LEC_NO = #{stu_lec_no}
+	
+	</select>
+	
+	<select id="getLectureNoticeListStuDetail" parameterType="str" resultType="cyber_LectureNoticeViewVO">
+	
+	SELECT 
+
+	USE_NAME,
+	LN_NO,
+	LN_PRO_USE_ID,
+	AF_NO,
+	LN_LEC_NO,
+	LN_TITLE,
+	LN_CONTENT,
+	AF_AFTERNAME,
+	AF_PATH,
+	TO_CHAR(SYSDATE,'YYYY-MM-DD')LN_DATE
+	
+	FROM CYBER_LECTURENOTICEVIEWVO
+	WHERE LN_NO = #{ln_no}
+	
+	
+	</select>
+	
+	<insert id="insertFileUpload" parameterType="attachment" >
+	INSERT INTO ATTACHMENT_FILE(
+	AF_NO,
+	AF_REALNAME,
+	AF_AFTERNAME,
+	AF_PATH)
+	VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL, 
+			#{af_realname},
+			#{af_aftername},
+			#{af_path})
+			
+	
+	</insert>
+	
+	<select id="selectafNo" resultType="int" >
+	
+	SELECT ATTACHMENT_FILE_SEQ.CURRVAL 
+	FROM dual
+	
+	</select>
+	
+	<insert id="insertLectureBBS" parameterType="lecture_NoticeVO">
+	
+
+			
+			
+	INSERT INTO LECTURE_NOTICE(
+	LN_NO,
+	LN_LEC_NO,
+	LN_PRO_USE_ID,
+	LN_AF_NO,
+	LN_TITLE,
+	LN_CONTENT,
+	LN_DATE)
+	VALUES(
+	CYBER_LECTURE_NOTICE.NEXTVAL,
+	#{ln_lec_no},
+	#{ln_pro_use_id},
+	#{ln_af_no},
+	#{ln_title},
+	#{ln_content},
+	SYSDATE)
+	
+	
+	
+	</insert>
+	
+	<update id="updateFile" parameterType="attachment">
+	
+	UPDATE ATTACHMENT_FILE
+	
+	SET
+	AF_REALNAME = #{af_realname},
+	AF_AFTERNAME = #{af_aftername},
+	AF_PATH = #{af_path}
+	
+	WHERE AF_NO = #{af_no}
+	
+	</update>
+	
+	
+	<update id="updateContent" parameterType="lecture_NoticeVO">
+	
+	UPDATE LECTURE_NOTICE
+	SET
+
+	LN_TITLE = #{ln_title},
+	LN_CONTENT = #{ln_content}
+	
+	WHERE LN_NO = #{ln_no}
+	</update>
+	
+	<select id="getDownloadFile" parameterType="int" resultType="attachment">
+	
+	SELECT
+	
+	AF_NO,
+	AF_REALNAME,
+	AF_AFTERNAME,
+	AF_PATH
+	
+	FROM ATTACHMENT_FILE
+	
+	WHERE AF_NO = #{af_no}
+	
+	
+	</select>
+	
+	<delete id="deleteLectureBBS" parameterType="map">
+	
+	DELETE FROM LECTURE_NOTICE 
+	
+	
+		
+	WHERE LN_LEC_NO = #{pro_lec_no}
+	AND LN_NO = #{ln_no}
+	
+	</delete>
+	
+	
+	
+
+</mapper>

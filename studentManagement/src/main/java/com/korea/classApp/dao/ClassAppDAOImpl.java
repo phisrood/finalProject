@@ -36,9 +36,8 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	 * @throws 
 	 */
 	@Override
-	public void insertClassApp() {
-		// TODO Auto-generated method stub
-		
+	public void insertClassApp(String content) {
+		sqlSession.insert("classApp.insertClassApp", content);
 	}
 	/**
 	 * 교수가 받은 상담신청조회
@@ -76,6 +75,11 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	@Override
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return sqlSession.selectList("classApp.getClassAppList");
+	}
+	
+	@Override
+	public void deleteClassApp(String am_no) {
+		sqlSession.delete("classApp.deleteClassApp", am_no);
 	}
 
 }

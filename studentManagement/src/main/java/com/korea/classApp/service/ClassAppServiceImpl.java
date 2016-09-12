@@ -37,8 +37,8 @@ public class ClassAppServiceImpl implements ClassAppService{
 	 */
 	//수업평가 등록
 	@Override
-	public void insertClassApp() {
-		// TODO Auto-generated method stub
+	public void insertClassApp(String content) {
+		classAppDAO.insertClassApp(content);
 		
 	}
 	/**
@@ -80,6 +80,13 @@ public class ClassAppServiceImpl implements ClassAppService{
 	@Override
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return classAppDAO.getClassAppList();
+	}
+	
+	
+	//수업평가 삭제
+	@Override
+	public void deleteClassApp(String am_no) {
+		classAppDAO.deleteClassApp(am_no);
 	}
 
 }

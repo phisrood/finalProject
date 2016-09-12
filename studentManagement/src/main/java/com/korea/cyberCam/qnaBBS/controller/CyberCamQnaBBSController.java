@@ -39,6 +39,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Professor_InquiryList_ViewVO;
+import com.korea.dto.Ques_CommentsVO;
 import com.korea.dto.Quesbbs_ViewVO;
 import com.korea.dto.Question_BoardListVO;
 import com.korea.dto.Question_BoardVO;
@@ -69,7 +70,6 @@ public class CyberCamQnaBBSController {
 		params.put("id", id);
 		
 		Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.insertComment(params);
-		
 		ObjectMapper jsonObject = new ObjectMapper();
 		
 		try {
@@ -86,7 +86,38 @@ public class CyberCamQnaBBSController {
 		
 	}
 	
-	
+	//댓글수정
+	@RequestMapping(value="/cyberCampus/pro/qnaCommentUpdate", method=RequestMethod.GET)
+	public void qnaCommentUpdatePro( HttpSession session, HttpServletResponse response,
+			@RequestParam(value="qb_no") String qb_no,		
+			@RequestParam(value="comment") String comment
+			){
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		Map<String, String> params = new HashMap<String,String>();
+		params.put("id", id);
+		params.put("qb_no", qb_no);
+		params.put("comment", comment);
+		
+		cyberCamQnaBBSService.updateCommentQnaBBS(params);
+		Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.selectCommentQnaBBS(qb_no);
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(quesVO);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+		
+	}
 	
 	//qna게시판 리스트(학생)
 	@RequestMapping(value="/cyberCampus/stu/qnaBBSList", method=RequestMethod.GET)
@@ -211,7 +242,8 @@ public class CyberCamQnaBBSController {
 		@RequestMapping(value={"/cyberCampus/stu/qnaBBSsetInsert","/cyberCampus/pro/qnaBBSInsert"}, method=RequestMethod.POST)
 		public String qnaBBSsetInsert(HttpSession session, Model model,   HttpServletRequest request,
 					
-				@RequestParam(value="file", defaultValue = "1")MultipartFile multipartFile
+				@RequestParam(value="file", defaultValue = "1")MultipartFile multipartFile,
+				@RequestParam(value="af_not_no", defaultValue = "1")int af_not_no
 				
 				) throws IOException{
 			
@@ -245,8 +277,23 @@ public class CyberCamQnaBBSController {
 				
 				return url;
 			}
+			File file= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
+			multipartFile.transferTo(file);	
+			attachment_FileVO.setAf_aftername("default");
+			attachment_FileVO.setAf_realname("default");
+			attachment_FileVO.setAf_path("default");
 			
-
+			cyberCamQnaBBSService.insertQnaBBS(attachment_FileVO);
+			int af_no = cyberCamQnaBBSService.selectQnaBBSAF_NO();	
+				
+			
+			Question_BoardVO question_BoardVO = new Question_BoardVO();
+			question_BoardVO.setQb_stud_use_id(stud_use_id);
+			question_BoardVO.setQb_lec_no(stu_lec_no);
+			question_BoardVO.setQb_af_no(af_no);
+			question_BoardVO.setQb_title(request.getParameter("title"));
+			question_BoardVO.setQb_content(request.getParameter("content"));
+			cyberCamQnaBBSService.insertQnaBBSFinal(question_BoardVO);
 	
 
 			return url;
@@ -270,22 +317,15 @@ public class CyberCamQnaBBSController {
 	public String qnaBBSUpdate(HttpSession session, HttpServletRequest request,
 		    @RequestParam(value="content", defaultValue="")String content,
 			@RequestParam(value="title", defaultValue="")String title,
-			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile,
+			@RequestParam(value="file", defaultValue = "1")MultipartFile multipartFile,
 			@RequestParam(value="qb_no", defaultValue = "")String qb_no,
 			@RequestParam(value="writer", defaultValue = "")String writer,
 			@RequestParam(value="qb_lec_no", defaultValue = "")String qb_lec_no,
-			@RequestParam(value="qb_af_no", defaultValue = "")String qb_af_no,
+			@RequestParam(value="qb_af_no", defaultValue = "1")String qb_af_no,
 			@RequestParam(value="qb_date", defaultValue = "")String qb_date)throws IOException{
 		
 		
-		System.out.println(content);
-		System.out.println(title);
-		System.out.println(multipartFile.getOriginalFilename());
-		System.out.println(qb_no);
-		System.out.println(writer);
-		System.out.println(qb_lec_no);
-		System.out.println(qb_af_no);
-		
+
 		
 		String url="redirect:/cyberCampus/stu/qnaBBSList";
 	
@@ -293,9 +333,10 @@ public class CyberCamQnaBBSController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 	
+
 		
 		
-		
+		Question_BoardVO question_BoardVO = new Question_BoardVO();
 		
 		Attachment_FileVO attachment_FileVO = new Attachment_FileVO();
 		if(!multipartFile.isEmpty()){
@@ -305,7 +346,7 @@ public class CyberCamQnaBBSController {
 			attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
 			attachment_FileVO.setAf_path(uploadPath);
 			attachment_FileVO.setAf_no(Integer.parseInt(qb_af_no));
-			Question_BoardVO question_BoardVO = new Question_BoardVO();
+	
 			question_BoardVO.setQb_af_no(Integer.parseInt(qb_af_no));
 			question_BoardVO.setQb_stud_use_id(writer);
 			question_BoardVO.setQb_lec_no(Integer.parseInt(qb_lec_no));
@@ -318,6 +359,16 @@ public class CyberCamQnaBBSController {
 
 		}
 		
+		
+		question_BoardVO.setQb_af_no(Integer.parseInt(qb_af_no));
+		question_BoardVO.setQb_stud_use_id(writer);
+		question_BoardVO.setQb_lec_no(Integer.parseInt(qb_lec_no));
+		question_BoardVO.setQb_no(Integer.parseInt(qb_no));
+		question_BoardVO.setQb_title(title);
+		question_BoardVO.setQb_content(content);
+		question_BoardVO.setQb_date(qb_date);
+		cyberCamQnaBBSService.updateQnaBBSNoAttachment(question_BoardVO);
+	
 		return url;
 	}
 }

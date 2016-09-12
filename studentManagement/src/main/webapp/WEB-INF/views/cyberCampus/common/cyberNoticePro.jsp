@@ -28,9 +28,6 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
-    
-
-		
     <div class="row">
     	<!-- 공지 사항 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -53,7 +50,6 @@
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
             <table id="datatable" class="table table-striped jambo_table bulk_action">
-            							
                	<thead>
                		<tr>
                    		<th>No</th>
@@ -62,31 +58,26 @@
                    		<th>작성자</th>
                  	</tr>
                	</thead>
-               		<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
+               	<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
                	<tbody>
-               
                  	<tr>
                  	  	<td>${cyber_LectureNoticeViewVO.ln_no }</td>
-                   		<td><a href="/cyberCampus/stu/cyberNoticeDetail?ln_no=${cyber_LectureNoticeViewVO.ln_no }">${cyber_LectureNoticeViewVO.ln_title }.</a></td>
+                   		<td><a href="/cyberCampus/pro/cyberNoticeDetailPro?ln_no=${cyber_LectureNoticeViewVO.ln_no }">${cyber_LectureNoticeViewVO.ln_title }.</a></td>
                    		<td>${cyber_LectureNoticeViewVO.ln_date}</td>
                    		<td>${cyber_LectureNoticeViewVO.use_name}</td>
                  	</tr>
-          			
+                 	
                	</tbody>
                	</c:forEach>
            	</table>
-           	
-           	<div style="float: right; width: 5%;">  
-           	<c:if test="${auth eq 'ROLE_PRO' }">
+           	<div style="float: right; width: 5%;">
+         	<c:if test="${auth eq 'ROLE_PRO' }">
 			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
 			</c:if>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>
-
     <!-- Datatables -->
-   
-
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>
     <script src="/stu/js/dataTables.buttons.min.js"></script>
