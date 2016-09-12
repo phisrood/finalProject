@@ -96,6 +96,8 @@
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<!-- 수강내역VO  -->
 		<typeAlias alias="crsesREQVO" type="com.korea.dto.CrsesList_stu_ViewVO" />
+		<!-- 시간표VO  -->
+		<typeAlias alias="timetableVO" type="com.korea.dto.TimeTableViewVO" />
 
 	</typeAliases>
 
@@ -143,5 +145,7 @@
 		<mapper resource="sql/mapper/classSYL.xml"/>
 		<!--  강의계획서  -->
 		<mapper resource="sql/mapper/major.xml"/>
+		<!--  시간표  -->
+		<mapper resource="sql/mapper/timetable.xml"/>
 	</mappers>
 </configuration>

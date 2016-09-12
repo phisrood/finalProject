@@ -1,6 +1,7 @@
 package com.korea.crsesREQ.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -92,9 +93,12 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 	 * @throws
 	 */
 	@Override
-	public void deleteCrsesREQ() {
-		// TODO Auto-generated method stub
-
+	public void deleteCrsesREQ(String lec_no, String id) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("lec_no", lec_no);
+		map.put("id", id);
+		crsesREQDAO.deleteCrsesREQ(map);
+		crsesREQDAO.deletePersonCount(lec_no);
 	}
 
 	/**
@@ -106,7 +110,24 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 	 */
 	@Override
 	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id) {
-		return crsesREQDAO.getCrsesREQList(id);
+		List<CrsesList_stu_ViewVO> crsesReqList = crsesREQDAO
+				.getCrsesREQList(id);
+		if (crsesReqList != null && crsesReqList.size()>0) {
+			List<Lecture_Time_ViewVO> classroomList = crsesREQDAO
+					.getClassroomByLecNo(crsesReqList);
+			for (CrsesList_stu_ViewVO crses : crsesReqList) {
+				String classroom = "";
+				for (Lecture_Time_ViewVO time : classroomList) {
+					if (crses.getLec_no().equals(time.getLec_no())) {
+						classroom += time.getTt_time() + ","
+								+ time.getCi_roomname() + ":"
+								+ time.getCi_roomnumber() + "<br>";
+					}
+				}
+				crses.setClassroom(classroom);
+			}
+		}
+		return crsesReqList;
 
 	}
 
@@ -315,30 +336,49 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 	}
 
 	@Override
-	public void insertCrsesREQ(String lec_no,String lb_no, String id,
-			HttpServletResponse response) {
-		List<CrsesList_stu_ViewVO> crsesREQList = crsesREQDAO.getCrsesREQList(id);
-		boolean duplicate = true;
+	public void insertCrsesREQ(String lec_no, String lb_no, int credit,
+			String id, HttpServletResponse response) {
+		List<CrsesList_stu_ViewVO> crsesREQList = crsesREQDAO
+				.getCrsesREQList(id);
+		boolean lecDuplicate = true;
+		boolean timeDuplicate = true;
+		int limit = crsesLimit(getScoreCalcu(id));
+		int reqCredit = 0;
+		List<Lecture_Time_ViewVO> reqTimeList = crsesREQDAO.getClassroomByLecNo(lec_no); //해당강의의 시간표
 		try {
 			if (crsesREQList != null && crsesREQList.size() > 0) {
-				for (CrsesList_stu_ViewVO courseVO : crsesREQList) {
+				List<Lecture_Time_ViewVO> crsesList = crsesREQDAO.getClassroomByLecNo(crsesREQList);
+				for (CrsesList_stu_ViewVO courseVO : crsesREQList) { //동일과목 중복검사
 					if (courseVO.getLb_no().equals(lb_no)) {
-						duplicate = false;
+						lecDuplicate = false;
+					}
+					reqCredit += Integer.parseInt(courseVO.getLb_credit());
+				}
+				for(Lecture_Time_ViewVO crses: crsesList ){ //시간표 중복검사
+					for(Lecture_Time_ViewVO req : reqTimeList){
+						if(crses.getTt_no().equals(req.getTt_no())){
+							timeDuplicate = false;
+							break;
+						}
 					}
 				}
 			}
-			if (duplicate) {
+			int limitCredit = reqCredit+credit;
+			if (timeDuplicate && lecDuplicate && (limitCredit <= limit)) {
 				Map<String, String> map = new HashMap<String, String>();
 				map.put("lec_no", lec_no);
 				map.put("id", id);
 				crsesREQDAO.insertCrsesREQ(map);
 				crsesREQDAO.updatePersonCount(lec_no);
 				response.getWriter().print("success");
-			} else {
-				response.getWriter().print("fail");
+			} else if(limitCredit > limit){
+				response.getWriter().print("limit");
+			}else if(!timeDuplicate){
+				response.getWriter().print("timeDuplicate");
+			}else{
+				response.getWriter().print("lecDuplicate");
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

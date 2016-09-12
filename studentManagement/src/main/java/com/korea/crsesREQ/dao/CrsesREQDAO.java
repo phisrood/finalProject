@@ -57,13 +57,15 @@ public interface CrsesREQDAO {
 	//수강신청(수강신청 가능 학점 배제)
 	public void insertCrsesREQ(Map<String,String> map) ;
 	/**
+	 * @param id 
+	 * @param lec_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강신청취소
-	public void deleteCrsesREQ();
+	public void deleteCrsesREQ(Map<String,String> map);
 	/**
 	 * @return 
 	 * @param id 
@@ -116,4 +118,30 @@ public interface CrsesREQDAO {
 	 * @throws 
 	 */
 	public void updatePersonCount(String lec_no);
+	
+	/**
+	 * @return String id
+	 * 신청한 강의 시간표 가져오기
+	 * @param int
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(
+			List<CrsesList_stu_ViewVO> crsesReqList);
+	
+	/**
+	 * @return 
+	 * 가능인원 늘리기
+	 * @param 
+	 * @throws 
+	 */
+	public void deletePersonCount(String lec_no);
+	
+	/**
+	 * @return 
+	 * @return 
+	 * 강의등록번호로 시간표가져오기
+	 * @param 
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(String lec_no);
 }

@@ -172,11 +172,17 @@ public class CrsesREQController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/crses/stu/crsesDelete", method = RequestMethod.GET)
-	public String crsesDelete() {
-		String url = "";
-
-		return url;
+	@RequestMapping(value = "/crses/stu/delReqClass", method = RequestMethod.GET)
+	public void crsesDelete(String lec_no, HttpSession session,HttpServletResponse response) {
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String id= user.getUse_id();
+		crsesREQService.deleteCrsesREQ(lec_no, id);
+		try {
+			response.getWriter().print(new ObjectMapper().writeValueAsString("success"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -243,11 +249,11 @@ public class CrsesREQController {
 	 * @throws
 	 */
 	@RequestMapping(value = "/crses/stu/insertCrsesREQ", method = RequestMethod.GET)
-	public void insertCrsesREQ(String lec_no,String lb_no, HttpSession session,
+	public void insertCrsesREQ(String lec_no,String lb_no,int credit, HttpSession session,
 			HttpServletResponse response) {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String lb_noFormat = String.format("%05d", Integer.parseInt(lb_no));
-		crsesREQService.insertCrsesREQ(lec_no,lb_noFormat, user.getUse_id(), response);
+		crsesREQService.insertCrsesREQ(lec_no,lb_noFormat,credit, user.getUse_id(), response);
 		
 	}
 

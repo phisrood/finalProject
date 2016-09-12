@@ -18,7 +18,8 @@
 		*
 		from crseslist_view
 		where lec_makeyear = #{year}
-		and lec_makesemester = #{semes}
+		and lec_makesemester =
+		#{semes}
 		ORDER BY LB_NO, LEC_PLACEMENT
 	</select>
 
@@ -28,8 +29,25 @@
 		TT_TIME
 		FROM LECTURE_TIME_VIEW
 		WHERE lec_makeyear = #{year}
-		and lec_makesemester = #{semes}
+		and
+		lec_makesemester = #{semes}
 
+	</select>
+	<select id="getClassroomByLecNoList" parameterType="list" resultType="lectureTimeView">
+		SELECT
+		CI_ROOMNAME, 
+		CI_ROOMNUMBER, 
+		LEC_NO, 
+		TT_NO, 
+		CI_NO, 
+		LEC_LN_PRO_USE_ID,
+		TT_TIME
+		FROM 
+		LECTURE_TIME_VIEW
+		 WHERE LEC_NO IN (
+		<foreach collection="list" item="lec_no" separator=",">
+			#{lec_no}
+		</foreach>	)
 	</select>
 
 	<select id="getSemester" parameterType="str" resultType="int">
@@ -47,21 +65,51 @@
 		,CB_LEC_NO
 		,CB_ACQUISTIONYN)
 		VALUES(
-		 #{id}
+		#{id}
 		,#{lec_no}
 		,'N'
 		)
 	</insert>
-	
-	<update id="updatePersonCount" parameterType="str">
+
+	<update id="increasePersonCount" parameterType="str">
 		UPDATE LECTURE
-		SET LEC_PERSONS_COUNT = LEC_PERSONS_COUNT+1
+		SET
+		LEC_PERSONS_COUNT = LEC_PERSONS_COUNT+1
+		WHERE LEC_NO = #{lec_no}
+	</update>
+
+	<select id="getCrsesList" parameterType="str" resultType="crsesREQVO">
+		SELECT
+		*
+		FROM CRSESLIST_STU_VIEW
+		WHERE CB_STUD_USE_ID = #{id}
+		ORDER BY LEC_NO
+	</select>
+	
+	<delete id="deleteCrsesReq" parameterType="map">
+		DELETE FROM COURSE_BREAKDOWN
+		WHERE CB_LEC_NO = #{lec_no}
+		AND CB_STUD_USE_ID = #{id}
+	</delete>
+	
+	<update id="decreasePersonCount" parameterType="str">
+		UPDATE LECTURE
+		SET LEC_PERSONS_COUNT = LEC_PERSONS_COUNT-1
 		WHERE LEC_NO = #{lec_no}
 	</update>
 	
-	<select id="getCrsesList" parameterType="str" resultType="crsesREQVO">
-		SELECT *
-		FROM CRSESLIST_STU_VIEW
-		WHERE CB_STUD_USE_ID = #{id}
+	<select id="getClassroomByLecNo" parameterType="str" resultType="lectureTimeView">
+	SELECT
+		CI_ROOMNAME, 
+		CI_ROOMNUMBER, 
+		LEC_NO, 
+		TT_NO, 
+		CI_NO, 
+		LEC_LN_PRO_USE_ID,
+		TT_TIME
+		FROM 
+		LECTURE_TIME_VIEW
+		 WHERE LEC_NO =	#{lec_no}
+
 	</select>
 </mapper>

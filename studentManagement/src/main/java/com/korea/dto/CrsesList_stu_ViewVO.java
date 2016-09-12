@@ -20,6 +20,14 @@ public class CrsesList_stu_ViewVO {
 	private String ci_roomnumber;
 	private String lec_persons_count;
 	private String cb_stud_use_id;
+	private String classroom;
+	
+	public String getClassroom() {
+		return classroom;
+	}
+	public void setClassroom(String classroom) {
+		this.classroom = classroom;
+	}
 	public String getLec_no() {
 		return lec_no;
 	}

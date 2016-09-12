@@ -49,7 +49,7 @@ public interface CrsesREQService {
 	 * @throws 
 	 */
 	//수강신청(수강신청 가능 학점 배제)
-	public void insertCrsesREQ(String lec_no, String lb_no,String id,HttpServletResponse response);
+	public void insertCrsesREQ(String lec_no, String lb_no, int credit,String id,HttpServletResponse response);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -57,7 +57,7 @@ public interface CrsesREQService {
 	 * @throws 
 	 */
 	//수강신청취소
-	public void deleteCrsesREQ();
+	public void deleteCrsesREQ(String lec_no, String id);
 	/**
 	 * @return 
 	 * @param string 
@@ -118,6 +118,6 @@ public interface CrsesREQService {
 	 * @throws 
 	 */
 	public int getSemester(String id);
-
+	
 	
 }
