@@ -71,7 +71,7 @@
                	</tbody>
            	</table>
            	<div style="float: right; width: 5%;">
-				<a href="/cyberCampus/stu/qnaBBSInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
+		
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>

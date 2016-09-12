@@ -70,7 +70,6 @@ public class CyberCamQnaBBSController {
 		params.put("id", id);
 		
 		Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.insertComment(params);
-		
 		ObjectMapper jsonObject = new ObjectMapper();
 		
 		try {
@@ -326,14 +325,7 @@ public class CyberCamQnaBBSController {
 			@RequestParam(value="qb_date", defaultValue = "")String qb_date)throws IOException{
 		
 		
-		System.out.println(content);
-		System.out.println(title);
-		System.out.println(multipartFile.getOriginalFilename());
-		System.out.println(qb_no);
-		System.out.println(writer);
-		System.out.println(qb_lec_no);
-		System.out.println(qb_af_no);
-		
+
 		
 		String url="redirect:/cyberCampus/stu/qnaBBSList";
 	

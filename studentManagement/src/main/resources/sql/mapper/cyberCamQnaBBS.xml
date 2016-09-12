@@ -32,8 +32,16 @@
 	</select>
 	
 	<insert id="getCyberCamQnaBBSInsert" parameterType="attachment">
-		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
-		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{af_aftername},#{af_realname},#{af_path})
+		INSERT INTO ATTACHMENT_FILE
+		(AF_NO,
+		AF_REALNAME,
+		AF_AFTERNAME,
+		AF_PATH)
+		VALUES
+		(ATTACHMENT_FILE_SEQ.NEXTVAL,
+		#{af_aftername},
+		#{af_realname},
+		#{af_path})
 
 	</insert>
 	

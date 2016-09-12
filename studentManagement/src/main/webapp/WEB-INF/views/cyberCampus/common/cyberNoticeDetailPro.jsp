@@ -28,6 +28,7 @@
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
     
+    <c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
     <div class="row">
     	<!-- 공지 사항 게시글 상세 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -38,7 +39,7 @@
 			<div style="float: left; width: 100%;"><br></div>
 			<div class="x_panel_big">
 			
-			<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
+			
 				<table id="datatable" class="table table-striped jambo_table bulk_action">
 					<tr>
 						<td>
@@ -59,11 +60,11 @@
 					<tr>
 						<td>
 							<c:choose>
-							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
+							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'defalut'}">
+							<div style="float: left; width: 94%;">첨부 파일이 없습니다.</div>
 							</c:when>
 							<c:otherwise>
-							<div style="float: left; width: 94%;">첨부파일 :  ${cyber_LectureNoticeViewVO.af_aftername}</div>
+							<div style="float: left; width: 94%;">첨부파일 : <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}">${cyber_LectureNoticeViewVO.af_aftername}</a></div>
 							</c:otherwise>
 							</c:choose>
 						</td>
@@ -76,14 +77,17 @@
 						</td>
 					</tr>
 				</table>
-				</c:forEach>
+				
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 98%;">
 				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
 				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
+				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-default btn-sm">수정</button></a>
 			</div>
+			
     </div>
+    </c:forEach>
     <!-- Datatables -->
     <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
     <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>

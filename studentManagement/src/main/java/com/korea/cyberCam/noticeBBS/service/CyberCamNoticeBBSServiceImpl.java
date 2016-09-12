@@ -57,9 +57,9 @@ public class CyberCamNoticeBBSServiceImpl implements CyberCamNoticeBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void insertNoticeBBS() {
-		// TODO Auto-generated method stub
+	public void insertNoticeBBS(Lecture_NoticeVO lecture_NoticeVO) {
 		
+		cyberCamNoticeBBSDAO.insertNoticeBBS(lecture_NoticeVO);
 	}
 	/**
 	 * 개인 정보 조회
@@ -79,8 +79,9 @@ public class CyberCamNoticeBBSServiceImpl implements CyberCamNoticeBBSService{
 	 * @throws 
 	 */
 	@Override
-	public void updateNoticeBBS() {
-		// TODO Auto-generated method stub
+	public int updateNoticeBBS(Lecture_NoticeVO lecture_NoticeVO) {
+		
+	return cyberCamNoticeBBSDAO.updateNoticeBBS(lecture_NoticeVO);
 		
 	}
 	/**
@@ -103,6 +104,28 @@ public class CyberCamNoticeBBSServiceImpl implements CyberCamNoticeBBSService{
 	public List<Cyber_LectureNoticeViewVO> getNoticeBBSDetail(int ln_no) {
 		
 		return cyberCamNoticeBBSDAO.getNoticeBBSDetail(ln_no);
+	}
+	@Override
+	public int insertNoticeFileUpload(
+			Attachment_FileVO attachment_FileVO) {
+		
+		return cyberCamNoticeBBSDAO.insertNoticeFileUpload(attachment_FileVO);
+	}
+	@Override
+	public int getNoticeFileAf_no() {
+		
+		return cyberCamNoticeBBSDAO.getNoticeFileAfno();
+	}
+	@Override
+	public int updateNoticeBBSFile(Attachment_FileVO attachment_FileVO) {
+		
+		return cyberCamNoticeBBSDAO.updateNoticeBBSFile(attachment_FileVO);
+		
+	}
+	@Override
+	public Attachment_FileVO getFileDownload(int af_no) {
+	
+		return cyberCamNoticeBBSDAO.getNoticeFileDown(af_no);
 	}
 
 	

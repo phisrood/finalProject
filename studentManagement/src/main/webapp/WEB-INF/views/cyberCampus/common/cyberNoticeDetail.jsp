@@ -59,11 +59,11 @@
 					<tr>
 						<td>
 							<c:choose>
-							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
-							<div style="float: left; width: 94%;"><a href="" style="text-decoration:none">첨부 파일이 없습니다.</a></div>
+							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'defalut'}">
+							<div style="float: left; width: 94%;">첨부 파일이 없습니다.</div>
 							</c:when>
 							<c:otherwise>
-							<div style="float: left; width: 94%;">첨부파일 :  ${cyber_LectureNoticeViewVO.af_aftername}</div>
+							<div style="float: left; width: 94%;">첨부파일 :  <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}"> ${cyber_LectureNoticeViewVO.af_aftername}</a></div>
 							</c:otherwise>
 							</c:choose>
 						</td>

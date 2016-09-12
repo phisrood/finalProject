@@ -31,8 +31,8 @@
     	
 
 	
-			<form action="/cyberCampus/stu/qnaBBSsetInsert" method="POST" enctype="multipart/form-data">
-    <div class="row">
+			<form action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextInsert" method="POST" enctype="multipart/form-data">
+    	<div class="row">
     	<!-- Q & A 게시글 상세 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>

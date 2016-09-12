@@ -15,8 +15,15 @@ public class Cyber_LectureNoticeViewVO {
 	private String ln_date; //작성일
 	private String af_aftername; //파일이름
 	private String af_path; //파일경로
+	private String af_realname;
 	
 	
+	public String getAf_realname() {
+		return af_realname;
+	}
+	public void setAf_realname(String af_realname) {
+		this.af_realname = af_realname;
+	}
 	public String getAf_aftername() {
 		return af_aftername;
 	}
