@@ -28,7 +28,13 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
-    
+    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script>
+	$(function() {
+		$('#datatable').DataTable();
+	});
+</script>
 
 		
     <div class="row">

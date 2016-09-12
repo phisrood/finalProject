@@ -27,7 +27,7 @@
     <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
+
     <div class="row">
     	<!-- 공지 사항 게시글 상세 -->
     		<div style="float: left; width: 100%;"><br></div>
