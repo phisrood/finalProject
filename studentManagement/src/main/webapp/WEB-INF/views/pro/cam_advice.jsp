@@ -34,15 +34,13 @@
 	
 	<script type="text/javascript">
 	function serverCam() {
-		window.open("http://localhost:8888/NewFile", "화상",
-				"width=800, height=700");
+		
 	}
 	function clientCam() {
-		window.open("http://192.168.206.124:8888/NewFile", "화상",
-				"width=800, height=700");
+	
 	}
 	function chat() {
-		window.open("http://192.168.0.2:8888", "채팅",
+		window.open("http://192.168.206.124:8888", "채팅",
 				"width=450, height=450");
 	}
 </script>
@@ -91,7 +89,7 @@
 					<c:choose>
 					<c:when test="${adviceVO.ad_way eq '화상'}">
 						<c:if test="${auth eq 'ROLE_PRO' }">
-							<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
+							<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">입 장</button>
 						</c:if>
 						<c:if test="${auth eq 'ROLE_STU' }">
 							<button type="button" class="btn btn-dark" onClick="clientCam();">입 장</button>
@@ -110,128 +108,156 @@
 	</table>
 	<div class="x_panel_big">
 		<div class="x_title">
-			<h2>&nbsp;&nbsp;</h2>
 			<div class="clearfix"></div>
 		</div>
+	</div>
+
+</div>
 
 
-		<div class="x_panel_big" style="float: left; width: 73%;">
-			<div class="row">
-
-				<div class="col-md-12">
-					<h1 class="page-header">사이버 상담실</h1>
-				</div>
-
-				<div class="col-md-6">
-					<h2 class="h3">Caller</h2>
-					<h3 class="h4">Create and Connect Channel</h3>
-					<form class="form-inline">
-						<div class="form-group">
-							<label class="sr-only" for="createChannelId">Channel Id</label> <input
-								class="form-control" type="text" id="createChannelId"
-								placeholder="Create and connect the channel." value="" readonly>
-						</div>
-						<button class="btn btn-default" id="createChannel">
-							<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
-							Create Channel
-						</button>
-					</form>
-
-					<video class="remote-video center-block" id="callerRemoteVideo"></video>
-					<video class="local-video pull-right" id="callerLocalVideo"></video>
-
-				</div>
-
-				<div class="col-md-6">
-					<h2 class="h3">Callee</h2>
-					<h3 class="h4">Connect Channel</h3>
-					<form class="form-inline">
-						<div class="form-group">
-							<label class="sr-only" for="connectChannelId">Channel Id</label>
-							<input class="form-control" type="text" id="connectChannelId"
-								placeholder="Enter the channel id." value="">
-						</div>
-						<button class="btn btn-default" id="connectChannel">
-							<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-							Connect Channel
-						</button>
-					</form>
-
-					<video class="remote-video center-block" id="calleeRemoteVideo"></video>
-					<video class="local-video pull-right" id="calleeLocalVideo"></video>
-					<script src="http://www.playrtc.com/sdk/js/playrtc.js"></script>
-					<script>
-					    'use strict';
-					
-					    var createChannelButton = document.querySelector('#createChannel');
-					    var createChannelId = document.querySelector('#createChannelId');
-					    var appCaller;
-					
-					    appCaller = new PlayRTC({
-					      projectKey: "0e3823c3-2e00-4ed9-a38d-ab113f07eab1",
-					      localMediaTarget: "callerLocalVideo",
-					      remoteMediaTarget: "callerRemoteVideo"
-					    });
-					
-					    appCaller.on('connectChannel', function(channelId) {
-					      createChannelId.value = channelId;
-					    });
-					
-					    createChannelButton.addEventListener('click', function(e) {
-					      e.preventDefault();
-					      appCaller.createChannel();
-					    }, false);
-					  </script>
-					<script>
-						'use strict';
-
-						var connectChannelId = document
-								.querySelector('#connectChannelId');
-						var connectChannelButton = document
-								.querySelector('#connectChannel');
-						var appCallee;
-
-						appCallee = new PlayRTC(
-								{
-									projectKey : "0e3823c3-2e00-4ed9-a38d-ab113f07eab1",
-									localMediaTarget : "calleeLocalVideo",
-									remoteMediaTarget : "calleeRemoteVideo"
-								});
-
-						connectChannelButton.addEventListener('click',
-								function(e) {
-									e.preventDefault();
-									var channelId = connectChannelId.value;
-									if (!channelId) {
-										return
-									}
-									;
-									appCallee.connectChannel(channelId);
-								}, false);
-					</script>
-				</div>
-
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="title">화상상담</h4>
 			</div>
-		</div>
 
+			  <div class="container">
+    <div class="row">
 
-	</div>
-	<div style="float: left; width: 2%;">
-		<br>
-	</div>
-	<div style="float: left; width: 25%;">
-		<div class="x_panel_big">
-			단순 메모<br> 저장 x<br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br>
-		</div>
-		<div class="x_panel_big">
-			<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br>
+      <div class="col-md-12">
+        <h1 class="page-header">사이버 상담실</h1>
+      </div>
+
+      <div class="col-md-6">
+        <h2 class="h3">교수</h2>
+        <h3 class="h4">화상 상담실 생성</h3>
+        <form class="form-inline">
+          <div class="form-group">
+            <label class="sr-only" for="createChannelId">Channel Id</label>
+            <input class="form-control" type="text" id="createChannelId" placeholder="상담실 코드" value="" readonly>
+          </div>
+          <button class="btn btn-default" id="createChannel">
+            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 상담실 생성
+          </button>
+        </form>
+        
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="seclectFile">파일전송</label>
+            <input type="file" id="seclectFile">
+          </div>
+          <button class="btn btn-default" id="send">
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
+          </button>
+        </form>
+        
+
+        <video class="remote-video center-block" id="callerRemoteVideo"></video>
+        <video class="local-video pull-right" id="callerLocalVideo"></video>
+
+      </div>
+
+        <!-- <video class="remote-video center-block" id="calleeRemoteVideo"></video>
+        <video class="local-video pull-right" id="calleeLocalVideo"></video> -->
+
+    </div>
+  </div>
+
+  <!--<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>-->
+  <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+  <script src="//www.playrtc.com/sdk/js/playrtc.js"></script>
+  <script>
+    'use strict';
+
+    var createChannelButton = document.querySelector('#createChannel');
+    var createChannelIdInput = document.querySelector('#createChannelId');
+    var sendButton = document.querySelector('#send');
+    var selectFile = document.querySelector('#seclectFile');
+    var file = null;
+    var appCaller;
+
+    appCaller = new PlayRTC({
+      projectKey: '0e3823c3-2e00-4ed9-a38d-ab113f07eab1',
+      localMediaTarget: 'callerLocalVideo',
+      remoteMediaTarget: 'callerRemoteVideo'
+    });
+
+    appCaller.on('connectChannel', function (channelId) {
+      createChannelIdInput.value = channelId;
+    });
+
+    createChannelButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      appCaller.createChannel();
+    }, false);
+
+    sendButton.addEventListener('click', function (event) {
+      var data = selectFile.files[0];
+
+      event.preventDefault();
+      if (!data) {
+        return false;
+      };
+      appCaller.sendFile(data);
+      selectFile.value = '';
+      return false;
+    }, false);
+  </script>
+  <script>
+    'use strict';
+
+    var connectChannelIdInput = document.querySelector('#connectChannelId');
+    var connectChannelButton = document.querySelector('#connectChannel');
+    var receiveButton = document.querySelector('#receive');
+    var appCallee;
+
+    appCallee = new PlayRTC({
+      projectKey: '0e3823c3-2e00-4ed9-a38d-ab113f07eab1',
+      localMediaTarget: 'calleeLocalVideo',
+      remoteMediaTarget: 'calleeRemoteVideo'
+    });
+
+    appCallee.on('addDataStream', function (pid, uid, dataChannel) {
+      dataChannel.on('message', function (message) {
+        if (message.type === 'binary') {
+          alert('A file received. Please save the file.');
+          file = message;
+        }
+      });
+
+      dataChannel.on('error', function (event) {
+        alert('ERROR. See the log.');
+      });
+    });
+
+    connectChannelButton.addEventListener('click', function (event) {
+      var channelId = connectChannelIdInput.value;
+
+      event.preventDefault();
+      if (!channelId) {
+        return;
+      }
+      appCallee.connectChannel(channelId);
+    }, false);
+
+    receiveButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      if (file) {
+        PlayRTC.utils.fileDownload(file.blob, file.fileName);
+      }
+    }, false);
+  </script>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">종료</button>
+			</div>
 		</div>
 	</div>
 </div>
-
 <!-- Datatables -->
 <script src="/stu/js/jquery.dataTables.min.js"></script>
 <script src="/stu/js/dataTables.bootstrap.min.js"></script>

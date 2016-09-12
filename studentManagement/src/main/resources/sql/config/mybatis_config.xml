@@ -102,6 +102,9 @@
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
+		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
+		<!-- 교수 온라인콘텐츠 출석관리 뷰 -->
+		<typeAlias alias="online_Con_Watchcheck_ViewVO" type="com.korea.dto.Online_Con_Watchcheck_ViewVO" />
 	</typeAliases>
 
 	<mappers>

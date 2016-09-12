@@ -3,9 +3,11 @@ package com.korea.cyberCam.onlineCon.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.cyberCam.onlineCon.controller.CyberCamOnlineConController;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_Con_StudentListVO;
 import com.korea.dto.Online_Con_ViewVO;
+import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
 
@@ -128,4 +130,6 @@ public interface CyberCamOnlineConDAO {
 	public int getWatchTime(Map<String, String> params);
 	public void updateOnlineConAttendyn(Map<String, String> params);
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
+	public String getAttendList(Online_Con_ViewVO attend);
+	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
 }
