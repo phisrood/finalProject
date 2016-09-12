@@ -102,11 +102,16 @@
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
-		
+		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
+		<!-- 교수 온라인콘텐츠 출석관리 뷰 -->
+		<typeAlias alias="online_Con_Watchcheck_ViewVO" type="com.korea.dto.Online_Con_Watchcheck_ViewVO" />
+
 		<!-- 사이버 캠퍼스 공지사항 -->
 		<typeAlias alias="lecture_NoticeVO" type="com.korea.dto.Lecture_NoticeVO" />
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
-	
+		<!-- lecture VO -->
+		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
+
 	</typeAliases>
 	
 

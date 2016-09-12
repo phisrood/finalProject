@@ -66,7 +66,13 @@ public class AdviceController {
 		List<AdviceVO> adviceResList = adviceService.getAdviceResponsList(pro_use_id);
 
 		model.addAttribute("adviceResList", adviceResList);
-
+		
+		System.out.println(adviceResList.size());
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
+		for(int i=0; i<adviceResList.size();i++){
+			System.out.println(adviceResList.get(i).getUse_name());
+		}
+		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
 		return url;
 	}
 
@@ -88,7 +94,7 @@ public class AdviceController {
 
 		List<AdviceVO> adviceReqList = adviceService.getAdviceRequestList(stud_use_id);
 		List<ProfessorVO> professorList = adviceService.getProfessorList(stud_use_id);
-		
+
 		model.addAttribute("adviceReqList", adviceReqList);
 		model.addAttribute("professorList", professorList);
 

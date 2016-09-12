@@ -57,4 +57,16 @@
 		AND WS_OC_NO = #{ws_oc_no}
 		AND WS_STUD_USE_ID = #{ws_stud_use_id}
 	</update>
+	<select id="getAttendyn" parameterType="onlineContentWatchVO" resultType="str">
+		SELECT WS_ATTENDYN
+		FROM WATCH_STATUS
+		WHERE WS_OC_LEC_NO = #{ws_oc_lec_no}
+		AND WS_OC_NO = #{ws_oc_no}
+		AND WS_STUD_USE_ID = #{ws_stud_use_id}			
+	</select>
+	<select id="getOnlineCheckList" parameterType="str" resultType="online_Con_Watchcheck_ViewVO">
+		SELECT * 
+		FROM ONLINE_CON_WATCHCHECK_VIEW 
+		ORDER BY OC_NO
+	</select>
 </mapper>

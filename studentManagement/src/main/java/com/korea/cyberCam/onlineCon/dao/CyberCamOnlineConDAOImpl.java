@@ -7,9 +7,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.cyberCam.onlineCon.controller.CyberCamOnlineConController;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_Con_StudentListVO;
 import com.korea.dto.Online_Con_ViewVO;
+import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
 
@@ -149,6 +151,16 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	@Override
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO) {
 		return (int) sqlSession.selectOne("CyberCamOnlineContentsDAO.getWatchTime", conViewTimeVO);
+	}
+
+	@Override
+	public String getAttendList(Online_Con_ViewVO attend) {
+		return (String) sqlSession.selectOne("CyberCamOnlineContentsDAO.getAttendyn", attend);
+	}
+
+	@Override
+	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no) {
+		return (List<Online_Con_Watchcheck_ViewVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineCheckList", lec_no);
 	}
 
 

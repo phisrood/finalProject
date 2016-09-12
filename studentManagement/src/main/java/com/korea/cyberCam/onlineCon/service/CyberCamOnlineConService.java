@@ -3,9 +3,11 @@ package com.korea.cyberCam.onlineCon.service;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.cyberCam.onlineCon.controller.CyberCamOnlineConController;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_Con_StudentListVO;
 import com.korea.dto.Online_Con_ViewVO;
+import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
 
@@ -119,6 +121,9 @@ public interface CyberCamOnlineConService {
 	//온라인콘텐츠 조회
 	public void insertOnlineConStudentList(List<WatchStudentsVO> watchList);
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
+	public List<Online_Con_ViewVO> getAttendList(
+			List<Online_ContentsVO> onlineConList, String loginUser);
+	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
 	
 	
 }

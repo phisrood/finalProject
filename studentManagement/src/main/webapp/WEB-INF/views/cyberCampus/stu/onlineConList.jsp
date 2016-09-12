@@ -138,7 +138,14 @@
 					<td> 
 						${onlineCon.oc_startdate } ~ ${onlineCon.oc_enddate }  /  ${onlineCon.oc_time } 분
 					</td>
-					<td>x</td>
+					<td>
+						<c:if test="${attentList[sta.index].ws_attendyn eq 'Y' }">
+						 	출석완료
+						</c:if>
+						<c:if test="${attentList[sta.index].ws_attendyn eq 'N'}">
+							미출석
+						</c:if>
+					</td>
 					<td>
 					<button type="button" class="btn btn-info btn-sm" 
 						data-toggle="modal" data-target="#myModal" 

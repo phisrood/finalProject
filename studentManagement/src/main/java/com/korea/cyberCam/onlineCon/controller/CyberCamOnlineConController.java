@@ -35,11 +35,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.korea.cyberCam.onlineCon.service.CyberCamOnlineConService;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_Con_StudentListVO;
 import com.korea.dto.Online_Con_ViewVO;
+import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.UsersVO;
 import com.korea.dto.WatchStudentsVO;
@@ -150,7 +150,13 @@ public class CyberCamOnlineConController {
 		String loginUser = user.getUse_id();
 		
 		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
-		
+		List<Online_Con_ViewVO> attentList = cyberCamOnlineConService.getAttendList(onlineConList,loginUser);
+		System.out.println("ddddddddddddddddddddddddd");
+		System.out.println("사이즈 : "+attentList.size());
+		for(int i=0;i<attentList.size();i++){
+			System.out.println("출석여부 : "+attentList.get(i).getWs_attendyn());
+		}
+		model.addAttribute("attentList", attentList);
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("onlineConList", onlineConList);
 		return url;
@@ -186,7 +192,27 @@ public class CyberCamOnlineConController {
 		return params;
 	}
 	
-
+	/**
+	 * 개인 정보 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//온라인콘텐츠 진도체크
+	@RequestMapping(value={"/cyberCampus/pro/onlineConList"})
+	public String OnlineConList(HttpSession session,Model model){
+		String url = "/cyberCampus/pro/onlineConList";
+		
+		// 세션
+	
+		String lec_no = (String) session.getAttribute("pro_lec_no");
+		
+		List<Online_Con_Watchcheck_ViewVO> watchCheckList
+			= cyberCamOnlineConService.getOnlineConList(lec_no);
+		
+		model.addAttribute("watchCheckList", watchCheckList);
+		return url;
+	}
 	/**
 	 * 개인 정보 조회
 	 * @param

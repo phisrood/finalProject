@@ -13,20 +13,22 @@
 
 	<select id="selectReqList" resultType="adviceVO" parameterType="str">
 		SELECT * 
-		FROM ADVICE 
+		FROM ADVICE A,USERS U
 		WHERE AD_STUD_USE_ID = #{stud_use_id}
+		AND A.AD_PRO_USE_ID = U.USE_ID
 		ORDER BY AD_NO DESC
 	</select>
 
 	<select id="selectResList" resultType="adviceVO" parameterType="str">
 		SELECT * 
-		FROM ADVICE 
-		WHERE AD_PRO_USE_ID = #{pro_use_id}
+		FROM ADVICE A, USERS U 
+		WHERE A.AD_PRO_USE_ID = #{pro_use_id}
+		AND U.USE_ID = A.AD_STUD_USE_ID
 		ORDER BY AD_NO DESC
 	</select>
 	
-	<select id="selectProfessorList" resultType="str" parameterType="str">
-		SELECT PRO_USE_ID
+	<select id="selectProfessorList" resultType="professor" parameterType="str">
+		SELECT PRO_USE_ID,USE_NAME
 		FROM ADVICE_VIEW
 		WHERE STUD_USE_ID = #{stud_use_id}
 	</select>
