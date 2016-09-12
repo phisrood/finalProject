@@ -84,23 +84,22 @@
         Morris.Bar({
           element: 'graph_bar',
           data: [
-            {device: '1번 문항', geekbench: 380},
-            {device: '2번 문항', geekbench: 655},
-            {device: '3번 문항', geekbench: 275},
-            {device: '4번 문항', geekbench: 1571},
-            {device: '5번 문항', geekbench: 655},
-            {device: '6번 문항', geekbench: 2154},
-            {device: '7번 문항', geekbench: 1144},
-            {device: '8번 문항', geekbench: 2371},
-            {device: '9번 문항', geekbench: 1371},
-            {device: '10번 문항', geekbench: 1471}
+            {list: '1번 문항', score: 1},
+            {list: '2번 문항', score: 2},
+            {list: '3번 문항', score: 3},
+            {list: '4번 문항', score: 4},
+            {list: '5번 문항', score: 5},
+            {list: '6번 문항', score: 1},
+            {list: '7번 문항', score: 2},
+            {list: '8번 문항', score: 3},
+            {list: '9번 문항', score: 4},
+            {list: '10번 문항', score: 5}
           ],
-          xkey: 'device',
-          ykeys: ['geekbench'],
-          labels: ['Geekbench'],
+          xkey: 'list',
+          ykeys: ['score'],
+          labels: ['평균점수'],
           barRatio: 5.0,
           barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-          xLabelAngle: 35,
           hideHover: 'auto',
           resize: true
         });

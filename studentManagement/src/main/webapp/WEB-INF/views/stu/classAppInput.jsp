@@ -51,11 +51,16 @@
 			}
 		});
 		$("#saveBtn").click(function(){
+			//점수 값 저장할 배열 선언
+			var checkedValue = new Array();
+			var am_no
+			
+			//반복문으로 점수값 배열 저장
 			for (var i = 0; i < indexVal; i++) {
-				var checkedValue = $("input[type=radio][name=check"+i+"]:checked").val();
-				alert(checkedValue);
+				checkedValue[i] = $("input[type=radio][name=check"+i+"]:checked").val();
 				
 			}
+				alert(checkedValue);
 		});
 	})
 	

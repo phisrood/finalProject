@@ -23,7 +23,6 @@
 
 <script>
 	$(function(){
-		var indexVal=0;
 		$.ajax({
 			url:"/emp/classAppList",
 			method:"get",
@@ -35,13 +34,13 @@
 					htmlCode+="<tr>";
 					htmlCode+="<td>"+(index+1)+"</td>";
 					htmlCode+="<td>"+value.am_content+"</td>";
+					htmlCode+="<td><button id='delBtn' name='"+value.am_no+"' class='btn btn-info btn-xs'>삭제</button></td>";
 					htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
 					htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
 					htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
 					htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
 					htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
 					htmlCode+="</tr>";
-					indexVal = index+1;
 				});
 				
 				$("#appTable").html(htmlCode);
@@ -49,6 +48,40 @@
 			error:function(){
 				alert("error");
 			}
+		});
+		
+		$(document).on("click", "#delBtn", function(){
+			var am_no = $(this).attr("name");
+			
+			$.ajax({
+				url:"/emp/classAppDelete",
+				method:"get",
+				type:"json",
+				data:{"am_no":am_no},
+				success:function(data){
+					var htmlCode="";
+					alert("항목이 삭제되었습니다.");
+					$.each(data, function(index, value){
+						htmlCode+="<tr>";
+						htmlCode+="<td>"+(index+1)+"</td>";
+						htmlCode+="<td>"+value.am_content+"</td>";
+						htmlCode+="<td><button id='delBtn' name='"+value.am_no+"' class='btn btn-info btn-xs'>삭제</button></td>";
+						htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
+						htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
+						htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
+						htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
+						htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
+						htmlCode+="</tr>";
+					});
+					
+					$("#appTable").html(htmlCode);
+					
+				},
+				error:function(){
+					alert("에러");
+				}
+				
+			});
 		});
 		
 		$("#plusBtn").click(function(){
@@ -66,6 +99,7 @@
 						htmlCode+="<tr>";
 						htmlCode+="<td>"+(index+1)+"</td>";
 						htmlCode+="<td>"+value.am_content+"</td>";
+						htmlCode+="<td><button id='delBtn' name='"+value.am_no+"' class='btn btn-info btn-xs'>삭제</button></td>";
 						htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
 						htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
 						htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
@@ -81,6 +115,7 @@
 					alert("error");
 				}
 			});
+			
 		});	
 	})
 	
@@ -121,7 +156,8 @@
 					<thead>
 						<tr id="btnGorup">
 							<th>구분</th>
-							<th style="width: 50%;">평가문항</th>
+							<th style="width: 40%;">평가문항</th>
+							<th></th>
 							<th>매우그렇다(5점)</th>
 							<th>그렇다(4점)</th>
 							<th>보통이다(3점)</th>

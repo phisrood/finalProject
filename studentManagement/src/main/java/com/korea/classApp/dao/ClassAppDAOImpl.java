@@ -76,5 +76,10 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return sqlSession.selectList("classApp.getClassAppList");
 	}
+	
+	@Override
+	public void deleteClassApp(String am_no) {
+		sqlSession.delete("classApp.deleteClassApp", am_no);
+	}
 
 }

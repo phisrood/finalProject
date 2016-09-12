@@ -81,5 +81,12 @@ public class ClassAppServiceImpl implements ClassAppService{
 	public List<Appraisal_ManageVO> getClassAppList() {
 		return classAppDAO.getClassAppList();
 	}
+	
+	
+	//수업평가 삭제
+	@Override
+	public void deleteClassApp(String am_no) {
+		classAppDAO.deleteClassApp(am_no);
+	}
 
 }
