@@ -84,6 +84,7 @@
 				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
 				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
 				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-default btn-sm">수정</button></a>
+				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-default btn-sm">삭제</button></a>
 			</div>
 			
     </div>

@@ -1,6 +1,7 @@
 package com.korea.cyberCam.noticeBBS.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Cyber_LectureNoticeViewVO;
@@ -55,7 +56,7 @@ public interface CyberCamNoticeBBSService {
 	 * @throws 
 	 */
 	//공지사항게시판 삭제
-	public void deleteNoticeBBS();
+	public void deleteNoticeBBS	(Map<String, String> params);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -83,6 +84,7 @@ public interface CyberCamNoticeBBSService {
 	public int getNoticeFileAf_no();
 	public int updateNoticeBBSFile(Attachment_FileVO attachment_FileVO);
 	public Attachment_FileVO getFileDownload(int af_no);
+	
 
 	
 

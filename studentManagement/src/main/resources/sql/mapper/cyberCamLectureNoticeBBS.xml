@@ -132,6 +132,16 @@
 	
 	</select>
 	
+	<delete id="deleteLectureBBS" parameterType="map">
+	
+	DELETE FROM LECTURE_NOTICE 
+	
+	
+		
+	WHERE LN_LEC_NO = #{pro_lec_no}
+	AND LN_NO = #{ln_no}
+	
+	</delete>
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.korea.cyberCam.noticeBBS.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +69,9 @@ public class CyberCamNoticeBBSDAOImpl implements CyberCamNoticeBBSDAO{
 	 * @throws 
 	 */
 	@Override
-	public void deleteNoticeBBS() {
-		// TODO Auto-generated method stub
+	public void deleteNoticeBBS(Map<String, String> params) {
+		
+		sqlSession.delete("cyberCamLectureNoticeBBS.deleteLectureBBS",params);
 		
 	}
 	/**

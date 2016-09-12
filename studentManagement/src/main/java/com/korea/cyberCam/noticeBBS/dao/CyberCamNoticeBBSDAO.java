@@ -1,6 +1,7 @@
 package com.korea.cyberCam.noticeBBS.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Cyber_LectureNoticeViewVO;
@@ -61,7 +62,7 @@ public interface CyberCamNoticeBBSDAO {
 	 * @throws 
 	 */
 	//공지사항 삭제
-	public void deleteNoticeBBS();
+	public void deleteNoticeBBS(Map<String, String> params);
 	/**
 	 * 개인 정보 조회
 	 * @param

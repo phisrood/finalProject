@@ -17,7 +17,9 @@ package com.korea.cyberCam.noticeBBS.controller;
  */
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -194,25 +196,26 @@ public class CyberCamNoticeBBSController {
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	//공지사항게시판 삭제
-	@RequestMapping(value="/cyberCampus/emp/cyberNoticeDelete", method=RequestMethod.GET)
-	public String noticeBBSDelete(){
-		String url="/cyberCampus/emp/cyberNoticeDelete";
+	@RequestMapping(value="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete", method=RequestMethod.GET)
+	public String noticeBBSDelete(HttpSession session, int ln_no){
+		String url="redirect:/cyberCampus/pro/cyberNoticeList";
+		
+		
+		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
+		
+
+		
+		Map<String, String> params = new HashMap<String,String>();
+		params.put("pro_lec_no", pro_lec_no);
+		params.put("ln_no",ln_no+"");
+		
+		cyberCamNoticeBBSService.deleteNoticeBBS(params);
 		
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
 	//공지사항게시판수정 글리스트 불러오기
 	@RequestMapping(value="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate", method=RequestMethod.GET)
 	public String noticeBBSUpdate(int ln_no, Model model){
@@ -315,5 +318,8 @@ public class CyberCamNoticeBBSController {
 			
 			return new ModelAndView("download", "downloadFile", file);
 		}
+	
+	
+	
 }
 	
