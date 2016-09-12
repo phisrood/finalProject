@@ -131,7 +131,7 @@ public class ClassAppController {
 	@RequestMapping(value="/emp/classAppSave")
 	public String classAppSave(){
 		
-		String url = "";
+		String url = "redirect:/emp/classAppInsertForm";
 		
 		classAppService.insertAppProSave();
 		
