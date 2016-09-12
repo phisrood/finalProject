@@ -21,13 +21,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
  
 			<div class="row" >
     	<!-- 학습 자료실 게시물 상세 -->

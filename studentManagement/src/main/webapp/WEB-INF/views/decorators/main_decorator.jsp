@@ -130,7 +130,7 @@
 		                  <li><a><i class="fa fa-desktop"></i>증명서발급 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="#">성적증명서</a></li>
-		                      <li><a href="#">재학증명서</a></li>
+		                      <li><a href="/stu/attendCertificateInfo">재학증명서</a></li>
 		                      <li><a href="#">졸업증명서</a></li>
 		                    </ul>
 		                  </li>

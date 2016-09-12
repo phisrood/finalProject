@@ -42,10 +42,10 @@
 </script>
 <!-- 공지상세보기 -->
 
-<div class="row" style="width:70%; margin-left:15%; margin-top:8%;">
+<div class="row">
 
 	<!-- page content -->
-	<div class="x_panel" style="height:680px;">
+	<div class="x_panel_big" style="height:730px;">
 		<div class="x_title">
 			<h2>공지사항</h2>
 
