@@ -100,6 +100,33 @@ public class ClassAppController {
 			ei.printStackTrace();
 		}
 	}
+	/**
+	 * 삭제 ajax
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	
+	@RequestMapping(value="/emp/classAppDelete", method=RequestMethod.GET)
+	public void classAppDelete(HttpServletResponse response, @RequestParam("am_no")String am_no){
+		
+		classAppService.deleteClassApp(am_no);
+		
+		List<Appraisal_ManageVO> appList = classAppService.getClassAppList();
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
 	
 	/**
 	 * 교수가 받은 상담신청조회

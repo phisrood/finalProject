@@ -62,4 +62,7 @@ public interface ClassAppDAO {
 	 * @throws 
 	 */
 	public List<Appraisal_ManageVO> getClassAppList();
+	
+	//수업평가 삭제
+	public void deleteClassApp(String am_no);
 }
