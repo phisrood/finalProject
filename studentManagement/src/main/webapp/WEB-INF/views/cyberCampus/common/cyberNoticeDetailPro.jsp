@@ -60,7 +60,7 @@
 					<tr>
 						<td>
 							<c:choose>
-							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'defalut'}">
+							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
 							<div style="float: left; width: 94%;">첨부 파일이 없습니다.</div>
 							</c:when>
 							<c:otherwise>

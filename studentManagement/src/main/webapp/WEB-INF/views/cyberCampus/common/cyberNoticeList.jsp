@@ -28,6 +28,9 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
+    
+
+		
     <div class="row">
     	<!-- 공지 사항 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -50,6 +53,7 @@
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
             <table id="datatable" class="table table-striped jambo_table bulk_action">
+            							
                	<thead>
                		<tr>
                    		<th>No</th>
@@ -79,7 +83,10 @@
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>
+
     <!-- Datatables -->
+   
+
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>
     <script src="/stu/js/dataTables.buttons.min.js"></script>
