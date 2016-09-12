@@ -35,7 +35,7 @@ function updateSyl(lec_no){
 };
 function toPdf(){
 	document.pdfForm.method="post";
-	document.pdfForm.action="/pro/classSYLtoPdf";
+	document.pdfForm.action="/pro/toPdf";
 	document.pdfForm.target="_blank";
 	document.pdfForm.submit(); 
 }

@@ -51,7 +51,7 @@
 			<div style="float: left; width: 100%;"><br></div>
 
 	<!-- page content -->
-	<div class="x_panel_big" style="height:680px;">
+	<div class="x_panel_big" style="height:730px;">
 		<form name="updateStudyBBSForm" class="form-horizontal form-label-left" enctype="multipart/form-data" >
 		<div class="x_content" style="height: 80%">
 			<br />

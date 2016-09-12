@@ -26,10 +26,10 @@
 
 <!-- 공지상세보기 -->
 
-<div class="row" style="width:70%; margin-left:15%; margin-top:8%;">
+<div class="row">
 
 	<!-- page content -->
-	<div class="x_panel" style="height:700px;">
+	<div class="x_panel_big" style="height:600px;" >
 		<div class="x_title">
 			<h2>공지사항</h2>
 
@@ -72,6 +72,7 @@
 
 		</div>
 		<!-- x-content 끝 -->
+	</div>
 				<div style="text-align: right; height: 20%">
 					<c:if test="${loginUser.authority eq 'ROLE_EMP' }">
 						<button class="btn btn-dark" onclick="location.href='/emp/noticeUpdateForm?notice_no=${noticeDetailViewVO.cn_no }'">수정</button>
@@ -82,7 +83,7 @@
 					<button type="button" class="btn btn-dark"
 						onclick="javascript:history.go(-1);">뒤로</button>
 				</div>
-	</div>
+	
 
 
 	<!-- /page content -->
