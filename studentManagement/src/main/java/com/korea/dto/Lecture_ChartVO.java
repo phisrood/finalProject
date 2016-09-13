@@ -18,6 +18,7 @@ public class Lecture_ChartVO {
 	private String lc_lec_no;
 	private String lc_appraisalquestion;
 	private float lc_questionscore;
+	private int lc_cnt;
 	public int getLc_no() {
 		return lc_no;
 	}
@@ -43,7 +44,13 @@ public class Lecture_ChartVO {
 	public void setLc_questionscore(float lc_questionscore) {
 		this.lc_questionscore = lc_questionscore;
 	}
-
+	public int getLc_cnt() {
+		return lc_cnt;
+	}
+	public void setLc_cnt(int lc_cnt) {
+		this.lc_cnt = lc_cnt;
+	}
+	
 	
 	
 }
