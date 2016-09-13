@@ -59,7 +59,6 @@
   				
                      
 		
-				<%-- 	<fmt:formatDate pattern="yyyy-MM-dd" value="${Colleage_Register_ChangeVO.crc_year}" /> --%>
                       <tbody>
                       
                   

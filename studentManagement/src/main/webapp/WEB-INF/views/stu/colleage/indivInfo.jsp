@@ -30,6 +30,10 @@
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 <script>
+window.onload=function()
+{
+ replace('image');
+}
 
 </script>
 			
@@ -57,10 +61,10 @@
                         <div align="center">
                         	<c:choose>
                         		<c:when test="${studentVO.stud_af_no == 1 }">
-	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','600','500')" />
+	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','400','200')" />
                         		</c:when>
                         		<c:otherwise>
-	                        		<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','600','500')" />
+	                        		<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','400','200')" />
                         		</c:otherwise>
                         	</c:choose>
                         	   

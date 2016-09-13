@@ -37,11 +37,14 @@
 	
 	<h3>사진변경하기</h3>
 	
-	<form action="/stu/indivInfoImageUpdate" method="POST" enctype="multipart/form-data">
-		제목: <input type="text" name="title"><br />
+	<form class="form-inline" action="/stu/indivInfoImageUpdate" method="POST" enctype="multipart/form-data">
 		파일: <input type="file" name="f"><br /> 
 		<input type="submit" value="변경" />
 	</form>
+	
+	<input type="button" value="닫기" onclick="parent.close();">
+	
+	
 
 
 </body>

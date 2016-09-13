@@ -37,11 +37,13 @@
 
 	<h3>사진등록하기</h3>
 
-	<form action="/stu/indivInfoImageUpdateInsert" method="POST" enctype="multipart/form-data">
-		제목: <input type="text" name="title"><br />
+	<form class="form-inline" action="/stu/indivInfoImageUpdateInsert" method="POST" enctype="multipart/form-data">
 		파일: <input type="file" name="f"><br /> 
 		<input type="submit" value="등록" />
 	</form>
+	
+	<input type="button" value="닫기" onclick="parent.close();">
+	
 
 
 </body>
