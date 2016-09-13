@@ -15,12 +15,25 @@ package com.korea.scoreInquiry.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.korea.dto.ScoreViewVO;
+import com.korea.dto.UsersVO;
+import com.korea.scoreInquiry.service.ScoreInquiryService;
+
 @Controller
 public class ScoreInquiryController {
+	
+	@Autowired
+	ScoreInquiryService service;
+	
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -42,8 +55,13 @@ public class ScoreInquiryController {
 	 */
 	//현재 학기 성적조회
 	@RequestMapping(value="/stu/scoreListNow", method=RequestMethod.GET)
-	public String scoreListNow(){
+	public String scoreListNow(HttpSession session){
 		String url="/stu/scoreListNow";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		List<ScoreViewVO> scoreList = service.getScoreListNow(id);
 		
 		return url;
 	}

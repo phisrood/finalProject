@@ -1,4 +1,9 @@
 package com.korea.scoreInquiry.service;
+
+import java.util.List;
+
+import com.korea.dto.ScoreViewVO;
+
 /**
  * @Interface Name : IndivInfoManageDAO.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -31,7 +36,7 @@ public interface ScoreInquiryService {
 	 * @throws 
 	 */
 	//현재학기 성적조회
-	public void getScoreListNow();
+	public List<ScoreViewVO> getScoreListNow(String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
