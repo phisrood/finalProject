@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
@@ -91,6 +92,10 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	@Override
 	public void insertProClassApp(Lecture_ChartVO chart) {
 		sqlSession.insert("classApp.insertProClassApp", chart);
+	}
+	@Override
+	public List<AppLecture_ViewVO> getAppLecture(Map<String, String> params) {
+		return sqlSession.selectList("classApp.appLectureList", params);
 	}
 
 }

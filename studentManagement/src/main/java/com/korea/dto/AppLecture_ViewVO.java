@@ -2,11 +2,12 @@ package com.korea.dto;
 
 public class AppLecture_ViewVO {
 
-	private String lc_no;
-	private String lc_lec_no;
-	private String lc_appraisalquestion;
-	private float lc_questionscore;
-	private String lc_cnt;
+	private String cb_stud_use_id;
+	private String cb_lec_no;
+	private String cb_grade;
+	private String cb_score;
+	private String cb_acquistionyn;
+	private String cb_appyn;
 	private String lec_lb_no;
 	private String lec_ln_pro_use_id;
 	private String lec_makesemester;
@@ -14,35 +15,41 @@ public class AppLecture_ViewVO {
 	private String lec_placement;
 	private String lec_persons;
 	private String lec_persons_count;
-	public String getLc_no() {
-		return lc_no;
+	public String getCb_stud_use_id() {
+		return cb_stud_use_id;
 	}
-	public void setLc_no(String lc_no) {
-		this.lc_no = lc_no;
+	public void setCb_stud_use_id(String cb_stud_use_id) {
+		this.cb_stud_use_id = cb_stud_use_id;
 	}
-	public String getLc_lec_no() {
-		return lc_lec_no;
+	public String getCb_lec_no() {
+		return cb_lec_no;
 	}
-	public void setLc_lec_no(String lc_lec_no) {
-		this.lc_lec_no = lc_lec_no;
+	public void setCb_lec_no(String cb_lec_no) {
+		this.cb_lec_no = cb_lec_no;
 	}
-	public String getLc_appraisalquestion() {
-		return lc_appraisalquestion;
+	public String getCb_grade() {
+		return cb_grade;
 	}
-	public void setLc_appraisalquestion(String lc_appraisalquestion) {
-		this.lc_appraisalquestion = lc_appraisalquestion;
+	public void setCb_grade(String cb_grade) {
+		this.cb_grade = cb_grade;
 	}
-	public float getLc_questionscore() {
-		return lc_questionscore;
+	public String getCb_score() {
+		return cb_score;
 	}
-	public void setLc_questionscore(float lc_questionscore) {
-		this.lc_questionscore = lc_questionscore;
+	public void setCb_score(String cb_score) {
+		this.cb_score = cb_score;
 	}
-	public String getLc_cnt() {
-		return lc_cnt;
+	public String getCb_acquistionyn() {
+		return cb_acquistionyn;
 	}
-	public void setLc_cnt(String lc_cnt) {
-		this.lc_cnt = lc_cnt;
+	public void setCb_acquistionyn(String cb_acquistionyn) {
+		this.cb_acquistionyn = cb_acquistionyn;
+	}
+	public String getCb_appyn() {
+		return cb_appyn;
+	}
+	public void setCb_appyn(String cb_appyn) {
+		this.cb_appyn = cb_appyn;
 	}
 	public String getLec_lb_no() {
 		return lec_lb_no;

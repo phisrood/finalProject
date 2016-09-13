@@ -145,8 +145,13 @@ public class ClassAppServiceImpl implements ClassAppService{
 	}
 	@Override
 	public List<AppLecture_ViewVO> getLectureList(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String, String> params = new HashMap<String, String>();
+		params = semesOperation();
+		params.put("id", id);
+		
+		List<AppLecture_ViewVO> getLectureList = classAppDAO.getAppLecture(params);
+		
+		return getLectureList;
 	}
 
 }
