@@ -31,4 +31,16 @@
 	<select id="appLectureList" parameterType="map" resultType="appLectureView">
 		select * from applecture_view where cb_stud_use_id = #{id} and lec_makesemester = #{semes} and lec_makeyear = #{year} and cb_appyn = 'N'
 	</select>
+	
+	<select id="getLecChart" parameterType="str" resultType="chart">
+		select * from lecture_chart where lc_lec_no = #{lec_no} order by lc_no
+	</select>
+	
+	<update id="updateLectureChart" parameterType="chart">
+		update lecture_chart set lc_questionscore = #{lc_questionscore}, lc_cnt = #{lc_cnt} where lc_no = #{lc_no}
+	</update>
+	
+	<update id="updateAppYN" parameterType="map">
+		update course_breakdown set cb_appyn = 'Y' where cb_stud_use_id = #{id} and cb_lec_no = #{lec_no}
+	</update>
 </mapper>
