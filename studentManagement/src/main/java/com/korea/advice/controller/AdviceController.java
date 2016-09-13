@@ -2,6 +2,7 @@ package com.korea.advice.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -64,15 +65,8 @@ public class AdviceController {
 		String pro_use_id = user.getUse_id();
 
 		List<AdviceVO> adviceResList = adviceService.getAdviceResponsList(pro_use_id);
-
 		model.addAttribute("adviceResList", adviceResList);
 		
-		System.out.println(adviceResList.size());
-		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
-		for(int i=0; i<adviceResList.size();i++){
-			System.out.println(adviceResList.get(i).getUse_name());
-		}
-		System.out.println("dddddddddddddddddddddddddddddddddddddddddd");
 		return url;
 	}
 
@@ -157,6 +151,7 @@ public class AdviceController {
 	}
 
 	/**
+	 * @throws IOException 
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
@@ -165,14 +160,18 @@ public class AdviceController {
 	 */
 	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceConfirmForm", method = RequestMethod.GET)
-	public String updateAdviceConfirmForm(int ad_no, Model model) {
+	public String updateAdviceConfirmForm(int ad_no, Model model) throws IOException {
 		String url = "/pro/Consultation_RHP";
+		
 		AdviceVO adviceVO = adviceService.updateAdviceConfirmForm(ad_no);
+
 		model.addAttribute("adviceVO", adviceVO);
+		
 		return url;
 	}
 
 	/**
+	 * @throws IOException 
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
@@ -181,13 +180,23 @@ public class AdviceController {
 	 */
 	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceConfirm", method = RequestMethod.POST)
-	public String updateAdviceConfirm(int ad_no) {
-		String url = "redirect:/pro/adviceResponsList";
+	public void updateAdviceConfirm(int ad_no,HttpServletResponse res) throws IOException {
+		//String url = "redirect:/pro/adviceResponsList";
 		adviceService.updateAdviceConfirm(ad_no);
-		return url;
+		
+		res.setCharacterEncoding("UTF-8");
+		
+		PrintWriter writer = res.getWriter();
+		writer.println("<script>");
+		writer.println("window.close();");
+		writer.println("opener.location.reload();");
+		writer.println("</script>");
+		
+		//return url;
 	}
 	
 	/**
+	 * @throws IOException 
 	 * 교수가 받은 상담신청조회
 	 * 
 	 * @param
@@ -196,10 +205,19 @@ public class AdviceController {
 	 */
 	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceDelay", method = RequestMethod.POST)
-	public String updateAdviceDelay(AdviceVO adviceVO) {
-		String url = "redirect:/pro/adviceResponsList";
+	public void updateAdviceDelay(AdviceVO adviceVO,HttpServletResponse res) throws IOException {
+		//String url = "redirect:/pro/adviceResponsList";
 		adviceService.updateAdviceDelay(adviceVO);
-		return url;
+		
+		res.setCharacterEncoding("UTF-8");
+		
+		PrintWriter writer = res.getWriter();
+		writer.println("<script>");
+		writer.println("window.close();");
+		writer.println("opener.location.reload();");
+		writer.println("</script>");
+		
+		//return url;
 	}
 
 	/**

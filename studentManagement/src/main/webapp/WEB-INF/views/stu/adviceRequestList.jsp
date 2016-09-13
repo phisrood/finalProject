@@ -35,14 +35,33 @@
 		$('#datatable').DataTable();
 	});
 </script>
+<script>
+	function revoke(form) {
+		var count = 0;
 
+		for (var i = 0; i < form.ad_no.length; i++) {
+			if (form.ad_no[i].checked == true) {
+				count++;
+			}
+		}
+
+		if (count == 0) {
+			alert("취소할 항목을 선택해 주세요.");
+		} else {
+			form.action = "/stu/adviceCancel";
+			form.method = "post";
+			form.submit();
+		}
+
+	}
+</script>
 
 <div class="row">
 
 	<!-- 사이버 상담 신청 내역 -->
 	<form method="post" action="/stu/adviceREQ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
+			<div class="x_panel_big">
 				<div class="x_title">
 					<h2>상담 신청</h2>
 					<div class="clearfix"></div>
@@ -133,7 +152,7 @@
 					</div>
 					<thead>
 						<tr>
-							<th>구분</th>
+							<th colspan="2">상담번호</th>
 							<th>방법</th>
 							<th>구분</th>
 							<th>교수명</th>
@@ -147,31 +166,14 @@
 					<tbody>
 						<c:forEach var="adviceReq" items="${adviceReqList}">
 							<tr>
-								<td><c:if test="${adviceReq.ad_stat eq '미처리' }">
+								<td>
+								<c:if test="${adviceReq.ad_stat eq '미처리' }">
 										<input type="checkbox" name="ad_no" value="${adviceReq.ad_no}">
-									</c:if></td>
-
-								<script>
-									function revoke(form) {
-										var count = 0;
-
-										for (var i = 0; i < form.ad_no.length; i++) {
-											if (form.ad_no[i].checked == true) {
-												count++;
-											}
-										}
-
-										if (count == 0) {
-											alert("취소할 항목을 선택해 주세요.");
-										} else {
-											form.action = "/stu/adviceCancel";
-											form.method = "post";
-											form.submit();
-										}
-
-									}
-								</script>
-
+								</c:if>
+								</td>
+								<td>
+								${adviceReq.ad_no }
+								</td>
 								<td>${adviceReq.ad_way }</td>
 								<td>${adviceReq.ad_purpose }</td>
 								<td>${adviceReq.use_name }</td>
@@ -182,8 +184,8 @@
 							</tr>
 						</c:forEach>
 					</tbody>
-					</form>
 				</table>
+				</form>
 		</div>
 	</div>
 </div>

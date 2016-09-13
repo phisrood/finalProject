@@ -69,6 +69,7 @@
 		class="table table-striped jambo_table bulk_action">
 		<thead>
 			<tr>
+				<th>상담번호</th>
 				<th>방법</th>
 				<th>구분</th>
 				<th>교수명</th>
@@ -82,11 +83,12 @@
 		<tbody>
 			<c:forEach var="adviceVO" items="${adviceList}">
 			<tr>
+				<td>${adviceVO.ad_no }</td>
 				<td>${adviceVO.ad_way }</td>
 				<td>${adviceVO.ad_purpose }</td>
-				<td>${adviceVO.ad_pro_use_id }</td>
+				<td>${adviceVO.use_name }</td>
 				<td>${adviceVO.ad_reqdate }</td>
-				<td>${adviceVO.ad_time }</td>
+				<td>${adviceVO.ad_time } 시</td>
 				<td>${adviceVO.ad_stat }</td>
 				<td>
 					<c:choose>
