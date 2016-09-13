@@ -8,7 +8,7 @@
 		INSERT INTO ADVICE
 		(AD_NO,AD_PRO_USE_ID,AD_STUD_USE_ID,AD_REQDATE,AD_WAY,AD_PURPOSE,AD_TIME)
 		VALUES
-		(ADVICE_SEQ.NEXTVAL,#{ad_pro_use_id},#{ad_stud_use_id,#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
+		(ADVICE_SEQ.NEXTVAL,#{ad_pro_use_id},#{ad_stud_use_id},#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
 	</insert>
 
 	<select id="selectReqList" resultType="adviceVO" parameterType="str">
@@ -99,9 +99,20 @@
 	</select>
 	
 	<select id="getMyAdviceResponseList" parameterType="str" resultType="adviceVO">
-		SELECT * 
-		FROM ADVICE 
+		SELECT 
+		AD_WAY,
+		AD_PURPOSE,
+		USE_NAME,
+		TO_CHAR(AD_REQDATE,'YYYY/MM/DD') AS AD_REQDATE,
+		AD_TIME,
+		AD_STAT
+		FROM ADVICE,USERS 
 		WHERE AD_PRO_USE_ID = #{loginUser}
 		AND AD_STAT = '대기'
+		AND AD_STUD_USE_ID = USE_ID
 	</select>
 </mapper>
+
+
+
+
