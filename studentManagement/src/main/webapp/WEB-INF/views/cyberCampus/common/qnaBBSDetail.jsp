@@ -29,6 +29,16 @@
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 
+<!-- CKEDITOR 글쓰기 에디터 -->
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('content');
+ }
+ 
+</script> 
+
     <script>
     
      
@@ -147,8 +157,13 @@
 					</tr>
 					<tr>
 						<td>
+							<c:if test="${auth eq 'ROLE_PRO'}">	
+								<div class="x_panel_big">${question_BoardVO.qb_content }</div>
+							</c:if>
+							<c:if test="${auth eq 'ROLE_STU'}">	
+								<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
+							</c:if>
 						
-							<div class="x_panel_big"><textarea name="content" style="width:90%;height:30%;border:1;overflow:visible;text-overflow:ellipsis;">${question_BoardVO.qb_content }</textarea></div>
 							<div class="x_panel_big" style="float: left; width: 90%;" id="result">
 							<c:if test="${not empty quesVO.qc_content }">
 								답변 : ${quesVO.qc_content }

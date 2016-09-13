@@ -79,7 +79,7 @@ public interface CyberCamQnaBBSDAO {
 	public void updatetQnaBBSFinal(Question_BoardVO question_BoardVO);
 	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no);
 	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no);
-	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no);
+	public List<Professor_InquiryList_ViewVO> selectProInquiryList(String pro_lec_no);
 	
 	//댓글추가
 	public void insertComment(Map<String, String> params);
