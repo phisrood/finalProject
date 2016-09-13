@@ -31,7 +31,8 @@
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function() {
-		$('#datatable').DataTable();
+		var table =$('#datatable').DataTable();
+		table.order( [ 0, 'desc' ] ).draw();
 	});
 </script>
 <script>
@@ -63,6 +64,7 @@
 		<table id="datatable" class="table table-striped table-bordered">
 			<thead>
 				<tr>
+					<th>상담번호</th>
 					<th>방법</th>
 					<th>구분</th>
 					<th>학생명</th>
@@ -75,16 +77,16 @@
 			<tbody>
 				<c:forEach var="adviceRes" items="${adviceResList}">
 					<tr>
-						<input type="hidden" name="ad_no" value="${adviceRes.ad_no }"/>
+						<td>${adviceRes.ad_no }</td>
 						<td>${adviceRes.ad_way }</td>
 						<td>${adviceRes.ad_purpose }</td>
 						<td>${adviceRes.use_name }</td>
 						<td>${adviceRes.ad_reqdate }</td>  
-						<td>${adviceRes.ad_time }</td>
+						<td>${adviceRes.ad_time } 시</td>
 						<c:choose>
 							<c:when test="${adviceRes.ad_stat eq '미처리'}">
 						        <td><input type="button" id="click" class="btn btn-default btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
-						    </c:when>
+							</c:when>
 							<c:otherwise>
 						       	<td>${adviceRes.ad_stat }</td>
 						    </c:otherwise>
