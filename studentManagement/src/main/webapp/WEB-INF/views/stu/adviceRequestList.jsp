@@ -115,7 +115,7 @@
 		</div>
 	</form>
 
-	<div class="col-md-12 col-sm-12 col-xs-12">
+	
 		<div class="x_panel">
 			<div class="x_title">
 				<h2>상담 신청 내역</h2>
@@ -127,8 +127,10 @@
 			</div>
 			<form>
 				<table id="datatable" class="table table-striped table-bordered">
-					<button type="button" class="btn btn-dark"
+					<div style="text-align:right;">
+					<button type="button" class="btn btn-dark" 
 						onclick='revoke(this.form);'>상담취소</button>
+					</div>
 					<thead>
 						<tr>
 							<th>구분</th>
