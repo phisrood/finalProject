@@ -8,7 +8,7 @@
 		INSERT INTO ADVICE
 		(AD_NO,AD_PRO_USE_ID,AD_STUD_USE_ID,AD_REQDATE,AD_WAY,AD_PURPOSE,AD_TIME)
 		VALUES
-		(ADVICE_SEQ.NEXTVAL,#{ad_pro_use_id},#{ad_stud_use_id,#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
+		(ADVICE_SEQ.NEXTVAL,#{ad_pro_use_id},#{ad_stud_use_id},#{ad_reqdate},#{ad_way},#{ad_purpose},#{ad_time})
 	</insert>
 
 	<select id="selectReqList" resultType="adviceVO" parameterType="str">
