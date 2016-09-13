@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.classApp.service.ClassAppService;
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.UsersVO;
 /**
@@ -180,7 +181,7 @@ public class ClassAppController {
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String id = loginUser.getUse_id();
 		
-		List<>
+		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
 		
 		return url;
 	}
