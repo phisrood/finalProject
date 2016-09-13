@@ -32,17 +32,20 @@
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title></title>
+
 </head>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/custom.min.css" rel="stylesheet">
 <body>
 	
 	<h3>사진변경하기</h3>
 	
 	<form class="form-inline" action="/stu/indivInfoImageUpdate" method="POST" enctype="multipart/form-data">
 		파일: <input type="file" name="f"><br /> 
-		<input type="submit" value="변경" />
+		<input type="submit" class="btn btn-dark" value="변경" />
 	</form>
 	
-	<input type="button" value="닫기" onclick="parent.close();">
+	<input type="button" class="btn btn-dark" value="닫기" onclick="parent.close();">
 	
 	
 
