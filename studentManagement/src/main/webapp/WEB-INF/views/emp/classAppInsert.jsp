@@ -108,7 +108,7 @@
 								htmlCode+="</tr>";
 								indexVal = index;
 						});
-						
+						$("#content").val("");
 						$("#appTable").html(htmlCode);
 					},
 					error:function(){

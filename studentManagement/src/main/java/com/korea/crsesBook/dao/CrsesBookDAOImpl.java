@@ -135,7 +135,12 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	}
 	@Override
 	public int getPlacement(LectureVO lecture) {
-		return (int) sqlSession.selectOne("crsesBook.getPlacement", lecture);
+		Object placement = sqlSession.selectOne("crsesBook.getPlacement", lecture);
+		if(placement==null){
+			return 1;
+		}else{
+			return (int) placement;
+		}
 	}
 
 

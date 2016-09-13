@@ -111,7 +111,7 @@ public class ClassAppServiceImpl implements ClassAppService{
 			for (int j = 0; j < appList.size(); j++) {
 				Lecture_ChartVO chart = new Lecture_ChartVO();
 				chart.setLc_lec_no(lectureList.get(i).getLec_no());
-				chart.setLc_appraisalquestion(appList.get(j).getAm_no());
+				chart.setLc_appraisalquestion(appList.get(j).getAm_content());
 				classAppDAO.insertProClassApp(chart);
 			}
 		}

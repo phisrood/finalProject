@@ -101,13 +101,18 @@
 		<!-- submitVO  -->
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
-		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
+		<!-- 수강내역VO  -->
+		<typeAlias alias="crsesREQVO" type="com.korea.dto.CrsesList_stu_ViewVO" />
+		<!-- 시간표VO  -->
+		<typeAlias alias="timetableVO" type="com.korea.dto.TimeTableViewVO" />
+
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
 		<!-- 교수 온라인콘텐츠 출석관리 뷰 -->
 		<typeAlias alias="online_Con_Watchcheck_ViewVO" type="com.korea.dto.Online_Con_Watchcheck_ViewVO" />
 
 		<!-- 사이버 캠퍼스 공지사항 -->
 		<typeAlias alias="lecture_NoticeVO" type="com.korea.dto.Lecture_NoticeVO" />
+		
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
@@ -156,10 +161,11 @@
 		<mapper resource="sql/mapper/crsesREQ.xml"/>
 		<!--  강의계획서  -->
 		<mapper resource="sql/mapper/classSYL.xml"/>
-		<!--  강의계획서  -->
+		
 		<mapper resource="sql/mapper/major.xml"/>
+		<!--  시간표  -->
+		<mapper resource="sql/mapper/timetable.xml"/>
 		<!--  사이버캠퍼스 공지사항 -->
 		<mapper resource="sql/mapper/cyberCamLectureNoticeBBS.xml"/>
-		
 	</mappers>
 </configuration>

@@ -1,4 +1,13 @@
 package com.korea.timeTable.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.korea.dto.TimeTableViewVO;
+
 /**
  * @Class Name : IndivInfoManageController.java
  * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
@@ -15,7 +24,10 @@ package com.korea.timeTable.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class TimeTableDAOImpl implements TimeTableDAO{
+	@Autowired
+	private SqlSession sqlSession;
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -23,8 +35,8 @@ public class TimeTableDAOImpl implements TimeTableDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getTimeTableList() {
-		// TODO Auto-generated method stub
+	public List<TimeTableViewVO> getTimeTableList(String id) {
+		return sqlSession.selectList("timeTable.getTimeTableList", id);
 		
 	}
 

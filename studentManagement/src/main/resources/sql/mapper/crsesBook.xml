@@ -32,7 +32,6 @@
 		FROM
 		LECTURE_BREAKEDOWN
 		WHERE LB_REVOKEYN='N'
-		AND LB_APPROVALYN = 'Y'
 	</select>
 	<select id="getCrsesBookListByEmp" resultType="lb">
 		SELECT *
