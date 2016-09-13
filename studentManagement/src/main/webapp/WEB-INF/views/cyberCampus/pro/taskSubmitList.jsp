@@ -13,7 +13,60 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
+
+<!-- DatePicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+
+<script>
+$(function() {
+    $( "#testDatepickerStart" ).datepicker({
+    	
+    	  showButtonPanel: true, 
+          currentText: '오늘 날짜', 
+          closeText: '닫기', 
+          dateFormat: "yy-mm-dd",
+          changeMonth: true, 
+          changeYear: true,
+          nextText: '다음 달',
+          prevText: '이전 달',
+          changeMonth: true, 
+          dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+          dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+          monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+          monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+   		  minDate: -0
+         
+    });
+});
+
+$(function() {
+    $( "#testDatepickerEnd" ).datepicker({
+    	
+  	  showButtonPanel: true, 
+      currentText: '오늘 날짜', 
+      closeText: '닫기', 
+      dateFormat: "yy-mm-dd",
+      changeMonth: true, 
+      changeYear: true,
+      nextText: '다음 달',
+      prevText: '이전 달',
+      changeMonth: true, 
+      dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+      dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+      monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+      monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	  minDate: +1
+    });
+});
+
+
+
+</script>
+
+
     <div class="row">
     	<!-- 과제 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -25,11 +78,14 @@
 			<div class="x_panel_big">
 				<div style="float: left; width: 100%;"><br></div>
 				<div style="float: left; width: 100%;">
-					과 &nbsp;제 &nbsp;명 &nbsp;: &nbsp;<input name="title" type="text" size="169">
+					과 &nbsp;제 &nbsp;명 &nbsp;: &nbsp;<input name="title" type="text" size="100">
 				</div>
 				<div style="float: left; width: 100%;"><br></div>
 				<div style="float: left; width: 100%;">
-					제출 기한 &nbsp;: &nbsp;<input name="title" type="text" size="169">
+					과제시작일 &nbsp;: &nbsp;<input name="title" id="testDatepickerStart" type="text" size="100">
+				</div>
+				<div style="float: left; width: 100%;">
+					과제종료일 &nbsp;: &nbsp;<input name="title" id="testDatepickerEnd" type="text" size="100">
 				</div>
 				<div style="float: left; width: 100%;"><br></div>
 				<div style="float: left; width: 100%;">
