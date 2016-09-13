@@ -16,7 +16,7 @@ public class Lecture_ChartVO {
 
 	private int lc_no;
 	private String lc_lec_no;
-	private int lc_appraisalquestion;
+	private String lc_appraisalquestion;
 	private float lc_questionscore;
 	public int getLc_no() {
 		return lc_no;
@@ -30,10 +30,11 @@ public class Lecture_ChartVO {
 	public void setLc_lec_no(String lc_lec_no) {
 		this.lc_lec_no = lc_lec_no;
 	}
-	public int getLc_appraisalquestion() {
+
+	public String getLc_appraisalquestion() {
 		return lc_appraisalquestion;
 	}
-	public void setLc_appraisalquestion(int lc_appraisalquestion) {
+	public void setLc_appraisalquestion(String lc_appraisalquestion) {
 		this.lc_appraisalquestion = lc_appraisalquestion;
 	}
 	public float getLc_questionscore() {

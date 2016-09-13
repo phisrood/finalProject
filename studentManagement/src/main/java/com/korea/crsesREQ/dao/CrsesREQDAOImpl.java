@@ -1,6 +1,7 @@
 package com.korea.crsesREQ.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
@@ -74,20 +77,20 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 * @throws 
 	 */
 	@Override
-	public void deleteCrsesREQ() {
-		// TODO Auto-generated method stub
+	public void deleteCrsesREQ(Map<String,String> map) {
+		session.delete("CrsesREQ.deleteCrsesReq", map);
 		
 	}
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getCrsesREQList() {
-		// TODO Auto-generated method stub
-		
+	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id) {
+		return session.selectList("CrsesREQ.getCrsesList", id);		
 	}
 	/**
 	 * 개인 정보 조회
@@ -129,6 +132,29 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	@Override
 	public int getSemester(String id) {
 		return (int) session.selectOne("CrsesREQ.getSemester", id);
+	}
+	@Override
+	public void updatePersonCount(String lec_no) {
+		session.update("CrsesREQ.increasePersonCount", lec_no);
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(
+			List<CrsesList_stu_ViewVO> crsesReqList) {
+		List<String> lec_noList = new ArrayList<String>();
+		for(CrsesList_stu_ViewVO crsesList: crsesReqList){
+			lec_noList.add(crsesList.getLec_no());
+		}
+		return session.selectList("CrsesREQ.getClassroomByLecNoList", lec_noList);
+	}
+	@Override
+	public void deletePersonCount(String lec_no) {
+		session.update("CrsesREQ.decreasePersonCount", lec_no);
+		
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(String lec_no) {
+		return session.selectList("CrsesREQ.getClassroomByLecNo", lec_no);
+		
 	}
 
 }

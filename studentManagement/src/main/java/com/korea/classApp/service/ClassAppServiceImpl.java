@@ -103,15 +103,15 @@ public class ClassAppServiceImpl implements ClassAppService{
 		
 		//수업평가 목록을 리스트에 가져옴
 		List<Appraisal_ManageVO> appList = classAppDAO.getClassAppList();
-		
+		//현재학기 강의내역 가져옴
 		List<LectureViewVO> lectureList = classAppDAO.getLectureList(params);
 		
+		//강의마다 수업평가 목록을 넘.
 		for (int i = 0; i < lectureList.size(); i++) {
-			
 			for (int j = 0; j < appList.size(); j++) {
 				Lecture_ChartVO chart = new Lecture_ChartVO();
 				chart.setLc_lec_no(lectureList.get(i).getLec_no());
-				chart.setLc_appraisalquestion(appList.get(j).getAm_no());
+				chart.setLc_appraisalquestion(appList.get(j).getAm_content());
 				classAppDAO.insertProClassApp(chart);
 			}
 		}

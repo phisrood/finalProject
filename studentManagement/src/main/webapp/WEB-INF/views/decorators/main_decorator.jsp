@@ -129,9 +129,9 @@
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i>증명서발급 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="#">성적증명서</a></li>
-		                      <li><a href="#">재학증명서</a></li>
-		                      <li><a href="#">졸업증명서</a></li>
+		                      <li><a href="/stu/gradeCertificateInfo">성적증명서</a></li>
+		                      <li><a href="/stu/attendCertificateInfo">재학증명서</a></li>
+		                      <li><a href="/stu/graduteCertificateInfo">졸업증명서</a></li>
 		                    </ul>
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
