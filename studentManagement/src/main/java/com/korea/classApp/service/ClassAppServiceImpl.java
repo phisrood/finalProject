@@ -72,15 +72,47 @@ public class ClassAppServiceImpl implements ClassAppService{
 		
 	}
 	/**
-	 * 교수가 받은 상담신청조회
+	 * 수업평가등록
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수업평가 입력
 	@Override
-	public void InsertClassAppInput() {
-		// TODO Auto-generated method stub
+	public void InsertClassAppInput(String lec_no, int[] checkVal, String id) {
+		List<Lecture_ChartVO> chartList = classAppDAO.getLecture_Chart(lec_no);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("lec_no", lec_no);
+		params.put("id", id);
+		for (int i = 0; i < chartList.size(); i++) {
+			float score = 0; //점수 초기화
+			int cnt = 0; //평가인원 초기화
+			float avg = 0; //평균
+			
+			//총점 = 평균점*평가인원
+			score = chartList.get(i).getLc_questionscore()*chartList.get(i).getLc_cnt();
+			//총점 = 더해준다 평가점수를
+			score += checkVal[i];
+			
+			//평가인원 +1한다
+			cnt = chartList.get(i).getLc_cnt();
+			cnt++;
+			
+			//다시 총점/평가인원을 해서 평균 재조정
+			avg = score/cnt;
+			
+			//VO update cnt랑 avg 넣어준다
+			Lecture_ChartVO chartVO = new Lecture_ChartVO();
+			chartVO.setLc_no(chartList.get(i).getLc_no());
+			chartVO.setLc_questionscore(avg);
+			chartVO.setLc_cnt(cnt);
+			
+			//update하러간다.
+			classAppDAO.updateLectureChart(chartVO);
+			
+		}
+		//update가 되면 학생의 수업평가 여부를 Y로 업데이트 
+		classAppDAO.updateAppYN(params);
 		
 	}
 	@Override

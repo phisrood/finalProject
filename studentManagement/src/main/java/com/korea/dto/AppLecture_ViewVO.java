@@ -15,6 +15,7 @@ public class AppLecture_ViewVO {
 	private String lec_placement;
 	private String lec_persons;
 	private String lec_persons_count;
+	private String lb_name;
 	public String getCb_stud_use_id() {
 		return cb_stud_use_id;
 	}
@@ -92,6 +93,12 @@ public class AppLecture_ViewVO {
 	}
 	public void setLec_persons_count(String lec_persons_count) {
 		this.lec_persons_count = lec_persons_count;
+	}
+	public String getLb_name() {
+		return lb_name;
+	}
+	public void setLb_name(String lb_name) {
+		this.lb_name = lb_name;
 	}
 	
 	

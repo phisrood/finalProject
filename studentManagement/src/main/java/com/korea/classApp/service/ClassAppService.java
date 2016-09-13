@@ -48,13 +48,15 @@ public interface ClassAppService {
 	//수업평가 통계
 	public void getClassAppProStat();
 	/**
+	 * @param checkVal 
+	 * @param lb_no 
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수업평가 입력
-	public void InsertClassAppInput();
+	public void InsertClassAppInput(String lb_no, int[] checkVal, String id);
 	/**
 	 * @return 
 	 * 수업평가항목 조회

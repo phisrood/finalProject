@@ -97,5 +97,18 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	public List<AppLecture_ViewVO> getAppLecture(Map<String, String> params) {
 		return sqlSession.selectList("classApp.appLectureList", params);
 	}
+	
+	@Override
+	public List<Lecture_ChartVO> getLecture_Chart(String lec_no) {
+		return sqlSession.selectList("classApp.getLecChart", lec_no);
+	}
+	@Override
+	public void updateLectureChart(Lecture_ChartVO chartVO) {
+		sqlSession.update("classApp.updateLectureChart", chartVO);
+	}
+	@Override
+	public void updateAppYN(Map<String, String> params) {
+		sqlSession.update("classApp.updateAppYN", params);
+	}
 
 }
