@@ -116,6 +116,8 @@
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
+		<!-- applecture View -->
+		<typeAlias alias="lectureView" type="com.korea.dto.AppLecture_ViewVO" />
 
 	</typeAliases>
 	
