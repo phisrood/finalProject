@@ -118,9 +118,9 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 
 
 	@Override
-	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no) {
+	public List<Professor_InquiryList_ViewVO> selectProInquiryList(String pro_lec_no) {
 		
-		return (Professor_InquiryList_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.getselectProInquiryList",pro_lec_no);
+		return (List<Professor_InquiryList_ViewVO>) sqlSession.selectList("CyberCamQnaBBSDao.getselectProInquiryList",pro_lec_no);
 	}
 
 

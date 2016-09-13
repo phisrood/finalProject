@@ -167,5 +167,7 @@
 		<mapper resource="sql/mapper/timetable.xml"/>
 		<!--  사이버캠퍼스 공지사항 -->
 		<mapper resource="sql/mapper/cyberCamLectureNoticeBBS.xml"/>
+		<!--  성적조회 -->
+		<mapper resource="sql/mapper/scoreInquiry.xml"/>
 	</mappers>
 </configuration>

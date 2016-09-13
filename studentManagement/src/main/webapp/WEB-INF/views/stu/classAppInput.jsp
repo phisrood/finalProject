@@ -35,11 +35,11 @@
 					htmlCode+="<tr>";
 					htmlCode+="<td>"+(index+1)+"</td>";
 					htmlCode+="<td>"+value.am_content+"</td>";
-					htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
-					htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
-					htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
-					htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
-					htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
+					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='5'></td>";
+					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='4'></td>";
+					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='3'></td>";
+					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='2'></td>";
+					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='1'></td>";
 					htmlCode+="</tr>";
 					indexVal = index+1;
 				});
@@ -53,14 +53,23 @@
 		$("#saveBtn").click(function(){
 			//점수 값 저장할 배열 선언
 			var checkedValue = new Array();
-			var am_no
+			
+			//평가항목 누락체크
+			for(var i = 0; i < indexVal; i++){
+				if(!($('.check'+i).is(":checked"))){
+					alert((i+1)+"번째 항목의 평가가 누락되었습니다. 평가를 완료해주세요.");
+					$('.check'+i).focus();
+					return false;
+				}
+			}
 			
 			//반복문으로 점수값 배열 저장
 			for (var i = 0; i < indexVal; i++) {
 				checkedValue[i] = $("input[type=radio][name=check"+i+"]:checked").val();
-				
 			}
-				alert(checkedValue);
+			
+			alert(checkedValue);
+						
 		});
 	})
 	

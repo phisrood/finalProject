@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="scoreInquiry">
+	<select id="getScoreListNow" parameterType="map" resultType="scoreView">
+		select * from score_view where use_id = #{id} and lec_makesemester = #{semes} and lec_makeyear = #{year}
+	</select>
+</mapper>
