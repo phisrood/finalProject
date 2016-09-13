@@ -49,8 +49,10 @@
 			$("#selectBox").change(function() {
 				var str = $("#selectBox option:selected").val();
 				var menu="";
+				
 				if(str == '확인'){
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
+					menu+="<div style=\"float: right; width: 80%;\">이름 : ${adviceVO.use_name }</div>";
 					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
@@ -70,6 +72,7 @@
 					menu+="<form method=\"post\" action=\"/pro/updateAdviceDelay\">";		
 					menu+="<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>";		
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
+					menu+="<div style=\"float: right; width: 80%;\">이름 : ${adviceVO.use_name }</div>";
 					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
@@ -83,7 +86,7 @@
 					menu+="<option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option><option value=\"11\">11</option><option value=\"12\">12</option><option value=\"13\">13</option><option value=\"14\">14</option><option value=\"15\">15</option><option value=\"16\">16</option><option value=\"17\">17</option><option value=\"18\">18</option><option value=\"19\">19</option><option value=\"20\">20</option><option value=\"21\">21</option><option value=\"22\">22</option><option value=\"23\">23</option><option value=\"24\">24</option>";
 					menu+="</select> 시";
 					menu+="</div>";
-					menu+="<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"연기\"/>";
+					menu+="<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"연기\" />";
 					menu+="</form>";
 				}
 				$("#confirmForm").html(menu);
@@ -110,65 +113,6 @@
 				
 	 			<c:set var="adviceVO" value="${adviceVO}"/>
 	</div>
-			
-			<%-- 			
-			<div style=\"float: right; width: 20%;\"></div><br><br>
-			<div style=\"float: right; width: 80%;\">학생명 : <input type=\"text\" name=\"ad_stud_use_id\" value=\"${adviceVO.ad_stud_use_id }\" /></div>
-			<div style=\"float: right; width: 20%;\"></div><br><br>
-			<div style=\"float: right; width: 50%;\">상담 방법 : <input type=\"text\" name=\"ad_way\" value=\"${adviceVO.ad_way }\"/></div>
-			<div style=\"float: right; width: 30%;\">상담 내용 : <input type=\"text\" name=\"ad_purpose\" value=\"${adviceVO.ad_purpose }\"/></div>
-			<div style=\"float: right; width: 20%;\"></div><br><br>
-			<div style=\"float: right; width: 30%;\">날짜 : <input type=\"text\" name=\"ad_reqdate\" value=\"${adviceVO.ad_reqdate }\"/></div>
-			<div style=\"float: right; width: 30%;\">시간 : <input type=\"text\" name=\"ad_time\" value=\"${adviceVO.ad_time }\"/></div>
-			<div style=\"float: right; width: 20%;\"></div><br><br>
-	        <div style=\"float: right; width: 50%;\"></div>
-			<div style=\"float: right; width: 20%;\">
-			</div>
-			<br />	
-				
-		    <form method=\"post\" action=\"/pro/updateAdviceConfirm\">
-		    		<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>
-					<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"처리\"/>	
-			</form> 
-			--%>
-		    
-  
- 	
-       <!-- 
-       <div style=\"float: right; width: 80%;\">일자 선택 
-       <input type=\"text\" OnClick=\"Calendar(this, 'top','no');\" name=\"ad_reqdate\">
-       </div> 
-      
-	   <div style=\"float: right; width: 30%;\">시간 선택 
-	          	<select name=\"time_select\">
-					<option value=\"1\">1</option>
-					<option value=\"2\">2</option>
-					<option value=\"3\">3</option>
-					<option value=\"4\">4</option>
-					<option value=\"5\">5</option>
-					<option value=\"6\">6</option>
-					<option value=\"7\">7</option>
-					<option value=\"8\">8</option>
-					<option value=\"9\">9</option>
-					<option value=\"10\">10</option>
-					<option value=\"11\">11</option>
-					<option value=\"12\">12</option>
-					<option value=\"13\">13</option>
-					<option value=\"14\">14</option>
-					<option value=\"15\">15</option>
-					<option value=\"16\">16</option>
-					<option value=\"17\">17</option>
-					<option value=\"18\">18</option>
-					<option value=\"19\">19</option>
-					<option value=\"20\">20</option>
-					<option value=\"21\">21</option>
-					<option value=\"22\">22</option>
-					<option value=\"23\">23</option>
-					<option value=\"24\">24</option>
-				</select> 시
-		</div>  
-		-->
-		
         
     <!-- Datatables -->
     <script src="/stu/js/click_cal.js"></script>

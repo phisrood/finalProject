@@ -84,8 +84,8 @@
 
 	
                   </div>
-                  <div class="form-group">
-                    <label>총 신청학점</label>
+                  <div>
+                    <label>총 신청학점</label> 
                     <span>${scoreInfo.totalCredit}</span>
                     <label>총 점수</label>
                     <span>${scoreInfo.totalScore}</span>

@@ -83,7 +83,7 @@
 				<td>${adviceVO.ad_purpose }</td>
 				<td>${adviceVO.ad_pro_use_id }</td>
 				<td>${adviceVO.ad_reqdate }</td>
-				<td>${adviceVO.ad_time }</td>
+				<td>${adviceVO.ad_time } 시</td>
 				<td>${adviceVO.ad_stat }</td>
 				<td>
 					<c:choose>

@@ -62,7 +62,6 @@
 	text-align: center;
 	height: 40px;
 }
-
 #cer-table{
 	border: 1px solid black;
 	margin-left: 150px;
@@ -91,5 +90,52 @@
 }
 .cer-tr{
 	height: 30px;
+}
+#grade-cer-table{
+	width: 100%;
+	color: black;
+}
+#grade-info-table{
+	width: 100%;
+	color: black;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+.grade-cer-tr{
+	height: 30px;
+}
+.grade-div{
+	border: 1px solid black; 
+	float: left;  
+	width: 25%;
+	height: 900px;
 	
+}
+.grade-ingam{
+	background-image: url("/common/images/ingam3.jpg"); 
+	background-size: 100% 30px;
+}
+.grade-info-th{
+	border: 1px solid black; 	
+	width: 100px; 
+	background: #B6B5DB;
+}
+
+.grade-tr-background{
+	width:100%; 
+	height:20px; 
+	border-bottom: 1px solid black; 	
+	background: #B6B5DB;	
+}
+.grade-td-font{
+	font-size: 13px;
+}
+.grade-info-td{
+	border: 1px solid black; 	
+}
+.grade-th{
+	text-align: center;
+}
+.grade-yy{
+	text-decoration: underline;
 }

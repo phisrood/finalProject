@@ -44,9 +44,11 @@
 				</div>
 
 				<div style="text-align: right;">
+					<a href="/emp/departmentInsertForm">
 					<button type="button" class="btn btn-dark">
-						<a href="/emp/departmentInsertForm">등록</a>
+						등록
 					</button>
+					</a>
 					<button type="button" class="btn btn-dark"
 						onclick='revoke(this.form);'>폐지</button>
 				</div>
@@ -99,9 +101,11 @@
 									<td>${department.dep_engname}</td>
 									<td>${department.dep_phone}</td>
 									<td>
+										<a href="departmentUpdateForm?dep_no=${department.dep_no }">
 										<button type="button" class="btn btn-dark">
-											<a href="departmentUpdateForm?dep_no=${department.dep_no }">수정</a>
+											수정
 										</button>
+										</a>
 									</td>
 								</tr>
 							</c:forEach>
