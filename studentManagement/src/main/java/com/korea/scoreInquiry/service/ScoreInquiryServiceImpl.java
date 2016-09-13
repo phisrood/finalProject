@@ -1,5 +1,6 @@
 package com.korea.scoreInquiry.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -166,6 +167,45 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 		params.put("year", Integer.toString(year));
 		params.put("semes", Integer.toString(semes));
 
+		return params;
+	}
+	
+	@Override
+	public Map<String, Object> getScoreCalcu(List<ScoreViewVO> scoreList) {
+		int totalCredit = 0; //총신청학점
+		int totalScore = 0; //총점수
+		int totalAcq = 0; //취득학점
+		float avgScore = 0; //평균학점
+		List<ScoreViewVO> scoreViewList = new ArrayList<ScoreViewVO>();
+		//총 신청학점 , 점수
+		for(ScoreViewVO score : scoreList){
+			totalCredit += Integer.parseInt(score.getLb_credit());
+			totalScore += Integer.parseInt(score.getCb_score());
+		}
+		for (int i = 0; i < scoreList.size(); i++) {
+			if(scoreList.get(i).getCb_acquistionyn().equals("Y")){
+				totalAcq += Integer.parseInt(scoreList.get(i).getLb_credit());
+			}
+		}
+		//취득한것만 추출해서 리스트에 새로담긔
+		for (int i = 0; i < scoreList.size(); i++) {
+			if(scoreList.get(i).getCb_acquistionyn().equals("Y")){
+				ScoreViewVO score = new ScoreViewVO();
+				score.setCb_grade(scoreList.get(i).getCb_grade());
+				score.setLb_credit(scoreList.get(i).getLb_credit());
+				scoreViewList.add(i, score);
+			}
+		}
+		
+		//평점평균구하깅
+		avgScore = scoreOperation(scoreViewList);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("totalCredit", totalCredit);
+		params.put("totalScore", totalScore);
+		params.put("totalAcq", totalAcq);
+		params.put("avgScore", avgScore);
+		
 		return params;
 	}
 }

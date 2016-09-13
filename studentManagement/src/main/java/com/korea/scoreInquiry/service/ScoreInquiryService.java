@@ -1,6 +1,7 @@
 package com.korea.scoreInquiry.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.ScoreViewVO;
 
@@ -53,4 +54,6 @@ public interface ScoreInquiryService {
 	 */
 	//수강생 성적조회
 	public void getScoreListPro();
+	//성적계산
+	public Map<String, Object> getScoreCalcu(List<ScoreViewVO> scoreList);
 }

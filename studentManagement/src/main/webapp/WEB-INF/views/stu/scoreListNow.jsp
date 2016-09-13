@@ -49,34 +49,6 @@
 				<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
 			</div>
-			
-			
-			<div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">년도</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
-                            <option>2016</option>
-                            <option>2015</option>
-                            <option>2014</option>
-                            <option>2013</option>
-                            <option>2012</option>
-                          </select>
-                        </div>
-                       
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">학기</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
-                            <option>1학기</option>
-                            <option>2학기</option>
-                          </select>
-                        </div>
-                        
-                 
-                   
-                
-                <div style="text-align:right;">
-                	<button type="button" class="btn btn-dark">조회</button>
-                </div>
           
 			<div class="x_content">
 			      <div class="x_content">
@@ -88,107 +60,44 @@
                           <th>과목명</th>
                           <th>이수구분</th>
                           <th>학점</th>
-                          <th>결석시수</th>
                           <th>점수</th>
                           <th>등급</th>
-                          <th>평점</th>
                           <th>취득여부</th>
-                          <th>재수강</th>
-                          <th>성적취소구분</th>
                         </tr>
                       </thead>
 
 
                       <tbody>
-                        <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
-                         <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
-                         <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
-                         <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
-                         <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
-                         <tr>
-                          <td>21005</td>
-                          <td>데이터통신</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>1</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td>일반</td>
-                          <td></td>
-                        </tr>
+                      	<c:forEach var ="score" items ="${scoreList}" varStatus="status">
+	                     	<tr>
+	                     		<td>${score.lec_lb_no}</td>
+	                     		<td>${score.lb_name}</td>
+	                     		<td>${score.lb_completekind}</td>
+	                     		<td>${score.lb_credit}</td>
+	                     		<td>${score.cb_score}</td>
+	                     		<td>${score.cb_grade}</td>
+	                     		<td>${score.cb_acquistionyn}</td>
+	                     	</tr>
+                      	</c:forEach>
                       </tbody>
                     </table>
 
 	
                   </div>
-                     
+                  <div class="form-group">
+                    <label>총 신청학점</label>
+                    <span>${scoreInfo.totalCredit}</span>
+                    <label>총 점수</label>
+                    <span>${scoreInfo.totalScore}</span>
+                    <label>총 취득학점</label>
+                    <span>${scoreInfo.totalAcq}</span>
+                    <label>총 평점평균</label>
+                    <span>${scoreInfo.avgScore}</span>
+                  </div>
        
 			
 
 				<!-- x-content -->
-			</div>		
 		</div>
 	</div>
 					<!-- /page content -->
