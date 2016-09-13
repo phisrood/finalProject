@@ -218,8 +218,8 @@
 		</table>
 	</div>
 	<!-- page content 1 -->
-	<div class="x_content" style="height: 45%; overflow: auto;">
 		<h4>과목목록</h4>
+	<div class="x_content" style="height: 45%; overflow: auto;">
 		<table id="datatable"
 			class="table table-striped jambo_table bulk_action">
 			<thead>
@@ -244,9 +244,9 @@
 		</table>
 	</div>
 	<!-- page content 2 -->
+		<h4>수강신청목록</h4>
 	<div class="x_content" style="height: 40%; overflow: auto;">
 
-		<h4>수강신청목록</h4>
 		<table id="datatable"
 			class="table table-striped jambo_table bulk_action">
 			<thead>

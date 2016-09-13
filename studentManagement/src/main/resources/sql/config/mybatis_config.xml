@@ -9,6 +9,7 @@
 		<typeAlias alias="int" type="java.lang.Integer" />
 		<typeAlias alias="str" type="java.lang.String" />
 		<typeAlias alias="map" type="java.util.Map" />
+		<typeAlias alias="list" type="java.util.List" />
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
