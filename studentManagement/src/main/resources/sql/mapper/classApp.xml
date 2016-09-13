@@ -28,7 +28,7 @@
 		insert into lecture_chart(lc_no, lc_lec_no, lc_appraisalquestion) values(lecturechart_seq.nextval, #{lc_lec_no}, #{lc_appraisalquestion})
 	</insert>
 	
-	<select id="appLectureList" parameterType="map" resultType="lectureView">
+	<select id="appLectureList" parameterType="map" resultType="appLectureView">
 		select * from applecture_view where cb_stud_use_id = #{id} and lec_makesemester = #{semes} and lec_makeyear = #{year} and cb_appyn = 'N'
 	</select>
 </mapper>
