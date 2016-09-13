@@ -29,7 +29,7 @@
 	<!-- page content -->
 	<div class="x_panel">
                   <div class="x_title">
-                    <h2>재학증명서</h2>
+                    <h2>성적증명서</h2>
                     
                     <div class="clearfix"></div>
                   </div>
@@ -44,94 +44,17 @@
 					
 
 <div id="cer-tbl">
-<table  id="cer-table">
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h1>재 학 증 명 서</h1></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>위의 사실을 증명함</h3></th>	
-	</tr>
-	
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>2016년 09월 09일</h3></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-ingam" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	
-	
-</table>
-<div style="border: 1px solid gold; float: left; padding: 10px; width: 33%;">
+<div style="border: 1px solid black; float: left; padding: 10px; width: 33%;">
 첫번째 영역
 </div>
-<div style="border: 1px solid red; float: left; padding: 10px; width: 33%;">
+<div style="border: 1px solid black; float: left; padding: 10px; width: 33%;">
 두번째 영역
 </div>
-<div style="border: 1px solid blue; float: left; padding: 10px; width: 33%;">
-세번째 영역</div>
-<table  id="cer-table">
+<div style="border: 1px solid black; float: left; padding: 10px; width: 33%;">
+세번째 영역
+<table>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h1>재 학 증 명 서</h1></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
@@ -155,9 +78,9 @@
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
-	
-	
+		
 </table>
+</div>
 </div>
 
    </div>
