@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.korea.dto.ClassRoom_UsetimeVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
+import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 
@@ -55,21 +57,24 @@ public interface CrsesREQDAO {
 	//수강신청(수강신청 가능 학점 배제)
 	public void insertCrsesREQ(Map<String,String> map) ;
 	/**
+	 * @param id 
+	 * @param lec_no 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//수강신청취소
-	public void deleteCrsesREQ();
+	public void deleteCrsesREQ(Map<String,String> map);
 	/**
-	 * 개인 정보 조회
+	 * @return 
+	 * @param id 
+	 * 수강신청한 리스트 
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수강신청한 리스트
-	public void getCrsesREQList();
+	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id);
 	/**
 	 * 개인 정보 조회
 	 * @param
@@ -105,4 +110,38 @@ public interface CrsesREQDAO {
 	 * @throws 
 	 */
 	public int getSemester(String id);
+	
+	/**
+	 * @return String id
+	 * 학생수 가져오기
+	 * @param int
+	 * @throws 
+	 */
+	public void updatePersonCount(String lec_no);
+	
+	/**
+	 * @return String id
+	 * 신청한 강의 시간표 가져오기
+	 * @param int
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(
+			List<CrsesList_stu_ViewVO> crsesReqList);
+	
+	/**
+	 * @return 
+	 * 가능인원 늘리기
+	 * @param 
+	 * @throws 
+	 */
+	public void deletePersonCount(String lec_no);
+	
+	/**
+	 * @return 
+	 * @return 
+	 * 강의등록번호로 시간표가져오기
+	 * @param 
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(String lec_no);
 }

@@ -73,7 +73,7 @@ public interface CyberCamQnaBBSService {
 	public void insertQnaBBSFinal(Question_BoardVO question_BoardVO);
 	public List<Question_BoardListVO> getQnaBBSListPro(String pro_lec_no);
 	public Attachment_FileVO getQnaBBSDetailAf_no(int af_no);
-	public Professor_InquiryList_ViewVO selectProInquiryList(
+	public List<Professor_InquiryList_ViewVO> selectProInquiryList(
 			String pro_lec_no);
 	//댓글 인서트
 	public Quesbbs_ViewVO insertComment(Map<String, String> params);

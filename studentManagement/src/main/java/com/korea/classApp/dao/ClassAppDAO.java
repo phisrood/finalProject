@@ -1,8 +1,11 @@
 package com.korea.classApp.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_ChartVO;
 
 /**
  * @Interface Name : ClassAppDAO.java
@@ -65,4 +68,8 @@ public interface ClassAppDAO {
 	
 	//수업평가 삭제
 	public void deleteClassApp(String am_no);
+	
+	public List<LectureViewVO> getLectureList(Map<String, String> params);
+	//등록
+	public void insertProClassApp(Lecture_ChartVO chart);
 }

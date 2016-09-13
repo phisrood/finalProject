@@ -65,4 +65,6 @@ public interface ClassAppService {
 	
 	//삭제
 	public void deleteClassApp(String am_no);
+	
+	public void insertAppProSave();
 }

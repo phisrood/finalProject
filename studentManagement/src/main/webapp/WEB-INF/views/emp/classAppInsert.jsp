@@ -86,37 +86,41 @@
 		
 		$("#plusBtn").click(function(){
 			var content = $("#content").val();
-			
-			$.ajax({
-				url:"/emp/classAppInsert",
-				method:"get",
-				data:{"content":content},
-				type:"json",
-				success:function(data){
-					var htmlCode="";
-					alert("항목이 추가되었습니다.");
-					$.each(data, function(index, value){
-						htmlCode+="<tr>";
-						htmlCode+="<td>"+(index+1)+"</td>";
-						htmlCode+="<td>"+value.am_content+"</td>";
-						htmlCode+="<td><button id='delBtn' name='"+value.am_no+"' class='btn btn-info btn-xs'>삭제</button></td>";
-						htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
-						htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
-						htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
-						htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
-						htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
-						htmlCode+="</tr>";
-						indexVal = index+1;
-					});
-					
-					$("#appTable").html(htmlCode);
-				},
-				error:function(){
-					alert("error");
-				}
-			});
-			
+			var indexVal = 0;
+				$.ajax({
+					url:"/emp/classAppInsert",
+					method:"get",
+					data:{"content":content},
+					type:"json",
+					success:function(data){
+						var htmlCode="";
+						alert("항목이 추가되었습니다.");
+						$.each(data, function(index, value){
+								htmlCode+="<tr>";
+								htmlCode+="<td>"+(index+1)+"</td>";
+								htmlCode+="<td>"+value.am_content+"</td>";
+								htmlCode+="<td><button id='delBtn' name='"+value.am_no+"' class='btn btn-info btn-xs'>삭제</button></td>";
+								htmlCode+="<td><input type='radio' name='check"+index+"' value='5'></td>";
+								htmlCode+="<td><input type='radio' name='check"+index+"' value='4'></td>";
+								htmlCode+="<td><input type='radio' name='check"+index+"' value='3'></td>";
+								htmlCode+="<td><input type='radio' name='check"+index+"' value='2'></td>";
+								htmlCode+="<td><input type='radio' name='check"+index+"' value='1'></td>";
+								htmlCode+="</tr>";
+								indexVal = index;
+						});
+						$("#content").val("");
+						$("#appTable").html(htmlCode);
+					},
+					error:function(){
+						alert("error");
+					}
+				});
 		});	
+		
+		
+		$("#listSave").click(function(){
+			location.href="/emp/classAppSave";
+		});
 	})
 	
 </script>
@@ -183,7 +187,10 @@
 			<div class="x_content">
 				<div>
 					<input type="text" style="width: 50%; height: 35px;" id="content">&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" class="btn btn-info btn-s" id="plusBtn">항목추가</button>
+					<button type="button" class="btn btn-info btn-s" id="plusBtn">항목추가</button><br>
+					<div style="text-align: right;">
+						<button type="button" class="btn btn-info btn-s" id="listSave">문항저장</button>
+					</div>
 				</div>
 				
 

@@ -71,7 +71,8 @@ public class IndivInfoManageController {
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
-
+		studentVO.getAf_aftername();
+		
 	
 		return url;
 	}
@@ -149,7 +150,7 @@ public class IndivInfoManageController {
 		String url = "/stu/colleage/indivInfoImageInsert";
 		
 		
-		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
 		
 		if (!multipartFile.isEmpty()) {
 		
@@ -235,7 +236,7 @@ public class IndivInfoManageController {
 		response.setCharacterEncoding("EUC-KR");
 		PrintWriter writer = response.getWriter();
 	
-		uploadPath="C:\\Users\\pc20\\git\\finalProject\\studentManagement\\src\\main\\webapp\\resources\\stu\\images";
+		String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/images");
 		
 			if (!multipartFile.isEmpty()) {
 			

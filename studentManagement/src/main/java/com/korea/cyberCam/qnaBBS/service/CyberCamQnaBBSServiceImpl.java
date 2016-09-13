@@ -112,7 +112,7 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 	}
 
 	@Override
-	public Professor_InquiryList_ViewVO selectProInquiryList(String pro_lec_no) {
+	public List<Professor_InquiryList_ViewVO> selectProInquiryList(String pro_lec_no) {
 		
 		return cyberCamQnaBBSDAO.selectProInquiryList(pro_lec_no);
 	}

@@ -27,8 +27,15 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
-    	
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('content');
+ }
+ 
+</script> 
+
 
 	
 			<form action="/cyberCampus/stu/qnaBBSsetInsert" method="POST" enctype="multipart/form-data">
@@ -69,7 +76,7 @@
 					</tr>
 					<tr>
 						<td>
-							<textarea rows="5" cols="200" name="content"></textarea>
+							<textarea id="content" name="content"></textarea>
 							
 						</td>
 					</tr>

@@ -22,6 +22,7 @@ public class Course_BreakDownVO {
 	private String cb_grade;
 	private int cb_score;
 	private String cb_acquistionyn;
+	private String cb_appyn;
 	public String getCb_stud_use_id() {
 		return cb_stud_use_id;
 	}
@@ -51,6 +52,12 @@ public class Course_BreakDownVO {
 	}
 	public void setCb_acquistionyn(String cb_acquistionyn) {
 		this.cb_acquistionyn = cb_acquistionyn;
+	}
+	public String getCb_appyn() {
+		return cb_appyn;
+	}
+	public void setCb_appyn(String cb_appyn) {
+		this.cb_appyn = cb_appyn;
 	}
 	
 	

@@ -75,21 +75,26 @@
 								<td>${lb.lb_completekind }</td>
 								<td>${lb.lb_credit }</td>
 								<c:if test="${loginUser.authority eq 'ROLE_PRO' }">
-									<td><c:choose>
-											<c:when test="${lb.lb_approvalyn=='Y'}">
-										승인
-									</c:when>
-											<c:when test="${lb.lb_approvalyn=='N' }">
-										대기
-									</c:when>
-											<c:otherwise>
-										반려
-									</c:otherwise>
-										</c:choose></td>
-									<td>
-										<button onclick="updateCrsesBook('${lb.lb_no}');">수정</button>
+									<c:choose>
+										<c:when test="${lb.lb_approvalyn=='Y'}">
+										<td>승인</td>
+									
+										<td><button onclick="updateCrsesBook('${lb.lb_no}');">수정</button>
 									</td>
 									<td><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>
+									</c:when>
+									<c:when test="${lb.lb_approvalyn=='N' }">
+										<td>대기</td>
+										<td></td>
+										<td></td>
+									</c:when>
+									<c:otherwise>
+										<td>반려</td>
+										<td></td>
+										<td></td>
+									</c:otherwise>
+									</c:choose>
+
 								</c:if>
 							</tr>
 
