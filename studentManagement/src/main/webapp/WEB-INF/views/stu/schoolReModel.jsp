@@ -32,6 +32,57 @@
 <!-- Custom Theme Style -->
 <link href="/stu/css/custom.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+
+<script>
+$(function() {
+    $( "#testDatepickerStart" ).datepicker({
+    	
+    	  showButtonPanel: true, 
+          currentText: '오늘 날짜', 
+          closeText: '닫기', 
+          dateFormat: "yy-mm-dd",
+          changeMonth: true, 
+          changeYear: true,
+          nextText: '다음 달',
+          prevText: '이전 달',
+          changeMonth: true, 
+          dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+          dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+          monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+          monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+   		  minDate: -0
+         
+    });
+});
+
+$(function() {
+    $( "#testDatepickerEnd" ).datepicker({
+    	
+  	  showButtonPanel: true, 
+      currentText: '오늘 날짜', 
+      closeText: '닫기', 
+      dateFormat: "yy-mm-dd",
+      changeMonth: true, 
+      changeYear: true,
+      nextText: '다음 달',
+      prevText: '이전 달',
+      changeMonth: true, 
+      dayNames: ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'],
+      dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], 
+      monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'],
+      monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	  minDate: +1
+    });
+});
+
+
+
+</script>
+
 	<!-- 휴/복학 -->
 
 	<div class="row">
@@ -69,7 +120,7 @@
                             <div class="controls">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">시작일자</label>
                               <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                                <input type="text" name="ad_reqdate_start" class="form-control has-feedback-left"  OnClick="Calendar(this, 'top','no');">
+                                <input type="text" name="ad_reqdate_start" class="form-control has-feedback-left"  id="testDatepickerStart">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>
@@ -81,7 +132,7 @@
                             <div class="controls">
                         		<label class="control-label col-md-3 col-sm-3 col-xs-12">종료일자</label>
                               <div class="col-md-11 xdisplay_inputx form-group has-feedback">
-                                <input type="text" OnClick="Calendar(this, 'top','no');" name="ad_reqdate_end" class="form-control has-feedback-left">
+                                <input type="text" id="testDatepickerEnd" name="ad_reqdate_end" class="form-control has-feedback-left">
                                 <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
                                 <span id="inputSuccess2Status4" class="sr-only">(success)</span>
                               </div>

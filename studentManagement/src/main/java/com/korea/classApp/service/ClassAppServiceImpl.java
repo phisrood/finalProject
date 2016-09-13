@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.classApp.dao.ClassAppDAO;
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
@@ -141,6 +142,11 @@ public class ClassAppServiceImpl implements ClassAppService{
 		params.put("semes", Integer.toString(semes));
 		
 		return params;
+	}
+	@Override
+	public List<AppLecture_ViewVO> getLectureList(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
