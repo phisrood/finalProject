@@ -179,8 +179,8 @@ public class CyberCamQnaBBSController {
 	
 		if(auth.equals("ROLE_PRO")){
 			String pro_lec_no = (String) session.getAttribute("pro_lec_no");
-			Professor_InquiryList_ViewVO = cyberCamQnaBBSService.selectProInquiryList(pro_lec_no);
-
+			List<Professor_InquiryList_ViewVO> Professor_InquiryList_View = cyberCamQnaBBSService.selectProInquiryList(pro_lec_no);
+			model.addAttribute("Professor_InquiryList_View",Professor_InquiryList_ViewVO);
 		}
 			
 		 Question_BoardVO question_BoardVO =  cyberCamQnaBBSService.getQnaBBSDetail(qb_no);
@@ -195,7 +195,7 @@ public class CyberCamQnaBBSController {
 		  model.addAttribute("question_BoardVO",question_BoardVO);
 		  model.addAttribute("auth",auth);
 		  model.addAttribute("attachment_FileVO",attachment_FileVO);
-		  model.addAttribute("Professor_InquiryList_ViewVO",Professor_InquiryList_ViewVO);
+		  model.addAttribute("Professor_InquiryList_View",Professor_InquiryList_ViewVO);
 		  model.addAttribute("quesVO",quesVO);
 
 		return url;

@@ -36,7 +36,7 @@
 	<resources mapping="/pro/js/**" location="/resources/pro/js/" />
 	<resources mapping="/stu/js/**" location="/resources/stu/js/" />
 	<resources mapping="/bootstrap/js/**" location="/resources/bootstrap/js/" />
-
+	
 	<!-- css mapping -->
 	<resources mapping="/common/css/**" location="/resources/common/css/" />
 	<resources mapping="/emp/css/**" location="/resources/emp/css/" />
