@@ -2,6 +2,7 @@ package com.korea.classApp.service;
 
 import java.util.List;
 
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 
 /**
@@ -67,4 +68,6 @@ public interface ClassAppService {
 	public void deleteClassApp(String am_no);
 	
 	public void insertAppProSave();
+	//과목가져오기
+	public List<AppLecture_ViewVO> getLectureList(String id);
 }
