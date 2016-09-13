@@ -35,16 +35,19 @@
 </head>
 <body>
 
-	<h3>사진등록하기</h3>
 
+	<center><label  class="btn btn-dark" ><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	사진등록하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></label>
+	
 	<form class="form-inline" action="/stu/indivInfoImageUpdateInsert" method="POST" enctype="multipart/form-data">
-		파일: <input type="file" name="f"><br /> 
-		<input type="submit" value="등록" />
+		<label  class="btn btn-dark" >현재파일 <input type="file" name="f">
+		<input type="submit" class="btn btn-dark" value="변경" >
+		<input type="button" class="btn btn-dark" value="닫기" onclick="parent.close();">
+		</label>
 	</form>
 	
-	<input type="button" value="닫기" onclick="parent.close();">
 	
-
+	</center>
 
 </body>
 </html>
