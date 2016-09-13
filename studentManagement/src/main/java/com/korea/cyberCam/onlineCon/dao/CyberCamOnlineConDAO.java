@@ -10,6 +10,7 @@ import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
+import com.korea.dto.Watch_StatusVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -132,4 +133,5 @@ public interface CyberCamOnlineConDAO {
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
 	public String getAttendList(Online_Con_ViewVO attend);
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
+	public List<Watch_StatusVO> getAttendList(int oc_no, String loginUser);
 }

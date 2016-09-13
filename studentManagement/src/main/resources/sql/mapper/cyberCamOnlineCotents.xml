@@ -6,7 +6,7 @@
 <mapper namespace="CyberCamOnlineContentsDAO">
 	<insert id="insertOnlineCon" parameterType="onlineContentsVO">
 		INSERT INTO ONLINE_CONTENTS (OC_NO,OC_LEC_NO,OC_CONTENT,OC_STARTDATE,OC_ENDDATE,OC_TIME,OC_DATE,OC_AF_NO)
-		VALUES (online_contents_seq.nextval,11,#{oc_content},sysdate,sysdate,#{oc_time},sysdate,#{oc_af_no}) 
+		VALUES (online_contents_seq.nextval,11,#{oc_content},#{oc_startdate},#{oc_enddate},#{oc_time},sysdate,#{oc_af_no}) 
 	</insert>
 	<insert id="insertOnlineConFile" parameterType="attachment">
 		INSERT INTO ATTACHMENT_FILE (AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
@@ -16,7 +16,14 @@
 		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
 	</select>
 	<select id="getOnlineConList" parameterType="int" resultType="onlineContentsVO">
-		SELECT * FROM ONLINE_CONTENTS WHERE OC_LEC_NO = #{lec_no}
+		SELECT
+		OC_CONTENT,
+		TO_CHAR(OC_STARTDATE,'YYYY/MM/DD') AS OC_STARTDATE,
+		TO_CHAR(OC_ENDDATE,'YYYY/MM/DD') AS OC_ENDDATE,
+		OC_TIME
+		FROM ONLINE_CONTENTS 
+		WHERE OC_LEC_NO = #{lec_no} 
+		ORDER BY OC_NO
 	</select>
 	<select id="getOnlineConWatchList" parameterType="int" resultType="onlineContentWatchVO">
 		SELECT * FROM ONLINE_CON_VIEW WHERE WS_OC_LEC_NO = #{lec_no}
@@ -61,7 +68,6 @@
 		SELECT WS_ATTENDYN
 		FROM WATCH_STATUS
 		WHERE WS_OC_LEC_NO = #{ws_oc_lec_no}
-		AND WS_OC_NO = #{ws_oc_no}
 		AND WS_STUD_USE_ID = #{ws_stud_use_id}			
 	</select>
 	<select id="getOnlineCheckList" parameterType="str" resultType="online_Con_Watchcheck_ViewVO">

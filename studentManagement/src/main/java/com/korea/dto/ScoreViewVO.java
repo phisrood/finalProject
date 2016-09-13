@@ -21,8 +21,17 @@ public class ScoreViewVO {
 	private String lb_approvalyn;
 	private String lb_revokeyn;
 	private String lb_credit;
+	private String cb_appyn;
 	
 	
+	
+	
+	public String getCb_appyn() {
+		return cb_appyn;
+	}
+	public void setCb_appyn(String cb_appyn) {
+		this.cb_appyn = cb_appyn;
+	}
 	public String getUse_id() {
 		return use_id;
 	}

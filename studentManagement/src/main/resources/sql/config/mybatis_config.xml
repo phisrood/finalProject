@@ -117,6 +117,8 @@
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
+		<!-- applecture View -->
+		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
 
 	</typeAliases>
 	
@@ -168,5 +170,7 @@
 		<mapper resource="sql/mapper/timetable.xml"/>
 		<!--  사이버캠퍼스 공지사항 -->
 		<mapper resource="sql/mapper/cyberCamLectureNoticeBBS.xml"/>
+		<!--  성적조회 -->
+		<mapper resource="sql/mapper/scoreInquiry.xml"/>
 	</mappers>
 </configuration>

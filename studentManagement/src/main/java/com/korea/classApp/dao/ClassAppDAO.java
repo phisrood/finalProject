@@ -3,6 +3,7 @@ package com.korea.classApp.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
@@ -72,4 +73,6 @@ public interface ClassAppDAO {
 	public List<LectureViewVO> getLectureList(Map<String, String> params);
 	//등록
 	public void insertProClassApp(Lecture_ChartVO chart);
+	//수강하는현재학기과목가져오기
+	public List<AppLecture_ViewVO> getAppLecture(Map<String, String> params);
 }

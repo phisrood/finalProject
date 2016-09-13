@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.classApp.dao.ClassAppDAO;
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
@@ -103,11 +104,11 @@ public class ClassAppServiceImpl implements ClassAppService{
 		
 		//수업평가 목록을 리스트에 가져옴
 		List<Appraisal_ManageVO> appList = classAppDAO.getClassAppList();
-		
+		//현재학기 강의내역 가져옴
 		List<LectureViewVO> lectureList = classAppDAO.getLectureList(params);
 		
+		//강의마다 수업평가 목록을 넘.
 		for (int i = 0; i < lectureList.size(); i++) {
-			
 			for (int j = 0; j < appList.size(); j++) {
 				Lecture_ChartVO chart = new Lecture_ChartVO();
 				chart.setLc_lec_no(lectureList.get(i).getLec_no());
@@ -141,6 +142,16 @@ public class ClassAppServiceImpl implements ClassAppService{
 		params.put("semes", Integer.toString(semes));
 		
 		return params;
+	}
+	@Override
+	public List<AppLecture_ViewVO> getLectureList(String id) {
+		Map<String, String> params = new HashMap<String, String>();
+		params = semesOperation();
+		params.put("id", id);
+		
+		List<AppLecture_ViewVO> getLectureList = classAppDAO.getAppLecture(params);
+		
+		return getLectureList;
 	}
 
 }

@@ -21,24 +21,37 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!-- Data tables -->
-<link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+
 <script>
 	$(function() {
 		$('#datatable').DataTable();
 	});
 </script>
+<script>
+	function revoke(form) {
+		var count = 0;
 
+		for (var i = 0; i < form.ad_no.length; i++) {
+			if (form.ad_no[i].checked == true) {
+				count++;
+			}
+		}
+
+		if (count == 0) {
+			alert("취소할 항목을 선택해 주세요.");
+		} else {
+			form.action = "/stu/adviceCancel";
+			form.method = "post";
+			form.submit();
+		}
+
+	}
+</script>
 
 <div class="row">
-
+<div class="x_panel_big">
 	<!-- 사이버 상담 신청 내역 -->
 	<form method="post" action="/stu/adviceREQ">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -115,7 +128,7 @@
 		</div>
 	</form>
 
-	<div class="col-md-12 col-sm-12 col-xs-12">
+	
 		<div class="x_panel">
 			<div class="x_title">
 				<h2>상담 신청 내역</h2>
@@ -127,11 +140,13 @@
 			</div>
 			<form>
 				<table id="datatable" class="table table-striped table-bordered">
-					<button type="button" class="btn btn-dark"
+					<div style="text-align:right;">
+					<button type="button" class="btn btn-dark" 
 						onclick='revoke(this.form);'>상담취소</button>
+					</div>
 					<thead>
 						<tr>
-							<th>구분</th>
+							<th colspan="2">상담번호</th>
 							<th>방법</th>
 							<th>구분</th>
 							<th>교수명</th>
@@ -145,31 +160,14 @@
 					<tbody>
 						<c:forEach var="adviceReq" items="${adviceReqList}">
 							<tr>
-								<td><c:if test="${adviceReq.ad_stat eq '미처리' }">
+								<td>
+								<c:if test="${adviceReq.ad_stat eq '미처리' }">
 										<input type="checkbox" name="ad_no" value="${adviceReq.ad_no}">
-									</c:if></td>
-
-								<script>
-									function revoke(form) {
-										var count = 0;
-
-										for (var i = 0; i < form.ad_no.length; i++) {
-											if (form.ad_no[i].checked == true) {
-												count++;
-											}
-										}
-
-										if (count == 0) {
-											alert("취소할 항목을 선택해 주세요.");
-										} else {
-											form.action = "/stu/adviceCancel";
-											form.method = "post";
-											form.submit();
-										}
-
-									}
-								</script>
-
+								</c:if>
+								</td>
+								<td>
+								${adviceReq.ad_no }
+								</td>
 								<td>${adviceReq.ad_way }</td>
 								<td>${adviceReq.ad_purpose }</td>
 								<td>${adviceReq.use_name }</td>
@@ -180,27 +178,13 @@
 							</tr>
 						</c:forEach>
 					</tbody>
-					</form>
 				</table>
+				</form>
 		</div>
 	</div>
-</div>
+	</div>
+
 
 
 <!-- Datatables -->
 <script src="/stu/js/click_cal.js"></script>
-<script src="/stu/js/jquery.dataTables.min.js"></script>
-<script src="/stu/js/dataTables.bootstrap.min.js"></script>
-<script src="/stu/js/dataTables.buttons.min.js"></script>
-<script src="/stu/js/buttons.bootstrap.min.js"></script>
-<script src="/stu/js/buttons.flash.min.js"></script>
-<script src="/stu/js/buttons.html5.min.js"></script>
-<script src="/stu/js/buttons.print.min.js"></script>
-<script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-<script src="/stu/js/dataTables.keyTable.min.js"></script>
-<script src="/stu/js/dataTables.responsive.min.js"></script>
-<script src="/stu/js/responsive.bootstrap.js"></script>
-<script src="/stu/js/datatables.scroller.min.js"></script>
-<script src="/stu/js/jszip.min.js"></script>
-<script src="/stu/js/pdfmake.min.js"></script>
-<script src="/stu/js/vfs_fonts.js"></script>

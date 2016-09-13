@@ -44,7 +44,7 @@
 
 <div id="cer-tbl">
 
-<!-- <table  id="cer-table">
+<table  id="cer-table">
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
 	</tr>
@@ -98,7 +98,7 @@
 	</tr>
 	
 	
-</table> -->
+</table>
 </div>
 
    </div>

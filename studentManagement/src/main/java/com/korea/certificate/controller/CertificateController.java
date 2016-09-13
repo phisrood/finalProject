@@ -100,7 +100,7 @@ public class CertificateController {
 	//성적증명서 조회
 	@RequestMapping(value="/stu/gradeCertificateInfo", method=RequestMethod.GET)
 	public String gradeCertificateInfo(){
-		String url="";
+		String url="/stu/gradeCertificate";
 		
 		return url;
 	}
@@ -120,7 +120,7 @@ public class CertificateController {
 	//졸업증명서 조회
 	@RequestMapping(value="/stu/graduteCertificateInfo", method=RequestMethod.GET)
 	public String graduteCertificateInfo(){
-		String url="";
+		String url="/stu/graduteCertificate";
 		
 		return url;
 	}

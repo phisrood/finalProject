@@ -77,7 +77,7 @@
 				    	}, 1000);
 					
 					var html = "";
-					html += "<video src=\""+data.path+"\" controls loop autoplay/>";
+					html += "<video src=\""+data.path+"\" controls/>";
 					$("#onlineVideo").html(html);
 				},
 				error : function(){

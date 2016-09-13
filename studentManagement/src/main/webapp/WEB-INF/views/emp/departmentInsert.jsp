@@ -43,9 +43,11 @@ h2 {
 	<form name="frm" method="post" action="/emp/departmentInsert">
 		<div style="text-align: right">
 			<input type="submit" class="btn btn-dark" value="등록" />
+			<a href="/emp/departmentInfoList">
 			<button type="button" class="btn btn-dark">
-				<a href="/emp/departmentInfoList">취소</a>
-			</button>   
+				취소
+			</button>  
+			</a> 
 		</div>
 		<br> <br>
 		<hr>

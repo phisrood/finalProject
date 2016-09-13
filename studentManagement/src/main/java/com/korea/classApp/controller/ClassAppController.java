@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.classApp.service.ClassAppService;
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.UsersVO;
 /**
  * @Class Name : ClassAppController.java
  * @Description : 수업평가 관련 컨트롤러
@@ -172,8 +175,13 @@ public class ClassAppController {
 	 */
 	//수업평가 입력
 	@RequestMapping(value="/stu/classAppInput", method=RequestMethod.GET)
-	public String classAppInput(){
+	public String classAppInput(HttpSession session){
 		String url="/stu/classAppInput";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
 		
 		return url;
 	}

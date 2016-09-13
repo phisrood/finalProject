@@ -139,7 +139,6 @@ public class IndivInfoManageController {
 	@RequestMapping(value="/stu/indivInfoImageUpdateInsert", method=RequestMethod.POST)
 	public String ImageUpdateInsert(
 			   @RequestParam("f") MultipartFile multipartFile,
-			   @RequestParam("title") String title, 
 			   Model model,
 			   HttpServletRequest request,
 			   HttpServletResponse response,
@@ -155,18 +154,9 @@ public class IndivInfoManageController {
 		if (!multipartFile.isEmpty()) {
 		
 		
-		// 실제 저장
-		    System.out.println(("-------------파일 업로드 시작 -------------"));
-		    System.out.println(("ContentType : "+multipartFile.getContentType()));
-            System.out.println(("name : "+multipartFile.getName()));
-            System.out.println(("filename : "+multipartFile.getOriginalFilename()));
-            System.out.println(("size : "+multipartFile.getSize()));
-            System.out.println(("filerute : "+uploadPath));
-            System.out.println(("-------------파일 업로드 종료 --------------\n"));
-            
+	
             File file = new File(uploadPath, multipartFile.getOriginalFilename());
             multipartFile.transferTo(file); // 실제저장.
-            model.addAttribute("title", title);
             model.addAttribute("fileName", multipartFile.getOriginalFilename());
             model.addAttribute("uploadPath", file.getAbsolutePath());
 		
@@ -183,10 +173,7 @@ public class IndivInfoManageController {
             
             //최초 학생 사진등록
             indivInfoManageService.insertImage(insertMap);
-            
             //등록한 af_no을 가져온 뒤 학생 stu_af_no 업데이트 해준다.
-            
-            
             int afNo = indivInfoManageService.selectafno();
             
             
@@ -225,8 +212,7 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivInfoImageUpdate", method=RequestMethod.POST)
-	public String ImageUpdateAfter(@RequestParam("f") MultipartFile multipartFile,
-								   @RequestParam("title") String title, 
+	public String ImageUpdateAfter(@RequestParam("f") MultipartFile multipartFile,							 
 								   Model model,
 								   HttpServletRequest request,
 								   HttpServletResponse response,
@@ -252,7 +238,6 @@ public class IndivInfoManageController {
 	            
 	            File file = new File(uploadPath, multipartFile.getOriginalFilename());
 	            multipartFile.transferTo(file); // 실제저장.
-	            model.addAttribute("title", title);
 	            model.addAttribute("fileName", multipartFile.getOriginalFilename());
 	            model.addAttribute("uploadPath", file.getAbsolutePath());
 	        
@@ -266,15 +251,12 @@ public class IndivInfoManageController {
 	    		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 	           
 	            //DB 찾기
-	            
-	            
 	             String stuAfNo = studentViewVO.getStud_af_no()+"";
-	            //String stuid = studentVO.getStud_use_id();
 	             String realName = multipartFile.getOriginalFilename();
 	             String afPath = uploadPath+"\\"+multipartFile.getOriginalFilename();
 	            
 	            
-	             System.out.println(afPath);
+	   
 	            
 	             // DB에 파일정보 저장
 	            HashMap<String, String> map = new HashMap<String , String>();
@@ -290,7 +272,8 @@ public class IndivInfoManageController {
 	      
 	            writer.println("<script type='text/javascript'>");
 	            writer.println("alert('정상적으로 등록되었습니다.');");
-	            writer.println("history.back();");
+	            writer.println("window.close();");
+	            writer.println("opener.location.reload();");
 	            writer.println("</script>");
 	            writer.flush();   
 	            
@@ -300,7 +283,9 @@ public class IndivInfoManageController {
 		   //실패시
 		   writer.println("<script type='text/javascript'>");
            writer.println("alert('등록의 실패하였습니다. 다시 시도해 주세요.');");
-           writer.println("history.go(0);");
+           writer.println("window.close();");
+           writer.println("opener.location.reload();");
+           //z`writer.println("self.close();");
            writer.println("</script>");
            writer.flush();  
            
