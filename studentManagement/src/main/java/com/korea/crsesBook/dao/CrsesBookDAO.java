@@ -8,6 +8,7 @@ import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.Lecture_Time_ViewVO;
+import com.korea.dto.Pro_tt_noViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -157,6 +158,14 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	public int getPlacement(LectureVO lecture);
+	
+	/**
+	 * 교수시간표
+	 * @param LectureVO lecture
+	 * @return int
+	 * @throws 
+	 */
+	public List<Pro_tt_noViewVO> getProTime(String pro_id);
 	
 	
 }

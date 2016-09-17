@@ -1,7 +1,11 @@
 function insertStu(form) {
 	var fileLocation = form.fileup.value;
-	if (fileLocation == "" || fileLocation == null) {
-		alert("파일을 선택해주세요")
+	var extension = $("#fileup").val();
+	extension =extension.slice(extension.indexOf('.')+1).toLowerCase();
+	if(extension != 'xls' && extension != 'xlsx'){
+		alert('엑셀파일만 가능합니다');
+	}else if (fileLocation == "" || fileLocation == null) {
+		alert("파일을 선택해주세요");
 	} else {
 		form.method="post";
 		form.action="/emp/stuInfoInsert";
