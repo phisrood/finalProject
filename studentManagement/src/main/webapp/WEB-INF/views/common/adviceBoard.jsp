@@ -72,7 +72,7 @@
 								<a href="/common/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
 								${adviceBoard.adb_title }</a>
 							</td>
-							<td>${adviceBoard.adb_stud_use_id }</td>
+							<td>${adviceBoard.use_name }</td>
 							<td>${adviceBoard.adb_date }</td>
 							<td>
 								<c:if test="${adviceBoard.adb_commentstat eq 'N'}">

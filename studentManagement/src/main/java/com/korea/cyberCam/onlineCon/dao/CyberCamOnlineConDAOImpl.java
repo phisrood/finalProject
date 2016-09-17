@@ -82,9 +82,11 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	 * @throws
 	 */
 	@Override
-	public List<Online_ContentsVO> getOnlineConList(int lec_no) {
-		return (List<Online_ContentsVO>) sqlSession.selectList(
-				"CyberCamOnlineContentsDAO.getOnlineConList", lec_no);
+	public List<Online_ContentsVO> getOnlineConList(int lec_no,String loginUser) {
+		Online_ContentsVO OCVO = new Online_ContentsVO();
+		OCVO.setOc_lec_no(lec_no);
+		OCVO.setOc_pro_use_id(loginUser);
+		return (List<Online_ContentsVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConList", OCVO);
 	}
 
 	@Override
@@ -155,22 +157,10 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	}
 
 	@Override
-	public String getAttendList(Online_Con_ViewVO attend) {
-		return (String) sqlSession.selectOne("CyberCamOnlineContentsDAO.getAttendyn", attend);
-	}
-
-	@Override
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no) {
 		return (List<Online_Con_Watchcheck_ViewVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineCheckList", lec_no);
 	}
 
-	@Override
-	public List<Watch_StatusVO> getAttendList(int oc_no, String loginUser) {
-		Watch_StatusVO watchVO = new Watch_StatusVO();
-		watchVO.setWs_oc_no(oc_no);
-		watchVO.setWs_stud_use_id(loginUser);
-		return (List<Watch_StatusVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getAttendyn",watchVO);
-	}
 
 
 }

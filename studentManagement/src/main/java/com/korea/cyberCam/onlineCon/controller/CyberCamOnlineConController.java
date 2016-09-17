@@ -150,13 +150,8 @@ public class CyberCamOnlineConController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String loginUser = user.getUse_id();
 		
-		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
-		List<Watch_StatusVO> attentList = cyberCamOnlineConService.getAttendList(onlineConList.get(0).getOc_no(),loginUser);
+		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no,loginUser);	
 		
-		for(int i = 0; i<attentList.size();i++){
-			System.out.println(attentList.get(i).getWs_attendyn());
-		}
-		model.addAttribute("attentList", attentList);
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("onlineConList", onlineConList);
 		return url;

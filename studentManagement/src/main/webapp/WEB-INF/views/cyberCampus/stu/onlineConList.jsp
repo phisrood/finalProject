@@ -15,6 +15,7 @@
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 <script>
 		function search(af_no,oc_time,oc_no,oc_lec_no,loginUser){
+			
 			$.ajax({
 				method:"get",
 				contentType : "application/json",
@@ -58,7 +59,7 @@
 											"full_time" : full_time
 										},
 										error : function(){
-											/* alert("에러!"); */
+											alert("에러!");
 										},
 										success : function(data){
 											clearInterval(timer);
@@ -77,7 +78,7 @@
 				    	}, 1000);
 					
 					var html = "";
-					html += "<video src=\""+data.path+"\" controls/>";
+					html += "<video src=\""+data.path+"\" controls autoplay/>";
 					$("#onlineVideo").html(html);
 				},
 				error : function(){
@@ -139,10 +140,10 @@
 						${onlineCon.oc_startdate } ~ ${onlineCon.oc_enddate }  /  ${onlineCon.oc_time } 분
 					</td>
 					<td>
-						<c:if test="${attentList[sta.index].ws_attendyn eq 'Y' }">
+						<c:if test="${onlineCon.ws_attendyn eq 'Y' }">
 						 	출석완료
 						</c:if>
-						<c:if test="${attentList[sta.index].ws_attendyn eq 'N'}">
+						<c:if test="${onlineCon.ws_attendyn eq 'N'}">
 							미출석
 						</c:if>
 					</td>

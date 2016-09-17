@@ -5,33 +5,67 @@
 
 <mapper namespace="adviceBoardDAO">
 	<select id="selectAdviceBoardList" resultType="adviceBoardVO">
-		SELECT * FROM ADVICE_BOARD ORDER BY ADB_NO DESC
+		SELECT 
+		USE_NAME,
+		ADB_NO,
+		ADB_TITLE,
+		ADB_STUD_USE_ID,
+		TO_CHAR(ADB_DATE,'YYYY/MM/DD') AS ADB_DATE,
+		ADB_COMMENTSTAT
+		FROM ADVICE_BOARD,USERS
+		WHERE ADB_STUD_USE_ID = USE_ID 
+		ORDER BY ADB_NO DESC
 	</select>
 	
-	<insert id="insertAdviceBoardAF" parameterType="adviceBoardInsertVO">
+	<insert id="insertAdviceBoardAF" parameterType="adbInsertVO">
 		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
-		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{adb_realName},#{adb_afterName},#{adb_path})
+		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{adb_af_realname},#{adb_af_aftername},#{adb_af_path})
+	</insert>
+	
+	<insert id="insertAdviceBoardAF2" parameterType="map">
+		INSERT INTO ATTACHMENT_FILE(AF_NO,AF_REALNAME,AF_AFTERNAME,AF_PATH)
+		VALUES(ATTACHMENT_FILE_SEQ.NEXTVAL,#{adb_af_realname},#{adb_af_aftername},#{adb_af_path})
 	</insert>
 	
 	<select id="selectCurrval" resultType="int">
 		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
 	</select>
 	
-	<insert id="insertBoard" parameterType="adviceBoardInsertVO">
+	<insert id="insertBoard" parameterType="adbInsertVO">
 		INSERT INTO ADVICE_BOARD(ADB_NO,ADB_STUD_USE_ID,ADB_TITLE,ADB_CONTENT,ADB_DATE,ADB_COMMENTSTAT)
 		VALUES (ADVICE_BOARD_SEQ.NEXTVAL,#{adb_stud_use_id},#{adb_title},#{adb_content},sysdate,'N')
 	</insert>
 	
-	<insert id="insertBoardAF" parameterType="adviceBoardInsertVO">
+	<insert id="insertBoardAF" parameterType="adbInsertVO">
 		INSERT INTO ADVICE_BOARD(ADB_NO,ADB_STUD_USE_ID,ADB_AF_NO,ADB_TITLE,ADB_CONTENT,ADB_DATE,ADB_COMMENTSTAT)
 		VALUES (ADVICE_BOARD_SEQ.NEXTVAL,#{adb_stud_use_id},#{adb_af_no},#{adb_title},#{adb_content},sysdate,'N')
 	</insert>
 	
 	<select id="getAdviceBoard" parameterType="int" resultType="adviceBoardVO">
-		SELECT * FROM ADVICE_BOARD WHERE ADB_NO = #{adb_no}
+		SELECT 
+		USE_NAME,
+		ADB_NO,
+		ADB_TITLE,
+		ADB_STUD_USE_ID,
+		TO_CHAR(ADB_DATE,'YYYY/MM/DD') AS ADB_DATE,
+		ADB_COMMENTSTAT,
+		ADB_COMMENTCONTENT,
+		ADB_AF_NO,
+		ADB_PRO_USE_ID
+		FROM ADVICE_BOARD ,USERS
+		WHERE ADB_STUD_USE_ID = USE_ID 
+		AND ADB_NO = #{adb_no}
 	</select>
 	
 	<update id="updateAdviceBoard" parameterType="map">
+		UPDATE ADVICE_BOARD
+		SET ADB_TITLE = #{adb_title},
+		ADB_CONTENT = #{adb_content},
+		ADB_AF_NO = #{adb_af_no}
+		WHERE ADB_NO = #{adb_no}	
+	</update>
+	
+	<update id="updateAdviceBoard2" parameterType="map">
 		UPDATE ADVICE_BOARD
 		SET ADB_TITLE = #{adb_title},
 		ADB_CONTENT = #{adb_content}
@@ -57,9 +91,9 @@
 	
 	<update id="updateAdviceBoardFile" parameterType="map">
 		UPDATE ATTACHMENT_FILE 
-		SET AF_REALNAME = #{adb_realname},
-		AF_AFTERNAME = #{adb_aftername},
-		AF_PATH = #{adb_path}
+		SET AF_REALNAME = #{adb_af_realname},
+		AF_AFTERNAME = #{adb_af_aftername},
+		AF_PATH = #{adb_af_path}
 		WHERE AF_NO = #{adb_af_no}		
 	</update>
 	

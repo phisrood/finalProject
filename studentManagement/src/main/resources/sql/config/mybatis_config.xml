@@ -118,6 +118,8 @@
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
+		<!-- applecture View -->
+		<typeAlias alias="adbInsertVO" type="com.korea.dto.ADBInsertVO" />
 
 	</typeAliases>
 	

@@ -1,13 +1,11 @@
 package com.korea.cyberCam.onlineCon.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.korea.cyberCam.onlineCon.controller.CyberCamOnlineConController;
 import com.korea.cyberCam.onlineCon.dao.CyberCamOnlineConDAO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Online_Con_StudentListVO;
@@ -15,7 +13,6 @@ import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
-import com.korea.dto.Watch_StatusVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -81,8 +78,8 @@ public class CyberCamOnlineConServiceImpl implements CyberCamOnlineConService{
 	 * @throws 
 	 */
 	@Override
-	public List<Online_ContentsVO> getOnlineConList(int lec_no) {
-		return cyberCamOnlineConDAO.getOnlineConList(lec_no);
+	public List<Online_ContentsVO> getOnlineConList(int lec_no,String loginUser) {
+		return cyberCamOnlineConDAO.getOnlineConList(lec_no,loginUser);
 	}
 	/**
 	 * 개인 정보 조회
@@ -153,28 +150,10 @@ public class CyberCamOnlineConServiceImpl implements CyberCamOnlineConService{
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO) {
 		return cyberCamOnlineConDAO.getWatchTime(conViewTimeVO);
 	}
-	@Override
-	public List<Online_Con_ViewVO> getAttendList(
-			List<Online_ContentsVO> onlineConList, String loginUser) {
-		
-		List<Online_Con_ViewVO> attentList = new ArrayList<Online_Con_ViewVO>();
-		Online_Con_ViewVO attend = new Online_Con_ViewVO();
-		for(int i = 0; i<onlineConList.size();i++){
-			attend.setWs_oc_lec_no(onlineConList.get(i).getOc_lec_no());
-			attend.setWs_oc_no(onlineConList.get(i).getOc_no());
-			attend.setWs_stud_use_id(loginUser);
-			attend.setWs_attendyn(cyberCamOnlineConDAO.getAttendList(attend));
-			attentList.add(attend);
-		}
-		return attentList;
-	}
+
 	@Override
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no) {
 		return cyberCamOnlineConDAO.getOnlineConList(lec_no);
-	}
-	@Override
-	public List<Watch_StatusVO> getAttendList(int oc_no, String loginUser) {
-		return cyberCamOnlineConDAO.getAttendList(oc_no,loginUser);
 	}
 
 }

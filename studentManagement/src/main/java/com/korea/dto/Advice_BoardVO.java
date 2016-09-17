@@ -30,7 +30,16 @@ public class Advice_BoardVO {
 	private String adb_date;
 	private String adb_commentcontent;
 	private String adb_commentstat;
+	private String use_name;
 	
+	public String getUse_name() {
+		return use_name;
+	}
+
+	public void setUse_name(String use_name) {
+		this.use_name = use_name;
+	}
+
 	public int getAdb_no() {
 		return adb_no;
 	}

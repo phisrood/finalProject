@@ -122,7 +122,6 @@
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
-		                      <li><a href="/stu/adviceREQ">상담신청</a></li>
 		                      <li><a href="/stu/camAdvice">사이버상담실</a></li>
 		                      <li><a href="/stu/adviceBoard">상담게시판</a></li>
 		                    </ul>

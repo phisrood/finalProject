@@ -15,14 +15,22 @@
 	<select id="getCurrval" resultType="int">
 		SELECT ATTACHMENT_FILE_SEQ.CURRVAL FROM DUAL
 	</select>
-	<select id="getOnlineConList" parameterType="int" resultType="onlineContentsVO">
+	<select id="getOnlineConList" parameterType="onlineContentsVO" resultType="onlineContentsVO">
 		SELECT
 		OC_CONTENT,
 		TO_CHAR(OC_STARTDATE,'YYYY/MM/DD') AS OC_STARTDATE,
 		TO_CHAR(OC_ENDDATE,'YYYY/MM/DD') AS OC_ENDDATE,
-		OC_TIME
-		FROM ONLINE_CONTENTS 
-		WHERE OC_LEC_NO = #{lec_no} 
+		OC_TIME,
+		OC_NO,
+		OC_LEC_NO,
+		OC_AF_NO,
+		W.WS_ATTENDYN
+		FROM ONLINE_CONTENTS , STUDENT , WATCH_STATUS W
+		WHERE OC_LEC_NO = #{oc_lec_no} 
+		AND OC_NO = W.WS_OC_NO
+		AND OC_LEC_NO = W.WS_OC_LEC_NO
+		AND W.WS_STUD_USE_ID = STUDENT.STUD_USE_ID
+		AND W.WS_STUD_USE_ID = #{oc_pro_use_id}
 		ORDER BY OC_NO
 	</select>
 	<select id="getOnlineConWatchList" parameterType="int" resultType="onlineContentWatchVO">
