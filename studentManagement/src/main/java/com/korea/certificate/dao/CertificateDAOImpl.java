@@ -1,4 +1,7 @@
 package com.korea.certificate.dao;
+
+import org.springframework.stereotype.Repository;
+
 /**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
@@ -15,6 +18,7 @@ package com.korea.certificate.dao;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+@Repository
 public class CertificateDAOImpl implements CertificateDAO{
 	/**
 	 * 교수가 받은 상담신청조회

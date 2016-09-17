@@ -17,7 +17,6 @@ package com.korea.crsesREQ.controller;
  * </pre>
  */
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesREQ.service.CrsesREQService;
-import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.UsersVO;

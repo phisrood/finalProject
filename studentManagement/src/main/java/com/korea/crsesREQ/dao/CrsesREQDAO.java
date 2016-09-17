@@ -10,6 +10,7 @@ import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.Student_InquiryList_ViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -125,8 +126,7 @@ public interface CrsesREQDAO {
 	 * @param int
 	 * @throws 
 	 */
-	public List<Lecture_Time_ViewVO> getClassroomByLecNo(
-			List<CrsesList_stu_ViewVO> crsesReqList);
+	public List<Lecture_Time_ViewVO> getClassroomByLecNo(List<CrsesList_stu_ViewVO> crsesReqList);
 	
 	/**
 	 * @return 
@@ -144,4 +144,13 @@ public interface CrsesREQDAO {
 	 * @throws 
 	 */
 	public List<Lecture_Time_ViewVO> getClassroomByLecNo(String lec_no);
+	
+
+	/**
+	 * @return List<Lecture_Time_ViewVO>
+	 * 강의등록번호로 시간표가져오기(수강신청내역조회)
+	 * @param 
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getClassroomByInquiryList(List<Student_InquiryList_ViewVO> inquiryList);
 }

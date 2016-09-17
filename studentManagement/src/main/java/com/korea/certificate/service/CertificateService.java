@@ -24,4 +24,12 @@ public interface CertificateService {
 	 */
 	//학생 정보 가져오기
 	public void getStuInfo();
+	
+	/**
+	 * 학생 재학증명서 정보
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public void getStuAttendInfo();
 }

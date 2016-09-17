@@ -175,7 +175,7 @@ public class ClassAppController {
 	 */
 	//수업평가 입력
 	@RequestMapping(value="/stu/classAppInput", method=RequestMethod.GET)
-	public String classAppInput(HttpSession session){
+	public String classAppInput(HttpSession session, Model model){
 		String url="/stu/classAppInput";
 		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
@@ -183,6 +183,29 @@ public class ClassAppController {
 		
 		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
 		
+		model.addAttribute("lectureList", lectureList);
+		
+		return url;
+	}
+	/**
+	 * 
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//수업평가 입력
+	@RequestMapping(value="/stu/classAppSave", method=RequestMethod.GET)
+	public String classAppSave(@RequestParam(value="lec_no")String lec_no,
+								@RequestParam(value="checkVal")int checkVal[],
+								HttpSession session){
+		String url="redirect:/stu/classAppInput";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		classAppService.InsertClassAppInput(lec_no, checkVal, id);
+		
+				
 		return url;
 	}
 }

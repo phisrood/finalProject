@@ -105,7 +105,7 @@
 		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="/stu/crsesInquiryList">수강신청조회</a></li>
 		                      
-		                      <li><a href="#">수업시간표</a></li>
+		                      <li><a href="/stu/timeTableList" target="_blank">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
