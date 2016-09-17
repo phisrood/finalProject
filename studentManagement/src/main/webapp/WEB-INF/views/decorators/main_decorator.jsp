@@ -21,7 +21,15 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-
+<%   String referer = request.getHeader("Referer"); //url 접근막기
+	if(referer==null){
+		%>
+		<script>
+		location.href='/main.jsp';
+		</script>
+		<%
+	}
+%> 
 <!DOCTYPE html>
 <html lang="en">
   <head>

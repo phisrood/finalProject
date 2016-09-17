@@ -21,7 +21,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
-
+<%   String referer = request.getHeader("Referer"); //url 접근막기
+	if(referer==null){
+		%>
+		<script>
+		location.href='/main.jsp';
+		</script>
+		<%
+	}
+%> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
