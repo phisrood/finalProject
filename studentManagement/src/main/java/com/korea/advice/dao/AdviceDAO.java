@@ -3,6 +3,7 @@ package com.korea.advice.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
@@ -53,7 +54,7 @@ public interface AdviceDAO {
 	 * @throws
 	 */
 	// 상담신청
-	public void insertAdviceREQ(AdviceVO adviceVO);
+	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO);
 
 	/**
 	 * 교수가 받은 상담신청조회
@@ -135,9 +136,9 @@ public interface AdviceDAO {
 	// 상담가능일자 입력
 	public List<ProfessorVO> getProfessorList(String stud_use_id);
 
-	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO);
+	public int insertAdviceBoardAF(ADBInsertVO adviceInsertVO);
 
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO);
+	public void insertAdviceBoard(int af_no,ADBInsertVO adviceInsertAFVO);
 
 	public Advice_BoardVO getAdviceBoard(int adb_no);
 
@@ -154,6 +155,10 @@ public interface AdviceDAO {
 	public List<AdviceVO> getMyAdviceRequestList(String loginUser);
 
 	public List<AdviceVO> getMyAdviceResponseList(String use_id);
+
+	public int insertAdviceBoardAF(Map<String, String> params);
+
+	public void updateAdviceBoard2(Map<String, String> params);
 
 
 }

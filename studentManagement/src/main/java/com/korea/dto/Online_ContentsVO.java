@@ -31,7 +31,15 @@ public class Online_ContentsVO {
 	private String oc_date;
 	private int oc_time;
 	private MultipartFile file;
-	
+	private String ws_attendyn;
+
+	public String getWs_attendyn() {
+		return ws_attendyn;
+	}
+
+	public void setWs_attendyn(String ws_attendyn) {
+		this.ws_attendyn = ws_attendyn;
+	}
 
 	public MultipartFile getFile() {
 		return file;

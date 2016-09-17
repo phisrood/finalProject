@@ -55,8 +55,12 @@ html, body {
 			<br> <br>
 	
 			<div style="float: right; width: 85%;">
-				작성자명 : 
+				이름 : 
+				<input type="text" name="use_name" value="${use_name }" disabled="disabled"/>
+				
+				학번 : 
 				<input type="text" name="adb_stud_use_id" value="${adb_stud_use_id }" disabled="disabled"/>
+			
 			</div>
 			<br> <br>
 			<div style="float: right; width: 15%;">
