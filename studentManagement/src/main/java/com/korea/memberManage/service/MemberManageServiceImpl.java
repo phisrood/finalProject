@@ -2,6 +2,7 @@ package com.korea.memberManage.service;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -174,11 +175,11 @@ public class MemberManageServiceImpl implements MemberManageService{
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
-		System.out.println(rows);
+		List<Map> studentList = new ArrayList<Map>();
 		for (rowindex = 2; rowindex < rows; rowindex++) {
 			// 행을읽는다
 			Row row = sheet.getRow(rowindex);
-			readRow(columnindex, row);
+			studentList.add(readRow(columnindex, row));
 		}
 	}
 
@@ -186,8 +187,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 	
 
 
-	private void readRow(int columnindex, Row row) {
-		Map<String, String> studentMap = new HashMap<String, String>(); 
+	private Map readRow(int columnindex, Row row) {
+		Map<String, String> studentMap = new HashMap<String, String>();
+	
 		if (row != null) {
 			// 셀의 수
 			int cells = row.getPhysicalNumberOfCells();
@@ -242,8 +244,9 @@ public class MemberManageServiceImpl implements MemberManageService{
 						break;
 				}
 			}//end of row
-			int result = memberManageDAO.insertStuInfo(studentMap);
+			//int result = memberManageDAO.insertStuInfo(studentMap);
 		}
+		return studentMap;
 	}
 
 	private String readCell(int columnindex, Row row) {
