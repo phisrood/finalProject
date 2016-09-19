@@ -23,13 +23,15 @@ import com.korea.dto.ScoreViewVO;
  */
 public interface ScoreInquiryDAO {
 	/**
+	 * @return 
+	 * @param id 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//전체 성적 조회
-	public void getScoreListAll();
+	public List<ScoreViewVO> getScoreListAll(String id);
 	/**
 	 * @param params 
 	 * 개인 정보 조회

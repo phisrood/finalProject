@@ -31,14 +31,15 @@ public class ScoreInquiryDAOImpl implements ScoreInquiryDAO{
 	@Autowired
 	SqlSession session;
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getScoreListAll() {
-		// TODO Auto-generated method stub
+	public List<ScoreViewVO> getScoreListAll(String id) {
+		return session.selectList("scoreInquiry.getScoreListAll", id);
 		
 	}
 	/**

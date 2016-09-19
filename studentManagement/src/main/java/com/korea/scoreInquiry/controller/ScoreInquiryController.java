@@ -15,6 +15,7 @@ package com.korea.scoreInquiry.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,9 +45,14 @@ public class ScoreInquiryController {
 	 */
 	//전체성적조회
 	@RequestMapping(value="/stu/scoreListAll", method=RequestMethod.GET)
-	public String scoreListAll(){
+	public String scoreListAll(HttpSession session,Model model){
 		String url="/stu/scoreListAll";
-		
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		Map<Object,Object> scoreMap = service.getScoreListAll(user.getUse_id());
+		model.addAttribute("scoreMap", scoreMap);
+		System.out.println(scoreMap.get("totalScore"));
+		System.out.println(scoreMap.get("totalCredit"));
+		System.out.println((scoreMap.get(((ArrayList)scoreMap.get("scoreList")).get(0))));
 		return url;
 	}
 	/**
@@ -59,7 +65,6 @@ public class ScoreInquiryController {
 	@RequestMapping(value="/stu/scoreListNow", method=RequestMethod.GET)
 	public String scoreListNow(HttpSession session, Model model){
 		String url="/stu/scoreListNow";
-		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String id = loginUser.getUse_id();
 		

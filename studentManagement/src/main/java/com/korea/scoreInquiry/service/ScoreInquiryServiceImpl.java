@@ -35,15 +35,57 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 	ScoreInquiryDAO dao;
 	
 	/**
+	 * @return 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	@Override
-	public void getScoreListAll() {
-		// TODO Auto-generated method stub
-		
+	public Map<Object,Object> getScoreListAll(String id) {
+		List<ScoreViewVO> scoreList = dao.getScoreListAll(id);
+		Map<Object, Object> scoreMap = new HashMap<Object, Object>();
+		float totalScore = 0;
+		int totalCredit = 0;
+		for(ScoreViewVO scoreView: scoreList){
+			float score = 0;
+			switch(scoreView.getCb_grade()){
+			case "A+":
+				score=4.5f;
+				break;
+			case "A0":
+				score=4.0f;
+				break;
+			case "B+":
+				score=3.5f;
+				break;
+			case "B0":
+				score=3.0f;
+				break;
+			case "C+":
+				score=2.5f;
+				break;
+			case "C0":
+				score=2.0f;
+				break;
+			case "D+":
+				score=1.5f;
+				break;
+			case "D0":
+				score=1.0f;
+				break;
+			case "F":
+				score=0f;
+				break;
+			}
+			scoreMap.put(scoreView, score);
+			totalScore+=(score*(Float.valueOf(scoreView.getLb_credit())));
+			totalCredit+=Integer.valueOf(scoreView.getLb_credit());
+		}
+		scoreMap.put("scoreList", scoreList);
+		scoreMap.put("totalScore", totalScore);
+		scoreMap.put("totalCredit", totalCredit);
+		return scoreMap;
 	}
 	/**
 	 * 개인 정보 조회
