@@ -22,29 +22,13 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!-- Data tables -->
-<link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
+
 <!-- 화상 부트스트랩 -->
-<link
+<!-- <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
+ -->
 
-<script type="text/javascript">
-	function serverCam() {
-	
-	}
-	function clientCam() {
-	
-	}
-	function chat() {
-		window.open("http://192.168.206.124:8888", "채팅",
-				"width=450, height=450");
-	}
-</script>
 
 <style>
 .local-video {
@@ -65,7 +49,12 @@
 </style>
 <div class="row">
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
-	<table id="datatable"
+	<div class="x_panel_big">
+		<div class="x_title">
+		<h2>사이버 상담실</h2>
+			<div class="clearfix"></div>
+		</div>		
+				<table id="datatable"
 		class="table table-striped jambo_table bulk_action">
 		<thead>
 			<tr>
@@ -112,35 +101,17 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
-	<div class="x_panel_big">
-		<div class="x_title">
-			<h2>&nbsp;&nbsp;</h2>
-			<div class="clearfix"></div>
-		</div>
-
-
-		<div class="x_panel_big" style="float: left; width: 73%;">
-			<div class="row">
-
-				<div class="col-md-12">
-					<h1 class="page-header">사이버 상담실</h1>
-				</div>
-
-				<div class="col-md-6" id="adviceRoom">
 					
-				</div>
-
+				
 				<div class="col-md-6"></div>
 
-			</div>
 		</div>
 
 	</div>
 	<div style="float: left; width: 2%;">
 		<br>
 	</div>
-</div>
+
 
 
 <!-- Modal -->
@@ -154,10 +125,6 @@
 
 			  <div class="container">
     <div class="row">
-
-      <div class="col-md-12">
-        <h1 class="page-header">사이버 상담실</h1>
-      </div>
       
           <div class="col-md-6">
         <h2 class="h3">학생</h2>
@@ -194,8 +161,13 @@
     </div>
   </div>
 
-  <!--<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>-->
-  <!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+  			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">종료</button>
+			</div>
+		</div>
+	</div>
+</div>
 
   <script src="//www.playrtc.com/sdk/js/playrtc.js"></script>
  <script>
@@ -279,27 +251,3 @@
       }
     }, false);
   </script>
-
-  			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">종료</button>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Datatables -->
-<script src="/stu/js/jquery.dataTables.min.js"></script>
-<script src="/stu/js/dataTables.bootstrap.min.js"></script>
-<script src="/stu/js/dataTables.buttons.min.js"></script>
-<script src="/stu/js/buttons.bootstrap.min.js"></script>
-<script src="/stu/js/buttons.flash.min.js"></script>
-<script src="/stu/js/buttons.html5.min.js"></script>
-<script src="/stu/js/buttons.print.min.js"></script>
-<script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-<script src="/stu/js/dataTables.keyTable.min.js"></script>
-<script src="/stu/js/dataTables.responsive.min.js"></script>
-<script src="/stu/js/responsive.bootstrap.js"></script>
-<script src="/stu/js/datatables.scroller.min.js"></script>
-<script src="/stu/js/jszip.min.js"></script>
-<script src="/stu/js/pdfmake.min.js"></script>
-<script src="/stu/js/vfs_fonts.js"></script>
