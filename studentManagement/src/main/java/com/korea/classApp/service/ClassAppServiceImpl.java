@@ -13,6 +13,7 @@ import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
+import com.korea.dto.Lecture_Chart_ViewVO;
 
 /**
  * @Class Name : ClassAppServiceImpl.java
@@ -184,6 +185,17 @@ public class ClassAppServiceImpl implements ClassAppService{
 		List<AppLecture_ViewVO> getLectureList = classAppDAO.getAppLecture(params);
 		
 		return getLectureList;
+	}
+	@Override
+	public List<LectureViewVO> getLectureListPro(String id) {
+		
+		
+		return classAppDAO.getLectureListPro(id);
+	}
+	
+	@Override
+	public List<Lecture_Chart_ViewVO> getLectureChart(String lec_no) {
+		return classAppDAO.getLectureChartPro(lec_no);
 	}
 
 }
