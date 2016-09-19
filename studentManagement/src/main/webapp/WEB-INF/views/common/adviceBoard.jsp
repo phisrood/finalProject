@@ -22,11 +22,11 @@
 ===============================================================--%>
 
 <!-- Data tables -->
-<link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
@@ -72,7 +72,7 @@
 								<a href="/common/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
 								${adviceBoard.adb_title }</a>
 							</td>
-							<td>${adviceBoard.adb_stud_use_id }</td>
+							<td>${adviceBoard.use_name }</td>
 							<td>${adviceBoard.adb_date }</td>
 							<td>
 								<c:if test="${adviceBoard.adb_commentstat eq 'N'}">
@@ -98,18 +98,17 @@
 				+ ",resizable=1,scrollbars=1");
 	}
 </script>
-<script src="/stu/js/jquery.dataTables.min.js"></script>
-<script src="/stu/js/dataTables.bootstrap.min.js"></script>
-<script src="/stu/js/dataTables.buttons.min.js"></script>
-<script src="/stu/js/buttons.bootstrap.min.js"></script>
-<script src="/stu/js/buttons.flash.min.js"></script>
-<script src="/stu/js/buttons.html5.min.js"></script>
-<script src="/stu/js/buttons.print.min.js"></script>
-<script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-<script src="/stu/js/dataTables.keyTable.min.js"></script>
-<script src="/stu/js/dataTables.responsive.min.js"></script>
-<script src="/stu/js/responsive.bootstrap.js"></script>
-<script src="/stu/js/datatables.scroller.min.js"></script>
-<script src="/stu/js/jszip.min.js"></script>
-<script src="/stu/js/pdfmake.min.js"></script>
-<script src="/stu/js/vfs_fonts.js"></script>
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="/bootstrap/js/dataTables.buttons.min.js"></script>
+<script src="/bootstrap/js/buttons.bootstrap.min.js"></script>
+<script src="/bootstrap/js/buttons.flash.min.js"></script>
+<script src="/bootstrap/js/buttons.html5.min.js"></script>
+<script src="/bootstrap/js/buttons.print.min.js"></script>
+<script src="/bootstrap/js/dataTables.fixedHeader.min.js"></script>
+<script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
+<script src="/bootstrap/js/dataTables.responsive.min.js"></script>
+<script src="/bootstrap/js/responsive.bootstrap.js"></script>
+<script src="/bootstrap/js/dataTables.scroller.min.js"></script>
+<script src="/bootstrap/js/jszip.min.js"></script>
+<script src="/bootstrap/js/vfs_fonts.js"></script>

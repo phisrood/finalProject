@@ -10,6 +10,7 @@ import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
+import com.korea.dto.Watch_StatusVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -60,7 +61,7 @@ public interface CyberCamOnlineConService {
 	 * @throws 
 	 */
 	//온라인콘텐츠 조회
-	public List<Online_ContentsVO> getOnlineConList(int lec_no);
+	public List<Online_ContentsVO> getOnlineConList(int lec_no,String loginUser);
 	
 	/**
 	 * 개인 정보 조회
@@ -121,8 +122,6 @@ public interface CyberCamOnlineConService {
 	//온라인콘텐츠 조회
 	public void insertOnlineConStudentList(List<WatchStudentsVO> watchList);
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
-	public List<Online_Con_ViewVO> getAttendList(
-			List<Online_ContentsVO> onlineConList, String loginUser);
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
 	
 	

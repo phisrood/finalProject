@@ -43,6 +43,7 @@ import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.UsersVO;
 import com.korea.dto.WatchStudentsVO;
+import com.korea.dto.Watch_StatusVO;
 
 @Controller
 public class CyberCamOnlineConController {
@@ -149,14 +150,8 @@ public class CyberCamOnlineConController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String loginUser = user.getUse_id();
 		
-		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no);		
-		List<Online_Con_ViewVO> attentList = cyberCamOnlineConService.getAttendList(onlineConList,loginUser);
-		System.out.println("ddddddddddddddddddddddddd");
-		System.out.println("사이즈 : "+attentList.size());
-		for(int i=0;i<attentList.size();i++){
-			System.out.println("출석여부 : "+attentList.get(i).getWs_attendyn());
-		}
-		model.addAttribute("attentList", attentList);
+		List<Online_ContentsVO> onlineConList =  cyberCamOnlineConService.getOnlineConList(lec_no,loginUser);	
+		
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("onlineConList", onlineConList);
 		return url;
@@ -178,7 +173,6 @@ public class CyberCamOnlineConController {
 			HttpServletResponse response){
 		Attachment_FileVO file = cyberCamOnlineConService.getAF(Integer.parseInt(af_no));
 		String path = "\\resources\\common\\onlineContentsAF\\"+file.getAf_aftername();
-		//ObjectMapper jsonObject = new ObjectMapper();
 		
 		Online_Con_ViewVO conViewTimeVO = new Online_Con_ViewVO();
 		conViewTimeVO.setWs_oc_lec_no(Integer.parseInt(oc_lec_no));
@@ -204,7 +198,6 @@ public class CyberCamOnlineConController {
 		String url = "/cyberCampus/pro/onlineConList";
 		
 		// 세션
-	
 		String lec_no = (String) session.getAttribute("pro_lec_no");
 		
 		List<Online_Con_Watchcheck_ViewVO> watchCheckList

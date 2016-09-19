@@ -3,7 +3,6 @@ package com.korea.advice.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.korea.advice.service.AdviceService;
+import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
@@ -104,12 +104,12 @@ public class AdviceController {
 	 */
 	// 상담신청
 	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.POST)
-	public String adviceREQ(AdviceVO adviceVO, HttpSession session) {
+	public String adviceREQ(Advice_BoardInsertVO adviceVO, HttpSession session) {
 		String url = "redirect:adviceRequestList";
 
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		adviceVO.setAd_stud_use_id(user.getUse_id());
+		adviceVO.setAdb_stud_use_id(user.getUse_id());
 
 		adviceService.insertAdviceREQ(adviceVO);
 
@@ -267,23 +267,23 @@ public class AdviceController {
 	 */
 	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
-	public String adviceBoardWrite(Advice_BoardInsertVO adviceInsertVO,HttpServletRequest request) throws IllegalStateException, IOException {
+	public String adviceBoardWrite(ADBInsertVO adviceInsertAFVO,HttpServletRequest request) throws IllegalStateException, IOException {
 		String url = "redirect:/stu/adviceBoard";
 		int af_no=0;
-		Advice_BoardInsertVO adviceInsertAFVO = adviceInsertVO;
-		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		MultipartFile multipartFile = adviceInsertVO.getAdb_file();
+		
+		MultipartFile multipartFile = adviceInsertAFVO.getAdb_file();
 		if(!multipartFile.isEmpty()){
 			String adb_after_name = System.currentTimeMillis()+multipartFile.getOriginalFilename();
 			File file = new File(uploadPath,adb_after_name);
 			multipartFile.transferTo(file);
-			adviceInsertVO.setAdb_realName(multipartFile.getOriginalFilename());			
-			adviceInsertVO.setAdb_afterName(adb_after_name);
-			adviceInsertVO.setAdb_path(uploadPath);
+			adviceInsertAFVO.setAdb_af_realname(multipartFile.getOriginalFilename());			
+			adviceInsertAFVO.setAdb_af_aftername(adb_after_name);
+			adviceInsertAFVO.setAdb_af_path(uploadPath);
+			af_no = adviceService.insertAdviceBoardAF(adviceInsertAFVO);
 		}
 		
-		adviceService.insertAdviceBoard(adviceInsertVO,af_no,adviceInsertAFVO);
+		adviceService.insertAdviceBoard(af_no,adviceInsertAFVO);
 		
 		return url;
 	}
@@ -315,6 +315,7 @@ public class AdviceController {
 		
 		model.addAttribute("auth", user.getAuthority());
 		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("use_name", adviceBoardVO.getUse_name());
 		model.addAttribute("adb_no", adviceBoardVO.getAdb_no());
 		model.addAttribute("adb_pro_use_id", adviceBoardVO.getAdb_pro_use_id());
 		model.addAttribute("adb_stud_use_id", adviceBoardVO.getAdb_stud_use_id());
@@ -364,7 +365,7 @@ public class AdviceController {
 	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardUpdateForm", method = RequestMethod.GET)
 	public String adviceBoardUpdateForm(int adb_no,Model model) {
-		String url = "/common/adviceBoardUpdateForm";
+		String url = "/stu/adviceBoardUpdateForm";
 		Advice_BoardVO adviceBoardVO = adviceService.getAdviceBoard(adb_no);
 		
 		model.addAttribute("adb_no", adviceBoardVO.getAdb_no());
@@ -388,32 +389,41 @@ public class AdviceController {
 	 */
 	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardUpdate", method = RequestMethod.POST)
-	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_content,MultipartFile adb_file,HttpServletRequest request) throws IOException{
+	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_stud_use_id,String adb_content,MultipartFile adb_file,HttpServletRequest request) throws IOException{
 		String url = "redirect:/stu/adviceBoard";
+		int flag = 0;
 		
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("adb_no", adb_no+"");
 		params.put("adb_title", adb_title);
+		params.put("adb_stud_use_id", adb_stud_use_id);
 		params.put("adb_content", adb_content);
 		
 		
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
-		Map<String,String> paramsFile = new HashMap<String,String>();
+		
 		if(!adb_file.isEmpty()){
+			String afterName = System.currentTimeMillis()+"";
 			int adb_af_no = adviceService.getAdviceBoard(adb_no).getAdb_af_no();
+			if(adb_af_no != 0 ){
+				params.put("adb_af_no", adb_af_no+"");
+			}else{
+				params.put("adb_af_no", "nofile");
+			}
 			
-			File file = new File(uploadPath,System.currentTimeMillis()+adb_file.getOriginalFilename());
+			File file = new File(uploadPath,afterName+adb_file.getOriginalFilename());
 			adb_file.transferTo(file);
 			
-			paramsFile.put("adb_realname", adb_file.getOriginalFilename());
-			String adb_after_name = System.currentTimeMillis()+adb_file.getOriginalFilename();
-			paramsFile.put("adb_aftername", adb_after_name);
-			paramsFile.put("adb_path", uploadPath);
-			paramsFile.put("adb_af_no", adb_af_no+"");
+			params.put("adb_af_realname", adb_file.getOriginalFilename());
+			String adb_after_name = afterName+adb_file.getOriginalFilename();
+			params.put("adb_af_aftername", adb_after_name);
+			params.put("adb_af_path", uploadPath);
+			
+			flag=1;
 		}
 		
 
-		adviceService.updateAdviceBoard(params,paramsFile);
+		adviceService.updateAdviceBoard(params,flag);
 				
 		return url;
 	}

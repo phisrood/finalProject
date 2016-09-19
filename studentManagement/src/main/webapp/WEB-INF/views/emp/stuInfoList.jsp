@@ -26,7 +26,6 @@
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
-
 	$(function(){		
 		$.ajax({
 			url: "/emp/stuInfo",
@@ -55,6 +54,7 @@
 		});
 			$('#datatable2').DataTable();
 	});
+	
 </script>
 
 

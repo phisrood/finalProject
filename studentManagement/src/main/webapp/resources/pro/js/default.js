@@ -25,6 +25,17 @@ function openLecture(lb_no){
 	location.href="/pro/openLecturePage?lb_no="+lb_no;
 }
 function insertLecture(form){
+	/*$.ajax({
+		url:'/pro/pro_timeCheck',
+		mehtod:'get',
+		type:'json',
+		data: {'pro_id':$("#pro_id").val()},
+		success:function(data){
+			
+		},error:function(){
+			alert('에럼');
+		}
+	});*/
 	document.insertLectureForm.method="get";
 	document.insertLectureForm.action="/pro/openLecture";
 	document.insertLectureForm.submit();

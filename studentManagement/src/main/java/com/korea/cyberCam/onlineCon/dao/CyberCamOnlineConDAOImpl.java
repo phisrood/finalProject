@@ -14,6 +14,7 @@ import com.korea.dto.Online_Con_ViewVO;
 import com.korea.dto.Online_Con_Watchcheck_ViewVO;
 import com.korea.dto.Online_ContentsVO;
 import com.korea.dto.WatchStudentsVO;
+import com.korea.dto.Watch_StatusVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -81,9 +82,11 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	 * @throws
 	 */
 	@Override
-	public List<Online_ContentsVO> getOnlineConList(int lec_no) {
-		return (List<Online_ContentsVO>) sqlSession.selectList(
-				"CyberCamOnlineContentsDAO.getOnlineConList", lec_no);
+	public List<Online_ContentsVO> getOnlineConList(int lec_no,String loginUser) {
+		Online_ContentsVO OCVO = new Online_ContentsVO();
+		OCVO.setOc_lec_no(lec_no);
+		OCVO.setOc_pro_use_id(loginUser);
+		return (List<Online_ContentsVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConList", OCVO);
 	}
 
 	@Override
@@ -154,14 +157,10 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 	}
 
 	@Override
-	public String getAttendList(Online_Con_ViewVO attend) {
-		return (String) sqlSession.selectOne("CyberCamOnlineContentsDAO.getAttendyn", attend);
-	}
-
-	@Override
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no) {
 		return (List<Online_Con_Watchcheck_ViewVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineCheckList", lec_no);
 	}
+
 
 
 }

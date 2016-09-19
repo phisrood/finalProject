@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.korea.advice.dao.AdviceDAO;
+import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
@@ -68,7 +69,7 @@ public class AdviceServiceImpl implements AdviceService {
 	 * @throws
 	 */
 	@Override
-	public void insertAdviceREQ(AdviceVO adviceVO) {
+	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO) {
 		adviceDAO.insertAdviceREQ(adviceVO);
 	}
 
@@ -169,15 +170,14 @@ public class AdviceServiceImpl implements AdviceService {
 	}
 
 	@Override
-	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+	public int insertAdviceBoardAF(ADBInsertVO adviceInsertVO) {
 		return adviceDAO.insertAdviceBoardAF(adviceInsertVO);
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO) {
-		af_no=adviceDAO.insertAdviceBoardAF(adviceInsertAFVO);
-		adviceInsertVO.setAdb_af_no(af_no);
-		adviceDAO.insertAdviceBoard(adviceInsertVO,af_no,adviceInsertAFVO);
+	public void insertAdviceBoard(int af_no,ADBInsertVO adviceInsertAFVO) {
+		adviceInsertAFVO.setAdb_af_no(af_no);
+		adviceDAO.insertAdviceBoard(af_no,adviceInsertAFVO);
 	}
 
 	@Override
@@ -187,10 +187,19 @@ public class AdviceServiceImpl implements AdviceService {
 	}
 
 	@Override
-	public void updateAdviceBoard(Map<String, String> params,Map<String,String> paramsFile) {
-		adviceDAO.updateAdviceBoard(params);
-		if(paramsFile!=null){
-			adviceDAO.updateAdviceBoardFile(paramsFile);
+	public void updateAdviceBoard(Map<String, String> params,int flag) {
+		
+		if(flag == 0){
+			adviceDAO.updateAdviceBoard2(params);
+		}else if(flag == 1){
+			if(params.get("adb_af_no").equals("nofile")){
+				int adb_af_no = adviceDAO.insertAdviceBoardAF(params);
+				params.put("adb_af_no", adb_af_no+"");
+				adviceDAO.updateAdviceBoard(params);
+			}else{
+				adviceDAO.updateAdviceBoardFile(params);
+				adviceDAO.updateAdviceBoard2(params);
+			}
 		}
 	}
 

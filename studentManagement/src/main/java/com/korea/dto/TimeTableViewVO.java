@@ -7,7 +7,14 @@ public class TimeTableViewVO {
 	private String cu_tt_no;
 	private String ci_roomname;
 	private String ci_roomnumber;
+	private String lec_placement;
 	
+	public String getLec_placement() {
+		return lec_placement;
+	}
+	public void setLec_placement(String lec_placement) {
+		this.lec_placement = lec_placement;
+	}
 	public String getLb_name() {
 		return lb_name;
 	}

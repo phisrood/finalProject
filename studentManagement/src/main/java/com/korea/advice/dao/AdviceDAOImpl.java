@@ -6,9 +6,8 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
 import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
@@ -70,7 +69,7 @@ public class AdviceDAOImpl implements AdviceDAO {
 	 * @throws
 	 */
 	@Override
-	public void insertAdviceREQ(AdviceVO adviceVO) {
+	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO) {
 		sqlSession.insert("adviceDAO.insertAdvice", adviceVO);
 	}
 
@@ -170,17 +169,17 @@ public class AdviceDAOImpl implements AdviceDAO {
 	}
 
 	@Override
-	public int insertAdviceBoardAF(Advice_BoardInsertVO adviceInsertVO) {
+	public int insertAdviceBoardAF(ADBInsertVO adviceInsertVO) {
 		sqlSession.insert("adviceBoardDAO.insertAdviceBoardAF", adviceInsertVO);
 		return (int) sqlSession.selectOne("adviceBoardDAO.selectCurrval");
 	}
 
 	@Override
-	public void insertAdviceBoard(Advice_BoardInsertVO adviceInsertVO,int af_no,Advice_BoardInsertVO adviceInsertAFVO) {
+	public void insertAdviceBoard(int af_no,ADBInsertVO adviceInsertAFVO) {
 		if(af_no == 0){
-			sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertVO);
+			sqlSession.insert("adviceBoardDAO.insertBoard", adviceInsertAFVO);
 		}else{
-			sqlSession.insert("adviceBoardDAO.insertBoardAF", adviceInsertVO);			
+			sqlSession.insert("adviceBoardDAO.insertBoardAF", adviceInsertAFVO);			
 		}
 	}
 
@@ -224,6 +223,17 @@ public class AdviceDAOImpl implements AdviceDAO {
 	@Override
 	public List<AdviceVO> getMyAdviceResponseList(String use_id) {
 		return (List<AdviceVO>) sqlSession.selectList("adviceDAO.getMyAdviceResponseList",use_id);
+	}
+
+	@Override
+	public int insertAdviceBoardAF(Map<String, String> params) {
+		sqlSession.insert("adviceBoardDAO.insertAdviceBoardAF2", params);
+		return (int) sqlSession.selectOne("adviceBoardDAO.selectCurrval");
+	}
+
+	@Override
+	public void updateAdviceBoard2(Map<String, String> params) {
+		sqlSession.update("adviceBoardDAO.updateAdviceBoard2", params);
 	}
 
 }

@@ -68,84 +68,84 @@
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">09:00~10:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">10:00~11:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">11:00~12:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">12:00~13:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">13:00~14:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">14:00~15:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">15:00~16:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">16:00~17:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">17:00~18:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 				<tr class="time-tr">
 					<th class="lecture-border table-th time-th">18:00~19:00</th>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
-					<td class="lecture-border timeTable">과목,분반,교수</td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
+					<td class="lecture-border timeTable"></td>
 				</tr>
 			</table>
 		</div>
@@ -154,9 +154,8 @@
 </div>
 <script>
 	<c:forEach var="item" items="${timetable}">
-	var time = { 
-			use_id:'<c:out value="${item.use_id}"/>'			
-	};
+	  $(".timeTable").eq('<c:out value="${item.cu_tt_no}"/>').html('<c:out value="${item.lb_name}"/>,<c:out value="${item.lec_placement}"/>반<br/><c:out value="${item.ci_roomname}"/>,<c:out value="${item.ci_roomnumber}"/>');			
+	
 	</c:forEach>
-	alert(time.use_id);
+	
 </script>

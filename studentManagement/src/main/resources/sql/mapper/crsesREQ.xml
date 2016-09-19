@@ -33,6 +33,7 @@
 		lec_makesemester = #{semes}
 
 	</select>
+	
 	<select id="getClassroomByLecNoList" parameterType="list" resultType="lectureTimeView">
 		SELECT
 		CI_ROOMNAME, 
@@ -52,7 +53,7 @@
 
 	<select id="getSemester" parameterType="str" resultType="int">
 		SELECT
-		CRC_CEMESTER
+		MAX(CRC_CEMESTER)
 		FROM COLLEAGE_REGISTER_CHANGE
 		WHERE CRC_STUD_USE_ID =
 		#{use_id}
