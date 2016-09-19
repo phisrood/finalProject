@@ -16,11 +16,8 @@ function insertPro(proInsertForm) {
 	}else if(document.proInsertForm.pro_engname.value==""){
 		alert('영문명을 입력해주세요');
 		document.proInsertForm.pro_engname.focus();
-	}else if(document.proInsertForm.pro_position.value==""){
-		alert('직책을 선택해주세요');
-		document.proInsertForm.pro_position.focus();
 	}else if(document.proInsertForm.pro_dep_no.value==""){
-		alert('학과번호를 선택해주세요');
+		alert('학과를 선택해주세요');
 		document.proInsertForm.pro_dep_no.focus();
 	}else if(document.proInsertForm.pro_birth.value==""){
 		alert('생년월일을 입력해주세요');

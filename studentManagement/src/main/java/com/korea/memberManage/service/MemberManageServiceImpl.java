@@ -298,6 +298,10 @@ public class MemberManageServiceImpl implements MemberManageService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public void updateProInfoOnOff(String pro_use_id) {
+		memberManageDAO.updateProInfoOnOff(pro_use_id);
+	}
 	
 	
 }
