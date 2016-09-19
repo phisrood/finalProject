@@ -7,6 +7,7 @@ import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
+import com.korea.dto.Pro_tt_noViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -135,6 +136,16 @@ public interface CrsesBookService {
 	 * @throws 
 	 */
 	public List<LectureViewVO> getLectureListByStu();
+	
+	/**
+	 * @return 
+	 * 
+	 * 교수 시간표 가져오기
+	 * @param 
+	 * @return List<LectureViewVO>
+	 * @throws 
+	 */
+	public List<Pro_tt_noViewVO> getProTime(String pro_id);
 
 
 	

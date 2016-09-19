@@ -119,8 +119,12 @@
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
+		<!-- 교수시간표View -->
+		<typeAlias alias="proTimeView" type="com.korea.dto.Pro_tt_noViewVO" />
 		<!-- applecture View -->
 		<typeAlias alias="adbInsertVO" type="com.korea.dto.ADBInsertVO" />
+		<!-- Lecture_Chart_View -->
+		<typeAlias alias="chartVO" type="com.korea.dto.Lecture_Chart_ViewVO" />
 
 	</typeAliases>
 	

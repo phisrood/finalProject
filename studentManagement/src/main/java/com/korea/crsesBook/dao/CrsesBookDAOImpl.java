@@ -14,6 +14,7 @@ import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.Lecture_Time_ViewVO;
+import com.korea.dto.Pro_tt_noViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -141,6 +142,11 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 		}else{
 			return (int) placement;
 		}
+	}
+	@Override
+	public List<Pro_tt_noViewVO> getProTime(String pro_id) {
+		return sqlSession.selectList("crsesBook.getProTime", pro_id);
+		
 	}
 
 

@@ -74,7 +74,7 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">교수번호</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" name="lec_ln_pro_use_id">
+							<input type="text" class="form-control" id="pro_id"name="lec_ln_pro_use_id" value="${loginUser.use_id }" readonly="readonly">
 						</div>
 					</div>
 					<div class="form-group">
@@ -95,8 +95,7 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control pull-left" id="classroom"
-								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp; <input
-								type="text" id="ci_no" name="cu_ci_no">
+								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp; 
 							<button type="button" class="btn btn-info btn-sm" id="search"
 								data-toggle="modal" data-target="#myModal">검색</button>
 						</div>
@@ -216,9 +215,12 @@ h2 {
 					$(this).text('가능');
 					$(this).removeClass('choice');
 					$(this).css('background-color', '');
-				})
+				});
+				reset();
 			});
-
+		$('#myModal').on('show.bs.modal', function (e) {
+			$("#stuTbody").html('');
+		});
 			function tableGen() {
 				$("#stuTbody")
 						.html(
@@ -304,8 +306,7 @@ h2 {
 										+ "<tr>                                                                           "
 										+ "	<td colspan='5' id=\"check\"></td> "
 										+ "</tr>")
-			}
-			;
+			};
 			$("#classroomList").change(
 					function() {
 						var classroom = $("#classroomList :selected").val();
@@ -338,7 +339,7 @@ h2 {
 						$("#submit").click(function() {
 							$("#classroom").val(check);
 							$("#ci_no").val($("#classroomList").val());
-
+							reset();
 						});
 						$.ajax({
 							url : "/pro/getClassroomTime",
@@ -362,7 +363,6 @@ h2 {
 							}
 						});
 					});
-
 		});
 	</script>
 </body>

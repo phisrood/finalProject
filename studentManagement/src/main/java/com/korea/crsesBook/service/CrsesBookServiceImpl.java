@@ -13,6 +13,7 @@ import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
 import com.korea.dto.Lecture_Time_ViewVO;
+import com.korea.dto.Pro_tt_noViewVO;
 
 /**
  * @Class Name : CrsesBookServiceImpl.java
@@ -154,6 +155,12 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 			lecture.setClassroom(classroom);
 		}
 		return lectureList;
+	}
+	@Override
+	public List<Pro_tt_noViewVO> getProTime(String pro_id) {
+		List<Pro_tt_noViewVO> timeList = crsesBookDAO.getProTime(pro_id);
+		
+		return timeList;
 	}
 	
 

@@ -21,9 +21,17 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-
+<%   String referer = request.getHeader("Referer"); //url 접근막기
+	if(referer==null){
+		%>
+		<script>
+		location.href='/main.jsp';
+		</script>
+		<%
+	}
+%> 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -197,9 +205,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
-
-
   </body>
   	<!-- 부트스트랩js -->
     <script src="/bootstrap/js/fastclick.js"></script>

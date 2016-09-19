@@ -25,11 +25,7 @@
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 
 <script>
-	$(function() {
-		$('#datatable').DataTable();
-	});
-</script>
-<script>
+		
 	function revoke(form) {
 		var count = 0;
 
@@ -66,8 +62,6 @@
 							<option value="${professor.pro_use_id}">${professor.use_name}</option>
 						</c:forEach>
 					</select>
-
-
 				</div>
 				<br>
 				<div style="float: left; width: 50%;">
@@ -140,10 +134,12 @@
 			</div>
 			<form>
 					<div style="text-align:right;">
+					<div>
 					<button type="button" class="btn btn-dark" 
 						onclick='revoke(this.form);'>상담취소</button>
 					</div>
 				<table id="datatable" class="table table-striped table-bordered">
+				<table id="adviceTable" class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th colspan="2">상담번호</th>
@@ -156,7 +152,6 @@
 							<th>회신일</th>
 						</tr>
 					</thead>
-
 					<tbody>
 						<c:forEach var="adviceReq" items="${adviceReqList}">
 							<tr>
@@ -184,7 +179,8 @@
 	</div>
 	</div>
 
-
-
 <!-- Datatables -->
 <script src="/stu/js/click_cal.js"></script>
+<script>
+$('#adviceTable').DataTable();
+</script>
