@@ -31,7 +31,7 @@
 	}
 %> 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -205,9 +205,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
-
-
   </body>
   	<!-- 부트스트랩js -->
     <script src="/bootstrap/js/fastclick.js"></script>
