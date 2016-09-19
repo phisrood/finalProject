@@ -49,23 +49,14 @@
                           <input type="text" class="form-control" placeholder="영문명" name="pro_engname">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">직책</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="pro_position">
-                          	<option selected>선택해주세요</option>
-                            <option value="학과장">학과장</option>
-                            <option value="일반교수">일반교수</option>
-                          </select>
-                        </div>
-                      </div>
+                     
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">학과번호</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <select class="form-control" name="pro_dep_no">
                           	<option selected>학과번호선택</option>
                           	<c:forEach var="department" items="${departmentList}">
-								<option value="${department.dep_no}">${department.dep_no}</option>
+								<option value="${department.dep_no}">${department.dep_name} (학과코드 : ${department.dep_no})</option>
 			               	</c:forEach>
                           </select>
                         </div>
@@ -147,17 +138,6 @@
                           <input type="text" class="form-control" placeholder="주민등록번호뒷자리" name="pro_regno2">
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">재직상태</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="enabled">
-                          	<option selected>선택해주세요</option>
-                            <option value="1">재직</option>
-                            <option value="2">퇴직</option>
-                          </select>
-                        </div>
-                      </div>
-                      
                       
                       <div style="text-align:center;">
 		                <button type="button" class="btn btn-dark" onclick="insertPro('proInsertForm');"  >등록</button>
