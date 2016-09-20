@@ -5,7 +5,7 @@
 
 <mapper namespace="Major">
 	<select id="getScoreView" parameterType="str" resultType="scoreView">
-		select * from score_view where use_id = #{id}
+		select * from score_view where use_id = #{id} and cb_grade is not null
 	</select>
 	
 	<insert id="submitInsert" parameterType="submit">
@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="getReqStuList" parameterType="str" resultType="IndivInfoManage">
-		select * from student_info where use_id = #{id}
+		select * from student_info where use_id = #{id} and ma_mk_no = 1
 	</select>
 	
 	<select id="getReqStuInfo" parameterType="str" resultType="submit">

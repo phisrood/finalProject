@@ -101,6 +101,7 @@
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
 		<!-- submitVO  -->
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
+		
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<!-- 수강내역VO  -->
 		<typeAlias alias="crsesREQVO" type="com.korea.dto.CrsesList_stu_ViewVO" />
@@ -117,6 +118,15 @@
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
+
+		<!-- applecture View -->
+		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
+		
+		<!-- 사이버캠퍼스 과제게시판 -->
+		<typeAlias alias="homeworkVO" type="com.korea.dto.HomeworkVO" />
+		<typeAlias alias="homeworkViewVO" type="com.korea.dto.Homework_ViewVO" />
+		<typeAlias alias="homeworkAllListViewVO" type="com.korea.dto.HomeworkAllList_ViewVO" />
+
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
 		<!-- 교수시간표View -->
@@ -125,6 +135,7 @@
 		<typeAlias alias="adbInsertVO" type="com.korea.dto.ADBInsertVO" />
 		<!-- Lecture_Chart_View -->
 		<typeAlias alias="chartVO" type="com.korea.dto.Lecture_Chart_ViewVO" />
+
 
 	</typeAliases>
 	
@@ -178,5 +189,8 @@
 		<mapper resource="sql/mapper/cyberCamLectureNoticeBBS.xml"/>
 		<!--  성적조회 -->
 		<mapper resource="sql/mapper/scoreInquiry.xml"/>
+		
+		<!--  과제게시판 -->
+		<mapper resource="sql/mapper/homework.xml"/>
 	</mappers>
 </configuration>

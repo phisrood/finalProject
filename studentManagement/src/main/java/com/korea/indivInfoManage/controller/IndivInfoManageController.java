@@ -186,15 +186,7 @@ public class IndivInfoManageController {
     		para.put("afNo",afNo+"");
     		
             indivInfoManageService.updateafno(para);
-           
-            
-            
-            
-            
-            
-            
-            
-            
+         
             
             
             return url;
@@ -285,7 +277,6 @@ public class IndivInfoManageController {
            writer.println("alert('등록의 실패하였습니다. 다시 시도해 주세요.');");
            writer.println("window.close();");
            writer.println("opener.location.reload();");
-           //z`writer.println("self.close();");
            writer.println("</script>");
            writer.flush();  
            

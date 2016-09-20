@@ -54,33 +54,35 @@ public interface MessageService {
 	//보낸쪽지조회
 	public MessageVO getMessageInfo(String message_no);
 	/**
-	 * 개인 정보 조회
+	 * 수신유저검색
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//수신사용자검색 다른쪽 VO 리턴
 	public List<MessageViewVO> getMessageUserSearch();
 	/**
 	 * @param messageVO 
-	 * 개인 정보 조회
+	 * 메시지 보내기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//쪽지발신
 	public void insertMessage(MessageVO messageVO);
 	/**
 	 * @param message_no 
-	 * 개인 정보 조회
+	 * 보낸메시지 삭제
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//받은쪽지삭제
 	public void updateSendMessageDel(int message_no, String delyn);
-	
-	//보낸쪽지삭제
+	/**
+	 * @param message_no 
+	 * 받은메시지 삭제
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
 	public void updateReciveMessageDel(int message_no, String delyn);
 	
 	

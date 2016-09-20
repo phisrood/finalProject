@@ -118,6 +118,7 @@ public class MajorREQServiceImpl implements MajorREQService{
 				case "D+" : score = (float)1.5; break;
 				case "D0" : score = (float)1.3; break;
 				case "D-" : score = (float)1.0; break;
+				
 			}
 			
 			semes = Integer.parseInt(scoreViewList.get(i).getLb_credit()); //학점가져와
