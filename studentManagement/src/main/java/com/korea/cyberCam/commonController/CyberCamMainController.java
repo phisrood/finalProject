@@ -53,12 +53,8 @@ public class CyberCamMainController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		if(user.getAuthority().equals("ROLE_STU")){
 			session.setAttribute("stu_lec_no", stu_lec_no);
-			System.out.println("학생");
-			System.out.println(session.getAttribute("stu_lec_no"));
 		}else if(user.getAuthority().equals("ROLE_PRO")){
 			session.setAttribute("pro_lec_no", pro_lec_no);
-			System.out.println("교수");
-			System.out.println(session.getAttribute("pro_lec_no"));
 		}
 		
 		if(pro_lec_no == null){
