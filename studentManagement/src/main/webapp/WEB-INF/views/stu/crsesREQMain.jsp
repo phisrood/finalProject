@@ -35,7 +35,8 @@
 	margin-left: 30%;
 }
 </style>
-
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	function classSyl(lec_no) {
 		window.open("/stu/classSYL?lec_no=" + lec_no, "newWindow");
@@ -80,8 +81,7 @@
 					success : function(data) {
 						var htmlCode = "";
 						//계산
-						$
-								.each(
+						$.each(
 										data,
 										function(index, value) {
 											max = value.lec_persons;
@@ -186,6 +186,7 @@
 											htmlCode += "</tr>";
 										});
 						$("#resultList").html(htmlCode);
+						$("#datatable").DataTable();
 					},
 					error : function() {
 						alert("에러");
@@ -195,28 +196,13 @@
 	$(function() {
 		crsesListRefresh();
 		crsesAllList();
+		
 	});
 </script>
 
-<div class="row" style="width: 100%; height: 900px;">
+<div class="row" style="width: 100%; height: 1200px;">
 
-	<div class="x_content">
-		<table id="searchTable">
-			<tbody>
-				<tr id="oneTr">
-					<th>조회범위</th>
-					<td colspan="2"><input type="radio" value=""> 해당학과
-						전공,교양 과목 <input type="radio" value=""> 전체전공과목 <input
-						type="radio" value=""> 전체교양과목</td>
-				</tr>
-				<tr id="twoTr">
-					<th>학수번호</th>
-					<td><input type="text"></td>
-					<td><button>조회</button>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+	
 	<!-- page content 1 -->
 		<h4>과목목록</h4>
 	<div class="x_content" style="height: 45%; overflow: auto;">
