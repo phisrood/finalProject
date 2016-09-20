@@ -53,181 +53,29 @@
 	                     	</tr>
 	                   	</thead>
 	                   	<tbody>
-	                     	<tr>
-	                     	  	<td>4</td>
-	                       		<td>과제입니다.</td>
-	                       		<td>a.jpg</td>
-	                       		<td>2016-08-08</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>3</td>
-	                       		<td>기말 고사 안내</td>
-	                       		<td>없음</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>2</td>
-	                       		<td>과제입니다.</td>
-	                       		<td>a.jpg</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>1</td>
-	                       		<td>중간 고사 안내</td>
-	                       		<td>없음</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td><br></td>
-	                       		<td></td>
-	                       		<td></td>
-	                       		<td></td>
-	                       		<td></td>
-	                     	</tr>
+	                   		<c:choose>
+	                   			<c:when test="${empty noticeList }">
+	                   				<tr colspan="5">
+	                   					<td>공지사항이 없습니다.</td>
+	                   				</tr>
+	                   			</c:when>
+	                   			<c:otherwise>
+			                     	<c:forEach var="notice" items="${noticeList }" varStatus="status">
+			                     		<tr>
+			                     			<td>${status.count }</td>
+			                     			<td>${notice.ln_title }</td>
+			                     			<td>${notice.af_aftername }</td>
+			                     			<td>${notice.ln_date }</td>
+			                     			<td>${notice.use_name }</td>
+			                     		</tr>
+			                     	</c:forEach>
+	                   			</c:otherwise>
+	                   		</c:choose>
 	                   	</tbody>
 	               	</table>
 	           	</div>
            	</div>
-           	<div class="col-md-12 col-sm-12 col-xs-12">
-	        	<div class="x_panel">
-	        		<div class="x_title">
-                    	<h2>자유 게시판</h2>
-                    	<div class="clearfix"></div>
-                  	</div>
-	                <table id="datatable" class="table table-striped jambo_table bulk_action">
-	                   	<thead>
-	                   		<tr>
-	                       		<th>No</th>
-	                       		<th>제목</th>
-	                       		<th>파일</th>
-	                       		<th>등록일</th>
-	                       		<th>작성자</th>
-	                     	</tr>
-	                   	</thead>
-	                   	<tbody>
-	                     	<tr>
-	                     	  	<td>4</td>
-	                       		<td>과제입니다.</td>
-	                       		<td>a.jpg</td>
-	                       		<td>2016-08-08</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>3</td>
-	                       		<td>기말 고사 안내</td>
-	                       		<td>없음</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>2</td>
-	                       		<td>과제입니다.</td>
-	                       		<td>a.jpg</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td>1</td>
-	                       		<td>중간 고사 안내</td>
-	                       		<td>없음</td>
-	                       		<td>2016-08-07</td>
-	                       		<td>이영만</td>
-	                     	</tr>
-	                     	<tr>
-	                       		<td><br></td>
-	                       		<td></td>
-	                       		<td></td>
-	                       		<td></td>
-	                       		<td></td>
-	                     	</tr>
-	                   	</tbody>
-	               	</table>
-	           	</div>
-	     	</div>
-	     	<div class="x_panel_big">
-	     		<div class="x_title">
-                   	<h2>출결 관리</h2>
-                   	<div class="clearfix"></div>
-                </div>
-                <table id="datatable" class="table table-striped jambo_table bulk_action">
-                   	<thead>
-                   		<tr>
-                       		<th>순번</th>
-                       		<th>이름</th>
-                       		<th>학과</th>
-                       		<th>학번</th>
-                       		<th>출석</th>
-                     	</tr>
-                   	</thead>
-                   	<tbody>
-                     	<tr>
-                     	  	<td>1</td>
-                       		<td>김양문</td>
-                       		<td>문헌 정보 학과</td>
-                       		<td>20100001</td>
-                       		<td>
-	                       		<select name="attendance">
-									<option value="미출석">미출석</option>
-									<option value="출석">출석</option>
-								</select>
-							</td>
-                     	</tr>
-                     	<tr>
-                       		<td>2</td>
-                       		<td>김현석</td>
-                       		<td>멀티미디어 공학과</td>
-                       		<td>20100002</td>
-                       		<td>
-	                       		<select name="attendance">
-									<option value="미출석">미출석</option>
-									<option value="출석">출석</option>
-								</select>
-							</td>
-                     	</tr>
-                     	<tr>
-                       		<td>3</td>
-                       		<td>박진성</td>
-                       		<td>컴퓨터 공학과</td>
-                       		<td>2010003</td>
-                       		<td>
-	                       		<select name="attendance">
-									<option value="미출석">미출석</option>
-									<option value="출석">출석</option>
-								</select>
-							</td>
-                     	</tr>
-                     	<tr>
-                       		<td>4</td>
-                       		<td>이건원</td>
-                       		<td>멀티미디어 공학과</td>
-                       		<td>2010004</td>
-                       		<td>
-	                       		<select name="attendance">
-									<option value="미출석">미출석</option>
-									<option value="출석">출석</option>
-								</select>
-							</td>
-                     	</tr>
-                     	<tr>
-                       		<td>5</td>
-                       		<td>이수정</td>
-                       		<td>정보 통신 공학과</td>
-                       		<td>2010005</td>
-                       		<td>
-	                       		<select name="attendance">
-									<option value="미출석">미출석</option>
-									<option value="출석">출석</option>
-								</select>
-							</td>
-                     	</tr>
-                   	</tbody>
-               	</table>
-	     	</div>
-    </div>
+	 </div>
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

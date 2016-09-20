@@ -98,7 +98,10 @@
 	</update>
 	
 	<delete id="deleteQnaBBS" parameterType="int">
+	
 	DELETE FROM QUESTION_BOARD where QB_NO = #{qb_no}
+	
+	
 	</delete>
 	
 	<select id="getCyberCamQnaBBSListPro" parameterType="int" resultType="question_BoardListVO">

@@ -18,7 +18,14 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('content');
+ }
+ 
+</script> 
 
 <script>
 $(function() {
@@ -66,7 +73,7 @@ $(function() {
 
 </script>
 
-
+<form action="/cyberCampus/pro/taskSubmitInsert" method="POST" enctype="multipart/form-data">
     <div class="row">
     	<!-- 과제 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -82,30 +89,27 @@ $(function() {
 				</div>
 				<div style="float: left; width: 100%;"><br></div>
 				<div style="float: left; width: 100%;">
-					과제시작일 &nbsp;: &nbsp;<input name="title" id="testDatepickerStart" type="text" size="100">
+					과제시작일 &nbsp;: &nbsp;<input name="testDatepickerStart" id="testDatepickerStart" type="text" size="100" >
 				</div>
+				
 				<div style="float: left; width: 100%;">
-					과제종료일 &nbsp;: &nbsp;<input name="title" id="testDatepickerEnd" type="text" size="100">
+					과제종료일 &nbsp;: &nbsp;<input name="testDatepickerEnd" id="testDatepickerEnd" type="text" size="100" >
 				</div>
 				<div style="float: left; width: 100%;"><br></div>
 				<div style="float: left; width: 100%;">
-					<div style="float: left; width: 6%;">첨부 파일 &nbsp;: &nbsp;</div>
+					<div style="float: left; width: 6%;">첨부 파일 : </div>
 					<div style="float: left; width: 94%;"><input name="file" type="file"></div>
 				</div>
-				<div style="float: left; width: 100%;"><br></div>
-				<div style="float: left; width: 100%;">
-					과제 내용 &nbsp;: &nbsp;
-				</div>
-				<div style="float: left; width: 100%;"><br></div>
-				<div>
-					<div class="x_panel_big"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-				</div>
-				<div style="float: left; width: 96%;"><br></div>
-				<div style="float: right; width: 4%;">
-					<button type="button" class="btn btn-default btn-sm">등 록</button>
+			
+			
+					과제 내용 <br>
+					<textarea id="content" name="content"></textarea>
+			
+				
+				<input type="submit" class="btn btn-default btn-sm" value="등록">
 				</div>
 			</div>
-    </div>
+   </form>
     <!-- Datatables -->
     <script src="/stu/js/jquery.dataTables.min.js"></script>
     <script src="/stu/js/dataTables.bootstrap.min.js"></script>

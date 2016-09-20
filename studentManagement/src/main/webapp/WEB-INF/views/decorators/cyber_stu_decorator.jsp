@@ -128,7 +128,7 @@
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/stu/taskSubmitList">과제조회</a></li>
+		                      <li><a href="/cyberCampus/stu/taskSubmitListStu">과제조회</a></li>
 		                    </ul>
 		                  </li>
                 </ul>
