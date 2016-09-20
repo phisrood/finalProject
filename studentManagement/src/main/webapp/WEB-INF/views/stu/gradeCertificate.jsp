@@ -65,7 +65,7 @@
 </table>
 
 <div class="grade-div">
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;" class="kor table table-striped jambo_table bulk_action">
 	<tr>
 		<th class="grade-th">교과목명</th>	
 		<th class="grade-th">성적</th>	
@@ -318,23 +318,23 @@
 </table>
 <table id="grade-cer-table" >
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
+		<th colspan="2" class="cer-grade-no" >&nbsp;제  2016-12345호</th>	
 	</tr>
 	<tr class="grade-cer-tr">
 		<th colspan="2" class="cer-title" ></th>	
 	</tr>
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-title" ><h4>위의 사실을 증명함</h4></th>	
+		<th colspan="2" class="cer-grade-title" >위의 사실을 증명함</th>	
 	</tr>
 	
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-title" ></th>	
+		<th colspan="2" class="cer-grade-title" ></th>	
 	</tr>
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-title" ><h4>2016년 09월 09일</h4></th>	
+		<th colspan="2" class="cer-grade-title" >2016년 09월 09일</th>	
 	</tr>
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-title" ></th>	
+		<th colspan="2" class="cer-grade-title" ></th>	
 	</tr>
 	<tr class="grade-cer-tr">
 		<th colspan="2" class="grade-ingam" ></th>	
