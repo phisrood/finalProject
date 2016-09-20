@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Homework">
+
+		<insert id="insertTask" parameterType="attachment">
+		
+		
+		INSERT INTO ATTACHMENT_FILE(
+		AF_NO,
+		AF_REALNAME,
+		AF_AFTERNAME,
+		AF_PATH)
+		
+		VALUES(
+		ATTACHMENT_FILE_SEQ.NEXTVAL,
+		#{af_realname},
+		#{af_aftername},
+		#{af_path})
+
+		
+		</insert>
+		
+		<select id="selectAfNo" resultType="int">
+		
+		SELECT ATTACHMENT_FILE_SEQ.CURRVAL 
+		FROM dual
+		
+		</select>
+		
+		<insert id="insertTaskFinal" parameterType="homeworkVO">
+		
+		INSERT INTO HOMEWORK(
+		HW_NO,
+		HW_PRO_USE_ID,
+		HW_LEC_NO,
+		HW_AF_NO,
+		HW_TITLE,
+		HW_CONTENT,
+		HW_DATE,
+		HW_STARTDATE,
+		HW_ENDDATE)
+		VALUES(
+			HOMEWORK_SEQ.NEXTVAL,
+			#{hw_pro_use_id},
+			#{hw_lec_no},
+			#{hw_af_no},
+			#{hw_title},
+			#{hw_content},
+			SYSDATE,
+			#{hw_startdate},
+			#{hw_enddate})
+
+		
+		
+		
+		</insert>
+		
+		<insert id="insertTaskFinalNotFile" parameterType="homeworkVO">
+		
+		INSERT INTO HOMEWORK(
+		HW_NO,
+		HW_PRO_USE_ID,
+		HW_LEC_NO,
+		HW_TITLE,
+		HW_CONTENT,
+		HW_DATE,
+		HW_STARTDATE,
+		HW_ENDDATE)
+		VALUES(
+		HOMEWORK_SEQ.NEXTVAL,
+			#{hw_pro_use_id},
+			#{hw_lec_no},
+			#{hw_title},
+			#{hw_content},
+			SYSDATE,
+			#{hw_startdate},
+			#{hw_enddate})
+		
+		
+		
+		</insert>
+		
+		<select id="selectTaskListPro" parameterType="str" resultType="homeworkAllListViewVO">
+		
+		SELECT *
+		
+		FROM HOMEWORKLISTALL_VIEW
+		WHERE HW_LEC_NO = #{pro_lec_no}
+		
+		
+		</select>
+		
+		<select id="selectTaskListStu" parameterType="int" resultType="homeworkAllListViewVO">
+		SELECT * 
+
+		
+		FROM HOMEWORKLISTALL_VIEW
+		WHERE HW_LEC_NO = #{pro_lec_no}
+		
+		
+		</select>
+		
+		<select id="selectTaskListProDetail" parameterType="str" resultType="homeworkAllListViewVO">
+		SELECT
+		
+		
+		AF_NO,
+		AF_REALNAME,
+		AF_AFTERNAME,
+		AF_PATH,
+		HW_NO,
+		HW_PRO_USE_ID,
+		HW_LEC_NO,
+		HW_AF_NO,
+		HW_TITLE,
+		HW_CONTENT
+	
+
+
+		
+		FROM HOMEWORKLISTALL_VIEW
+		WHERE HW_NO = #{hw_no}
+		
+		
+		</select>
+
+</mapper>

@@ -66,7 +66,6 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	public int insertStuInfo(Map<String, String> studentMap) {
 		studentMap.put("use_id", "0");
 		int resultUser = sqlSession.insert("member.insertUser",studentMap);
-		System.out.println(studentMap.get("use_id"));
 		int resultStudent = sqlSession.insert("member.insertStudent", studentMap);
 		int resultMajor = sqlSession.insert("member.insertMajorAssign", studentMap);
 		int reusltReg = sqlSession.insert("member.insertRegist",studentMap);
@@ -103,7 +102,6 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	public List<ProfessorViewVO> getProInfoList() {
 		List<ProfessorViewVO> proInfoList = 
 				(List<ProfessorViewVO>) sqlSession.selectList("Professor.getProInfoList");
-		System.out.println(proInfoList);
 		return proInfoList;
 		
 	}
@@ -175,6 +173,11 @@ public class MemberManageDAOImpl implements MemberManageDAO{
 	@Override
 	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id) {
 		return (ProfessorDetailViewVO) sqlSession.selectOne("Professor.professorDetail", pro_use_id);
+	}
+	
+	@Override
+	public void updateProInfoOnOff(String pro_use_id) {
+		sqlSession.update("Professor.updateProInfoOnOff", pro_use_id);
 	}
 
 	

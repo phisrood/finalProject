@@ -138,4 +138,10 @@
 		FROM LECTURE_TIME_VIEW
 		WHERE LEC_NO=#{lec_no}
 	</select>
+	
+	<select id="getProTime" parameterType="str" resultType="proTimeView">
+		SELECT *
+		FROM PRO_TT_NO
+		WHERE PRO_ID = #{pro_id}
+	</select>
 </mapper>

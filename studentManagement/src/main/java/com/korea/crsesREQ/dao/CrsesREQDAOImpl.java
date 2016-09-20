@@ -15,6 +15,7 @@ import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.Student_InquiryList_ViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -78,8 +79,7 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	 */
 	@Override
 	public void deleteCrsesREQ(Map<String,String> map) {
-		session.delete("CrsesREQ.deleteCrsesReq", map);
-		
+		session.delete("CrsesREQ.deleteCrsesReq", map);	
 	}
 	/**
 	 * @return 
@@ -155,6 +155,14 @@ public class CrsesREQDAOImpl implements CrsesREQDAO{
 	public List<Lecture_Time_ViewVO> getClassroomByLecNo(String lec_no) {
 		return session.selectList("CrsesREQ.getClassroomByLecNo", lec_no);
 		
+	}
+	@Override
+	public List<Lecture_Time_ViewVO> getClassroomByInquiryList(List<Student_InquiryList_ViewVO> inquiryList) {
+		List<String> lec_noList = new ArrayList<String>(); 			
+		for(Student_InquiryList_ViewVO stuVO : inquiryList){
+			lec_noList.add(stuVO.getLec_no());
+		}
+		return session.selectList("CrsesREQ.getClassroomByLecNoList", lec_noList);
 	}
 
 }

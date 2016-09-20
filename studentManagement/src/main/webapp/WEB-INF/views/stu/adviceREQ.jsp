@@ -22,11 +22,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">    
+    <link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">    
     
     
     <div class="row">
@@ -211,21 +211,3 @@
             </div>
 	</div>
     
-    
-    <!-- Datatables -->
-    <script src="/stu/js/click_cal.js"></script>
-    <script src="/stu/js/jquery.dataTables.min.js"></script>
-    <script src="/stu/js/dataTables.bootstrap.min.js"></script>
-    <script src="/stu/js/dataTables.buttons.min.js"></script>
-    <script src="/stu/js/buttons.bootstrap.min.js"></script>
-    <script src="/stu/js/buttons.flash.min.js"></script>
-    <script src="/stu/js/buttons.html5.min.js"></script>
-    <script src="/stu/js/buttons.print.min.js"></script>
-    <script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/stu/js/dataTables.keyTable.min.js"></script>
-    <script src="/stu/js/dataTables.responsive.min.js"></script>
-    <script src="/stu/js/responsive.bootstrap.js"></script>
-    <script src="/stu/js/datatables.scroller.min.js"></script>
-    <script src="/stu/js/jszip.min.js"></script>
-    <script src="/stu/js/pdfmake.min.js"></script>
-    <script src="/stu/js/vfs_fonts.js"></script>

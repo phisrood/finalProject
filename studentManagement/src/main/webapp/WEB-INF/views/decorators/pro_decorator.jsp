@@ -7,8 +7,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
-<%-- <%   String referer = request.getHeader("Referer"); //url 접근막기
-System.out.print(referer);
+<%   String referer = request.getHeader("Referer"); //url 접근막기
 	if(referer==null){
 		%>
 		<script>
@@ -16,7 +15,7 @@ System.out.print(referer);
 		</script>
 		<%
 	}
-%> --%>
+%> 
 <%--==============================================================
  * 교수 데코레이터
  * @author 

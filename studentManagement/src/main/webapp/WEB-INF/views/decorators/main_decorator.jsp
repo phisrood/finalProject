@@ -21,9 +21,17 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-
+<%   String referer = request.getHeader("Referer"); //url 접근막기
+	if(referer==null){
+		%>
+		<script>
+		location.href='/main.jsp';
+		</script>
+		<%
+	}
+%> 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -105,7 +113,7 @@
 		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="/stu/crsesInquiryList">수강신청조회</a></li>
 		                      
-		                      <li><a href="#">수업시간표</a></li>
+		                      <li><a href="/stu/timeTableList" target="_blank">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
@@ -122,7 +130,6 @@
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
-		                      <li><a href="/stu/adviceREQ">상담신청</a></li>
 		                      <li><a href="/stu/camAdvice">사이버상담실</a></li>
 		                      <li><a href="/stu/adviceBoard">상담게시판</a></li>
 		                    </ul>
@@ -198,9 +205,6 @@
         <!-- /footer content -->
       </div>
     </div>
-
-
-
   </body>
   	<!-- 부트스트랩js -->
     <script src="/bootstrap/js/fastclick.js"></script>

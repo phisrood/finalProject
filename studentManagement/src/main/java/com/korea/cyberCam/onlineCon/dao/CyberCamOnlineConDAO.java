@@ -62,7 +62,7 @@ public interface CyberCamOnlineConDAO {
 	 * @throws 
 	 */
 	//온라인콘텐츠 조회
-	public List<Online_ContentsVO> getOnlineConList(int lec_no);
+	public List<Online_ContentsVO> getOnlineConList(int lec_no,String loginUser);
 	
 	/**
 	 * @return 
@@ -131,7 +131,5 @@ public interface CyberCamOnlineConDAO {
 	public int getWatchTime(Map<String, String> params);
 	public void updateOnlineConAttendyn(Map<String, String> params);
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
-	public String getAttendList(Online_Con_ViewVO attend);
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
-	public List<Watch_StatusVO> getAttendList(int oc_no, String loginUser);
 }

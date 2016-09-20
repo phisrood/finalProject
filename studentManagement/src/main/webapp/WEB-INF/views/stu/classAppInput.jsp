@@ -68,7 +68,10 @@
 				checkedValue[i] = $("input[type=radio][name=check"+i+"]:checked").val();
 			}
 			
-			alert(checkedValue);
+			//선택된값 강의번호 저장
+			var lec_no = $("#lecSec option:selected").val();
+			
+			location.href="/stu/classAppSave?lec_no="+lec_no+"&&checkVal="+checkedValue+"";
 						
 		});
 	})
@@ -103,9 +106,16 @@
 
 		<div class="x_content">
 			<div class="x_content">
+				<select id="lecSec">
+					<c:forEach var="lecture" items="${lectureList }">
+						<option value="${lecture.cb_lec_no }">${lecture.lb_name }</option>
+					</c:forEach>
+				</select>
+				<label>※ 한과목씩 평가 후 저장을 눌러야 저장됩니다. ※</label>
+				<br>
 				<table id="datatable"
 					class="table table-striped jambo_table bulk_action">
-					<thead>
+					<thead> 
 						<tr id="btnGorup">
 							<th>구분</th>
 							<th style="width: 50%;">평가문항</th>

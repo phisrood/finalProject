@@ -69,9 +69,6 @@
 				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
 				                       		<a href="/cyberCampus/pro/studyBBSDetail?lr_no=${studyBBSList.lr_no}">${studyBBSList.lr_title }</a>
 				                    	</c:when>
-				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-				                       		<a href="/cyberCampus/emp/studyBBSDetail?lr_no=${studyBBSList.lr_no}">${studyBBSList.lr_title }</a>
-				                    	</c:when>
 				                    </c:choose>
                         			</td>
                         			<td>
@@ -88,9 +85,6 @@
 				                    	</c:when>
 				                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
 				                       		${studyBBSList.lr_pro_use_id }
-				                    	</c:when>
-				                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-				                    		${studyBBSList.lr_pro_use_id }
 				                    	</c:when>
 				                    </c:choose>
                         			</td>

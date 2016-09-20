@@ -40,6 +40,7 @@ import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.LectureVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_BreakeDownVO;
+import com.korea.dto.Pro_tt_noViewVO;
 import com.korea.dto.ProfessorDetailViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.memberManage.service.MemberManageService;
@@ -166,10 +167,8 @@ public class CrsesBookController {
 		try {
 			response.getWriter().print(json.writeValueAsString(result));
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -300,6 +299,19 @@ public class CrsesBookController {
 		model.addAttribute("lectureList", list);
 		
 		return url;
+	}
+	/**
+	 * 강의조회학생
+	 * 
+	 * @param String
+	 * @return
+	 * @throws
+	 */
+	@RequestMapping(value = "/pro/pro_timeCheck", method = RequestMethod.GET)
+	public void getProTime(String lec_no) {
+		List<Pro_tt_noViewVO> proTimeList = crsesBookService.getProTime(lec_no);
+		
+		
 	}
 	
 	

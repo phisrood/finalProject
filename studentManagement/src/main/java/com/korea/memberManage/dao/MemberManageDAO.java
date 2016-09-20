@@ -156,4 +156,5 @@ public interface MemberManageDAO {
 	public UsersVO insertUserProInfo(UsersVO usersVO);
 	
 	public ProfessorDetailViewVO getDetailProInfo(String pro_use_id);
+	public void updateProInfoOnOff(String pro_use_id);
 }

@@ -9,6 +9,7 @@
 		<typeAlias alias="int" type="java.lang.Integer" />
 		<typeAlias alias="str" type="java.lang.String" />
 		<typeAlias alias="map" type="java.util.Map" />
+		<typeAlias alias="list" type="java.util.List" />
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
@@ -117,6 +118,7 @@
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
+
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
 		
@@ -124,6 +126,16 @@
 		<typeAlias alias="homeworkVO" type="com.korea.dto.HomeworkVO" />
 		<typeAlias alias="homeworkViewVO" type="com.korea.dto.Homework_ViewVO" />
 		<typeAlias alias="homeworkAllListViewVO" type="com.korea.dto.HomeworkAllList_ViewVO" />
+
+		<!-- applecture View -->
+		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
+		<!-- 교수시간표View -->
+		<typeAlias alias="proTimeView" type="com.korea.dto.Pro_tt_noViewVO" />
+		<!-- applecture View -->
+		<typeAlias alias="adbInsertVO" type="com.korea.dto.ADBInsertVO" />
+		<!-- Lecture_Chart_View -->
+		<typeAlias alias="chartVO" type="com.korea.dto.Lecture_Chart_ViewVO" />
+
 
 	</typeAliases>
 	

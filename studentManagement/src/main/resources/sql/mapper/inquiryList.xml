@@ -16,7 +16,7 @@
 		SELECT 
 		*
 		FROM STUDENT_INQUIRYLIST_VIEW
-		WHERE stud_use_id = #{stud_use_id}
+		WHERE STUD_USE_ID = #{stud_use_id}
 	
 	
 	</select>

@@ -35,10 +35,12 @@ html, body {
 	
 	<div class="row">
 		<!-- 상담 게시글 작성 -->
+		<div class="x_panel_big" style="height:600px;" >
 		<div class="x_title">
-			<h2>&nbsp;&nbsp;상담 게시글 작성</h2>
+			<h2>상담 게시글 작성</h2>
 			<div class="clearfix"></div>
 		</div>
+		<div class="x_content" style="height: 80%">
 		<br>
 			<%-- <c:forEach var="adviceBoard" items="${adviceBoardVO }"> --%>
 			<input type="hidden" name="adb_no" value="${adb_no }"/>
@@ -55,8 +57,12 @@ html, body {
 			<br> <br>
 	
 			<div style="float: right; width: 85%;">
-				작성자명 : 
+				이름 : 
+				<input type="text" name="use_name" value="${use_name }" disabled="disabled"/>
+				
+				학번 : 
 				<input type="text" name="adb_stud_use_id" value="${adb_stud_use_id }" disabled="disabled"/>
+			
 			</div>
 			<br> <br>
 			<div style="float: right; width: 15%;">
@@ -116,6 +122,8 @@ html, body {
 			</c:if>
 		</div>
 		</form>
+	</div>
+	</div>
 	</div>
 
 <!-- Datatables -->

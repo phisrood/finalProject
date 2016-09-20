@@ -5,6 +5,17 @@
 
 <mapper namespace="scoreInquiry">
 	<select id="getScoreListNow" parameterType="map" resultType="scoreView">
-		select * from score_view where use_id = #{id} and lec_makesemester = #{semes} and lec_makeyear = #{year}
+		select * 
+		from score_view 
+		where use_id = #{id} 
+		and lec_makesemester = #{semes} 
+		and lec_makeyear = #{year}
+		AND CB_ACQUISTIONYN='N'
+	</select>
+	
+	<select id="getScoreListAll" parameterType="str" resultType="scoreView">
+		SELECT *
+		FROM SCORE_VIEW
+		WHERE CB_ACQUISTIONYN='Y'
 	</select>
 </mapper>

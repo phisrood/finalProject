@@ -26,7 +26,6 @@
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
-
 	$(function(){		
 		$.ajax({
 			url: "/emp/stuInfo",
@@ -43,7 +42,6 @@
 					htmlCode += "<td>"+value.dep_name+"</td>";
 					htmlCode += "<td>"+value.crc_cemester+"</td>";
 					htmlCode += "<td>"+value.stud_gender+"</td>";
-					htmlCode += "<td>"+value.crc_colleagestatus+"</td>";
 					htmlCode += "</tr>";
 				});
 				$("#stuTbody").html(htmlCode);
@@ -55,6 +53,23 @@
 		});
 			$('#datatable2').DataTable();
 	});
+	
+	function deletePro(form) {
+		var count = 0;
+		for (var i = 0; i < form.pro_use_id.length; i++) {
+			if (form.pro_use_id[i].checked == true) {
+				count++;
+			}
+		}
+		if (count == 0) {
+			alert("항목을 선택해 주세요.");
+		} else {
+			form.action = "/emp/proInfoOnOff";
+			form.method = "post";
+			form.submit();
+		}
+	}
+	
 </script>
 
 
@@ -105,7 +120,6 @@
 											<th>소속학과</th>
 											<th>이수학기</th>
 											<th>성별</th>
-											<th>학적상태</th>
 										</tr>
 									</thead>
 
@@ -122,7 +136,6 @@
 										id="fileup" />
 									<button type="button" class="btn btn-dark"
 										onclick="insertStu(this.form);">등록</button>
-								<button type="button" class="btn btn-dark">삭제</button>
 								</form>
 							</div>
 						</div>
@@ -130,12 +143,13 @@
 						<!-- tab_content2 -->
 						<div role="tabpanel" class="tab-pane fade" id="tab_content2"
 							aria-labelledby="profile-tab">
-
+							<form>
 							<div class="x_content">
 								<table id="datatable2"
 									class="table table-striped jambo_table bulk_action">
 									<thead>
 										<tr>
+											<th></th>
 											<th>NO</th>
 											<th>이름</th>
 											<th>교번</th>
@@ -145,11 +159,12 @@
 											<th>재직상태</th>
 										</tr>
 									</thead>
-									<c:forEach var="professor" items="${professorList}"
-										varStatus="sta">
+									
+									<c:forEach var="professor" items="${professorList}" varStatus="sta">
 
 										<tbody>
 											<tr>
+												<td><input type="checkbox" name="pro_use_id" value="${professor.pro_use_id}"/></td>
 												<td>${sta.count}</td>
 												<td><a href="/emp/proInfoDetail?pro_use_id=${professor.pro_use_id}">${professor.use_name}</a></td>
 												<td>${professor.pro_use_id}</td>
@@ -170,16 +185,17 @@
 									</c:forEach>
 									</tbody>
 								</table>
-
+							
 							</div>
+							
 							<div style="text-align: right;">
 								<a href="/emp/proInfoInsertForm">
 									<button type="button" class="btn btn-dark">등록</button>
 								</a>
-								<button type="button" class="btn btn-dark">삭제</button>
+								<button type="button" class="btn btn-dark" onclick="deletePro(this.form);">삭제</button>
 							</div>
+							</form>
 						</div>
-
 					</div>
 					<!-- x-content -->
 				</div>
