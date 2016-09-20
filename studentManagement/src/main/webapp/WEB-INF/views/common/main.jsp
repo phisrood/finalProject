@@ -97,7 +97,7 @@
                       	</c:when>
                       	<c:otherwise>
                         	<c:forEach var="noticeNewList" items="${noticeNewList }" varStatus="status">
-                        		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${noticeNewList.cn_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
+                        		<tr height="30">
                         			<td>${status.count }</td>
                         			<td>
                         			<c:choose>

@@ -21,15 +21,7 @@
  * </pre>
 ===============================================================--%>
 
-<!-- Data tables -->
-<link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
-<link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
-<link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
-<link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
 
-<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
-<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function() {
 		var table = $('#datatable').DataTable();
