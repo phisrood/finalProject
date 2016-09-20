@@ -133,10 +133,12 @@
 				: 담당 교수가 확인하지 않은 상태<br> 연기 : 담당 교수 일정상 기간을 미룬 상태
 			</div>
 			<form>
+					<div style="text-align:right;">
 					<div>
 					<button type="button" class="btn btn-dark" 
 						onclick='revoke(this.form);'>상담취소</button>
 					</div>
+				<table id="datatable" class="table table-striped table-bordered">
 				<table id="adviceTable" class="table table-striped table-bordered">
 					<thead>
 						<tr>

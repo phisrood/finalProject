@@ -158,9 +158,14 @@ public class MemberManageController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/emp/stuInfoOnOff", method = RequestMethod.GET)
-	public String stuInfoOnOff() {
-		String url = "";
+	@RequestMapping(value = "/emp/proInfoOnOff", method = RequestMethod.POST)
+	public String stuInfoOnOff(String[] pro_use_id) {
+		String url = "redirect:/emp/proInfoList";
+		
+		for (int i = 0; i < pro_use_id.length; i++) {
+			System.out.println(pro_use_id[i]);
+			memberManagerService.updateProInfoOnOff(pro_use_id[i]);
+		}
 
 		return url;
 	}
@@ -178,8 +183,7 @@ public class MemberManageController {
 	public String proInfoList(Model model) {
 		String url = "/emp/stuInfoList";
 
-		List<ProfessorViewVO> professorList = memberManagerService
-				.getProInfoList();
+		List<ProfessorViewVO> professorList = memberManagerService.getProInfoList();
 		model.addAttribute("professorList", professorList);
 
 		return url;
@@ -197,8 +201,7 @@ public class MemberManageController {
 	public String proInfoInsertForm(Model model) {
 		String url = "/emp/proInfoInsert";
 
-		List<DepartmentVO> departmentList = memberManagerService
-				.getDepartmentList();
+		List<DepartmentVO> departmentList = memberManagerService.getDepartmentList();
 
 		model.addAttribute("departmentList", departmentList);
 
@@ -215,8 +218,6 @@ public class MemberManageController {
 	@RequestMapping(value = "/emp/proInfoInsert", method = RequestMethod.POST)
 	public String proInfoInsert(UsersVO usersVO, ProfessorVO professorVO) {
 		String url = "redirect:/emp/stuInfoList";
-		
-		
 		
 		memberManagerService.insertProInfo(professorVO, usersVO);
 

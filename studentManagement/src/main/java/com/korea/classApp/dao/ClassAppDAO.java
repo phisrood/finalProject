@@ -7,6 +7,7 @@ import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
+import com.korea.dto.Lecture_Chart_ViewVO;
 
 /**
  * @Interface Name : ClassAppDAO.java
@@ -81,4 +82,8 @@ public interface ClassAppDAO {
 	public void updateLectureChart(Lecture_ChartVO chartVO);
 	//했는지안했는지 여부 업데이트
 	public void updateAppYN(Map<String, String> params);
+	//교수 과목 가져오기
+	public List<LectureViewVO> getLectureListPro(String id);
+	//교수 차트
+	public List<Lecture_Chart_ViewVO> getLectureChartPro(String lec_no);
 }
