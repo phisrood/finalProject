@@ -3,7 +3,10 @@ package com.korea.scoreInquiry.service;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.StudentViewVO;
+import com.korea.dto.Student_InfoViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -58,4 +61,20 @@ public interface ScoreInquiryService {
 	public void getScoreListPro();
 	//성적계산
 	public Map<String, Object> getScoreCalcu(List<ScoreViewVO> scoreList);
+	
+	/**
+	 * 강의정보가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<LectureViewVO> getLectureList(String use_id);
+	
+	/**
+	 * 수강생가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<StudentViewVO> getStudentList(String lec_no);
 }
