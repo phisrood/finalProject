@@ -18,4 +18,27 @@
 		FROM SCORE_VIEW
 		WHERE CB_ACQUISTIONYN='Y'
 	</select>
+	
+	<select id="getLecutreList" parameterType="map" resultType="lectureView">
+		SELECT *
+		FROM LECTURE_VIEW
+		WHERE LEC_LN_PRO_USE_ID = #{use_id}
+		AND LEC_MAKEYEAR = TO_CHAR(SYSDATE, 'yyyy')
+		AND LEC_MAKESEMESTER = #{semester}
+	</select>
+	
+	<select id="getCourseBreakDownList" parameterType="str" resultType="str">
+		SELECT CB_STUD_USE_ID
+		FROM COURSE_BREAKDOWN
+		WHERE CB_LEC_NO = #{lec_no}
+	</select>
+	
+	<select id="getStudentList" parameterType="list" resultType="studentView">
+		SELECT *
+		FROM STUDENT_VIEW
+		WHERE USE_ID IN
+		<foreach collection="cbList" item="cb" open="(" close=")">
+			#{cb}
+		</foreach>
+	</select>
 </mapper>

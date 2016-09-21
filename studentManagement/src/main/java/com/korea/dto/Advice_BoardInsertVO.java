@@ -24,6 +24,16 @@ public class Advice_BoardInsertVO {
 	private String adb_realName;
 	private String adb_afterName;
 	private String adb_path;
+	private String adb_pro_use_id;
+	
+
+	public String getAdb_pro_use_id() {
+		return adb_pro_use_id;
+	}
+
+	public void setAdb_pro_use_id(String adb_pro_use_id) {
+		this.adb_pro_use_id = adb_pro_use_id;
+	}
 
 	public int getAdb_af_no() {
 		return adb_af_no;

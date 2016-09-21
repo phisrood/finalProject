@@ -49,4 +49,8 @@
 	<select id="empInfo" parameterType="str" resultType="employeeInfo">
 		select * from employee_info where use_id = #{id}
 	</select>
+	
+	<select id="loginCheck" parameterType="map" resultType="users">
+		select * from users where use_id = #{id} and use_pwd = #{pwd} and enabled = '1'
+	</select>
 </mapper>

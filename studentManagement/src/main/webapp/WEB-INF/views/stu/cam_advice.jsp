@@ -47,29 +47,54 @@
 	height: 240px;
 }
 </style>
+
+	<script type="text/javascript">
+		function pagereload() {
+			location.reload();
+		}
+
+		function serverCam() {
+
+		}
+		function clientCam() {
+
+		}
+		function chat() {
+			window.open("http://192.168.206.102:8888", "채팅",
+					"width=450, height=450");
+		}
+		function noIng() {
+			alert("진행중일때만 입장하실 수 있습니다.");
+		}
+		function ing() {
+			var va = $("#funk").val();
+			$("#connectChannelId").val(va);
+		}
+	</script>
+
 <div class="row">
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
-	<div class="x_panel_big">
+	<div class="x_panel_big">  
 		<div class="x_title">
 		<h2>사이버 상담실</h2>
 			<div class="clearfix"></div>
-		</div>		
-				<table id="datatable"
-		class="table table-striped jambo_table bulk_action">
+		</div>		  
+		<button type="button" class="btn btn-dark" onClick="pagereload();">새로고침</button>
+				<table id="datatable" class="table table-striped jambo_table bulk_action">
 		<thead>
-			<tr>
+			<tr>  
 				<th>상담번호</th>
 				<th>방법</th>
 				<th>구분</th>
 				<th>교수명</th>
 				<th>일자</th>
-				<th>시</th>
+				<th>시간</th>
 				<th>상태</th>
 				<th>입장</th>
 			</tr>
 		</thead>
 		
-		<tbody>
+		<tbody id="fun">
 			<c:forEach var="adviceVO" items="${adviceList}">
 			<tr>
 				<td>${adviceVO.ad_no }</td>
@@ -79,14 +104,21 @@
 				<td>${adviceVO.ad_reqdate }</td>
 				<td>${adviceVO.ad_time } 시</td>
 				<td>${adviceVO.ad_stat }</td>
-				<td>
+				<td>  
 					<c:choose>
 					<c:when test="${adviceVO.ad_way eq '화상'}">
 						<c:if test="${auth eq 'ROLE_PRO' }">
 							<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
 						</c:if>
 						<c:if test="${auth eq 'ROLE_STU' }">
-							<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">입 장</button>
+							<c:choose>
+								<c:when test="${adviceVO.ad_stat eq '진행중'}">
+									<button type="button" class="btn btn-dark" id="funk" value="${adviceVO.ad_channel }"  onclick="ing();" data-toggle="modal" data-target="#myModal">입 장</button>		
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn btn-dark" onclick="noIng();">입 장</button>
+								</c:otherwise>
+							</c:choose>
 						</c:if>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '채팅'}">
@@ -97,21 +129,17 @@
 					</c:when>
 					</c:choose>
 				</td>
+				
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-					
-				
 				<div class="col-md-6"></div>
-
 		</div>
-
 	</div>
 	<div style="float: left; width: 2%;">
 		<br>
 	</div>
-
 
 
 <!-- Modal -->
@@ -132,7 +160,7 @@
         <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="connectChannelId">Channel Id</label>
-            <input class="form-control" type="text" id="connectChannelId" placeholder="상담실 코드" value="">
+            <input class="form-control" type="text" id="connectChannelId" placeholder="상담실 코드">
           </div>
           <button class="btn btn-default" id="connectChannel">
             <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Connect Channel
@@ -152,9 +180,9 @@
             </button>
           </div>
         </div>
-
-        <video class="remote-video center-block" id="calleeRemoteVideo"></video>
-        <video class="local-video pull-right" id="calleeLocalVideo"></video>
+		
+        <video class="remote-video center-block" id="calleeRemoteVideo" ></video>
+        <video class="local-video pull-right" id="calleeLocalVideo" muted></video>
 
       </div>
 
@@ -209,12 +237,12 @@
   </script>
   <script>
     'use strict';
-
+    
     var connectChannelIdInput = document.querySelector('#connectChannelId');
     var connectChannelButton = document.querySelector('#connectChannel');
     var receiveButton = document.querySelector('#receive');
-    var appCallee;
-
+    var appCallee;  
+    
     appCallee = new PlayRTC({
       projectKey: '0e3823c3-2e00-4ed9-a38d-ab113f07eab1',
       localMediaTarget: 'calleeLocalVideo',

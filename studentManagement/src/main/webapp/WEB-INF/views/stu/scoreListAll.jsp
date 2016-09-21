@@ -134,10 +134,7 @@
                   </div>
                   
                 </form>
-                  </div>
-                     
-       
-			
+        
 
 				<!-- x-content -->
 			</div>		

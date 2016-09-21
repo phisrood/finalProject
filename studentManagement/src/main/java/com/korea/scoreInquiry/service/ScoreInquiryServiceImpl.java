@@ -1,6 +1,7 @@
 package com.korea.scoreInquiry.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +10,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.StudentViewVO;
 import com.korea.scoreInquiry.dao.ScoreInquiryDAO;
 
 /**
@@ -249,5 +252,27 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 		params.put("avgScore", avgScore);
 		
 		return params;
+	}
+	@Override
+	public List<LectureViewVO> getLectureList(String use_id) {
+		Map<String, String> map = new HashMap<String, String>();
+		Calendar calendar = Calendar.getInstance();
+		int month = calendar.get(Calendar.MONTH)+1;
+		String semester="1";
+		if(month-7>0){
+			semester = "2";
+		}
+		map.put("semester", semester);
+		map.put("use_id", use_id);
+		return dao.getLectureList(map);
+	}
+	@Override
+	public List<StudentViewVO> getStudentList(String lec_no) {
+		List<String> cbList = dao.getCourseBreakDownList(lec_no);
+		if(cbList==null || cbList.size()==0){
+			return null;
+		}else{
+		return dao.getStudentList(cbList);
+		}
 	}
 }
