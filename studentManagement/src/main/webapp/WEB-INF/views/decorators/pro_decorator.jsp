@@ -120,9 +120,7 @@
 		                      <li><a href="/pro/crsesBookInsert">수강편람등록</a></li>
 		                      <li><a href="/pro/crsesBookList">수강편람조회</a></li>
 		                      <li><a href="/pro/lectureList">강의조회</a></li>
-		                      <li><a href="#">수강생성적조회</a></li>
-		                      <li><a href="#">학과생성적조회</a></li>
-		                      <li><a href="#">성적입력</a></li>
+		                      <li><a href="/pro/studentList">수강생조회</a></li>
 		                      
 		                    </ul>
 		                  </li>

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -104,12 +105,11 @@ public class AdviceController {
 	 */
 	// 상담신청
 	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.POST)
-	public String adviceREQ(Advice_BoardInsertVO adviceVO, HttpSession session) {
+	public String adviceREQ(AdviceVO adviceVO, HttpSession session) {
 		String url = "redirect:adviceRequestList";
-
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		adviceVO.setAdb_stud_use_id(user.getUse_id());
+		adviceVO.setAd_stud_use_id(user.getUse_id());
 
 		adviceService.insertAdviceREQ(adviceVO);
 
@@ -484,6 +484,17 @@ public class AdviceController {
 		model.addAttribute("adviceList", adviceList);
 		return url;
 	}
+	@RequestMapping(value = "/stu/camAdviceAjax", method = RequestMethod.GET)
+	@ResponseBody
+	public List<AdviceVO> camAdviceStuAjax(Model model,HttpSession session) {
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String loginUser = user.getAuthority();
+		
+		List<AdviceVO> adviceList = adviceService.getMyAdviceReqeustList(user.getUse_id());
+		
+		return adviceList;
+	}
 	
 	// //////////////////////////////화상상담추가//////////////////////////////
 
@@ -515,10 +526,13 @@ public class AdviceController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/stu/chatAdvice", method = RequestMethod.GET)
-	public String chatAdvice() {
-		String url = "/stu/chat_advice";
+	@RequestMapping(value = "/pro/sendChannelId", method = RequestMethod.GET)
+	public void updateChannelId(String channelId,String ad_no,String flag) {
+		if(flag.equals("open")){
+			adviceService.updateChannelId(channelId,ad_no);
+		}else if(flag.equals("close")){
+			adviceService.updateChannelId(ad_no);
+		}
 		
-		return url;
 	}
 }

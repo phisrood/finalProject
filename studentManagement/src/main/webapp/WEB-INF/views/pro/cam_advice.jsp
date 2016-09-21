@@ -32,7 +32,7 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
 	rel="stylesheet">
 	
-	<script type="text/javascript">
+<script type="text/javascript">
 	function serverCam() {
 		
 	}
@@ -40,7 +40,7 @@
 	
 	}
 	function chat() {
-		window.open("http://192.168.206.124:8888", "채팅",
+		window.open("http://192.168.206.102:8888", "채팅",
 				"width=450, height=450");
 	}
 </script>
@@ -89,7 +89,7 @@
 					<c:choose>
 					<c:when test="${adviceVO.ad_way eq '화상'}">
 						<c:if test="${auth eq 'ROLE_PRO' }">
-							<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">입 장</button>
+							<button type="button" class="btn btn-dark" onclick='ad_no("${adviceVO.ad_no }")' data-toggle="modal" data-target="#myModal">입 장</button>
 						</c:if>
 						<c:if test="${auth eq 'ROLE_STU' }">
 							<button type="button" class="btn btn-dark" onClick="clientCam();">입 장</button>
@@ -114,7 +114,6 @@
 
 </div>
 
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
@@ -137,7 +136,7 @@
         <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="createChannelId">Channel Id</label>
-            <input class="form-control" type="text" id="createChannelId" placeholder="상담실 코드" value="" readonly>
+            <input class="form-control" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
           </div>
           <button class="btn btn-default" id="createChannel">
             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 상담실 생성
@@ -153,10 +152,9 @@
             <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
           </button>
         </form>
-        
 
-        <video class="remote-video center-block" id="callerRemoteVideo"></video>
-        <video class="local-video pull-right" id="callerLocalVideo"></video>
+        <video class="remote-video center-block" id="callerRemoteVideo" ></video>
+        <video class="local-video pull-right" id="callerLocalVideo" muted></video>
 
       </div>
 
@@ -172,14 +170,32 @@
   <script src="//www.playrtc.com/sdk/js/playrtc.js"></script>
   <script>
     'use strict';
-
+	
     var createChannelButton = document.querySelector('#createChannel');
     var createChannelIdInput = document.querySelector('#createChannelId');
     var sendButton = document.querySelector('#send');
     var selectFile = document.querySelector('#seclectFile');
     var file = null;
     var appCaller;
-
+	var ad_no;
+	function ad_no(ad){
+		ad_no = ad;
+	}
+	function modalClose(){
+	      $.ajax({
+	    	  url : "/pro/sendChannelId",
+	    	  method : "get",
+	    	  data : { 		  
+	    	  "channelId":"noId",
+	    	  "ad_no" :ad_no,
+	    	  "flag" : "close"
+	    	  },
+	    	  success : function(){
+	    	  
+	    	  }
+	      });
+		close();
+	}
     appCaller = new PlayRTC({
       projectKey: '0e3823c3-2e00-4ed9-a38d-ab113f07eab1',
       localMediaTarget: 'callerLocalVideo',
@@ -188,6 +204,19 @@
 
     appCaller.on('connectChannel', function (channelId) {
       createChannelIdInput.value = channelId;
+     
+      $.ajax({
+    	  url : "/pro/sendChannelId",
+    	  method : "get",
+    	  data : { 		  
+    	  "channelId":channelId,
+    	  "ad_no" :ad_no,
+    	  "flag" : "open"
+    	  },
+    	  success : function(){
+    
+    	  }
+      });
     });
 
     createChannelButton.addEventListener('click', function (event) {
@@ -253,7 +282,7 @@
   </script>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">종료</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="modalClose();">종료</button>
 			</div>
 		</div>
 	</div>

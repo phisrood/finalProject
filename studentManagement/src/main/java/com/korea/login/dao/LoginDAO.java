@@ -69,4 +69,6 @@ public interface LoginDAO {
 
 	//행정 정보 가져오기
 	public School_PersonInfoViewVO getEmpdivInfo(String id);
+
+	public UsersVO getLoginCheck(Map<String, String> checkMap);
 }

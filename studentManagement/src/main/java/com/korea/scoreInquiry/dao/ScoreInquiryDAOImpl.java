@@ -7,7 +7,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.StudentViewVO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -73,6 +75,18 @@ public class ScoreInquiryDAOImpl implements ScoreInquiryDAO{
 	public void getScoreListPro() {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public List<LectureViewVO> getLectureList(Map<String,String> map) {
+		return session.selectList("scoreInquiry.getLecutreList", map);
+	}
+	@Override
+	public List<StudentViewVO> getStudentList(List<String> cbList) {
+		return session.selectList("scoreInquiry.getStudentList", cbList);
+	}
+	@Override
+	public List<String> getCourseBreakDownList(String lec_no) {
+		return session.selectList("scoreInquiry.getCourseBreakDownList", lec_no);
 	}
 
 }
