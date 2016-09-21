@@ -45,25 +45,28 @@
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;:
-							${homeworkAllList_ViewVO.hw_title}
+							${homedetail_ViewVo.hw_title }
 						</td>
 					</tr>
 				
 					<tr>
 						<td>
+								
 							<c:choose>
-							<c:when test="${empty homeworkAllList_ViewVO.af_aftername}">
-							<div style="float: left; width: 94%;">첨부 파일이 없습니다.</div>
+							<c:when test="${homedetail_ViewVo.hw_af_no eq '0'}">
+							<div style="float: left; width: 94%;"> 첨부파일이 없습니다. </div>
 							</c:when>
 							<c:otherwise>
-							 <div style="float: left; width: 94%;">첨부파일 : <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${homeworkAllList_ViewVO.af_no}">${homeworkAllList_ViewVO.af_aftername}</a></div> 
+							<div style="float: left; width: 94%;">첨부파일 : <a href="/cyberCampus/pro/submitFileDown?af_no=${homedetail_ViewVo.af_no}">${homedetail_ViewVo.af_aftername}</a></div>
 							</c:otherwise>
+							
+							
 							</c:choose>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<div class="x_panel_big">${homeworkAllList_ViewVO.hw_content}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+							<div class="x_panel_big">${homedetail_ViewVo.hw_content }<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
 							
 						
 						</td>
@@ -73,10 +76,14 @@
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 98%;">
-				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-default btn-sm">수정</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-default btn-sm">삭제</button></a> 
+				<a href="/cyberCampus/pro/taskSubmitListPro"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				<a href="/cyberCampus/pro/taskSubmitListMove"><button type="button" class="btn btn-default btn-sm">글쓰기</button></a>
+				
+<%-- 			<a href="/cyberCampus/pro/taskSubmitListProUpdate?hw_no=${homedetail_ViewVo.hw_no}"><button type="button" class="btn btn-default btn-sm">수정</button></a>
+				<a href="/cyberCampus/pro/taskSubmitListProDelete?hw_no=${homedetail_ViewVo.hw_no}"><button type="button" class="btn btn-default btn-sm">삭제</button></a> --%>
+				
+				<a href="/cyberCampus/pro/taskSubmitListProUpdate?hw_no=${homedetail_ViewVo.hw_no}"><button type="button" class="btn btn-default btn-sm">수정</button></a>
+				<a href="/cyberCampus/pro/taskSubmitListProDelete?hw_no=${homedetail_ViewVo.hw_no}"><button type="button" class="btn btn-default btn-sm">삭제</button></a> 
 			</div>
 			
     </div>

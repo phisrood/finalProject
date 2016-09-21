@@ -18,6 +18,7 @@ public class Homework_SubmitVO {
 	private int hs_hw_no;
 	private String hs_stud_use_id;
 	private int hs_af_no;
+	
 	public int getHs_no() {
 		return hs_no;
 	}

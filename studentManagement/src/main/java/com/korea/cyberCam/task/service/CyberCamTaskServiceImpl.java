@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.korea.cyberCam.task.dao.CyberCamTaskDAO;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Homedetail_ViewVo;
 import com.korea.dto.HomeworkAllList_ViewVO;
 import com.korea.dto.HomeworkVO;
+import com.korea.dto.Homework_SubmitVO;
 import com.korea.dto.Homework_ViewVO;
 
 /**
@@ -102,9 +104,47 @@ public class CyberCamTaskServiceImpl implements CyberCamTaskService{
 		return cyberCamTaskDAO.getTaskListStu(pro_lec_no);
 	}
 	@Override
-	public HomeworkAllList_ViewVO getTaskListProDetail(String hw_no) {
+	public Homedetail_ViewVo getTaskListProDetail(String hw_no) {
 		
 		return cyberCamTaskDAO.getTaskListProDetail(hw_no);
+	}
+	@Override
+	public List<Homework_SubmitVO> getSubmitStuList(int hw_no) {
+		
+		return cyberCamTaskDAO.getSubmitStuList(hw_no);
+	}
+	@Override
+	public int insertStuSubmit(Attachment_FileVO attachment_FileVO) {
+		
+		
+		cyberCamTaskDAO.insertStuSubmit(attachment_FileVO);
+		return cyberCamTaskDAO.selectTaskAf_no();
+	}
+	@Override
+	public void insertSubmitListTask(Homework_SubmitVO homework_SubmitVO) {
+		
+		cyberCamTaskDAO.insertSubmitListTask(homework_SubmitVO);
+		
+	}
+	@Override
+	public Attachment_FileVO getFileDownload(int af_no) {
+		
+		return cyberCamTaskDAO.selectFileDownload(af_no);
+	}
+	@Override
+	public void updateStuSubmit(Attachment_FileVO attachment_FileVO) {
+		
+		cyberCamTaskDAO.updateStuSubmit(attachment_FileVO);
+	}
+	@Override
+	public void updatetaskUpdate(HomeworkVO homeworkVO) {
+		cyberCamTaskDAO.updatetaskUpdate(homeworkVO);
+		
+	}
+	@Override
+	public void deletetaskList(String hw_no) {
+		cyberCamTaskDAO.deletetaskList(hw_no);
+		
 	}
 
 }

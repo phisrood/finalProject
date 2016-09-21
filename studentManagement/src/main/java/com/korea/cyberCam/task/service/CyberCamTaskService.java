@@ -3,8 +3,10 @@ package com.korea.cyberCam.task.service;
 import java.util.List;
 
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Homedetail_ViewVo;
 import com.korea.dto.HomeworkAllList_ViewVO;
 import com.korea.dto.HomeworkVO;
+import com.korea.dto.Homework_SubmitVO;
 import com.korea.dto.Homework_ViewVO;
 
 
@@ -75,6 +77,28 @@ public interface CyberCamTaskService {
 	public List<HomeworkAllList_ViewVO> getTaskListStu(int pro_lec_no);
 	
 	//교수 과제게시판 상세페이지
-	public HomeworkAllList_ViewVO getTaskListProDetail(String hw_no);
+	public Homedetail_ViewVo getTaskListProDetail(String hw_no);
+	
+	
+	public List<Homework_SubmitVO> getSubmitStuList(int hw_no);
+	
+	//학생과제 제출 첨부파일 저장
+	public int insertStuSubmit(Attachment_FileVO attachment_FileVO);
+	
+	
+	public void insertSubmitListTask(Homework_SubmitVO homework_SubmitVO);
+	
+	//제출 파일 파일다운로드
+	public Attachment_FileVO getFileDownload(int af_no);
+	
+	//과제 수정
+	public void updateStuSubmit(Attachment_FileVO attachment_FileVO);
+	
+	
+	//과제게시글 수정
+	public void updatetaskUpdate(HomeworkVO homeworkVO);
+	
+	//과제게시글 삭제
+	public void deletetaskList(String hw_no);
 	
 }
