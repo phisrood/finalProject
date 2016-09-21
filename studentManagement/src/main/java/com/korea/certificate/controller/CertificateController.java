@@ -62,10 +62,10 @@ public class CertificateController {
 		
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String id = user.getUse_id();
+		System.out.println(id);
 		Student_InfoViewVO student_InfoViewVO =  certificateService.getStuAttendInfo(id);
 		model.addAttribute("Student_InfoViewVO", student_InfoViewVO);
 		return url;
-		/*certificateService.getStuAttendInfo(user.getUse_id());*/
 	}
 	/**
 	 * 교수가 받은 상담신청조회

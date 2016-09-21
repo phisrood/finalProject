@@ -1,4 +1,7 @@
 package com.korea.certificate.service;
+
+import com.korea.dto.Student_InfoViewVO;
+
 /**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
@@ -26,10 +29,12 @@ public interface CertificateService {
 	public void getStuInfo();
 	
 	/**
+	 * @return 
+	 * @param id 
 	 * 학생 재학증명서 정보
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	public void getStuAttendInfo();
+	public Student_InfoViewVO getStuAttendInfo(String id);
 }
