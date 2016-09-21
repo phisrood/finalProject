@@ -15,9 +15,13 @@ package com.korea.scoreInquiry.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +30,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.StudentViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.scoreInquiry.service.ScoreInquiryService;
 
@@ -44,9 +51,14 @@ public class ScoreInquiryController {
 	 */
 	//전체성적조회
 	@RequestMapping(value="/stu/scoreListAll", method=RequestMethod.GET)
-	public String scoreListAll(){
+	public String scoreListAll(HttpSession session,Model model){
 		String url="/stu/scoreListAll";
-		
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		Map<Object,Object> scoreMap = service.getScoreListAll(user.getUse_id());
+		model.addAttribute("scoreMap", scoreMap);
+		System.out.println(scoreMap.get("totalScore"));
+		System.out.println(scoreMap.get("totalCredit"));
+		System.out.println((scoreMap.get(((ArrayList)scoreMap.get("scoreList")).get(0))));
 		return url;
 	}
 	/**
@@ -59,7 +71,6 @@ public class ScoreInquiryController {
 	@RequestMapping(value="/stu/scoreListNow", method=RequestMethod.GET)
 	public String scoreListNow(HttpSession session, Model model){
 		String url="/stu/scoreListNow";
-		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String id = loginUser.getUse_id();
 		
@@ -92,10 +103,35 @@ public class ScoreInquiryController {
 	 * @throws 
 	 */
 	//수강생 성적조회
-	@RequestMapping(value="/pro/scoreListPro", method=RequestMethod.GET)
-	public String scoreListPro(){
-		String url="";
+	@RequestMapping(value="/pro/studentList", method=RequestMethod.GET)
+	public String scoreListPro(HttpSession session, Model model){
+		String url="/pro/studentList";
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		List<LectureViewVO> lectureList = service.getLectureList(user.getUse_id());
 		
+		model.addAttribute("lectureList", lectureList);
 		return url;
+	}
+	/**
+	 * 수강생 조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//수강생 성적조회
+	@RequestMapping(value="/pro/getStudent", method=RequestMethod.GET)
+	public void getStudent(HttpServletResponse response,String lec_no){
+		List<StudentViewVO> studentList = service.getStudentList(lec_no);
+		if(studentList!=null && studentList.size()>0){
+		Map<String, List<StudentViewVO>> map = new HashMap<String, List<StudentViewVO>>();
+		map.put("studentList", studentList);
+		ObjectMapper jsonObject = new ObjectMapper();
+		try {
+			response.getWriter().print(jsonObject);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	}
 }

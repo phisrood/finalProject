@@ -8,7 +8,7 @@
 	<select id="getStudyBBSAllList" parameterType="str" resultType="learningRoomViewVO">
 		SELECT	*
 		FROM 	LEARNINGROOM_VIEW
-		WHERE 	LR_LEC_NO = #{lr_lec_no}
+		WHERE 	LR_LEC_NO = #{pro_lec_no}
 		ORDER BY LR_NO DESC
 	</select>
 	
@@ -71,5 +71,6 @@
 		FROM 	LEARNING_ROOM
 		WHERE	LR_NO = #{lr_no}
 	</delete>
+
 
 </mapper>

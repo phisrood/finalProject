@@ -21,15 +21,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-	
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('lr_content');
+ }
+ 
+</script> 	
 <script>
 	function updateStudyBBS(updateStudyBBSForm) {
 		if (document.updateStudyBBSForm.lr_title.value == "") {
 			alert('제목을 입력해주세요');
 			document.updateStudyBBSForm.lr_title.focus();
-		} else if (document.updateStudyBBSForm.lr_content.value == "") {
-			alert('내용을 입력해주세요');
-			document.updateStudyBBSForm.lr_content.focus();
 		} else if(document.updateStudyBBSForm.file.value == "") {
 			alert('첨부파일을 넣어주세요');
 			document.updateStudyBBSForm.file.focus();

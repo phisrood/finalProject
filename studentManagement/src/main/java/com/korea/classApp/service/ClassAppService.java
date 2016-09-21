@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_Chart_ViewVO;
 
 /**
  * @Class Name : AdviceController.java
@@ -72,4 +74,8 @@ public interface ClassAppService {
 	public void insertAppProSave();
 	//과목가져오기
 	public List<AppLecture_ViewVO> getLectureList(String id);
+	//교수 수업평가 리스트 가져오기
+	public List<LectureViewVO> getLectureListPro(String id);
+	
+	public List<Lecture_Chart_ViewVO> getLectureChart(String lec_no);
 }

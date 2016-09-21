@@ -21,14 +21,19 @@
  * </pre>
 ===============================================================--%>
 
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('cn_content');
+ }
+ 
+</script> 
 <script>
 function insertNotice(insertNoticeForm) {
 	if(document.insertNoticeForm.cn_title.value==""){
 		alert('제목을 입력해주세요');
 		document.insertNoticeForm.cn_title.focus();
-	}else if(document.insertNoticeForm.cn_content.value==""){
-		alert('내용을 입력해주세요');
-		document.insertNoticeForm.cn_content.focus();
 	}else{
 		document.insertNoticeForm.method="post";
 		document.insertNoticeForm.action="/emp/noticeInsert";

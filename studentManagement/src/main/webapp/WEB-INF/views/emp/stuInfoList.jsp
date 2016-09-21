@@ -42,7 +42,6 @@
 					htmlCode += "<td>"+value.dep_name+"</td>";
 					htmlCode += "<td>"+value.crc_cemester+"</td>";
 					htmlCode += "<td>"+value.stud_gender+"</td>";
-					htmlCode += "<td>"+value.crc_colleagestatus+"</td>";
 					htmlCode += "</tr>";
 				});
 				$("#stuTbody").html(htmlCode);
@@ -121,7 +120,6 @@
 											<th>소속학과</th>
 											<th>이수학기</th>
 											<th>성별</th>
-											<th>학적상태</th>
 										</tr>
 									</thead>
 
@@ -138,7 +136,6 @@
 										id="fileup" />
 									<button type="button" class="btn btn-dark"
 										onclick="insertStu(this.form);">등록</button>
-								<button type="button" class="btn btn-dark">삭제</button>
 								</form>
 							</div>
 						</div>

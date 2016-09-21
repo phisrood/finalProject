@@ -72,7 +72,8 @@ public class MajorREQController {
 	public String minorREQModel(Model model, HttpSession session){
 		String url="/stu/minorModel";
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
-		String id = loginUser.getUse_id();	
+		String id = loginUser.getUse_id();
+		/*String semester = departmentManageService.getSemester(id);*/
 		List<DepartmentVO> departmentList = departmentManageService.getDepartmentInfoList();
 		Map<String, Object> result = majorREQService.getScore(id);
 		float score = (float) result.get("score");

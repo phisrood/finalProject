@@ -97,152 +97,44 @@
                           <th>점수</th>
                           <th>등급</th>
                           <th>평점</th>
-                          <th>취득여부</th>
-                          <th>학점포기</th>
-                          <th>재수강</th>
                         </tr>
                       </thead>
 
 
                       <tbody>
+                      	<c:forEach var="score" items="${scoreMap.scoreList}">
                         <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>교양</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>전공</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>교양</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td>2012</td>
-                          <td>1</td>
-                          <td>21005</td>
-                          <td>프로그래밍</td>
-                          <td>교양</td>
-                          <td>3</td>
-                          <td>89</td>
-                          <td>B+</td>
-                          <td>3.5</td>
-                          <td>취득</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                          <td>${score.lec_makeyear }</td>
+                          <td>${score.lec_makesemester}</td>
+                          <td>${score.lec_lb_no }</td>
+                          <td>${score.lb_name }</td>
+                          <td>${score.lb_completekind }</td>
+                          <td>${score.lb_credit }</td>
+                          <td>${score.cb_score }</td>
+                          <td>${score.cb_grade }</td>
+                          <td>${scoreMap[score]}</td>
+                       </tr>
+                        </c:forEach>
                       </tbody>
                     </table>
 
 	<form class="form-inline">
                   <div class="form-group">
                     <label>총 신청학점</label>
-                    <input type="text" class="form-control" placeholder=" ">
+                    <input type="text" class="form-control" value="${scoreMap.totalCredit }" readonly="readonly">
                   </div>
                   <div class="form-group">
                     <label>총 점수</label>
-                    <input type="text"  class="form-control" placeholder=" ">
+                    <input type="text"  class="form-control" value="${scoreMap.totalScore }" readonly="readonly">
                   </div>
-                  <div class="form-group">
-                    <label>총 취득학점</label>
-                    <input type="text"  class="form-control" placeholder=" ">
-                  </div>
+             
                   <div class="form-group">
                     <label>총 평점평균</label>
-                    <input type="text" class="form-control" placeholder=" ">
+                    <input type="text" class="form-control" value="${scoreMap.totalScore/scoreMap.totalCredit}" readonly="readonly">
                   </div>
                   
                 </form>
-                  </div>
-                     
-       
-			
+        
 
 				<!-- x-content -->
 			</div>		

@@ -24,6 +24,13 @@
 ===============================================================--%>
 
 <script src="/common/js/notice.js"></script>
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('cn_content');
+ }
+ 
 <script>
 	function updateNotice(updateNoticeForm) {
 		if (document.updateNoticeForm.cn_title.value == "") {

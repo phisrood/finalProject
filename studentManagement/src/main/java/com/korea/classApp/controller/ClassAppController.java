@@ -1,7 +1,10 @@
 package com.korea.classApp.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,8 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.classApp.service.ClassAppService;
-import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_Chart_ViewVO;
 import com.korea.dto.UsersVO;
 /**
  * @Class Name : ClassAppController.java
@@ -160,10 +164,48 @@ public class ClassAppController {
 	 * @return 
 	 * @throws 
 	 */
+	//수업평가 차트 ajax
+	@RequestMapping(value="/pro/classAppChart", method=RequestMethod.GET)
+	public void classAppChart(HttpServletResponse response, HttpSession session,
+							@RequestParam(value="lec_no")String lec_no){
+		
+		List<Lecture_Chart_ViewVO> appList = classAppService.getLectureChart(lec_no);
+		
+		List<Map<String, Object>> chartList = new ArrayList<Map<String,Object>>();
+		int i = 1;
+		for(Lecture_Chart_ViewVO chartVO : appList){
+			Map<String, Object> chartMap = new HashMap<String, Object>();
+			chartMap.put("list", i+"번문항");
+			chartMap.put("score", chartVO.getLc_questionscore());
+			chartList.add(chartMap);
+			i++;
+		}
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;"); 
+			String str = jsonObject.writeValueAsString(chartList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
+	
 	//수업평가 통계
 	@RequestMapping(value="/pro/classAppStat", method=RequestMethod.GET)
-	public String classAppProStat(){
+	public String classAppProStat(HttpSession session, Model model){
 		String url="/pro/classAppStat";
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String id = loginUser.getUse_id();
+		
+		List<LectureViewVO> lectureList = classAppService.getLectureListPro(id);
+		
+		model.addAttribute("lectureList", lectureList);
 		
 		return url;
 	}
@@ -178,12 +220,7 @@ public class ClassAppController {
 	public String classAppInput(HttpSession session, Model model){
 		String url="/stu/classAppInput";
 		
-		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
-		String id = loginUser.getUse_id();
-		
-		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
-		
-		model.addAttribute("lectureList", lectureList);
+
 		
 		return url;
 	}

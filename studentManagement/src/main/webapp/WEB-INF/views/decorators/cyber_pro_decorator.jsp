@@ -118,7 +118,7 @@
 		                      <li><a href="/cyberCampus/pro/qnaBBSList">강의Q&A</a></li>
 		                      <li><a href="/cyberCampus/pro/freeBBSList">자유게시판</a></li>
 		                      <li><a href="/cyberCampus/pro/studyBBSList">학습자료실</a></li>
-		                      <li><a href="/cyberCampus/pro/taskSubmitList">과제게시판</a></li>
+		                     
 		                    </ul>
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
@@ -129,7 +129,9 @@
 		                  </li>
 		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/taskSubmitList">과제등록</a></li>	                 
+		                      <li><a href="/cyberCampus/pro/taskSubmitListPro">과제관리</a></li>   
+		                      
+		                                   
 		                    </ul>
 		                  </li>
                 </ul>

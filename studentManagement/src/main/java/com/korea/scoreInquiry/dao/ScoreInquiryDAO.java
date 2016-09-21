@@ -3,7 +3,11 @@ package com.korea.scoreInquiry.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.korea.dto.Course_BreakDownVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
+import com.korea.dto.StudentViewVO;
+import com.korea.dto.Student_InfoViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -23,13 +27,15 @@ import com.korea.dto.ScoreViewVO;
  */
 public interface ScoreInquiryDAO {
 	/**
+	 * @return 
+	 * @param id 
 	 * 개인 정보 조회
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//전체 성적 조회
-	public void getScoreListAll();
+	public List<ScoreViewVO> getScoreListAll(String id);
 	/**
 	 * @param params 
 	 * 개인 정보 조회
@@ -55,4 +61,28 @@ public interface ScoreInquiryDAO {
 	 */
 	//수강생 성적조회
 	public void getScoreListPro();
+	
+	/**
+	 * 강의목록 가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<LectureViewVO> getLectureList(Map<String, String> map);
+	
+	/**
+	 * 수강생가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<StudentViewVO> getStudentList(List<String> cbList);
+	
+	/**
+	 * 수강생id가져오기
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public List<String> getCourseBreakDownList(String lec_no);
 }

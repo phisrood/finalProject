@@ -175,11 +175,10 @@ public class MemberManageServiceImpl implements MemberManageService{
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
-		List<Map> studentList = new ArrayList<Map>();
 		for (rowindex = 2; rowindex < rows; rowindex++) {
 			// 행을읽는다
 			Row row = sheet.getRow(rowindex);
-			studentList.add(readRow(columnindex, row));
+			readRow(columnindex, row);
 		}
 	}
 
@@ -244,7 +243,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 						break;
 				}
 			}//end of row
-			//int result = memberManageDAO.insertStuInfo(studentMap);
+			int result = memberManageDAO.insertStuInfo(studentMap);
 		}
 		return studentMap;
 	}
@@ -275,7 +274,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 				value = cell.getErrorCellValue() + "";
 				break;
 			}
-			System.out.println(columnHead[columnindex]+":"+value);
+			//System.out.println(columnHead[columnindex]+":"+value);
 		}
 		return value;
 	}

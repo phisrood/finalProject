@@ -22,7 +22,69 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
   
-
+     
+    <script src="/bootstrap/js/raphael.min.js"></script>
+    <script src="/bootstrap/js/morris.min.js"></script>
+    <script>
+      $(function(){
+    	var lec_no = $("#lecture option:selected").val();
+    	
+    	$.ajax({
+    		url:"/pro/classAppChart",
+    		method:"get",
+    		data:{"lec_no":lec_no},
+    		type:"json",
+    		success:function(info){
+    			 Morris.Bar({
+    		          element: 'graph_bar',
+    		          data: info,
+    		          xkey: 'list',
+    		          ykeys: ['score'],
+    		          labels: ['평균점수'],
+    		          barRatio: 5.0,
+    		          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+    		          hideHover: 'auto',
+    		          resize: true
+    		    });
+    		},
+    		error:function(){
+    			alert("error");
+    		}
+    	});
+    	
+    	$("#lecture").change(function(){
+    		lec_no = $("#lecture option:selected").val();
+    		$("#graph_bar").html("");
+        	$.ajax({
+        		url:"/pro/classAppChart",
+        		method:"get",
+        		data:{"lec_no":lec_no},
+        		type:"json",
+        		success:function(info){
+        			 Morris.Bar({
+        		          element: 'graph_bar',
+        		          data: info,
+        		          xkey: 'list',
+        		          ykeys: ['score'],
+        		          labels: ['평균점수'],
+        		          barRatio: 5.0,
+        		          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+        		          hideHover: 'auto',
+        		          resize: true
+        		    });
+        		},
+        		error:function(){
+        			alert("error");
+        		}
+        	});
+    	});
+       
+        $MENU_TOGGLE.on('click', function() {
+          $(window).resize(); //브라우져 윈도우 사이즈 변화가 있을때 window요소.
+        });
+      });
+    </script>
+   
         <!-- page content -->
    
 
@@ -36,28 +98,10 @@
                     <h2>수업평가통계</h2>
                     
                     <div class="clearfix"></div>
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">년도</label>
-                    
-                      <select class="form-control">
-                        <option>2016</option>
-                        <option>2015</option>
-                        <option>2014</option>
-                        <option>2013</option>
-                        <option>2012</option>
-                      </select>
-                   
-                   
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">학기</label>
-                    
-                      <select class="form-control">
-                        <option>1학기</option>
-                        <option>2학기</option>
-                      </select>
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12">교과목</label>
-                    
-                      <select class="form-control">
-                        <option>1학기</option>
-                        <option>2학기</option>
+                      <select class="form-control" id="lecture">
+                      <c:forEach var="lectureList" items="${lectureList }">
+                        <option value="${lectureList.lec_no }">[개설 : ${lectureList.lec_makeyear}-${lectureList.lec_makesemester}학기 분반 : ${lectureList.lec_placement} 과목명 : ${lectureList.lb_name }]</option>
+                      </c:forEach>
                       </select>
                   </div>
                   <div class="x_content">
@@ -68,47 +112,5 @@
               <!-- /bar charts -->
 
 
-       
-            </div>
-         
-      
-        <!-- /page content -->
-
-     
-    <script src="/bootstrap/js/raphael.min.js"></script>
-    <script src="/bootstrap/js/morris.min.js"></script>
-
     <!-- morris.js -->
-    <script>
-      $(document).ready(function() {
-        Morris.Bar({
-          element: 'graph_bar',
-          data: [
-            {list: '1번 문항', score: 1},
-            {list: '2번 문항', score: 2},
-            {list: '3번 문항', score: 3},
-            {list: '4번 문항', score: 4},
-            {list: '5번 문항', score: 5},
-            {list: '6번 문항', score: 1},
-            {list: '7번 문항', score: 2},
-            {list: '8번 문항', score: 3},
-            {list: '9번 문항', score: 4},
-            {list: '10번 문항', score: 5}
-          ],
-          xkey: 'list',
-          ykeys: ['score'],
-          labels: ['평균점수'],
-          barRatio: 5.0,
-          barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-          hideHover: 'auto',
-          resize: true
-        });
 
-      
-
-        $MENU_TOGGLE.on('click', function() {
-          $(window).resize();
-        });
-      });
-    </script>
-   
