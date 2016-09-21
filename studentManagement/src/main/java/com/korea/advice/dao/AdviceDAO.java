@@ -54,7 +54,7 @@ public interface AdviceDAO {
 	 * @throws
 	 */
 	// 상담신청
-	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO);
+	public void insertAdviceREQ(AdviceVO adviceVO);
 
 	/**
 	 * 교수가 받은 상담신청조회
@@ -159,6 +159,10 @@ public interface AdviceDAO {
 	public int insertAdviceBoardAF(Map<String, String> params);
 
 	public void updateAdviceBoard2(Map<String, String> params);
+
+	public void updateChannelId(String channelId, String ad_no);
+
+	public void updateChannelId(String ad_no);
 
 
 }
