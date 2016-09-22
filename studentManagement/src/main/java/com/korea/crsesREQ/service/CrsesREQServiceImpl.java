@@ -112,7 +112,7 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 	public List<CrsesList_stu_ViewVO> getCrsesREQList(String id) {
 		List<CrsesList_stu_ViewVO> crsesReqList = crsesREQDAO
 				.getCrsesREQList(id);
-		if (crsesReqList != null && crsesReqList.size()>0) {
+		if (crsesReqList != null && crsesReqList.size() > 0) {
 			List<Lecture_Time_ViewVO> classroomList = crsesREQDAO
 					.getClassroomByLecNo(crsesReqList);
 			for (CrsesList_stu_ViewVO crses : crsesReqList) {
@@ -344,26 +344,29 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 		boolean timeDuplicate = true;
 		int limit = crsesLimit(getScoreCalcu(id));
 		int reqCredit = 0;
-		List<Lecture_Time_ViewVO> reqTimeList = crsesREQDAO.getClassroomByLecNo(lec_no); //해당강의의 시간표
+		List<Lecture_Time_ViewVO> reqTimeList = crsesREQDAO
+				.getClassroomByLecNo(lec_no); // 해당강의의 시간표
 		try {
 			if (crsesREQList != null && crsesREQList.size() > 0) {
-				List<Lecture_Time_ViewVO> crsesList = crsesREQDAO.getClassroomByLecNo(crsesREQList);
-				for (CrsesList_stu_ViewVO courseVO : crsesREQList) { //동일과목 중복검사
+				List<Lecture_Time_ViewVO> crsesList = crsesREQDAO
+						.getClassroomByLecNo(crsesREQList);
+				for (CrsesList_stu_ViewVO courseVO : crsesREQList) { // 동일과목
+																		// 중복검사
 					if (courseVO.getLb_no().equals(lb_no)) {
 						lecDuplicate = false;
 					}
 					reqCredit += Integer.parseInt(courseVO.getLb_credit());
 				}
-				for(Lecture_Time_ViewVO crses: crsesList ){ //시간표 중복검사
-					for(Lecture_Time_ViewVO req : reqTimeList){
-						if(crses.getTt_no().equals(req.getTt_no())){
+				for (Lecture_Time_ViewVO crses : crsesList) { // 시간표 중복검사
+					for (Lecture_Time_ViewVO req : reqTimeList) {
+						if (crses.getTt_no().equals(req.getTt_no())) {
 							timeDuplicate = false;
 							break;
 						}
 					}
 				}
 			}
-			int limitCredit = reqCredit+credit;
+			int limitCredit = reqCredit + credit;
 			if (timeDuplicate && lecDuplicate && (limitCredit <= limit)) {
 				Map<String, String> map = new HashMap<String, String>();
 				map.put("lec_no", lec_no);
@@ -371,11 +374,11 @@ public class CrsesREQServiceImpl implements CrsesREQService {
 				crsesREQDAO.insertCrsesREQ(map);
 				crsesREQDAO.updatePersonCount(lec_no);
 				response.getWriter().print("success");
-			} else if(limitCredit > limit){
+			} else if (limitCredit > limit) {
 				response.getWriter().print("limit");
-			}else if(!timeDuplicate){
+			} else if (!timeDuplicate) {
 				response.getWriter().print("timeDuplicate");
-			}else{
+			} else {
 				response.getWriter().print("lecDuplicate");
 			}
 		} catch (IOException e) {
