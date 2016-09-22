@@ -23,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.korea.advice.service.AdviceService;
 import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
-import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
@@ -312,7 +311,6 @@ public class AdviceController {
 			Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adviceBoardVO.getAdb_af_no());		
 			model.addAttribute("filename", fileVO.getAf_realname());
 		}
-		
 		model.addAttribute("auth", user.getAuthority());
 		model.addAttribute("loginUser", loginUser);
 		model.addAttribute("use_name", adviceBoardVO.getUse_name());
@@ -346,12 +344,7 @@ public class AdviceController {
 		String path = request.getSession().getServletContext().getRealPath("resources/common/adviceAF");
 		
 		File file = new File(path,fileVO.getAf_aftername());
-		
-		if(file == null) {
-			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
-		}
-		
+				
 		return new ModelAndView("download", "downloadFile", file);
 	}
 	

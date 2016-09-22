@@ -24,8 +24,40 @@
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 
+<!-- DatePicker -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
 <script>
-		
+$(document).ready(function() {
+	$("#ad_reqdate").datepicker(
+			{
+				showOn: "button",
+				buttonText: "선택",
+				showButtonPanel : true,
+				currentText : '오늘 날짜',
+				closeText : '닫기',
+				dateFormat : "yy-mm-dd",
+				changeMonth : true,
+				changeYear : true,
+				nextText : '다음 달',
+				prevText : '이전 달',
+				changeMonth : true,
+				dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+						'일요일' ],
+				dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+				monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
+						'9', '10', '11', '12' ],
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+						'8월', '9월', '10월', '11월', '12월' ],
+				minDate : -0
+				
+			});
+});
+</script>
+<script>  
+	
 	function revoke(form) {
 		var count = 0;
 
@@ -82,8 +114,7 @@
 				</div>
 				<br> <br>
 				<div>
-					일자 선택 <input type="text" OnClick="Calendar(this, 'top','no');"
-						name="ad_reqdate">
+					일자 선택 <input type="text" name="ad_reqdate" id="ad_reqdate" readonly="readonly">
 				</div>
 				<br>
 				<div>

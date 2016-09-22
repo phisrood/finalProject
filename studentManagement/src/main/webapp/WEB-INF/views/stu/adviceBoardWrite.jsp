@@ -32,12 +32,19 @@ html, body {
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('adb_content');
+ }
+ 
+</script> 
 <form method="POST" action="/stu/adviceBoardWrite" enctype="multipart/form-data">
 	<div class="row">
 		<!-- 상담 게시글 작성 -->
 		<div class="x_title">
-			<h2>&nbsp;&nbsp;상담 게시글 작성</h2>
+			<h2>&nbsp;&nbsp;상담 게시글 작성${use_name }</h2>
 			<div class="clearfix"></div>
 		</div>
 		<br>
@@ -61,7 +68,7 @@ html, body {
 		</div>
 		<br>
 		<div style="float: right; width: 78%;">
-			<textarea rows="5" cols="50" name="adb_content"></textarea>
+			<textarea rows="5" cols="50" name="adb_content" style="width:1000px;height:500px;"></textarea>
 		</div>
 		<div style="float: right; width: 7%;">내용</div>
 		<div style="float: right; width: 15%;">
