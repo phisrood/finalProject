@@ -1,5 +1,6 @@
 package com.korea.login.service;
 
+import com.korea.dto.Period;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
 /**
@@ -48,5 +49,8 @@ public interface LoginService {
 
 	//행정정보
 	public School_PersonInfoViewVO getEmpdivInfo(String id);
+
+
+	public Period getPeriodAll();
 
 }

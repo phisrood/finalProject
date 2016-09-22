@@ -49,4 +49,9 @@
 	<select id="empInfo" parameterType="str" resultType="employeeInfo">
 		select * from employee_info where use_id = #{id}
 	</select>
+	
+	<select id="getPeriod" resultType="period">
+		SELECT *
+		FROM PERIOD
+	</select>
 </mapper>

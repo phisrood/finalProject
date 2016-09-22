@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.MessageVO;
+import com.korea.dto.Period;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
 import com.korea.dto.School_PersonVO;
@@ -185,10 +186,10 @@ public class LoginController {
 		
 		//usersVO에 접속정보담고
 		usersVO = service.getLoginInfo(id);
-			
+		Period period = service.getPeriodAll();	
 		//session에 넣고
 		session.setAttribute("loginUser", usersVO);
-		
+		session.setAttribute("period", period);
 		//화면분기
 		if(usersVO.getAuthority().equals("ROLE_STU")){
 			url="redirect:/stu/main";

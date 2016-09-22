@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
 import com.korea.dto.StudentViewVO;
@@ -81,12 +82,19 @@ public class ScoreInquiryDAOImpl implements ScoreInquiryDAO{
 		return session.selectList("scoreInquiry.getLecutreList", map);
 	}
 	@Override
-	public List<StudentViewVO> getStudentList(List<String> cbList) {
+	public List<StudentViewVO> getStudentList(List<Course_BreakDownVO> cbList) {
 		return session.selectList("scoreInquiry.getStudentList", cbList);
 	}
 	@Override
-	public List<String> getCourseBreakDownList(String lec_no) {
+	public List<Course_BreakDownVO> getCourseBreakDownList(String lec_no) {
 		return session.selectList("scoreInquiry.getCourseBreakDownList", lec_no);
+	}
+	@Override
+	public void insertGrade(List<Course_BreakDownVO> cbList) {
+		for(Course_BreakDownVO cb : cbList){
+			session.update("scoreInquiry.insertGrade", cb);
+		}
+		
 	}
 
 }
