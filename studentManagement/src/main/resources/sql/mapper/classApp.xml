@@ -51,4 +51,9 @@
 	<select id="getLectureChartPro" parameterType="str" resultType="chartVO">
 		select * from lecture_chart_view where lec_no = #{lec_no}
 	</select>
+	
+	<select id="getStuClassAppList" parameterType="str" resultType="chart">
+		select * from lecture_chart where lc_lec_no = #{lec_no}
+	</select>
+
 </mapper>
