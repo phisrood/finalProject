@@ -103,28 +103,111 @@
 		
 		</select>
 		
-		<select id="selectTaskListProDetail" parameterType="str" resultType="homeworkAllListViewVO">
-		SELECT
-		
-		
-		AF_NO,
-		AF_REALNAME,
-		AF_AFTERNAME,
-		AF_PATH,
-		HW_NO,
-		HW_PRO_USE_ID,
-		HW_LEC_NO,
-		HW_AF_NO,
-		HW_TITLE,
-		HW_CONTENT
-	
+		<select id="selectTaskListProDetail" parameterType="str" resultType="homedetail_ViewVo">
+		SELECT *
 
-
+		FROM HOMEWORKDETAIL_VIEW
 		
-		FROM HOMEWORKLISTALL_VIEW
 		WHERE HW_NO = #{hw_no}
 		
 		
 		</select>
+		
+		<select id="selectSubmitList" parameterType="int" resultType="homework_SubmitVO">
+		
+		SELECT *
+		
+		FROM HOMEWORK_SUBMIT
+		
+		WHERE HS_HW_NO = #{hw_no}
 
+		</select>
+		
+		<insert id="insertStuSubmit" parameterType="attachment">
+		
+			
+		INSERT INTO ATTACHMENT_FILE(
+		AF_NO,
+		AF_REALNAME,
+		AF_AFTERNAME,
+		AF_PATH)
+		
+		VALUES(
+		ATTACHMENT_FILE_SEQ.NEXTVAL,
+		#{af_realname},
+		#{af_aftername},
+		#{af_path})
+		
+		</insert>
+		
+		<insert id="insertSubmitListTask" parameterType="homework_SubmitVO">
+		
+		INSERT INTO HOMEWORK_SUBMIT(
+		HS_NO,
+		HS_HW_NO,
+		HS_STUD_USE_ID,
+		HS_AF_NO)
+		VALUES(
+		HOMEWORK_SUBMIT_SEQ.NEXTVAL,
+		#{hs_hw_no},
+		#{hs_stud_use_id},
+		#{hs_af_no}
+		
+		)
+		
+		
+		
+		</insert>
+		
+		
+		<select id="selectFileDownload" parameterType="int" resultType="attachment">
+		SELECT *
+		FROM ATTACHMENT_FILE
+		WHERE AF_NO = #{af_no}
+		
+		</select>
+		
+		
+		<update id="updateStuSubmit" parameterType="attachment">
+		UPDATE ATTACHMENT_FILE
+		SET
+	
+		AF_REALNAME = #{af_realname},
+		AF_AFTERNAME = #{af_aftername},
+		AF_PATH = #{af_path}
+		
+		WHERE 	AF_NO = #{af_no}
+		
+
+		</update>
+		
+		
+		<update id="updatetaskUpdate" parameterType="homeworkVO">
+		
+		UPDATE HOMEWORK
+		SET
+
+		
+		HW_TITLE = #{hw_title},
+		HW_CONTENT = #{hw_content},
+		HW_STARTDATE = #{hw_startdate},
+		HW_ENDDATE = #{hw_enddate}
+		
+		WHERE
+		
+		HW_NO = #{hw_no}
+	
+		
+		
+		</update>
+
+
+		<delete id="deletetaskList" parameterType="str">
+		
+		 DELETE	
+		 FROM HOMEWORK  
+   	  	 WHERE HW_NO=#{hw_no}
+		
+		
+		</delete>
 </mapper>

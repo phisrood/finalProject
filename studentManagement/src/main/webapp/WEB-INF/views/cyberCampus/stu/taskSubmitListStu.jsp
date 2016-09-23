@@ -20,7 +20,37 @@
 <script>
 	$(function() {
 		$('#datatable').DataTable();
+		
+		$('.listbtn').click(function(){
+			
+			var id_value = $(this).attr('id'); 
+
+			$("#hid").val(id_value);
+			
+			$('#submit_list').click();
+		
+	
+			
+		});
+		
+		
+		$('.Updatebtn').click(function(){
+			
+			var id_value = $(this).attr('id');
+			var af_value = $(this).attr('name');
+			
+			
+			alert(af_value);
+			
+			$("#hid1").val(id_value);
+			$("#afno").val(af_value);
+			
+			$('#submit_update').click();
+		});
 	});
+	
+	
+	
 </script>
     
     <div class="row">
@@ -38,24 +68,136 @@
                    		<th>과제명</th>	
                    		<th>과제제출 시작일</th>
                    		<th>과제제출 종료일</th>
-                   		<th>제출현황</th>
+                   		<th>제출관리</th>
+                   		<th>제출여부</th>
                  	</tr>
                	</thead>
-               	<c:forEach items="${homeworkAllList_ViewVO}" var="homeworkAllList_ViewVO">
+               	<c:forEach items="${homeworkAllList_ViewVO}" var="homeworkAllList_ViewVO" varStatus="status">
                	<tbody>
                  	<tr>
-                 	  	<td>${homeworkAllList_ViewVO.hw_no}</td>
+                 	  	<td>${status.count+1}</td>
                    		<td>${homeworkAllList_ViewVO.hw_title}</td>
                    		<td>${homeworkAllList_ViewVO.hw_startdate}</td>
                    		<td>${homeworkAllList_ViewVO.hw_enddate}</td>
+                   		
+                   		<c:choose>
+                   		<c:when test="${empty homeworkAllList_ViewVO.hs_af_no}">
                    		<td>
-                   			<button type="button" class="btn btn-default btn-xs">제출하기</button>
+                   			<button type="button" id="${homeworkAllList_ViewVO.hw_no}" class="listbtn btn-info btn-xs">제출하기</button>
+                   		
                    		</td>
+                   		<td>
+                   			<span class="bannerbtn btn-info btn-xs"  style=color:#F0F63E>미제출</span>
+                   		</td>
+                   		</c:when>
+                   		<c:otherwise>
+                   		<td>
+                   			
+                   		
+                   			<button type="button" id="${homeworkAllList_ViewVO.hw_no}" name="${homeworkAllList_ViewVO.hs_af_no}" class="Updatebtn btn-info btn-xs">수정하기</button>
+                   		</td>
+                   		
+                   		<td>
+                   			<span class="bannerbtn btn-info btn-xs"  style=color:#FC89AB>제출완료</span>
+                   		</td>
+                   		</c:otherwise>
+                   		</c:choose>
                  	</tr>
                	</tbody>
                	</c:forEach>
            	</table>
            
+    </div>
+    
+    <!-- 최초등록 과제 -->
+        <div id="submit_list" data-toggle="modal" data-target="#CalenderList"></div>
+      
+      <div id="CalenderList" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel2">제출하기</h4>
+          </div>
+          <div class="modal-body">
+          
+			<form method="post" action="/cyberCampus/stu/submitStu" enctype="multipart/form-data">
+			
+			
+            <div id="testmodal2" style="padding: 5px 20px;">
+                <div class="form-group">
+                	<table id="datatable" class="table table-striped jambo_table bulk_action">
+                		<thead>
+		                	<tr>
+		                		<th colspan="2">파일 첨부하기</th>
+		                		
+		                    </tr>
+		                    
+                		</thead>
+                		<tbody id="listInfo">
+                			<tr>
+                				<td><input type="file" name="file" required="required"></td>
+                				<td><input type="submit"></td>
+                			</tr>
+                		</tbody>
+                	</table>
+                </div>
+            </div>
+            <input type="hidden" value="" id="hid" name="hid">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 수정 과제 -->
+    <div id="submit_update" data-toggle="modal" data-target="#CalenderList1"></div>
+      
+      <div id="CalenderList1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel2">제출하기</h4>
+          </div>
+          <div class="modal-body">
+          
+			<form method="post" action="/cyberCampus/stu/submitStuUpdate" enctype="multipart/form-data">
+			
+			
+            <div id="testmodal2" style="padding: 5px 20px;">
+                <div class="form-group">
+                	<table id="datatable" class="table table-striped jambo_table bulk_action">
+                		<thead>
+		                	<tr>
+		                		<th colspan="2">파일 수정하기</th>
+		                		
+		                    </tr>
+		                    
+                		</thead>
+                		<tbody id="listInfo">
+                			<tr>
+                				<td><input type="file" name="file" required="required"></td>
+                				<td><input type="submit"></td>
+                			</tr>
+                		</tbody>
+                	</table>
+                </div>
+            </div>
+             <input type="hidden" value="" id="hid1" name="hid">
+             <input type="hidden" value="" id="afno" name="afno">
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
     </div>
    
     <!-- Datatables -->

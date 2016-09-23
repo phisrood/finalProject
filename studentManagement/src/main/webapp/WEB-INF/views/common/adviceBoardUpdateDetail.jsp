@@ -70,7 +70,7 @@ html, body {
 			</div>
 			<br>
 			<div style="float: right; width: 78%;">
-				<textarea rows="5" cols="50" name="adb_content" disabled="disabled">${adb_content }</textarea>
+				${adb_content }
 			</div>
 			<div style="float: right; width: 7%;">내용</div>
 			<div style="float: right; width: 15%;">

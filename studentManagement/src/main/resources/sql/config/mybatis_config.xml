@@ -126,7 +126,11 @@
 		<typeAlias alias="homeworkVO" type="com.korea.dto.HomeworkVO" />
 		<typeAlias alias="homeworkViewVO" type="com.korea.dto.Homework_ViewVO" />
 		<typeAlias alias="homeworkAllListViewVO" type="com.korea.dto.HomeworkAllList_ViewVO" />
-
+		<typeAlias alias="homework_SubmitVO" type="com.korea.dto.Homework_SubmitVO" />
+		<typeAlias alias="homedetail_ViewVo" type="com.korea.dto.Homedetail_ViewVo" />
+		
+		
+		
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
 		<!-- 교수시간표View -->
