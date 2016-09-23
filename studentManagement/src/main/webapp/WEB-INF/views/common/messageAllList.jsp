@@ -141,9 +141,56 @@
 				});
 			}
 		});
+		
+		$("#sendBtn").click(function(){
+			var recive = $("#mes_recive_use_id").val();
+			var content = $("#mes_content").val();
+			if(recive==""){
+				swal({
+					title: "수신자가 없습니다.!",
+					text: "수신자를 검색해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else if(content.length > 1000){
+				swal({
+					title: "내용이 너무 깁니다.!",
+					text: "쪽지의 내용은 최대 1000자로 제한되어있습니다.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}
+			
+			
+			
+		});
 
 		
 	});
+	
+	function OntextCheck(obj)
+    {
+        var str = new String(obj.value);
+           var _byte = 0;
+                   if(str.length != 0)
+                   {
+                          for (var i=0; i < str.length; i++) 
+                          {
+                                  var str2 = str.charAt(i);
+                                  if(escape(str2).length > 4)
+                                  {
+                                         _byte += 1;
+                                  }
+                                  else 
+                                  {
+                                         _byte++;
+                                  }
+                          }
+                   }
+           document.getElementById("txtbyte").value = _byte;
+    }
 </script>
 
 <!-- 쪽지함 --> 
@@ -290,18 +337,21 @@
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" name="mes_title" required="required" class="col-md-7 col-xs-12" style="width:80%;">
+			                      <input type="text" name="mes_title" required="required" placeholder="최대 30자" class="col-md-7 col-xs-12" style="width:80%;" maxlength="30">
 			                    </div>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">내용 </label>
 			                    <div class="col-md-7">
-			                      <textarea rows="30" cols="30" name="mes_content" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
+			                      <textarea rows="30" cols="30" id="mes_content" name="mes_content" onkeyUp="OntextCheck(this);" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
 			                    </div>
+			                  </div>
+			                  <div style="text-align:center; margin-left:13%">
+			                    <input type="text" id="txtbyte" style="width:50px;" readonly>/1000byte
 			                  </div>
 			                  <br/>
 		                  		<div style="text-align:center; margin-left:13%">
-			                  		<input type="submit" class="btn btn-dark" value="보내기">
+			                  		<input type="submit" id="sendBtn" class="btn btn-dark" value="보내기">
 			                  	</div>
 			                </form>
 		                	
