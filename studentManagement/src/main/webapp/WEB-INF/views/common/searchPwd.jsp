@@ -50,7 +50,6 @@
 					type: "error",
 					confirmButtonText: "닫기" 
 				});
-				
 				return false;
 			}else if(index ==2){
 				swal({

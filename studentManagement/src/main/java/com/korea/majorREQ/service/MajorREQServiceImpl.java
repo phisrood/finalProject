@@ -207,7 +207,11 @@ public class MajorREQServiceImpl implements MajorREQService{
 			major_AssignVO.setMa_mk_no(Integer.parseInt(submit.getSb_mk_no()));
 			major_AssignVO.setMa_credit(semes);
 			
-			dao.insertMajor_Assign(major_AssignVO);
+			try {
+				dao.insertMajor_Assign(major_AssignVO);
+			} catch (Exception e) {
+				confirm = 9;
+			}
 		}
 		
 		

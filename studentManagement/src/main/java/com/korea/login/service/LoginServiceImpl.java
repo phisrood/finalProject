@@ -122,6 +122,7 @@ public class LoginServiceImpl implements LoginService{
 		
 		return chk;
 	}
+	
 	@Override
 	public Professor_InfoViewVO getProdivInfo(String id) {
 		return dao.getProdivInfo(id);

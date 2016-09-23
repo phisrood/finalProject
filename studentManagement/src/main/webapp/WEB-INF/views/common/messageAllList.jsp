@@ -80,7 +80,7 @@
 					var content = data.mes_content;
 					var date = data.mes_date;
 					var delyn = data.mes_delyn;
-					var reciveBtn = "<button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
+					var reciveBtn = "<br><br><button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(to+send);
 					$("#messageTitle").html(title);
@@ -367,7 +367,7 @@
 			                    </div>
 			                  </div>
 			                  <div style="text-align:center; margin-left:13%">
-			                    <input type="text" id="txtbyte" style="width:50px;" readonly>/1000byte
+			                   <input type="text" id="txtbyte" style="width:50px; border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly>/1000byte
 			                  </div>
 			                  <br/>
 		                  		<div style="text-align:center; margin-left:13%">

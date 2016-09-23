@@ -120,12 +120,12 @@
 		                      
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
+<!-- 		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/regList">등록내역</a></li>
 		                      <li><a href="#">고지서</a></li>
 		                    </ul>
-		                  </li>
+		                  </li> -->
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
