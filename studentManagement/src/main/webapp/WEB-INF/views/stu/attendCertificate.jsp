@@ -38,14 +38,17 @@
                    	<div class="button-location">	
                    		<form name="pdfForm">
                    		<input type=hidden id="htmlTag" name="htmlTag"/>			
-						<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>					
+						<button class="btn btn-danger" onclick="toCerPdf()">PDF출력</button>					
                    		</form>
 					</div>
 
 <div id="cer-tbl">
+<input type="hidden" name="use_id"
+					value="${student_InfoViewVO.use_id }">
 <table  id="cer-table" class="kor">
+	
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-no" >&nbsp;제  2016-12345호</th>	
+		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
@@ -57,13 +60,13 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${student_InfoViewVO.use_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :${student_InfoViewVO.stud_birth }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :${Student_InfoViewVO.stud_birth }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${student_InfoViewVO.dep_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
@@ -78,7 +81,7 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" >2016년 09월 09일</th>	
+		<th colspan="4" class="cer-title" >${Current_date}</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	

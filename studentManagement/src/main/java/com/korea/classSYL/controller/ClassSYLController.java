@@ -145,8 +145,6 @@ public class ClassSYLController {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
 		
-		System.out.println(htmlTag + "*********************!!!!@*@*@*@*@*");
-		
 		// PdfWriter 생성
 		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/test.pdf")); // 바로 다운로드.
 		PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
@@ -161,11 +159,11 @@ public class ClassSYLController {
 		// Document 오픈
 		document.open();
 
-		//img
+	/*	//img
 		Image ingam =Image.getInstance(request.getServletContext().getRealPath("/resources/common/images/ingam3.jpg"));
 		ingam.setAbsolutePosition(5f, 5f);
 		ingam.scaleAbsolute(500, 50);
-		document.add(ingam);
+		document.add(ingam);*/
 		
 		// CSS
 		CSSResolver cssResolver = new StyleAttrCSSResolver();
