@@ -107,10 +107,8 @@
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/colleageChangeList">학적변동현황 조회</a></li>
 		                      <li><a href="/pro/belongMinorREQList">학과 부/다전공 신청</a></li>
 		                      <li><a href="/pro/othersMinorREQList">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">휴/복학 신청 현황</a></li>
 		                      <li><a href="#">졸업요건</a></li>
 		                    </ul>
 		                  </li>
@@ -157,8 +155,6 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href=""> 프로필</a></li>
-                    <li><a href=""></a></li>
                     <li><a href="/common/logout"><i class="fa fa-sign-out pull-right"></i> 로그아웃</a></li>
                   </ul>
                 </li>
