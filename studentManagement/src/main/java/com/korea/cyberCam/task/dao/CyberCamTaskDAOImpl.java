@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.Homedetail_ViewVo;
 import com.korea.dto.HomeworkAllList_ViewVO;
 import com.korea.dto.HomeworkVO;
+import com.korea.dto.Homework_SubmitVO;
 import com.korea.dto.Homework_ViewVO;
 
 /**
@@ -110,9 +112,47 @@ public class CyberCamTaskDAOImpl implements CyberCamTaskDAO{
 		return sqlSession.selectList("Homework.selectTaskListStu",pro_lec_no);
 	}
 	@Override
-	public HomeworkAllList_ViewVO getTaskListProDetail(String hw_no) {
+	public Homedetail_ViewVo getTaskListProDetail(String hw_no) {
 		
-		return (HomeworkAllList_ViewVO) sqlSession.selectOne("Homework.selectTaskListProDetail",hw_no);
+		return (Homedetail_ViewVo) sqlSession.selectOne("Homework.selectTaskListProDetail",hw_no);
+	}
+	@Override
+	public List<Homework_SubmitVO> getSubmitStuList(int hw_no) {
+		
+		return sqlSession.selectList("Homework.selectSubmitList",hw_no);
+	}
+	@Override
+	public void insertStuSubmit(Attachment_FileVO attachment_FileVO) {
+		
+			sqlSession.insert("Homework.insertStuSubmit",attachment_FileVO);
+		
+		
+	}
+	@Override
+	public void insertSubmitListTask(Homework_SubmitVO homework_SubmitVO) {
+		
+		sqlSession.insert("Homework.insertSubmitListTask",homework_SubmitVO);
+		
+	}
+	@Override
+	public Attachment_FileVO selectFileDownload(int af_no) {
+		
+		return (Attachment_FileVO) sqlSession.selectOne("Homework.selectFileDownload",af_no);
+	}
+	@Override
+	public void updateStuSubmit(Attachment_FileVO attachment_FileVO) {
+		
+		sqlSession.update("Homework.updateStuSubmit",attachment_FileVO);
+	}
+	@Override
+	public void updatetaskUpdate(HomeworkVO homeworkVO) {
+		sqlSession.update("Homework.updatetaskUpdate",homeworkVO);
+		
+	}
+	@Override
+	public void deletetaskList(String hw_no) {
+		sqlSession.delete("Homework.deletetaskList",hw_no);
+		
 	}
 
 }

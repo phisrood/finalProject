@@ -13,7 +13,64 @@
     <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-    
+    <!-- DatePicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+
+	<script>
+	$(document).ready(function() {
+		$("#oc_startdate").datepicker(
+				{
+					showOn: "button",
+					buttonText: "선택",
+					showButtonPanel : true,
+					currentText : '오늘 날짜',
+					closeText : '닫기',
+					dateFormat : "yy-mm-dd",
+					changeMonth : true,
+					changeYear : true,
+					nextText : '다음 달',
+					prevText : '이전 달',
+					changeMonth : true,
+					dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+							'일요일' ],
+					dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
+							'9', '10', '11', '12' ],
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+							'8월', '9월', '10월', '11월', '12월' ],
+					minDate : -0
+					
+				});
+		
+			$("#oc_enddate").datepicker(
+					{
+						showOn: "button",
+						buttonText: "선택",
+						showButtonPanel : true,
+						currentText : '오늘 날짜',
+						closeText : '닫기',
+						dateFormat : "yy-mm-dd",
+						changeMonth : true,
+						changeYear : true,
+						nextText : '다음 달',
+						prevText : '이전 달',
+						changeMonth : true,
+						dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+								'일요일' ],
+						dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+						monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
+								'9', '10', '11', '12' ],
+						monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+								'8월', '9월', '10월', '11월', '12월' ],
+						minDate : -0
+						
+					});
+	});
+	</script>
+
     <div class="row">
     	<!-- 인터넷 강의 등록 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -35,13 +92,13 @@
 					<tr>
 						<td>
 							학습 시작 기간 &nbsp;: &nbsp;
-							<input name="oc_startdate" type="text" size="165" OnClick="Calendar(this, 'top','no');">
+							<input name="oc_startdate" type="text" size="165" id="oc_startdate" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							학습 마감 기간 &nbsp;: &nbsp;
-							<input name="oc_enddate" type="text" size="165" OnClick="Calendar(this, 'down','no');">
+							<input name="oc_enddate" type="text" size="165" id="oc_enddate" readonly="readonly">
 						</td>
 					</tr>
 					<tr>

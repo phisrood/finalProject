@@ -1,6 +1,8 @@
 package com.korea.login.service;
 
 import com.korea.dto.Period;
+import java.util.Map;
+
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
 /**
@@ -52,5 +54,7 @@ public interface LoginService {
 
 
 	public Period getPeriodAll();
+	
+	public UsersVO getLoginCheck(Map<String, String> checkMap);
 
 }

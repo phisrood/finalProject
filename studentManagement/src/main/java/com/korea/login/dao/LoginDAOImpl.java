@@ -108,6 +108,9 @@ public class LoginDAOImpl implements LoginDAO{
 	public Period getPeriodAll() {
 		return (Period) session.selectOne("Login.getPeriod");
 	}
+	public UsersVO getLoginCheck(Map<String, String> checkMap) {
+		return (UsersVO) session.selectOne("Login.loginCheck", checkMap);
+	}
 
 
 

@@ -69,7 +69,7 @@ public class AdviceServiceImpl implements AdviceService {
 	 * @throws
 	 */
 	@Override
-	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO) {
+	public void insertAdviceREQ(AdviceVO adviceVO) {
 		adviceDAO.insertAdviceREQ(adviceVO);
 	}
 
@@ -231,6 +231,16 @@ public class AdviceServiceImpl implements AdviceService {
 	@Override
 	public List<AdviceVO> getMyAdviceResponseList(String use_id) {
 		return adviceDAO.getMyAdviceResponseList(use_id);
+	}
+
+	@Override
+	public void updateChannelId(String channelId, String ad_no) {
+		adviceDAO.updateChannelId(channelId,ad_no);
+	}
+
+	@Override
+	public void updateChannelId(String ad_no) {
+		adviceDAO.updateChannelId(ad_no);
 	}
 
 }

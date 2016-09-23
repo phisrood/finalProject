@@ -17,7 +17,9 @@ package com.korea.login.controller;
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,13 +32,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.MessageVO;
 import com.korea.dto.Period;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
-import com.korea.dto.School_PersonVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.indivInfoManage.service.IndivInfoManageService;
@@ -280,5 +282,26 @@ public class LoginController {
 		String url="/auth_error";
 		
 		return url;
+	}
+	
+	@RequestMapping(value="/common/loginCheck")
+	@ResponseBody
+	public String loginCheck(@RequestParam(value="use_id")String id, @RequestParam(value="use_pwd")String pwd,
+							HttpServletResponse response){
+		String message = "";
+		response.setContentType("text/html; charset=UTF-8;");
+		Map<String, String> checkMap = new HashMap<String, String>();
+		checkMap.put("id", id);
+		checkMap.put("pwd", pwd);
+		
+		UsersVO loginUser = service.getLoginCheck(checkMap);
+		
+		if(loginUser == null){
+			message = "error";
+		}else{
+			message = "success";
+		}
+		
+		return message;
 	}
 }

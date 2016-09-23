@@ -43,9 +43,37 @@
     <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
   	 
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+  	 <!-- DatePicker -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
 	<script>
-		$(function() {
+	$(document).ready(function() { 
+		$("#ad_return").datepicker(
+				{
+					showOn: "button",
+					buttonText: "선택",
+					showButtonPanel : true,
+					currentText : '오늘 날짜',
+					closeText : '닫기',
+					dateFormat : "yy-mm-dd",
+					changeMonth : true,
+					changeYear : true,
+					nextText : '다음 달',
+					prevText : '이전 달',
+					changeMonth : true,
+					dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
+							'일요일' ],
+					dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
+					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
+							'9', '10', '11', '12' ],
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+							'8월', '9월', '10월', '11월', '12월' ],
+					minDate : -0
+				});
+		
+
 			$("#selectBox").change(function() {
 				var str = $("#selectBox option:selected").val();
 				var menu="";
@@ -79,7 +107,7 @@
 					menu+="<div style=\"float: right; width: 30%;\">상담 내용 : ${adviceVO.ad_purpose }</div>";
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 80%;\">일자 선택 ";
-					menu+="<input type=\"text\" onClick=\"Calendar(this, 'top','no');\" name=\"ad_return\">";
+					menu+="<input type='text' name=\"ad_return\" id=\"ad_return\"/>";
 					menu+="</div>";
 					menu+="<div style=\"float: right; width: 30%;\">시간 선택 ";
 					menu+="<select name=\"ad_time\">";
@@ -91,7 +119,8 @@
 				}
 				$("#confirmForm").html(menu);
 			}).change();
-		});
+				
+	});
 	</script>
 	
 	<div class="row">
@@ -106,14 +135,14 @@
 						<option value="확인">확인</option>
 						<option value="연기">연기</option>
 					</select>
-				</div>
+				</div>  
 				
 				<div id="confirmForm">
 				</div>
 				
 	 			<c:set var="adviceVO" value="${adviceVO}"/>
 	</div>
-        
+          
     <!-- Datatables -->
     <script src="/stu/js/click_cal.js"></script>
     <script src="/stu/js/jquery.dataTables.min.js"></script>

@@ -54,7 +54,7 @@ public interface AdviceService {
 	 * @throws
 	 */
 	// 상담신청
-	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO);
+	public void insertAdviceREQ(AdviceVO adviceVO);
 
 	/**
 	 * 교수가 받은 상담신청조회
@@ -154,5 +154,9 @@ public interface AdviceService {
 	public List<AdviceVO> getMyAdviceReqeustList(String loginUser);
 
 	public List<AdviceVO> getMyAdviceResponseList(String use_id);
+
+	public void updateChannelId(String channelId, String ad_no);
+
+	public void updateChannelId(String ad_no);
 
 }

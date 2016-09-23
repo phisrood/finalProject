@@ -33,7 +33,14 @@ html, body {
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('adb_content');
+ }
+ 
+</script> 
 <div class="row">
 	<!-- 상담 게시글 작성 -->
 	<div class="x_title">

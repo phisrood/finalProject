@@ -1,5 +1,6 @@
 package com.korea.advice.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.ADBInsertVO;
 import com.korea.dto.AdviceVO;
-import com.korea.dto.Advice_BoardInsertVO;
 import com.korea.dto.Advice_BoardVO;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.ProfessorVO;
@@ -69,7 +69,7 @@ public class AdviceDAOImpl implements AdviceDAO {
 	 * @throws
 	 */
 	@Override
-	public void insertAdviceREQ(Advice_BoardInsertVO adviceVO) {
+	public void insertAdviceREQ(AdviceVO adviceVO) {
 		sqlSession.insert("adviceDAO.insertAdvice", adviceVO);
 	}
 
@@ -234,6 +234,20 @@ public class AdviceDAOImpl implements AdviceDAO {
 	@Override
 	public void updateAdviceBoard2(Map<String, String> params) {
 		sqlSession.update("adviceBoardDAO.updateAdviceBoard2", params);
+	}
+
+	@Override
+	public void updateChannelId(String channelId, String ad_no) {
+		Map<String,String> params = new HashMap<String, String>();
+		params.put("channelId", channelId);
+		params.put("ad_no", ad_no);
+		
+		sqlSession.update("adviceDAO.updateChannelId",params);
+	}
+
+	@Override
+	public void updateChannelId(String ad_no) {
+		sqlSession.update("adviceDAO.updateChannelIdClose",ad_no);
 	}
 
 }

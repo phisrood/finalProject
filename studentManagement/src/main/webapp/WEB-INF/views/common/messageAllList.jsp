@@ -21,31 +21,21 @@
  * </pre>
 ===============================================================--%>
 
-
-<!-- <link href="/bootstrap/css/pnotify.css" rel="stylesheet">
-<link href="/bootstrap/css/pnotify.buttons.css" rel="stylesheet">
-<link href="/bootstrap/css/pnotify.nonblock.css" rel="stylesheet">
-<link href="/bootstrap/css/prettify.min.css" rel="stylesheet">
-<link href="/bootstrap/css/select2.min.css" rel="stylesheet">
-<link href="/bootstrap/css/switchery.min.css" rel="stylesheet">
-<link href="/bootstrap/css/starrr.css" rel="stylesheet">
-<link href="/bootstrap/css/custom.min.css" rel="stylesheet"> -->
-
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function(){
-		$('#messageDe').hide();
+		$('#messageDe').hide(); //메시지 상세보기 숨김
 		
-		$('#reciveTable').DataTable();
+		$('#reciveTable').DataTable(); //부트스트랩 지원 자동 페이징/검색기능사용
 		$('#sendTable').DataTable();
 		
-		$(".messageSendDetail").click(function(){
-			$('#messageDe').show();
-			var message_no = $(this).attr("id");
+		$(".messageSendDetail").click(function(){ //메시지 상세보기 클릭시
+			$('#messageDe').show(); //상세보기창 
+			var message_no = $(this).attr("id"); //클릭한 값의 속성 id값 저장
 			
-			$.ajax({
+			$.ajax({ //ajax
 				url:"/common/messageSendInfo",
 				method:"get",
 				type:"json",
@@ -57,7 +47,8 @@
 					var content = data.mes_content;
 					var date = data.mes_date;
 					var delyn = data.mes_delyn;
-					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
+					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+
+								"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
 					sendBtn += "<button class='btn btn-dark' onclick=location.href='/common/messageSendDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(from+send);
@@ -72,11 +63,11 @@
 			});
 		}); 
 		
-		$(".messageReciveDetail").click(function(){
+		$(".messageReciveDetail").click(function(){ //답장버튼 클릭시
 			$('#messageDe').show();
 			var message_no = $(this).attr("id");
 			
-			$.ajax({
+			$.ajax({ //답장 ajax
 				url:"/common/messageReciveInfo",
 				method:"get",
 				type:"json",
@@ -333,24 +324,3 @@
 	</div>
 					<!-- /page content -->
 	</div>
-			
-
-
-			<!-- <script src="/bootstrap/js/fastclick.js"></script>
-			<script src="/bootstrap/js/nprogress.js"></script>
-			<script src="/bootstrap/js/icheck.min.js"></script>
-			<script src="/bootstrap/js/bootstrap-progressbar.min.js"></script>
-			<script src="/bootstrap/js/pnotify.js"></script>
-			<script src="/bootstrap/js/pnotify.buttons.js"></script>
-			<script src="/bootstrap/js/pnotify.nonblock.js"></script>
-		    <script src="/bootstrap/js/bootstrap-wysiwyg.min.js"></script>
-		    <script src="/bootstrap/js/jquery.hotkeys.js"></script>
-		    <script src="/bootstrap/js/prettify.js"></script>
-		    <script src="/bootstrap/js/jquery.tagsinput.js"></script>
-		    <script src="/bootstrap/js/switchery.min.js"></script>
-		    <script src="/bootstrap/js/select2.full.min.js"></script>
-		    <script src="/bootstrap/js/parsley.min.js"></script>
-		    <script src="/bootstrap/js/autosize.min.js"></script>
-		    <script src="/bootstrap/js/jquery.autocomplete.min.js"></script>
-		    <script src="/bootstrap/js/starrr.js"></script>
-			<script src="/bootstrap/js/custom.min.js"></script> -->

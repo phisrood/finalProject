@@ -90,27 +90,44 @@
 		USE_NAME,
 		TO_CHAR(AD_REQDATE,'YYYY/MM/DD') AS AD_REQDATE,
 		AD_TIME,
-		AD_STAT
+		AD_STAT,
+		AD_CHANNEL
 		FROM ADVICE , USERS 
 		WHERE AD_STUD_USE_ID = #{loginUser}
 		AND AD_PRO_USE_ID = USE_ID
-		AND AD_STAT = '대기'
+		AND (AD_STAT = '대기'
+		OR AD_STAT = '진행중')
 		ORDER BY AD_NO DESC
 	</select>
 	
 	<select id="getMyAdviceResponseList" parameterType="str" resultType="adviceVO">
 		SELECT 
+		AD_NO,
 		AD_WAY,
 		AD_PURPOSE,
 		USE_NAME,
 		TO_CHAR(AD_REQDATE,'YYYY/MM/DD') AS AD_REQDATE,
 		AD_TIME,
-		AD_STAT
+		AD_STAT,
+		AD_CHANNEL
 		FROM ADVICE,USERS 
 		WHERE AD_PRO_USE_ID = #{loginUser}
-		AND AD_STAT = '대기'
+		AND (AD_STAT = '대기'
+		OR AD_STAT = '진행중')
 		AND AD_STUD_USE_ID = USE_ID
 	</select>
+	<update id="updateChannelId" parameterType="map">
+		UPDATE ADVICE
+		SET AD_STAT = '진행중',
+		AD_CHANNEL = #{channelId}		
+		WHERE AD_NO = #{ad_no}
+	</update>
+	<update id="updateChannelIdClose">
+		UPDATE ADVICE
+		SET AD_STAT = '완료',
+		AD_CHANNEL = ''
+		WHERE AD_NO = #{ad_no}
+	</update>
 </mapper>
 
 

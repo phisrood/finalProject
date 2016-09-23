@@ -30,6 +30,15 @@ public class AdviceVO {
 	private String ad_stat;
 	private String ad_return;
 	private String use_name;
+	private String ad_channel;
+
+	public String getAd_channel() {
+		return ad_channel;
+	}
+
+	public void setAd_channel(String ad_channel) {
+		this.ad_channel = ad_channel;
+	}
 
 	public String getUse_name() {
 		return use_name;

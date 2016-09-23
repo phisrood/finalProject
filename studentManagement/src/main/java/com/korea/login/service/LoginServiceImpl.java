@@ -15,6 +15,8 @@ package com.korea.login.service;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.util.Map;
+
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -146,6 +148,10 @@ public class LoginServiceImpl implements LoginService{
 	@Override
 	public Period getPeriodAll() {
 		return dao.getPeriodAll();
+	}
+	public UsersVO getLoginCheck(Map<String, String> checkMap) {
+		return dao.getLoginCheck(checkMap);
+
 	}
 
 }

@@ -28,6 +28,7 @@
 					  "loginUser" : loginUser
 				},
 				success : function(data){
+					var timer;
 					clearInterval(timer);
 					
 					var minute = oc_time-1;
@@ -36,7 +37,7 @@
 					$(".countTimeMinute").html(minute);
 					$(".countTimeSecond").html(second);
 					
-					var timer = setInterval(function () {
+					timer = setInterval(function () {
 							
 							$(".countTimeMinute").html(minute-data.watchTime);
 							$(".countTimeSecond").html(second);
@@ -92,7 +93,7 @@
 	<div style="float: left; width: 100%;">
 		<br>
 	</div>
-	<div style="float: left; width: 1%;">
+	<div style="float: left; width: 1%;">  
 		<br>
 	</div>
 	<div style="float: left; width: 49%; text-align: center;">
