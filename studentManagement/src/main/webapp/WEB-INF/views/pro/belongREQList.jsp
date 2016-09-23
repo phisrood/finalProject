@@ -123,6 +123,7 @@
                           <th>학번</th>
                           <th>연락처</th>
                           <th>학과</th>
+                          <th>상태</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -133,6 +134,17 @@
 								<td>${stu.use_id }</td>
 								<td>${stu.stud_phone }</td>
 								<td>${stu.dep_name }</td>
+								<c:choose>
+									<c:when test="${stu.stud_hob == 0}">
+										<td>승인대기</td>
+									</c:when>
+									<c:when test="${stu.stud_hob == 1}">
+										<td>승인</td>
+									</c:when>
+									<c:when test="${stu.stud_hob == 2}">
+										<td>반려</td>
+									</c:when>
+								</c:choose>
 							</tr>
 						</c:forEach>
 					 </tbody>
