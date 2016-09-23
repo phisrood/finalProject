@@ -17,6 +17,11 @@
 	height:800px;
 	text-align:center;
 }
+#tbl-time{
+	width:80%;	
+	height:900px;
+	text-align:center;
+}
 #classSYL .lecture-border{
 	border: 1px solid #6E6D93;
 }
@@ -32,9 +37,11 @@
 }
 .lecture-border{
 	border: 1px solid #6E6D93;
+	width:15%;
 }
 .table-th{
 	background:#DAD9FF;		
+	text-align:center;		
 }
 #time-table{
 	border-collapse: collapse;
@@ -58,6 +65,9 @@
 .time-tr{
 	height: 80px;
 }
+.time-th{
+	width: 20%;
+}
 .time-day{
 	text-align: center;
 	height: 40px;
@@ -70,9 +80,12 @@
 	color: black;
 }
 .cer-no{
+	font-size : 20px;
 	text-align:left;
 }
 .cer-title{
+	
+	font-size : 40px;
 	text-align: center;
 }
 .cer-tit{

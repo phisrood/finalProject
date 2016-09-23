@@ -1,13 +1,18 @@
 package com.korea.certificate.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.korea.certificate.service.CertificateService;
+import com.korea.dto.Student_InfoViewVO;
+import com.korea.dto.TimeTableViewVO;
 import com.korea.dto.UsersVO;
 /**
  * @Class Name : AdviceController.java
@@ -52,11 +57,14 @@ public class CertificateController {
 	 */
 	//재학증명서 조회
 	@RequestMapping(value="/stu/attendCertificateInfo", method=RequestMethod.GET)
-	public String attendCertificateInfo(HttpSession session){
+	public String attendCertificateInfo(HttpSession session, Model model){
 		String url="/stu/attendCertificate";
-		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		/*certificateService.getStuAttendInfo(user.getUse_id());*/
 		
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		String id = user.getUse_id();
+		System.out.println(id);
+		Student_InfoViewVO student_InfoViewVO =  certificateService.getStuAttendInfo(id);
+		model.addAttribute("Student_InfoViewVO", student_InfoViewVO);
 		return url;
 	}
 	/**
