@@ -76,5 +76,14 @@ public interface ScoreInquiryService {
 	 * @return 
 	 * @throws 
 	 */
-	public List<StudentViewVO> getStudentList(String lec_no);
+	public Map getStudentList(String lec_no);
+	
+	/**
+	 * @param grade2 
+	 * 성적입력
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public void insertGrade(String lec_no,String[] use_id, String[] score, String[] grade);
 }

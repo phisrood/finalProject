@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.ScoreViewVO;
 import com.korea.dto.StudentViewVO;
@@ -267,12 +268,31 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 		return dao.getLectureList(map);
 	}
 	@Override
-	public List<StudentViewVO> getStudentList(String lec_no) {
-		List<String> cbList = dao.getCourseBreakDownList(lec_no);
+	public Map getStudentList(String lec_no) {
+		List<Course_BreakDownVO> cbList = dao.getCourseBreakDownList(lec_no);
 		if(cbList==null || cbList.size()==0){
 			return null;
 		}else{
-		return dao.getStudentList(cbList);
+			List<StudentViewVO> studentList =  dao.getStudentList(cbList);
+			Map map = new HashMap<String, List>();
+			map.put("cbList", cbList);
+			map.put("studentList",studentList);
+			return map;
 		}
+	}
+	
+	@Override
+	public void insertGrade(String lec_no,String[] use_id, String[] score, String[] grade) {
+		List<Course_BreakDownVO> cbList = new ArrayList<Course_BreakDownVO>();
+		int lec_notoInt = Integer.valueOf(lec_no); 
+		for(int i=0; i<use_id.length; i++){
+			Course_BreakDownVO cb = new Course_BreakDownVO();
+			cb.setCb_lec_no(lec_notoInt);
+			cb.setCb_score(Integer.valueOf(score[i]));
+			cb.setCb_grade(grade[i]);
+			cb.setCb_stud_use_id(use_id[i]);
+			cbList.add(cb);
+		}
+		dao.insertGrade(cbList);
 	}
 }

@@ -22,6 +22,7 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.korea.dto.Period;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
@@ -145,8 +146,12 @@ public class LoginServiceImpl implements LoginService{
 		return tempPwd;
 	}
 	@Override
+	public Period getPeriodAll() {
+		return dao.getPeriodAll();
+	}
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return dao.getLoginCheck(checkMap);
+
 	}
 
 }

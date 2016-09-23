@@ -21,6 +21,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.korea.dto.Period;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
@@ -104,6 +105,9 @@ public class LoginDAOImpl implements LoginDAO{
 	}
 
 	@Override
+	public Period getPeriodAll() {
+		return (Period) session.selectOne("Login.getPeriod");
+	}
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return (UsersVO) session.selectOne("Login.loginCheck", checkMap);
 	}

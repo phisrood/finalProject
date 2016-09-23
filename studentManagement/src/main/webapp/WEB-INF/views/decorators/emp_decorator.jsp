@@ -97,6 +97,7 @@
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/noticeAllList">공지사항</a></li>
 		                      <li><a href="/emp/messageAllList">쪽지함</a></li>
+		                      <li><a href="/emp/periodSetting">기간설정 및 성적반영</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
