@@ -222,19 +222,19 @@ public class LoginController {
 	//비밀번호찾기 이메일 구현
 	@RequestMapping(value="/common/pwdSearch", method=RequestMethod.POST)
 	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
-							@RequestParam(value="birth", defaultValue="")String birth, HttpServletResponse response) throws IOException{
-		String url="/common/loginForm";
+							@RequestParam(value="birth", defaultValue="")String birth, HttpServletResponse response, Model model) throws IOException{
+		String url="/common/searchPwd";
 		int index = service.updateLoginPwdSearch(id, birth);
-		response.setContentType("text/html;charset=UTF-8");
+		/*response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		if(index == 0){
+		if(index == 1){
 			//아이디 학생 8자리 교수 7자리 행정 6자리의 만족을 일치하지 않음
 		     out.println("<script type='text/javascript'>");
 		     out.println("alert('[학번불일치]학번을 올바르게 작성해주세요.');");
 		     out.println("history.back();");
 		     out.println("</script>");
 		     out.flush();
-		}else if(index == 1){
+		}else if(index == 2){
 			//아이디와 생년월일에 일치하는 회원이 없음
 			out.println("<script type='text/javascript'>");
 			out.println("alert('[학번/이메일 불일치]아이디와 생년월일에 일치하는 회원정보가 없습니다.');");
@@ -242,21 +242,22 @@ public class LoginController {
 			out.println("</script>");
 			out.flush();
 			url="/common/searchPwd";
-		}else if(index == 2){
+		}else if(index == 3){
 			//임시비밀번호 초기화 완료
 			out.println("<script type='text/javascript'>");
 			out.println("alert('임시비밀번호로 초기화가 완료되었습니다.');");
 			out.println("</script>");
 			out.flush();
-		}else if(index ==3){
+		}else if(index ==4){
 			//이메일 잘못됨
 			out.println("<script type='text/javascript'>");
 			out.println("alert('이메일정보가 잘못되었습니다. 학사팀으로 연락해주세요.(042-000-0000)');");
 			out.println("history.back();");
 			out.println("</script>");
 			out.flush();
-		}
+		}*/
 		
+		model.addAttribute("index", index);
 		
 		return url;
 	}

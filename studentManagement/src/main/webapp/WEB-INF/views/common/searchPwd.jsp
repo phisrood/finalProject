@@ -27,13 +27,57 @@
 
     <title>Hanguk University! | </title>
 
-	  <script src="/common/js/login.js" ></script>
+	<script src="/common/js/login.js" ></script>
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
     <link href="/bootstrap/css/nprogress.css" rel="stylesheet">
     <link href="/bootstrap/css/animate.min.css" rel="stylesheet">
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+    <script src="/bootstrap/js/jquery.min.js"></script>
+	<script src="/bootstrap/js/jquery.form.js"></script>
+	<script src="/bootstrap/js/sweetalert.min.js"></script>
   </head>
+
+	<script>
+		$(function(){
+			var index = "${index}";
+			
+			if(index == 1){
+				swal({
+					title: "학번/이메일 불일치!",
+					text: "학번을 올바르게 작성해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				
+				return false;
+			}else if(index ==2){
+				swal({
+					title: "학번/이메일 불일치!",
+					text: "아이디와 생년월일에 일치하는 회원정보가 없습니다.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else if(index ==3){
+				swal({
+					title: "비밀번호 초기화 완료!",
+					text: "임시비밀번호로 초기화가 완료되었습니다.",
+					type: "success",
+					confirmButtonText: "닫기" 
+				});
+			}else if(index ==4){
+				swal({
+					title: "이메일정보오류",
+					text: "이메일정보가 잘못되었습니다. 학사팀으로 연락해주세요.(042-000-0000)",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}
+		});
+	</script>
 
   <body class="login">
     <div>
@@ -44,19 +88,19 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form action="/common/pwdSearch" method="post">
-              <h1>SEARCH</h1>
+              <h1>PWD SEARCH</h1>
               <div>
-                <input type="text" class="form-control" name="id" placeholder="학번" />
+                <input type="text" class="form-control" name="id" placeholder="User ID" />
               </div>
               <div>
                 <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)930813"/>
               </div>
               <div>
-                <input type="submit" value="인증메일발송">
+                <input type="submit" id="submit" value="인증메일발송">
+                <input type="button" onclick="location.href='/common/loginForm'" value="로그인하러가기">
               </div>
                 <div class="clearfix"></div>
-              <br />
-
+             	<br />
                 <div>
                   <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
                   <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
