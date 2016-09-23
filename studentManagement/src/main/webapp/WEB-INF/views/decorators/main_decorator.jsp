@@ -50,7 +50,8 @@
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
-    
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
     <script src="/stu/js/default.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
