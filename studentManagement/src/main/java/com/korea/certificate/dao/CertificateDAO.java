@@ -27,5 +27,5 @@ public interface CertificateDAO {
 	 * @throws 
 	 */
 	//학생 정보 가져오기
-	public Student_InfoViewVO getStuInfo(String id);
+	public Student_InfoViewVO getStuAttendInfo(String use_id);
 }

@@ -42,8 +42,8 @@ public class CertificateServiceImpl implements CertificateService{
 
 
 	@Override
-	public Student_InfoViewVO getStuAttendInfo(String id) {
-		return certificateDAO.getStuInfo(id);		
+	public Student_InfoViewVO getStuAttendInfo(String use_id) {
+		return certificateDAO.getStuAttendInfo(use_id);		
 	}
 
 }

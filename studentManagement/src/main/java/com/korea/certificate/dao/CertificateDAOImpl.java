@@ -33,8 +33,10 @@ public class CertificateDAOImpl implements CertificateDAO{
 	 * @throws 
 	 */
 	@Override
-	public Student_InfoViewVO getStuInfo(String id) {
-		return (Student_InfoViewVO) sqlSession.selectOne("Certificate.getStuInfo");
+	public Student_InfoViewVO getStuAttendInfo(String use_id) {
+		System.out.println(use_id+"DAODAODAODAODAODAODAO");
+		
+		return (Student_InfoViewVO) sqlSession.selectOne("Certificate.getAttendCertificate",use_id);
 		
 	}
 

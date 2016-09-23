@@ -36,5 +36,5 @@ public interface CertificateService {
 	 * @return 
 	 * @throws 
 	 */
-	public Student_InfoViewVO getStuAttendInfo(String id);
+	public Student_InfoViewVO getStuAttendInfo(String use_id);
 }
