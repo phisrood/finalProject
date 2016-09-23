@@ -52,18 +52,20 @@
 		<div class="x_content">
 			<br />
 			<div class="button-location">
+			<form name="pdfForm">
+				<input type=hidden id="htmlTag" name="htmlTag"/>
 				<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>
+			</form>
 			</div>
-
-			<table id="time-table"
-				class='table table-striped table-bordered dataTable no-footer'>
+<div id="tbl-time" style="text-align: center">
+			<table id="time-table" class="kor" style="border-collapse: collapse; width:100%;">
 				<tr class="time-tr time-day">
 					<th class="lecture-border table-th"></th>
-					<th class="lecture-border table-th"><h2>월</h2></th>
-					<th class="lecture-border table-th"><h2>화</h2></th>
-					<th class="lecture-border table-th"><h2>수</h2></th>
-					<th class="lecture-border table-th"><h2>목</h2></th>
-					<th class="lecture-border table-th"><h2>금</h2></th>
+					<th class="lecture-border table-th">월</th>
+					<th class="lecture-border table-th">화</th>
+					<th class="lecture-border table-th">수</th>
+					<th class="lecture-border table-th">목</th>
+					<th class="lecture-border table-th">금</th>
 
 				</tr>
 				<tr class="time-tr">
@@ -149,13 +151,17 @@
 				</tr>
 			</table>
 		</div>
+		</div>
 	</div>
 	<!-- /page content -->
 </div>
 <script>
 	<c:forEach var="item" items="${timetable}">
-	  $(".timeTable").eq('<c:out value="${item.cu_tt_no}"/>').html('<c:out value="${item.lb_name}"/>,<c:out value="${item.lec_placement}"/>반<br/><c:out value="${item.ci_roomname}"/>,<c:out value="${item.ci_roomnumber}"/>');			
+	  $(".timeTable").eq('<c:out value="${item.cu_tt_no}"/>').html('<p><c:out value="${item.lb_name}"/>, <c:out value="${item.lec_placement}"/>반</p> <p><c:out value="${item.ci_roomname}"/> ,<c:out value="${item.ci_roomnumber}"/></p>');			
 	
 	</c:forEach>
 	
+</script>
+<script type="text/javascript">
+	$("#htmlTag").val($("#tbl-time").html());
 </script>

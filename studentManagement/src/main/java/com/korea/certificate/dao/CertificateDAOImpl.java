@@ -1,6 +1,10 @@
 package com.korea.certificate.dao;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.korea.dto.Student_InfoViewVO;
 
 /**
  * @Class Name : AdviceController.java
@@ -20,6 +24,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class CertificateDAOImpl implements CertificateDAO{
+	@Autowired 
+	SqlSession sqlSession;
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
@@ -27,8 +33,8 @@ public class CertificateDAOImpl implements CertificateDAO{
 	 * @throws 
 	 */
 	@Override
-	public void getStuInfo() {
-		// TODO Auto-generated method stub
+	public Student_InfoViewVO getStuInfo(String id) {
+		return (Student_InfoViewVO) sqlSession.selectOne("Certificate.getStuInfo");
 		
 	}
 

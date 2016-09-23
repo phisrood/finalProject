@@ -43,30 +43,27 @@
 					</div>
 
 <div id="cer-tbl">
-<table  id="cer-table">
+<table  id="cer-table" class="kor">
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
+		<th colspan="4" class="cer-no" >&nbsp;제  2016-12345호</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h1>재 학 증 명 서</h1></th>	
+		<th colspan="4" class="cer-title" >재 학 증 명 서</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${student_InfoViewVO.use_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :${student_InfoViewVO.stud_birth }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년 :</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${student_InfoViewVO.dep_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
@@ -75,14 +72,13 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>위의 사실을 증명함</h3></th>	
+		<th colspan="4" class="cer-title" >위의 사실을 증명함</th>	
 	</tr>
-	
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>2016년 09월 09일</h3></th>	
+		<th colspan="4" class="cer-title" >2016년 09월 09일</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	

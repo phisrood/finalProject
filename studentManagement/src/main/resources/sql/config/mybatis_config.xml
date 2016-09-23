@@ -143,6 +143,8 @@
 		<typeAlias alias="courseVO" type="com.korea.dto.Course_BreakDownVO" />
 		<!-- Lecture_Chart_View -->
 		<typeAlias alias="period" type="com.korea.dto.Period" />
+		<!-- Student_InfoViewVO -->
+		<typeAlias alias="certificate" type="com.korea.dto.Student_InfoViewVO" />
 
 
 	</typeAliases>
@@ -200,5 +202,7 @@
 		
 		<!--  과제게시판 -->
 		<mapper resource="sql/mapper/homework.xml"/>
+		<!--  증명서 -->
+		<mapper resource="sql/mapper/certificate.xml"/>
 	</mappers>
 </configuration>

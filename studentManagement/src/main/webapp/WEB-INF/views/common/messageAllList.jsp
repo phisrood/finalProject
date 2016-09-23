@@ -24,6 +24,7 @@
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+
 <script>
 	$(function(){
 		$('#messageDe').hide(); //메시지 상세보기 숨김
@@ -105,6 +106,7 @@
 		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
 		        $("input[name=sendChk]").prop("checked",false);
 		    }
+
 		});
 		//최상단 체크박스 클릭
 		$("#reciveCheckAll").click(function(){
@@ -118,6 +120,28 @@
 		        $("input[name=reciveChk]").prop("checked",false);
 		    }
 		});
+		
+		$(".delBtn").click(function(){
+			var leng = $("input:checkbox[name=sendChk]:checked").length;
+			
+			if(leng == 0){
+				swal({
+					title: "Check!",
+					text: "삭제하실 메시지를 선택해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else{
+				swal({
+					title: "삭제완료!",
+					text: "정상적으로 삭제되었습니다.",
+					type: "success",
+					confirmButtonText: "닫기" 
+				});
+			}
+		});
+
 		
 	});
 </script>
@@ -199,7 +223,7 @@
 									</tbody>
 								</table>
 									<div style="text-align:right;">
-										<button type="submit" class="btn btn-dark">삭제</button>
+										<button type="submit" class="delBtn btn-dark">삭제</button>
 			                    	</div>
 								</form>
 							</div>
@@ -237,7 +261,7 @@
 								</tbody>
 							</table>
 									<div style="text-align:right;">
-										<button type="submit" class="btn btn-dark">삭제</button>
+										<button type="submit" class="delBtn btn-dark">삭제</button>
 				                    
 				                    </div>
 				              </form>

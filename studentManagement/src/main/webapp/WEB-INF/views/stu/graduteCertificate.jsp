@@ -44,15 +44,15 @@
 
 <div id="cer-tbl">
 
-<table  id="cer-table">
+<table  id="cer-table" class="kor">
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
+		<th colspan="4" class="cer-no" >&nbsp;제  2016-12345호</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h1>졸 업 증 명 서</h1></th>	
+		<th colspan="4" class="cer-title" >졸 업 증 명 서</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
@@ -79,13 +79,13 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>위의 사실을 증명함</h3></th>	
+		<th colspan="4" class="cer-title" >위의 사실을 증명함</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>2016년 09월 09일</h3></th>	
+		<th colspan="4" class="cer-title" >2016년 09월 09일</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	

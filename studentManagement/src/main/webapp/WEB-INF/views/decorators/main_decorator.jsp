@@ -50,7 +50,8 @@
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
-    
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
     <script src="/stu/js/default.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -113,7 +114,7 @@
 		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="/stu/crsesInquiryList">수강신청조회</a></li>
 		                      
-		                      <li><a href="/stu/timeTableList" target="_blank">수업시간표</a></li>
+		                      <li><a href="/stu/timeTableList" target="_blank" onClick="window.open(this.href, '', 'width=1000, height=1200'); return false;">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
