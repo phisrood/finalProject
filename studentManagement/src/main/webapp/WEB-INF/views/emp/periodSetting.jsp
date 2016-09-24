@@ -22,8 +22,12 @@
 		$.ajax({
 			url:"/emp/updateCrsesInquiryPeriod",
 			method:"get",
+			type:"json",
+			data:{"state":$("#crsesInquiryPeriod").val()},
 			success:function(data){
-				$("#updateCrsesInquiryPeriod").val(data);
+				$("#crsesInquiryPeriod").val(data.pr_crses_inquiry);
+			},error:function(){
+				alert("에러");
 			}
 		});
 	}
@@ -31,8 +35,12 @@
 		$.ajax({
 			url:"/emp/appLecturePeriod",
 			method:"get",
+			type:"json",
+			data:{"state":$("#appLecturePeriod").val()},
 			success:function(data){
-				$("#appLecturePeriod").val(data);
+				$("#appLecturePeriod").val(data.pr_app_lecture);
+			},error:function(){
+				alert("에러");
 			}
 		});
 	}
@@ -40,8 +48,12 @@
 		$.ajax({
 			url:"/emp/scoreSummary",
 			method:"get",
+			type:"json",
+			data:{"state":$("#scoreSummary").val()},
 			success:function(data){
-				$("#scoreSummary").val(data);
+				$("#scoreSummary").val(data.pr_score_sum);
+			},error:function(){
+				alert("에러");
 			}
 		});
 	}
@@ -49,8 +61,12 @@
 		$.ajax({
 			url:"/emp/majorReqPeriod",
 			method:"get",
+			type:"json",
+			data:{"state":$("#majorReqPeriod").val()},
 			success:function(data){
-				$("#majorReqPeriod").val(data);
+				$("#majorReqPeriod").val(data.pr_major_req);
+			},error:function(){
+				alert("에러");
 			}
 		});
 	}

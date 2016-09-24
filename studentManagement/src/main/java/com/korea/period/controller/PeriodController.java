@@ -15,16 +15,24 @@ package com.korea.period.controller;
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.korea.dto.NoticeViewVO;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.korea.dto.Period;
+import com.korea.period.service.PeriodService;
 
 @Controller
 public class PeriodController  {
+	@Autowired
+	private PeriodService periodService;
 	
 	//공지사항 수정 폼이동
 	@RequestMapping(value="/emp/periodSetting", method=RequestMethod.GET)
@@ -35,12 +43,39 @@ public class PeriodController  {
 	}
 	//공지사항 수정 폼이동
 	@RequestMapping(value="/emp/updateCrsesInquiryPeriod", method=RequestMethod.GET)
-	public String updateCrsesInquiryPeriod(){
-		String url="emp/updateCrsesInquiryPeriod";
+	public void updateCrsesInquiryPeriod(String state,HttpSession session,HttpServletResponse response){
+		periodService.updateCrsesInquiryPeriod(state);
+		getPeriodAll(session,response);
 		
-		return url;
+	}
+	@RequestMapping(value="/emp/appLecturePeriod", method=RequestMethod.GET)
+	public void appLecturePeriod(String state,HttpSession session,HttpServletResponse response){
+		periodService.updateappLecturePeriod(state);
+		getPeriodAll(session,response);
+	}
+	@RequestMapping(value="/emp/scoreSummary", method=RequestMethod.GET)
+	public void scoreSummary(String state,HttpSession session,HttpServletResponse response){
+		periodService.updateScoreSummary(state);
+		getPeriodAll(session,response);
+	}
+	@RequestMapping(value="/emp/majorReqPeriod", method=RequestMethod.GET)
+	public void majorReqPeriod(String state,HttpSession session,HttpServletResponse response){
+		periodService.updateMajorReqPeriod(state);
+		getPeriodAll(session,response);
 	}
 	
+	public void getPeriodAll(HttpSession session,HttpServletResponse response){
+		Period period = periodService.getPeriodAll();
+		session.setAttribute("period", period);
+		ObjectMapper json = new ObjectMapper();
+		try {
+			response.setContentType("text/json; charset=utf-8");
+			response.getWriter().print(json.writeValueAsString(period));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

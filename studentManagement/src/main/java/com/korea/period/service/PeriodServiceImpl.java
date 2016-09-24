@@ -1,16 +1,10 @@
 package com.korea.period.service;
 
-import java.util.List;
-
-import javax.servlet.http.Cookie;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.korea.dto.Attachment_FileVO;
-import com.korea.dto.Colleage_NoticeVO;
-import com.korea.dto.NoticeViewVO;
-import com.korea.notice.dao.NoticeDAO;
+import com.korea.dto.Period;
+import com.korea.period.dao.PeriodDAO;
 
 /**
  * @Class Name : IndivInfoManageController.java
@@ -31,8 +25,37 @@ import com.korea.notice.dao.NoticeDAO;
 
 @Service
 public class PeriodServiceImpl implements PeriodService{
+	@Autowired
+	private PeriodDAO periodDAO;
 	
+	@Override
+	public void updateCrsesInquiryPeriod(String state) {
+		periodDAO.updateCrsesInquiryPeriod(state);
+		
+	}
+
+	@Override
+	public void updateappLecturePeriod(String state) {
+		periodDAO.updateAppLecturePeriod(state);
+		
+	}
+
+	@Override
+	public void updateScoreSummary(String state) {
+		periodDAO.updateScoreSummary(state);
+		
+	}
+
+	@Override
+	public void updateMajorReqPeriod(String state) {
+		periodDAO.updateMajorReqPeriod(state);
+		
+	}
 	
+	@Override
+	public Period getPeriodAll() {
+		return periodDAO.getPeriodAll();
+	}
 
 
 }

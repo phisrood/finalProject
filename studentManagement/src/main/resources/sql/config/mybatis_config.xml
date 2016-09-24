@@ -204,5 +204,7 @@
 		<mapper resource="sql/mapper/homework.xml"/>
 		<!--  증명서 -->
 		<mapper resource="sql/mapper/certificate.xml"/>
+		<!--  기간 -->
+		<mapper resource="sql/mapper/period.xml"/>
 	</mappers>
 </configuration>

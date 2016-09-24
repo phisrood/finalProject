@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="period">
+	<update id="updateCrsesInquiryPeriod" parameterType="str">
+		UPDATE PERIOD
+		SET
+		<if test="_parameter=='on'">
+		PR_CRSES_INQUIRY = 'off'
+		</if>
+		<if test="_parameter=='off'">
+		PR_CRSES_INQUIRY = 'on'
+		</if>
+	</update>
+	<update id="updateAppLecturePeriod" parameterType="str">
+		UPDATE PERIOD
+		SET	
+		<if test="_parameter=='on'">
+	PR_APP_LECTURE = 'off'
+		</if>
+		<if test="_parameter=='off'">
+		PR_APP_LECTURE = 'on'
+		</if>
+	</update>
+	<update id="updateScoreSummary" parameterType="str">
+		UPDATE PERIOD
+		SET
+		<if test="_parameter=='on'">
+			PR_SCORE_SUM = 'off'
+		</if>
+		<if test="_parameter=='off'">
+		PR_SCORE_SUM = 'on'
+		</if>
+	</update>
+	<update id="updateMajorReqPeriod" parameterType="str">
+		UPDATE PERIOD
+		SET
+		<if test="_parameter=='on'">
+		PR_MAJOR_REQ = 'off'
+		</if>
+		<if test="_parameter=='off'">
+		PR_MAJOR_REQ = 'on'
+		</if>
+	</update>
+	<select id="getPeriod" resultType="period">
+		SELECT *
+		FROM PERIOD
+</select>
+</mapper>

@@ -145,10 +145,7 @@ public class LoginServiceImpl implements LoginService{
 			}		
 		return tempPwd;
 	}
-	@Override
-	public Period getPeriodAll() {
-		return dao.getPeriodAll();
-	}
+	
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return dao.getLoginCheck(checkMap);
 

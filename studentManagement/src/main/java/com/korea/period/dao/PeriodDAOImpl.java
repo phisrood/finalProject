@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.NoticeViewVO;
+import com.korea.dto.Period;
 import com.korea.dto.UsersVO;
 
 /**
@@ -31,9 +32,33 @@ import com.korea.dto.UsersVO;
 public class PeriodDAOImpl implements PeriodDAO{
 	
 	@Autowired
-	SqlSession sqlSession;
-	
+	private SqlSession sqlSession;
 
+	@Override
+	public void updateCrsesInquiryPeriod(String state) {
+		sqlSession.update("period.updateCrsesInquiryPeriod",state);
+		
+	}
 
+	@Override
+	public void updateAppLecturePeriod(String state) {
+		sqlSession.update("period.updateAppLecturePeriod",state);		
+	}
+
+	@Override
+	public void updateScoreSummary(String state) {
+		sqlSession.update("period.updateScoreSummary",state);
+		
+	}
+
+	@Override
+	public void updateMajorReqPeriod(String state) {
+		sqlSession.update("period.updateMajorReqPeriod",state);
+	}
+
+	@Override
+	public Period getPeriodAll() {
+		return (Period) sqlSession.selectOne("period.getPeriod");
+	}
 
 }

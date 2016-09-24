@@ -5,6 +5,7 @@ import java.util.List;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.NoticeViewVO;
+import com.korea.dto.Period;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -24,6 +25,14 @@ import com.korea.dto.NoticeViewVO;
  */
 
 public interface PeriodService {
+
+	void updateCrsesInquiryPeriod(String state);
+
+	void updateappLecturePeriod(String state);
+
+	void updateScoreSummary(String state);
+
+	void updateMajorReqPeriod(String state);
 	
-	
+	public Period getPeriodAll();
 }

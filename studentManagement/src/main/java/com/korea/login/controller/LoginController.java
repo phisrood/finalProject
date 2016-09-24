@@ -45,21 +45,25 @@ import com.korea.indivInfoManage.service.IndivInfoManageService;
 import com.korea.login.service.LoginService;
 import com.korea.message.service.MessageService;
 import com.korea.notice.service.NoticeService;
+import com.korea.period.service.PeriodService;
 
 @Controller
 public class LoginController {
 	
 	@Autowired
-	LoginService service;
+	private LoginService service;
 	
 	@Autowired
-	MessageService messageService;
+	private MessageService messageService;
 	
 	@Autowired
-	NoticeService noticeService;
+	private NoticeService noticeService;
 	
 	@Autowired
-	IndivInfoManageService indivInfoManageService;
+	private IndivInfoManageService indivInfoManageService;
+	
+	@Autowired
+	private PeriodService periodService;
 	
 	/**
 	 * 개인 정보 조회
@@ -188,7 +192,7 @@ public class LoginController {
 		
 		//usersVO에 접속정보담고
 		usersVO = service.getLoginInfo(id);
-		Period period = service.getPeriodAll();	
+		Period period = periodService.getPeriodAll();	
 		//session에 넣고
 		session.setAttribute("loginUser", usersVO);
 		session.setAttribute("period", period);

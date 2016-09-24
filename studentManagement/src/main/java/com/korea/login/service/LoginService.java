@@ -53,7 +53,7 @@ public interface LoginService {
 	public School_PersonInfoViewVO getEmpdivInfo(String id);
 
 
-	public Period getPeriodAll();
+
 	
 	public UsersVO getLoginCheck(Map<String, String> checkMap);
 
