@@ -80,7 +80,7 @@
 					var content = data.mes_content;
 					var date = data.mes_date;
 					var delyn = data.mes_delyn;
-					var reciveBtn = "<button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
+					var reciveBtn = "<br><br><button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(to+send);
 					$("#messageTitle").html(title);
@@ -121,8 +121,28 @@
 		    }
 		});
 		
-		$(".delBtn").click(function(){
+		$("#reciveDelBtn").click(function(){
 			var leng = $("input:checkbox[name=sendChk]:checked").length;
+			
+			if(leng == 0){
+				swal({
+					title: "Check!",
+					text: "삭제하실 메시지를 선택해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else{
+				swal({
+					title: "삭제완료!",
+					text: "정상적으로 삭제되었습니다.",
+					type: "success",
+					confirmButtonText: "닫기" 
+				});
+			}
+		});
+		$("#sendDelBtn").click(function(){
+			var leng = $("input:checkbox[name=reciveChk]:checked").length;
 			
 			if(leng == 0){
 				swal({
@@ -270,7 +290,7 @@
 									</tbody>
 								</table>
 									<div style="text-align:right;">
-										<button type="submit" class="delBtn btn-dark">삭제</button>
+										<button type="submit" id="reciveDelBtn" class="delBtn btn-dark">삭제</button>
 			                    	</div>
 								</form>
 							</div>
@@ -308,7 +328,7 @@
 								</tbody>
 							</table>
 									<div style="text-align:right;">
-										<button type="submit" class="delBtn btn-dark">삭제</button>
+										<button type="submit" id="sendDelBtn" class="delBtn btn-dark">삭제</button>
 				                    
 				                    </div>
 				              </form>
@@ -347,7 +367,7 @@
 			                    </div>
 			                  </div>
 			                  <div style="text-align:center; margin-left:13%">
-			                    <input type="text" id="txtbyte" style="width:50px;" readonly>/1000byte
+			                   <input type="text" id="txtbyte" style="width:50px; border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly>/1000byte
 			                  </div>
 			                  <br/>
 		                  		<div style="text-align:center; margin-left:13%">

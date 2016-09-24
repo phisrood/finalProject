@@ -58,7 +58,7 @@ public class LoginServiceImpl implements LoginService{
 	 */
 	@Override
 	public int updateLoginPwdSearch(String id, String birth) {
-		int chk = 0;
+		int chk = 1;
 		
 		
 		StudentVO studentVO = new StudentVO();
@@ -79,11 +79,11 @@ public class LoginServiceImpl implements LoginService{
 					//그냥 아무vo에 임시비밀번호 넣어서 초기화
 					studentVO.setStud_regno1(tempPwd);
 					dao.updatePwdChangeStu(studentVO);
-					chk = 2;
+					chk = 3;
 					
 				}				
 			} catch (Exception e) {
-				chk = 1;
+				chk = 2;
 			}
 		//교수일때
 		}else if(id.length() == 7){
@@ -96,10 +96,10 @@ public class LoginServiceImpl implements LoginService{
 					
 					professorVO.setPro_regno1(tempPwd);
 					dao.updatePwdChangePro(professorVO);
-					chk = 2;
+					chk = 3;
 				}
 			} catch (Exception e) {
-				chk = 1;
+				chk = 2;
 			}
 		//행정일때
 		}else if(id.length() == 6){
@@ -113,15 +113,16 @@ public class LoginServiceImpl implements LoginService{
 					
 					school_PersonVO.setSp_regno1(tempPwd);
 					dao.updatePwdChangeEmp(school_PersonVO);
-					chk=2;
+					chk=3;
 				}
 			} catch (Exception e) {
-				chk = 1;
+				chk = 2;
 			}
 		}
 		
 		return chk;
 	}
+	
 	@Override
 	public Professor_InfoViewVO getProdivInfo(String id) {
 		return dao.getProdivInfo(id);

@@ -24,17 +24,25 @@
 <script>
 	$(function(){
 		var indexVal=0;
+		//선택된값 강의번호 저장
+		var lec_no = $("#lecSec option:selected").val();
+		
+		$("#lecSec").change(function(){
+			lec_no = $("#lecSec option:selected").val();
+		});
+		
 		$.ajax({
 			url:"/stu/classAppList",
 			method:"get",
 			type:"json",
+			data:{"lec_no":lec_no},
 			success:function(data){
 				var htmlCode="";
 				
 				$.each(data, function(index, value){
 					htmlCode+="<tr>";
 					htmlCode+="<td>"+(index+1)+"</td>";
-					htmlCode+="<td>"+value.am_content+"</td>";
+					htmlCode+="<td>"+value.lc_appraisalquestion+"</td>";
 					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='5'></td>";
 					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='4'></td>";
 					htmlCode+="<td><input type='radio' class='check"+index+"' name='check"+index+"' value='3'></td>";
@@ -68,8 +76,7 @@
 				checkedValue[i] = $("input[type=radio][name=check"+i+"]:checked").val();
 			}
 			
-			//선택된값 강의번호 저장
-			var lec_no = $("#lecSec option:selected").val();
+
 			
 			location.href="/stu/classAppSave?lec_no="+lec_no+"&&checkVal="+checkedValue+"";
 						

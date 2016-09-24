@@ -104,9 +104,7 @@
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
-		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
 		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
-		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
@@ -122,12 +120,12 @@
 		                      
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
+<!-- 		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/regList">등록내역</a></li>
 		                      <li><a href="#">고지서</a></li>
 		                    </ul>
-		                  </li>
+		                  </li> -->
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
@@ -172,8 +170,6 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href=""> 프로필</a></li>
-                    <li><a href=""></a></li>
                     <li><a href="/common/logout"><i class="fa fa-sign-out pull-right"></i> 로그아웃</a></li>
                   </ul>
                 </li>

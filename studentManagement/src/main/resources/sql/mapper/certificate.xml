@@ -5,11 +5,12 @@
 
 <mapper namespace="Certificate">
 
-	<select id="getStuInfo" parameterType="str" resultType="certificate">
-		SELECT USE_ID
-			  ,STUD_BIRTH
-			  ,DEP_NAME
-		FROM Student_InfoViewVO
-		WHERE USE_ID = #{use_id}
+	<select id="getAttendCertificate" parameterType="str" resultType="certificate">
+		SELECT 	USE_ID
+			  	,USE_NAME
+			  	,STUD_BIRTH
+			  	,DEP_NAME
+		FROM 	STUDENT_INFO
+		WHERE 	USE_ID = #{use_id} AND MA_MK_NO= '1'
 	</select>
 </mapper>

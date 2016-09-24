@@ -30,10 +30,27 @@
 <link href="/bootstrap/css/switchery.min.css" rel="stylesheet">
 <link href="/bootstrap/css/starrr.css" rel="stylesheet">
 <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
-
+<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+<script src="/bootstrap/js/jquery.min.js"></script>
+<script src="/bootstrap/js/jquery.form.js"></script>
+<script src="/bootstrap/js/sweetalert.min.js"></script>
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.min.js"></script>
 <script>
+$(function(){
+	$("#sendBtn").click(function(){
+		var content = $("#mes_content").val();
+		if(content.length > 1000){
+			swal({
+				title: "내용이 너무 깁니다.!",
+				text: "쪽지의 내용은 최대 1000자로 제한되어있습니다.",
+				type: "error",
+				confirmButtonText: "닫기" 
+			});
+			return false;
+		}
+	});
+});
 function OntextCheck(obj)
 {
     var str = new String(obj.value);
@@ -89,10 +106,10 @@ function OntextCheck(obj)
 			                   	</div>
 			                   	<br>
 			                   	 내 &nbsp;&nbsp;&nbsp;&nbsp;용 : <br>
-			                   	 <textarea rows="10" cols="40" name="mes_content" onkeyUp="OntextCheck(this);" required="required" style="width:100%;" name="mes_content"></textarea>
+			                   	 <textarea rows="10" cols="40" id="mes_content" onkeyUp="OntextCheck(this);" required="required" style="width:100%;" name="mes_content"></textarea>
 		                  		<div style="text-align:right;">
 		                  		<br>
-				                    <input type="text" id="txtbyte" style="width:50px;" readonly>/1000byte<br>
+				                    <input type="text" id="txtbyte" style="width:50px; border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly>/1000byte
 				                </div>
 		                  		<div style="text-align:center;">
 		                  		<br>

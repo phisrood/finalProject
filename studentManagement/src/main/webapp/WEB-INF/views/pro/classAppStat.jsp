@@ -52,6 +52,25 @@
     		}
     	});
     	
+    	$.ajax({
+    		url:"/pro/classAppQnaChart",
+    		method:"get",
+    		data:{"lec_no":lec_no},
+    		type:"json",
+    		success:function(info){
+    			var htmlCode="<ul style='list-style:none; font-size:15px;'>"; 
+    			$.each(info, function(index, data){
+    				htmlCode += "<li>"+(index+1)+"번 항목 : "+data.lc_appraisalquestion+"</li>"; 
+    			});
+    			htmlCode+="</ul>";
+    			
+    			$("#qnaChart").html(htmlCode);
+    		},
+    		error:function(){
+    			alert("error");
+    		}
+    	});
+    	
     	$("#lecture").change(function(){
     		lec_no = $("#lecture option:selected").val();
     		$("#graph_bar").html("");
@@ -77,6 +96,25 @@
         			alert("error");
         		}
         	});
+        	
+        	$.ajax({
+        		url:"/pro/classAppQnaChart",
+        		method:"get",
+        		data:{"lec_no":lec_no},
+        		type:"json",
+        		success:function(info){
+        			var htmlCode="<ul style='list-style:none; font-size:15px;'>"; 
+        			$.each(info, function(index, data){
+        				htmlCode += "<li>"+(index+1)+"번 항목 : "+data.lc_appraisalquestion+"</li>"; 
+        			});
+        			htmlCode+="</ul>";
+        			
+        			$("#qnaChart").html(htmlCode);
+        		},
+        		error:function(){
+        			alert("error");
+        		}
+        	});
     	});
        
         $MENU_TOGGLE.on('click', function() {
@@ -85,6 +123,24 @@
       });
     </script>
    
+	<div class="row">
+	              <!-- bar chart -->
+	             
+		<div class="x_panel" style="height:300px;">
+			<div class="x_title"> 
+				<h2>수업평가항목</h2>
+				<div class="clearfix">  
+				</div>
+				<select class="form-control" id="lecture">
+                      <c:forEach var="lectureList" items="${lectureList }">
+                        <option value="${lectureList.lec_no }">[개설 : ${lectureList.lec_makeyear}-${lectureList.lec_makesemester}학기 분반 : ${lectureList.lec_placement} 과목명 : ${lectureList.lb_name }]</option>
+                      </c:forEach>
+                </select>
+			</div>
+			<div class="x_content">
+				<div id="qnaChart" style="width:100%; height:280px;"></div>
+			</div>
+		</div>
         <!-- page content -->
    
 
@@ -93,16 +149,11 @@
             <div class="row">
               <!-- bar chart -->
              
-                <div class="x_panel">
+                <div class="x_panel" style="height:40%;">
                   <div class="x_title">
                     <h2>수업평가통계</h2>
                     
                     <div class="clearfix"></div>
-                      <select class="form-control" id="lecture">
-                      <c:forEach var="lectureList" items="${lectureList }">
-                        <option value="${lectureList.lec_no }">[개설 : ${lectureList.lec_makeyear}-${lectureList.lec_makesemester}학기 분반 : ${lectureList.lec_placement} 과목명 : ${lectureList.lb_name }]</option>
-                      </c:forEach>
-                      </select>
                   </div>
                   <div class="x_content">
                     <div id="graph_bar" style="width:100%; height:280px;"></div>
@@ -111,6 +162,8 @@
               </div>
               <!-- /bar charts -->
 
-
+				
     <!-- morris.js -->
+    
+	</div>
 

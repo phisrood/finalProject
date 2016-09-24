@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
 
 /**
@@ -78,4 +80,5 @@ public interface ClassAppService {
 	public List<LectureViewVO> getLectureListPro(String id);
 	
 	public List<Lecture_Chart_ViewVO> getLectureChart(String lec_no);
+	public List<Lecture_ChartVO> getStuClassAppList(String lec_no);
 }
