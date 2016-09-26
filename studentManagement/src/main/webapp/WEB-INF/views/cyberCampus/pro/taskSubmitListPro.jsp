@@ -81,16 +81,16 @@
                    		<th>제출현황</th>
                  	</tr>
                	</thead>
-               	<c:forEach items="${homeworkAllList_ViewVO}" var="homeworkAllList_ViewVO" varStatus="status">
+               	<c:forEach items="${homeworkVO}" var="homeworkVO" varStatus="status">
                	<tbody>
                  	<tr>
                  	  	<td>${status.count }</td>
-                   		<td><a href="/cyberCampus/pro/taskSubmitListDetail?hw_no=${homeworkAllList_ViewVO.hw_no}">${homeworkAllList_ViewVO.hw_title}</a></td>
-                   		<td>${homeworkAllList_ViewVO.hw_startdate}</td>
-                   		<td>${homeworkAllList_ViewVO.hw_enddate}</td>
+                   		<td><a href="/cyberCampus/pro/taskSubmitListDetail?hw_no=${homeworkVO.hw_no}">${homeworkVO.hw_title}</a></td>
+                   		<td>${homeworkVO.hw_startdate}</td>
+                   		<td>${homeworkVO.hw_enddate}</td>
                    		<td>
          
-                   			<button type="button" id="${homeworkAllList_ViewVO.hw_no }"  class='listbtn btn-info btn-xs'>제출현황 보기</button>
+                   			<button type="button" id="${homeworkVO.hw_no }"  class='listbtn btn-info btn-xs'>제출현황 보기</button>
                    		</td>
                  	</tr>
                	</tbody>

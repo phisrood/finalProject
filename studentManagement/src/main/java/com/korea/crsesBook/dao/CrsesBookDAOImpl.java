@@ -47,8 +47,8 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	 * @throws 
 	 */
 	@Override
-	public List<Lecture_BreakeDownVO> getCrsesBookList() {
-		return sqlSession.selectList("crsesBook.getCrsesBookList");
+	public List<Lecture_BreakeDownVO> getCrsesBookList(int pro_dep_no) {
+		return sqlSession.selectList("crsesBook.getCrsesBookList", pro_dep_no);
 		
 	}
 	/**

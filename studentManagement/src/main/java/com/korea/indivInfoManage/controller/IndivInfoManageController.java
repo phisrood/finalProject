@@ -71,8 +71,7 @@ public class IndivInfoManageController {
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
-		
-	
+
 		return url;
 	}
 	/**
@@ -143,7 +142,9 @@ public class IndivInfoManageController {
 			   HttpServletResponse response,
 			   HttpSession session,
 			   StudentVO studentVO) throws IOException{
-	
+		
+		response.setCharacterEncoding("EUC-KR");
+		PrintWriter writer = response.getWriter();
 		
 		String url = "/stu/colleage/indivInfoImageInsert";
 		
@@ -186,12 +187,28 @@ public class IndivInfoManageController {
     		
             indivInfoManageService.updateafno(para);
          
+
             
+            writer.println("<script type='text/javascript'>");
+            writer.println("alert('정상적으로 등록되었습니다.');");
+            writer.println("window.close();");
+            writer.println("opener.location.reload();");
+            writer.println("</script>");
+            writer.flush();   
+       
             
             return url;
             
 		
 		}
+		
+		   writer.println("<script type='text/javascript'>");
+           writer.println("alert('등록의 실패하였습니다. 파일을 첨부하여 주세요.');");
+           writer.println("window.close();");
+           writer.println("opener.location.reload();");
+           writer.println("</script>");
+           writer.flush();  
+      
 		return url;
 		
 		

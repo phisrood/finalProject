@@ -121,6 +121,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 */
 	@Override
 	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO) {
+		
 		sqlSession.insert("ColleageNotice.insertNoticeFile",attachment_FileVO);
 		
 		return attachment_FileVO;

@@ -79,7 +79,7 @@
               </div>
               <div class="profile_info">
                 <span>환영합니다,</span>
-                <h2>이수정</h2>
+                <h2>${loginUser.use_name}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -89,15 +89,9 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>정보통신공학과 학과장</h3>  <!-- 학과 -->
+                <h3>${professorInfo.dep_name } &nbsp; ${professorInfo.pro_position }${professorInfo.pro_stat }중</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
-               
-	                <li><a><i class="fa fa-clone"></i> 강의계획서 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/cyberClassSYLInfo">강의계획서 조회</a></li>
-		                    </ul>
-		                  </li>
 		                  <li><a><i class="fa fa-clone"></i> 수강생조회 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/cyberCampus/pro/cyberCrsesStuList">수강생조회</a></li>	        
@@ -105,13 +99,7 @@
 		                      <li><a href="#">졸업요건</a></li> -->
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-clone"></i> 출석관리 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                    <!--   <li><a href="/stu/acadeCalList">학사일정조회</a></li> -->
-		                      <li><a href="/cyberCampus/pro/cyberCrsesStuAttend">출석조회</a></li>
-		                      
-		                    </ul>
-		                  </li>
+		               
 		                  <li><a><i class="fa fa-clone"></i>강의게시판 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/cyberCampus/pro/cyberNoticeList">공지사항</a></li>
@@ -127,13 +115,7 @@
 		                      <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 출석확인</a></li>
 		                    </ul>
 		                  </li>
-		                     <li><a><i class="fa fa-clone"></i>과제 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/taskSubmitListPro">과제관리</a></li>   
-		                      
-		                                   
-		                    </ul>
-		                  </li>
+		                
                 </ul>
               </div>
              

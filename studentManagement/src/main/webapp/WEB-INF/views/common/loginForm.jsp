@@ -81,7 +81,7 @@ $(function(){
 });
 
 </script>
-  
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -129,4 +129,10 @@ $(function(){
         </div>     
       </div>
   </body>
+   <style>
+ 	.fa-paw:before {
+    background-image: url(/common/images/logo2.png);
+
+}
+ </style>
 </html>
