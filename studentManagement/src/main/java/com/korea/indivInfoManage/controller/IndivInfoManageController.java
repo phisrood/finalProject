@@ -71,7 +71,6 @@ public class IndivInfoManageController {
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentVO);
-		studentVO.getAf_aftername();
 		
 	
 		return url;
