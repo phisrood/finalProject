@@ -36,59 +36,57 @@ html, body {
 <script>
  window.onload=function()
  {
-  CKEDITOR.replace('adb_content',{
-      width : '75%' 
-  });
+  CKEDITOR.replace('adb_content');
  }
  
 </script> 
 <form method="POST" action="/stu/adviceBoardWrite" enctype="multipart/form-data">
 	<div class="row">
+	<div class="x_panel">
 		<!-- 상담 게시글 작성 -->
 		<div class="x_title">
-			<h2>&nbsp;&nbsp;상담 게시글 작성</h2>
-			<div class="clearfix"></div>
-		</div>
+                    <h2>상담 게시글 작성</h2>
+                    
+                    <div class="clearfix"></div>
+        </div>
 		<br>
-		
-		
-		<div style="float: right; width: 75%;">
-			<input type="text" name="adb_title" size="75%" />
-		</div>
-		<div style="float: right; width : '7%';">제목</div>
-		<br>
-		<div style="float: right; width: 15%;">
-			<br>  
-		</div>
-		<br><br>  
-  
-		<div style="float: right; width: 85%;">
-			작성자명 : ${stud_use_id } 
-			<input type="hidden" name="adb_stud_use_id" value="${stud_use_id }" />
-		</div>
+		<div class="x_content">
+		<div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" name="adb_title" style="width:1000px;">
+              </div>
+        </div>
 		<br> <br>
-		<div style="float: right; width: 15%;">
-			<br>
-		</div>
+  		<div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">작성자</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+                <input type="text" class="form-control" name="adb_stud_use_id" value="${stud_use_id }" readonly="readonly"  style="width:1000px;">
+              </div>
+        </div>
+		<br> <br>
+		 <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <textarea class="form-control" name="adb_content" style="width:1000px;height:500px;"></textarea>
+                        </div>
+         </div>
+		
+		<br> <br>
+		<br> <br>
+		<div class="form-group">
+             <label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+             <div class="col-md-9 col-sm-9 col-xs-12">
+               <input type="file" class="btn btn-dark" name="adb_file" >
+               <div style="text-align: right;">
+				<input type="submit" class="btn btn-dark" value="등록" />
+               </div>
+             </div>
+        </div>
 		<br>
-		<div style="float: right; width: 75%;">
-			<textarea rows="5" cols="50" name="adb_content"></textarea>
-		</div>
-		<div style="float: right; width: 7%;">내용</div>
-		<div style="float: right; width: 15%;">
-			<br>
-		</div>
-		<div style="float: right; width: 20%;">
-			<br>
-		</div>
-		<div align="center" style="float: right; width: 90%;">
-			<br> 
-			<input type="file" name="adb_file" /> 
-			<input type="submit" class="btn btn-default btn-sm" value="등록" />
-		</div>
-		<div style="float: right; width: 20%;">
-			<br>
-		</div>
+		
+	</div>
+	</div>
 	</div>
 </form>
 
