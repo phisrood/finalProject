@@ -104,7 +104,12 @@
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
+		                      <c:if test="${period.pr_major_req == 'on' }">
 		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
+		                      </c:if>
+		                      <c:if test="${period.pr_major_req == 'off' }">
+		                      <li><a href="/stu/Notperiod">부/다 전공신청</a></li>
+		                      </c:if>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
@@ -114,7 +119,12 @@
 		                      
 		                      <li><a href="/stu/timeTableList" target="_blank" onClick="window.open(this.href, '', 'width=1000, height=1200'); return false;">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
+		                      <c:if test="${period.pr_app_lecture =='on' }">
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
+		                      </c:if>
+		                      <c:if test="${period.pr_app_lecture =='off' }">
+		                      <li><a href="/stu/Notperiod">수업평가</a></li>
+		                      </c:if>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
 		                      <li><a href="/stu/lectureList">강의조회</a></li>
 		                      
@@ -142,6 +152,7 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
+		                    	<c:if test="${period.pr_crses_inquiry }"></c:if>
 		                      <li><a href="/stu/crsesLoginForm" target="_blank">수강신청</a></li>                     
 		                    </ul>
 		                  </li>

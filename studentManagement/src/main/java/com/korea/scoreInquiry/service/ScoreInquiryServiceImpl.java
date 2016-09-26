@@ -51,6 +51,7 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 		Map<Object, Object> scoreMap = new HashMap<Object, Object>();
 		float totalScore = 0;
 		int totalCredit = 0;
+		if(scoreList !=null && scoreList.size()>0){
 		for(ScoreViewVO scoreView: scoreList){
 			float score = 0;
 			switch(scoreView.getCb_grade()){
@@ -89,6 +90,7 @@ public class ScoreInquiryServiceImpl implements ScoreInquiryService{
 		scoreMap.put("scoreList", scoreList);
 		scoreMap.put("totalScore", totalScore);
 		scoreMap.put("totalCredit", totalCredit);
+		}
 		return scoreMap;
 	}
 	/**

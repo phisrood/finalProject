@@ -24,16 +24,7 @@
 		PR_APP_LECTURE = 'on'
 		</if>
 	</update>
-	<update id="updateScoreSummary" parameterType="str">
-		UPDATE PERIOD
-		SET
-		<if test="_parameter=='on'">
-			PR_SCORE_SUM = 'off'
-		</if>
-		<if test="_parameter=='off'">
-		PR_SCORE_SUM = 'on'
-		</if>
-	</update>
+
 	<update id="updateMajorReqPeriod" parameterType="str">
 		UPDATE PERIOD
 		SET
@@ -48,4 +39,9 @@
 		SELECT *
 		FROM PERIOD
 </select>
+	<update id="updateScoreSummary">
+		UPDATE COURSE_BREAKDOWN
+		SET CB_ACQUISTIONYN = 'Y'
+		WHERE CB_ACQUISTIONYN = 'N'
+	</update>
 </mapper>

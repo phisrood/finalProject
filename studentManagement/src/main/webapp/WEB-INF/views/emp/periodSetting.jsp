@@ -15,8 +15,9 @@
 <body>
 수강신청기간:<input type="button" id="crsesInquiryPeriod" onclick="crsesInquiryPeriod();" value="${period.pr_crses_inquiry }"/>
 수업평가:<input type="button" id="appLecturePeriod" onclick="appLecturePeriod();" value="${period.pr_app_lecture }"/>
-성적반영:<input type="button" id="scoreSummary" onclick="scoreSummary();" value="${period.pr_score_sum }"/>
 부/다전공신청기간:<input type="button" id="majorReqPeriod" onclick="majorReqPeriod();" value="${period.pr_major_req }"/>
+성적반영:<input type="button" id="scoreSummary" onclick="scoreSummary();" value="성적반영"/>
+졸업해버렷:<input type="button" id="graduate" onclick="graduate();" value="졸업"/>
 <script>
 	function crsesInquiryPeriod(){
 		$.ajax({
@@ -49,9 +50,7 @@
 			url:"/emp/scoreSummary",
 			method:"get",
 			type:"json",
-			data:{"state":$("#scoreSummary").val()},
-			success:function(data){
-				$("#scoreSummary").val(data.pr_score_sum);
+			success:function(){
 			},error:function(){
 				alert("에러");
 			}

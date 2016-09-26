@@ -17,6 +17,7 @@
 		SELECT *
 		FROM SCORE_VIEW
 		WHERE CB_ACQUISTIONYN='Y'
+		AND USE_ID = #{id}
 	</select>
 	
 	<select id="getLecutreList" parameterType="map" resultType="lectureView">

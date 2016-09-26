@@ -41,6 +41,12 @@ public class PeriodController  {
 
 		return url;
 	}
+	@RequestMapping(value={"/stu/Notperiod","/pro/Notperiod","/emp/Notperiod"}, method=RequestMethod.GET)
+	public String notPeriodPage(){
+		String url="/common/Notperiod";
+		
+		return url;
+	}
 	//공지사항 수정 폼이동
 	@RequestMapping(value="/emp/updateCrsesInquiryPeriod", method=RequestMethod.GET)
 	public void updateCrsesInquiryPeriod(String state,HttpSession session,HttpServletResponse response){
@@ -54,9 +60,8 @@ public class PeriodController  {
 		getPeriodAll(session,response);
 	}
 	@RequestMapping(value="/emp/scoreSummary", method=RequestMethod.GET)
-	public void scoreSummary(String state,HttpSession session,HttpServletResponse response){
-		periodService.updateScoreSummary(state);
-		getPeriodAll(session,response);
+	public void scoreSummary(){
+		periodService.updateScoreSummary();
 	}
 	@RequestMapping(value="/emp/majorReqPeriod", method=RequestMethod.GET)
 	public void majorReqPeriod(String state,HttpSession session,HttpServletResponse response){

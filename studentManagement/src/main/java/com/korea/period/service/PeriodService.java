@@ -30,7 +30,7 @@ public interface PeriodService {
 
 	void updateappLecturePeriod(String state);
 
-	void updateScoreSummary(String state);
+	void updateScoreSummary();
 
 	void updateMajorReqPeriod(String state);
 	

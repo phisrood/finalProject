@@ -41,8 +41,8 @@ public class PeriodServiceImpl implements PeriodService{
 	}
 
 	@Override
-	public void updateScoreSummary(String state) {
-		periodDAO.updateScoreSummary(state);
+	public void updateScoreSummary() {
+		periodDAO.updateScoreSummary();
 		
 	}
 

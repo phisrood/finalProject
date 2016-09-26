@@ -30,7 +30,7 @@ public interface PeriodDAO {
 
 	void updateAppLecturePeriod(String state);
 
-	void updateScoreSummary(String state);
+	void updateScoreSummary();
 
 	void updateMajorReqPeriod(String state);
 	public Period getPeriodAll();
