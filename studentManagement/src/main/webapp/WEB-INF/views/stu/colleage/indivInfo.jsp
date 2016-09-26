@@ -60,7 +60,7 @@ window.onload=function()
                         <br>
                         <div align="center">
                         	<c:choose>
-                        		<c:when test="${studentVO.stud_af_no == 1 }">
+                        		<c:when test="${studentVO.stud_af_no eq 0 }">
 	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','320','180')" />
                         		</c:when>
                         		<c:otherwise>
