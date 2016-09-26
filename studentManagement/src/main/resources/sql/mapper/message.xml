@@ -17,11 +17,10 @@
 			, mes_readyn
 			, mes_delyn from message
 			where mes_delyn = '1' or mes_delyn='3'
-			and mes_readyn = 'n'
 			order by mes_no desc
 			)
-			where rnum between 1 and 20 
-			and mes_recive_use_id = #{use_id}
+			where rnum between 1 and 15 
+			and mes_recive_use_id = '20130002';
 	</select>
 	
 	<!-- 보내는사람검색 -->
