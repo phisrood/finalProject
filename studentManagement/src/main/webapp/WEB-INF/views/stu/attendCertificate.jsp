@@ -60,31 +60,22 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :${Student_InfoViewVO.stud_birth }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;년&nbsp;월&nbsp;일 :${Student_InfoViewVO.stud_birth }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" >위의 사실을 증명함</th>	
+		<th colspan="4" class="cer-sub cer-true" >위의 사실을 증명함</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" >${Current_date}</th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
+		<th colspan="4" class="cer-sub cer-day" >${Current_date}</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-ingam" ></th>	

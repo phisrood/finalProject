@@ -38,12 +38,12 @@
                    	<div class="button-location">	
                    		<form name="pdfForm">
                    		<input type=hidden id="htmlTag" name="htmlTag"/>			
-						<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>					
+						<button class="btn btn-danger" onclick="toGradePdf()">PDF출력</button>					
                    		</form>
 					</div>				
 
 <div id="grade-tbl">
-<table id="grade-info-table" >
+<table id="grade-info-table" class="kor">
 	<tr class="grade-info-tr">
 		<th colspan="2" class="grade-info-th" >학과</th>	
 		<td colspan="2" class="grade-info-td" >정보통신공학과</td>	
@@ -63,278 +63,274 @@
 		<td colspan="2" class="grade-info-td" >2016년02월12일</td>	
 	</tr>
 </table>
-
 <div class="grade-div">
-<table style="text-align:center;" class="kor table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;"  class="kor table-striped jambo_table">
 	<tr>
-		<th class="grade-th">교과목명</th>	
-		<th class="grade-th">성적</th>	
-		<th class="grade-th">학점</th>	
+		<th class="grade-th height-grade">교과목명</th>	
+		<th class="grade-th height-grade">성적</th>	
+		<th class="grade-th height-grade">학점</th>	
 	</tr>
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 1학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 1학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font grade-yy"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font grade-yy height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 2학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 2학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
 
 </div>
 <div class="grade-div">
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<th class="grade-th">교과목명</th>	
-		<th class="grade-th">성적</th>	
-		<th class="grade-th">학점</th>	
+		<th class="grade-th height-grade">교과목명</th>	
+		<th class="grade-th height-grade">성적</th>	
+		<th class="grade-th height-grade">학점</th>	
 	</tr>
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 1학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 1학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 2학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 2학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
 </div>
 <div class="grade-div" >
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<th class="grade-th">교과목명</th>	
-		<th class="grade-th">성적</th>	
-		<th class="grade-th">학점</th>	
+		<th class="grade-th height-grade">교과목명</th>	
+		<th class="grade-th height-grade">성적</th>	
+		<th class="grade-th height-grade">학점</th>	
 	</tr>
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 1학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 1학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 2학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 2학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
 </div>
 <div class="grade-div">
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
 	<tr>
-		<th class="grade-th">교과목명</th>	
-		<th class="grade-th">성적</th>	
-		<th class="grade-th">학점</th>	
+		<th class="grade-th height-grade">교과목명</th>	
+		<th class="grade-th height-grade">성적</th>	
+		<th class="grade-th height-grade">학점</th>	
 	</tr>
 	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 1학기</td>	
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 1학기</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
 	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
-	</tr>
-	<tr>
-		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
-	</tr>
-</table>
-<table style="text-align:center;" class="table table-striped jambo_table bulk_action">
-	<tr>
-		<td colspan="3" class="grade-td-font grade-yy">2012년도 2학기</td>	
-	</tr>
-	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
-	</tr>
-	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
-	</tr>
-	<tr>
-		<td class="grade-td-font">객체지향</td>	
-		<td class="grade-td-font"   >A</td>	
-		<td class="grade-td-font"  >3</td>	
-	</tr>
-	<tr>
-		<td class="grade-td-font">취 득 학 점 : 16</td>	
-		<td colspan="2"class="grade-td-font"   >평 점 평 균 : 3.34</td>	
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
 	</tr>
 	<tr>
 		
-		<td colspan="3"class="grade-td-font"  >환 산 점 수 :89.45 / 100</td>	
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
 	</tr>
 </table>
-<table id="grade-cer-table" >
-	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-grade-no" >&nbsp;제  2016-12345호</th>	
+<table style="text-align:center;width:100%;" class="kor table-striped jambo_table">
+	<tr>
+		<td colspan="3" class="grade-td-font grade-yy height-grade">2012년도 2학기</td>	
 	</tr>
-	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-title" ></th>	
+	<tr>
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
 	</tr>
+	<tr>
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
+	</tr>
+	<tr>
+		<td class="grade-td-font height-grade">객체지향</td>	
+		<td class="grade-td-font height-grade"   >A</td>	
+		<td class="grade-td-font height-grade"  >3</td>	
+	</tr>
+	<tr>
+		<td class="grade-td-font height-grade">취 득 학 점 : 16</td>	
+		<td colspan="2"class="grade-td-font height-grade"   >평 점 평 균 : 3.34</td>	
+	</tr>
+	<tr>
+		
+		<td colspan="3"class="grade-td-font height-grade"  >환 산 점 수 :89.45 / 100</td>	
+	</tr>
+</table>
+<table id="grade-cer-table" class="kor table-striped jambo_table" >
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-grade-title" >위의 사실을 증명함</th>	
+		<th colspan="2" class="height-grade" ></th>	
+	</tr>
+	<tr class="grade-cer-tr" style="text-align:center;width:100%;" >
+		<th colspan="2" class="cer-grade-title height-grade" >위의 사실을 증명함</th>	
 	</tr>
 	
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-grade-title" ></th>	
+		<th colspan="2" class="height-grade" ></th>	
+	</tr>
+	<tr class="grade-cer-tr" style="text-align:center;width:100%;" >
+		<th colspan="2" class="cer-grade-title height-grade" >2016년 09월 09일</th>	
 	</tr>
 	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-grade-title" >2016년 09월 09일</th>	
-	</tr>
-	<tr class="grade-cer-tr">
-		<th colspan="2" class="cer-grade-title" ></th>	
+		<th colspan="2" class="height-grade" ></th>	
 	</tr>
 	<tr class="grade-cer-tr">
 		<th colspan="2" class="grade-ingam" ></th>	
@@ -344,11 +340,11 @@
 </table>
 </div>
 </div>
+</div>
 
    </div>
  </div>
 			<!-- /page content -->
-</div>
 	<script type="text/javascript">
 	$("#htmlTag").val($("#grade-tbl").html());
 	</script>
