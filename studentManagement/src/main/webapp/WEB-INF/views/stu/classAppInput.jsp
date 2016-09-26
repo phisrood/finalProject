@@ -101,7 +101,7 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 수업평가
+				<i class="fa fa-bar-chart"></i> 수업평가
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>

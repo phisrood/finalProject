@@ -92,11 +92,11 @@
                 <input type="text" class="form-control" name="id" placeholder="User ID" />
               </div>
               <div>
-                <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)930813"/>
+                <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)YYMMDD"/>
               </div>
               <div>
-                <input type="submit" id="submit" value="인증메일발송">
-                <input type="button" onclick="location.href='/common/loginForm'" value="로그인하러가기">
+                <input type="submit" class="btn btn-success"  id="submit" value="인증메일발송">
+                <input type="button" class="btn btn-success"  onclick="location.href='/common/loginForm'" value="로그인하러가기">
               </div>
                 <div class="clearfix"></div>
              	<br />

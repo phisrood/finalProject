@@ -35,5 +35,7 @@
 		<pattern>/common/messageReplyForm</pattern>
 		<pattern>/stu/crsesLoginForm</pattern>
 		<pattern>/stu/timeTableList</pattern>
+		<pattern>/stu/attendCertificateInfo</pattern>
+		<pattern>/stu/graduteCertificateInfo</pattern>
 	</excludes>
 </decorators>

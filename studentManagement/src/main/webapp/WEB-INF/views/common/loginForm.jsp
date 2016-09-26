@@ -114,8 +114,8 @@ $(function(){
                 <input type="password" class="form-control" name="use_pwd" id="use_pwd" placeholder="Password"/>
               </div>
               <div>
-                <input type="submit" value="로그인">
-               	<input type="button" onclick="location.href='/common/pwdSearchForm'" value="비밀번호찾기">
+                <input type="submit" class="btn btn-success" value="로그인">
+               	<input type="button"class="btn btn-success" onclick="location.href='/common/pwdSearchForm'" value="비밀번호찾기">
               </div>
                 <div class="clearfix"></div>
                 <br />

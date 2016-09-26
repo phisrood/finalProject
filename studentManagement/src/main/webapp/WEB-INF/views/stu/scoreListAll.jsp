@@ -44,7 +44,7 @@
 		
 			<div class="x_title">
 				<h2>
-					<i class="fa fa-calendar"></i> 전체성적조회
+					<i class="fa fa-line-chart"></i> 전체성적조회
 				</h2>
 				<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
