@@ -79,7 +79,7 @@
 		<h2>사이버 상담실</h2>
 			<div class="clearfix"></div>
 		</div>		  
-		<button type="button" class="btn btn-dark" onClick="pagereload();">새로고침</button>
+		<button type="button" class="btn btn-round btn-danger" onClick="pagereload();">새로고침</button>
 				<table id="datatable" class="table table-striped jambo_table bulk_action">
 				<thead>
 					<tr>  

@@ -143,7 +143,7 @@
 												<td>${student_InquiryList_ViewVO.classroom }</td>
 												<td>${student_InquiryList_ViewVO.use_name }</td>
 												<td><input type="submit" value="사이버캠퍼스 이동"
-													onclick="cycamGo(this.form)" class="btn btn-info btn-xs">
+													onclick="cycamGo(this.form)" class="btn btn-dark">
 													<input type="hidden" name="lec_no"
 													value="${student_InquiryList_ViewVO.lec_no }" /></td>
 											</tr>

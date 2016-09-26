@@ -34,7 +34,7 @@ $(document).ready(function() {
 	$("#ad_reqdate").datepicker(
 			{
 				showOn: "button",
-				buttonText: "선택",
+				buttonImage: "/resources/common/images/calendar.png",
 				showButtonPanel : true,
 				currentText : '오늘 날짜',
 				closeText : '닫기',
@@ -89,7 +89,8 @@ $(document).ready(function() {
 					<div class="clearfix"></div>
 				</div>
 				<div>
-					학과교수 : <select name="ad_pro_use_id">
+					학과교수 : <select name="ad_pro_use_id" class="btn btn-default">
+					
 						<c:forEach var="professor" items="${professorList}">
 							<option value="${professor.pro_use_id}">${professor.use_name}</option>
 						</c:forEach>
@@ -97,7 +98,7 @@ $(document).ready(function() {
 				</div>
 				<br>
 				<div style="float: left; width: 50%;">
-					상담 내용 : <select name="ad_purpose">
+					상담 내용 : <select name="ad_purpose" class="btn btn-default">
 						<option value="취업">취업</option>
 						<option value="수강">수강</option>
 						<option value="학적">학적</option>
@@ -106,20 +107,22 @@ $(document).ready(function() {
 					</select>
 				</div>
 				<div style="float: left; width: 50%;">
-					상담 방법 : <select name="ad_way">
+					상담 방법 : <select name="ad_way" class="btn btn-default">
 						<option value="화상">화상</option>
 						<option value="채팅">채팅</option>
 						<option value="방문">방문</option>
 					</select>
 				</div>
 				<br> <br>
+				<br>
+				
 				<div>
-					일자 선택 <input type="text" name="ad_reqdate" id="ad_reqdate" readonly="readonly">
+					일자 선택 <input type="text" style="width:150px; height: 30px;" name="ad_reqdate" id="ad_reqdate" readonly="readonly">
 				</div>
 				<br>
 				<div>
 					시간 선택
-					 <select name="ad_time">
+					 <select name="ad_time" class="btn btn-default">
 						<c:forEach varStatus="stat" begin="1" end="24" step="1">  
 								<option value="${stat.count}">${stat.count}</option>
 						</c:forEach>  
@@ -132,6 +135,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</form>
+	
 
 	
 		<div class="x_panel">
@@ -139,18 +143,27 @@ $(document).ready(function() {
 				<h2>상담 신청 내역</h2>
 				<div class="clearfix"></div>
 			</div>
-			<div class="x_panel">
-				완료 : 상담이 완료된 상태<br> 대기 : 담당 교수가 확인하여 상담일까지 대기하는 상태<br> 미처리
-				: 담당 교수가 확인하지 않은 상태<br> 연기 : 담당 교수 일정상 기간을 미룬 상태
-			</div>
+				<div class="alert alert-success alert-dismissible fade in" style="width:400px;height:40px;" >
+				완료 : 상담이 완료된 상태<br> 
+				</div>
+				<div class="alert alert-info alert-dismissible fade in"  style="width:400px;height:40px;">
+				대기 : 담당 교수가 확인하여 상담일까지 대기하는 상태<br> 
+				</div>
+				<div class="alert alert-warning alert-dismissible fade in"  style="width:400px;height:40px;">
+				미처리: 담당 교수가 확인하지 않은 상태<br> 
+				</div>
+				<div class="alert alert-danger alert-dismissible fade in"  style="width:400px;height:40px;">
+				연기 : 담당 교수 일정상 기간을 미룬 상태
+				</div>
 			<form>
 					<div style="text-align:right;">
-					<div>
-					<button type="button" class="btn btn-dark" 
-						onclick='revoke(this.form);'>상담취소</button>
+						<div>
+						<button type="button" class="btn btn-dark" 
+							onclick='revoke(this.form);'>상담취소</button>
+						</div>
 					</div>
 				<table id="datatable" class="table table-striped table-bordered">
-				<table id="adviceTable" class="table table-striped table-bordered">
+				<table id="adviceTable" class="table table-striped jambo_table bulk_action">
 					<thead>
 						<tr>
 							<th colspan="2">상담번호</th>
@@ -185,10 +198,12 @@ $(document).ready(function() {
 						</c:forEach>
 					</tbody>
 				</table>
-				</form>
+				</table>
+				</div>
+			</form>
 		</div>
 	</div>
-	</div>
+
 
 <!-- Datatables -->
 <script src="/stu/js/click_cal.js"></script>

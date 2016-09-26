@@ -84,7 +84,7 @@
                 <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password" required="required"	 />
               </div>
               <div>
-                <button type="submit" >로그인</button>
+                <button type="submit" class="btn btn-success" >로그인</button>
               </div>
 
                 <div class="clearfix"></div>
