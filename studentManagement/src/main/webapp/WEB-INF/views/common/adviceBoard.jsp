@@ -21,7 +21,6 @@
  * </pre>
 ===============================================================--%>
 
-
 <script>
 	$(function() {
 		var table = $('#datatable').DataTable();
@@ -37,16 +36,17 @@
 			<div class="clearfix"></div>
 		</div>
 		<br>
-		<div style="float: left; width: 72%;">&nbsp;&nbsp;&nbsp;- 상담 내역은
-			본인과 담당 교수만 열람이 가능합니다.</div>
+		<div style="float: left; width: 72%;">&nbsp;&nbsp;&nbsp;- 상담 내역은 본인과 담당 교수만 열람이 가능합니다.</div>
 		<div class="x_content">
+		<br>      
+		<c:if test="${auth eq 'ROLE_STU' }">
 			<div style="text-align: right;">
-			<%-- <c:if test="${auth eq 'ROLE_STU' }"> --%>
 				<a href="/stu/adviceBoardWriteForm"><button type="button" class="btn btn-dark">작 성</button></a>
-  			<%-- </c:if> --%>
   			</div>
-
-			<table id="datatable" class="table table-striped jambo_table bulk_action">
+  			<br>    
+		</c:if>
+		  
+			<table id="datatable" class="table table-striped jambo_table bulk_action">    
 				<thead>
 					<tr>
 						<th>글번호</th>
@@ -56,13 +56,21 @@
 						<th>답변 상태</th>
 					</tr>
 				</thead>
+				  
 				<tbody>
 					<c:forEach var="adviceBoard" items="${adviceBoardList}">
 						<tr>
 							<td>${adviceBoard.adb_no }</td>
 							<td>
-								<a href="/common/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
+							<c:if test="${auth eq 'ROLE_PRO' }">
+								<a href="/pro/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
 								${adviceBoard.adb_title }</a>
+							</c:if>
+							
+							<c:if test="${auth eq 'ROLE_STU' }">
+								<a href="/stu/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
+								${adviceBoard.adb_title }</a>
+							</c:if>
 							</td>
 							<td>${adviceBoard.use_name }</td>
 							<td>${adviceBoard.adb_date }</td>
@@ -77,6 +85,7 @@
 						</tr>
 					</c:forEach>
 				</tbody>
+				
 			</table>
 			
 			<br>

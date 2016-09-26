@@ -81,59 +81,59 @@
 		</div>		  
 		<button type="button" class="btn btn-dark" onClick="pagereload();">새로고침</button>
 				<table id="datatable" class="table table-striped jambo_table bulk_action">
-		<thead>
-			<tr>  
-				<th>상담번호</th>
-				<th>방법</th>
-				<th>구분</th>
-				<th>교수명</th>
-				<th>일자</th>
-				<th>시간</th>
-				<th>상태</th>
-				<th>입장</th>
-			</tr>
-		</thead>
+				<thead>
+					<tr>  
+						<th>상담번호</th>
+						<th>방법</th>
+						<th>구분</th>
+						<th>교수명</th>
+						<th>일자</th>
+						<th>시간</th>
+						<th>상태</th>
+						<th>입장</th>
+					</tr>
+				</thead>
 		
-		<tbody id="fun">
-			<c:forEach var="adviceVO" items="${adviceList}">
-			<tr>
-				<td>${adviceVO.ad_no }</td>
-				<td>${adviceVO.ad_way }</td>
-				<td>${adviceVO.ad_purpose }</td>
-				<td>${adviceVO.use_name }</td>
-				<td>${adviceVO.ad_reqdate }</td>
-				<td>${adviceVO.ad_time } 시</td>
-				<td>${adviceVO.ad_stat }</td>
-				<td>  
-					<c:choose>
-					<c:when test="${adviceVO.ad_way eq '화상'}">
-						<c:if test="${auth eq 'ROLE_PRO' }">
-							<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
-						</c:if>
-						<c:if test="${auth eq 'ROLE_STU' }">
+				<tbody id="fun">
+					<c:forEach var="adviceVO" items="${adviceList}">
+					<tr>
+						<td>${adviceVO.ad_no }</td>
+						<td>${adviceVO.ad_way }</td>
+						<td>${adviceVO.ad_purpose }</td>
+						<td>${adviceVO.use_name }</td>
+						<td>${adviceVO.ad_reqdate }</td>
+						<td>${adviceVO.ad_time } 시</td>
+						<td>${adviceVO.ad_stat }</td>
+						<td>  
 							<c:choose>
-								<c:when test="${adviceVO.ad_stat eq '진행중'}">
-									<button type="button" class="btn btn-dark" id="funk" value="${adviceVO.ad_channel }"  onclick="ing();" data-toggle="modal" data-target="#myModal">입 장</button>		
-								</c:when>
-								<c:otherwise>
-									<button type="button" class="btn btn-dark" onclick="noIng();">입 장</button>
-								</c:otherwise>
+							<c:when test="${adviceVO.ad_way eq '화상'}">
+								<c:if test="${auth eq 'ROLE_PRO' }">
+									<button type="button" class="btn btn-dark" onClick="serverCam();">입 장</button>
+								</c:if>
+								<c:if test="${auth eq 'ROLE_STU' }">
+									<c:choose>
+										<c:when test="${adviceVO.ad_stat eq '진행중'}">
+											<button type="button" class="btn btn-dark" id="funk" value="${adviceVO.ad_channel }"  onclick="ing();" data-toggle="modal" data-target="#myModal">입 장</button>		
+										</c:when>
+										<c:otherwise>
+											<button type="button" class="btn btn-dark" onclick="noIng();">입 장</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
+							</c:when>
+							<c:when test="${adviceVO.ad_way eq '채팅'}">
+								<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+							</c:when>
+							<c:when test="${adviceVO.ad_way eq '방문'}">
+							
+							</c:when>
 							</c:choose>
-						</c:if>
-					</c:when>
-					<c:when test="${adviceVO.ad_way eq '채팅'}">
-						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
-					</c:when>
-					<c:when test="${adviceVO.ad_way eq '방문'}">
-					
-					</c:when>
-					</c:choose>
-				</td>
-				
-			</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+						</td>
+						
+					</tr>
+					</c:forEach>
+				</tbody>
+				</table>
 				<div class="col-md-6"></div>
 		</div>
 	</div>

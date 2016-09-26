@@ -36,7 +36,9 @@ html, body {
 <script>
  window.onload=function()
  {
-  CKEDITOR.replace('adb_content');
+  CKEDITOR.replace('adb_content',{
+      width : '75%' 
+  });
  }
  
 </script> 
@@ -44,20 +46,22 @@ html, body {
 	<div class="row">
 		<!-- 상담 게시글 작성 -->
 		<div class="x_title">
-			<h2>&nbsp;&nbsp;상담 게시글 작성${use_name }</h2>
+			<h2>&nbsp;&nbsp;상담 게시글 작성</h2>
 			<div class="clearfix"></div>
 		</div>
 		<br>
-		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_title" size="50" />
+		
+		
+		<div style="float: right; width: 75%;">
+			<input type="text" name="adb_title" size="75%" />
 		</div>
-		<div style="float: right; width: 7%;">제목</div>
+		<div style="float: right; width : '7%';">제목</div>
 		<br>
 		<div style="float: right; width: 15%;">
-			<br>
+			<br>  
 		</div>
-		<br> <br>
-
+		<br><br>  
+  
 		<div style="float: right; width: 85%;">
 			작성자명 : ${stud_use_id } 
 			<input type="hidden" name="adb_stud_use_id" value="${stud_use_id }" />
@@ -67,8 +71,8 @@ html, body {
 			<br>
 		</div>
 		<br>
-		<div style="float: right; width: 78%;">
-			<textarea rows="5" cols="50" name="adb_content" style="width:1000px;height:500px;"></textarea>
+		<div style="float: right; width: 75%;">
+			<textarea rows="5" cols="50" name="adb_content"></textarea>
 		</div>
 		<div style="float: right; width: 7%;">내용</div>
 		<div style="float: right; width: 15%;">

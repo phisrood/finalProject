@@ -12,8 +12,7 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -35,7 +34,6 @@
     <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 
-
 	<!-- Data tables -->
     <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -49,7 +47,8 @@
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
 	<script>
-	$(document).ready(function() { 
+	
+	$("#frm").load(function(){
 		$("#ad_return").datepicker(
 				{
 					showOn: "button",
@@ -63,16 +62,16 @@
 					nextText : '다음 달',
 					prevText : '이전 달',
 					changeMonth : true,
-					dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일',
-							'일요일' ],
+					dayNames : [ '월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일' ],
 					dayNamesMin : [ '월', '화', '수', '목', '금', '토', '일' ],
-					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8',
-							'9', '10', '11', '12' ],
-					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
-							'8월', '9월', '10월', '11월', '12월' ],
+					monthNamesShort : [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12' ],
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ],
 					minDate : -0
 				});
 		
+		});
+	
+	$(window).ready(function() { 
 
 			$("#selectBox").change(function() {
 				var str = $("#selectBox option:selected").val();
@@ -97,7 +96,8 @@
 					menu+="<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"처리\"/>";
 					menu+="</form>";
 				}else if(str=='연기'){
-					menu+="<form method=\"post\" action=\"/pro/updateAdviceDelay\">";		
+					
+					menu+="<form method=\"post\" action=\"/pro/updateAdviceDelay\" id='frm'>";		
 					menu+="<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>";		
 					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
 					menu+="<div style=\"float: right; width: 80%;\">이름 : ${adviceVO.use_name }</div>";
