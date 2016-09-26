@@ -17,6 +17,7 @@
 		SELECT *
 		FROM SCORE_VIEW
 		WHERE CB_ACQUISTIONYN='Y'
+		AND USE_ID = #{id}
 	</select>
 	
 	<select id="getLecutreList" parameterType="map" resultType="lectureView">
@@ -27,18 +28,30 @@
 		AND LEC_MAKESEMESTER = #{semester}
 	</select>
 	
-	<select id="getCourseBreakDownList" parameterType="str" resultType="str">
-		SELECT CB_STUD_USE_ID
+	<select id="getCourseBreakDownList" parameterType="str" resultType="courseVO">
+		SELECT *
 		FROM COURSE_BREAKDOWN
 		WHERE CB_LEC_NO = #{lec_no}
+		AND CB_ACQUISTIONYN = 'N'
+		ORDER BY CB_STUD_USE_ID
 	</select>
 	
 	<select id="getStudentList" parameterType="list" resultType="studentView">
 		SELECT *
 		FROM STUDENT_VIEW
 		WHERE USE_ID IN
-		<foreach collection="cbList" item="cb" open="(" close=")">
-			#{cb}
+		<foreach collection="list" item="cb" open="(" close=")" separator=",">
+			#{cb.cb_stud_use_id}
 		</foreach>
+		ORDER BY USE_ID
 	</select>
+	
+	<update id="insertGrade" parameterType="courseVO">
+			UPDATE COURSE_BREAKDOWN
+			SET
+			CB_GRADE=#{cb_grade,jdbcType=VARCHAR},CB_SCORE=#{cb_score,jdbcType=INTEGER}
+			WHERE CB_STUD_USE_ID = #{cb_stud_use_id,jdbcType=VARCHAR}
+			AND CB_LEC_NO = #{cb_lec_no,jdbcType=INTEGER}
+
+	</update>
 </mapper>

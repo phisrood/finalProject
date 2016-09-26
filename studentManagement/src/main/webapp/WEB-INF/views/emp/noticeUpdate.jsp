@@ -30,16 +30,13 @@
  {
   CKEDITOR.replace('cn_content');
  }
- 
+</script>
 <script>
 	function updateNotice(updateNoticeForm) {
 		if (document.updateNoticeForm.cn_title.value == "") {
 			alert('제목을 입력해주세요');
 			document.updateNoticeForm.cn_title.focus();
-		} else if (document.updateNoticeForm.cn_content.value == "") {
-			alert('내용을 입력해주세요');
-			document.updateNoticeForm.cn_content.focus();
-		} else {
+		}  else {
 			document.updateNoticeForm.method = "post";
 			document.updateNoticeForm.action = "/emp/noticeUpdate";
 			document.updateNoticeForm.submit();

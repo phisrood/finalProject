@@ -24,6 +24,30 @@
 
 <!-- 전체성적조회 -->
 <script>
+	function gradeCal(index){
+		var score = $(".score").eq(index).val();
+		var grade="";
+		if(score>=95){
+			grade="A+";
+		}else if(score>=90){
+			grade="A0";
+		}else if(score>=85){
+			grade="B+";
+		}else if(score>=80){
+			grade="B0";
+		}else if(score>=75){
+			grade="C+";
+		}else if(score>=70){
+			grade="C0";
+		}else if(score>=65){
+			grade="D+";
+		}else if(score>=60){
+			grade="D0";
+		}else{
+			grade="F";
+		}
+		$(".grade").eq(index).val(grade);
+	}
 	$(function(){
 		$("#lecSelect").change(function(){
 			$.ajax({
@@ -32,21 +56,51 @@
 				type:'json',
 				data:{'lec_no':$("#lecSelect").val()},
 				success:function(data){
+					var htmlCode = "";
+						htmlCode+="<input type='hidden' name='lec_no' value='"+$('#lecSelect').val()+"'>";
+					$.each(data.studentList, function(i,v){
+						htmlCode+="<tr>";
+						htmlCode+="<td>"+v.use_id+"<input type='hidden' name='use_id' class='use_id' value='"+v.use_id+"'/></td>";
+						htmlCode+="<td>"+v.dep_name+"</td>";
+						htmlCode+="<td>"+v.use_name+"</td>";
+						htmlCode+="<td><input type='text' class='score' name='score' onchange='gradeCal("+i+");' value='"+data.cbList[i].cb_score+"'/></td>";
+						htmlCode+="<td><input type='text' class='grade' name='grade' readonly='readonly' value='"+data.cbList[i].cb_grade+"'/></td>";
+					});
 					
+					$("#tbody").html(htmlCode);
 				},
 				error:function(){
 					alert('ㄷ에러다');
 				}
 			});
 		});
+		
 	});
+	function inputGrade(form){
+		var nullCheck = true;
+		$.each($(".score"), function(i,v){
+			if(v.value==null || v.value==""){
+				nullCheck = false;
+			}
+		});
+		$.each($(".grade"), function(i,v){
+			if(v.value==null || v.value==""){
+				nullCheck = false;
+			}
+		});
+		if(nullCheck==false){
+			alert("빠짐없이 입력해주세요.");
+		}else{
+		form.action = '/pro/inputGrade';
+		form.mehtod = 'get';
+		form.submit();
+		}
+	}
 </script>
 
 <div class="row">
 
 	<!-- page content -->
-
-
 	<div class="x_panel">
 
 		<div class="x_title">
@@ -69,7 +123,7 @@
 					</c:forEach>
 				</select>
 			</div>
-			<form>
+			<form id='studnetList'>
 			<div class="x_content">
 				<div class="x_content">
 					<table id="datatable"
@@ -83,13 +137,13 @@
 								<th>등급</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="tbody">
 
 						</tbody>
 					</table>
 					<!-- x-content -->
 					<div style="text-align:right;">
-					<button type="button" class="btn btn-dark">저장</button>
+					<button type="button" class="btn btn-dark" onclick="inputGrade(this.form);">저장</button>
 					</div>
 				</div>
 			</div>

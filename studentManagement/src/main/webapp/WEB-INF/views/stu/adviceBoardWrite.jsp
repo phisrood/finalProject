@@ -32,7 +32,16 @@ html, body {
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
+<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+<script>
+ window.onload=function()
+ {
+  CKEDITOR.replace('adb_content',{
+      width : '75%' 
+  });
+ }
+ 
+</script> 
 <form method="POST" action="/stu/adviceBoardWrite" enctype="multipart/form-data">
 	<div class="row">
 		<!-- 상담 게시글 작성 -->
@@ -41,16 +50,18 @@ html, body {
 			<div class="clearfix"></div>
 		</div>
 		<br>
-		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_title" size="50" />
+		
+		
+		<div style="float: right; width: 75%;">
+			<input type="text" name="adb_title" size="75%" />
 		</div>
-		<div style="float: right; width: 7%;">제목</div>
+		<div style="float: right; width : '7%';">제목</div>
 		<br>
 		<div style="float: right; width: 15%;">
-			<br>
+			<br>  
 		</div>
-		<br> <br>
-
+		<br><br>  
+  
 		<div style="float: right; width: 85%;">
 			작성자명 : ${stud_use_id } 
 			<input type="hidden" name="adb_stud_use_id" value="${stud_use_id }" />
@@ -60,7 +71,7 @@ html, body {
 			<br>
 		</div>
 		<br>
-		<div style="float: right; width: 78%;">
+		<div style="float: right; width: 75%;">
 			<textarea rows="5" cols="50" name="adb_content"></textarea>
 		</div>
 		<div style="float: right; width: 7%;">내용</div>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
@@ -117,6 +118,10 @@ public class ClassAppDAOImpl implements ClassAppDAO{
 	@Override
 	public List<Lecture_Chart_ViewVO> getLectureChartPro(String lec_no) {
 		return sqlSession.selectList("classApp.getLectureChartPro", lec_no);
+	}
+	@Override
+	public List<Lecture_ChartVO> getStuClassAppList(String lec_no) {
+		return sqlSession.selectList("classApp.getStuClassAppList", lec_no);
 	}
 
 }

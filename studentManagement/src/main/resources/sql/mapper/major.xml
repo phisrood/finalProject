@@ -18,11 +18,11 @@
 	</select>
 	
 	<select id="getBelongREQList" parameterType="str" resultType="submit">
-		select * from submit where sb_major_dep_no = #{dep_no}
+		select * from submit where sb_major_dep_no = #{dep_no} and sb_majordepartmentsubmityn = '0'
 	</select>
 	
 	<select id="getOthorsREQList" parameterType="str" resultType="submit">
-		select * from submit where sb_dep_no = #{dep_no}
+		select * from submit where sb_dep_no = #{dep_no} and sb_requestdepartmentyn = '0'
 	</select>
 	
 	<select id="getReqStuList" parameterType="str" resultType="IndivInfoManage">

@@ -51,7 +51,8 @@
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/emp/css/default.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
-    
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -95,14 +96,7 @@
                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/noticeAllList">공지사항</a></li>
-		                      <li><a href="/emp/messageAllList">쪽지함</a></li>
-		                    </ul>
-		                  </li>
-		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">학적변동현황조회</a></li>
-		                      <li><a href="/emp/schoolReREQList">휴/복학신청 현황</a></li>
-		                      <li><a href="#">졸업요건</a></li>
+		                      <li><a href="/emp/periodSetting"  target="_blank" onClick="window.open(this.href, '', 'width=300, height=300'); return false;">기간설정 및 성적반영</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i>학과관리<span class="fa fa-chevron-down"></span></a>
@@ -110,7 +104,7 @@
 		                      <li><a href="/emp/stuInfoList">구성원 정보 관리</a></li>
 		                      <li><a href="/emp/departmentInfoList">학과정보 조회</a></li>
 		                    </ul>
-		                  </li>
+		                  </li> 
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/acadeCalList">학사일정관리</a></li>
@@ -118,13 +112,6 @@
 		                      <li><a href="/emp/crsesBookDecide">수강편람승인관리</a></li>
 		                    </ul>
 		                  </li>
-		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="#">수강신청</a></li>
-		                     
-		                    </ul>
-		                  </li>
-	            
                 </ul>
               </div>
              
@@ -150,17 +137,8 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href=""> 프로필</a></li>
-                    <li><a href=""></a></li>
                     <li><a href="/common/logout"><i class="fa fa-sign-out pull-right"></i> 로그아웃</a></li>
                   </ul>
-                </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="/emp/messageAllList">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">${messageCount }</span>
-                  </a>
                 </li>
               </ul>
             </nav>

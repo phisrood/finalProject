@@ -76,7 +76,7 @@ public interface ScoreInquiryDAO {
 	 * @return 
 	 * @throws 
 	 */
-	public List<StudentViewVO> getStudentList(List<String> cbList);
+	public List<StudentViewVO> getStudentList(List<Course_BreakDownVO> cbList);
 	
 	/**
 	 * 수강생id가져오기
@@ -84,5 +84,13 @@ public interface ScoreInquiryDAO {
 	 * @return 
 	 * @throws 
 	 */
-	public List<String> getCourseBreakDownList(String lec_no);
+	public List<Course_BreakDownVO> getCourseBreakDownList(String lec_no);
+	
+	/**
+	 * 성적입력
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	public void insertGrade(List<Course_BreakDownVO> cbList);
 }

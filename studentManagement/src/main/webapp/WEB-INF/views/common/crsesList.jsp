@@ -88,7 +88,7 @@
 			<div class="x_content">
 				<div class="x_content">
 
-					<table id="datatable" class="table table-striped table-bordered">
+					<table id="datatable" class="table table-striped jambo_table bulk_action">
 						<thead>
 							<tr>
 								<th>학과</th>

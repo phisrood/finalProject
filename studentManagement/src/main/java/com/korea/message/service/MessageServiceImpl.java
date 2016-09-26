@@ -42,7 +42,7 @@ public class MessageServiceImpl implements MessageService{
 		return dao.getMessageNewList(usersVO);
 	}
 	/**
-	 * 개인 정보 조회
+	 * 메시지 전체리스트
 	 * @param
 	 * @return 
 	 * @throws 

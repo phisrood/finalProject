@@ -17,6 +17,11 @@
 	height:800px;
 	text-align:center;
 }
+#tbl-time{
+	width:80%;	
+	height:900px;
+	text-align:center;
+}
 #classSYL .lecture-border{
 	border: 1px solid #6E6D93;
 }
@@ -32,9 +37,11 @@
 }
 .lecture-border{
 	border: 1px solid #6E6D93;
+	width:15%;
 }
 .table-th{
 	background:#DAD9FF;		
+	text-align:center;		
 }
 #time-table{
 	border-collapse: collapse;
@@ -58,35 +65,51 @@
 .time-tr{
 	height: 80px;
 }
+.time-th{
+	width: 20%;
+}
 .time-day{
 	text-align: center;
 	height: 40px;
 }
 #cer-table{
-	border: 1px solid black;
 	margin-left: 150px;
-	width: 65%;
-	height: 1200px;
+	width: 100%;
+	height: 1500px;
 	color: black;
 }
-.cer-no{
-	text-align:left;
-}
+
 .cer-title{
+	font-size : 50px;
 	text-align: center;
+	padding-bottom:100px;
+}
+.cer-sub{
+	font-size : 30px;
+	text-align: center;
+}
+.cer-true{
+	padding-top: 150px;
+	padding-bottom:10px;
+}
+.cer-day{
+	padding-top: 50px;
+	padding-bottom:50px;	
 }
 .cer-tit{
 	font-size: 50px;
 }
-.cer-context{
+.cer-content{
+	padding-left: 120px;
+	padding-bottom:50px;
 }
 .cer-ingam{
 	background-image: url("/common/images/ingam3.jpg"); 
 	background-size: 100% 65px;
 }
 .cer-span{
-	font-size: 25px;
-	margin-left: 150px;
+	font-size: 30px;
+	margin-left: 130px;
 }
 .cer-tr{
 	height: 30px;
@@ -102,22 +125,24 @@
 	border-collapse: collapse;
 }
 .grade-cer-tr{
-	height: 30px;
+	height: 20px;
+	text-align: center;
 }
 .grade-div{
 	border: 1px solid black; 
 	float: left;  
 	width: 25%;
-	height: 900px;
+	height: 650px;
 	
 }
 .grade-ingam{
 	background-image: url("/common/images/ingam3.jpg"); 
-	background-size: 100% 30px;
+	background-size: 100% 20px;
 }
 .grade-info-th{
 	border: 1px solid black; 	
 	width: 100px; 
+	height: 20px;
 	background: #B6B5DB;
 }
 
@@ -132,10 +157,19 @@
 }
 .grade-info-td{
 	border: 1px solid black; 	
+	height:20px; 
 }
 .grade-th{
 	text-align: center;
 }
 .grade-yy{
 	text-decoration: underline;
+}
+.height-grade{
+	height:30px; 
+	text-align: center;
+	
+}
+.grade-div-all{
+	border:  1px solid black;
 }

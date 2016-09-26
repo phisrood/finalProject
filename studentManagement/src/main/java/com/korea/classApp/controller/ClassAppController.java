@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.classApp.service.ClassAppService;
+import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
 import com.korea.dto.UsersVO;
 /**
@@ -90,9 +92,27 @@ public class ClassAppController {
 	 * @return 
 	 * @throws 
 	 */
-	@RequestMapping(value={"/emp/classAppList","/stu/classAppList"}, method=RequestMethod.GET)
+	@RequestMapping(value="/emp/classAppList", method=RequestMethod.GET)
 	public void classAppList(HttpServletResponse response){
 		List<Appraisal_ManageVO> appList = classAppService.getClassAppList();
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="/stu/classAppList", method=RequestMethod.GET)
+	public void classAppStuList(HttpServletResponse response, @RequestParam(value="lec_no")String lec_no){
+		List<Lecture_ChartVO> appList = classAppService.getStuClassAppList(lec_no);
 		
 		ObjectMapper jsonObject = new ObjectMapper();
 		
@@ -220,7 +240,13 @@ public class ClassAppController {
 	public String classAppInput(HttpSession session, Model model){
 		String url="/stu/classAppInput";
 		
-
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		
+		String id = loginUser.getUse_id();
+		
+		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
+		
+		model.addAttribute("lectureList", lectureList);
 		
 		return url;
 	}
@@ -244,5 +270,32 @@ public class ClassAppController {
 		
 				
 		return url;
+	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//수업평가 차트 ajax
+	@RequestMapping(value="/pro/classAppQnaChart", method=RequestMethod.GET)
+	public void classAppQnaChart(HttpServletResponse response, HttpSession session,
+							@RequestParam(value="lec_no")String lec_no){
+		
+		List<Lecture_Chart_ViewVO> appList = classAppService.getLectureChart(lec_no);
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;"); 
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 }
