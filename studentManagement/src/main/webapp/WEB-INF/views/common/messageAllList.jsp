@@ -278,7 +278,7 @@
 														<td>${messageAllList.mes_title }</td>
 														<td>${messageAllList.mes_date }</td>
 														<c:if test="${messageAllList.mes_readyn == 'n' }">
-															<td><span style="color:red;" id="${messageAllList.mes_no }readyn">새로운쪽지</span></td>
+															<td><span style="color:red;" id="${messageAllList.mes_no }readyn">N</span></td>
 														</c:if>
 														<c:if test="${messageAllList.mes_readyn == 'y' }">
 															<td><span id="${messageAllList.mes_no }readyn"></span></td>

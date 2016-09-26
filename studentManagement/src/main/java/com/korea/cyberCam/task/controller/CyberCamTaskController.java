@@ -124,11 +124,20 @@ public class CyberCamTaskController {
 		String url = "/cyberCampus/stu/taskSubmitListStu";
 		
 		int pro_lec_no = (int) session.getAttribute("stu_lec_no");
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		
-
-		List<HomeworkAllList_ViewVO> homeworkAllList_ViewVO = cyberCamTaskService.getTaskListStu(pro_lec_no);
-		model.addAttribute("homeworkAllList_ViewVO",homeworkAllList_ViewVO);
 		
+		String id = loginUser.getUse_id();
+						
+		
+		
+		List<HomeworkVO> homeworkVO = cyberCamTaskService.getTaskListStu(pro_lec_no);
+		
+		List<Homework_SubmitVO> homework_SubmitVO = cyberCamTaskService.getSubmitStuCheck(id);
+		
+		model.addAttribute("homework_SubmitVO", homework_SubmitVO);
+		model.addAttribute("homeworkVO",homeworkVO);
+		model.addAttribute("id",id);
 
 		return url;
 	}
@@ -139,8 +148,8 @@ public class CyberCamTaskController {
 		
 	
 		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
-		List<HomeworkAllList_ViewVO> homeworkAllList_ViewVO = cyberCamTaskService.getTaskListPro(pro_lec_no);
-		model.addAttribute("homeworkAllList_ViewVO",homeworkAllList_ViewVO);
+		List<HomeworkVO> homeworkVO = cyberCamTaskService.getTaskListPro(pro_lec_no);
+		model.addAttribute("homeworkVO",homeworkVO);
 		
 		
 		return url;
@@ -272,7 +281,7 @@ public class CyberCamTaskController {
 		public String submitStuUpdate(@RequestParam(value="hid") int hw_no, 
 				HttpServletResponse response,
 				@RequestParam(value="file") MultipartFile multipartFile,
-				@RequestParam(value="afno") int afno,
+				
 				HttpServletRequest request,
 				HttpSession session)throws IOException{
 			
@@ -287,7 +296,7 @@ public class CyberCamTaskController {
 		
 			String url = "redirect:/cyberCampus/stu/taskSubmitListStu";
 			
-		
+			
 			
 			
 			if(!multipartFile.isEmpty()){
@@ -296,7 +305,16 @@ public class CyberCamTaskController {
 				
 				File file= new File(uploadPath,System.currentTimeMillis()+multipartFile.getOriginalFilename());
 				multipartFile.transferTo(file);	
-				attachment_FileVO.setAf_no(afno);
+				
+				
+				homework_SubmitVO.setHs_stud_use_id(id);
+				homework_SubmitVO.setHs_hw_no(hw_no);
+				homework_SubmitVO = cyberCamTaskService.gethoSubmit(homework_SubmitVO);
+				
+				
+				
+				
+				attachment_FileVO.setAf_no(homework_SubmitVO.getHs_af_no());
 				attachment_FileVO.setAf_aftername(file.getName());
 				attachment_FileVO.setAf_realname(multipartFile.getOriginalFilename());
 				attachment_FileVO.setAf_path(uploadPath);

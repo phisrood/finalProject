@@ -60,7 +60,7 @@ window.onload=function()
                         <br>
                         <div align="center">
                         	<c:choose>
-                        		<c:when test="${studentVO.stud_af_no == 1 }">
+                        		<c:when test="${studentVO.stud_af_no eq 0 }">
 	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','320','180')" />
                         		</c:when>
                         		<c:otherwise>
@@ -96,6 +96,7 @@ window.onload=function()
                 	<div class="thumbnail" style="padding:10px;">
                 		<div style="float: left; width: 35%; padding:3px;">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="1학년(고정값 수정필요)" style="text-align: center;" readonly="readonly"></div><br><br>  
+                	<div class="thumbnail" style="padding:10px;">
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
                 		
                 		<div style="float: right; width: 65%;">
@@ -111,7 +112,8 @@ window.onload=function()
                 		<div style="float: right; width: 65%;">
                 		<input type="text" id="" required="required" size="15" value="" style="text-align: center;" readonly="readonly">
                 		</div><br><br>
-                		
+                		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
+
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;" readonly="readonly"></div><br><br>
 					</div>

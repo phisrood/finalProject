@@ -164,7 +164,7 @@
 	                      	<c:when test="${empty messageNewList}">
 	                      		<tr>
 									<td colspan='4'>
-										읽지않은 메시지가 없습니다.
+										메시지가 없습니다.
 									</td>                      		
 	                      		</tr>
 	                      	</c:when>

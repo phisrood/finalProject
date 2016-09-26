@@ -93,13 +93,13 @@ public class CyberCamTaskServiceImpl implements CyberCamTaskService{
 		
 	}
 	@Override
-	public List<HomeworkAllList_ViewVO> getTaskListPro(String pro_lec_no) {
+	public List<HomeworkVO> getTaskListPro(String pro_lec_no) {
 		
 		return cyberCamTaskDAO.getTaskListPro(pro_lec_no);
 		
 	}
 	@Override
-	public List<HomeworkAllList_ViewVO> getTaskListStu(int pro_lec_no) {
+	public List<HomeworkVO> getTaskListStu(int pro_lec_no) {
 		
 		return cyberCamTaskDAO.getTaskListStu(pro_lec_no);
 	}
@@ -145,6 +145,16 @@ public class CyberCamTaskServiceImpl implements CyberCamTaskService{
 	public void deletetaskList(String hw_no) {
 		cyberCamTaskDAO.deletetaskList(hw_no);
 		
+	}
+	@Override
+	public List<Homework_SubmitVO> getSubmitStuCheck(String id) {
+		
+		return cyberCamTaskDAO.getSubmitStuCheck(id);
+	}
+	@Override
+	public Homework_SubmitVO gethoSubmit(Homework_SubmitVO homework_SubmitVO) {
+		
+		return cyberCamTaskDAO.gethoSubmit(homework_SubmitVO);
 	}
 
 }

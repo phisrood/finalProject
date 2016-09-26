@@ -83,6 +83,10 @@ public class ClassSYLServiceImpl implements ClassSYLService{
 		return  classSYLDAO.getClassSYLInfo(lec_no);
 		
 	}
+	@Override
+	public List<Lecture_Time_ViewVO> getLectureTimeInfo(String lec_no) {
+		return classSYLDAO.getLectureTime(lec_no);
+	}
 
 
 
