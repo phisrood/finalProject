@@ -20,8 +20,22 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
+<link href="resources/common/css/default.css" rel="stylesheet">
+<!-- 부트스트랩 css -->
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+<link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+<link href="/bootstrap/css/green.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css"
+	rel="stylesheet">
+<link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet" />
+<link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+<link href="/common/css/default.css" rel="stylesheet">
 
- <link href="resources/common/css/default.css" rel="stylesheet">
+<script src="/stu/js/default.js"></script>
+<script src="/common/js/notice.js"></script>
+<script src="/bootstrap/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- 시간표 -->
 	
 	<div class="row">
@@ -38,54 +52,41 @@
                    	<div class="button-location">	
                    		<form name="pdfForm">
                    		<input type=hidden id="htmlTag" name="htmlTag"/>			
-						<button class="btn btn-danger" onclick="toPdf()">PDF출력</button>					
+						<button class="btn btn-danger" onclick="toCerPdf()">PDF출력</button>					
                    		</form>
 					</div>
 
 <div id="cer-tbl">
-<table  id="cer-table">
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-no" ><h4>&nbsp;제  2016-12345호</h4></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h1>재 학 증 명 서</h1></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;&nbsp;  년 &nbsp;&nbsp; 월&nbsp;&nbsp;  일 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;년 :</span></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ></th>	
-	</tr>
-	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>위의 사실을 증명함</h3></th>	
-	</tr>
+<input type="hidden" name="use_id"
+					value="${student_InfoViewVO.use_id }">
+<table  id="cer-table" class="kor">
 	
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-title" ><h3>2016년 09월 09일</h3></th>	
+		<th colspan="4" class="cer-title" >재 학 증 명 서</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;년&nbsp;월&nbsp;일 :${Student_InfoViewVO.stud_birth }</span></th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-sub cer-true" >위의 사실을 증명함</th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-title" ></th>	
+	</tr>
+	<tr class="cer-tr">
+		<th colspan="4" class="cer-sub cer-day" >${Current_date}</th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-ingam" ></th>	

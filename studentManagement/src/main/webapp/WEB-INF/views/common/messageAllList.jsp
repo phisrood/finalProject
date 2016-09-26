@@ -21,31 +21,22 @@
  * </pre>
 ===============================================================--%>
 
-
-<!-- <link href="/bootstrap/css/pnotify.css" rel="stylesheet">
-<link href="/bootstrap/css/pnotify.buttons.css" rel="stylesheet">
-<link href="/bootstrap/css/pnotify.nonblock.css" rel="stylesheet">
-<link href="/bootstrap/css/prettify.min.css" rel="stylesheet">
-<link href="/bootstrap/css/select2.min.css" rel="stylesheet">
-<link href="/bootstrap/css/switchery.min.css" rel="stylesheet">
-<link href="/bootstrap/css/starrr.css" rel="stylesheet">
-<link href="/bootstrap/css/custom.min.css" rel="stylesheet"> -->
-
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+
 <script>
 	$(function(){
-		$('#messageDe').hide();
+		$('#messageDe').hide(); //메시지 상세보기 숨김
 		
-		$('#reciveTable').DataTable();
+		$('#reciveTable').DataTable(); //부트스트랩 지원 자동 페이징/검색기능사용
 		$('#sendTable').DataTable();
 		
-		$(".messageSendDetail").click(function(){
-			$('#messageDe').show();
-			var message_no = $(this).attr("id");
+		$(".messageSendDetail").click(function(){ //메시지 상세보기 클릭시
+			$('#messageDe').show(); //상세보기창 
+			var message_no = $(this).attr("id"); //클릭한 값의 속성 id값 저장
 			
-			$.ajax({
+			$.ajax({ //ajax
 				url:"/common/messageSendInfo",
 				method:"get",
 				type:"json",
@@ -57,7 +48,8 @@
 					var content = data.mes_content;
 					var date = data.mes_date;
 					var delyn = data.mes_delyn;
-					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
+					var sendBtn = "<br><br><button class='btn btn-dark' id='replyBtn' onclick="+
+								"javascript:OpenWindow('/common/messageReplyForm?send="+send+"','400','500')"+">답장</button>&nbsp";
 					sendBtn += "<button class='btn btn-dark' onclick=location.href='/common/messageSendDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(from+send);
@@ -72,11 +64,11 @@
 			});
 		}); 
 		
-		$(".messageReciveDetail").click(function(){
+		$(".messageReciveDetail").click(function(){ //답장버튼 클릭시
 			$('#messageDe').show();
 			var message_no = $(this).attr("id");
 			
-			$.ajax({
+			$.ajax({ //답장 ajax
 				url:"/common/messageReciveInfo",
 				method:"get",
 				type:"json",
@@ -88,7 +80,7 @@
 					var content = data.mes_content;
 					var date = data.mes_date;
 					var delyn = data.mes_delyn;
-					var reciveBtn = "<button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
+					var reciveBtn = "<br><br><button class='btn btn-dark' onclick=location.href='/common/messageReciveDelete?message_no="+message_no+"&&delyn="+delyn+"'>삭제</button>";
 					
 					$("#messageSend").html(to+send);
 					$("#messageTitle").html(title);
@@ -114,6 +106,7 @@
 		        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
 		        $("input[name=sendChk]").prop("checked",false);
 		    }
+
 		});
 		//최상단 체크박스 클릭
 		$("#reciveCheckAll").click(function(){
@@ -128,7 +121,96 @@
 		    }
 		});
 		
+		$("#reciveDelBtn").click(function(){
+			var leng = $("input:checkbox[name=sendChk]:checked").length;
+			
+			if(leng == 0){
+				swal({
+					title: "Check!",
+					text: "삭제하실 메시지를 선택해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else{
+				swal({
+					title: "삭제완료!",
+					text: "정상적으로 삭제되었습니다.",
+					type: "success",
+					confirmButtonText: "닫기" 
+				});
+			}
+		});
+		$("#sendDelBtn").click(function(){
+			var leng = $("input:checkbox[name=reciveChk]:checked").length;
+			
+			if(leng == 0){
+				swal({
+					title: "Check!",
+					text: "삭제하실 메시지를 선택해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else{
+				swal({
+					title: "삭제완료!",
+					text: "정상적으로 삭제되었습니다.",
+					type: "success",
+					confirmButtonText: "닫기" 
+				});
+			}
+		});
+		
+		$("#sendBtn").click(function(){
+			var recive = $("#mes_recive_use_id").val();
+			var content = $("#mes_content").val();
+			if(recive==""){
+				swal({
+					title: "수신자가 없습니다.!",
+					text: "수신자를 검색해주세요.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}else if(content.length > 1000){
+				swal({
+					title: "내용이 너무 깁니다.!",
+					text: "쪽지의 내용은 최대 1000자로 제한되어있습니다.",
+					type: "error",
+					confirmButtonText: "닫기" 
+				});
+				return false;
+			}
+			
+			
+			
+		});
+
+		
 	});
+	
+	function OntextCheck(obj)
+    {
+        var str = new String(obj.value);
+           var _byte = 0;
+                   if(str.length != 0)
+                   {
+                          for (var i=0; i < str.length; i++) 
+                          {
+                                  var str2 = str.charAt(i);
+                                  if(escape(str2).length > 4)
+                                  {
+                                         _byte += 1;
+                                  }
+                                  else 
+                                  {
+                                         _byte++;
+                                  }
+                          }
+                   }
+           document.getElementById("txtbyte").value = _byte;
+    }
 </script>
 
 <!-- 쪽지함 --> 
@@ -208,7 +290,7 @@
 									</tbody>
 								</table>
 									<div style="text-align:right;">
-										<button type="submit" class="btn btn-dark">삭제</button>
+										<button type="submit" id="reciveDelBtn" class="delBtn btn-dark">삭제</button>
 			                    	</div>
 								</form>
 							</div>
@@ -246,7 +328,7 @@
 								</tbody>
 							</table>
 									<div style="text-align:right;">
-										<button type="submit" class="btn btn-dark">삭제</button>
+										<button type="submit" id="sendDelBtn" class="delBtn btn-dark">삭제</button>
 				                    
 				                    </div>
 				              </form>
@@ -275,18 +357,21 @@
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>
 			                    <div class="col-md-7">
-			                      <input type="text" name="mes_title" required="required" class="col-md-7 col-xs-12" style="width:80%;">
+			                      <input type="text" name="mes_title" required="required" placeholder="최대 30자" class="col-md-7 col-xs-12" style="width:80%;" maxlength="30">
 			                    </div>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">내용 </label>
 			                    <div class="col-md-7">
-			                      <textarea rows="30" cols="30" name="mes_content" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
+			                      <textarea rows="30" cols="30" id="mes_content" name="mes_content" onkeyUp="OntextCheck(this);" required="required" class="col-md-7 col-xs-12" style="width:80%; height:300px;"></textarea>
 			                    </div>
+			                  </div>
+			                  <div style="text-align:center; margin-left:13%">
+			                   <input type="text" id="txtbyte" style="width:50px; border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly>/1000byte
 			                  </div>
 			                  <br/>
 		                  		<div style="text-align:center; margin-left:13%">
-			                  		<input type="submit" class="btn btn-dark" value="보내기">
+			                  		<input type="submit" id="sendBtn" class="btn btn-dark" value="보내기">
 			                  	</div>
 			                </form>
 		                	
@@ -333,24 +418,3 @@
 	</div>
 					<!-- /page content -->
 	</div>
-			
-
-
-			<!-- <script src="/bootstrap/js/fastclick.js"></script>
-			<script src="/bootstrap/js/nprogress.js"></script>
-			<script src="/bootstrap/js/icheck.min.js"></script>
-			<script src="/bootstrap/js/bootstrap-progressbar.min.js"></script>
-			<script src="/bootstrap/js/pnotify.js"></script>
-			<script src="/bootstrap/js/pnotify.buttons.js"></script>
-			<script src="/bootstrap/js/pnotify.nonblock.js"></script>
-		    <script src="/bootstrap/js/bootstrap-wysiwyg.min.js"></script>
-		    <script src="/bootstrap/js/jquery.hotkeys.js"></script>
-		    <script src="/bootstrap/js/prettify.js"></script>
-		    <script src="/bootstrap/js/jquery.tagsinput.js"></script>
-		    <script src="/bootstrap/js/switchery.min.js"></script>
-		    <script src="/bootstrap/js/select2.full.min.js"></script>
-		    <script src="/bootstrap/js/parsley.min.js"></script>
-		    <script src="/bootstrap/js/autosize.min.js"></script>
-		    <script src="/bootstrap/js/jquery.autocomplete.min.js"></script>
-		    <script src="/bootstrap/js/starrr.js"></script>
-			<script src="/bootstrap/js/custom.min.js"></script> -->

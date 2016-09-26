@@ -56,9 +56,6 @@ public class ScoreInquiryController {
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		Map<Object,Object> scoreMap = service.getScoreListAll(user.getUse_id());
 		model.addAttribute("scoreMap", scoreMap);
-		System.out.println(scoreMap.get("totalScore"));
-		System.out.println(scoreMap.get("totalCredit"));
-		System.out.println((scoreMap.get(((ArrayList)scoreMap.get("scoreList")).get(0))));
 		return url;
 	}
 	/**
@@ -84,16 +81,16 @@ public class ScoreInquiryController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
+	 * 성적입력
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
 	//학과생 성적조회
-	@RequestMapping(value="/pro/scoreListDepartment", method=RequestMethod.GET)
-	public String scoreListDepartment(){
-		String url="/pro/scoreListDepartment";
-		
+	@RequestMapping(value="/pro/inputGrade", method=RequestMethod.GET)
+	public String insertGrade(String lec_no,String[] use_id,String[] score, String[] grade){
+		String url="redirect:/pro/studentList";
+		service.insertGrade(lec_no,use_id, score, grade);
 		return url;
 	}
 	/**
@@ -121,13 +118,12 @@ public class ScoreInquiryController {
 	//수강생 성적조회
 	@RequestMapping(value="/pro/getStudent", method=RequestMethod.GET)
 	public void getStudent(HttpServletResponse response,String lec_no){
-		List<StudentViewVO> studentList = service.getStudentList(lec_no);
+		Map<String, List> studentList = service.getStudentList(lec_no);
 		if(studentList!=null && studentList.size()>0){
-		Map<String, List<StudentViewVO>> map = new HashMap<String, List<StudentViewVO>>();
-		map.put("studentList", studentList);
 		ObjectMapper jsonObject = new ObjectMapper();
 		try {
-			response.getWriter().print(jsonObject);
+			response.setContentType("text/json; charset=UTF-8");
+			response.getWriter().print(jsonObject.writeValueAsString(studentList));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

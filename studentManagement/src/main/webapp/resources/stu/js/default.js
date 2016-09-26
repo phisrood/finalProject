@@ -7,3 +7,15 @@ function toPdf(){
 	document.pdfForm.target="_blank";
 	document.pdfForm.submit(); 
 }
+function toCerPdf(){
+	document.pdfForm.method="post";
+	document.pdfForm.action="/stu/attendCertificatePDF";
+	document.pdfForm.target="_blank";
+	document.pdfForm.submit(); 
+}
+function toGradePdf(){
+	document.pdfForm.method="post";
+	document.pdfForm.action="/stu/gradeCertificatePDF";
+	document.pdfForm.target="_blank";
+	document.pdfForm.submit(); 
+}

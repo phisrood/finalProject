@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
@@ -86,4 +87,5 @@ public interface ClassAppDAO {
 	public List<LectureViewVO> getLectureListPro(String id);
 	//교수 차트
 	public List<Lecture_Chart_ViewVO> getLectureChartPro(String lec_no);
+	public List<Lecture_ChartVO> getStuClassAppList(String lec_no);
 }

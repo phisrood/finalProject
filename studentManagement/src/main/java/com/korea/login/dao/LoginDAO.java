@@ -18,6 +18,7 @@ package com.korea.login.dao;
  */
 import java.util.Map;
 
+import com.korea.dto.Period;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
@@ -69,6 +70,8 @@ public interface LoginDAO {
 
 	//행정 정보 가져오기
 	public School_PersonInfoViewVO getEmpdivInfo(String id);
+
+	
 
 	public UsersVO getLoginCheck(Map<String, String> checkMap);
 }

@@ -50,7 +50,8 @@
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
-    
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
     <script src="/stu/js/default.js"></script>
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -103,9 +104,12 @@
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
-		                      <li><a href="/stu/colleageChangeList">학적변동현황</a></li>
+		                      <c:if test="${period.pr_major_req == 'on' }">
 		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
-		                      <li><a href="/stu/schoolReModel">휴/복학신청</a></li>
+		                      </c:if>
+		                      <c:if test="${period.pr_major_req == 'off' }">
+		                      <li><a href="/stu/Notperiod">부/다 전공신청</a></li>
+		                      </c:if>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
@@ -113,20 +117,25 @@
 		                      <li><a href="/stu/acadeCalList">학사일정조회</a></li>
 		                      <li><a href="/stu/crsesInquiryList">수강신청조회</a></li>
 		                      
-		                      <li><a href="/stu/timeTableList" target="_blank">수업시간표</a></li>
+		                      <li><a href="/stu/timeTableList" target="_blank" onClick="window.open(this.href, '', 'width=1000, height=1200'); return false;">수업시간표</a></li>
 		                      <li><a href="/stu/scoreListAll">전체성적조회</a></li>
+		                      <c:if test="${period.pr_app_lecture =='on' }">
 		                      <li><a href="/stu/classAppInput">수업평가</a></li>
+		                      </c:if>
+		                      <c:if test="${period.pr_app_lecture =='off' }">
+		                      <li><a href="/stu/Notperiod">수업평가</a></li>
+		                      </c:if>
 		                      <li><a href="/stu/scoreListNow">현재학기성적조회</a></li>
 		                      <li><a href="/stu/lectureList">강의조회</a></li>
 		                      
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
+<!-- 		                  <li><a><i class="fa fa-table"></i> 등록 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/regList">등록내역</a></li>
 		                      <li><a href="#">고지서</a></li>
 		                    </ul>
-		                  </li>
+		                  </li> -->
 		                  <li><a><i class="fa fa-clone"></i>상담신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/adviceRequestList">사이버 상담 신청 내역</a></li>
@@ -137,12 +146,13 @@
 		                  <li><a><i class="fa fa-desktop"></i>증명서발급 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/gradeCertificateInfo">성적증명서</a></li>
-		                      <li><a href="/stu/attendCertificateInfo">재학증명서</a></li>
-		                      <li><a href="/stu/graduteCertificateInfo">졸업증명서</a></li>
+		                      <li><a href="/stu/attendCertificateInfo" target="_blank" onClick="window.open(this.href, '', 'width=800, height=1000'); return false;">재학증명서</a></li>
+		                      <li><a href="/stu/graduteCertificateInfo" target="_blank" onClick="window.open(this.href, '', 'width=800, height=1000'); return false;">졸업증명서</a></li>
 		                    </ul>
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
+		                    	<c:if test="${period.pr_crses_inquiry }"></c:if>
 		                      <li><a href="/stu/crsesLoginForm" target="_blank">수강신청</a></li>                     
 		                    </ul>
 		                  </li>
@@ -171,8 +181,6 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href=""> 프로필</a></li>
-                    <li><a href=""></a></li>
                     <li><a href="/common/logout"><i class="fa fa-sign-out pull-right"></i> 로그아웃</a></li>
                   </ul>
                 </li>

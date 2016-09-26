@@ -1,6 +1,10 @@
 package com.korea.certificate.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.korea.certificate.dao.CertificateDAO;
+import com.korea.dto.Student_InfoViewVO;
 
 /**
  * @Class Name : AdviceController.java
@@ -20,6 +24,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CertificateServiceImpl implements CertificateService{
+	@Autowired
+	CertificateDAO certificateDAO;
+	
 	/**
 	 * 교수가 받은 상담신청조회
 	 * @param
@@ -32,10 +39,11 @@ public class CertificateServiceImpl implements CertificateService{
 		
 	}
 
+
+
 	@Override
-	public void getStuAttendInfo() {
-		// TODO Auto-generated method stub
-		
+	public Student_InfoViewVO getStuAttendInfo(String use_id) {
+		return certificateDAO.getStuAttendInfo(use_id);		
 	}
 
 }

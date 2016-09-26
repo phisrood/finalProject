@@ -121,71 +121,76 @@
                   </div>
                 </div>
               </div>
-              
-              <!-- 쪽지함 -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>쪽지함</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                     <c:choose>
-                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
-                       		<li><a href="/stu/messageAllList">더보기+</a></li>
-                    	</c:when>
-                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
-                       		<li><a href="/pro/messageAllList">더보기+</a></li>
-                    	</c:when>
-                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
-                       		<li><a href="/emp/messageAllList">더보기+</a></li>
-                    	</c:when>
-                    </c:choose>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                   
-                    <table id="datatable" class="table table-striped jambo_table bulk_action">
-                      <thead>
-                        <tr>
-                          <th>NO</th>
-                          <th>수신</th>
-                          <th>발신</th>
-                          <th>제목</th>
-                          <th>수신일</th>
-                        </tr>
-                      </thead>
-
-
-                      <tbody>
-                      <c:choose>
-                      	<c:when test="${empty messageNewList}">
-                      		<tr>
-								<td colspan='4'>
-									읽지않은 메시지가 없습니다.
-								</td>                      		
-                      		</tr>
-                      	</c:when>
-                      	<c:otherwise>
-                        	<c:forEach var="messageNewList" items="${messageNewList }" varStatus="status">
-                        		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${messageNewList.mes_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
-                        			<td>${status.count }</td>
-                        			<td>
-                        			<c:if test="${messageNewList.mes_readyn == 'n' }">
-                        			읽지않음
-                        			</c:if>
-                        			</td>
-                        			<td>${messageNewList.mes_send_use_id }</td>
-                        			<td><a href="#">${messageNewList.mes_title }</a></td>
-                        			<td>${messageNewList.mes_date }</td>
-                        		</tr>
-                        	</c:forEach>
-                        </c:otherwise>
-                     </c:choose>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+              <c:choose>
+              	<c:when test="${loginUser.authority eq 'ROLE_EMP'}">
+              	</c:when>
+              	<c:otherwise>
+	              <!-- 쪽지함 -->
+	                <div class="col-md-12 col-sm-12 col-xs-12">
+	                <div class="x_panel">
+	                  <div class="x_title">
+	                    <h2>쪽지함</h2>
+	                    <ul class="nav navbar-right panel_toolbox">
+	                     <c:choose>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
+	                       		<li><a href="/stu/messageAllList">더보기+</a></li>
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_PRO' }">
+	                       		<li><a href="/pro/messageAllList">더보기+</a></li>
+	                    	</c:when>
+	                    	<c:when test="${loginUser.authority eq 'ROLE_EMP' }">
+	                       		<li><a href="/emp/messageAllList">더보기+</a></li>
+	                    	</c:when>
+	                    </c:choose>
+	                    </ul>
+	                    <div class="clearfix"></div>
+	                  </div>
+	                  <div class="x_content">
+	                   
+	                    <table id="datatable" class="table table-striped jambo_table bulk_action">
+	                      <thead>
+	                        <tr>
+	                          <th>NO</th>
+	                          <th>수신</th>
+	                          <th>발신</th>
+	                          <th>제목</th>
+	                          <th>수신일</th>
+	                        </tr>
+	                      </thead>
+	
+	
+	                      <tbody>
+	                      <c:choose>
+	                      	<c:when test="${empty messageNewList}">
+	                      		<tr>
+									<td colspan='4'>
+										읽지않은 메시지가 없습니다.
+									</td>                      		
+	                      		</tr>
+	                      	</c:when>
+	                      	<c:otherwise>
+	                        	<c:forEach var="messageNewList" items="${messageNewList }" varStatus="status">
+	                        		<tr height="30" onMouseMove="setPreviewBox(event);" onMouseOver="showPreview('${messageNewList.mes_content}'); return true;" onMouseOut="hidePreview(); return true;" onClick="">
+	                        			<td>${status.count }</td>
+	                        			<td>
+	                        			<c:if test="${messageNewList.mes_readyn == 'n' }">
+	                        			읽지않음
+	                        			</c:if>
+	                        			</td>
+	                        			<td>${messageNewList.mes_send_use_id }</td>
+	                        			<td><a href="#">${messageNewList.mes_title }</a></td>
+	                        			<td>${messageNewList.mes_date }</td>
+	                        		</tr>
+	                        	</c:forEach>
+	                        </c:otherwise>
+	                     </c:choose>
+	                      </tbody>
+	                    </table>
+	                  </div>
+	                </div>
+	              </div>
+              	</c:otherwise>
+              </c:choose>
               	<div id='preview' STYLE="BORDER-RIGHT: 1px; BORDER-TOP: 1px; Z-INDEX: 1; VISIBILITY: hidden; BORDER-LEFT: 1px; BORDER-BOTTOM: 1px; POSITION: absolute;"></div> 
               </div>
        

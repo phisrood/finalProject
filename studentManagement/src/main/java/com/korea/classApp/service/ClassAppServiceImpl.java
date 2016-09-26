@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.korea.classApp.dao.ClassAppDAO;
 import com.korea.dto.AppLecture_ViewVO;
 import com.korea.dto.Appraisal_ManageVO;
+import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
@@ -196,6 +197,10 @@ public class ClassAppServiceImpl implements ClassAppService{
 	@Override
 	public List<Lecture_Chart_ViewVO> getLectureChart(String lec_no) {
 		return classAppDAO.getLectureChartPro(lec_no);
+	}
+	@Override
+	public List<Lecture_ChartVO> getStuClassAppList(String lec_no) {
+		return classAppDAO.getStuClassAppList(lec_no);
 	}
 
 }

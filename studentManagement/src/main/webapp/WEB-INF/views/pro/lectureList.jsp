@@ -47,7 +47,7 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 강의조회
+				<i class="fa fa-file-o"></i> 강의조회
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>
