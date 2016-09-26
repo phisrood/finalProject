@@ -271,4 +271,31 @@ public class ClassAppController {
 				
 		return url;
 	}
+	
+	/**
+	 * 교수가 받은 상담신청조회
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	//수업평가 차트 ajax
+	@RequestMapping(value="/pro/classAppQnaChart", method=RequestMethod.GET)
+	public void classAppQnaChart(HttpServletResponse response, HttpSession session,
+							@RequestParam(value="lec_no")String lec_no){
+		
+		List<Lecture_Chart_ViewVO> appList = classAppService.getLectureChart(lec_no);
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;"); 
+			String str = jsonObject.writeValueAsString(appList);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+	}
 }

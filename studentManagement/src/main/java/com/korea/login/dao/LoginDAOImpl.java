@@ -104,10 +104,6 @@ public class LoginDAOImpl implements LoginDAO{
 		return (School_PersonInfoViewVO) session.selectOne("Login.empInfo", id);
 	}
 
-	@Override
-	public Period getPeriodAll() {
-		return (Period) session.selectOne("Login.getPeriod");
-	}
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return (UsersVO) session.selectOne("Login.loginCheck", checkMap);
 	}

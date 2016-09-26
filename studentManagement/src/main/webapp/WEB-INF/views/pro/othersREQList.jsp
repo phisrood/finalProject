@@ -32,7 +32,7 @@ $(function(){
 	
 	$(".clickTr").click(function(){
 		$("#detailDiv").show();
-		uniq = $(this).attr("name");//신청기본키빼서 정보보여줘야대
+		uniq = $(this).attr("id");//신청기본키빼서 정보보여줘야대
 		
 		$.ajax({
 			url:"/pro/reqInfoDetail",
@@ -82,9 +82,27 @@ $(function(){
 	var res = "${resultChk}";
 	
 	if(res == 1){
-		alert("승인되었습니다.");
+		swal({
+			title: "success!",
+			text: "승인완료",
+			type: "success",
+			confirmButtonText: "Cool" 
+		});
 	}else if(res == 2){
-		alert("반려되었습니다.");
+		swal({
+			title: "success!",
+			text: "반려완료",
+			type: "success",
+			confirmButtonText: "Cool" 
+		});
+	}else if(res == 9){
+		swal({
+			title: "부/다전공신청 실패!",
+			text: "부/다전공신청을 할수 없습니다. 행정팀으로 연락주세요.",
+			type: "error",
+			confirmButtonText: "Cool" 
+		});
+		return false;
 	}
 	
 });
@@ -108,16 +126,28 @@ $(function(){
                           <th>학번</th>
                           <th>연락처</th>
                           <th>학과</th>
+                          <th>상태</th>
                         </tr>
                       </thead>
                       <tbody>
 						<c:forEach var="stu" items="${reqStuList }" varStatus="status">
-							<tr class="clickTr" name="${stu.af_no}"> 
+							<tr class="clickTr" id="${stu.af_no}"> 
 								<td>${status.count }</td>
 								<td>${stu.use_name }</td>
 								<td>${stu.use_id }</td>
 								<td>${stu.stud_phone }</td>
 								<td>${stu.dep_name }</td>
+								<c:choose>
+									<c:when test="${stu.stud_hob == 0}">
+										<td>승인대기</td>
+									</c:when>
+									<c:when test="${stu.stud_hob == 1}">
+										<td>승인</td>
+									</c:when>
+									<c:when test="${stu.stud_hob == 2}">
+										<td>반려</td>
+									</c:when>
+								</c:choose>
 							</tr>
 						</c:forEach>
 				     </tbody>

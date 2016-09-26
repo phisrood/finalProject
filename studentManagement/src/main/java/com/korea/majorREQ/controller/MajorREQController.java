@@ -156,6 +156,7 @@ public class MajorREQController {
 			Student_InfoViewVO basket = new Student_InfoViewVO(); //학생정보 담을 곳
 			basket = majorREQService.getREQPersonInfo(id); //담아
 			basket.setAf_no(reqList.get(i).getSb_no()); //담고 임시로 신청 기본키 af_no에 삽입 @@@@ 중요
+			basket.setStud_hob(reqList.get(i).getSb_majordepartmentsubmityn());
 			reqStuList.add(i, basket); //리스트에 삽입 
 		}
 		
@@ -183,6 +184,7 @@ public class MajorREQController {
 			Student_InfoViewVO basket = new Student_InfoViewVO();
 			basket = majorREQService.getREQPersonInfo(id);
 			basket.setAf_no(reqList.get(i).getSb_no()); //담고 임시로 신청 기본키 af_no에 삽입 @@@@ 중요
+			basket.setStud_hob(reqList.get(i).getSb_requestdepartmentyn());
 			reqStuList.add(i, basket);
 		}
 		
