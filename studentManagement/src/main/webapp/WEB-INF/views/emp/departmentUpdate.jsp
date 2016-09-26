@@ -32,64 +32,76 @@ h2 {
 }
 </style>
 </head>
-<body>
-	<div style="float: left; width: 85%;">
-		&nbsp;
+<div class="row">
+
+	<div class="x_panel">
+         <div class="x_title">
 		<h2>
-			<i class="fa fa-bullhorn"></i>학과정보관리
+			<i class="fa fa-university"></i>학과정보관리
 		</h2>
-	</div>
+		<div class="clearfix"></div>
+		</div>
 
 	<form method="post" action="/emp/departmentUpdate">
-		<div style="text-align: right">
-			<input type="submit" class="btn btn-dark" value="수정" />
-			<button type="button" class="btn btn-dark">  
-				<a href="/emp/departmentInfoList">취소</a>
-			</button>
-		</div>
-		<br> <br>
-		<hr>
+		<br>
 		<div>
 			<input type="hidden" name="dep_no" value="${department.dep_no }" />
 			<br>
-			<div style="float: left; width: 20%;">학과명</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_name" size="38"
-					value="${department.dep_name }">
-			</div>
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">학과명</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" name="dep_name" value="${department.dep_name }">
+                 </div>
+            </div>
 			<br> <br>
-			<div style="float: left; width: 20%;">학과명(영문)</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_engname" size="38"
-					value="${department.dep_engname }">
-			</div>
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">영문명</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" name="dep_engname" value="${department.dep_engname }">
+                 </div>
+            </div>
 			<br> <br>
-			<div style="float: left; width: 20%;">주전공 졸업학점</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_majneedcredit" size="38"
-					value="${department.dep_majneedcredit }">
-			</div>
+			
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">주전공 졸업학점</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" value="${department.dep_majneedcredit }" name="dep_majneedcredit">
+                 </div>
+            </div>
 			<br> <br>
-			<div style="float: left; width: 20%;">부전공 졸업학점</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_minneedcredit" size="38"
-					value="${department.dep_minneedcredit }">
-			</div>
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">부전공 졸업학점</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" value="${department.dep_minneedcredit }" name="dep_minneedcredit">
+                 </div>
+            </div>
 			<br> <br>
-			<div style="float: left; width: 20%;">다전공 졸업학점</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_mulcredit" size="38"
-					value="${department.dep_mulcredit }">
-			</div>
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">다전공 졸업학점</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" value="${department.dep_mulcredit }" name="dep_mulcredit">
+                 </div>
+            </div>
 			<br> <br>
-			<div style="float: left; width: 20%;">전화번호</div>
-			<div style="float: left; width: 80%;">
-				<input type="text" name="dep_phone" size="38"
-					value="${department.dep_phone }">
-			</div>
+			<div class="form-group">
+                 <label class="control-label col-md-3 col-sm-3 col-xs-12">전화번호</label>
+                 <div class="col-md-9 col-sm-9 col-xs-12">
+                   <input type="text" class="form-control" value="${department.dep_phone }" name="dep_phone">
+                 </div>
+            </div>
+		
 			<br>
 		</div>
+		<div style="text-align: right">
+			<input type="submit" class="btn btn-dark" value="수정" />
+			<a href="/emp/departmentInfoList"><button type="button" class="btn btn-dark">  
+				취소
+			</button>
+			</a>
+		</div>
 	</form>
+		</div>
+		</div>
 
-</body>
+
 </html>

@@ -11,13 +11,37 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<!-- 부트스트랩 css -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+    <link href="/bootstrap/css/green.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+    <link href="/common/css/default.css" rel="stylesheet">
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
+    <script src="/common/js/notice.js"></script>
+    <script src="/bootstrap/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-수강신청기간:<input type="button" id="crsesInquiryPeriod" onclick="crsesInquiryPeriod();" value="${period.pr_crses_inquiry }"/>
-수업평가:<input type="button" id="appLecturePeriod" onclick="appLecturePeriod();" value="${period.pr_app_lecture }"/>
-부/다전공신청기간:<input type="button" id="majorReqPeriod" onclick="majorReqPeriod();" value="${period.pr_major_req }"/>
-성적반영:<input type="button" id="scoreSummary" onclick="scoreSummary();" value="성적반영"/>
-졸업해버렷:<input type="button" id="graduate" onclick="graduate();" value="졸업"/>
+수강신청기간:<input type="button" id="crsesInquiryPeriod"  class="btn btn-dark" onclick="crsesInquiryPeriod();" value="${period.pr_crses_inquiry }"/>
+<br />
+<br />
+수업평가:<input type="button" id="appLecturePeriod"  class="btn btn-dark" onclick="appLecturePeriod();" value="${period.pr_app_lecture }"/>
+<br />
+<br />
+부/다전공신청기간:<input type="button" id="majorReqPeriod"  class="btn btn-dark" onclick="majorReqPeriod();" value="${period.pr_major_req }"/>
+<br />
+<br />
+성적반영:<input type="button" id="scoreSummary"  class="btn btn-dark" onclick="scoreSummary();" value="성적반영"/>
+<br />
+<br />
+졸업:<input type="button" id="graduate"  class="btn btn-dark" onclick="graduate();" value="졸업"/>
+<br />
+<br />
 <script>
 	function crsesInquiryPeriod(){
 		$.ajax({
@@ -71,5 +95,28 @@
 	}
 	
 </script>
+<!-- 부트스트랩js -->
+    <script src="/bootstrap/js/fastclick.js"></script>
+    <script src="/bootstrap/js/nprogress.js"></script>
+    <script src="/bootstrap/js/Chart.min.js"></script>
+    <script src="/bootstrap/js/gauge.min.js"></script>
+    <script src="/bootstrap/js/bootstrap-progressbar.min.js"></script>
+    <script src="/bootstrap/js/icheck.min.js"></script>
+    <script src="/bootstrap/js/skycons.js"></script>
+    <script src="/bootstrap/js/jquery.flot.js"></script>
+    <script src="/bootstrap/js/jquery.flot.pie.js"></script>
+    <script src="/bootstrap/js/jquery.flot.time.js"></script>
+    <script src="/bootstrap/js/jquery.flot.stack.js"></script>
+    <script src="/bootstrap/js/jquery.flot.resize.js"></script>
+    <script src="/bootstrap/js/jquery.flot.orderBars.js"></script>
+    <script src="/bootstrap/js/jquery.flot.spline.min.js"></script>
+    <script src="/bootstrap/js/curvedLines.js"></script>
+    <script src="/bootstrap/js/date.js"></script>
+    <script src="/bootstrap/js/jquery.vmap.js"></script>
+    <script src="/bootstrap/js/jquery.vmap.world.js"></script>
+    <script src="/bootstrap/js/jquery.vmap.sampledata.js"></script>
+    <script src="/bootstrap/js/moment.min.js"></script>
+    <script src="/bootstrap/js/daterangepicker.js"></script>
+    <script src="/bootstrap/js/custom.min.js"></script>
 </body>
 </html>

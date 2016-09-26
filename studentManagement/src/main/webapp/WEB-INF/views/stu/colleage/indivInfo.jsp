@@ -95,7 +95,6 @@ window.onload=function()
 				</div>
                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
-               
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		

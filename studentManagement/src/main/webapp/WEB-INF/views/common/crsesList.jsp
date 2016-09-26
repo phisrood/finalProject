@@ -49,25 +49,21 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="x_content">
-			<div class="x_content">
-
-				<table id="datatable" class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th>학과</th>
-							<th>학수번호</th>
-							<th>개설학기</th>
-							<th>개설년도</th>
-							<th>과목명</th>
-							<th>이수구분</th>
-							<th>학점</th>
-							<th>강의시간</th>
-							<th>교수</th>
-							<th>강의계획서</th>
-							<th>사이버캠퍼스</th>
-						</tr>
-					</thead>
-
+					<table id="datatable" class="table table-striped jambo_table bulk_action">
+						<thead>
+							<tr>
+								<th>학과</th>
+								<th>학수번호</th>
+								<th>개설학기</th>
+								<th>개설년도</th>
+								<th>과목명</th>
+								<th>이수구분</th>
+								<th>학점</th>
+								<th>강의시간</th>
+								<th>교수</th>
+								<th>사이버캠퍼스</th>
+							</tr>
+						</thead>
 					<!-- 과목누르면 사이버캠퍼스로 이동 -->
 
 
@@ -127,7 +123,6 @@
 			<!-- x-content -->
 		</div>
 	</div>
-</div>
 <!-- /page content -->
 
 

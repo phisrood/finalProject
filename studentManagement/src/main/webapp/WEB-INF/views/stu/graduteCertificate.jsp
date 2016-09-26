@@ -20,9 +20,22 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
+<link href="resources/common/css/default.css" rel="stylesheet">
+<!-- 부트스트랩 css -->
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+<link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+<link href="/bootstrap/css/green.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css"
+	rel="stylesheet">
+<link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet" />
+<link href="/bootstrap/css/custom.min.css" rel="stylesheet">
+<link href="/common/css/default.css" rel="stylesheet">
 
- <link href="resources/common/css/default.css" rel="stylesheet">
-<!-- 시간표 -->
+<script src="/stu/js/default.js"></script>
+<script src="/common/js/notice.js"></script>
+<script src="/bootstrap/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 	
 	<div class="row">
 
@@ -58,16 +71,16 @@
 		<th colspan="4" class="cer-title" ></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 : ${Student_InfoViewVO.use_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;년&nbsp;월&nbsp;일 :${Student_InfoViewVO.stud_birth }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">생&nbsp;년&nbsp;월&nbsp;일 : ${Student_InfoViewVO.stud_birth }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }속 :${Student_InfoViewVO.dep_name }</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
 	</tr>
 	<tr class="cer-tr">
-		<th colspan="4" class="cer-content" ><span class="cer-span">졸&nbsp;업&nbsp;년&nbsp;월&nbsp;일 :</span></th>	
+		<th colspan="4" class="cer-content" ><span class="cer-span">졸&nbsp;업&nbsp;년&nbsp;월&nbsp;일 : </span></th>	
 	</tr>
 	<tr class="cer-tr">
 		<th colspan="4" class="cer-title" ></th>	

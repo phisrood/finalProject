@@ -44,7 +44,7 @@
 				</div>
 
 				<div style="text-align: right;">
-					<a href="/emp/departmentInsertForm">
+					<a href="/emp/departmentInsertForm" >
 					<button type="button" class="btn btn-dark">
 						등록
 					</button>

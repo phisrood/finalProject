@@ -22,7 +22,6 @@
 	<decorator name="main_crses" page="crses_decorator.jsp">
 		<pattern>/crses/stu/*</pattern>
 	</decorator>
-	
 
 	<excludes>
 		<pattern>/stu/minorModel</pattern>
@@ -35,5 +34,8 @@
 		<pattern>/common/messageReplyForm</pattern>
 		<pattern>/stu/crsesLoginForm</pattern>
 		<pattern>/stu/timeTableList</pattern>
+		<pattern>/stu/attendCertificateInfo</pattern>
+		<pattern>/stu/graduteCertificateInfo</pattern>
+		<pattern>/emp/periodSetting</pattern>
 	</excludes>
 </decorators>
