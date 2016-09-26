@@ -20,7 +20,7 @@
 			order by mes_no desc
 			)
 			where rnum between 1 and 15 
-			and mes_recive_use_id = '20130002';
+			and mes_recive_use_id = #{use_id}
 	</select>
 	
 	<!-- 보내는사람검색 -->
