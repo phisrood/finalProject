@@ -2,6 +2,8 @@ package com.korea.crsesBook.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.korea.dto.ClassRoom_InfoVO;
 import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.LectureVO;
@@ -27,6 +29,8 @@ import com.korea.dto.Pro_tt_noViewVO;
  */
 public interface CrsesBookService {
 	/**
+	 * @param i 
+	 * @param session 
 	 * @return 
 	 * 개인 정보 조회
 	 * @param
@@ -34,7 +38,7 @@ public interface CrsesBookService {
 	 * @throws 
 	 */
 	//수강편람조회
-	public List<Lecture_BreakeDownVO> getCrsesBookList();
+	public List<Lecture_BreakeDownVO> getCrsesBookList(int pro_dep_no);
 	/**
 	 * @param lbVO 
 	 * 개인 정보 조회

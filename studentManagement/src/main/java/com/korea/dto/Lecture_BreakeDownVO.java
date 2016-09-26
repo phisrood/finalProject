@@ -23,7 +23,14 @@ public class Lecture_BreakeDownVO {
 	private String lb_approvalyn;
 	private String lb_revokeyn;
 	private String lb_credit;
+	private String lb_dep_no;
 	
+	public String getLb_dep_no() {
+		return lb_dep_no;
+	}
+	public void setLb_dep_no(String lb_dep_no) {
+		this.lb_dep_no = lb_dep_no;
+	}
 	public String getLb_credit() {
 		return lb_credit;
 	}
