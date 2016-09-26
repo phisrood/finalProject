@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorker;
@@ -53,6 +53,7 @@ import com.itextpdf.tool.xml.pipeline.html.HtmlPipelineContext;
 import com.korea.classSYL.service.ClassSYLService;
 import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.UsersVO;
 
 @Controller
@@ -126,9 +127,11 @@ public class ClassSYLController {
 	public String getLecturePlan(String lec_no, Model model, HttpSession session) throws IOException, DocumentException {
 		String url = "/common/classSYL";
 		LectureViewVO lecture = classSYLService.getLectureInfo(lec_no);
+		List<Lecture_Time_ViewVO> lectureTime = classSYLService.getLectureTimeInfo(lec_no);
 		Class_SYLLBUSVO classSYL = classSYLService.getClassSYLInfo(lec_no);
 		model.addAttribute("lecture", lecture);
 		model.addAttribute("classSYL", classSYL);
+		model.addAttribute("lectureTime", lectureTime);
 		return url;
 	}
 	/**

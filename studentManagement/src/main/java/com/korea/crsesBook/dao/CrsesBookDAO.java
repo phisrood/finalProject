@@ -28,6 +28,7 @@ import com.korea.dto.Pro_tt_noViewVO;
  */
 public interface CrsesBookDAO {
 	/**
+	 * @param pro_id 
 	 * @return 
 	 * 개인 정보 조회
 	 * @param
@@ -35,7 +36,7 @@ public interface CrsesBookDAO {
 	 * @throws 
 	 */
 	//수강편람조회
-	public List<Lecture_BreakeDownVO> getCrsesBookList();
+	public List<Lecture_BreakeDownVO> getCrsesBookList(int pro_dep_no);
 	/**
 	 * @param lbVO 
 	 * 개인 정보 조회
