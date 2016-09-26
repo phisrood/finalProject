@@ -3,6 +3,8 @@ package com.korea.crsesBook.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,8 +49,8 @@ public class CrsesBookServiceImpl implements CrsesBookService{
 	 * @throws 
 	 */
 	@Override
-	public List<Lecture_BreakeDownVO> getCrsesBookList() {
-		return crsesBookDAO.getCrsesBookList();
+	public List<Lecture_BreakeDownVO> getCrsesBookList(int pro_dep_no) {
+		return crsesBookDAO.getCrsesBookList(pro_dep_no);
 	}
 	/**
 	 * 수강편람 등록

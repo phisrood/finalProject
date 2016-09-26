@@ -76,21 +76,39 @@ public class NoticeServiceImpl implements NoticeService{
 	 */
 	@Override
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO) {
-		int cn_af_no = colleage_NoticeVO.getCn_af_no();
+		NoticeViewVO cn = noticeDAO.getNoticeDetailInfo(colleage_NoticeVO.getCn_no());
+		int cn_af_no = attachment_FileVO.getAf_no();
 		
 		//파일이 없을때
-		if(cn_af_no == 0){
-			//파일 인서트
-			noticeDAO.insertNoticeFile(attachment_FileVO);
-			//파일번호 삽입
-			colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+	
+		if(cn.getCn_af_no()!=0){ //게시물에 첨부파일 있음
+			if(attachment_FileVO.getAf_realname()!=null){ //첨부파일 수정
+				//파일 인서트
+				noticeDAO.insertNoticeFile(attachment_FileVO);
+				//파일번호 삽입
+				colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+			}else{//파일수정안함
+				colleage_NoticeVO.setCn_af_no(cn.getCn_af_no());
+			}
+		}else{ //게시물에 첨부파일 없음
+			if(attachment_FileVO.getAf_realname()!=null){ //첨부파일 수정
+				//파일 인서트
+				noticeDAO.insertNoticeFile(attachment_FileVO);
+				//파일번호 삽입
+				colleage_NoticeVO.setCn_af_no(attachment_FileVO.getAf_no());
+			}else{//파일수정안함
+				colleage_NoticeVO.setCn_af_no(cn.getCn_af_no());
+			}
+		}
+			
 			
 		//파일이 있을때
-		}else if(cn_af_no != 0){
+		/*else if(cn_af_no != 0){
+			System.out.print("파일있을때");
 			//파일 업데이트
 			noticeDAO.updateNoticeFile(attachment_FileVO);
 			
-		}
+		}*/
 		//하고 공지사항 업데이트
 		noticeDAO.updateNotice(colleage_NoticeVO);
 	}

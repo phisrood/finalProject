@@ -102,12 +102,12 @@ public class CyberCamTaskDAOImpl implements CyberCamTaskDAO{
 		
 	}
 	@Override
-	public List<HomeworkAllList_ViewVO> getTaskListPro(String pro_lec_no) {
+	public List<HomeworkVO> getTaskListPro(String pro_lec_no) {
 		
 		return sqlSession.selectList("Homework.selectTaskListPro",pro_lec_no);
 	}
 	@Override
-	public List<HomeworkAllList_ViewVO> getTaskListStu(int pro_lec_no) {
+	public List<HomeworkVO> getTaskListStu(int pro_lec_no) {
 	
 		return sqlSession.selectList("Homework.selectTaskListStu",pro_lec_no);
 	}
@@ -153,6 +153,16 @@ public class CyberCamTaskDAOImpl implements CyberCamTaskDAO{
 	public void deletetaskList(String hw_no) {
 		sqlSession.delete("Homework.deletetaskList",hw_no);
 		
+	}
+	@Override
+	public List<Homework_SubmitVO> getSubmitStuCheck(String id) {
+		
+		return sqlSession.selectList("Homework.getSubmitStuCheck",id);
+	}
+	@Override
+	public Homework_SubmitVO gethoSubmit(Homework_SubmitVO homework_SubmitVO) {
+		
+		return (Homework_SubmitVO) sqlSession.selectOne("Homework.gethoSubmit",homework_SubmitVO);
 	}
 
 }

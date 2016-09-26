@@ -83,21 +83,22 @@
 		
 		</insert>
 		
-		<select id="selectTaskListPro" parameterType="str" resultType="homeworkAllListViewVO">
+		<select id="selectTaskListPro" parameterType="str" resultType="homeworkVO">
 		
 		SELECT *
 		
-		FROM HOMEWORKLISTALL_VIEW
+		FROM HOMEWORK
+		
 		WHERE HW_LEC_NO = #{pro_lec_no}
 		
 		
 		</select>
 		
-		<select id="selectTaskListStu" parameterType="int" resultType="homeworkAllListViewVO">
+		<select id="selectTaskListStu" parameterType="int" resultType="homeworkVO">
 		SELECT * 
 
 		
-		FROM HOMEWORKLISTALL_VIEW
+		FROM homeworkVO
 		WHERE HW_LEC_NO = #{pro_lec_no}
 		
 		
@@ -210,4 +211,30 @@
 		
 		
 		</delete>
+		
+		
+		<select id="getSubmitStuCheck" parameterType="str" resultType="homework_SubmitVO">
+		
+		
+		SELECT *
+		FROM HOMEWORK_SUBMIT
+		WHERE HS_STUD_USE_ID = #{id}
+		
+		
+		</select>
+		
+		
+		
+		
+		
+		
+		<select id="gethoSubmit" parameterType="homework_SubmitVO" resultType="homework_SubmitVO">
+		
+		SELECT *
+		FROM HOMEWORK_SUBMIT
+		
+		WHERE HS_STUD_USE_ID = #{hs_stud_use_id}
+		AND HS_HW_NO = #{hs_hw_no}
+		
+		</select>
 </mapper>

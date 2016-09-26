@@ -73,10 +73,10 @@ public interface CyberCamTaskDAO {
 	public void insertTaskWriteNoFile(HomeworkVO homeworkVO);
 	
 	//교수 과제게시판 글 리스트 출력
-	public List<HomeworkAllList_ViewVO> getTaskListPro(String pro_lec_no);
+	public List<HomeworkVO> getTaskListPro(String pro_lec_no);
 	
 	//학생 과제게시판 글 리스트 출력
-	public List<HomeworkAllList_ViewVO> getTaskListStu(int pro_lec_no);
+	public List<HomeworkVO> getTaskListStu(int pro_lec_no);
 	
 	//학생 과제게시판 글 리스트 상세출력
 	public Homedetail_ViewVo getTaskListProDetail(String hw_no);
@@ -100,4 +100,11 @@ public interface CyberCamTaskDAO {
 	
 	//게시글삭제
 	public void deletetaskList(String hw_no);
+	
+	
+	public List<Homework_SubmitVO> getSubmitStuCheck(String id);
+	
+	
+	///////////////////
+	public Homework_SubmitVO gethoSubmit(Homework_SubmitVO homework_SubmitVO);
 }

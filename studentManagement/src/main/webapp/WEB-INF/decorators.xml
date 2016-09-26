@@ -36,5 +36,6 @@
 		<pattern>/stu/timeTableList</pattern>
 		<pattern>/stu/attendCertificateInfo</pattern>
 		<pattern>/stu/graduteCertificateInfo</pattern>
+		<pattern>/emp/periodSetting</pattern>
 	</excludes>
 </decorators>

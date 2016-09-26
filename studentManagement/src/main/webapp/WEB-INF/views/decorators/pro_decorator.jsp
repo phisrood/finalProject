@@ -83,7 +83,7 @@
               </div>
               <div class="profile_info">
                 <span>환영합니다,</span>
-                <h2>${professorInfo.use_name }</h2>
+                <h2>${loginUser.use_name }</h2>
                 <br/>
               </div>
             </div>

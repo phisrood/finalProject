@@ -60,7 +60,11 @@
 	</tr>
 	<tr>
 		<td colspan="3"   class="lectureContent lecture-border">
-			강의시간내용
+		<ul style="list-style: none;">
+			<c:forEach items="${lectureTime }" var="time">
+				<li>${time.tt_time }</li>
+			</c:forEach>
+			</ul>
 		</td>
 		<td colspan="3"   class="lectureContent lecture-border">
 			서명:<p>${classSYL.cs_bookname },${classSYL.cs_bookversion }</p>
@@ -76,7 +80,6 @@
 	</tr>
 	<tr>
 		<td colspan="6"   class="lectureContent lecture-border">
-			강의설명내용
 			${classSYL.cs_content }
 		</td>
 	</tr>
@@ -87,7 +90,6 @@
 	</tr>
 	<tr>
 		<td colspan="6"  class="lectureContent lecture-border">
-			진행방식내용
 			${classSYL.cs_progress }
 		</td>
 	</tr>

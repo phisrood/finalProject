@@ -95,8 +95,9 @@ h2 {
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">강의실</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control pull-left" id="classroom"
-								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp; 
-							<button type="button" class="btn btn-info btn-sm" id="search"
+								readonly="readonly" name="cu_tt_no">&nbsp;&nbsp;
+								<input type="hidden" name="cu_ci_no" id="ci_no">
+						<button type="button" class="btn btn-info btn-sm" id="search"
 								data-toggle="modal" data-target="#myModal">검색</button>
 						</div>
 					</div>
@@ -302,9 +303,6 @@ h2 {
 										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
 										+ "<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    "
 										+ "	<td class=\"timetable\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
-										+ "</tr>                                                                          "
-										+ "<tr>                                                                           "
-										+ "	<td colspan='5' id=\"check\"></td> "
 										+ "</tr>")
 			};
 			$("#classroomList").change(
@@ -331,8 +329,6 @@ h2 {
 												check.splice(check
 														.indexOf(index), 1);
 											}
-
-											$("#check").html(check + ",");
 										}
 									});
 						});
