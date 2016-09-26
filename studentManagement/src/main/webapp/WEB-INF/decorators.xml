@@ -22,7 +22,6 @@
 	<decorator name="main_crses" page="crses_decorator.jsp">
 		<pattern>/crses/stu/*</pattern>
 	</decorator>
-	
 
 	<excludes>
 		<pattern>/stu/minorModel</pattern>

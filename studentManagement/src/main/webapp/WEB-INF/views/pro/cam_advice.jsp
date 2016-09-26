@@ -40,8 +40,7 @@
 	
 	}
 	function chat() {
-		window.open("http://192.168.206.102:8888", "채팅",
-				"width=450, height=450");
+		window.open("http://192.168.206.102:8888", "채팅","width=450, height=450");
 	}
 </script>
 	
@@ -64,8 +63,7 @@
 </style>
 <div class="row">
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
-	<table id="datatable"
-		class="table table-striped jambo_table bulk_action">
+	<table id="datatable" class="table table-striped jambo_table bulk_action">
 		<thead>
 			<tr>
 				<th>방법</th>

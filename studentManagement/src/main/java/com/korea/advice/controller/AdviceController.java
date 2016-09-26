@@ -228,9 +228,15 @@ public class AdviceController {
 	 */
 	// 상담 게시판
 	@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
-	public String adviceBoard(Model model) {
+	public String adviceBoard(Model model,HttpSession session) {
 		String url = "/common/adviceBoard";
+		
+		// 세션
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+				
 		List<Advice_BoardVO> adviceBoardList = adviceService.getAdviceBoardList();
+		
+		model.addAttribute("auth", user.getAuthority());
 		model.addAttribute("adviceBoardList", adviceBoardList);
 		return url;
 	}
@@ -295,7 +301,8 @@ public class AdviceController {
 	 * @throws
 	 */
 	// 상담 게시판 답변 작성
-	@RequestMapping(value = "/common/adviceBoardUpdateDetail", method = RequestMethod.GET)
+	//@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
+	@RequestMapping(value = {"/stu/adviceBoardUpdateDetail","/pro/adviceBoardUpdateDetail"}, method = RequestMethod.GET)
 	public String adviceBoardUpdateDetail(int adb_no,Model model,HttpSession session,HttpServletRequest request) {
 		String url = "/common/adviceBoardUpdateDetail";
 		Advice_BoardVO adviceBoardVO = adviceService.getAdviceBoard(adb_no);
