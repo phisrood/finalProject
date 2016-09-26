@@ -103,6 +103,7 @@ h2 {
 						<div class="col-md-9 col-sm-9 col-xs-12">
 							<input type="text" class="form-control" name="lb_department"
 								value="${pro.dep_name }" readonly="readonly">
+								<input type="hidden" name="lb_dep_no" value="${pro.pro_dep_no }">
 						</div>
 					</div>
 

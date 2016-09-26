@@ -62,9 +62,11 @@ public class CrsesBookController {
 	 */
 	// 수강편람조회
 	@RequestMapping(value = { "/pro/crsesBookList"}, method = RequestMethod.GET)
-	public String getCrsesBookList(Model model) {
+	public String getCrsesBookList(Model model, HttpSession session) {
 		String url = "/pro/crsesBookList";
-		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList();
+		UsersVO user = (UsersVO) session.getAttribute("loginUser");
+		ProfessorDetailViewVO pro=memberManageService.getDetailProInfo(user.getUse_id());
+		List<Lecture_BreakeDownVO> lbList = crsesBookService.getCrsesBookList(pro.getPro_dep_no());
 		model.addAttribute("crsesBookList", lbList);
 		return url;
 	}

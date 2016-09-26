@@ -1,7 +1,10 @@
 package com.korea.classSYL.service;
 
+import java.util.List;
+
 import com.korea.dto.Class_SYLLBUSVO;
 import com.korea.dto.LectureViewVO;
+import com.korea.dto.Lecture_Time_ViewVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
@@ -62,5 +65,13 @@ public interface ClassSYLService {
 	 * @throws 
 	 */
 	public Class_SYLLBUSVO getClassSYLInfo(String lec_no);
+	
+	/**
+	 * 강의시간
+	 * @param Class_SYLLBUSVO
+	 * @return 
+	 * @throws 
+	 */
+	public List<Lecture_Time_ViewVO> getLectureTimeInfo(String lec_no);
 	
 }
