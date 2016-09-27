@@ -54,7 +54,7 @@
 		
 	</script>
 	<div style="height: 50px;"></div>
-	<div style="margin:0px; background: url('../../resources/common/images/banner.jpg'); width: 100%; height: 300px; background-size: 100%;"></div>
+	<div style="margin:0px; background: url('../../resources/common/images/university.jpg'); width: 1400px; height: 275px; background-size: 100%;"></div>
 	<div style="height: 50px;"></div> 
             <div class="row">
             <!-- 공지사항 -->
