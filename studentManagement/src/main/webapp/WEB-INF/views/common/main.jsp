@@ -196,7 +196,70 @@
               </c:choose>
               	<div id='preview' STYLE="BORDER-RIGHT: 1px; BORDER-TOP: 1px; Z-INDEX: 1; VISIBILITY: hidden; BORDER-LEFT: 1px; BORDER-BOTTOM: 1px; POSITION: absolute;"></div> 
               </div>
-              
+ 수강신청기간:<input type="button" id="crsesInquiryPeriod"  class="btn btn-dark" onclick="crsesInquiryPeriod();" value="${period.pr_crses_inquiry }"/>
+<br />
+<br />
+수업평가:<input type="button" id="appLecturePeriod"  class="btn btn-dark" onclick="appLecturePeriod();" value="${period.pr_app_lecture }"/>
+<br />
+<br />
+
+성적반영:<input type="button" id="scoreSummary"  class="btn btn-dark" onclick="scoreSummary();" value="성적반영"/>
+<br />
+<br />
+
+<script>
+	function crsesInquiryPeriod(){
+		$.ajax({
+			url:"/emp/updateCrsesInquiryPeriod",
+			method:"get",
+			type:"json",
+			data:{"state":$("#crsesInquiryPeriod").val()},
+			success:function(data){
+				$("#crsesInquiryPeriod").val(data.pr_crses_inquiry);
+			},error:function(){
+				alert("에러");
+			}
+		});
+	}
+	function appLecturePeriod(){
+		$.ajax({
+			url:"/emp/appLecturePeriod",
+			method:"get",
+			type:"json",
+			data:{"state":$("#appLecturePeriod").val()},
+			success:function(data){
+				$("#appLecturePeriod").val(data.pr_app_lecture);
+			},error:function(){
+				alert("에러");
+			}
+		});
+	}
+	function scoreSummary(){
+		$.ajax({
+			url:"/emp/scoreSummary",
+			method:"get",
+			type:"json",
+			success:function(){
+			},error:function(){
+				alert("에러");
+			}
+		});
+	}
+	function majorReqPeriod(){
+		$.ajax({
+			url:"/emp/majorReqPeriod",
+			method:"get",
+			type:"json",
+			data:{"state":$("#majorReqPeriod").val()},
+			success:function(data){
+				$("#majorReqPeriod").val(data.pr_major_req);
+			},error:function(){
+				alert("에러");
+			}
+		});
+	}
+	
+</script>
               
        
      	    <!-- 부트스트랩js -->
