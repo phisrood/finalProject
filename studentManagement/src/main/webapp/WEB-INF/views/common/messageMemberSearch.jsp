@@ -26,6 +26,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>

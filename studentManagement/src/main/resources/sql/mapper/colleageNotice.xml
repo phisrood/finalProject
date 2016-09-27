@@ -15,7 +15,7 @@
 			, cn_date from colleage_notice
 			order by cn_no desc
 			)
-			where rnum between 1 and 20
+			where rnum between 1 and 10
 	</select>
 	
 	<select id="getNoticeAllList" resultType="noticeView">

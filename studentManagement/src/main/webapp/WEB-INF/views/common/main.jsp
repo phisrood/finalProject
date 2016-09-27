@@ -53,6 +53,9 @@
 		} 
 		
 	</script>
+	<div style="height: 50px;"></div>
+	<div style="margin:0px; background: url('../../resources/common/images/banner.jpg'); width: 100%; height: 300px; background-size: 100%;"></div>
+	<div style="height: 50px;"></div> 
             <div class="row">
             <!-- 공지사항 -->
               <div class="col-md-12 col-sm-12 col-xs-12">
@@ -193,6 +196,8 @@
               </c:choose>
               	<div id='preview' STYLE="BORDER-RIGHT: 1px; BORDER-TOP: 1px; Z-INDEX: 1; VISIBILITY: hidden; BORDER-LEFT: 1px; BORDER-BOTTOM: 1px; POSITION: absolute;"></div> 
               </div>
+              
+              
        
      	    <!-- 부트스트랩js -->
     <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
