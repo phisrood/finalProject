@@ -27,7 +27,6 @@
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
 <script type="text/javascript">
 	function serverCam() {
 		
@@ -77,6 +76,7 @@
 				<th>입장</th>
 			</tr>
 		</thead>
+		
 		<c:forEach var="adviceVO" items="${adviceList}">
 			<tr>
 				<td>${adviceVO.ad_way }</td>

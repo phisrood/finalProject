@@ -35,10 +35,39 @@ html, body {
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
 <script>
-window.onload=function()
-{
- CKEDITOR.replace('adb_content');
-}
+
+$(document).ready(function() {
+    $("#submitBtn").click(function() {
+       var instance = CKEDITOR.instances.adb_content;
+       instance.updateElement();
+       $("#output").attr("value",instance.getData());
+       if ($("#adb_title").val() == "") {
+    	   swal({
+				title : "< Error! >",
+				text : "제목을 입력해주세요.",
+				type : "error",
+				confirmButtonText : "닫기"
+			});
+          $("#title").focus();
+          return false;
+       }else if ($("#adb_content").val().length == 0 ) {
+    	   swal({
+				title : "< Error! >",
+				text : "내용을 입력해주세요.",
+				type : "error",
+				confirmButtonText : "닫기"
+			});
+          $("#adb_content").focus();
+             return false;
+       }
+    });
+ });
+
+ window.onload=function()
+ {
+  CKEDITOR.replace('adb_content');
+ }
+ 
 
  
 </script> 
@@ -57,9 +86,9 @@ window.onload=function()
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
 				<input type="text" class="form-control" name="adb_title"
-					value="${adb_title }" style="width: 100%;">
+					value="${adb_title }" style="width: 100%;" id="adb_title">
 			</div>
-		</div>
+		</div>  
 		<br><br> 
 		<input type="hidden" name="adb_no" value="${adb_no }" />
 		<div class="form-group" style="height: 10%;">
@@ -68,7 +97,7 @@ window.onload=function()
 				<input type="text" class="form-control" name="adb_date"
 					value="${adb_date }" disabled="disabled"  style="width: 100%;">
 			</div>
-		</div>
+		</div>  
 		<br><br>
 		<input type="hidden" name="adb_no" value="${adb_no }" />
 		<div class="form-group" style="height: 10%;">
@@ -82,7 +111,7 @@ window.onload=function()
 		<div class="form-group" style="height: 60%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<textarea class="form-control" name="adb_content" style="width:1000px;height:500px;">${adb_content }</textarea>
+						<textarea class="form-control" name="adb_content" style="width:1000px;height:500px;" id="adb_content">${adb_content }</textarea>
 					</div>
 		</div>
 		<br><br>
@@ -93,7 +122,7 @@ window.onload=function()
 					<input type="file" class="btn btn-dark" style="width: 300px;" name="adb_file">
 					<div style="text-align: right;">
 				<input type="button" class="btn btn-dark" value="취소" onclick="location.href='/stu/adviceBoard'"/> 
-			<input type="submit" class="btn btn-dark" value="수정" />
+			<input type="submit" class="btn btn-dark" value="수정" id="submitBtn"/>
 					</div>
 			</div>
 		</div>
