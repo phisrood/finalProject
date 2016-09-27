@@ -16,7 +16,6 @@ package com.korea.login.controller;
  * </pre>
  */
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,12 +65,11 @@ public class LoginController {
 	private PeriodService periodService;
 	
 	/**
-	 * 개인 정보 조회
+	 * 메인실행 로그인폼
 	 * @param
 	 * @return 0
 	 * @throws 
 	 */
-	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(HttpSession session){
 		String url = "/error";
