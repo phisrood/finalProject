@@ -36,15 +36,11 @@
 			<div class="clearfix"></div>
 		</div>
 		<br>
-		<div style="float: left; width: 72%;">&nbsp;&nbsp;&nbsp;- 상담 내역은 본인과 담당 교수만 열람이 가능합니다.</div>
-		<div class="x_content">
-		<br>      
-		<c:if test="${auth eq 'ROLE_STU' }">
-			<div style="text-align: right;">
-				<a href="/stu/adviceBoardWriteForm"><button type="button" class="btn btn-dark">작 성</button></a>
-  			</div>
-  			<br>    
-		</c:if>
+		<div class="alert alert-danger alert-dismissible fade in"  style="width:400px;height:40px;border-radius:30px;">
+				-상담 내역은 본인과 담당 교수만 열람이 가능합니다.
+		</div>
+		<div class="x_content">    
+	
 		  
 			<table id="datatable" class="table table-striped jambo_table bulk_action">    
 				<thead>
@@ -87,6 +83,12 @@
 				</tbody>
 				
 			</table>
+			<c:if test="${auth eq 'ROLE_STU' }">
+			<div style="text-align: right;">
+				<a href="/stu/adviceBoardWriteForm"><button type="button" class="btn btn-dark">작 성</button></a>
+  			</div>
+  			<br>    
+		</c:if>
 			
 			<br>
 		</div>
