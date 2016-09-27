@@ -120,7 +120,7 @@ body {
               	<div style="text-align: right; margin-bottom: 10px;"> 
                		<a href='/common/pwdSearchForm' style="color:balck;">--비밀번호찾기--</a>
                	</div>
-                <input type="submit" value="로그인" style="width:100%; height: 30px;">  
+                <input type="submit" value="L O G I N" style="width:100%; height: 30px;">  
               </div>
                 <div class="clearfix"></div>
                 <br />
