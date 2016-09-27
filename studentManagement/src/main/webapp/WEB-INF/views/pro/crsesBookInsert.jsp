@@ -110,8 +110,9 @@ h2 {
 					<div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12">학점</label>
 						<div class="col-md-9 col-sm-9 col-xs-12">
-							<input type="text" class="form-control" placeholder="학점"
-								name="lb_credit">
+							<input type="radio" name="lb_credit" value="1">1			
+							<input type="radio" name="lb_credit" value="2">2			
+							<input type="radio" name="lb_credit" value="3">3			
 						</div>
 					</div>
 					<div class="form-group">

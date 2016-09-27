@@ -105,13 +105,7 @@
 		                  
 		                    </ul>
 		                  </li>
-		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/pro/belongMinorREQList">학과 부/다전공 신청</a></li>
-		                      <li><a href="/pro/othersMinorREQList">타학과 부/다전공신청</a></li>
-		                      <li><a href="#">졸업요건</a></li>
-		                    </ul>
-		                  </li>
+		               
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/pro/acadeCalList">학사일정조회</a></li>

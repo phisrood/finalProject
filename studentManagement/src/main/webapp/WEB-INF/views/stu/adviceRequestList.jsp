@@ -60,13 +60,11 @@ $(document).ready(function() {
    
    function revoke(form) {
       var count = 0;
-
       for (var i = 0; i < form.ad_no.length; i++) {
          if (form.ad_no[i].checked == true) {
             count++;
          }
       }
-
       if (count == 0) {
          alert("취소할 항목을 선택해 주세요.");
       } else {
@@ -74,7 +72,6 @@ $(document).ready(function() {
          form.method = "post";
          form.submit();
       }
-
    }
 </script>
 
