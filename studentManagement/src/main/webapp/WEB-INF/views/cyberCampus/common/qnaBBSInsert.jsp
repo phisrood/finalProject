@@ -34,7 +34,36 @@
   CKEDITOR.replace('content');
  }
  
+ 
+ 
+ $(document).ready(function() {
+	    $("#submit").click(function() {
+	       var instance = CKEDITOR.instances.content;
+	       instance.updateElement();
+	       $("#output").attr("value",instance.getData());
+	       if ($("#title").val() == "") {
+	          alert("제목을 입력하세요.");
+	          $("#title").focus();
+	          return false;
+	       } else if ($("#content").val() == "") {
+	          alert("내용을 입력하세요.");
+	          $("#content").focus();
+	          return false;
+	       } else if ($("#content").val().length > 4008) {
+	          $("#content").val($("#content").val().substring(0, 10));
+	             alert("내용에 최대 4000자까지만 입력할 수 있습니다.");
+	          $("#content").focus();
+	             return false;
+	       }
+	    });
+	 });
+ 
 </script> 
+
+
+
+
+
 
 
 	
@@ -58,7 +87,7 @@
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="167" >
+							<input name="title" id="title" type="text" size="167" >
 						</td>
 					</tr>
 					<tr>
@@ -87,7 +116,7 @@
 				<button type="button" class="btn btn-default btn-sm">목 록</button>
 			</div>
 			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" value="등록">
+				<input type="submit"  id="submit" name="submit" class="btn btn-default btn-sm" value="등록">
 				
 			</div>
 			
