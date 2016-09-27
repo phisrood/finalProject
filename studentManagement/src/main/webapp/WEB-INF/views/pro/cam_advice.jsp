@@ -27,7 +27,6 @@
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-  
 <script type="text/javascript">
 	function serverCam() {
 		
@@ -59,6 +58,12 @@
 </style>
 <div class="row">
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
+	<div class="x_panel_big">
+	<div class="x_title">
+			<h2>사이버상담실</h2>
+
+			<div class="clearfix"></div>
+		</div>
 	<table id="datatable" class="table table-striped jambo_table bulk_action">
 		<thead>
 			<tr>
@@ -101,10 +106,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<div class="x_panel_big">
-		<div class="x_title">
-			<div class="clearfix"></div>
-		</div>
+	
 	</div>
 
 </div>
