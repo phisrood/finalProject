@@ -2,7 +2,6 @@ package com.korea.memberManage.service;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +23,7 @@ import com.korea.dto.ProfessorViewVO;
 import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
 import com.korea.memberManage.dao.MemberManageDAO;
+import com.korea.security.SecurityProcess;
 
 
 
@@ -91,10 +91,8 @@ public class MemberManageServiceImpl implements MemberManageService{
 			readSheet(columnindex, sheet);
 			
 		} catch (InvalidFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -243,6 +241,18 @@ public class MemberManageServiceImpl implements MemberManageService{
 						break;
 				}
 			}//end of row
+			String pwdBefore = studentMap.get("reg1");
+			SecurityProcess sp = new SecurityProcess();
+			String pwdAfter = "";
+			try {
+				pwdAfter = sp.encrypt(pwdBefore);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			studentMap.put("pwd", pwdAfter);
+			
+			
 			int result = memberManageDAO.insertStuInfo(studentMap);
 		}
 		return studentMap;
