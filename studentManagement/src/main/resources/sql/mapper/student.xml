@@ -20,8 +20,8 @@
 		,'학생' <!-- 사용자구분 -->
 		,#{name} <!-- 이름 -->
 		,'1' <!-- enabled -->
-		,'ROLE_STU'
-		,#{reg1}) <!-- 권한 -->
+		,'ROLE_STU' <!-- 권한 -->
+		,#{pwd}) <!-- 비밀번호 -->
 		<selectKey keyProperty="use_id" resultType="String" order="AFTER">
 			SELECT TRIM(REPLACE(TO_CHAR(SYSDATE, 'yyyy')||TO_CHAR(ID_SEQ.CURRVAL,
 			'0000'),' ','')) FROM DUAL

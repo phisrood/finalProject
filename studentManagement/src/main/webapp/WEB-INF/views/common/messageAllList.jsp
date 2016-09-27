@@ -290,7 +290,7 @@
 									</tbody>
 								</table>
 									<div style="text-align:right;">
-										<button type="submit" id="reciveDelBtn" class="delBtn btn-dark">삭제</button>
+										<button type="submit" id="reciveDelBtn" class="delBtn btn  btn-dark">삭제</button>
 			                    	</div>
 								</form>
 							</div>
@@ -328,7 +328,7 @@
 								</tbody>
 							</table>
 									<div style="text-align:right;">
-										<button type="submit" id="sendDelBtn" class="delBtn btn-dark">삭제</button>
+										<button type="submit" id="sendDelBtn" class="delBtn btn btn-dark">삭제</button>
 				                    
 				                    </div>
 				              </form>
@@ -352,7 +352,7 @@
 			                    <div class="col-md-7">
 			                      <input type="text" id="mes_recive_use_id" name="mes_recive_use_id" required="required" class="col-md-7 col-xs-12" style="width:80%;" readonly="readonly">
 			                    </div>
-			                     <button type="button" class="btn btn-dark" onclick="javascript:OpenWindow('/common/messageUserSearchForm','600','500')" style="text-decoration:none">검색</button>
+			                     <button type="button" class="btn btn-dark" onclick="javascript:OpenWindow('/common/messageUserSearchForm','800','700')" style="text-decoration:none">검색</button>
 			                  </div>
 			                  <div class="form-group">
 			                    <label class="control-label col-md-3" for="last-name">제목 </label>

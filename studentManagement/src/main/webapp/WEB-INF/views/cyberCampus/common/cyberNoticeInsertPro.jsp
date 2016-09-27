@@ -30,11 +30,43 @@
 
 
 <script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
+
+
+
+
+
+
+
 <script>
+
+$(document).ready(function() {
+    $("#submit").click(function() {
+       var instance = CKEDITOR.instances.content;
+       instance.updateElement();
+       $("#output").attr("value",instance.getData());
+       if ($("#title").val() == "") {
+          alert("제목을 입력하세요.");
+          $("#title").focus();
+          return false;
+       } else if ($("#content").val() == "") {
+          alert("내용을 입력하세요.");
+          $("#content").focus();
+          return false;
+       } else if ($("#content").val().length > 4008) {
+          $("#content").val($("#content").val().substring(0, 10));
+             alert("내용에 최대 4000자까지만 입력할 수 있습니다.");
+          $("#content").focus();
+             return false;
+       }
+    });
+ });
+
  window.onload=function()
  {
   CKEDITOR.replace('content');
  }
+ 
+
  
 </script> 
 
@@ -42,9 +74,9 @@
 
 
 	
-			<form action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextInsert" method="POST" enctype="multipart/form-data">
+			<form action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextInsert" method="POST"  enctype="multipart/form-data">
     	<div class="row">
-    	<!-- Q & A 게시글 상세 ( 학과 ) -->
+    	<!-- 공지사항( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
@@ -62,7 +94,7 @@
 					<tr>
 						<td>
 							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="50" >
+							<input name="title" id="title" type="text" size="50" >
 						</td>
 					</tr>
 					
@@ -85,26 +117,10 @@
 				<button type="button" class="btn btn-default btn-sm">목 록</button>
 			</div>
 			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" value="등록">
+				<input type="submit" class="btn btn-default btn-sm" onclick="check();" id="submit" name="submit" value="등록">
 				
 			</div>
 			
     </div>
     </form>
-    <!-- Datatables -->
-    <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/stu/js/jquery.dataTables.min.js"></script>
-    <script src="/stu/js/dataTables.bootstrap.min.js"></script>
-    <script src="/stu/js/dataTables.buttons.min.js"></script>
-    <script src="/stu/js/buttons.bootstrap.min.js"></script>
-    <script src="/stu/js/buttons.flash.min.js"></script>
-    <script src="/stu/js/buttons.html5.min.js"></script>
-    <script src="/stu/js/buttons.print.min.js"></script>
-    <script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/stu/js/dataTables.keyTable.min.js"></script>
-    <script src="/stu/js/dataTables.responsive.min.js"></script>
-    <script src="/stu/js/responsive.bootstrap.js"></script>
-    <script src="/stu/js/datatables.scroller.min.js"></script>
-    <script src="/stu/js/jszip.min.js"></script>
-    <script src="/stu/js/pdfmake.min.js"></script>
-    <script src="/stu/js/vfs_fonts.js"></script>
+ 

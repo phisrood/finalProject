@@ -16,7 +16,6 @@ package com.korea.login.controller;
  * </pre>
  */
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.dto.Colleage_NoticeVO;
 import com.korea.dto.MessageVO;
 import com.korea.dto.Period;
@@ -46,6 +47,7 @@ import com.korea.login.service.LoginService;
 import com.korea.message.service.MessageService;
 import com.korea.notice.service.NoticeService;
 import com.korea.period.service.PeriodService;
+import com.korea.security.SecurityProcess;
 
 @Controller
 public class LoginController {
@@ -66,12 +68,11 @@ public class LoginController {
 	private PeriodService periodService;
 	
 	/**
-	 * 개인 정보 조회
+	 * 메인실행 로그인폼
 	 * @param
 	 * @return 0
 	 * @throws 
 	 */
-	//메인실행 로그인폼
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(HttpSession session){
 		String url = "/error";
@@ -258,15 +259,23 @@ public class LoginController {
 		return url;
 	}
 	
+	//로그인 체크
 	@RequestMapping(value="/common/loginCheck")
-	@ResponseBody
-	public String loginCheck(@RequestParam(value="use_id")String id, @RequestParam(value="use_pwd")String pwd,
+	public void loginCheck(@RequestParam(value="use_id")String id, @RequestParam(value="use_pwd")String pwd,
 							HttpServletResponse response){
 		String message = "";
+		SecurityProcess sp = new SecurityProcess();
+		String encPwd = "";
+		try {
+			encPwd = sp.encrypt(pwd);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.setContentType("text/html; charset=UTF-8;");
 		Map<String, String> checkMap = new HashMap<String, String>();
 		checkMap.put("id", id);
-		checkMap.put("pwd", pwd);
+		checkMap.put("pwd", encPwd);
 		
 		UsersVO loginUser = service.getLoginCheck(checkMap);
 		
@@ -276,6 +285,22 @@ public class LoginController {
 			message = "success";
 		}
 		
-		return message;
+		Map<String, String> loginCheck = new HashMap<String, String>();
+		loginCheck.put("message", message);
+		loginCheck.put("encPwd", encPwd);
+		
+		ObjectMapper jsonObject = new ObjectMapper();
+		
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(loginCheck);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
+		
 	}
 }
