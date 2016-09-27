@@ -309,17 +309,19 @@ public class AdviceController {
 		
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		String loginUser = user.getUse_id();
-		if(loginUser.equals(adviceBoardVO.getAdb_stud_use_id())){
-			loginUser="작성자";
+		String loginUserId = user.getUse_id();
+		if(loginUserId.equals(adviceBoardVO.getAdb_stud_use_id())){
+			loginUserId="작성자";
 		}
 		
 		if(adviceBoardVO.getAdb_af_no()!=0){
 			Attachment_FileVO fileVO = adviceService.getAdviceBoardFile(adviceBoardVO.getAdb_af_no());		
 			model.addAttribute("filename", fileVO.getAf_realname());
 		}
+		
 		model.addAttribute("auth", user.getAuthority());
-		model.addAttribute("loginUser", loginUser);
+		model.addAttribute("loginUserId", loginUserId);
+		model.addAttribute("loginUser", user);
 		model.addAttribute("use_name", adviceBoardVO.getUse_name());
 		model.addAttribute("adb_no", adviceBoardVO.getAdb_no());
 		model.addAttribute("adb_pro_use_id", adviceBoardVO.getAdb_pro_use_id());
