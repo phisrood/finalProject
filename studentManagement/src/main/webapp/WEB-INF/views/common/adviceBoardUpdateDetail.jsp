@@ -96,7 +96,7 @@ html, body {
 			</div>
 		</div>
 		</div>
-	<div class="x_panel_big" style="height:320px;" >
+	<div class="x_panel_big" style="height:250px;" >
 	<div class="x_title">
 		<h2>상담 게시글 답변</h2>
 		<div class="clearfix"></div>
@@ -113,10 +113,6 @@ html, body {
 			<br><br>
 			
 			
-			<c:if test="${loginUserId eq '작성자' }">
-			<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
-			<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
-			</c:if>
 		<form method="post" action="/pro/adviceBoardReply">
 		<input type="hidden" name="adb_no" value="${adb_no }"/>
 		
@@ -134,17 +130,21 @@ html, body {
 			</c:if>
 		</div>
 		</form>
+	</div>
 		<br><br>
-			<div style="text-align: right;">
+	</div>
+		<div style="text-align: right;">
+			<c:if test="${loginUserId eq '작성자' }">
+				<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
+				<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
+			</c:if>
 			<c:if test="${auth eq 'ROLE_PRO' }">
 				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/pro/adviceBoard'"/>
 			</c:if>
 			<c:if test="${auth eq 'ROLE_STU' }">
 				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/stu/adviceBoard'"/>
 			</c:if>
-			</div>
-	</div>
-	</div>
+		</div>
 </div>
 
 <!-- Datatables -->
