@@ -17,7 +17,7 @@
 ===============================================================--%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -34,6 +34,7 @@
     <link href="/bootstrap/css/animate.min.css" rel="stylesheet">
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
 	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+	<link href="/common/css/default.css" rel="stylesheet">
     <script src="/bootstrap/js/jquery.min.js"></script>
 	<script src="/bootstrap/js/jquery.form.js"></script>
 	<script src="/bootstrap/js/sweetalert.min.js"></script>

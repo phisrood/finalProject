@@ -78,7 +78,7 @@ $(document).ready(function() {
 <div class="row">
 <div class="x_panel_big">
    <!-- 사이버 상담 신청 내역 -->
-   <form method="post" action="/stu/adviceREQ">
+   <form method="post" action="/stu/adviceREQ" >
       <div class="col-md-12 col-sm-12 col-xs-12">
          <div class="x_panel">
             <div class="x_title">
