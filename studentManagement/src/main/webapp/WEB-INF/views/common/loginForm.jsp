@@ -46,9 +46,9 @@ $(function(){
 				return false;
 			}
 		},
-		dataType:"text",
+		dataType:"json",
 		success:function(data){
-			if(data == "error"){
+			if(data.message == "error"){
 				swal({
 					title: "< 로그인 실패 >",
 					text: "아이디 패스워드가 맞지 않습니다.",
@@ -62,7 +62,8 @@ $(function(){
 					text: "즐거운하루되세요.",
 					type: "success",
 				}); 
-				
+				var pwd = data.encPwd;
+				$("#use_pwd").val(pwd);
 				$("#loginForm").ajaxFormUnbind();
 				$("#loginForm").attr("action", "/common/loginProcess");
 				$("#loginForm").submit();
