@@ -95,15 +95,15 @@ html, body {
 			<br><br>
 			  
 			<c:if test="${auth eq 'ROLE_PRO' }">
-				<input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='/pro/adviceBoard'"/>
+				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/pro/adviceBoard'"/>
 			</c:if>
 			<c:if test="${auth eq 'ROLE_STU' }">
-				<input type="button" class="btn btn-default btn-sm" value="목록" onclick="location.href='/stu/adviceBoard'"/>
+				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/stu/adviceBoard'"/>
 			</c:if>
 			
 			<c:if test="${loginUser eq '작성자' }">
-			<input type="button" class="btn btn-default btn-sm" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
-			<input type="button" class="btn btn-default btn-sm" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
+			<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
+			<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
 			</c:if>
 		</div>
 		<form method="post" action="/pro/adviceBoardReply">
@@ -115,10 +115,10 @@ html, body {
 				작성자 : ${loginUser } <br />
 				답변 내용 : <input type="text" name="adb_commentcontent" />    
 				<c:if test="${adb_commentstat == 'N'}">
-					<input type="submit" class="btn btn-default btn-sm" value="답변등록"/>		
+					<input type="submit" class="btn btn-dark" value="답변등록"/>		
 				</c:if>
 				<c:if test="${adb_commentstat == 'Y'}">
-					<input type="submit" class="btn btn-default btn-sm" value="답변수정"/>		
+					<input type="submit" class="btn btn-dark" value="답변수정"/>		
 				</c:if>
 			</c:if>
 		</div>

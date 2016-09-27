@@ -60,13 +60,11 @@ $(document).ready(function() {
    
    function revoke(form) {
       var count = 0;
-
       for (var i = 0; i < form.ad_no.length; i++) {
          if (form.ad_no[i].checked == true) {
             count++;
          }
       }
-
       if (count == 0) {
          alert("취소할 항목을 선택해 주세요.");
       } else {
@@ -74,7 +72,6 @@ $(document).ready(function() {
          form.method = "post";
          form.submit();
       }
-
    }
 </script>
 
@@ -142,10 +139,18 @@ $(document).ready(function() {
             <h2>상담 신청 내역</h2>
             <div class="clearfix"></div>
          </div>
-         <div class="x_panel">
-            완료 : 상담이 완료된 상태<br> 대기 : 담당 교수가 확인하여 상담일까지 대기하는 상태<br> 미처리
-            : 담당 교수가 확인하지 않은 상태<br> 연기 : 담당 교수 일정상 기간을 미룬 상태
-         </div>
+        <div class="alert alert-success alert-dismissible fade in" style="width:400px;height:40px;" >
+				완료 : 상담이 완료된 상태<br> 
+				</div>
+				<div class="alert alert-info alert-dismissible fade in"  style="width:400px;height:40px;">
+				대기 : 담당 교수가 확인하여 상담일까지 대기하는 상태<br> 
+				</div>
+				<div class="alert alert-warning alert-dismissible fade in"  style="width:400px;height:40px;">
+				미처리: 담당 교수가 확인하지 않은 상태<br> 
+				</div>
+				<div class="alert alert-danger alert-dismissible fade in"  style="width:400px;height:40px;">
+				연기 : 담당 교수 일정상 기간을 미룬 상태
+				</div>
          <form>
                <div style="text-align:right;">
                   <div>

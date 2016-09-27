@@ -60,7 +60,7 @@ window.onload=function()
                         <br>
                         <div align="center">
                         	<c:choose>
-                        		<c:when test="${studentVO.stud_af_no == 1 }">
+                        		<c:when test="${studentVO.stud_af_no eq 0 }">
 	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','320','180')" />
                         		</c:when>
                         		<c:otherwise>
@@ -79,7 +79,6 @@ window.onload=function()
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.use_name}" style="text-align: center;" readonly="readonly"></div><br><br>
                 		<div style="float: left; width: 35%; padding:3px;">주민 &nbsp;번호</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_regno1}-${studentVO.stud_regno2}" readonly="readonly" style="text-align: center;"></div><br><br>
-     
 					</div>
 				</div>
 				<div class="col-md-55">
@@ -93,11 +92,14 @@ window.onload=function()
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_stat }" style="text-align: center;" readonly="readonly"></div>
 					</div>
 				</div>
-                <div class="col-md-55">
+                 <div class="col-md-55">
                 	<div class="thumbnail" style="padding:10px;">
+                	
+ 
+  			
+
                 		<div style="float: left; width: 35%; padding:3px;">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.dep_name}" style="text-align: center;" readonly="readonly"></div><br><br>
-                		
                 		<div style="float: left; width: 35%; padding:3px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별</div>
                 		<div style="float: right; width: 65%;"><input type="text" id="" required="required" size="15" value="${studentVO.stud_gender}" style="text-align: center;" readonly="readonly"></div><br><br>
 					</div>
@@ -168,6 +170,7 @@ window.onload=function()
                		</div>
                		<div style="float: left; width: 20%;"><br></div>
                 </div>
+              
     	</div>
     </div>
     

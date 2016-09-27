@@ -88,34 +88,33 @@
 								</tr>
 							</c:when>
 
-							<c:otherwise>
-								<c:forEach items="${student_InquiryList_ViewVO }"
-									var="student_InquiryList_ViewVO">
-										<tr>
-											<td>${student_InquiryList_ViewVO.lb_department }</td>
-											<td>${student_InquiryList_ViewVO.lb_no }</td>
-											<td>${student_InquiryList_ViewVO.lec_makesemester }</td>
-											<td>${student_InquiryList_ViewVO.lec_makeyear }</td>
-											<td>${student_InquiryList_ViewVO.lb_name }</td>
-											<td>${student_InquiryList_ViewVO.lb_completekind}</td>
-											<td>${student_InquiryList_ViewVO.lb_credit }</td>
-											<td>${student_InquiryList_ViewVO.classroom }</td>
-											<td>${student_InquiryList_ViewVO.use_name }</td>
-											<td><button class="btn btn-dark"
-													onclick="lecturePlan('${student_InquiryList_ViewVO.lec_no}');">강의계획서</button></td>
-									<form action="/cyberCampus/stu/cyberClassMain" method="post">
-											<td><input type="submit" value="사이버캠퍼스 이동"
-												onclick="cycamGo(this.form)" class="btn btn-info btn-xs">
-												<input type="hidden" name="lec_no"
-												value="${student_InquiryList_ViewVO.lec_no }" /></td>
-									</form>
-										</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
-			</div>
+
+								<c:otherwise>
+									<c:forEach items="${student_InquiryList_ViewVO }"
+										var="student_InquiryList_ViewVO">
+										<form action="/cyberCampus/stu/cyberClassMain" method="post">
+											<tr>
+												<td>${student_InquiryList_ViewVO.lb_department }</td>
+												<td>${student_InquiryList_ViewVO.lb_no }</td>
+												<td>${student_InquiryList_ViewVO.lec_makesemester }</td>
+												<td>${student_InquiryList_ViewVO.lec_makeyear }</td>
+												<td>${student_InquiryList_ViewVO.lb_name }</td>
+												<td>${student_InquiryList_ViewVO.lb_completekind}</td>
+												<td>${student_InquiryList_ViewVO.lb_credit }</td>
+												<td>${student_InquiryList_ViewVO.classroom }</td>
+												<td>${student_InquiryList_ViewVO.use_name }</td>
+												<td><input type="submit" value="사이버캠퍼스 이동"
+													onclick="cycamGo(this.form)" class="btn btn-dark">
+													<input type="hidden" name="lec_no"
+													value="${student_InquiryList_ViewVO.lec_no }" /></td>
+											</tr>
+										</form>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</tbody>
+					</table>
+				</div>
 
 
 
