@@ -76,22 +76,16 @@
 <!-- 구성원정보관리 -->
 
 <div class="row">
-
 	<!-- page content -->
-
 	<div class="x_panel_big">
 		<div class="x_panel">
-
 			<div class="x_title">
 				<h2>구성원정보관리</h2>
 				<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
 			</div>
-
 			<div class="x_content">
-
-
-				<div class="" role="tabpanel" data-example-id="togglable-tabs">
+	<div class="" role="tabpanel" data-example-id="togglable-tabs">
 
 					<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
 						<li role="presentation" class="active"><a
@@ -160,9 +154,9 @@
 										</tr>
 									</thead>
 									
-									<c:forEach var="professor" items="${professorList}" varStatus="sta">
 
 										<tbody>
+									<c:forEach var="professor" items="${professorList}" varStatus="sta">
 											<tr>
 												<td><input type="checkbox" name="pro_use_id" value="${professor.pro_use_id}"/></td>
 												<td>${sta.count}</td>

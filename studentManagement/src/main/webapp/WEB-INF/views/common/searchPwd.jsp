@@ -78,7 +78,7 @@
 		});
 	</script>
 
-  <body class="login">
+  <body style="background:url('../../resources/common/images/uni.jpg'); background-size:100%;">
     <div>
       <a class="hiddenanchor" id="stunum"></a>
       <a class="hiddenanchor" id="stubirth"></a>
@@ -87,22 +87,24 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form action="/common/pwdSearch" method="post">
-              <h1>PWD SEARCH</h1>
+              <h1 style="color:#D8D8D8;">PWD SEARCH</h1>
               <div>
                 <input type="text" class="form-control" name="id" placeholder="User ID" />
               </div>
               <div>
                 <input type="text" class="form-control" name="birth" placeholder="생년월일 ex)YYMMDD"/>
               </div>
-              <div>
-                <input type="submit" class="btn btn-success"  id="submit" value="인증메일발송">
-                <input type="button" class="btn btn-success"  onclick="location.href='/common/loginForm'" value="로그인하러가기">
+              <div>  
+              	<div style="text-align: right; margin-bottom: 10px;"> 
+               		<a href='/common/loginForm' style="color:balck;">--로그인하러가기--</a>
+               	</div>
+                <input type="submit" value="인증메일발송" style="width:100%; height: 30px;">  
               </div>
                 <div class="clearfix"></div>
              	<br />
                 <div>
-                  <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
-                  <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
+                  <h1 style="color:#D8D8D8;"><i class="fa fa-paw"></i> Hanguk University!</h1>
+                  <p style="color:#D8D8D8;">©2016 All Rights Reserved. Hanguk is a Best University.</p>
                 </div>
             </form>
           	</section>

@@ -37,7 +37,11 @@
 <script src="/bootstrap/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- 시간표 -->
-	
+	<style>
+	#cer-tbl{
+		visibility:hidden;
+	}
+</style>
 	<div class="row">
 
 	<!-- page content -->
@@ -51,11 +55,44 @@
                     <br />
                    	<div class="button-location">	
                    		<form name="pdfForm">
-                   		<input type=hidden id="htmlTag" name="htmlTag"/>			
-						<button class="btn btn-danger" onclick="toCerPdf()">PDF출력</button>					
+                   		<input type=hidden id="htmlTag" name="htmlTag" value="<table  id='cer-table' class='kor'><tr class='cer-tr'><th colspan='4' class='cer-title'></th>
+                   		</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-title' >재 학 증 명 서</th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-title' ></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-content' ><span class='cer-span'>성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 :${Student_InfoViewVO.use_name }</span></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-content' ><span class='cer-span'>생&nbsp;년&nbsp;월&nbsp;일 :${Student_InfoViewVO.stud_birth }</span></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-content' ><span class='cer-span'>소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;속 :${Student_InfoViewVO.dep_name }</span></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-sub cer-true' >위의 사실을 증명함</th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-title' ></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-sub cer-day' >${Current_date}</th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-ingam' ></th>	
+	</tr>
+	<tr class='cer-tr'>
+		<th colspan='4' class='cer-title' ></th>	
+	</tr>
+	
+</table>"/>			
+						<button class="btn btn-danger" id="pdf" onclick="toCerPdf()">PDF출력</button>					
                    		</form>
 					</div>
-
+<%-- 
 <div id="cer-tbl">
 <input type="hidden" name="use_id"
 					value="${student_InfoViewVO.use_id }">
@@ -97,13 +134,14 @@
 	
 	
 </table>
-</div>
-
+</div> --%>
    </div>
  </div>
 			<!-- /page content -->
 </div>
+
 <script type="text/javascript">
-	$("#htmlTag").val($("#cer-tbl").html());
+	//$("#htmlTag").val($("#cer-tbl").html());
+	window.resizeTo(300,200);
 </script>
 	
