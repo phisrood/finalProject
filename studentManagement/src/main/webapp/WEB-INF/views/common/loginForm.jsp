@@ -46,9 +46,9 @@ $(function(){
 				return false;
 			}
 		},
-		dataType:"text",
+		dataType:"json",
 		success:function(data){
-			if(data == "error"){
+			if(data.message == "error"){
 				swal({
 					title: "< 로그인 실패 >",
 					text: "아이디 패스워드가 맞지 않습니다.",
@@ -62,7 +62,8 @@ $(function(){
 					text: "즐거운하루되세요.",
 					type: "success",
 				}); 
-				
+				var pwd = data.encPwd;
+				$("#use_pwd").val(pwd);
 				$("#loginForm").ajaxFormUnbind();
 				$("#loginForm").attr("action", "/common/loginProcess");
 				$("#loginForm").submit();
@@ -81,7 +82,11 @@ $(function(){
 });
 
 </script>
+<style>
+body {
 
+}
+</style>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -98,30 +103,31 @@ $(function(){
     <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
   </head>
 
-  <body class="login" background="/resources/common/images/uni.jpg"> 
+  <body style="background:url('../../resources/common/images/uni.jpg'); background-size:100%;"> 
     <div>
-
-      <div class="login_wrapper">
+  
+      <div class="login_wrapper"> 
         <div class="animate form login_form">
-          <section class="login_content">
-            <!-- <form name="form" method="post" action="/common/loginProcess"> -->
+          <section class="login_content"> 
             <form name="form" method="post" action="/common/loginCheck" id="loginForm">
-              <h1>LOGIN</h1>
+              <h1 style="color:#D8D8D8;">LOGIN</h1> 
               <div>
                 <input type="text" class="form-control" name="use_id" id="use_id" placeholder="User ID"/>
-              </div>
-              <div>
+              </div> 
+              <div> 
                 <input type="password" class="form-control" name="use_pwd" id="use_pwd" placeholder="Password"/>
-              </div>
-              <div>
-                <input type="submit" class="btn btn-success" value="로그인">
-               	<input type="button"class="btn btn-success" onclick="location.href='/common/pwdSearchForm'" value="비밀번호찾기">
+              </div> 
+              <div>  
+              	<div style="text-align: right; margin-bottom: 10px;"> 
+               		<a href='/common/pwdSearchForm' style="color:balck;">--비밀번호찾기--</a>
+               	</div>
+                <input type="submit" value="L O G I N" style="width:100%; height: 30px;">  
               </div>
                 <div class="clearfix"></div>
                 <br />
                 <div>
-                  <h1><i class="fa fa-paw"></i> Hanguk University!</h1>
-                  <p>©2016 All Rights Reserved. Hanguk University! is a Best University.</p>
+                  <h1 style="color:#D8D8D8;"><i class="fa fa-paw"></i> Hanguk University!</h1>
+                  <p style="color:#D8D8D8;">©2016 All Rights Reserved. Hanguk is a Best University.</p>
                 </div>
            	</form>
           	</section>

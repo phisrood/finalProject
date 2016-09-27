@@ -26,6 +26,20 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<!-- Data tables -->
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
+<link href="/bootstrap/css/nprogress.css" rel="stylesheet">
+<link href="/bootstrap/css/green.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+<link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
+<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+<link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
+
 <script src="/common/js/notice.js"></script>
 <script src="/bootstrap/js/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -78,14 +92,14 @@ h2 {
 		&nbsp;<h2>수신자 검색</h2>
 	</div>
 	<div style="float: right; width: 11%; padding: 7px;">
-		<input type="button" value="닫기" onclick="notice_close();">
+		<input type="button" style="background:#394D5F;color:white;" class="btn btn-dark" value="닫기" onclick="notice_close();">
 	</div><br><br>
 	<hr>
     <div>
 		<div style="width:100%;" id="result">
-			<table id="searchTable" border="1" style="width:100%;">
+			<table id="searchTable" border="1" style="width:100%;" class="table table-striped jambo_table bulk_action">
 				<thead>
-					<tr>
+					<tr style="background:#394D5F;color:white;">
 						<th>학번</th>
 						<th>이름</th>
 						<th>학과</th>

@@ -101,7 +101,7 @@ html, body {
 				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/stu/adviceBoard'"/>
 			</c:if>
 			
-			<c:if test="${loginUser eq '작성자' }">
+			<c:if test="${loginUserId eq '작성자' }">
 			<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
 			<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
 			</c:if>
@@ -112,7 +112,7 @@ html, body {
 		<div align="center" style="float: right; width: 90%;">
 			<br>
 			<c:if test="${auth eq 'ROLE_PRO' }">
-				작성자 : ${loginUser } <br />
+				작성자 : ${loginUserId } <br />
 				답변 내용 : <input type="text" name="adb_commentcontent" />    
 				<c:if test="${adb_commentstat == 'N'}">
 					<input type="submit" class="btn btn-dark" value="답변등록"/>		

@@ -19,7 +19,7 @@
 			where mes_delyn = '1' or mes_delyn='3'
 			order by mes_no desc
 			)
-			where rnum between 1 and 15 
+			where rnum between 1 and 10 
 			and mes_recive_use_id = #{use_id}
 	</select>
 	

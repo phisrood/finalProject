@@ -35,6 +35,7 @@ import com.korea.crsesREQ.service.CrsesREQService;
 import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
 import com.korea.dto.UsersVO;
+import com.korea.security.SecurityProcess;
 
 @Controller
 public class CrsesREQController {
@@ -139,8 +140,16 @@ public class CrsesREQController {
 			@RequestParam("id") String id, @RequestParam("pwd") String pwd,
 			HttpServletResponse response, Model model) {
 		String url = "/stu/crsesLogin";
+		
+		SecurityProcess sp = new SecurityProcess();
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-
+		String pwdEncode = "";
+		try {
+			pwdEncode = sp.encrypt(pwd);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		String chkId = "";
 		String chkPwd = "";
 		int chk = 1;
@@ -152,7 +161,7 @@ public class CrsesREQController {
 			url = "redirect:/common/loginForm";
 		}
 
-		if (id.equals(chkId) && pwd.equals(chkPwd)) {
+		if (id.equals(chkId) && pwdEncode.equals(chkPwd)) {
 			chk = 2;
 		} else {
 			chk = 1;

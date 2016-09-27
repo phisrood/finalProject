@@ -61,7 +61,7 @@
 		</div>
 		<div>부득이한 경우 처리에서 날짜 연기를 할 수 있습니다.</div>
 		<br>
-		<table id="datatable" class="table table-striped table-bordered">
+		<table id="datatable" class="table table-striped jambo_table bulk_action">
 			<thead>
 				<tr>
 					<th>상담번호</th>
