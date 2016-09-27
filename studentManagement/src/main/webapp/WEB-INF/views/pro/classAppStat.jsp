@@ -47,8 +47,8 @@
     		          resize: true
     		    });
     		},
-    		error:function(){
-    			alert("error");
+    		error:function(){ 
+    			swal('개설된 강의가 없습니다.');
     		}
     	});
     	
@@ -67,7 +67,7 @@
     			$("#qnaChart").html(htmlCode);
     		},
     		error:function(){
-    			alert("error");
+    			swal('개설된 강의가 없습니다.');
     		}
     	});
     	
@@ -93,7 +93,7 @@
         		    });
         		},
         		error:function(){
-        			alert("error");
+        			swal('개설된 강의가 없습니다.');
         		}
         	});
         	
@@ -112,7 +112,7 @@
         			$("#qnaChart").html(htmlCode);
         		},
         		error:function(){
-        			alert("error");
+        			swal('개설된 강의가 없습니다.');
         		}
         	});
     	});

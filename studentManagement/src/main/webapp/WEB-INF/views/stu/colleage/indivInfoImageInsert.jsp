@@ -30,6 +30,32 @@
 <script src="/bootstrap/js/bootstrap.min.js"></script>
 <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+
+function FileType() {
+	
+	alert('선택한 파일은'+event.srcElement.value + '입니다.');
+	if(!event.srcElement.value.match(/(.jpg|.jepg|.gif|.png)/)){
+		
+		alert('확장자가 잘못되었습니다. (ex: gif, jpg, jepg, png)');
+		
+		location.reload();
+		
+		
+	}
+	
+	
+
+	
+}
+
+
+</script>
+
+
+
 <meta charset="UTF-8">
 <title></title>
 </head>
@@ -40,8 +66,8 @@
 	사진등록하기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3></label>
 	
 	<form class="form-inline" action="/stu/indivInfoImageUpdateInsert" method="POST" enctype="multipart/form-data">
-		<label  class="btn btn-dark" >현재파일 <input type="file" name="f">
-		<input type="submit" class="btn btn-dark" value="변경" >
+		<label  class="btn btn-dark" >현재파일 <input type="file" name="f" onchange="FileType()">
+		<input type="submit"  class="btn btn-dark" value="변경" >
 		<input type="button" class="btn btn-dark" value="닫기" onclick="parent.close();">
 		</label>
 	</form>

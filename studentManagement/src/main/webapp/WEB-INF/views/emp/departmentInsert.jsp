@@ -25,50 +25,124 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var re = /^[0-9]+$/;
-		
+		var engName = /[a-zA-Z]{1,20}/;
+		var korName = /[가-힣]{1,20}/;
+		var tel = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+  
 		$("#submitBtn").click(function() {
 			if ($("#dep_name").val() == "") {
-				alert("학과명을 입력하세요.");
+				swal({
+					title : "< Error! >",
+					text : "학과명을 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_name").focus();
 				return false;
-			} else if ($("#dep_engname").val() == "") {
-				alert("영문명을 입력하세요.");
+			}else if (!korName.test($("#dep_name").val())) {
+				swal({
+					title : "< Error! >",
+					text : "학과명을 정확히 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_engname").focus();
 				return false;
-			} else if ($("#dep_majneedcredit").val() == "") {
-				alert("주전공졸업학점을 입력하세요.");
+			} else if ($("#dep_engname").val() == "") {
+				swal({
+					title : "< Error! >",
+					text : "영문명을 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
+				$("#dep_engname").focus();
+				return false;
+			} else if (!engName.test($("#dep_engname").val())) {
+				swal({
+					title : "< Error! >",
+					text : "영문명은 영어로만 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
+				$("#dep_engname").focus();
+				return false;
+			}else if ($("#dep_majneedcredit").val() == "") {
+				swal({
+					title : "< Error! >",
+					text : "주전공 졸업학점을 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_majneedcredit").focus();
 				return false;
-			} else if ($("#dep_minneedcredit").val() == "") {
-				alert("부전공졸업학점을 입력하세요.");
-				$("#dep_minneedcredit").focus();
-				return false;
-			}  else if ($("#dep_mulcredit").val() == "") {
-				alert("다전공졸업학점을 입력하세요.");
-				$("#dep_mulcredit").focus();
-				return false;
 			} else if (!re.test($("#dep_majneedcredit").val())) {
-				alert("주전공 숫자만 넣으셔야 합니다.");
+				swal({
+					title : "< Error! >",
+					text : "주전공 졸업학점은 숫자로만 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_majneedcredit").value = "";
 				$("#dep_majneedcredit").focus();
 				return false;
-			}else if (!re.test($("#dep_minneedcredit").val())) {
-				alert("부전공 숫자만 넣으셔야 합니다.");
+			} else if ($("#dep_minneedcredit").val() == "") {
+				swal({
+					title : "< Error! >",
+					text : "부전공 졸업학점을 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
+				$("#dep_minneedcredit").focus();
+				return false;
+			} else if (!re.test($("#dep_minneedcredit").val())) {
+				swal({
+					title : "< Error! >",
+					text : "부전공 졸업학점은 숫자로만 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_minneedcredit").value = "";
 				$("#dep_minneedcredit").focus();
 				return false;
-			}else if (!re.test($("#dep_mulcredit").val())) {
-				alert("다전공 숫자만 넣으셔야 합니다.");
+			} else if ($("#dep_mulcredit").val() == "") {
+				swal({
+					title : "< Error! >",
+					text : "다전공 졸업학점을 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
+				$("#dep_mulcredit").focus();
+				return false;
+			} else if (!re.test($("#dep_mulcredit").val())) {
+				swal({
+					title : "< Error! >",
+					text : "다전공 졸업학점은 숫자로만 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_mulcredit").value = "";
 				$("#dep_mulcredit").focus();
 				return false;
-			}else if ($("#dep_phone").val() == "") {
-				alert("학과 전화번호를 입력하세요.");
+			} else if ($("#dep_phone").val() == "") {
+				swal({
+					title : "< Error! >",
+					text : "학과 전화번호를 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
 				$("#dep_phone").focus();
 				return false;
-			}else{
-				alert("else");
-			}
+			}else if (!tel.test($("#dep_phone").val())) {
+				swal({
+					title : "< Error! >",
+					text : "학과 전화번호를 정확히 입력해주세요.",
+					type : "error",
+					confirmButtonText : "닫기"
+				});
+				$("#dep_phone").value = "";
+				$("#dep_phone").focus();
+				return false;
+			} 
 		});
 	});
 </script>
@@ -80,23 +154,23 @@ html, body {
 h2 {
 	display: inline;
 }
-</style>  
+</style>    
 </head>  
-<div class="row">  
+<div class="row">    
   
-	<div class="x_panel">
+	<div class="x_panel">    
          <div class="x_title">
 		<h2>
-			<i class="fa fa-university"></i>학과정보관리  
+			<i class="fa fa-university"></i>학과정보관리    
 		</h2>
 		<div class="clearfix"></div>
-		</div>
+		</div>  
 
 	<form name="frm" method="post" action="/emp/departmentInsert">
   
 		<div>  
 			<br>
-			<div class="form-group">
+			<div class="form-group">  
                  <label class="control-label col-md-3 col-sm-3 col-xs-12">학과명</label>
                  <div class="col-md-9 col-sm-9 col-xs-12">    
                    <input type="text" class="form-control" placeholder="한글 최대 10자" name="dep_name" maxlength="10" id="dep_name">

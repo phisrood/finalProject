@@ -33,9 +33,7 @@
 수업평가:<input type="button" id="appLecturePeriod"  class="btn btn-dark" onclick="appLecturePeriod();" value="${period.pr_app_lecture }"/>
 <br />
 <br />
-부/다전공신청기간:<input type="button" id="majorReqPeriod"  class="btn btn-dark" onclick="majorReqPeriod();" value="${period.pr_major_req }"/>
-<br />
-<br />
+
 성적반영:<input type="button" id="scoreSummary"  class="btn btn-dark" onclick="scoreSummary();" value="성적반영"/>
 <br />
 <br />

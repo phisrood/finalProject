@@ -35,67 +35,102 @@ html, body {
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
 <script>
+
+$(document).ready(function() {
+    $("#submitBtn").click(function() {
+       var instance = CKEDITOR.instances.adb_content;
+       instance.updateElement();
+       $("#output").attr("value",instance.getData());
+       if ($("#adb_title").val() == "") {
+    	   swal({
+				title : "< Error! >",
+				text : "제목을 입력해주세요.",
+				type : "error",
+				confirmButtonText : "닫기"
+			});
+          $("#title").focus();
+          return false;
+       }else if ($("#adb_content").val().length == 0 ) {
+    	   swal({
+				title : "< Error! >",
+				text : "내용을 입력해주세요.",
+				type : "error",
+				confirmButtonText : "닫기"
+			});
+          $("#adb_content").focus();
+             return false;
+       }
+    });
+ });
+
  window.onload=function()
  {
-  CKEDITOR.replace('adb_content',{
-	  width : '75%' 
-	  
-  });
+  CKEDITOR.replace('adb_content');
  }
+ 
+
  
 </script> 
 <div class="row">
 	<!-- 상담 게시글 작성 -->
+	<div class="x_panel_big" style="height:730px;">
 	<div class="x_title">
-		<h2>&nbsp;&nbsp;상담 게시글 수정</h2>
+		<h2>상담 게시글 수정</h2>
 		<div class="clearfix"></div>
 	</div>
 	<br>  
 	<form action="/stu/adviceBoardUpdate" method="post" enctype="multipart/form-data">
 		
 		<input type="hidden" name="adb_no" value="${adb_no }" />
-		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_title" size="50" value="${adb_title }"/>
-		</div>
-		<div style="float: right; width: 7%;">제목</div>
-		<br><br>  
-		
-		<input type="hidden" name="adb_no" value="${adb_no }" />
-		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_date" value="${adb_date }" disabled="disabled" />
-		</div>
-		<div style="float: right; width: 7%;">작성일</div>
-		<br><br>
-		
-		<input type="hidden" name="adb_no" value="${adb_no }" />
-		<div style="float: right; width: 78%;">
-			<input type="text" name="adb_stud_use_id" value="${adb_stud_use_id }" disabled="disabled" />
-		</div>
-		<div style="float: right; width: 7%;">작성자</div>
-		<br><br>
-	
-		<div style="float: right; width: 78%;">
-			<textarea rows="5" cols="50" name="adb_content">${adb_content }</textarea>
-		</div>
-		<div style="float: right; width: 7%;">내용</div>
-		<div style="float: right; width: 15%;">
-			<br>
+		<div class="form-group" style="height: 10%;">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<input type="text" class="form-control" name="adb_title"
+					value="${adb_title }" style="width: 100%;" id="adb_title">
+			</div>
 		</div>  
-		<div style="float: right; width: 20%;">
-			<br>
+		<br><br> 
+		<input type="hidden" name="adb_no" value="${adb_no }" />
+		<div class="form-group" style="height: 10%;">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">작성일</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<input type="text" class="form-control" name="adb_date"
+					value="${adb_date }" disabled="disabled"  style="width: 100%;">
+			</div>
+		</div>  
+		<br><br>
+		<input type="hidden" name="adb_no" value="${adb_no }" />
+		<div class="form-group" style="height: 10%;">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">작성자</label>
+			<div class="col-md-9 col-sm-9 col-xs-12">
+				<input type="text" class="form-control" name="adb_stud_use_id"
+					value="${adb_stud_use_id }" disabled="disabled"  style="width: 100%;">
+			</div>
 		</div>
-
-		<div align="center" style="float: left; width: 90%;">
-			<br>     
-			<input type="file" name="adb_file" /> 
-			<br>     
-			<input type="button" class="btn btn-default btn-sm" value="취소" onclick="location.href='/stu/adviceBoard'"/> 
-			<input type="submit" class="btn btn-default btn-sm" value="수정" />
+		<br><br>
+		<div class="form-group" style="height: 60%;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<textarea class="form-control" name="adb_content" style="width:1000px;height:500px;" id="adb_content">${adb_content }</textarea>
+					</div>
+		</div>
+		<br><br>
+		<br><br>
+	  <div class="form-group">
+		<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+		<div class="col-md-9 col-sm-9 col-xs-12">
+					<input type="file" class="btn btn-dark" style="width: 300px;" name="adb_file">
+					<div style="text-align: right;">
+				<input type="button" class="btn btn-dark" value="취소" onclick="location.href='/stu/adviceBoard'"/> 
+			<input type="submit" class="btn btn-dark" value="수정" id="submitBtn"/>
+					</div>
+			</div>
 		</div>
 	</form>
 	<div style="float: right; width: 20%;">
 		<br>
 	</div>
+</div>
 </div>
 
 <!-- Datatables -->
