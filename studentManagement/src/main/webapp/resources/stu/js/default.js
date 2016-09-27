@@ -8,7 +8,7 @@ function toPdf(){
 	document.pdfForm.submit(); 
 }
 function toCerPdf(){
-	document.pdfForm.method="post";
+	document.pdfForm.method="get";
 	document.pdfForm.action="/stu/attendCertificatePDF";
 	document.pdfForm.target="_blank";
 	document.pdfForm.submit(); 

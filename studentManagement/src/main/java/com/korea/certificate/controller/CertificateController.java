@@ -1,4 +1,4 @@
-package com.korea.certificate.controller;
+/*package com.korea.certificate.controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -42,7 +42,7 @@ import com.korea.certificate.service.CertificateService;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.TimeTableViewVO;
 import com.korea.dto.UsersVO;
-/**
+*//**
  * @Class Name : AdviceController.java
  * @Description : 학사일정관리 서비스 클래스
  * @Modification Information
@@ -57,19 +57,19 @@ import com.korea.dto.UsersVO;
  *   
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
- */
+ *//*
 @Controller
 public class CertificateController {
 	@Autowired
 	private CertificateService certificateService;
 	
 	
-	/**
+	*//**
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
-	 */
+	 *//*
 	//세션으로 학생정보 가져오기
 	@RequestMapping(value="/stu/stuInfo", method=RequestMethod.GET)
 	public String stuInfo(){
@@ -77,12 +77,12 @@ public class CertificateController {
 		
 		return url;
 	}
-	/**
+	*//**
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
-	 */
+	 *//*
 	//재학증명서 조회
 	@RequestMapping(value="/stu/attendCertificateInfo", method=RequestMethod.GET)
 	public String attendCertificateInfo(HttpSession session, Model model){
@@ -123,12 +123,12 @@ public class CertificateController {
 		model.addAttribute("Current_date", date);
 		return url;
 	}
-	/**
+	*//**
 	 * 증명서 PDF출력
 	 * @param
 	 * @return 
 	 * @throws 
-	 */
+	 *//*
 	//성적증명서 PDF출력
 	@RequestMapping(value="/stu/gradeCertificatePDF", method=RequestMethod.POST)
 	public void gradeCertificateInfoPDF(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
@@ -192,12 +192,11 @@ public class CertificateController {
 
 	}
 	//재학, 졸업증명서 PDF출력
-	@RequestMapping(value="/stu/attendCertificatePDF", method=RequestMethod.POST)
+	@RequestMapping(value="/stu/attendCertificatePDF", method=RequestMethod.GET)
 	public void attendCertificateInfoPDF(String htmlTag,HttpServletResponse response,HttpServletRequest request) throws IOException, DocumentException {
 		// Document 생성
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50); // 용지 및 여백 설정
 		
-		System.out.println(htmlTag + "*********************!!!!@*@*@*@*@*");
 		
 		// PdfWriter 생성
 		//PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("d:/test.pdf")); // 바로 다운로드.
@@ -253,12 +252,12 @@ public class CertificateController {
 		writer.close();
 		
 	}
-	/**
+	*//**
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
-	 */
+	 *//*
 	//성적증명서 조회
 	@RequestMapping(value="/stu/gradeCertificateInfo", method=RequestMethod.GET)
 	public String gradeCertificateInfo(){
@@ -267,12 +266,12 @@ public class CertificateController {
 		return url;
 	}
 
-	/**
+	*//**
 	 * 교수가 받은 상담신청조회
 	 * @param
 	 * @return 
 	 * @throws 
-	 */
+	 *//*
 	//졸업증명서 출력
 	@RequestMapping(value="/stu/graduteCertificateInfoPDF", method=RequestMethod.GET)
 	public String graduteCertificateInfoPDF(){
@@ -281,3 +280,4 @@ public class CertificateController {
 		return url;
 	}
 }
+*/

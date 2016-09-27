@@ -104,12 +104,7 @@
 		                  <li><a><i class="fa fa-edit"></i> 학적 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/stu/indivInfo">학생개인정보관리</a></li>
-		                      <c:if test="${period.pr_major_req == 'on' }">
-		                      <li><a href="/stu/minorMain">부/다 전공신청</a></li>
-		                      </c:if>
-		                      <c:if test="${period.pr_major_req == 'off' }">
-		                      <li><a href="/stu/Notperiod">부/다 전공신청</a></li>
-		                      </c:if>
+		                    
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i> 수업 <span class="fa fa-chevron-down"></span></a>
@@ -145,9 +140,7 @@
 		                  </li>
 		                  <li><a><i class="fa fa-desktop"></i>증명서발급 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                      <li><a href="/stu/gradeCertificateInfo">성적증명서</a></li>
 		                      <li><a href="/stu/attendCertificateInfo" target="_blank" onClick="window.open(this.href, '', 'width=800, height=1000'); return false;">재학증명서</a></li>
-		                      <li><a href="/stu/graduteCertificateInfo" target="_blank" onClick="window.open(this.href, '', 'width=800, height=1000'); return false;">졸업증명서</a></li>
 		                    </ul>
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
