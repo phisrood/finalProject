@@ -96,7 +96,6 @@
                <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
 		                      <li><a href="/emp/noticeAllList">공지사항</a></li>
-		                      <li><a href="/emp/periodSetting"  target="_blank" onClick="window.open(this.href, '', 'width=300, height=300'); return false;">기간설정 및 성적반영</a></li>
 		                    </ul>
 		                  </li>
 		                  <li><a><i class="fa fa-edit"></i>학과관리<span class="fa fa-chevron-down"></span></a>
