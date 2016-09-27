@@ -86,7 +86,6 @@
 </script>
 
 <div class="row">
-<<<<<<< HEAD
 	<div class="x_panel_big">
 		<!-- 사이버 상담 신청 내역 -->
 		<form method="post" action="/stu/adviceREQ">
@@ -127,90 +126,18 @@
 					</div>
 					<br>
 					<div>
-						시간 선택 <select name="ad_time">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-							<option value="13">13</option>
-							<option value="14">14</option>
-							<option value="15">15</option>
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-							<option value="21">21</option>
-							<option value="22">22</option>
-							<option value="23">23</option>
-							<option value="24">24</option>
+						시간 선택
+						 <select name="ad_time">
+							<c:forEach varStatus="stat" begin="1" end="24" step="1">  
+									<option value="${stat.count}">${stat.count}</option>
+							</c:forEach>  
 						</select> 시
-					</div>
+					</div>  
 					<br>
 					<div align="center">
 						<input type="submit" class="btn btn-dark" value="상담신청" />
 					</div>
-<div class="x_panel_big">
-	<!-- 사이버 상담 신청 내역 -->
-	<form method="post" action="/stu/adviceREQ">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2>상담 신청</h2>
-					<div class="clearfix"></div>
-				</div>
-				<div>
-					학과교수 : <select name="ad_pro_use_id">
-						<c:forEach var="professor" items="${professorList}">
-							<option value="${professor.pro_use_id}">${professor.use_name}</option>
-						</c:forEach>
-					</select>
-				</div>
-				<br>
-				<div style="float: left; width: 50%;">
-					상담 내용 : <select name="ad_purpose">
-						<option value="취업">취업</option>
-						<option value="수강">수강</option>
-						<option value="학적">학적</option>
-						<option value="장학">장학</option>
-						<option value="기타">기타</option>
-					</select>
-				</div>
-				<div style="float: left; width: 50%;">
-					상담 방법 : <select name="ad_way">
-						<option value="화상">화상</option>
-						<option value="채팅">채팅</option>
-						<option value="방문">방문</option>
-					</select>
-				</div>
-				<br> <br>
-				<div>
-					일자 선택 <input type="text" name="ad_reqdate" id="ad_reqdate" readonly="readonly">
-				</div>
-				<br>
-				<div>
-					시간 선택
-					 <select name="ad_time">
-						<c:forEach varStatus="stat" begin="1" end="24" step="1">  
-								<option value="${stat.count}">${stat.count}</option>
-						</c:forEach>  
-					</select> 시
-				</div>  
-				<br>
-				<div align="center">
-					<input type="submit" class="btn btn-dark" value="상담신청" />
-				</div>
-			</div>
-		</form>
-
+		<div class="x_panel_big">
 
 		<div class="x_panel">
 			<div class="x_title">
