@@ -44,19 +44,6 @@
 	    	<div style="float: left; width: 99%; text-align: center;">
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지 사항</h2></div>
 			</div>
-			<div style="float: left; width: 71%;"></div>
-			<div style="float: right; width: 4%;">
-				<button type="button" class="btn btn-default btn-xs">검 색</button>
-			</div>
-               <div style="float: right; width: 19%;">
-				<input name="seach" type="text"  size="30">
-			</div>
-			<div style="float: right; width: 6%;">
-				<select name="notice_select">
-					<option value="제목">제목</option>
-					<option value="작성자">작성자</option>
-				</select>
-			</div>
 			<div style="float: left; width: 100%;"><br></div>
             <table id="datatable" class="table table-striped jambo_table bulk_action">
             							
