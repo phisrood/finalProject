@@ -40,7 +40,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Hanguk University! | </title>
-
+    <script src="/bootstrap/js/jquery.min.js"></script>
+	<link href="/bootstrap/css/sweetalert.css" rel="stylesheet">
+   	<script src="/bootstrap/js/sweetalert.min.js"></script>
 	<!-- 부트스트랩 css -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/font-awesome.min.css" rel="stylesheet">
@@ -53,7 +55,6 @@
     <link href="/common/css/default.css" rel="stylesheet">
     
     <script src="/common/js/notice.js"></script>
-    <script src="/bootstrap/js/jquery.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     
 

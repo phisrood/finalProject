@@ -59,9 +59,20 @@
 		function clientCam() {
 
 		}
-		function chat() {
-			window.open("http://192.168.206.102:8888", "채팅",
-					"width=450, height=450");
+		function chat(ad_no) {
+			$.ajax({
+		    	  url : "/stu/sendChannelId",
+		    	  method : "get",
+		    	  data : { 		  
+		    	  "channelId":"noId",
+		    	  "ad_no" :ad_no,
+		    	  "flag" : "close"
+		    	  },
+		    	  success : function(){
+		    	  
+		    	  }
+		      });
+			window.open("http://192.168.206.102:8888?name=<c:out value="${userName}" />", "채팅","width=450, height=450");
 		}
 		function noIng() {
 			alert("진행중일때만 입장하실 수 있습니다.");
@@ -122,7 +133,12 @@
 								</c:if>
 							</c:when>
 							<c:when test="${adviceVO.ad_way eq '채팅'}">
-								<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+								<c:if test='${adviceVO.ad_stat eq "진행중"}'>
+									<button type="button" class="btn btn-dark" onClick='chat("${adviceVO.ad_no }")'>입 장</button>
+								</c:if>
+								<c:if test='${adviceVO.ad_stat eq "대기"}'>
+									<button type="button" class="btn btn-dark" onclick="noIng();">입 장</button>
+								</c:if>
 							</c:when>
 							<c:when test="${adviceVO.ad_way eq '방문'}">
 							
