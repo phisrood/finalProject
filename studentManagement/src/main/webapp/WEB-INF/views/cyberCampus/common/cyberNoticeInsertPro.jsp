@@ -12,21 +12,20 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
+<!-- Data tables -->
+<link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 
 <script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
@@ -38,92 +37,103 @@
 
 
 <script>
+	$(document).ready(function() {
+		$("#submit").click(function() {
+			var instance = CKEDITOR.instances.content;
+			instance.updateElement();
+			$("#output").attr("value", instance.getData());
+			if ($("#title").val() == "") {
+				alert("제목을 입력하세요.");
+				$("#title").focus();
+				return false;
+			} else if ($("#content").val() == "") {
+				alert("내용을 입력하세요.");
+				$("#content").focus();
+				return false;
+			} else if ($("#content").val().length > 4008) {
+				$("#content").val($("#content").val().substring(0, 10));
+				alert("내용에 최대 4000자까지만 입력할 수 있습니다.");
+				$("#content").focus();
+				return false;
+			} else if ($("#title").val() == "") {
 
-$(document).ready(function() {
-    $("#submit").click(function() {
-       var instance = CKEDITOR.instances.content;
-       instance.updateElement();
-       $("#output").attr("value",instance.getData());
-       if ($("#title").val() == "") {
-          alert("제목을 입력하세요.");
-          $("#title").focus();
-          return false;
-       } else if ($("#content").val() == "") {
-          alert("내용을 입력하세요.");
-          $("#content").focus();
-          return false;
-       } else if ($("#content").val().length > 4008) {
-          $("#content").val($("#content").val().substring(0, 10));
-             alert("내용에 최대 4000자까지만 입력할 수 있습니다.");
-          $("#content").focus();
-             return false;
-       } else if ($("#title").val() == "") {
-    	   
-    	   
-       }
-    });
- });
+			}
+		});
+	});
 
- window.onload=function()
- {
-  CKEDITOR.replace('content');
- }
- 
-
- 
-</script> 
+	window.onload = function() {
+		CKEDITOR.replace('content');
+	}
+</script>
 
 
 
 
-	
-			<form action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextInsert" method="POST"  enctype="multipart/form-data">
-    	<div class="row">
-    	<!-- 공지사항( 학과 ) -->
-    		<div style="float: left; width: 100%;"><br></div>
-    		<div style="float: left; width: 1%;"></div>
-	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지사항</h2></div>
+<form method="POST" action="/cyberCampus/pro/cyberNoticeInsertFileUploadContextInsert" enctype="multipart/form-data">
+	<div class="row">
+		<div class="x_panel">
+			<!-- 공지사항 글작성 -->
+			<div class="x_title">
+				<h2>공지사항 글작성</h2>
+
+				<div class="clearfix"></div>
 			</div>
-			<div style="float: left; width: 100%;"><br></div>
-			
-			
-		
-			<div class="x_panel_big">
-			
-			
-			
-				<table id="datatable" class="table table-striped jambo_table bulk_action">
-					<tr>
-						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" id="title" type="text" size="50" >
-						</td>
-					</tr>
-					
-					<tr>
-						<td>
-						<div style="float: left; width: 94%;"><input type="file" name="file"  class="btn btn-dark" /></div>
-							
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<textarea id="content" name="content"></textarea>
-							
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-					<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-dark">목 록</button></a>
-			</div>
-			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-dark" onclick="check();" id="submit" name="submit" value="등록">
+			<br>
+			<div class="x_content">
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<input name="title" id="title" type="text" size="105">
+					</div>
+				</div>
+				<br><br>
 				
+				<div class="form-group"> 
+					<label class="control-label col-md-3 col-sm-3">내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<textarea class="form-control" name="content" style="width: 1000px; height: 500px;" id="content">
+                         </textarea>
+					</div>
+				</div>
+
+				<br> <br> <br> <br>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+					<div class="col-md-9 col-sm-9 col-xs-12"> 
+						<input type="file" class="btn btn-dark" name="file" id="file">
+
+
+
+						<br><br>
+						<div>
+							<div style="float:left; width:5%;">
+							<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-dark">목 록</button></a> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+					 		</div>
+							
+							<div style="float:left; width:90%;">
+							<br>
+							</div>
+							
+							<div style="float:right; width:5%;">
+							<input type="submit" class="btn btn-dark" onclick="check();" id="submit" name="submit" value="등록">
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+
 			</div>
-			
-    </div>
-    </form>
- 
+		</div>
+	</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
