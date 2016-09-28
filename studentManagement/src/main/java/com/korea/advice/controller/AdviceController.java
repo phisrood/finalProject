@@ -191,9 +191,10 @@ public class AdviceController {
 		
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-				
+		String userId = user.getUse_id();		
 		List<Advice_BoardVO> adviceBoardList = adviceService.getAdviceBoardList();
 		
+		model.addAttribute("userId", userId);
 		model.addAttribute("auth", user.getAuthority());
 		model.addAttribute("adviceBoardList", adviceBoardList);
 		return url;
