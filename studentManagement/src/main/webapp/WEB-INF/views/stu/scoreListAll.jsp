@@ -55,35 +55,7 @@
 					<ul class="nav navbar-right panel_toolbox"></ul>
 					<div class="clearfix"></div>
 				</div>
-				<div class="form-group">
-					<label class="control-label col-md-3 col-sm-3 col-xs-12">년도</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<select class="form-control">
-							<option>2016</option>
-							<option>2015</option>
-							<option>2014</option>
-							<option>2013</option>
-							<option>2012</option>
-						</select>
-					</div>
-
-					<label class="control-label col-md-3 col-sm-3 col-xs-12">학기</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<select class="form-control">
-							<option>1학기</option>
-							<option>2학기</option>
-						</select>
-					</div>
-
-					<div style="text-align: right;">
-
-						<label> <input type="checkbox"> 전체조회
-						</label>
-
-						<button type="button" class="btn btn-dark">조회</button>
-
-					</div>
-
+	
 					<div class="x_content">
 
 						<table id="datatable"
@@ -144,15 +116,4 @@
 			<!-- /page content -->
 		</div>
 </div>
-</div>
-		<!-- Ion.RangeSlider -->
-		<script src="/bootstrap/js/ion.rangeSlider.min.js"></script>
-		<!-- Bootstrap Colorpicker -->
-		<script src="/bootstrap/js/bootstrap-colorpicker.min.js"></script>
-		<!-- jQuery Knob -->
-		<script src="/bootstrap/js/jquery.knob.min.js"></script>
-		<!-- Cropper -->
-		<script src="/bootstrap/js/cropper.min.js"></script>
-
-		<!-- Custom Theme Scripts -->
-		<script src="/bootstrap/js/custom.min.js"></script>
+	

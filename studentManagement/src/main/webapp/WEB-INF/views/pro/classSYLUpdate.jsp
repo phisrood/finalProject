@@ -2,16 +2,31 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8"/>
-<title></title>
-</head>
-<body >
+<%--==============================================================
+ * 공지사항 리스트
+ * @author 
+ * @since  2016.08.25.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    수정일       수정자          수정내용
+ *    -------      -------     -------------------
+ *    2016.08.30.  	이수정      		최초생성
+ *    2016.09.1.  	이수정      		공지사항전체리스트
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+===============================================================--%>
+
+<div class="row">
+             <div class="x_panel_big">
+                  <div class="x_title">
+                    <h2>강의계획서</h2>
+                    <div class="clearfix"></div>
+                  </div>
 <form name="updateSyl">
-<div id="tbl">
-<table border='1' class='kor'>
+<div>
+<table border='1' class='kor' style="width:70%; height: 800px; margin-left:200px">
 	<tr>
 		<th>개설년도/학기</th>
 		<td>${lecture.lec_makeyear }/${lecture.lec_makesemester }학기</td>
@@ -52,7 +67,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			<textarea rows="10" cols="200" style="resize:none;" name="cs_content">${classSYL.cs_content }</textarea> 
+			<textarea rows="8" cols="970" style="resize:none; width:970px;" name="cs_content;">${classSYL.cs_content }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -62,7 +77,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			<textarea rows="10" cols="200" style="resize:none;" name="cs_progress">${classSYL.cs_progress }</textarea> 
+			<textarea rows="8" cols="200" style="resize:none;width:970px;" name="cs_progress">${classSYL.cs_progress }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -92,9 +107,13 @@
 </table>
 </div>
 <input type="hidden" name="cs_lec_no" value="${lecture.lec_no }">
-<button onclick="updateSYLConfirm();">강의계획서 저장</button>
-<button onclick="javascript:history.go(-1)">취소</button>	
+<div style="text-align:right;">
+<button onclick="updateSYLConfirm();" class="btn btn-dark">강의계획서 저장</button>
+<button onclick="javascript:history.go(-1)" class="btn btn-dark">취소</button>	
+</div>
 </form>
+</div>
+</div>
 <script>
 	function updateSYLConfirm(){
 		document.updateSyl.method="get";
@@ -102,6 +121,3 @@
 		document.updateSyl.submit();
 	}
 </script>
-</body>
-
-</html>

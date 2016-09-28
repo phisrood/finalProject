@@ -49,13 +49,11 @@ public class AdviceController {
 	AdviceService adviceService;
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
+	 * 받은 상담신청 조회(교수)
+	 * @param model, session
+	 * @return String
 	 * @throws
 	 */
-	// 받은 상담 신청 조회(교수)
 	@RequestMapping(value = "/pro/adviceResponsList")
 	public String adviceResponsList(Model model, HttpSession session) {
 		String url = "/pro/adviceResponsList";
@@ -71,13 +69,11 @@ public class AdviceController {
 	}
 
 	/**
-	 * 학생이 보낸 상담 신청 조회
-	 * 
-	 * @param
-	 * @return
+	 * 보낸 상담 신청 조회(학생)
+	 * @param model, session
+	 * @return String
 	 * @throws
 	 */
-	// 보낸 상담 신청 조회(학생)
 	@RequestMapping(value = "/stu/adviceRequestList")
 	public String adviceRequestList(Model model, HttpSession session) {
 		String url = "/stu/adviceRequestList";
@@ -97,12 +93,10 @@ public class AdviceController {
 
 	/**
 	 * 상담신청
-	 * 
-	 * @param
-	 * @return
+	 * @param adviceVO, session
+	 * @return String
 	 * @throws
 	 */
-	// 상담신청
 	@RequestMapping(value = "/stu/adviceREQ", method = RequestMethod.POST)
 	public String adviceREQ(AdviceVO adviceVO, HttpSession session) {
 		String url = "redirect:adviceRequestList";
@@ -116,32 +110,14 @@ public class AdviceController {
 	}
 
 	/**
-	 * 상담답변
-	 * 
-	 * @param
-	 * @return
-	 * @throws
-	 */
-	// 상담 답변
-	@RequestMapping(value = "/stu/adviceReply", method = RequestMethod.GET)
-	public String adviceReply() {
-		String url = "";
-
-		return url;
-	}
-
-	/**
 	 * 상담가능일자 입력
-	 * 
-	 * @param
-	 * @return
+	 * @param ad_no
+	 * @return String
 	 * @throws
 	 */
-	// 상담 가능일자 입력
 	@RequestMapping(value = "/stu/adviceCancel", method = RequestMethod.POST)
 	public String adviceDate(String[] ad_no) {
 		String url = "redirect:/stu/adviceRequestList";
-		
 			for (int i = 0; i < ad_no.length; i++) {
 				adviceService.updateAdviceCancel(Integer.parseInt(ad_no[i]));
 			}
@@ -150,14 +126,11 @@ public class AdviceController {
 	}
 
 	/**
-	 * @throws IOException 
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 확인 폼이동
+	 * @param ad_no, model
+	 * @return String
+	 * @throws IOException
 	 */
-	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceConfirmForm", method = RequestMethod.GET)
 	public String updateAdviceConfirmForm(int ad_no, Model model) throws IOException {
 		String url = "/pro/Consultation_RHP";
@@ -170,17 +143,13 @@ public class AdviceController {
 	}
 
 	/**
-	 * @throws IOException 
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return0
-	 * @throws
+	 * 상담 확인
+	 * @param ad_no, res
+	 * @return void
+	 * @throws IOException
 	 */
-	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceConfirm", method = RequestMethod.POST)
 	public void updateAdviceConfirm(int ad_no,HttpServletResponse res) throws IOException {
-		//String url = "redirect:/pro/adviceResponsList";
 		adviceService.updateAdviceConfirm(ad_no);
 		
 		res.setCharacterEncoding("UTF-8");
@@ -190,22 +159,16 @@ public class AdviceController {
 		writer.println("window.close();");
 		writer.println("opener.location.reload();");
 		writer.println("</script>");
-		
-		//return url;
 	}
 	
 	/**
+	 * 상담 연기
+	 * @param adviceVO, res
+	 * @return void
 	 * @throws IOException 
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
 	 */
-	// 상담 신청 삭제
 	@RequestMapping(value = "/pro/updateAdviceDelay", method = RequestMethod.POST)
 	public void updateAdviceDelay(AdviceVO adviceVO,HttpServletResponse res) throws IOException {
-		//String url = "redirect:/pro/adviceResponsList";
 		adviceService.updateAdviceDelay(adviceVO);
 		
 		res.setCharacterEncoding("UTF-8");
@@ -215,18 +178,13 @@ public class AdviceController {
 		writer.println("window.close();");
 		writer.println("opener.location.reload();");
 		writer.println("</script>");
-		
-		//return url;
 	}
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판
+	 * @param model, session
+	 * @return String
 	 */
-	// 상담 게시판
 	@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
 	public String adviceBoard(Model model,HttpSession session) {
 		String url = "/common/adviceBoard";
@@ -242,13 +200,10 @@ public class AdviceController {
 	}
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 게시판 글 작성 폼
+	 * @param session, model
+	 * @return String
 	 */
-	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWriteForm")
 	public String adviceBoardWriteForm(HttpSession session,Model model) {
 		String url = "/stu/adviceBoardWrite";
@@ -262,15 +217,11 @@ public class AdviceController {
 	}
 
 	/**
-	 * @throws IOException 
-	 * @throws IllegalStateException 
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 게시판 글 작성
+	 * @param adviceInsertAFVO, request
+	 * @return String
+	 * @throws IOException, IllegalStateException
 	 */
-	// 상담 게시판 글 작성
 	@RequestMapping(value = "/stu/adviceBoardWrite", method = RequestMethod.POST)
 	public String adviceBoardWrite(ADBInsertVO adviceInsertAFVO,HttpServletRequest request) throws IllegalStateException, IOException {
 		String url = "redirect:/stu/adviceBoard";
@@ -294,14 +245,10 @@ public class AdviceController {
 	}
 	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판 답변 작성
+	 * @param adb_no, model, session, request
+	 * @return String
 	 */
-	// 상담 게시판 답변 작성
-	//@RequestMapping(value = { "/stu/adviceBoard", "/pro/adviceBoard" })
 	@RequestMapping(value = {"/stu/adviceBoardUpdateDetail","/pro/adviceBoardUpdateDetail"}, method = RequestMethod.GET)
 	public String adviceBoardUpdateDetail(int adb_no,Model model,HttpSession session,HttpServletRequest request) {
 		String url = "/common/adviceBoardUpdateDetail";
@@ -338,13 +285,11 @@ public class AdviceController {
 	}
 	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판 파일 다운로드
+	 * @param request, adb_af_no, response
+	 * @return ModelAndView
+	 * @throws IOException
 	 */
-	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/common/adviceBoardFile", method = RequestMethod.GET)
 	public ModelAndView adviceBoardFile(HttpServletRequest request,int adb_af_no, HttpServletResponse response) throws IOException {
 		
@@ -358,13 +303,10 @@ public class AdviceController {
 	}
 	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판 수정 폼
+	 * @param adb_no, model
+	 * @return String
 	 */
-	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardUpdateForm", method = RequestMethod.GET)
 	public String adviceBoardUpdateForm(int adb_no,Model model) {
 		String url = "/stu/adviceBoardUpdateForm";
@@ -382,14 +324,13 @@ public class AdviceController {
 			
 		return url;
 	}
+	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판수정
+	 * @param adb_no, adb_title, adb_stud_use_id, adb_content, adb_file, request
+	 * @return String
+	 * @throws IOException
 	 */
-	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardUpdate", method = RequestMethod.POST)
 	public String adviceBoardUpdate(int adb_no,String adb_title,String adb_stud_use_id,String adb_content,MultipartFile adb_file,HttpServletRequest request) throws IOException{
 		String url = "redirect:/stu/adviceBoard";
@@ -429,14 +370,12 @@ public class AdviceController {
 				
 		return url;
 	}
+	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담게시판 삭제
+	 * @param adb_no
+	 * @return String
 	 */
-	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/stu/adviceBoardDelete", method = RequestMethod.GET)
 	public String adviceBoardDelete(int adb_no) {
 		String url = "redirect:/stu/adviceBoard";
@@ -445,14 +384,12 @@ public class AdviceController {
 		
 		return url;
 	}
+	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담신청수정
+	 * @param session, adviceBoardVO
+	 * @return String
 	 */
-	// 상담 게시판 답변 작성
 	@RequestMapping(value = "/pro/adviceBoardReply", method = RequestMethod.POST)
 	public String adviceREQUpdate(HttpSession session,Advice_BoardVO adviceBoardVO) {
 		String url = "redirect:/pro/adviceBoard";
@@ -463,15 +400,11 @@ public class AdviceController {
 		adviceService.updateAdviceComment(adviceBoardVO);
 		return url;
 	}
-
-	// //////////////////////////////화상상담추가//////////////////////////////
-
+	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 화상상담(학생)
+	 * @param model, session
+	 * @return String
 	 */
 	@RequestMapping(value = "/stu/camAdvice", method = RequestMethod.GET)
 	public String camAdviceStu(Model model,HttpSession session) {
@@ -491,6 +424,11 @@ public class AdviceController {
 		return url;
 	}
 	
+	/**
+	 * 화상상담(학생) ajax
+	 * @param model, session
+	 * @return String
+	 */
 	@RequestMapping(value = "/stu/camAdviceAjax", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AdviceVO> camAdviceStuAjax(Model model,HttpSession session) {
@@ -502,7 +440,6 @@ public class AdviceController {
 		
 		return adviceList;
 	}
-	
 	// //////////////////////////////화상상담추가//////////////////////////////
 
 		/**
@@ -529,11 +466,9 @@ public class AdviceController {
 		}
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담상태 변환
+	 * @param channelId, ad_no, flag
+	 * @return void
 	 */
 	@RequestMapping(value = {"/pro/sendChannelId","/stu/sendChannelId"}, method = RequestMethod.GET)
 	public void updateChannelId(String channelId,String ad_no,String flag) {

@@ -27,112 +27,76 @@ import com.korea.dto.ProfessorVO;
  */
 public interface AdviceService {
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 받은 상담신청조회(교수)
+	 * @param pro_use_id
+	 * @return List
 	 */
-	// 받은 상담 신청조회(교수)
 	public List<AdviceVO> getAdviceResponsList(String pro_use_id);
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 보낸 상담신청조회(학생)
+	 * @param stud_use_id
+	 * @return List
 	 */
-	// 보낸 상담 신청조회(학생)
 	public List<AdviceVO> getAdviceRequestList(String stud_use_id);
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 신청
+	 * @param adviceVO
+	 * @return void
 	 */
-	// 상담신청
 	public void insertAdviceREQ(AdviceVO adviceVO);
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담신청 삭제
+	 * @param ad_no
+	 * @return void
 	 */
-	// 상담신청 삭제
 	public void updateAdviceCancel(int ad_no);
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담신청 수정 폼
+	 * @param ad_no
+	 * @return AdviceVO
 	 */
-	// 상담신청 수정
 	public AdviceVO updateAdviceConfirmForm(int ad_no);
 	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담신청수정
+	 * @param ad_no
+	 * @return AdviceVO
 	 */
-	// 상담신청 수정
 	public AdviceVO updateAdviceConfirm(int ad_no);
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 신청 삭제
+	 * @param adviceVO
+	 * @return void
 	 */
-	// 상담 신청 삭제
 	public void updateAdviceDelay(AdviceVO adviceVO);
 	
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 답변
+	 * @return void
 	 */
-	// 상담답변
 	public void insertAdviceReply();
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담 가능일자 입력
+	 * @return void
 	 */
-	// 상담가능일자 입력
 	public void insertAdviceDate();
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담신청 한 리스트
+	 * @return List
 	 */
-	// 상담가능일자 입력
 	public List<Advice_BoardVO> getAdviceBoardList();
 
 	/**
-	 * 교수가 받은 상담신청조회
-	 * 
-	 * @param
-	 * @return
-	 * @throws
+	 * 상담할 교수 리스트
+	 * @param stud_use_id
+	 * @return List
 	 */
-	// 상담가능일자 입력
 	public List<ProfessorVO> getProfessorList(String stud_use_id);
 
 	public int insertAdviceBoardAF(ADBInsertVO adviceInsertVO);

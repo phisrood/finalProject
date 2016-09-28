@@ -131,6 +131,27 @@
 	</div>
 	<c:choose>
 		<c:when test="${loginUser.authority eq 'ROLE_EMP'}">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="x_panel">
+				<div class="x_title">
+					<h2>기간설정</h2>
+					<div class="clearfix"></div>
+				</div>
+		<div class="alert alert-success alert-dismissible fade in" style="width:200px;height:60px;float:left;margin-right: 20px;" >
+ 		수강신청기간 &nbsp;&nbsp;&nbsp;<input type="button" id="crsesInquiryPeriod"
+		class="btn btn-danger" onclick="crsesInquiryPeriod();" style="border-radius:30px;"
+		value="${period.pr_crses_inquiry }" />
+		</div>
+		<div class="alert alert-info alert-dismissible fade in"  style="width:200px;height:60px;float:left;margin-right: 20px;">
+		수업평가 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="appLecturePeriod" class="btn btn-danger"
+				onclick="appLecturePeriod();" value="${period.pr_app_lecture }" style="border-radius:30px;" />
+		</div>
+		<div class="alert alert-warning alert-dismissible fade in"  style="width:200px;height:60px;float:left;">
+		성적반영 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="scoreSummary" class="btn btn-danger"
+				onclick="scoreSummary();" value="반영" style="border-radius:30px;" />
+		</div>
+		</div>
+		</div>
 		</c:when>
 		<c:otherwise>
 			<!-- 쪽지함 -->
@@ -202,22 +223,6 @@
 	<div id='preview'
 		STYLE="BORDER-RIGHT: 1px; BORDER-TOP: 1px; Z-INDEX: 1; VISIBILITY: hidden; BORDER-LEFT: 1px; BORDER-BOTTOM: 1px; POSITION: absolute;"></div>
 </div>
-<c:if test="${loginUser.authority eq 'ROLE_EMP' }">
- 수강신청기간:<input type="button" id="crsesInquiryPeriod"
-		class="btn btn-dark" onclick="crsesInquiryPeriod();"
-		value="${period.pr_crses_inquiry }" />
-	<br />
-	<br />
-수업평가:<input type="button" id="appLecturePeriod" class="btn btn-dark"
-		onclick="appLecturePeriod();" value="${period.pr_app_lecture }" />
-	<br />
-	<br />
-
-성적반영:<input type="button" id="scoreSummary" class="btn btn-dark"
-		onclick="scoreSummary();" value="성적반영" />
-	<br />
-	<br />
-</c:if>
 <script>
 	function crsesInquiryPeriod() {
 		$.ajax({
