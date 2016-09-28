@@ -85,7 +85,7 @@
 						<td>${adviceRes.ad_time } 시</td>
 						<c:choose>
 							<c:when test="${adviceRes.ad_stat eq '미처리'}">
-						        <td><input type="button" id="click" class="btn btn-default btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
+						        <td><input type="button" id="click" class="btn btn-dark btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
 							</c:when>
 							<c:otherwise>
 						       	<td>${adviceRes.ad_stat }</td>
