@@ -188,28 +188,28 @@ h2 {
 			<div class="form-group">
                  <label class="control-label col-md-3 col-sm-3 col-xs-12">주전공 졸업학점</label>
                  <div class="col-md-9 col-sm-9 col-xs-12">
-                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_majneedcredit" id="dep_majneedcredit">
+                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_majneedcredit" maxlength="3" id="dep_majneedcredit">
                  </div>
             </div>    
 			<br> <br>
 			<div class="form-group">  
                  <label class="control-label col-md-3 col-sm-3 col-xs-12">부전공 졸업학점</label>
                  <div class="col-md-9 col-sm-9 col-xs-12">
-                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_minneedcredit" id="dep_minneedcredit">
+                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_minneedcredit" maxlength="3" id="dep_minneedcredit">
                  </div>
             </div>
 			<br> <br>
 			<div class="form-group">
                  <label class="control-label col-md-3 col-sm-3 col-xs-12">다전공 졸업학점</label>
                  <div class="col-md-9 col-sm-9 col-xs-12">
-                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_mulcredit" id="dep_mulcredit">
+                   <input type="text" class="form-control" placeholder="숫자만 입력" name="dep_mulcredit" maxlength="3" id="dep_mulcredit">
                  </div>
             </div>
 			<br> <br>
 			<div class="form-group">
                  <label class="control-label col-md-3 col-sm-3 col-xs-12">전화번호</label>
                  <div class="col-md-9 col-sm-9 col-xs-12">
-                   <input type="text" class="form-control" placeholder="'-'을 포함한 전화번호 12자리" name="dep_phone" id="dep_phone">
+                   <input type="text" class="form-control" placeholder="'-'을 포함한 전화번호 12자리" maxlength="12" name="dep_phone" id="dep_phone">
                  </div>
             </div>
 			<br>

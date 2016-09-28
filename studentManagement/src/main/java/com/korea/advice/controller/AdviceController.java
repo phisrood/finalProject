@@ -476,16 +476,21 @@ public class AdviceController {
 	@RequestMapping(value = "/stu/camAdvice", method = RequestMethod.GET)
 	public String camAdviceStu(Model model,HttpSession session) {
 		String url = "/stu/cam_advice";
+		
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String loginUser = user.getAuthority();
 		
 		List<AdviceVO> adviceList = adviceService.getMyAdviceReqeustList(user.getUse_id());
 		
+		String userName = user.getUse_name();
+		
+		model.addAttribute("userName", userName);
 		model.addAttribute("auth", loginUser);
 		model.addAttribute("adviceList", adviceList);
 		return url;
 	}
+	
 	@RequestMapping(value = "/stu/camAdviceAjax", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AdviceVO> camAdviceStuAjax(Model model,HttpSession session) {
@@ -515,7 +520,9 @@ public class AdviceController {
 			String loginUser = user.getAuthority();
 			
 			List<AdviceVO> adviceList = adviceService.getMyAdviceResponseList(user.getUse_id());
+			String userName = user.getUse_name();
 			
+			model.addAttribute("userName", userName);
 			model.addAttribute("auth", loginUser);
 			model.addAttribute("adviceList", adviceList);
 			return url;
@@ -528,7 +535,7 @@ public class AdviceController {
 	 * @return
 	 * @throws
 	 */
-	@RequestMapping(value = "/pro/sendChannelId", method = RequestMethod.GET)
+	@RequestMapping(value = {"/pro/sendChannelId","/stu/sendChannelId"}, method = RequestMethod.GET)
 	public void updateChannelId(String channelId,String ad_no,String flag) {
 		if(flag.equals("open")){
 			adviceService.updateChannelId(channelId,ad_no);
