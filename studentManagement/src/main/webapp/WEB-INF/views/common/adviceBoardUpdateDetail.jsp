@@ -33,57 +33,75 @@ html, body {
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 	
-	<div class="row">
-		<!-- 상담 게시글 작성 -->
-		<div class="x_panel_big" style="height:600px;" >
-		<div class="x_title">
-			<h2>상담 게시글 상세</h2>
-			<div class="clearfix"></div>
-		</div>
+<div class="row">
+	<!-- 상담 게시글 작성 -->
+	<div class="x_panel_big" style="height:500px;" >
+	<div class="x_title">
+		<h2>상담 게시글 상세</h2>
+		<div class="clearfix"></div>
+	</div>
 		<div class="x_content" style="height: 80%">
 		<br>
 			<input type="hidden" name="adb_no" value="${adb_no }"/>
-			<div style="float: right; width: 78%;">
-				<input type="text" name="adb_title" size="50" value="${adb_title }" disabled="disabled"/>
+			<div class="form-group" style="height: 10%;">
+				<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					<input type="text" class="form-control" name="adb_title"
+						value="${adb_title }" style="width: 100%;" id="adb_title" disabled="disabled">
+				</div>
 			</div>
-			<div style="float: right; width: 7%;">제목</div>
-			<br><br>
-			
-			<div style="float: right; width: 78%;">
-				<input type="text" name="adb_date" value="${adb_date }" disabled="disabled" size="50"/>
+			<div class="form-group" style="height: 10%;">
+				<label class="control-label col-md-3 col-sm-3 col-xs-12">작성일</label>
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					<input type="text" class="form-control" name="adb_date"
+						value="${adb_date }" disabled="disabled"  style="width: 100%;" disabled="disabled">
+				</div>
+			</div>  
+			<div class="form-group" style="height: 10%;">
+				<label class="control-label col-md-3 col-sm-3 col-xs-12">작성자</label>
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					<input type="text" class="form-control" name="use_name"
+						value="${use_name }" disabled="disabled"  style="width: 100%;" >
+				</div>
+			</div>  
+			<input type="hidden" name="adb_no" value="${adb_no }" />
+			<div class="form-group" style="height: 10%;">
+				<label class="control-label col-md-3 col-sm-3 col-xs-12">학번</label>
+				<div class="col-md-9 col-sm-9 col-xs-12">
+					<input type="text" class="form-control" name="adb_stud_use_id"
+						value="${adb_stud_use_id }" disabled="disabled"  style="width: 100%;">
+				</div>
 			</div>
-			<div style="float: right; width: 7%;">작성일</div>
-			<br><br>
-			
-			<div style="float: right; width: 78%;">
-				<input type="text" name="use_name" value="${use_name }" disabled="disabled" size="50"/>
+			<div class="form-group" style="height: 150px;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<p>${adb_content}</p>
+					</div>
 			</div>
-			<div style="float: right; width: 7%;">이름</div>
-			<br><br>
-			
-			<div style="float: right; width: 78%;">
-				<input type="text" name="adb_stud_use_id" value="${adb_stud_use_id }" disabled="disabled" size="50"/>
+			<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+					<c:choose>
+							<c:when test="${adb_af_no != 0 }">
+								<a href="/common/adviceBoardFile?adb_af_no=${adb_af_no }">
+									<input type="button" class="btn btn-dark" style="width: 300px;"
+										value="${filename }">
+								</a>
+							</c:when>
+							<c:otherwise>
+								<input type="button" class="btn btn-dark" style="width: 200px;" value="첨부파일이 없습니다.">
+							</c:otherwise>
+					</c:choose>
+					</div>
 			</div>
-			<div style="float: right; width: 7%;">학번</div>
-			<br><br>  
-			
-			<div style="float: right; width: 78%;">
-				${adb_content }
-			</div>
-			<div style="float: right; width: 7%;">내용</div>
-			<br><br>
-			
-		<div align="center" style="float: right; width: 90%;">
-			<c:choose>
-			<c:when test="${adb_af_no != 0}">
-				첨부파일 : <a href="/common/adviceBoardFile?adb_af_no=${adb_af_no }">${filename }</a>
-			</c:when>
-			<c:otherwise>
-				첨부파일이 없습니다.
-			</c:otherwise>
-			</c:choose>
-			<br><br>
-			
+		</div>
+		</div>
+	<div class="x_panel_big" style="height:250px;" >
+	<div class="x_title">
+		<h2>상담 게시글 답변</h2>
+		<div class="clearfix"></div>
+	</div>	
+	<div class="x_content" style="height: 80%">
 			<c:if test="${adb_commentstat == 'N'}">
 				등록된 답변이 없습니다.
 			</c:if>
@@ -93,26 +111,15 @@ html, body {
 				답변 내용   : ${adb_commentcontent }
 			</c:if>
 			<br><br>
-			  
-			<c:if test="${auth eq 'ROLE_PRO' }">
-				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/pro/adviceBoard'"/>
-			</c:if>
-			<c:if test="${auth eq 'ROLE_STU' }">
-				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/stu/adviceBoard'"/>
-			</c:if>
 			
-			<c:if test="${loginUser eq '작성자' }">
-			<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
-			<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
-			</c:if>
-		</div>
+			
 		<form method="post" action="/pro/adviceBoardReply">
 		<input type="hidden" name="adb_no" value="${adb_no }"/>
 		
-		<div align="center" style="float: right; width: 90%;">
+		<div >
 			<br>
 			<c:if test="${auth eq 'ROLE_PRO' }">
-				작성자 : ${loginUser } <br />
+				작성자 : ${loginUserId } <br />
 				답변 내용 : <input type="text" name="adb_commentcontent" />    
 				<c:if test="${adb_commentstat == 'N'}">
 					<input type="submit" class="btn btn-dark" value="답변등록"/>		
@@ -124,8 +131,21 @@ html, body {
 		</div>
 		</form>
 	</div>
+		<br><br>
 	</div>
-	</div>
+		<div style="text-align: right;">
+			<c:if test="${loginUserId eq '작성자' }">
+				<input type="button" class="btn btn-dark" value="수정" onclick="location.href='/stu/adviceBoardUpdateForm?adb_no=${adb_no}'"/>
+				<input type="button" class="btn btn-dark" value="삭제" onclick="location.href='/stu/adviceBoardDelete?adb_no=${adb_no}'"/>
+			</c:if>
+			<c:if test="${auth eq 'ROLE_PRO' }">
+				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/pro/adviceBoard'"/>
+			</c:if>
+			<c:if test="${auth eq 'ROLE_STU' }">
+				<input type="button" class="btn btn-dark" value="목록" onclick="location.href='/stu/adviceBoard'"/>
+			</c:if>
+		</div>
+</div>
 
 <!-- Datatables -->
 <script src="/stu/js/click_cal.js"></script>

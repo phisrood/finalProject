@@ -4,10 +4,10 @@
 				 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="timeTable">
+	<!-- 시간표가져오기 -->
 	<select id="getTimeTableList" parameterType="str" resultType="timetableVO">
 		SELECT *
 		FROM TIMETABLEVIEW
 		WHERE USE_ID = #{id}
 	</select>
-
 </mapper>

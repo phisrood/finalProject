@@ -32,66 +32,39 @@ public class AcadeCalServiceImpl implements AcadeCalService{
 	AcadeCalDAO acadeCalDAO;
 	
 	
-	/**
-	 * 학사일정 가져오기
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//학사일정 조회
 	@Override
 	public List<Colleage_CalendarVO> getAcadeCalList() {
 		
 		return acadeCalDAO.getAcadeCalList();
 	}
-	/**
-	 * 학사일정 입력
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//학사일정등록
 	@Override
 	public void insertAcadeCal(CalendarVO calendarVO) {
 		acadeCalDAO.insertAcadeCal(calendarVO);
 		
 	}
-	/**
-	 * 학사일정 수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//학사일정수정
 	@Override
 	public void updateAcadeCal(CalendarVO calendarVO) {
 		acadeCalDAO.updateAcadeCal(calendarVO);
 	}
-	/**
-	 * 학사일정 삭제
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//학사일정삭제
 	@Override
 	public void deleteAcadeCal(String id) {
 		acadeCalDAO.deleteAcadeCal(id);
 	}
 
-	/**
-	 * 학사일정 드랍수정
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//학사일정드랍
 	@Override
 	public void updateAcadeDropCal(CalendarVO calendarVO) {
 		acadeCalDAO.updateAcadeDropCal(calendarVO);
 	}
 	
-	/**
-	 * 학사일정 리사이즈
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//학사일정 리사이즈 이벤트
 	@Override
 	public void updateAcadeResizeCal(CalendarVO calendarVO) {
 		acadeCalDAO.updateAcadeResizeCal(calendarVO);

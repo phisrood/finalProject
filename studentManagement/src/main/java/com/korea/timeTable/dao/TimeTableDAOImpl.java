@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.korea.dto.TimeTableViewVO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : TimeTableDAOImpl.java
+ * @Description : 시간표DAO 구현
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -28,12 +28,9 @@ import com.korea.dto.TimeTableViewVO;
 public class TimeTableDAOImpl implements TimeTableDAO{
 	@Autowired
 	private SqlSession sqlSession;
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+
+	//시간표 가져오기
 	@Override
 	public List<TimeTableViewVO> getTimeTableList(String id) {
 		return sqlSession.selectList("timeTable.getTimeTableList", id);

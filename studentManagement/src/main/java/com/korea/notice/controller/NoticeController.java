@@ -98,7 +98,7 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	/**
 	 * 공지사항 등록
-	 * @param
+	 * @param 
 	 * @return String
 	 * @throws 
 	 */
@@ -151,8 +151,20 @@ public class NoticeController implements ApplicationContextAware {
 		//return null;
 	}
 	
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext)
+			throws BeansException {
+		this.context=(WebApplicationContext)applicationContext;
+	}
 	
-	//공지사항 수정 폼이동
+	
+	/**
+	 * 공지사항 수정 폼이동
+	 * @param
+	 * @return String
+	 * @throws 
+	 */
 	@RequestMapping(value="/emp/noticeUpdateForm", method=RequestMethod.GET)
 	public String updateNoticeForm(@RequestParam(value="notice_no")String notice_no, Model model){
 		String url="emp/noticeUpdate";
@@ -171,7 +183,6 @@ public class NoticeController implements ApplicationContextAware {
 	 * @return  String
 	 * @throws 
 	 */
-	//공지사항 수정
 	@RequestMapping(value="/emp/noticeUpdate", method=RequestMethod.POST)
 	public String updateNotice(Colleage_NoticeVO colleage_NoticeVO, Attachment_FileVO attachment_FileVO, HttpServletRequest request, HttpSession session,
 			@RequestParam(value="file", defaultValue = "")MultipartFile multipartFile, @RequestParam(value="file_no", defaultValue="0")String file_no) throws IOException{
@@ -209,7 +220,6 @@ public class NoticeController implements ApplicationContextAware {
 	 * @return String
 	 * @throws 
 	 */
-	//공지사항 삭제
 	@RequestMapping(value="/emp/noticeDelete", method=RequestMethod.GET)
 	public String noticeDelete(Colleage_NoticeVO colleage_NoticeVO){
 		String url="redirect:/emp/noticeAllList";
@@ -222,11 +232,6 @@ public class NoticeController implements ApplicationContextAware {
 	}
 	
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
-		this.context=(WebApplicationContext)applicationContext;
-	}
 	
 	
 }

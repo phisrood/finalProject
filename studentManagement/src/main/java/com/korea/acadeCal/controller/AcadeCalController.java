@@ -42,19 +42,24 @@ public class AcadeCalController {
 	AcadeCalService service;
 	
 	/**
-	 * 학사일정 가져오기
+	 * 학사일정 조회(행정)
 	 * @param
-	 * @return 
+	 * @return String 
 	 * @throws 
 	 */
-	//학사일정 조회(행정)
 	@RequestMapping(value="/emp/acadeCalList", method=RequestMethod.GET)
 	public String acadeCalEmpList(){
 		String url="/emp/acadeCalEmpList";
 		
 		return url;
 	}
-	//학사일정 조회(학생, 교수)
+	
+	/**
+	 * 학사일정 조회(학생, 교수)
+	 * @param 
+	 * @return String 
+	 * @throws 
+	 */
 	@RequestMapping(value={"/stu/acadeCalList","/pro/acadeCalList"}, method=RequestMethod.GET)
 	public String acadeCalList(){
 		String url="/common/acadeCalList";
@@ -62,12 +67,11 @@ public class AcadeCalController {
 		return url;
 	}
 	/**
-	 * 학사일정 json 리턴
-	 * @param
-	 * @return 
+	 * 학사일정 json 형식
+	 * @param response
+	 * @return void
 	 * @throws 
 	 */
-	//학사일정 조회 json
 	@RequestMapping(value={"/emp/acadeCalAjax","/pro/acadeCalAjax","/stu/acadeCalAjax","/common/acadeCalAjax"}, method=RequestMethod.GET)
 	public void acadeCalListAjax(HttpServletResponse response){
 		
@@ -100,9 +104,9 @@ public class AcadeCalController {
 	}
 	
 	/**
-	 * 학사일정 등록
-	 * @param
-	 * @return 
+	 * 학사일정 등록(json)
+	 * @param calendarVO, response
+	 * @return void
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/acadeCalInsert", method=RequestMethod.GET)
@@ -127,8 +131,8 @@ public class AcadeCalController {
 
 	/**
 	 * 학사일정 수정
-	 * @param
-	 * @return 
+	 * @param calendarVO
+	 * @return void
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/acadeCalUpdate", method=RequestMethod.GET)
@@ -138,8 +142,8 @@ public class AcadeCalController {
 	}
 	/**
 	 * 학사일정 삭제
-	 * @param
-	 * @return 
+	 * @param id
+	 * @return void
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/acadeCalDelete", method=RequestMethod.GET)
@@ -147,9 +151,9 @@ public class AcadeCalController {
 		service.deleteAcadeCal(id);
 	}
 	/**
-	 * 학사일정 드랍업데이트
-	 * @param
-	 * @return 
+	 * 학사일정 드랍이벤트
+	 * @param calendarVO
+	 * @return void
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/acadeCalDropUpdate", method=RequestMethod.GET)
@@ -158,9 +162,9 @@ public class AcadeCalController {
 	}
 	
 	/**
-	 * 학사일정 리사이즈 업데이트
-	 * @param
-	 * @return 
+	 * 학사일정 사이즈 조정 이벤트
+	 * @param calendarVO
+	 * @return void
 	 * @throws 
 	 */
 	@RequestMapping(value="/emp/acadeCalResizeUpdate", method=RequestMethod.GET)
