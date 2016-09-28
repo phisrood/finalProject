@@ -101,7 +101,7 @@ html, body {
 		<h2>상담 게시글 답변</h2>
 		<div class="clearfix"></div>
 	</div>	
-	<div class="x_content" style="height: 80%">
+	<div class="x_content" style="height: 80%; font-size:15px;"  >
 			<c:if test="${adb_commentstat == 'N'}">
 				등록된 답변이 없습니다.
 			</c:if>
@@ -116,7 +116,7 @@ html, body {
 		<form method="post" action="/pro/adviceBoardReply">
 		<input type="hidden" name="adb_no" value="${adb_no }"/>
 		
-		<div >
+		<div>
 			<br>
 			<c:if test="${auth eq 'ROLE_PRO' }">
 				작성자 : ${loginUserId } <br />
