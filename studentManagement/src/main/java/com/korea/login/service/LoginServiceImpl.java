@@ -17,12 +17,9 @@ package com.korea.login.service;
  */
 import java.util.Map;
 
-import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.korea.dto.Period;
 import com.korea.dto.ProfessorVO;
 import com.korea.dto.Professor_InfoViewVO;
 import com.korea.dto.School_PersonInfoViewVO;
@@ -38,24 +35,14 @@ public class LoginServiceImpl implements LoginService{
 	@Autowired
 	LoginDAO dao;
 
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//로그인정보
 	@Override
 	public UsersVO getLoginInfo(String id) {
-		// TODO Auto-generated method stub
 		
 		return dao.getLoginInfo(id);
 	}
-	/**
-	 * 패스워드초기화
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//비밀번호찾기
 	@Override
 	public int updateLoginPwdSearch(String id, String birth) {
 		int chk = 1;
@@ -123,10 +110,13 @@ public class LoginServiceImpl implements LoginService{
 		return chk;
 	}
 	
+	//교수 로그인 정보
 	@Override
 	public Professor_InfoViewVO getProdivInfo(String id) {
 		return dao.getProdivInfo(id);
 	}
+	
+	//행정 로그인 정보
 	@Override
 	public School_PersonInfoViewVO getEmpdivInfo(String id) {
 		return dao.getEmpdivInfo(id);
@@ -147,6 +137,7 @@ public class LoginServiceImpl implements LoginService{
 		return tempPwd;
 	}
 	
+	//로그인체크
 	public UsersVO getLoginCheck(Map<String, String> checkMap) {
 		return dao.getLoginCheck(checkMap);
 
