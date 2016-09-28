@@ -28,6 +28,14 @@
     <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
 
+
+
+<!-- 공지상세보기 -->
+
+
+
+<!-- 
+ -->
     <c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
     <div class="row">
     	<!-- 공지 사항 게시글 상세 -->
