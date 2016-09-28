@@ -1,5 +1,20 @@
 package com.korea.login.controller;
-
+/**
+ * @Class Name : IndivInfoManageController.java
+ * @Description : 비밀번호 찾기 메일발송 소스코드
+ * @Modification Information
+ * @author 한돈희
+ * @since  2016.08.29.
+ * @version 1.0
+ * @see
+ * <pre>
+ * << 개정이력(Modification Information) >>
+ *    	수정일       	수정자          		수정내용
+ *    -------      -------     -------------------
+ *    2016.09.06.   한돈희                  개발완료
+ * Copyright (c) 2016 by DDIT  All right reserved
+ * </pre>
+ */
 
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -16,7 +31,12 @@ public class SimpleRegistrationNotifier implements RegistrationNotifier {
 	public void setMailSender(JavaMailSender mailSender) {
 		this.mailSender = mailSender;
 	}
-
+	
+	/**
+	 * 메일발송 코드
+	 * @param member
+	 * @return void
+	 */
 	@Override
 	public void sendMail(Receiver member) {
 		MimeMessage message = mailSender.createMimeMessage();

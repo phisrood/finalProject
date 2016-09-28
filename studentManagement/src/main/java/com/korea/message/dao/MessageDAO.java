@@ -8,9 +8,9 @@ import com.korea.dto.UsersVO;
 
 /**
  * @Interface Name : IndivInfoManageDAO.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Description : 메시지 dao
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -18,65 +18,52 @@ import com.korea.dto.UsersVO;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희       		최초생성
+ *    2016.09.11.	한돈희			개발완료
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
 
 public interface MessageDAO {
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 쪽지 리스트 메인화면 출력
+	 * @param usersVO
+	 * @return List
 	 */
-	//새로운 쪽지 리스트 안읽은쪽지만 출력
 	public List<MessageVO> getMessageNewList(UsersVO usersVO);
 	/**
-	 * @return 
-	 * @param id 
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 전체 쪽지 리스트
+	 * @param id
+	 * @return List
 	 */
-	//전체 쪽지 리스트
 	public List<MessageVO> getMessageAllList(String id);
 	/**
-	 * @param message_no 
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 읽음처리
+	 * @param message_no
+	 * @return MessageVO
 	 */
-	//쪽지조회
 	public MessageVO getMessageInfo(String message_no);
 	/**
-	 * @return 
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 수신유저검색
+	 * @return List
 	 */
-	//수신사용자검색 다른쪽 VO 리턴
 	public List<MessageViewVO> getMessageUserSearch();
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 보내기
+	 * @param messageVO
+	 * @return void
 	 */
-	//쪽지발신
 	public void insertMessage(MessageVO messageVO);
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 삭제
+	 * @param message_no
+	 * @return void
 	 */
-	//쪽지삭제
 	public void updateMessageDel(MessageVO messageVO);
-	
-	//읽음처리
+	/**
+	 * 쪽지 읽음처리
+	 * @param message_no
+	 * @return void
+	 */
 	public void updateMessageRead(String message_no);
 }
