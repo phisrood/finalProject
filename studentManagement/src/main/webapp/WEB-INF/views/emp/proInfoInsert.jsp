@@ -38,6 +38,7 @@
 	        var pwd = /[a-z0-9]{8}/;
 	        var reg2 = /[0-9]{7}/;
 	        
+	        
 	        //value
 	        var nameVal = $("#use_name").val(); //이름값
 	        var engNameVal = $("#pro_engname").val(); //영문이름값

@@ -17,11 +17,11 @@
 
 	UPDATE STUDENT
 	SET
-	stud_birth=#{stud_birth},
-	stud_bltype=#{stud_bltype},
 	stud_hob=#{stud_hob},
 	stud_phone=#{stud_phone},
-	stud_email=#{stud_email}
+	stud_email=#{stud_email},
+	stud_add=#{stud_add},
+	stud_adddetail=#{stud_adddetail}
 	WHERE
 	stud_use_id=#{stud_use_id}
 	</update>
