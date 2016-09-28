@@ -240,9 +240,12 @@
     		
     		
     			<div class="x_panel">
-   					<i class="fa fa-arrow-circle-o-right"></i> &nbsp;학생 개인 정보 관리
-                </div>
-                <div class="clearfix"></div>
+    				<div class="x_title">
+                    <h2>학생 개인 정보 관리</h2>
+                    
+                    <div class="clearfix"></div>
+        			</div>
+   					
                 <div class="col-md-55">
                 	<div class="thumbnail" align="center" style="padding: 13px;">
                 		<div align="center" class="img-container" style="border: 1px solid; width:180px;">
@@ -253,14 +256,13 @@
                         		
                         		</div>                     
                         </div>
-                        <br>
                         <div align="center">
                         	<c:choose>
                         		<c:when test="${studentVO.stud_af_no eq 0 }">
-	                        		<input type="button" class="btn btn-dark btn-xs" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','320','180')" />
+	                        		<input type="button" class="btn btn-dark" value="사진등록" onclick="javascript:OpenWindow('/colleage/indivInfoImageInsert','320','180')" />
                         		</c:when>
                         		<c:otherwise>
-	                        		<input type="button" class="btn btn-dark btn-xs" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','320','180')" />
+	                        		<input type="button" class="btn btn-dark" value="사진수정" onclick="javascript:OpenWindow('/colleage/indivInfoImage','320','180')" />
                         		</c:otherwise>
                         	</c:choose>
                         	   
@@ -306,71 +308,47 @@
 					
 					</div>
 				</div>
-				<div class="clearfix">
-				
-					
 				
 				</div>
 				
 			<!-- 학생 개인 정보-->
-				<div>
-				</div>
-				<div class="x_panel_big">
+				
 			<form action="/stu/indivUpdate" method="POST">
 					<div class="x_panel">
-						<div style="padding:3px;"></div>
-						<div style="float: left; width: 96%;">
-	   						<i class="fa fa-arrow-circle-o-right"></i> &nbsp;개인 정보 / 주소 정보
-	   						
+						<div class="x_title">
+                    		<h2>개인 정보/주소 정보</h2>
+                    
+                    		<div class="clearfix"></div>
+        				</div>
 	   				
-	   					</div>
-	   					<div style="float: right; width: 4%;">
-	   						<input type="submit" id="infoSubmit" class="btn btn-dark btn-xs" value="저장">
-	   					</div> 
-	                </div>
-	                <div style="float: left; width: 100%;">
-	                   <div class="x_panel" style="float: left;">  
-		               <div style="float: left; width: 10%; padding:3px;">전화번호</div>
-	               		<div style="float: left; width: 25%;"><input type="text" maxlength="11"   name="stud_phone" id="stud_phone" required="required" size="25" value="${studentVO.stud_phone}" style="text-align: center;"></div>
+	                	<div style="float: left; width: 100%;">
+		                <div style="float: left; width: 10%; padding:3px;">전화번호</div>
+	               		<div style="float: left; width: 25%;"><input type="text" maxlength="11"   name="stud_phone" id="stud_phone" required="required" size="40" value="${studentVO.stud_phone}" style="text-align: center;"></div>
 	               		<div style="float: left; width: 8%; padding:3px;">E-mail</div>
-	               		<div style="float: left; width: 25%;"><input type="text" name="stud_email" id="stud_email" required="required" size="25" maxlength="20" value="${studentVO.stud_email}" style="text-align: center;"></div>
+	               		<div style="float: left; width: 25%;"><input type="text" name="stud_email" id="stud_email" required="required" size="40" maxlength="20" value="${studentVO.stud_email}" style="text-align: center;"></div>
 	               		<div style="float: left; width: 6%; padding: 3px;">취미</div>
-	               		<div style="float: left; width: 25%;"><input type="text" name="stud_hob" id= "stud_hob" required="required" size="25" value="${studentVO.stud_hob}" style="text-align: center;"></div><br><br>
+	               		<div style="float: left; width: 25%;"><input type="text" name="stud_hob" id= "stud_hob" required="required" size="30" value="${studentVO.stud_hob}" style="text-align: center;"></div><br><br>
                			<div style="float: left; width: 10%; padding: 3px;">주소</div>
 	               		<div style="float: left; width: 25%;"><input type="text" name="stud_add" id= "stud_add" required="required" size="40" value="${studentVO.stud_add}" style="text-align: center;"></div>
                		 	<div style="float: left; width: 8%; padding: 3px;">상세주소</div>
 	               		<div style="float: left; width: 25%;"><input type="text" name="stud_adddetail" id= "stud_adddetail" required="required" size="40" value="${studentVO.stud_adddetail}" style="text-align: center;"></div>
-               		 
-               		   
-               		 
-               		</div>  
+               		
+               			</div>
+               			
+               			<div style="float: right; width: 4%;">
+	   						<input type="submit" id="infoSubmit" class="btn btn-dark" value="저장">
+	   					</div>   
                		</div>
-               		<div style="float: left; width: 25%;"><br></div>
-               		<div class="clearfix"></div><br>
-               		<div style="float: left; width: 5%;"><br></div>
-               		<div style="float: left; width: 70%;">  
-	    
-	                	
-	                	<div style="float: left; width: 32%;"><br></div>
-                	</div>
+               		
 		    </form>
-                	<div style="float: left; width: 25%;"><br></div>      
-                	<div class="clearfix"></div><br>
-                	<div class="x_title"></div>
-                	<div class="clearfix"></div>
+                
 		    <form action="/stu/indivPwdUpdate" method="post">
                 	<div class="x_panel">
-						<div style="padding:3px;"></div>
-						<div style="float: left; width: 96%;">
-	   						<i class="fa fa-arrow-circle-o-right"></i> &nbsp;비밀번호변경
-	   						
-	   				
-	   					</div>
-	   					<div style="float: right; width: 4%;">
-	   						<input type="submit" id="pwdSubmit" class="btn btn-dark btn-xs" value="저장">
-	   					</div>
-	                </div>
-                	<div class="x_panel" style="float: left; width: 60%;">
+                		<div class="x_title">
+                    		<h2>비밀번호변경</h2>
+                    
+                    		<div class="clearfix"></div>
+        				</div>
 		                <div align="center">
 			                <div style="float: left; width: 14%; padding: 3px;">현재</div>
 		               		<div style="float: left; width: 37%;">
@@ -390,10 +368,12 @@
 		               		</div><br>
 		               	
 	               		</div>
-               		</div>
+	               		
+	               		<div style="float: right; width: 4%;">
+	   						<input type="submit" id="pwdSubmit" class="btn btn-dark" value="저장">
+	   					</div>
+	                </div>
 	        </form>
-               		<div style="float: left; width: 20%;"><br></div>
-                </div>
               
     	</div>
     </div>
