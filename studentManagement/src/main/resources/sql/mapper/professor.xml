@@ -5,9 +5,8 @@
 
 
 <mapper namespace="Professor">
-
+	<!-- 교수입력 -->
 	<insert id="professorInsert" parameterType="professor">
-
 		INSERT INTO PROFESSOR (
 		PRO_USE_ID
 		,PRO_DEP_NO
@@ -40,10 +39,8 @@
 		,#{pro_email}
 		,#{pro_regno1}
 		,#{pro_regno2})
-
 	</insert>
-
-
+	<!-- 교수user입력 -->
 	<insert id="userProInsert" parameterType="users">
 		INSERT INTO USERS (
 		USE_ID
@@ -64,7 +61,7 @@
 			SELECT trim(replace(to_char(sysdate, 'yyyy')||TO_CHAR(professor_seq.currval,'000'),' ','')) FROM dual
 		</selectKey>
 	</insert>
-	
+	<!-- 교수정보가져오기 -->
 	<select id="getProInfoList" resultType="professorView">
 		SELECT USE_NAME, DEP_NAME, PRO_USE_ID, PRO_POSITION, PRO_GENDER,ENABLED  	
 		FROM PROFESSOR

@@ -39,6 +39,9 @@ public class IndivInfoManageServiceImpl implements IndivInfoManageService{
 
 	@Override
 	public Student_InfoViewVO getIndivInfo(String stud_use_id) {
+		String ddd = "할수있냐?";
+		
+		String aaa = "즐";
 		return indivInfoManageDAO.getIndivInfo(stud_use_id);
 		
 	}
