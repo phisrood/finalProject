@@ -103,7 +103,7 @@ $(document).ready(function() {
 					
 					<tr>
 						<td>
-						<div style="float: left; width: 94%;"><input type="file" name="file" /></div>
+						<div style="float: left; width: 94%;"><input type="file" name="file"  class="btn btn-dark" /></div>
 							
 						</td>
 					</tr>
@@ -117,10 +117,10 @@ $(document).ready(function() {
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 92%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
+					<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-dark">목 록</button></a>
 			</div>
 			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" onclick="check();" id="submit" name="submit" value="등록">
+				<input type="submit" class="btn btn-dark" onclick="check();" id="submit" name="submit" value="등록">
 				
 			</div>
 			
