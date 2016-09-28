@@ -112,13 +112,14 @@
 		SELECT * FROM DUAL
 	</insert>
 
-	<select id="getLectureList" parameterType="str" resultType="lectureView">
+	<select id="getLectureList" parameterType="map" resultType="lectureView">
 		SELECT *
 		FROM
 		LECTURE_VIEW
 		WHERE LEC_MAKEYEAR = TO_CHAR(SYSDATE, 'yyyy')
-		<if test="_parameter != null">
-			AND LEC_LN_PRO_USE_ID = #{_parameter}
+		AND LEC_MAKESEMESTER = #{semester}
+		<if test="use_id != null">
+			AND LEC_LN_PRO_USE_ID = #{use_id}
 		</if>
 	</select>
 

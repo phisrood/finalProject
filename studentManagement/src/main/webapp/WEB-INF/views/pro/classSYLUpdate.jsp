@@ -67,7 +67,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			<textarea rows="8" cols="970" style="resize:none; width:970px;" name="cs_content;">${classSYL.cs_content }</textarea> 
+			<textarea rows="8" cols="970" id="cs_content" style="resize:none; width:970px;" name="cs_content">${classSYL.cs_content }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -77,7 +77,7 @@
 	</tr>
 	<tr>
 		<td colspan="4">
-			<textarea rows="8" cols="200" style="resize:none;width:970px;" name="cs_progress">${classSYL.cs_progress }</textarea> 
+			<textarea rows="8" cols="200" id="cs_progress"style="resize:none;width:970px;" name="cs_progress">${classSYL.cs_progress }</textarea> 
 		</td>
 	</tr>
 	<tr>
@@ -86,7 +86,7 @@
 		</th>
 		<td colspan='3'>
 			서명:<input type="text" name="cs_bookname" value="${classSYL.cs_bookname }"/>
-			판사항:<input type="text" name="cs_bookversion" value="${classSYL.cs_bookversion }"/><br/>
+			출판년도:<input type="text" name="cs_bookversion" value="${classSYL.cs_bookversion }"/><br/>
 			저자:<input type="text" name="cs_writer" value="${classSYL.cs_writer }"/><br/>
 			출판사:<input type="text" name="cs_publisher" value="${classSYL.cs_publisher }"/>
 		</td>
@@ -116,8 +116,12 @@
 </div>
 <script>
 	function updateSYLConfirm(){
+		$('#cs_content').val($('#cs_content').val().replace("/\n/g", "<br>"));
+		$('#cs_progress').val($('#cs_progress').val().replace("/\n/g", "<br>"));
+		alert($('#cs_content'));
+		alert($('#cs_progress'));
 		document.updateSyl.method="get";
-		document.updateSyl.action="/pro/updateSylConfirm?cs_lec_no=";
+		document.updateSyl.action="/pro/updateSylConfirm";
 		document.updateSyl.submit();
 	}
 </script>

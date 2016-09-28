@@ -8,8 +8,10 @@
 <head>
 <meta charset="UTF-8"/>
 <title></title>
+
 </head>
 <body >
+
 <div class="row">
 		<div class="x_panel_big">
 			<div class="x_panel" id="lecture_panel">
@@ -59,28 +61,29 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="3"   class="lectureContent lecture-border">
-		<ul style="list-style: none;">
+		<td colspan="3" class="lectureContent lecture-border" style="height: 100px; text-align: left;">
+		<ul style="list-style: none;"> 
 			<c:forEach items="${lectureTime }" var="time">
 				<li>${time.tt_time }</li>
 			</c:forEach>
 			</ul>
 		</td>
-		<td colspan="3"   class="lectureContent lecture-border">
-			서명:<p>${classSYL.cs_bookname },${classSYL.cs_bookversion }</p>
-			저자:<p>${classSYL.cs_writer }</p>
-			출판사:${classSYL.cs_publisher }
+		<td colspan="3" class="lectureContent lecture-border" style=" text-align: left;">
+			<ul style="list-style: none;">
+				<li>서명:&nbsp;${classSYL.cs_bookname }/${classSYL.cs_bookversion }</li>
+				<li>저자:&nbsp;${classSYL.cs_writer }</li>
+				<li>출판사:&nbsp;${classSYL.cs_publisher }</li>
+			</ul>
 		</td>
 	</tr>
-	
 	<tr>
 		<th class="lecture-border table-th"  colspan="6">
 			강의설명
 		</th>
 	</tr>
 	<tr>
-		<td colspan="6"   class="lectureContent lecture-border">
-			${classSYL.cs_content }
+		<td colspan="6"  id="cs_content" class="lectureContent lecture-border" style="height:200px;">  
+			<textarea readonly="readonly" style="resize:none; wrap:hard; width:100%; height: 200px;">${classSYL.cs_content }</textarea>
 		</td>
 	</tr>
 	<tr>
@@ -89,9 +92,9 @@
 		</th>
 	</tr>
 	<tr>
-		<td colspan="6"  class="lectureContent lecture-border">
-			${classSYL.cs_progress }
-		</td>
+		<td colspan="6" id="cs_progress"  class="lectureContent lecture-border"> 
+			<textarea readonly="readonly" style="resize:none; wrap:hard; width:100%; height: 100px;">${classSYL.cs_progress }</textarea>
+		</td> 
 	</tr>
 	<tr>
 		<th class="lecture-border table-th"  >중간고사</th>
@@ -117,7 +120,7 @@
 <a href="/pro/lectureList"><button class="btn btn-dark">뒤로</button></a>
 </div>
 <script type="text/javascript">
-	$("#htmlTag").val($("#tbl").html());
+	$("#htmlTag").val($("#tbl").html());	
 </script>
 </body>
 
