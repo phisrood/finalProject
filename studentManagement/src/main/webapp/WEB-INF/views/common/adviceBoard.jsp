@@ -27,7 +27,17 @@
 		table.order([ 0, 'desc' ]).draw();
 	});
 </script>
-
+<script>
+	function noId(){
+		swal({
+			title : "< Error! >",
+			text : "자신의 글만 확인 가능합니다.",
+			type : "error",
+			confirmButtonText : "닫기"
+		});
+		return false;
+	};
+</script>
 <div class="row">
 	<div class="x_panel_big">
 		<!-- 상담 게시판 -->
@@ -49,7 +59,7 @@
 						<th>제목</th>
 						<th>학생명</th>
 						<th>작성일</th>
-						<th>답변 상태</th>
+						<th>답변 상태</th>  
 					</tr>
 				</thead>
 				  
@@ -64,8 +74,16 @@
 							</c:if>
 							
 							<c:if test="${auth eq 'ROLE_STU' }">
-								<a href="/stu/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
-								${adviceBoard.adb_title }</a>
+								<c:choose>
+								<c:when test="${adviceBoard.adb_stud_use_id eq userId }">
+									<a href="/stu/adviceBoardUpdateDetail?adb_no=${adviceBoard.adb_no }">
+									${adviceBoard.adb_title }</a>
+								</c:when>
+								<c:otherwise>
+								<a href="#" onclick="noId();">  
+									${adviceBoard.adb_title }</a>  
+								</c:otherwise>
+								</c:choose>
 							</c:if>
 							</td>
 							<td>${adviceBoard.use_name }</td>

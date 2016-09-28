@@ -77,6 +77,10 @@ public class CyberCamOnlineConController {
 		String url = "/cyberCampus/pro/onlineConInsertForm";
 		String uploadPath=request.getSession().getServletContext().getRealPath("resources/common/onlineContentsAF");
 		
+		// 세션
+		int lec_no = Integer.parseInt((String) session.getAttribute("pro_lec_no"));
+		onlineContentsVO.setOc_lec_no(lec_no);
+		
 		MultipartFile multipartFile = onlineContentsVO.getFile();
 		Attachment_FileVO attachFileVO = new Attachment_FileVO();
 		if(!multipartFile.isEmpty()){

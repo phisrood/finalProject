@@ -57,7 +57,20 @@ $(document).ready(function() {
 });
 </script>
 <script>  
-   
+	$(document).ready(function() {
+	$("#submitBtn").click(function() {
+		if ($("#ad_reqdate").val() == "") {
+			swal({
+				title : "< Error! >",
+				text : "신청일자를 입력해주세요.",
+				type : "error",
+				confirmButtonText : "닫기"
+			});
+			$("#ad_reqdate").focus();
+			return false;
+		}
+	});
+	});
    function revoke(form) {
       var count = 0;
       for (var i = 0; i < form.ad_no.length; i++) {
@@ -91,9 +104,9 @@ $(document).ready(function() {
                   <c:forEach var="professor" items="${professorList}">
                      <option value="${professor.pro_use_id}">${professor.use_name}</option>
                   </c:forEach>
-               </select>
+               </select>  
             </div>
-            <br>
+            <br>  
             <div style="float: left; width: 50%;">
                상담 내용 : <select name="ad_purpose" class="btn btn-default">
                   <option value="취업">취업</option>
@@ -127,7 +140,7 @@ $(document).ready(function() {
             </div>  
             <br>
             <div align="center">
-               <input type="submit" class="btn btn-dark" value="상담신청" />
+               <input type="submit" class="btn btn-dark" value="상담신청" id="submitBtn"/>
             </div>
          </div>
       </div>

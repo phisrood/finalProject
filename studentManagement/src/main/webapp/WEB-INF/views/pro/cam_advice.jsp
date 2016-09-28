@@ -32,10 +32,23 @@
 		
 	}
 	function clientCam() {
-	
+
 	}
-	function chat() {
-		window.open("http://192.168.206.102:8888", "채팅","width=450, height=450");
+	function chat(ad_no) {	
+		$.ajax({
+	    	  url : "/pro/sendChannelId",
+	    	  method : "get",
+	    	  data : { 		  
+	    	  "channelId":"noId",
+	    	  "ad_no" :ad_no,
+	    	  "flag" : "open"
+	    	  },
+	    	  success : function(){
+	    	  
+	    	  }
+	      });
+		
+		window.open("http://192.168.206.102:8888?name=<c:out value="${userName}" />", "채팅","width=450, height=450");
 	}
 </script>
 	
@@ -96,7 +109,7 @@
 						</c:if>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '채팅'}">
-						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+						<button type="button" class="btn btn-dark" onClick='chat("${adviceVO.ad_no }")'>입 장</button>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '방문'}">
 					</c:when>
