@@ -1,5 +1,5 @@
 <%--==============================================================
- * 사이버 캠퍼스 자유 게시판 left 메뉴구성
+ * 수강편람조회
  * @author 조현욱
  * @since  2016.08.29.
  * @version 1.0
@@ -9,6 +9,7 @@
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱      		최초생성
+ *    2016.09.28.  	이수정      		수강편람	
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
@@ -79,7 +80,7 @@
 										<c:when test="${lb.lb_approvalyn=='Y'}">
 										<td>승인</td>
 										<td><button class="btn btn-dark" onclick="updateCrsesBook('${lb.lb_no}');">수정</button></td>
-										<td><button onclick="openLecture('${lb.lb_no}');">강의개설</button></td>
+										<td><button class="btn btn-dark" onclick="openLecture('${lb.lb_no}');">강의개설</button></td>
 									</c:when>
 									<c:when test="${lb.lb_approvalyn=='N' }">
 										<td>대기</td>
