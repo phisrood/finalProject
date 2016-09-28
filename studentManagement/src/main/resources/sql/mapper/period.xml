@@ -44,4 +44,8 @@
 		SET CB_ACQUISTIONYN = 'Y'
 		WHERE CB_ACQUISTIONYN = 'N'
 	</update>
+	
+	<delete id="deleteClassroomUsetime">
+		DELETE FROM CLASSROOM_USETIME
+	</delete>
 </mapper>

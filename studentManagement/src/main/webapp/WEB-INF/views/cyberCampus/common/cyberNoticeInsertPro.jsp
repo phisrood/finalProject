@@ -57,6 +57,9 @@ $(document).ready(function() {
              alert("내용에 최대 4000자까지만 입력할 수 있습니다.");
           $("#content").focus();
              return false;
+       } else if ($("#title").val() == "") {
+    	   
+    	   
        }
     });
  });

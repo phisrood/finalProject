@@ -54,11 +54,10 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 	private WebApplicationContext context= null;
 	/**
 	 * 학습자료실 리스트
-	 * @param	Model
+	 * @param	Model ,session
 	 * @return 	String
 	 * @throws 
 	 */
-	//학습게시판 리스트
 	@RequestMapping(value={"/cyberCampus/stu/studyBBSList","/cyberCampus/pro/studyBBSList"}, method=RequestMethod.GET)
 	public String studyBBSList(Model model, HttpSession session){
 		String url="/cyberCampus/common/studyBBSList";
@@ -74,13 +73,12 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 			
 		}
 		
-		
-		
 		List<LearningRoomViewVO> studyBBSList = cyberCamStudyBBSService.getStudyBBSList(lec_no);
 		model.addAttribute("studyBBSList", studyBBSList);
 		
 		return url;
 	}
+	
 	/**
 	 * 학습게시판 등록FORM이동
 	 * @param
@@ -93,6 +91,7 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 	
 		return url;
 	}
+	
 	/**
 	 * 학습게시판 등록
 	 * @param
@@ -125,13 +124,13 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 		
 		return url;
 	}
+	
 	/**
 	 * 학습게시판 파일다운로드
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//학습게시판 파일다운로드
 	@RequestMapping(value="/cyberCampus/common/studyBBSFileDown", method=RequestMethod.GET)
 	public ModelAndView download(@RequestParam(value="af_aftername") String af_aftername, HttpServletResponse response) throws IOException {
 		File downloadFile = getFile(af_aftername);
@@ -153,7 +152,7 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 	}
 	
 	/**
-	 * 개인 정보 조회
+	 * 학습게시판 상세보기
 	 * @param
 	 * @return 
 	 * @throws 
@@ -169,6 +168,7 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 		
 		return url;
 	}
+	
 	/**
 	 * 학습게시판수정 폼이동
 	 * @param
@@ -184,13 +184,13 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 		
 		return url;
 	}
+	
 	/**
 	 * 학습게시판수정
-	 * @param
+	 * @param	learning_RoomVO,attachment_FileVO,file_no,request,session
 	 * @return 
 	 * @throws 
 	 */
-	//학습게시판수정
 	@RequestMapping(value="/cyberCampus/pro/studyBBSUpdate", method=RequestMethod.POST)
 	public String studyBBSUpdate(Learning_RoomVO learning_RoomVO, Attachment_FileVO attachment_FileVO,HttpServletRequest request, HttpSession session,
 			@RequestParam(value="file", defaultValue="")MultipartFile multipartFile, @RequestParam(value="file_no", defaultValue="0")String file_no) throws IOException{
@@ -220,11 +220,10 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 	
 	/**
 	 * 학습게시판삭제
-	 * @param
-	 * @return 
+	 * @param 	learning_RoomVO
+	 * @return  String
 	 * @throws 
 	 */
-	//학습게시판삭제
 	@RequestMapping(value="/cyberCompus/pro/studyBBSDelete", method=RequestMethod.GET)
 	public String studyBBSDelete(Learning_RoomVO learning_RoomVO){
 		String url="redirect:/cyberCampus/pro/studyBBSList";

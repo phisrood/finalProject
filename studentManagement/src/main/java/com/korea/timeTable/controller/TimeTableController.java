@@ -1,7 +1,7 @@
 package com.korea.timeTable.controller;
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : TimeTableController.java
+ * @Description : 시간표 Controller
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -12,6 +12,7 @@ package com.korea.timeTable.controller;
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
  *    2016.08.29.  	조현욱        		최초생성
+ *    2016.09.28	김양문			메소드수정
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -33,13 +34,13 @@ import com.korea.timeTable.service.TimeTableService;
 public class TimeTableController {
 	@Autowired
 	private TimeTableService timeTableService;
+	
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 시간표 출력
+	 * @param session
+	 * @param model
+	 * @return String
 	 */
-	//수업시간표 조회
 	@RequestMapping(value="/stu/timeTableList", method=RequestMethod.GET)
 	public String timeTableList(HttpSession session, Model model){
 		String url="/stu/timeTable";
@@ -49,17 +50,5 @@ public class TimeTableController {
 		model.addAttribute("timetable", timeTableList);
 		return url;
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
-	//수업시간표 출력(pdf)
-	@RequestMapping(value="/stu/timeTablePDF", method=RequestMethod.GET)
-	public String timeTablePDF(){
-		String url="";
-		
-		return url;
-	}
+	
 }

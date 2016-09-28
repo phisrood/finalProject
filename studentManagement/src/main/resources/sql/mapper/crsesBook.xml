@@ -116,8 +116,9 @@
 		SELECT *
 		FROM
 		LECTURE_VIEW
+		WHERE LEC_MAKEYEAR = TO_CHAR(SYSDATE, 'yyyy')
 		<if test="_parameter != null">
-			WHERE LEC_LN_PRO_USE_ID = #{_parameter}
+			AND LEC_LN_PRO_USE_ID = #{_parameter}
 		</if>
 	</select>
 

@@ -48,6 +48,7 @@ public class PeriodDAOImpl implements PeriodDAO{
 	@Override
 	public void updateScoreSummary() {
 		sqlSession.update("period.updateScoreSummary");
+		sqlSession.delete("period.deleteClassroomUsetime");
 		
 	}
 

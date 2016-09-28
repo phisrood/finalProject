@@ -59,6 +59,8 @@ function FileType() {
 <meta charset="UTF-8">
 <title></title>
 </head>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/custom.min.css" rel="stylesheet">
 <body>
 
 
