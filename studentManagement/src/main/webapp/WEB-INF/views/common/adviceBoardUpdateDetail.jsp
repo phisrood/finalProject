@@ -35,7 +35,7 @@ html, body {
 	
 <div class="row">
 	<!-- 상담 게시글 작성 -->
-	<div class="x_panel_big" style="height:500px;" >
+	<div class="x_panel_big" style="height:600px;" >
 	<div class="x_title">
 		<h2>상담 게시글 상세</h2>
 		<div class="clearfix"></div>
@@ -72,10 +72,10 @@ html, body {
 						value="${adb_stud_use_id }" disabled="disabled"  style="width: 100%;">
 				</div>
 			</div>
-			<div class="form-group" style="height: 150px;">
-					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<p>${adb_content}</p>
+			<div class="form-group" style="height: 240px;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12" >내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12" style=" height: 240px;min-height: 10px; max-height:250px; overflow: scroll;">
+						${adb_content}
 					</div>
 			</div>
 			<div class="form-group">
@@ -96,12 +96,12 @@ html, body {
 			</div>
 		</div>
 		</div>
-	<div class="x_panel_big" style="height:250px;" >
+	<div class="x_panel_big" style="height:200px;" >
 	<div class="x_title">
 		<h2>상담 게시글 답변</h2>
 		<div class="clearfix"></div>
 	</div>	
-	<div class="x_content" style="height: 80%">
+	<div class="x_content" style="height: 80%; font-size:15px;"  >
 			<c:if test="${adb_commentstat == 'N'}">
 				등록된 답변이 없습니다.
 			</c:if>
@@ -116,7 +116,7 @@ html, body {
 		<form method="post" action="/pro/adviceBoardReply">
 		<input type="hidden" name="adb_no" value="${adb_no }"/>
 		
-		<div >
+		<div>
 			<br>
 			<c:if test="${auth eq 'ROLE_PRO' }">
 				작성자 : ${loginUserId } <br />

@@ -1,9 +1,9 @@
 package com.korea.login.controller;
 /**
  * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Description : 로그인 컨트롤러
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -11,7 +11,8 @@ package com.korea.login.controller;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.06.   한돈희                  개발완료
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -31,7 +32,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -69,15 +69,13 @@ public class LoginController {
 	
 	/**
 	 * 메인실행 로그인폼
-	 * @param
-	 * @return 0
-	 * @throws 
+	 * @param session
+	 * @return String
 	 */
 	@RequestMapping(value="/common/loginForm")
 	public String loginForm(HttpSession session){
 		String url = "/error";
 		UsersVO usersVO = (UsersVO) session.getAttribute("loginUser");
-		
 		//로그인이 되어있으면 로그인폼 못감.
 		if(usersVO != null){
 			if(usersVO.getUse_kind().equals("student")){
@@ -90,17 +88,13 @@ public class LoginController {
 		}else{
 			url = "/common/loginForm";
 		}
-		
-		
 		return url;
 	}
 	/**
-	 * 메인화면
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메인화면이동
+	 * @param session, model
+	 * @return String
 	 */
-	//메인
 	@SuppressWarnings("unused")
 	@RequestMapping({"/stu/main","/pro/main","/emp/main"})
 	public String main(HttpSession session, Model model){
@@ -153,16 +147,13 @@ public class LoginController {
 		session.setAttribute("employeeInfo", employeeInfo);
 		session.setAttribute("messageCount", messageCount);
 		
-		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 로그아웃
+	 * @param session
+	 * @return String
 	 */
-	//로그아웃
 	@RequestMapping(value="/common/logout")
 	public String logout(HttpSession session){
 		String url="redirect:/common/loginForm";
@@ -174,12 +165,11 @@ public class LoginController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 로그인 프로세스
+	 * @param session
+	 * @return String
+	 * @throws IOException
 	 */
-	//로그인 액터별 화면분기
 	@RequestMapping(value="/common/login")
 	public String login(HttpSession session) throws IOException{
 		String url = "redirect:/common/login_error";
@@ -206,25 +196,24 @@ public class LoginController {
 			url="redirect:/emp/main";
 		}
 		
-		
-		
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 비밀번호찾기 폼이동
+	 * @return String 
 	 */
-	//비밀번호찾기 폼
 	@RequestMapping(value="/common/pwdSearchForm")
 	public String pwdSearchForm(){
 		String url="/common/searchPwd";
 		
 		return url;
 	}
-	
-	//비밀번호찾기 이메일 구현
+	/**
+	 * 비밀번호찾기 이메일 구현
+	 * @param id, birth, response, model
+	 * @return String
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/common/pwdSearch", method=RequestMethod.POST)
 	public String pwdSearch(@RequestParam(value="id", defaultValue="")String id,
 							@RequestParam(value="birth", defaultValue="")String birth, HttpServletResponse response, Model model) throws IOException{
@@ -236,7 +225,10 @@ public class LoginController {
 		return url;
 	}
 	
-	//에러
+	/**
+	 * 에러페이지
+	 * @return String
+	 */
 	@RequestMapping(value="/common/error")
 	public String error(){
 		String url="/error";
@@ -244,14 +236,21 @@ public class LoginController {
 		return url;
 	}
 	
-	//로그인에러
+	/**
+	 * 로그인에러페이지
+	 * @return String
+	 */
 	@RequestMapping(value="/common/login_error")
 	public String login_error(){
 		String url="/login_error";
 		
 		return url;
 	}
-	//접근권한에러
+	
+	/**
+	 * 접근권한에러페이지
+	 * @return String
+	 */
 	@RequestMapping(value="/common/auth_error")
 	public String auth_error(){
 		String url="/auth_error";
@@ -259,7 +258,11 @@ public class LoginController {
 		return url;
 	}
 	
-	//로그인 체크
+	/**
+	 * 로그인체크
+	 * @param id, pwd, response
+	 * @return void
+	 */
 	@RequestMapping(value="/common/loginCheck")
 	public void loginCheck(@RequestParam(value="use_id")String id, @RequestParam(value="use_pwd")String pwd,
 							HttpServletResponse response){
@@ -269,7 +272,6 @@ public class LoginController {
 		try {
 			encPwd = sp.encrypt(pwd);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		response.setContentType("text/html; charset=UTF-8;");
@@ -296,7 +298,6 @@ public class LoginController {
 			String str = jsonObject.writeValueAsString(loginCheck);
 			response.getWriter().print(str);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException ei){
 			ei.printStackTrace();

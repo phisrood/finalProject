@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.korea.dto.Colleage_Register_ChangeVO;
@@ -40,6 +42,7 @@ import com.korea.dto.StudentVO;
 import com.korea.dto.Student_InfoViewVO;
 import com.korea.dto.UsersVO;
 import com.korea.indivInfoManage.service.IndivInfoManageService;
+import com.korea.security.SecurityProcess;
 
 @Controller
 public class IndivInfoManageController {
@@ -81,34 +84,74 @@ public class IndivInfoManageController {
 	 * @throws 
 	 */
 	@RequestMapping(value="/stu/indivUpdate", method=RequestMethod.POST)
-	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO, 
-							@RequestParam(value="after_use_pwd1", defaultValue="")String password){
+	public String indivUpdate(HttpSession session, Model model, StudentVO studentVO){
 		String url = "/stu/colleage/indivInfo";
-		
-		
-		
 		
 		//세션 아이디 받아오기
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 		String stud_use_id = loginUser.getUse_id();
 		
-		HashMap<String , String> params = new HashMap<String , String>();
-		params.put("stud_use_id",stud_use_id);
-		params.put("password",password);
+		studentVO.setStud_use_id(stud_use_id);
 		
 		//받아온 아이디로 개인정보수정
 		indivInfoManageService.updateIndiv(studentVO);
 		
 		
-		//받아온 아이디로 비밀번호수정
-		indivInfoManageService.updateIndiv(params);
-
 		//받아온 아이디로 검색결과 출력
 		Student_InfoViewVO studentViewVO =  indivInfoManageService.getIndivInfo(stud_use_id);
 		model.addAttribute("studentVO",studentViewVO);
 		
 
 		
+		
+		return url;
+	}
+	/**
+	 * 패스워드변경
+	 * @param
+	 * @return 
+	 * @throws 
+	 */
+	@RequestMapping(value="/stu/indivPwdUpdate", method=RequestMethod.POST)
+	public String indivPwdUpdate(@RequestParam(value="now_use_pwd")String nowPwd,
+									@RequestParam(value="after_use_pwd1")String chgPwd,HttpSession session,
+									Model model){
+		String url = "/stu/colleage/indivInfo";
+		String message="";
+		
+		SecurityProcess sp = new SecurityProcess();
+		
+		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		String loginPwd = loginUser.getUse_pwd(); //현재비밀번호
+		String id = loginUser.getUse_id(); //아이디
+		String encPwd = ""; // 암호화 비밀번호
+		String chgEncPwd = "";
+		
+		try {
+			encPwd = sp.encrypt(nowPwd); //암호화해서
+			chgEncPwd = sp.encrypt(chgPwd); //변경할 비밀번호 암호화
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("stud_use_id", id);
+		params.put("password",chgEncPwd);
+		if(!(loginPwd.equals(encPwd))){
+			message = "error";
+		}else if(loginPwd.equals(encPwd)){
+			indivInfoManageService.updateIndiv(params);
+			message = "success";
+		}
+		//받아온 아이디로 검색결과 출력
+		Student_InfoViewVO studentVO =  indivInfoManageService.getIndivInfo(id);
+		
+		loginUser.setUse_pwd(chgEncPwd);
+		session.setAttribute("loginUser", loginUser);
+		
+		model.addAttribute("studentVO",studentVO);
+		model.addAttribute("message", message);
 		
 		return url;
 	}

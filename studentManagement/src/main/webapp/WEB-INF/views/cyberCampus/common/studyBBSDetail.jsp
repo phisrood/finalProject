@@ -48,8 +48,8 @@
 				</div>
 				<div class="form-group" style="height: 90%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<p>${learningRoomViewVO.lr_content}</p>
+					<div class="col-md-9 col-sm-9 col-xs-12"  style="height: 100%;min-height: 100px; max-height:550px; overflow: scroll;">
+						${learningRoomViewVO.lr_content}
 					</div>
 				</div>
 

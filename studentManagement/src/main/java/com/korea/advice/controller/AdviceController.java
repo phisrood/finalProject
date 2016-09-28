@@ -191,9 +191,10 @@ public class AdviceController {
 		
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-				
+		String userId = user.getUse_id();		
 		List<Advice_BoardVO> adviceBoardList = adviceService.getAdviceBoardList();
 		
+		model.addAttribute("userId", userId);
 		model.addAttribute("auth", user.getAuthority());
 		model.addAttribute("adviceBoardList", adviceBoardList);
 		return url;
@@ -409,12 +410,16 @@ public class AdviceController {
 	@RequestMapping(value = "/stu/camAdvice", method = RequestMethod.GET)
 	public String camAdviceStu(Model model,HttpSession session) {
 		String url = "/stu/cam_advice";
+		
 		// 세션
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
 		String loginUser = user.getAuthority();
 		
 		List<AdviceVO> adviceList = adviceService.getMyAdviceReqeustList(user.getUse_id());
 		
+		String userName = user.getUse_name();
+		
+		model.addAttribute("userName", userName);
 		model.addAttribute("auth", loginUser);
 		model.addAttribute("adviceList", adviceList);
 		return url;
@@ -436,32 +441,37 @@ public class AdviceController {
 		
 		return adviceList;
 	}
-	
-	/**
-	 * 화상상담(교수)
-	 * @param model, session
-	 * @return String
-	 */
-	@RequestMapping(value = "/pro/camAdvice", method = RequestMethod.GET)
-	public String camAdvicePro(Model model,HttpSession session) {
-		String url = "/pro/cam_advice";
-		// 세션
-		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		String loginUser = user.getAuthority();
-		
-		List<AdviceVO> adviceList = adviceService.getMyAdviceResponseList(user.getUse_id());
-		
-		model.addAttribute("auth", loginUser);
-		model.addAttribute("adviceList", adviceList);
-		return url;
-	}
+	// //////////////////////////////화상상담추가//////////////////////////////
+
+		/**
+		 * 교수가 받은 상담신청조회
+		 * 
+		 * @param
+		 * @return
+		 * @throws
+		 */
+		@RequestMapping(value = "/pro/camAdvice", method = RequestMethod.GET)
+		public String camAdvicePro(Model model,HttpSession session) {
+			String url = "/pro/cam_advice";
+			// 세션
+			UsersVO user = (UsersVO) session.getAttribute("loginUser");
+			String loginUser = user.getAuthority();
+			
+			List<AdviceVO> adviceList = adviceService.getMyAdviceResponseList(user.getUse_id());
+			String userName = user.getUse_name();
+			
+			model.addAttribute("userName", userName);
+			model.addAttribute("auth", loginUser);
+			model.addAttribute("adviceList", adviceList);
+			return url;
+		}
 
 	/**
 	 * 상담상태 변환
 	 * @param channelId, ad_no, flag
 	 * @return void
 	 */
-	@RequestMapping(value = "/pro/sendChannelId", method = RequestMethod.GET)
+	@RequestMapping(value = {"/pro/sendChannelId","/stu/sendChannelId"}, method = RequestMethod.GET)
 	public void updateChannelId(String channelId,String ad_no,String flag) {
 		if(flag.equals("open")){
 			adviceService.updateChannelId(channelId,ad_no);

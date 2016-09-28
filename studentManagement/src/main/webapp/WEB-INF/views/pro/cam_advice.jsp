@@ -32,10 +32,23 @@
 		
 	}
 	function clientCam() {
-	
+
 	}
-	function chat() {
-		window.open("http://192.168.206.102:8888", "채팅","width=450, height=450");
+	function chat(ad_no) {	
+		$.ajax({
+	    	  url : "/pro/sendChannelId",
+	    	  method : "get",
+	    	  data : { 		  
+	    	  "channelId":"noId",
+	    	  "ad_no" :ad_no,
+	    	  "flag" : "open"
+	    	  },
+	    	  success : function(){
+	    	  
+	    	  }
+	      });
+		
+		window.open("http://192.168.206.102:8888?name=<c:out value="${userName}" />", "채팅","width=450, height=450");
 	}
 </script>
 	
@@ -96,7 +109,7 @@
 						</c:if>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '채팅'}">
-						<button type="button" class="btn btn-dark" onClick="chat();">입 장</button>
+						<button type="button" class="btn btn-dark" onClick='chat("${adviceVO.ad_no }")'>입 장</button>
 					</c:when>
 					<c:when test="${adviceVO.ad_way eq '방문'}">
 					</c:when>
@@ -123,30 +136,28 @@
 			  <div class="container">
     <div class="row">
 
-      <div class="col-md-12">
-        <h1 class="page-header">사이버 상담실</h1>
-      </div>
-
+      
+	<div style="margin:20px;">
       <div class="col-md-6">
         <h2 class="h3">교수</h2>
         <h3 class="h4">화상 상담실 생성</h3>
         <form class="form-inline">
           <div class="form-group">
             <label class="sr-only" for="createChannelId">Channel Id</label>
-            <input class="form-control" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
+            <input class="form-control" style="width:220px;" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
           </div>
-          <button class="btn btn-default" id="createChannel">
-            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 상담실 생성
+          <button class="btn btn-dark" id="createChannel">
+            <span  aria-hidden="true"></span> 상담실 생성
           </button>
         </form>
         
         <form class="form-inline">
           <div class="form-group">
-            <label for="seclectFile">파일전송</label>
+            <label for="seclectFile"><h4>파일전송</h4></label>
             <input type="file" id="seclectFile">
           </div>
-          <button class="btn btn-default" id="send">
-            <span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send
+          <button class="btn btn-dark" id="send">
+            <span aria-hidden="true"></span> Send
           </button>
         </form>
 
@@ -158,6 +169,7 @@
         <!-- <video class="remote-video center-block" id="calleeRemoteVideo"></video>
         <video class="local-video pull-right" id="calleeLocalVideo"></video> -->
 
+	</div>
     </div>
   </div>
 
@@ -279,7 +291,7 @@
   </script>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="modalClose();">종료</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="close" onclick="modalClose();">종료</button>
 			</div>
 		</div>
 	</div>

@@ -17,10 +17,86 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/common/js/ckeditor/js/ckeditor.js"></script>
-
+	<script type="text/javascript">
+		function fileType() {
+				var thumbext = document.getElementById('file').value; //파일을 추가한 input 박스의 값
+	
+				thumbext = thumbext.slice(thumbext.indexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
+	
+				if(thumbext != "mp4"){ //확장자를 확인합니다.
+					swal({
+						title : "< Error! >",
+						text : "인터넷강의는 mp4파일만 지원합니다.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+					$("#file").val(null);
+					return false;
+	
+				}		   
+			}
+	</script>
 	<script>	
-	$(document).ready(function() {		
+	$(function() {	
+		$("#submitBtn").click(function() {
+			   var re = /^[0-9]+$/; //숫자만
+			   var fileLength = $("#file").val();
+		       if ($("#oc_content").val() == "") {
+		    	   swal({
+						title : "< Error! >",
+						text : "강의제목을 입력해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		          $("#oc_content").focus();
+		          return false;
+		       }else if ($("#oc_startdate").val() == "") {
+		    	   swal({
+						title : "< Error! >",
+						text : "학습시작기간을 입력해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		          $("#oc_startdate").focus();
+		             return false;
+		       }else if ($("#oc_enddate").val() == "") {
+		    	   swal({
+						title : "< Error! >",
+						text : "학습마감기간을 입력해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		          $("#oc_time").focus();
+		             return false;
+		       }else if (fileLength.length == 0) {
+		    	   swal({
+						title : "< Error! >",
+						text : "강의파일을 등록해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		             return false;
+		       }else if ($("#oc_time").val() == "") {
+		    	   swal({
+						title : "< Error! >",
+						text : "출석인정시간을 입력해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		          $("#oc_time").focus();
+		             return false;
+		       }else if (!re.test($("#oc_time").val())) {
+		    	   swal({
+						title : "< Error! >",
+						text : "출석인정시간은 숫자로만 입력해주세요.",
+						type : "error",
+						confirmButtonText : "닫기"
+					});
+		          $("#oc_time").focus();
+		             return false;
+		       }
+		    });
+		
 		$("#oc_startdate").datepicker(
 				{
 					showOn: "button",
@@ -69,39 +145,6 @@
 						
 					});
 			
-			$("#submitBtn").click(function() {
-				alert("ss");
-				   var re = /^[0-9]+$/; //숫자만
-					
-			       if ($("#oc_content").val() == "") {
-			    	   swal({
-							title : "< Error! >",
-							text : "제목을 입력해주세요.",
-							type : "error",
-							confirmButtonText : "닫기"
-						});
-			          $("#oc_content").focus();
-			          return false;
-			       }else if ($("#oc_time").val() == "") {
-			    	   swal({
-							title : "< Error! >",
-							text : "내용을 입력해주세요.",
-							type : "error",
-							confirmButtonText : "닫기"
-						});
-			          $("#oc_time").focus();
-			             return false;
-			       }else if (!re.test($("#oc_time").val())) {
-			    	   swal({
-							title : "< Error! >",
-							text : "출석인정시간은 숫자로만 입력해주세요.",
-							type : "error",
-							confirmButtonText : "닫기"
-						});
-			          $("#oc_time").focus();
-			             return false;
-			       }
-			    });
 	});
 	</script>
 
@@ -120,7 +163,7 @@
 					<tr>
 						<td>
 							강의 제목 &nbsp;: &nbsp;
-							<input name="oc_content" type="text" size="165" id="oc_content">
+							<input name="oc_content" type="text" size="165" id="oc_content" maxlength="15" placeholder="최대 15자">
 						</td>
 					</tr>
 					<tr>
@@ -139,13 +182,13 @@
 						<td>
 							<div style="float: left; width: 7%;">첨부 파일 &nbsp;: </div>
 							<div style="float: left; width: 93%;">
-							<input type="file" name="file" accept="video/*"></div>
+							<input type="file" name="file" accept="video/*" onchange="fileType()" id="file" ></div>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							출석 인정 시간 &nbsp;: &nbsp;
-							<input name="oc_time" type="text" size="161" placeholder="숫자로만 입력" id="oc_time">
+							<input name="oc_time" type="text" size="161" placeholder="숫자로만 입력" id="oc_time"  maxlength="3">
 						</td>  
 					</tr>
 				</table>

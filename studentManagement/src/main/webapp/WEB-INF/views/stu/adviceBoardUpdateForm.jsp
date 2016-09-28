@@ -110,7 +110,7 @@ $(document).ready(function() {
 		<br><br>
 		<div class="form-group" style="height: 60%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
+					<div class="col-md-9 col-sm-9 col-xs-12" >
 						<textarea class="form-control" name="adb_content" style="width:1000px;height:500px;" id="adb_content">${adb_content }</textarea>
 					</div>
 		</div>
