@@ -1,9 +1,9 @@
 package com.korea.message.controller;
 /**
  * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Description : 메시지 컨트롤러
  * @Modification Information
- * @author 조현욱
+ * @author 한돈희
  * @since  2016.08.29.
  * @version 1.0
  * @see
@@ -11,7 +11,8 @@ package com.korea.message.controller;
  * << 개정이력(Modification Information) >>
  *    	수정일       	수정자          		수정내용
  *    -------      -------     -------------------
- *    2016.08.29.  	조현욱        		최초생성
+ *    2016.08.29.  	한돈희        		최초생성
+ *    2016.09.11.   한돈희			개발완료
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
  */
@@ -19,7 +20,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -45,9 +45,8 @@ public class MessageController {
 	
 	/**
 	 * 메시지 전체리스트
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param session, model
+	 * @return String
 	 */
 	@RequestMapping(value={"/stu/messageAllList","/pro/messageAllList","/emp/messageAllList"}, method=RequestMethod.GET)
 	public String messageAllList(HttpSession session, Model model){
@@ -69,8 +68,7 @@ public class MessageController {
 	/**
 	 * 받은쪽지조회
 	 * @param message_no, response
-	 * @return null
-	 * @throws 
+	 * @return void
 	 */
 	@RequestMapping(value="/common/messageSendInfo", method=RequestMethod.GET)
 	public void messageSendInfo(@RequestParam(value="message_no")String message_no,
@@ -84,13 +82,16 @@ public class MessageController {
 			String str = jsonObject.writeValueAsString(messageInfo);
 			response.getWriter().print(str);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException ei){
 			ei.printStackTrace();
 		}
 	}
-	//보낸쪽지조회
+	/**
+	 * 보낸쪽지조회
+	 * @param message_no, response
+	 * @return void
+	 */
 	@RequestMapping(value="/common/messageReciveInfo", method=RequestMethod.GET)
 	public void messageReciveInfo(@RequestParam(value="message_no")String message_no,
 			HttpServletResponse response){
@@ -103,19 +104,15 @@ public class MessageController {
 			String str = jsonObject.writeValueAsString(messageInfo);
 			response.getWriter().print(str);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException ei){
 			ei.printStackTrace();
 		}
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 수신 사용자 검색폼
+	 * @return String
 	 */
-	//수신사용자검색
 	@RequestMapping(value="/common/messageUserSearchForm", method=RequestMethod.GET)
 	public String messageUserSearchForm(){
 		String url="/common/messageMemberSearch";
@@ -123,12 +120,10 @@ public class MessageController {
 		return url;
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 수신 사용자 검색 리스트
+	 * @param model, response
+	 * @return void
 	 */
-	//수신사용자검색
 	@RequestMapping(value="/common/messageUserSearch", method=RequestMethod.GET)
 	public void messageUserSearch(Model model, HttpServletResponse response){
 		
@@ -140,19 +135,16 @@ public class MessageController {
 			String str = jsonObject.writeValueAsString(usersList);
 			response.getWriter().print(str);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException ei){
 			ei.printStackTrace();
 		}
 	}
 	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 발신
+	 * @param messageVO, session
+	 * @return String
 	 */
-	//쪽지발신
 	@RequestMapping(value={"/stu/messageSend","/pro/messageSend", "/emp/messageSend", "/common/messageSend"}, method=RequestMethod.POST)
 	public String messageSend(MessageVO messageVO, HttpSession session){
 		String url="redirect:/common/error";
@@ -171,12 +163,10 @@ public class MessageController {
 		return url;
 	}
 	/**
-	 * 쪽지삭제
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 보낸 메시지 삭제
+	 * @param message_no, delyn, session
+	 * @return String
 	 */
-	//받은쪽지삭제
 	@RequestMapping(value="/common/messageSendDelete", method=RequestMethod.GET)
 	public String messageSendDelete(@RequestParam(value="message_no", defaultValue="")int message_no,
 								@RequestParam(value="delyn")String delyn,
@@ -196,12 +186,10 @@ public class MessageController {
 		return url;
 	}
 	/**
-	 * 쪽지삭제
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 받은 메시지 삭제
+	 * @param message_no, delyn, session
+	 * @return String
 	 */
-	//보낸쪽지삭제
 	@RequestMapping(value="/common/messageReciveDelete", method=RequestMethod.GET)
 	public String messageReciveDelete(@RequestParam(value="message_no", defaultValue="")int message_no,
 			@RequestParam(value="delyn")String delyn,
@@ -222,12 +210,10 @@ public class MessageController {
 	}
 	
 	/**
-	 * 선택삭제
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 받은 메시지 체크박스 선택삭제
+	 * @param session, mes_no
+	 * @return String
 	 */
-	//쪽지 체크삭제(받은)
 	@RequestMapping(value={"/stu/messageSendChkDel","/pro/messageSendChkDel", "/emp/messageSendChkDel"}, method=RequestMethod.POST)
 	public String messageSendChkDel(HttpSession session, @RequestParam("sendChk")String[] mes_no){
 		String url="redirect:/common/error";
@@ -253,12 +239,10 @@ public class MessageController {
 		return url;
 	}
 	/**
-	 * 선택삭제
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 보낸 메시지 체크박스 선택삭제
+	 * @param session, mes_no
+	 * @return String
 	 */
-	//쪽지 체크삭제(보낸)
 	@RequestMapping(value={"/stu/messageReciveChkDel","/pro/messageReciveChkDel", "/emp/messageReciveChkDel"}, method=RequestMethod.POST)
 	public String messageReciveChkDel(HttpSession session, @RequestParam("reciveChk")String[] mes_no){
 		String url="redirect:/common/error";
@@ -285,12 +269,10 @@ public class MessageController {
 	}
 	
 	/**
-	 * 쪽지답장폼
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 메시지 답장 폼
+	 * @param send, model, session
+	 * @return String
 	 */
-	//쪽지답장
 	@RequestMapping(value="/common/messageReplyForm", method=RequestMethod.GET)
 	public String messageReplyForm(String send, Model model, HttpSession session){
 		String url="/common/messageReply";
@@ -301,7 +283,11 @@ public class MessageController {
 		return url;
 	}
 	
-	//쪽지답장보내기
+	/**
+	 * 메시지 답장 
+	 * @param messageVO, session, response
+	 * @return void
+	 */
 	@RequestMapping(value="/common/messageReplySend", method=RequestMethod.POST)
 	public void messageReplySend(MessageVO messageVO, HttpSession session, HttpServletResponse response){
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
@@ -313,7 +299,6 @@ public class MessageController {
 			out = response.getWriter();
 			out.print("<script> window.close();</script>");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
