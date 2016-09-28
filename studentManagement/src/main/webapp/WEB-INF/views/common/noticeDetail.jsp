@@ -29,7 +29,7 @@
 <div class="row">
 
 	<!-- page content -->
-	<div class="x_panel_big" style="height:600px;" >
+	<div class="x_panel_big" style="height:700px;" >
 		<div class="x_title">
 			<h2>공지사항</h2>
 
@@ -42,16 +42,18 @@
 				<div class="form-group" style="height: 10%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<p>${noticeDetailViewVO.cn_title}</p>
+					<input type="text" class="form-control"
+					value="${noticeDetailViewVO.cn_title}" disabled="disabled"  style="width: 100%;">
 					</div>
 				</div>
-				<div class="form-group" style="height: 60%;">
+				<div class="form-group"  >
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12">
-						<p>${noticeDetailViewVO.cn_content}</p>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height:500px; overflow: auto;">
+						${noticeDetailViewVO.cn_content}
 					</div>
 				</div>
-
+			<br /><br />
+			<br /><br />
 				<div class="form-group">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
