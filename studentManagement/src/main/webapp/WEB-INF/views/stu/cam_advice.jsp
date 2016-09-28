@@ -32,8 +32,8 @@
 
 <style>
 .local-video {
-	width: 80px;
-	height: 60px;
+	width: 20%;
+	height: 20%;
 	z-index: 10;
 	position: relative;
 	top: -100px;
@@ -43,8 +43,10 @@
 .remote-video {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	width: 320px;
-	height: 240px;
+	margin-left: 20px;
+	margin-right: 5px;
+	width: 90%;
+	height: 30%;
 }
 </style>
 
@@ -164,25 +166,29 @@
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="title">화상상담</h4>
+				<h4 class="modal-title" id="title">사이버 상담실</h4>
 			</div>
 
 			  <div class="container">
     <div class="row">
-      
-          <div class="col-md-6">
+    
+      	<form class="form-inline">
+	      <div class="col-md-12">
+	        <h1 class="page-header">화상상담</h1>  
+	        <br>    
+	      </div>
+     	</form>
+ 	
+          <div class="col-md-6" style="width:90%;height:30%;">
         <h2 class="h3">학생</h2>
         <h3 class="h4">화상 상담실 입장</h3>
-        <form class="form-inline">
+        
           <div class="form-group">
             <label class="sr-only" for="connectChannelId">Channel Id</label>
-            <input class="form-control" type="text" id="connectChannelId" placeholder="상담실 코드">
+            <input type="text" id="connectChannelId" placeholder="상담실 코드">
+            <button class="btn btn-default" id="connectChannel">상담실 입장</button>
           </div>
-          <button class="btn btn-default" id="connectChannel">
-            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Connect Channel
-          </button>
-        </form>
-        
+            
         <div class="row">
           <div class="col-md-8">
             <div class="progress">
@@ -191,9 +197,7 @@
             </div>
           </div>
           <div class="col-md-2">
-            <button class="btn btn-default" id="receive">
-              <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> 파일받기
-            </button>
+            <button class="btn btn-default" id="receive">파일받기</button>
           </div>
         </div>
 		
