@@ -5,8 +5,8 @@ import java.util.List;
 import com.korea.dto.TimeTableViewVO;
 
 /**
- * @Interface Name : IndivInfoManageDAO.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Interface Name : TimeTableDAO.java
+ * @Description : 시간표 DAO
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -21,14 +21,7 @@ import com.korea.dto.TimeTableViewVO;
  * </pre>
  */
 public interface TimeTableDAO {
-	/**
-	 * @return 
-	 * @param id 
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
 	//수업시간표 조회
 	public List<TimeTableViewVO> getTimeTableList(String id);
 }

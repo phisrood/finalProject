@@ -9,8 +9,8 @@ import com.korea.dto.TimeTableViewVO;
 import com.korea.timeTable.dao.TimeTableDAO;
 
 /**
- * @Class Name : IndivInfoManageController.java
- * @Description : 개인 정보 조회 / 수정 및 학적 변동 현황
+ * @Class Name : TimeTableServiceImpl.java
+ * @Description : 시간표 service 구현
  * @Modification Information
  * @author 조현욱
  * @since  2016.08.29.
@@ -28,12 +28,7 @@ import com.korea.timeTable.dao.TimeTableDAO;
 public class TimeTableServiceImpl implements TimeTableService{
 	@Autowired
 	private TimeTableDAO timeTableDAO;
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//시간표 가져오기
 	@Override
 	public List<TimeTableViewVO> getTimeTableList(String id) {
 			return timeTableDAO.getTimeTableList(id);
