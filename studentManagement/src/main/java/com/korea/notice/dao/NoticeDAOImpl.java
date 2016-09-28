@@ -33,34 +33,19 @@ public class NoticeDAOImpl implements NoticeDAO{
 	@Autowired
 	SqlSession sqlSession;
 	
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//공지사항 새 글 리스트
 	@Override
 	public List<Colleage_NoticeVO> getNoticeNewList() {
 		return sqlSession.selectList("ColleageNotice.noticeNewList");
 	}
-	/**
-	 * @return 
-	 * 공지 상세
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//공지사항상세
 	@Override
 	public NoticeViewVO getNoticeDetailInfo(int cn_no) {
 		return(NoticeViewVO) sqlSession.selectOne("ColleageNotice.noticeDetail", cn_no);
 	}
-	/**
-	 * @return 
-	 * 공지리스트
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//공지사항전체리스트
 	@Override
 	public List<NoticeViewVO> getNoticeAllList() {
 		List<NoticeViewVO> noticeAllList = 
@@ -68,57 +53,36 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return noticeAllList;
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//공지사항 수정
 	@Override
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		sqlSession.update("ColleageNotice.noticeUpdate",colleage_NoticeVO);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	//공지사항 파일수정
 	@Override
 	public void updateNoticeFile(Attachment_FileVO attachment_FileVO) {
 		sqlSession.update("ColleageNotice.noticeFileUpdate",attachment_FileVO);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+
+	//공지사항 삭제
 	@Override
 	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		sqlSession.delete("ColleageNotice.noticeDelete",colleage_NoticeVO);
 		
 	}
-	/**
-	 * 개인 정보 조회
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	//공지사항 등록
 	@Override
 	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO) {
 		
 		sqlSession.insert("ColleageNotice.insertNotice",colleage_NoticeVO);
 		
 	}
-	/**
-	 * 공지사항 파일업로드
-	 * @param
-	 * @return 
-	 * @throws 
-	 */
+	
+	//공지사항 파일 등록
 	@Override
 	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO) {
 		

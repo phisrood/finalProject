@@ -27,8 +27,8 @@
     <link href="/bootstrap/css/green.css" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="/bootstrap/css/jqvmap.min.css" rel="stylesheet"/>
-    <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     <link href="/common/css/default.css" rel="stylesheet">
+    <link href="/bootstrap/css/custom.min.css" rel="stylesheet">
     
     <script src="/common/js/notice.js"></script>
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -78,43 +78,43 @@
 				var menu="";
 				
 				if(str == '확인'){
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 80%;\">이름 : ${adviceVO.use_name }</div>";
-					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
-					menu+="<div style=\"float: right; width: 30%;\">상담 내용 : ${adviceVO.ad_purpose }</div>";
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 30%;\">날짜 : ${adviceVO.ad_reqdate }</div>";
-					menu+="<div style=\"float: right; width: 30%;\">시간 : ${adviceVO.ad_time } 시</div>";
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 50%;\"></div>";
-					menu+="<div style=\"float: right; width: 20%;\">";
+					menu+="<div style=\"width:500px;margin:50px;font-size:20px;\">";
+					menu+="<div>이름 : ${adviceVO.use_name }</div>";
+					menu+="<div>학번 : ${adviceVO.ad_stud_use_id }</div>";
+					menu+="<div >상담 방법 : ${adviceVO.ad_way }</div>";
+					menu+="<div>상담 내용 : ${adviceVO.ad_purpose }</div>";
+					menu+="<div>날짜 : ${adviceVO.ad_reqdate }</div>";
+					menu+="<div>시간 : ${adviceVO.ad_time } 시</div>";
+					menu+="<div></div>";
+					menu+="<div>";
 					menu+="</div><br />";
 					menu+="<form method=\"post\" action=\"/pro/updateAdviceConfirm\">";
 					menu+="<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>";
-					menu+="<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"처리\"/>";
+					menu+="<div style=\"text-align:right;\">";
+					menu+="<input type=\"submit\" class=\"btn btn-default\" value=\"처리\"/>";
+					menu+="</div><br />";
 					menu+="</form>";
+					menu+="</div>";
 				}else if(str=='연기'){
-					
 					menu+="<form method=\"post\" action=\"/pro/updateAdviceDelay\" id='frm'>";		
 					menu+="<input type=\"hidden\" name=\"ad_no\" value=\"${adviceVO.ad_no }\"/>";		
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 80%;\">이름 : ${adviceVO.use_name }</div>";
-					menu+="<div style=\"float: right; width: 80%;\">학번 : ${adviceVO.ad_stud_use_id }</div>";
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 50%;\">상담 방법 : ${adviceVO.ad_way }</div>";
-					menu+="<div style=\"float: right; width: 30%;\">상담 내용 : ${adviceVO.ad_purpose }</div>";
-					menu+="<div style=\"float: right; width: 20%;\"></div><br><br>";
-					menu+="<div style=\"float: right; width: 80%;\">일자 선택 ";
+					menu+="<div style=\"width:500px;margin:50px;font-size:20px;\">";
+					menu+="<div>이름 : ${adviceVO.use_name }</div>";
+					menu+="<div>학번 : ${adviceVO.ad_stud_use_id }</div>";
+					menu+="<div>상담 방법 : ${adviceVO.ad_way }</div>";
+					menu+="<div>상담 내용 : ${adviceVO.ad_purpose }</div>";
+					menu+="<div>일자 선택 ";
 					menu+="<input type='text' name=\"ad_return\" id=\"ad_return\"/>";
 					menu+="</div>";
-					menu+="<div style=\"float: right; width: 30%;\">시간 선택 ";
-					menu+="<select name=\"ad_time\">";
+					menu+="<div>시간 선택 ";
+					menu+="<select class=\"btn btn-default\" name=\"ad_time\">";
 					menu+="<option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><option value=\"6\">6</option><option value=\"7\">7</option><option value=\"8\">8</option><option value=\"9\">9</option><option value=\"10\">10</option><option value=\"11\">11</option><option value=\"12\">12</option><option value=\"13\">13</option><option value=\"14\">14</option><option value=\"15\">15</option><option value=\"16\">16</option><option value=\"17\">17</option><option value=\"18\">18</option><option value=\"19\">19</option><option value=\"20\">20</option><option value=\"21\">21</option><option value=\"22\">22</option><option value=\"23\">23</option><option value=\"24\">24</option>";
 					menu+="</select> 시";
 					menu+="</div>";
-					menu+="<input type=\"submit\" class=\"btn btn-default btn-xs\" value=\"연기\" />";
+					menu+="<div style=\"text-align:right;\">";
+					menu+="<input type=\"submit\" class=\"btn btn-default\" value=\"연기\" />";
+					menu+="</div>";
+					menu+="</div>";
 					menu+="</form>";
 				}
 				$("#confirmForm").html(menu);
@@ -125,13 +125,13 @@
 	
 	<div class="row">
 	    	<!-- 상담 신청 내역 처리 화면 ( 연기 ) -->
-	       		<div class="x_title">
-	                <h2>&nbsp;&nbsp;상담 신청 내역 처리</h2>
-	               	<div class="clearfix"></div>
-	            </div><br>
+	       		<div class="x_title" style="margin:30px;" >
+	                <h2>상담 신청 내역 처리</h2>
+	               	<div class="clearfix"  ></div>
+	            </div>
 	            
-	            <div style="float: right; width: 80%;">
-		          	<select name="ad_stat" id="selectBox">
+	            <div style="margin:30px;" >
+		          	<select name="ad_stat" id="selectBox" class="btn btn-default">
 						<option value="확인">확인</option>
 						<option value="연기">연기</option>
 					</select>

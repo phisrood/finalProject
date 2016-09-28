@@ -98,10 +98,6 @@
 							<td>${studentInfo.dep_name }</td>
 						</tr>
 						<tr>
-							<th>학년/학기</th>
-							<td>${semseter/2<1? "1학년":(semester/2)+"학년"}/${semester%2==0? "2학기":"1학기"  }</td>
-						</tr>
-						<tr>
 							<th>학번</th>
 							<td>${studentInfo.use_id }</td>
 						</tr>

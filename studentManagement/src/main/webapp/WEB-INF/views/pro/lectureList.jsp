@@ -89,7 +89,7 @@
 								<td>
 									<form>
 										<input type="hidden" name="pro_lec_no" value="${lecture.lec_no }"/>
-										<button value="이동" onclick="cycamGo(this.form);">이동</button>
+										<button value="이동" onclick="cycamGo(this.form);"  class="btn btn-dark" >이동</button>
 									</form>
 								</td>
 								<td><button class="btn btn-dark" onclick="lecturePlan('${lecture.lec_no}');">강의계획서</button></td>

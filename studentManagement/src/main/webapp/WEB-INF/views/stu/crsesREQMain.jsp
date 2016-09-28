@@ -171,7 +171,7 @@
 													+ "</td>";
 											htmlCode += "<td>" + person
 													+ "</td>";
-											htmlCode += "<td><button class='reqBtn btn btn-info btn-xs' onclick='reqClass("
+											htmlCode += "<td><button class='reqBtn btn btn-info btn-dark' onclick='reqClass("
 													+ person
 													+ ","
 													+ value.lec_no
@@ -180,7 +180,7 @@
 													+ ","
 													+ value.lb_credit
 													+ ")'>신청</td>";
-											htmlCode += "<td><button class='sylBtn btn btn-info btn-xs' onclick='classSyl("
+											htmlCode += "<td><button class='sylBtn btn btn-info btn-dark' onclick='classSyl("
 													+ value.lec_no
 													+ ");'>강의계획서</button></td>";
 											htmlCode += "</tr>";

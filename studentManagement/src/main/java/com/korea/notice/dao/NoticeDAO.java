@@ -25,72 +25,69 @@ import com.korea.dto.NoticeViewVO;
 
 public interface NoticeDAO {
 	/**
-	 * @return 
-	 * 개인 정보 조회
+	 * 공지사항새글리스트
 	 * @param
-	 * @return 
+	 * @return List<Colleage_NoticeVO>
 	 * @throws 
 	 */
-	//공지사항 게시판 리스트 Select 최신 20~30개씩
 	public List<Colleage_NoticeVO> getNoticeNewList();
+	
 	/**
 	 * @return 
 	 * @param cn_no 
-	 * 개인 정보 조회
+	 * 공지사항 상세보기
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지 상세
 	public NoticeViewVO getNoticeDetailInfo(int cn_no);
+	
 	/**
-	 * @return 
-	 * 개인 정보 조회
+	 * 공지사항 게시판 전체리스트 
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 게시판 전체리스트 
 	public List<NoticeViewVO> getNoticeAllList();
+	
 	/**
 	 * 공지사항 수정
-	 * @param noticeViewVO 
-	 * @param
+	 * @param colleage_NoticeVO
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 수정
 	public void updateNotice(Colleage_NoticeVO colleage_NoticeVO);
-	
+	/**
+	 * 공지사항 파일수정
+	 * @param attachment_FileVO
+	 * @return 
+	 * @throws 
+	 */
 	public void updateNoticeFile(Attachment_FileVO attachment_FileVO);
+	
 	/**
 	 * 공지사항 삭제
-	 * @param
+	 * @param colleage_NoticeVO
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 삭제
 	public void deleteNotice(Colleage_NoticeVO colleage_NoticeVO);
+	
 	/**
-	 * @param multipartFile 
+	 * 공지사항 등록
 	 * @param colleage_NoticeVO 
-	 * 개인 정보 조회
-	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 등록
 	public void insertNotice(Colleage_NoticeVO colleage_NoticeVO);
 	/**
 	 * @return 
-	 * @param multipartFile 
-	 * @param colleage_NoticeVO 
-	 * 개인 정보 조회
+	 * 공지사항 파일등록
+	 * @param attachment_FileVO 
 	 * @param
 	 * @return 
 	 * @throws 
 	 */
-	//공지사항 등록
 	public Attachment_FileVO insertNoticeFile(Attachment_FileVO attachment_FileVO);
 
 }
