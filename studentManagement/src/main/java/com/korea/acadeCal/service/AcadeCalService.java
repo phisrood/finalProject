@@ -22,55 +22,41 @@ import com.korea.dto.Colleage_CalendarVO;
  * </pre>
  */
 public interface AcadeCalService {
+	
 	/**
-	 * 학사일정 가져오기
-	 * @param
-	 * @return 
-	 * @throws 
+	 * 학사일정 조회
+	 * @param 
+	 * @return List 
 	 */
-	//학사일정 조회
 	public List<Colleage_CalendarVO> getAcadeCalList();
 	/**
-	 * @param calendarVO 
 	 * 학사일정 입력
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param calendarVO
+	 * @return void
 	 */
-	//학사일정 등록
 	public void insertAcadeCal(CalendarVO calendarVO);
 	/**
-	 * @param calendarVO 
 	 * 학사일정 수정
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param calendarVO
+	 * @return void
 	 */
-	//학사일정 수정 
 	public void updateAcadeCal(CalendarVO calendarVO);
 	/**
-	 * @param id 
 	 * 학사일정 삭제
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param id
+	 * @return void
 	 */
-	//학사일정 삭제
 	public void deleteAcadeCal(String id);
 	/**
 	 * 학사일정 드랍업데이트
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param calendarVO
+	 * @return void
 	 */
-	//학사일정 드랍
 	public void updateAcadeDropCal(CalendarVO calendarVO);
 	/**
 	 * 학사일정 리사이즈업데이트
-	 * @param
-	 * @return 
-	 * @throws 
+	 * @param calendarVO
+	 * @return void
 	 */
-	//학사일정 resize
 	public void updateAcadeResizeCal(CalendarVO calendarVO);
 }
