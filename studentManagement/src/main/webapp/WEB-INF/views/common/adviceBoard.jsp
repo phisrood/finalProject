@@ -81,7 +81,7 @@
 						</tr>
 					</c:forEach>
 				</tbody>
-				
+				 
 			</table>
 			<c:if test="${auth eq 'ROLE_STU' }">
 			<div style="text-align: right;">
