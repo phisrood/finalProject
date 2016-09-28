@@ -10,10 +10,12 @@
 		<typeAlias alias="str" type="java.lang.String" />
 		<typeAlias alias="map" type="java.util.Map" />
 		<typeAlias alias="list" type="java.util.List" />
+		
 		<!-- 상담 -->
 		<typeAlias alias="adviceVO" type="com.korea.dto.AdviceVO" />
 		<!-- 상담게시판 -->
 		<typeAlias alias="adviceBoardVO" type="com.korea.dto.Advice_BoardVO" />
+		<!-- 상담게시판입력 -->
 		<typeAlias alias="adviceBoardInsertVO" type="com.korea.dto.Advice_BoardInsertVO" />
 		<!-- 사용자 -->
 		<typeAlias alias="users" type="com.korea.dto.UsersVO" />
@@ -101,36 +103,29 @@
 		<typeAlias alias="crsesListView" type="com.korea.dto.CrsesListViewVO" />
 		<!-- submitVO  -->
 		<typeAlias alias="quesbbsView" type="com.korea.dto.Quesbbs_ViewVO" />
-		
+		<!-- 승인?? -->
 		<typeAlias alias="submit" type="com.korea.dto.SubmitVO" />
 		<!-- 수강내역VO  -->
 		<typeAlias alias="crsesREQVO" type="com.korea.dto.CrsesList_stu_ViewVO" />
 		<!-- 시간표VO  -->
 		<typeAlias alias="timetableVO" type="com.korea.dto.TimeTableViewVO" />
-
+		<!-- 전공배정 -->
 		<typeAlias alias="ma_as" type="com.korea.dto.Major_AssignVO" />
 		<!-- 교수 온라인콘텐츠 출석관리 뷰 -->
 		<typeAlias alias="online_Con_Watchcheck_ViewVO" type="com.korea.dto.Online_Con_Watchcheck_ViewVO" />
-
 		<!-- 사이버 캠퍼스 공지사항 -->
 		<typeAlias alias="lecture_NoticeVO" type="com.korea.dto.Lecture_NoticeVO" />
-		
 		<typeAlias alias="cyber_LectureNoticeViewVO" type="com.korea.dto.Cyber_LectureNoticeViewVO" />
 		<!-- lecture VO -->
 		<typeAlias alias="chart" type="com.korea.dto.Lecture_ChartVO" />
-
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
-		
 		<!-- 사이버캠퍼스 과제게시판 -->
 		<typeAlias alias="homeworkVO" type="com.korea.dto.HomeworkVO" />
 		<typeAlias alias="homeworkViewVO" type="com.korea.dto.Homework_ViewVO" />
 		<typeAlias alias="homeworkAllListViewVO" type="com.korea.dto.HomeworkAllList_ViewVO" />
 		<typeAlias alias="homework_SubmitVO" type="com.korea.dto.Homework_SubmitVO" />
 		<typeAlias alias="homedetail_ViewVo" type="com.korea.dto.Homedetail_ViewVo" />
-		
-		
-		
 		<!-- applecture View -->
 		<typeAlias alias="appLectureView" type="com.korea.dto.AppLecture_ViewVO" />
 		<!-- 교수시간표View -->
@@ -145,11 +140,8 @@
 		<typeAlias alias="period" type="com.korea.dto.Period" />
 		<!-- Student_InfoViewVO -->
 		<typeAlias alias="certificate" type="com.korea.dto.Student_InfoViewVO" />
-
-
 	</typeAliases>
 	
-
 	<mappers>
 
 		<!-- 로그인 -->
@@ -172,6 +164,7 @@
 		<mapper resource="sql/mapper/IndivInfoManage.xml" />
 		<!-- 상담 -->
 		<mapper resource="sql/mapper/advice.xml" />
+		<!-- 상담게시판 -->
 		<mapper resource="sql/mapper/adviceBoard.xml" />
 		<!-- 휴복학 -->
 		<mapper resource="sql/mapper/schoolReReq.xml" />
@@ -191,7 +184,7 @@
 		<mapper resource="sql/mapper/crsesREQ.xml"/>
 		<!--  강의계획서  -->
 		<mapper resource="sql/mapper/classSYL.xml"/>
-		
+		<!-- 전공 -->
 		<mapper resource="sql/mapper/major.xml"/>
 		<!--  시간표  -->
 		<mapper resource="sql/mapper/timetable.xml"/>
@@ -199,7 +192,6 @@
 		<mapper resource="sql/mapper/cyberCamLectureNoticeBBS.xml"/>
 		<!--  성적조회 -->
 		<mapper resource="sql/mapper/scoreInquiry.xml"/>
-		
 		<!--  과제게시판 -->
 		<mapper resource="sql/mapper/homework.xml"/>
 		<!--  증명서 -->

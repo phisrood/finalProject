@@ -65,7 +65,7 @@
 					}
 				},
 				error : function() {
-					alert("에러입니다.");
+					alert("이미 신청한 강의입니다.");
 				}
 			})
 		}else{
@@ -114,7 +114,7 @@
 						$("#reqList").html(htmlCode);
 					},
 					error : function() {
-						alert("신청리스트 에러러");
+						alert("신청리스트 에러");
 					}
 				});
 	}
