@@ -221,6 +221,7 @@ public class CyberCamOnlineConController {
 	@RequestMapping(value={"/cyberCampus/stu/timeCheck"}, method=RequestMethod.POST)
 	public void onlineConListPro(int oc_time,String loginUser,String oc_no,String oc_lec_no,String full_time){
 
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("loginUser", loginUser);
 		params.put("oc_no", oc_no);
