@@ -101,7 +101,6 @@
 							<ul class="nav side-menu">
 								<li><a href="/cyberCampus/stu/cyberNoticeList">공지사항</a></li>
 								<li><a href="/cyberCampus/stu/qnaBBSList">강의Q&A</a></li>
-								<li><a href="/cyberCampus/stu/freeBBSList">자유게시판</a></li>
 								<li><a href="/cyberCampus/stu/studyBBSList">학습자료실</a></li>
 								<li><a href="/cyberCampus/stu/onlineConList">온라인콘텐츠보기</a></li>
 							</ul>

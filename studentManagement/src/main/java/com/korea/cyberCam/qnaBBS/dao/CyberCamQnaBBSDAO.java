@@ -88,6 +88,8 @@ public interface CyberCamQnaBBSDAO {
 	//댓글수정
 	public int updateCommentQnaBBS(Map<String, String> params);
 	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no);
+	//댓글삭제
+	public void deleteComment(String qc_no);
 	
 	
 }

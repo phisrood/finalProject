@@ -44,7 +44,7 @@
 <div class="x_panel">
 
 		<div class="x_title">
-			<h2>수강신청조회</h2>
+			<h2><i class="fa fa-pencil"></i> 수강신청조회</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>
 		</div>

@@ -83,7 +83,7 @@
 				<div class="form-group">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<input name="title" id="title" type="text" size="105">
+						<input type="text" id="title" class="form-control" name="title" style="width: 800px;">
 					</div>
 				</div>
 				<br><br>
@@ -105,25 +105,16 @@
 
 
 						<br><br>
-						<div>
-							<div style="float:left; width:5%;">
-							<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-dark">목 록</button></a> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-					 		</div>
-							
-							<div style="float:left; width:90%;">
-							<br>
-							</div>
-							
-							<div style="float:right; width:5%;">
-							<input type="submit" class="btn btn-dark" onclick="check();" id="submit" name="submit" value="등록">
-							</div>
-						</div>
 					</div>
 				</div>
 				<br>
 
 			</div>
 		</div>
+			<div style="text-align:right;">
+			<button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">목록</button> 
+			<input type="submit" class="btn btn-dark" onclick="check();" id="submit" name="submit" value="등록">
+			</div>
 	</div>
 </form>
 

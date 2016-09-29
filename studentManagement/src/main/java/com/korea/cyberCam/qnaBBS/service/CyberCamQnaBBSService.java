@@ -82,6 +82,8 @@ public interface CyberCamQnaBBSService {
 	public int updateCommentQnaBBS(Map<String, String> params);
 	public Quesbbs_ViewVO selectCommentQnaBBS(String qb_no);
 	public void updateQnaBBSNoAttachment(Question_BoardVO question_BoardVO);
+	//댓글삭제
+	public void deleteComment(String qc_no);
 
 	
 }

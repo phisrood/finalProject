@@ -249,8 +249,7 @@ public class CyberCamQnaBBSController {
 				
 				) throws IOException{
 			
-			String url="/cyberCampus/common/qnaBBSList";
-			//D:\SpringFrameWork\spring_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\studentManagement\resources\stu\qnaAF
+			String url="redirect:/cyberCampus/stu/qnaBBSList";
 			String uploadPath=request.getSession().getServletContext().getRealPath("resources/stu/qnaAF");
 			UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
 			String stud_use_id = loginUser.getUse_id();
@@ -372,5 +371,22 @@ public class CyberCamQnaBBSController {
 		cyberCamQnaBBSService.updateQnaBBSNoAttachment(question_BoardVO);
 	
 		return url;
+	}
+	
+	@RequestMapping(value="/cyberCampus/pro/qnaCommentDelete", method=RequestMethod.GET)
+	public void qnaCommentDelete(@RequestParam("qc_no")String qc_no, HttpServletResponse response,
+			@RequestParam("qb_no")String qb_no){
+		cyberCamQnaBBSService.deleteComment(qc_no);
+		ObjectMapper jsonObject = new ObjectMapper();
+		Quesbbs_ViewVO quesVO = cyberCamQnaBBSService.selectCommentQnaBBS(qb_no);
+		try {
+			response.setContentType("text/json; charset=utf-8;");
+			String str = jsonObject.writeValueAsString(quesVO);
+			response.getWriter().print(str);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException ei){
+			ei.printStackTrace();
+		}
 	}
 }

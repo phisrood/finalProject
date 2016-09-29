@@ -42,7 +42,7 @@
 	<div class="x_panel_big">
 		<!-- 상담 게시판 -->
 		<div class="x_title">
-			<h2>상담 게시판</h2>
+			<h2><i class="fa fa-comments-o"></i> 상담 게시판</h2>
 			<div class="clearfix"></div>
 		</div>
 		<br>

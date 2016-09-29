@@ -40,6 +40,13 @@
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지 사항</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
+			  <div class="x_panel_big">
+                  <div class="x_title">
+                    <h2><i class="fa fa-bullhorn"></i> 공지사항</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+			
             <table id="datatable" class="table table-striped jambo_table bulk_action">
             							
                	<thead>
@@ -63,13 +70,13 @@
                	</tbody>
                	</c:forEach>
            	</table>
-           	
+           	</div>
+           	</div>
            	<div style="float: right; width: 5%;">  
            	<c:if test="${auth eq 'ROLE_PRO' }">
 			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-dark">글쓰기</button></a>
 			</c:if>
 			</div>
-			<div style="float: right; width: 95%;"><br></div>
     </div>
  
 
