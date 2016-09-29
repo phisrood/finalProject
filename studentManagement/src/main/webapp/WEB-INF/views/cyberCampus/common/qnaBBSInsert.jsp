@@ -58,6 +58,68 @@
 	    });
 	 });
  
+	$("#submit").click(function(){
+		
+		
+		
+	var titleCheck = $("#title").val(); //제목
+	var contentCheck = $("content").val(); //내용
+	var pattern = /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/;
+	
+	var addr = /[a-zA-Z0-9가-힣]{1,20}/;
+		
+		
+	 if(titleCheck == "" || contentCheck == null){
+     	swal({
+				title: "< Error >",
+				text: "제목 입력이 공백입니다.",
+				type: "error",
+				confirmButtonText: "닫기" 
+			});
+     	$("#title").focus();
+     	return false;
+     	
+     	
+     }else if(pattern.test(titleCheck) != true){
+     	
+     	swal({
+				title: "< 형식오류! >",
+				text: " 특수문자 입력은 불가능 합니다.",
+				type: "error",
+				confirmButtonText: "닫기" 
+			});
+     	$("#title").focus();
+     	return false;
+     	
+     }else if(contentCheck == "" || contentCheck == null){
+    	  	swal({
+				title: "< Error >",
+				text: "내용 입력이 공백입니다.",
+				type: "error",
+				confirmButtonText: "닫기" 
+			});
+     	$("#content").focus();
+     	return false;
+     	
+    	 
+    	 
+    	 
+     }else if(pattern.test(contentCheck) != true){
+      	
+      	swal({
+ 				title: "< 형식오류! >",
+ 				text: " 특수문자 입력은 불가능 합니다.",
+ 				type: "error",
+ 				confirmButtonText: "닫기" 
+ 			});
+      	$("#content").focus();
+      	return false;
+		
+     }
+	});
+
+ 
+ 
 </script> 
 
 

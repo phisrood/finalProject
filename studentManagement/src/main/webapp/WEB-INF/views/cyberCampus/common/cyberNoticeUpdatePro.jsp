@@ -44,7 +44,7 @@
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지사항 ( 수정 )</h2></div>
+				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지사항</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 			
@@ -57,14 +57,16 @@
 				<table id="datatable" class="table table-striped jambo_table bulk_action">
 					<tr>
 						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;: &nbsp;
-							<input name="title" type="text" size="50" value="${cyber_LectureNoticeViewVO.ln_title}">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</label>
+							<div class="col-md-9 col-sm-9 col-xs-12">
+							<input name="title" type="text" class="form-control"  style="width: 900px;" value="${cyber_LectureNoticeViewVO.ln_title}">
+							</div>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>
-						<div style="float: left; width: 94%;" class="btn btn-dark"><input type="file" name="file" />
+						<div style="float: left; width: 25%;" class="btn btn-dark"><input type="file" name="file" />
 						<c:choose>
 						<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
 						현재 첨부파일이 없습니다.
@@ -94,11 +96,11 @@
 				 </c:forEach>
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button"  class="btn btn-dark">목 록</button></a>
-			</div>
-			<div style="float: right; width: 6%;">
+		
+			<div style="text-align:right;">
+			<button type="button" class="btn btn-dark" onclick="javascript:history.go(-1);">목록</button> 
 				<input type="submit"  class="btn btn-dark" value="수정">
+			</div>
 				
 			</div>
 			
