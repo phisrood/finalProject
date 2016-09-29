@@ -74,8 +74,6 @@
 						<c:choose>
 							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
 
-								<input type="button" class="btn btn-dark" style="width: 200px;" value="첨부파일이 없습니다.">
-
 							<div style="float: left; width: 25%;" class="btn btn-dark">첨부 파일이 없습니다.</div>
 
 							</c:when>
