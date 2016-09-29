@@ -112,11 +112,10 @@
 				</table>
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 92%;">
-				<button type="button" class="btn btn-default btn-sm">목 록</button>
-			</div>
-			<div style="float: right; width: 6%;">
-				<input type="submit"  id="submit" name="submit" class="btn btn-default btn-sm" value="등록">
+			
+			<div style="text-align:right; width: 6%;">
+				<button type="button" class="btn btn-dark">목 록</button>
+				<input type="submit"  id="submit" name="submit" class="btn btn-dark" value="등록">
 				
 			</div>
 			
