@@ -72,7 +72,7 @@
 
 
 
-		</div>
+		</div> 
 		<!-- x-content 끝 -->
 	</div>
 				<div style="text-align: right; height: 20%">

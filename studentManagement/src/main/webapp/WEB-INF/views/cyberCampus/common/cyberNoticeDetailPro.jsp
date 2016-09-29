@@ -12,103 +12,111 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-	<!-- Data tables -->
-    <link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-
-
-<!-- 공지상세보기 -->
+<!-- Data tables -->
+<link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 
+<c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
+	<!-- 공지상세보기 -->
+	<div class="row">
 
-<!-- 
- -->
-    <c:forEach items="${cyber_LectureNoticeViewVO}" var="cyber_LectureNoticeViewVO">
-    <div class="row">
-    	<!-- 공지 사항 게시글 상세 -->
-    		<div style="float: left; width: 100%;"><br></div>
-    		<div style="float: left; width: 1%;"></div>
-	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 200px; text-align: center;"><h2>공지 사항 ( 상세 )</h2></div>
+		<!-- page content -->
+		<div class="x_panel_big" style="height: 700px;">
+			<div class="x_title">
+				<h2>공지사항</h2>
+
+				<div class="clearfix"></div>
 			</div>
-			<div style="float: left; width: 100%;"><br></div>
-			<div class="x_panel_big">
-			
-			
-				<table id="datatable" class="table table-striped jambo_table bulk_action">
-					<tr>
-						<td>
-							제 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;:
-							${cyber_LectureNoticeViewVO.ln_title}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							작 &nbsp;성 &nbsp;자 &nbsp;: &nbsp;
-							${cyber_LectureNoticeViewVO.use_name}
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							등 &nbsp;록 &nbsp;일 &nbsp;: &nbsp;${cyber_LectureNoticeViewVO.ln_date}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<c:choose>
+			<div class="x_content" style="height: 80%">
+				<br />
+
+				<div class="form-group" style="height: 10%;">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+						<input type="text" class="form-control" value="	${cyber_LectureNoticeViewVO.ln_title}" disabled="disabled" style="width: 100%;">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">작성자</label>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.use_name}</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">등록일</label>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.ln_date}</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.ln_content}</div>
+				</div>
+
+
+				<br />
+				<br /> <br />
+				<br />
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
+					<div class="col-md-9 col-sm-9 col-xs-12">
+
+						<c:choose>
 							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
-							<div style="float: left; width: 94%;" class="btn btn-dark">첨부 파일이 없습니다.</div>
+								<input type="button" class="btn btn-dark" style="width: 200px;" value="첨부파일이 없습니다.">
 							</c:when>
 							<c:otherwise>
-							<div style="float: left; width: 94%;" class="btn btn-dark">첨부파일 : <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}">${cyber_LectureNoticeViewVO.af_aftername}</a></div>
+
+								<a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}"> <input type="button" class="btn btn-dark" style="width: 200px;"
+									value="${cyber_LectureNoticeViewVO.af_aftername}">
+								</a>
 							</c:otherwise>
-							</c:choose>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="x_panel_big">${cyber_LectureNoticeViewVO.ln_content}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
-							
-						
-						</td>
-					</tr>
-				</table>
-				
+						</c:choose>
+					</div>
+				</div>
+
+
+
+
 			</div>
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 98%;">
-				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button"  class="btn btn-dark">목 록</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button"  class="btn btn-dark">글쓰기</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button"  class="btn btn-dark">수정</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button"  class="btn btn-dark">삭제</button></a>
-			</div>
-			
-    </div>
-    </c:forEach>
-    <!-- Datatables -->
-    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
-    <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
-    <script src="/bootstrap/js/dataTables.buttons.min.js"></script>
-    <script src="/bootstrap/js/buttons.bootstrap.min.js"></script>
-    <script src="/bootstrap/js/buttons.flash.min.js"></script>
-    <script src="/bootstrap/js/buttons.html5.min.js"></script>
-    <script src="/bootstrap/js/buttons.print.min.js"></script>
-    <script src="/bootstrap/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
-    <script src="/bootstrap/js/dataTables.responsive.min.js"></script>
-    <script src="/bootstrap/js/responsive.bootstrap.js"></script>
-    <script src="/bootstrap/js/dataTables.scroller.min.js"></script>
-    <script src="/bootstrap/js/jszip.min.js"></script>
-    <script src="/bootstrap/js/vfs_fonts.js"></script>
+			<!-- x-content 끝 -->
+		</div>
+
+	
+		<div style="text-align: right; height: 20%">
+
+			<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-dark">목 록</button></a> 
+			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button" class="btn btn-dark">글쓰기</button></a>
+			<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-dark">수정</button></a> 
+			<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button" class="btn btn-dark">삭제</button></a>
+
+		</div>
+	
+	</div>
+
+
+
+</c:forEach>
+<!-- Datatables -->
+<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
+<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
+<script src="/bootstrap/js/dataTables.buttons.min.js"></script>
+<script src="/bootstrap/js/buttons.bootstrap.min.js"></script>
+<script src="/bootstrap/js/buttons.flash.min.js"></script>
+<script src="/bootstrap/js/buttons.html5.min.js"></script>
+<script src="/bootstrap/js/buttons.print.min.js"></script>
+<script src="/bootstrap/js/dataTables.fixedHeader.min.js"></script>
+<script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
+<script src="/bootstrap/js/dataTables.responsive.min.js"></script>
+<script src="/bootstrap/js/responsive.bootstrap.js"></script>
+<script src="/bootstrap/js/dataTables.scroller.min.js"></script>
+<script src="/bootstrap/js/jszip.min.js"></script>
+<script src="/bootstrap/js/vfs_fonts.js"></script>
