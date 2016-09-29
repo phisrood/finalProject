@@ -173,7 +173,7 @@ public class MemberManageServiceImpl implements MemberManageService{
 	private void readSheet(int columnindex, Sheet sheet) {
 		int rowindex;
 		int rows = sheet.getPhysicalNumberOfRows();
-		for (rowindex = 2; rowindex < rows; rowindex++) {
+		for (rowindex = 1; rowindex < rows; rowindex++) {
 			// 행을읽는다
 			Row row = sheet.getRow(rowindex);
 			readRow(columnindex, row);

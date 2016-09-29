@@ -19,6 +19,7 @@
 		FROM SCORE_VIEW
 		WHERE CB_ACQUISTIONYN='Y'
 		AND USE_ID = #{id}
+		ORDER BY LEC_MAKEYEAR, LEC_MAKEYEAR
 	</select>
 	<!-- 강의목록가져오기 -->
 	<select id="getLecutreList" parameterType="map" resultType="lectureView">

@@ -44,6 +44,8 @@
 			</div>
 		
 			<div style="float: left; width: 100%;"><br></div>
+			<div class="x_panel_big">
+                  <div class="x_content">
             <table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
                	
@@ -67,7 +69,9 @@
                  </c:if>
                	</tbody>
            	</table>
-           	<div style="float: right; width: 5%;">
+			</div>
+			</div>
+           	<div style="float: right; width: 5%;margin-right: 20px;"">
 				<a href="/cyberCampus/stu/qnaBBSInsert"><button type="button" class="btn btn-dark">글쓰기</button></a>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
