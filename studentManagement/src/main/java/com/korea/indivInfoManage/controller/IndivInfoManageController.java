@@ -233,9 +233,8 @@ public class IndivInfoManageController {
 
             
             writer.println("<script type='text/javascript'>");
-            writer.println("alert('정상적으로 등록되었습니다.');");
             writer.println("window.close();");
-            writer.println("opener.location.reload();");
+            writer.println("opener.location.href='/stu/main';");
             writer.println("</script>");
             writer.flush();   
        
@@ -321,10 +320,9 @@ public class IndivInfoManageController {
 	            
 	            
 	      
-	            writer.println("<script type='text/javascript'>");
-	            writer.println("alert('정상적으로 등록되었습니다.');");
+	            writer.println("<script type='text/javascript'>"); 
 	            writer.println("window.close();");
-	            writer.println("opener.location.reload();");
+	            writer.println("opener.location.href='/stu/main';");
 	            writer.println("</script>");
 	            writer.flush();   
 	            

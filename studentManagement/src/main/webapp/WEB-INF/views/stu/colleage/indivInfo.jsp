@@ -71,6 +71,7 @@
 	        var addCheck = $("#stud_add").val(); //주소
 	        var adddetailCheck = $("#stud_adddetail").val(); //상세주소
 	        
+
 	        var tel = /[010][1-9]{1}[0-9]{3}[0-9]{4}/;  
 	        var email=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	        var addr = /[a-zA-Z0-9가-힣]{1,20}/;

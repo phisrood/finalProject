@@ -155,14 +155,14 @@
 							
 						<c:choose>
                       	<c:when test="${attachment_FileVO.af_aftername eq 'default'}">
-                      		<div style="float: left; width: 6%;">첨부파일이 없습니다.</div>
+                      		<div style="float: left; width: 100%;">첨부파일이 없습니다.</div>
                       		<c:if test="${auth eq 'ROLE_STU'}">	
                       		<input type="file" name="file">
                       		</c:if>
                        </c:when>
                       	<c:otherwise>
                       
-                      		<div style="float: left; width: 6%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>                  	
+                      		<div style="float: left; width: 100%;">현재 첨부 파일 <a href="/cyberCampus/stu/qnaBBSFileDownload?af_no=${attachment_FileVO.af_no }">${attachment_FileVO.af_aftername}</a> </div>                  	
 							<div style="float: left; width: 94%;">
 						
 							<c:if test="${auth eq 'ROLE_STU'}">	

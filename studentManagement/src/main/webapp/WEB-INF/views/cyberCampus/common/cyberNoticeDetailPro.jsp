@@ -33,39 +33,41 @@
 	<div class="row">
 
 		<!-- page content -->
-		<div class="x_panel_big" style="height: 700px;">
+		<div class="x_panel_big" style="height: 1000px;">
 			<div class="x_title">
 				<h2>공지사항</h2>
 
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content" style="height: 80%">
-				<br />
+				<br /> 
 
-				<div class="form-group" style="height: 10%;">
+				<div class="form-group" style="min-height: 50px; max-height: 100px; overflow: auto; font-size: 20px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<input type="text" class="form-control" value="	${cyber_LectureNoticeViewVO.ln_title}" disabled="disabled" style="width: 100%;">
+							${cyber_LectureNoticeViewVO.ln_title} 
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="font-size: 20px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">작성자</label>
-					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.use_name}</div>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 50px; max-height: 100px;  overflow: auto;">${cyber_LectureNoticeViewVO.use_name}</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="font-size: 20px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">등록일</label>
-					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.ln_date}</div>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 50px; max-height: 100px;   overflow: auto;">${cyber_LectureNoticeViewVO.ln_date}</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" style="font-size: 20px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 100px; max-height: 500px; overflow: auto;">${cyber_LectureNoticeViewVO.ln_content}</div>
+					<div class="col-md-9 col-sm-9 col-xs-12" style="min-height: 500px; max-height: 500px; overflow: auto; border:1px solid black;">
+					${cyber_LectureNoticeViewVO.ln_content} 
+					</div>
 				</div>
 
 
 				<br />
 				<br /> <br />
 				<br />
-				<div class="form-group">
+				<div class="form-group" style="font-size: 20px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
 

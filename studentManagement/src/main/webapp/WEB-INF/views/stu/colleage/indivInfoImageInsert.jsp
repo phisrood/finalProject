@@ -36,7 +36,7 @@
 
 function FileType() {
 	
-	alert('선택한 파일은'+event.srcElement.value + '입니다.');
+
 	if(!event.srcElement.value.match(/(.jpg|.jepg|.gif|.png)/)){
 		
 		alert('확장자가 잘못되었습니다. (ex: gif, jpg, jepg, png)');
