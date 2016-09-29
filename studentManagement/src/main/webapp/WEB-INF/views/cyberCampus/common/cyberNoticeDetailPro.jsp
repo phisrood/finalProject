@@ -69,7 +69,7 @@
 						<td>
 							<c:choose>
 							<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
-							<div style="float: left; width: 94%;" class="btn btn-dark">첨부 파일이 없습니다.</div>
+							<div style="float: left; width: 25%;" class="btn btn-dark">첨부 파일이 없습니다.</div>
 							</c:when>
 							<c:otherwise>
 							<div style="float: left; width: 94%;" class="btn btn-dark">첨부파일 : <a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}">${cyber_LectureNoticeViewVO.af_aftername}</a></div>
@@ -88,7 +88,7 @@
 				
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
-			<div style="float: left; width: 98%;">
+			<div style="text-align:right; width: 98%;">
 				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button"  class="btn btn-dark">목 록</button></a>
 				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button"  class="btn btn-dark">글쓰기</button></a>
 				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button"  class="btn btn-dark">수정</button></a>
