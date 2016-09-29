@@ -70,6 +70,10 @@ public class CyberCamMainController {
 		List<Cyber_LectureNoticeViewVO> noticeList = noticeService.getNoticeBBSList(lec_no);
 		LectureViewVO lectureInfo = crsesREQDAO.getLectureInfo(lec_no);
 		
+		
+		String auth = user.getAuthority();
+		
+		model.addAttribute("auth",auth);
 		model.addAttribute("noticeList", noticeList);
 		session.setAttribute("lectureInfo", lectureInfo);
 		
