@@ -21,8 +21,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-	
-    
+
     <div class="row">
     	<!-- 학습 자료실 게시판 -->
     		<div style="float: left; width: 100%;"><br></div>
@@ -30,11 +29,10 @@
 	    	<div style="float: left; width: 99%; text-align: center;">
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>학습 자료실</h2></div>
 			</div>
-			<div style="float: left; width: 71%;"></div>
 			
 			<div style="float: left; width: 100%;"><br></div>
-            <div class="x_content">
-                    
+            <div class="x_panel_big">
+                  <div class="x_content">
                     <table id="datatable" class="table table-striped jambo_table bulk_action">
                       <thead>
                         <tr>
@@ -95,6 +93,8 @@
                       </tbody>
                     </table>
                   </div>
+                  </div>
+                  
                   	<div style="text-align: right;">
                   		<c:choose>
 	                    	<c:when test="${loginUser.authority eq 'ROLE_STU' }">
@@ -111,3 +111,6 @@
 					</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>
+
+
+ 

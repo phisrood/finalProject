@@ -37,13 +37,10 @@
 	    	<div style="float: left; width: 99%; text-align: center;">
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>공지 사항</h2></div>
 			</div>
-			<div style="float: left; width: 71%;"></div>
-		
-          
-			<div style="float: right; width: 6%;">
 			
-			</div>
 			<div style="float: left; width: 100%;"><br></div>
+            	<div class="x_panel_big">
+                  <div class="x_content">
             <table id="datatable" class="table table-striped jambo_table bulk_action">
                	<thead>
                		<tr>
@@ -65,9 +62,11 @@
                	</tbody>
                	</c:forEach>
            	</table>
-           	<div style="float: right; width: 5%;">
+			</div>
+			</div>
+           	<div style="float: right; width: 5%;margin-right: 20px;">
          	<c:if test="${auth eq 'ROLE_PRO' }">
-			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button"  class="btn btn-dark">글쓰기</button></a>
+			<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button"  class="btn btn-dark" >등록</button></a>
 			</c:if>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>

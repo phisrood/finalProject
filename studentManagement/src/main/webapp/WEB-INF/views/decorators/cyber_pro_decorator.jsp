@@ -93,29 +93,12 @@
                 <h3>${professorInfo.dep_name } &nbsp; ${professorInfo.pro_position }${professorInfo.pro_stat }중</h3>  <!-- 학과 -->
                 <br>
                 <ul class="nav side-menu">
-		                  <li><a><i class="fa fa-clone"></i> 수강생조회 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/cyberCrsesStuList">수강생조회</a></li>	        
-		                    <!--   <li><a href="#">휴/복학 신청 현황</a></li>
-		                      <li><a href="#">졸업요건</a></li> -->
-		                    </ul>
-		                  </li>
-		               
-		                  <li><a><i class="fa fa-clone"></i>강의게시판 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/cyberNoticeList">공지사항</a></li>
-		                      <li><a href="/cyberCampus/pro/qnaBBSList">강의Q&A</a></li>
-		                      <li><a href="/cyberCampus/pro/freeBBSList">자유게시판</a></li>
-		                      <li><a href="/cyberCampus/pro/studyBBSList">학습자료실</a></li>
-		                     
-		                    </ul>
-		                  </li>
-		                     <li><a><i class="fa fa-clone"></i>온라인콘텐츠 <span class="fa fa-chevron-down"></span></a>
-		                    <ul class="nav child_menu">
-		                      <li><a href="/cyberCampus/pro/onlineConInsertForm">온라인콘텐츠 등록</a></li>
-		                      <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 출석확인</a></li>
-		                    </ul>
-		                  </li>
+                     <li><a href="/cyberCampus/pro/cyberCrsesStuList">수강생조회</a></li>	        
+                     <li><a href="/cyberCampus/pro/cyberNoticeList">공지사항</a></li>
+                     <li><a href="/cyberCampus/pro/qnaBBSList">강의Q&A</a></li>
+                     <li><a href="/cyberCampus/pro/studyBBSList">학습자료실</a></li>
+                     <li><a href="/cyberCampus/pro/onlineConInsertForm">온라인콘텐츠 등록</a></li>
+                     <li><a href="/cyberCampus/pro/onlineConList">온라인콘텐츠 출석확인</a></li>
                 </ul>
               </div>
              
