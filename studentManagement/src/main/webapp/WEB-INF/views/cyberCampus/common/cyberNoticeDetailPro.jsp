@@ -112,45 +112,7 @@
 
 
 </c:forEach>
-<!-- Datatables -->
-<script src="/bootstrap/js/jquery.dataTables.min.js"></script>
-<script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
-<script src="/bootstrap/js/dataTables.buttons.min.js"></script>
-<script src="/bootstrap/js/buttons.bootstrap.min.js"></script>
-<script src="/bootstrap/js/buttons.flash.min.js"></script>
-<script src="/bootstrap/js/buttons.html5.min.js"></script>
-<script src="/bootstrap/js/buttons.print.min.js"></script>
-<script src="/bootstrap/js/dataTables.fixedHeader.min.js"></script>
-<script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
-<script src="/bootstrap/js/dataTables.responsive.min.js"></script>
-<script src="/bootstrap/js/responsive.bootstrap.js"></script>
-<script src="/bootstrap/js/dataTables.scroller.min.js"></script>
-<script src="/bootstrap/js/jszip.min.js"></script>
-<script src="/bootstrap/js/vfs_fonts.js"></script>
-=======
-			<div style="float: left; width: 2%;"><br></div>
-			<div style="text-align:right; width: 98%;">
-				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button"  class="btn btn-dark">목 록</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsert"><button type="button"  class="btn btn-dark">글쓰기</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextUpdate?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button"  class="btn btn-dark">수정</button></a>
-				<a href="/cyberCampus/pro/cyberNoticeInsertFileUploadContextDelete?ln_no=${cyber_LectureNoticeViewVO.ln_no}"><button type="button"  class="btn btn-dark">삭제</button></a>
-			</div>
-			
-    </div>
-    </c:forEach>
-    <!-- Datatables -->
-    <script src="/bootstrap/js/jquery.dataTables.min.js"></script>
-    <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
-    <script src="/bootstrap/js/dataTables.buttons.min.js"></script>
-    <script src="/bootstrap/js/buttons.bootstrap.min.js"></script>
-    <script src="/bootstrap/js/buttons.flash.min.js"></script>
-    <script src="/bootstrap/js/buttons.html5.min.js"></script>
-    <script src="/bootstrap/js/buttons.print.min.js"></script>
-    <script src="/bootstrap/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/bootstrap/js/dataTables.keyTable.min.js"></script>
-    <script src="/bootstrap/js/dataTables.responsive.min.js"></script>
-    <script src="/bootstrap/js/responsive.bootstrap.js"></script>
-    <script src="/bootstrap/js/dataTables.scroller.min.js"></script>
-    <script src="/bootstrap/js/jszip.min.js"></script>
-    <script src="/bootstrap/js/vfs_fonts.js"></script>
->>>>>>> branch 'master' of https://github.com/phisrood/finalProject.git
+
+		
+
+ 
