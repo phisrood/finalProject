@@ -95,7 +95,7 @@ $(document).ready(function() {
       <div class="col-md-12 col-sm-12 col-xs-12">
          <div class="x_panel">
             <div class="x_title">
-               <h2>상담 신청</h2>
+               <h2><i class="fa fa-user"></i> 상담 신청</h2>
                <div class="clearfix"></div>
             </div>
             <div>
@@ -149,7 +149,7 @@ $(document).ready(function() {
    
       <div class="x_panel">
          <div class="x_title">
-            <h2>상담 신청 내역</h2>
+            <h2><i class="fa fa-user"></i> 상담 신청 내역</h2>
             <div class="clearfix"></div>
          </div>
         <div class="alert alert-success alert-dismissible fade in" style="width:400px;height:40px;" >

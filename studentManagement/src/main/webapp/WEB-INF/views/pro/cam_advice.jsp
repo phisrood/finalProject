@@ -73,7 +73,7 @@
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
 	<div class="x_panel_big">
 	<div class="x_title">
-			<h2>사이버상담실</h2>
+			<h2><i class="fa fa-comments-o"></i> 사이버상담실</h2>
 
 			<div class="clearfix"></div>
 		</div>

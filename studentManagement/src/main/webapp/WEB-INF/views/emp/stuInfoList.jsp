@@ -77,10 +77,9 @@
 
 <div class="row">
 	<!-- page content -->
-	<div class="x_panel_big">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>구성원정보관리</h2>
+				<h2><i class="fa fa-user"></i> 구성원정보관리</h2>
 				<ul class="nav navbar-right panel_toolbox"></ul>
 				<div class="clearfix"></div>
 			</div>
@@ -195,7 +194,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- /page content -->
 </div>
 

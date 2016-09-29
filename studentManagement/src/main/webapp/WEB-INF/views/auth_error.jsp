@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela Alela! | </title>
+    <title>Hanguk University! | </title>
 
     <!-- jQuery -->
     <script src="/bootstrap/js/jquery.min.js"></script>
@@ -38,7 +38,7 @@
     <div class="container body">
       <div class="main_container">
         <!-- page content -->
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin:350px;">
           <div class="col-middle">
             <div class="text-center text-center">
               <h1 class="error0-number">접근권한에러.</h1>

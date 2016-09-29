@@ -41,77 +41,67 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 전체성적조회
+				<i class="fa fa-line-chart"></i> 전체성적조회
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>
 		</div>
-		<div class="x_content">
-			<div class="x_panel">
-				<div class="x_title">
-					<h2>
-						<i class="fa fa-line-chart"></i> 전체성적조회
-					</h2>
-					<ul class="nav navbar-right panel_toolbox"></ul>
-					<div class="clearfix"></div>
-				</div>
+				
 	
-					<div class="x_content">
+			<div class="x_content">
 
-						<table id="datatable"
-							class="table table-striped jambo_table bulk_action">
-							<thead>
-								<tr>
-									<th>년도</th>
-									<th>학기</th>
-									<th>학수번호</th>
-									<th>과목</th>
-									<th>이수구분</th>
-									<th>학점</th>
-									<th>점수</th>
-									<th>등급</th>
-									<th>평점</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="score" items="${scoreMap.scoreList}">
-									<tr>
-										<td>${score.lec_makeyear }</td>
-										<td>${score.lec_makesemester}</td>
-										<td>${score.lec_lb_no }</td>
-										<td>${score.lb_name }</td>
-										<td>${score.lb_completekind }</td>
-										<td>${score.lb_credit }</td>
-										<td>${score.cb_score }</td>
-										<td>${score.cb_grade }</td>
-										<td>${scoreMap[score]}</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+				<table id="datatable"
+					class="table table-striped jambo_table bulk_action">
+					<thead>
+						<tr>
+							<th>년도</th>
+							<th>학기</th>
+							<th>학수번호</th>
+							<th>과목</th>
+							<th>이수구분</th>
+							<th>학점</th>
+							<th>점수</th>
+							<th>등급</th>
+							<th>평점</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="score" items="${scoreMap.scoreList}">
+							<tr>
+								<td>${score.lec_makeyear }</td>
+								<td>${score.lec_makesemester}</td>
+								<td>${score.lec_lb_no }</td>
+								<td>${score.lb_name }</td>
+								<td>${score.lb_completekind }</td>
+								<td>${score.lb_credit }</td>
+								<td>${score.cb_score }</td>
+								<td>${score.cb_grade }</td>
+								<td>${scoreMap[score]}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
-						<form class="form-inline">
-							<div class="form-group">
-								<label>총 신청학점</label> <input type="text" class="form-control"
-									value="${scoreMap.totalCredit }" readonly="readonly">
-							</div>
-							<div class="form-group">
-								<label>총 점수</label> <input type="text" class="form-control"
-									value="${scoreMap.totalScore }" readonly="readonly">
-							</div>
-
-							<div class="form-group">
-								<label>총 평점평균</label> <input type="text" class="form-control"
-									value="${scoreMap.totalScore/scoreMap.totalCredit}"
-									readonly="readonly">
-							</div>
-
-						</form>
-
-
-						<!-- x-content -->
+				<form class="form-inline">
+					<div class="form-group">
+						<label>총 신청학점</label> <input type="text" class="form-control"
+							value="${scoreMap.totalCredit }" readonly="readonly">
 					</div>
-				</div>
+					<div class="form-group">
+						<label>총 점수</label> <input type="text" class="form-control"
+							value="${scoreMap.totalScore }" readonly="readonly">
+					</div>
+
+					<div class="form-group">
+						<label>총 평점평균</label> <input type="text" class="form-control"
+							value="${scoreMap.totalScore/scoreMap.totalCredit}"
+							readonly="readonly">
+					</div>
+
+				</form>
+
+
+				<!-- x-content -->
 			</div>
 			<!-- /page content -->
 		</div>
