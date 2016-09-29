@@ -74,7 +74,19 @@
 		    	  
 		    	  }
 		      });
-			window.open("http://192.168.206.102:8888?name=<c:out value="${userName}" />", "채팅","width=450, height=450");
+			
+			 var url = "http://192.168.206.102:8888?name=<c:out value="${userName}" />";
+			 
+			 userwidth = (screen.width/2);
+			 userheight = (screen.height/2);
+			 
+			 wLeft = window.screenLeft ? window.screenLeft : window.screenX;
+			 wTop = window.screenTop ? window.screenTop : window.screenY;
+			
+			 var left = wLeft + (window.innerWidth / 2) - (userwidth / 2);
+			 var top = wTop + (window.innerHeight / 2) - (userheight / 2);
+			 
+			window.open(url, "채팅","width=435px, height=365px,"+'top=' + top + ', left=' + left +'');
 		}
 		function noIng() {
 			alert("진행중일때만 입장하실 수 있습니다.");
