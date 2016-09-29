@@ -155,5 +155,13 @@ public class CyberCamOnlineConServiceImpl implements CyberCamOnlineConService{
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no) {
 		return cyberCamOnlineConDAO.getOnlineConList(lec_no);
 	}
+	@Override
+	public List<Online_ContentsVO> getOnlineConList2(String lec_no) {
+		return cyberCamOnlineConDAO.getOnlineConList2(lec_no);
+	}
+	@Override
+	public void deleteCon(int oc_no) {
+		cyberCamOnlineConDAO.deleteCon(oc_no);
+	}
 
 }

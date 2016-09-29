@@ -204,9 +204,10 @@ public class CyberCamOnlineConController {
 		// 세션
 		String lec_no = (String) session.getAttribute("pro_lec_no");
 		
-		List<Online_Con_Watchcheck_ViewVO> watchCheckList
-			= cyberCamOnlineConService.getOnlineConList(lec_no);
+		List<Online_Con_Watchcheck_ViewVO> watchCheckList = cyberCamOnlineConService.getOnlineConList(lec_no);
+		List<Online_ContentsVO> onlineConList = cyberCamOnlineConService.getOnlineConList2(lec_no);
 		
+		model.addAttribute("onlineConList",onlineConList);
 		model.addAttribute("watchCheckList", watchCheckList);
 		return url;
 	}
@@ -229,5 +230,9 @@ public class CyberCamOnlineConController {
 		cyberCamOnlineConService.updateOnlineConTime(params,full_time);
 		
 	}
-	//온라인콘텐츠 학습기한
+	
+	@RequestMapping(value={"/cyberCampus/pro/deleteCon"}, method=RequestMethod.POST)
+	public void deleteCon(int oc_no){
+		cyberCamOnlineConService.deleteCon(oc_no);
+	}
 }
