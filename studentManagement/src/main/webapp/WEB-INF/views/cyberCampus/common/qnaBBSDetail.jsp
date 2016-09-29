@@ -43,8 +43,7 @@
     
      
     $(function(){
-    	
-    	$("#commentbtn").click(function(){
+    	$(document).on("click", "#commentbtn", function(){
     		var comment = $("#coment").val();
     		var qb_no = $("#qb_no").val();
     		
@@ -54,16 +53,15 @@
     			type:"json",
     			data:{"comment":comment, "qb_no":qb_no},
     			success:function(data){
-    				alert("등록이 완료되었습니다.");
+    				swal("등록이 완료되었습니다.");
     				
     				var htmlCode = "";
     				var btn="<input type='button' id='updatetbtn' value='수정'>";
-    				htmlCode+="답변 : "+data.qc_content;
+    				htmlCode+="답변 : "+data.qc_content+"<input type='button' value='X' style='border:none; background-color: white; color:red;' id='delBtn' name='"+data.qc_no+"'>";
     				
     				$("#result").html(htmlCode);
     				$("#resultBtn").html(btn);
     				$("#coment").val(" ");
-    				location.reload();
     			},
     			error:function(){
     				alert("error");
@@ -73,8 +71,7 @@
     		});
     	});
     	
-    	$("#updatetbtn").click(function(){
-    		
+    	$(document).on("click", "#updatetbtn", function(){	
     		var comment = $("#coment").val();
     		var qb_no = $("#qb_no").val();
     		
@@ -84,9 +81,9 @@
     			type:"json",
     			data:{"comment":comment, "qb_no":qb_no},
     			success:function(data){
-    				alert("수정 되었습니다.");
+    				swal("수정되었습니다.");
     				var htmlCode="";
-    				htmlCode+="답변 : "+data.qc_content;
+    				htmlCode+="답변 : "+data.qc_content+"<input type='button' value='X' style='border:none; background-color: white; color:red;' id='delBtn' name='"+data.qc_no+"'>";
     				$("#result").html(htmlCode);			
     				$("#coment").val(" ");
     			}
@@ -94,6 +91,31 @@
     		});
     		
     		
+    	});
+    	
+    	$(document).on("click", "#delBtn", function(){	
+    		var qc_no = $(this).attr("name");
+    		var qb_no = $("#qb_no").val();
+    		$.ajax({
+    			url:"/cyberCampus/pro/qnaCommentDelete",
+    			method:"get",
+    			type:"json",
+    			data:{"qc_no":qc_no, "qb_no":qb_no},
+    			success:function(data){
+    				swal("삭제되었습니다.");
+    				var htmlCode="";
+    				var btnCode = "<input type='button' id='commentbtn' value='등록'>";
+    				htmlCode+="등록된 댓글이 없습니다.";
+    				$("#result").html(htmlCode);
+    				$("#resultBtn").html(btnCode);
+    				$("#coment").val(" ");
+    			},
+    			error:function(){
+    				swal("에러");
+    				
+    			}
+    			
+    		});
     	});
     });
     
@@ -166,7 +188,7 @@
 						
 							<div class="x_panel_big" style="float: left; width: 90%;" id="result">
 							<c:if test="${not empty quesVO.qc_content }">
-								답변 : ${quesVO.qc_content }
+								답변 : ${quesVO.qc_content }	<input type="button" value="X" style="border:none; background-color: white; color:red;" id="delBtn" name="${quesVO.qc_no}">
 							</c:if>
 							<c:if test="${empty quesVO.qc_content }">
 								등록된 댓글이 없습니다.

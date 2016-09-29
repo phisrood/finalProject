@@ -156,4 +156,12 @@ public class CyberCamQnaBBSDAOImpl implements CyberCamQnaBBSDAO{
 		
 		return (Quesbbs_ViewVO) sqlSession.selectOne("CyberCamQnaBBSDao.selectComment", qb_no);
 	}
+
+
+
+
+	@Override
+	public void deleteComment(String qc_no) {
+		sqlSession.delete("CyberCamQnaBBSDao.deleteComment", qc_no);
+	}
 }

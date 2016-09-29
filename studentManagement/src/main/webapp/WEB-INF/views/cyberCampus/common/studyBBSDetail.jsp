@@ -32,9 +32,9 @@
 			<div style="float: left; width: 100%;"><br></div>
 
 	<!-- page content -->
-	<div class="x_panel_big" style="height:600px;">
+	<div class="x_panel_big" style="height:700px;">
 		
-		<div class="x_content" style="height: 70%">
+		<div class="x_content" style="height: 80%">
 			<br />
 				<input type="hidden" name="lr_no"
 					value="${learningRoomViewVO.lr_no }">
@@ -43,12 +43,13 @@
 				<div class="form-group" style="height: 10%;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">제목</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
-						<p>${learningRoomViewVO.lr_title}</p>
+						<input type="text" class="form-control"
+					value="${learningRoomViewVO.lr_title}" disabled="disabled"  style="width: 100%;">
 					</div>
 				</div>
-				<div class="form-group" style="height: 90%;">
+				<div class="form-group">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">내용</label>
-					<div class="col-md-9 col-sm-9 col-xs-12"  style="height: 100%;min-height: 100px; max-height:550px; overflow: scroll;">
+					<div class="col-md-9 col-sm-9 col-xs-12"  style="height:550px; min-height: 100px; max-height:550px; overflow: scroll;">
 						${learningRoomViewVO.lr_content}
 					</div>
 				</div>
