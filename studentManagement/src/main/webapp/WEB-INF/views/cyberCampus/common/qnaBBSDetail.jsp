@@ -227,12 +227,12 @@
 			</div>
 			<div style="float: right; width: 6%;">
 				<c:if test="${auth eq 'ROLE_STU'}">	
-				<a href="/common/qnaBBSDelete?qb_no=${question_BoardVO.qb_no }"><button type="button" class="btn btn-default btn-sm">삭 제</button></a>
+				<a href="/common/qnaBBSDelete?qb_no=${question_BoardVO.qb_no }"><button type="button" class="btn btn-dark">삭 제</button></a>
 				</c:if>
 			</div>
 			<div style="float: right; width: 6%;">
 				<c:if test="${auth eq 'ROLE_STU'}">	
-				<button type="submit" class="btn btn-default btn-sm">수 정</button>
+				<button type="submit" class="btn btn-dark">수 정</button>
 				</c:if>
 			</div>
 			</form>
