@@ -28,6 +28,7 @@ import com.korea.dto.StudentVO;
 import com.korea.dto.UsersVO;
 import com.korea.login.controller.MailSenderMain;
 import com.korea.login.dao.LoginDAO;
+import com.korea.security.SecurityProcess;
 
 @Service
 public class LoginServiceImpl implements LoginService{
@@ -51,10 +52,15 @@ public class LoginServiceImpl implements LoginService{
 		StudentVO studentVO = new StudentVO();
 		ProfessorVO professorVO = new ProfessorVO();
 		School_PersonVO school_PersonVO = new School_PersonVO();
-		
+		SecurityProcess sp = new SecurityProcess();
 		//임시비밀번호
 		String tempPwd = pwdTemp();
-		
+		try {
+			tempPwd = sp.encrypt(tempPwd);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//학생일때
 		if(id.length()==8){
 			try {
