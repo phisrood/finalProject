@@ -176,8 +176,7 @@ public class CyberCamOnlineConController {
 			@RequestParam(value="loginUser")String loginUser,
 			HttpServletResponse response){
 		Attachment_FileVO file = cyberCamOnlineConService.getAF(Integer.parseInt(af_no));
-		String path = "\\resources\\common\\onlineContentsAF\\"+file.getAf_aftername();
-		
+		String path = "http://192.168.206.102:8080/resources/common/onlineContentsAF/"+file.getAf_aftername();
 		Online_Con_ViewVO conViewTimeVO = new Online_Con_ViewVO();
 		conViewTimeVO.setWs_oc_lec_no(Integer.parseInt(oc_lec_no));
 		conViewTimeVO.setWs_oc_no(Integer.parseInt(oc_no));

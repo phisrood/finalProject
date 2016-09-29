@@ -72,7 +72,7 @@
 			</div>
 			</div>
            	<div style="float: right; width: 5%;margin-right: 20px;"">
-				<a href="/cyberCampus/stu/qnaBBSInsert"><button type="button" class="btn btn-dark">글쓰기</button></a>
+				<a href="/cyberCampus/stu/qnaBBSInsert"><button type="button" class="btn btn-dark">목록</button></a>
 			</div>
 			<div style="float: right; width: 95%;"><br></div>
     </div>
