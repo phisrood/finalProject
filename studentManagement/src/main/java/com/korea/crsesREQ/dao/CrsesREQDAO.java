@@ -8,6 +8,7 @@ import com.korea.dto.ClassRoom_UsetimeVO;
 import com.korea.dto.Course_BreakDownVO;
 import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_Time_ViewVO;
 import com.korea.dto.ScoreViewVO;
 import com.korea.dto.Student_InquiryList_ViewVO;
@@ -153,4 +154,10 @@ public interface CrsesREQDAO {
 	 * @throws 
 	 */
 	public List<Lecture_Time_ViewVO> getClassroomByInquiryList(List<Student_InquiryList_ViewVO> inquiryList);
+	/**
+	 * @return LectureViewVO
+	 * 강의정보가져오기
+	 * @param lec_no
+	 */
+	public LectureViewVO getLectureInfo(int lec_no);
 }

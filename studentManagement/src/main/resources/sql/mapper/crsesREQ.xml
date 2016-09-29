@@ -113,4 +113,8 @@
 		 WHERE LEC_NO =	#{lec_no}
 
 	</select>
+	
+	<select id="getLectureInfo" parameterType="str" resultType="lectureView">
+		select * from lecture_view where lec_no = #{lec_no}
+	</select>
 </mapper>

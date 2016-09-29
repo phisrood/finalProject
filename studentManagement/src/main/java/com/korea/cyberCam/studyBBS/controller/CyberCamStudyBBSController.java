@@ -40,6 +40,7 @@ import com.korea.cyberCam.studyBBS.service.CyberCamStudyBBSService;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.LearningRoomViewVO;
 import com.korea.dto.Learning_RoomVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.NoticeViewVO;
 import com.korea.dto.UsersVO;
 
@@ -61,17 +62,10 @@ public class CyberCamStudyBBSController implements ApplicationContextAware {
 	@RequestMapping(value={"/cyberCampus/stu/studyBBSList","/cyberCampus/pro/studyBBSList"}, method=RequestMethod.GET)
 	public String studyBBSList(Model model, HttpSession session){
 		String url="/cyberCampus/common/studyBBSList";
-		String lec_no = "";
-		
+		LectureViewVO lectureView = (LectureViewVO) session.getAttribute("lectureInfo");
+		String lec_no = lectureView.getLec_no();
 		UsersVO user = (UsersVO) session.getAttribute("loginUser");
-		if(user.getAuthority().equals("ROLE_STU")){
-			int lec_no2 = 0;
-			lec_no2 = (int) session.getAttribute("stu_lec_no");
-			lec_no =  Integer.toString(lec_no2);
-		}else if(user.getAuthority().equals("ROLE_PRO")){
-			lec_no = (String) session.getAttribute("pro_lec_no");
-			
-		}
+
 		
 		List<LearningRoomViewVO> studyBBSList = cyberCamStudyBBSService.getStudyBBSList(lec_no);
 		model.addAttribute("studyBBSList", studyBBSList);

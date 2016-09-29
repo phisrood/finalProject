@@ -20,25 +20,18 @@
  * Copyright (c) 2016 by DDIT  All right reserved
  * </pre>
 ===============================================================--%>
-
-	<!-- Data tables -->
-    <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
     
     <div class="row">
     	<!-- 사이버 캠퍼스 메인 ( 학과 ) -->
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"><br></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 300px; text-align: center;"><h2>Cyber Campus Home</h2></div>
+				<div style="border: 1px solid; float: left; width: 300px; text-align: center;"><h2>${lectureInfo.lb_name } Cyber Campus</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-    		<div class="col-md-12 col-sm-12 col-xs-12">
+    		<div class="col-md-12 col-sm-12 col-xs-12" style="width: 100%;">
 	        	<div class="x_panel">
-	        		<div class="x_title">
+	        		<div class="x_title" style="width: 100%;">
                     	<h2>공지 사항</h2>
                     	<div class="clearfix"></div>
                   	</div>
@@ -55,8 +48,8 @@
 	                   	<tbody>
 	                   		<c:choose>
 	                   			<c:when test="${empty noticeList }">
-	                   				<tr colspan="5">
-	                   					<td>공지사항이 없습니다.</td>
+	                   				<tr>
+	                   					<td colspan="5">공지사항이 없습니다.</td>
 	                   				</tr>
 	                   			</c:when>
 	                   			<c:otherwise>
@@ -64,7 +57,14 @@
 			                     		<tr>
 			                     			<td>${status.count }</td>
 			                     			<td>${notice.ln_title }</td>
-			                     			<td>${notice.af_aftername }</td>
+			                     			<c:choose>
+			                     				<c:when test="${notice.af_aftername == 'default'}">
+					                     			<td>-</td>
+			                     				</c:when>
+			                     				<c:otherwise>
+					                     			<td><a href="/cyberCampus/common/cyberNoticeFileDown?af_no=${cyber_LectureNoticeViewVO.af_no}">${notice.af_aftername }</a></td>
+			                     				</c:otherwise>
+			                     			</c:choose>
 			                     			<td>${notice.ln_date }</td>
 			                     			<td>${notice.use_name }</td>
 			                     		</tr>
@@ -76,19 +76,3 @@
 	           	</div>
            	</div>
 	 </div>
-    <!-- Datatables -->
-    <script src="/stu/js/jquery.dataTables.min.js"></script>
-    <script src="/stu/js/dataTables.bootstrap.min.js"></script>
-    <script src="/stu/js/dataTables.buttons.min.js"></script>
-    <script src="/stu/js/buttons.bootstrap.min.js"></script>
-    <script src="/stu/js/buttons.flash.min.js"></script>
-    <script src="/stu/js/buttons.html5.min.js"></script>
-    <script src="/stu/js/buttons.print.min.js"></script>
-    <script src="/stu/js/dataTables.fixedHeader.min.js"></script>
-    <script src="/stu/js/dataTables.keyTable.min.js"></script>
-    <script src="/stu/js/dataTables.responsive.min.js"></script>
-    <script src="/stu/js/responsive.bootstrap.js"></script>
-    <script src="/stu/js/datatables.scroller.min.js"></script>
-    <script src="/stu/js/jszip.min.js"></script>
-    <script src="/stu/js/pdfmake.min.js"></script>
-    <script src="/stu/js/vfs_fonts.js"></script>

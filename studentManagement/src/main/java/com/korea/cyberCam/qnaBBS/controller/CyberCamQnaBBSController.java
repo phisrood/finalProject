@@ -38,6 +38,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.cyberCam.qnaBBS.service.CyberCamQnaBBSService;
 import com.korea.dto.Attachment_FileVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Professor_InquiryList_ViewVO;
 import com.korea.dto.Ques_CommentsVO;
 import com.korea.dto.Quesbbs_ViewVO;
@@ -151,7 +152,8 @@ public class CyberCamQnaBBSController {
 		
 
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
-		String pro_lec_no = (String) session.getAttribute("pro_lec_no");
+		LectureViewVO lectureView = (LectureViewVO) session.getAttribute("lectureInfo");
+		String pro_lec_no=lectureView.getLec_no();
 
 		String auth = loginUser.getAuthority();
 	
