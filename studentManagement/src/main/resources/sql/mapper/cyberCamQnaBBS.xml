@@ -161,7 +161,9 @@
 	
 	</select>
 	
-	
+	<delete id="deleteComment" parameterType="str">
+		delete from ques_comments where qc_no = #{qc_no}
+	</delete>
 	
 	
 

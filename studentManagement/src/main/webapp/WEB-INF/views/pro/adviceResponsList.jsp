@@ -81,11 +81,13 @@
 						<td>${adviceRes.ad_way }</td>
 						<td>${adviceRes.ad_purpose }</td>
 						<td>${adviceRes.use_name }</td>
-						<td>${adviceRes.ad_reqdate }</td>  
-						<td>${adviceRes.ad_time } 시</td>
+						<td>
+						<%-- <fmt:formatDate value="${adviceRes.ad_reqdate }" type="date" pattern="yyyy/MM/dd (E)"/> --%>
+						${adviceRes.ad_reqdate }</td>    
+						<td>${adviceRes.ad_time } 시</td>  
 						<c:choose>
 							<c:when test="${adviceRes.ad_stat eq '미처리'}">
-						        <td><input type="button" id="click" class="btn btn-dark btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
+						       <td><input type="button" id="click" class="btn btn-dark btn-xs" value="처리" onclick="confirm(${adviceRes.ad_no })"/></td>
 							</c:when>
 							<c:otherwise>
 						       	<td>${adviceRes.ad_stat }</td>

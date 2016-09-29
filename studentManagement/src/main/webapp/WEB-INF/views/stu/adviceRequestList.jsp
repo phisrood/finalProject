@@ -120,7 +120,6 @@ $(document).ready(function() {
                상담 방법 : <select name="ad_way" class="btn btn-default">
                   <option value="화상">화상</option>
                   <option value="채팅">채팅</option>
-                  <option value="방문">방문</option>
                </select>
             </div>
             <br> <br>

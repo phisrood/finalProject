@@ -176,7 +176,6 @@
 							<input type="text" id="oc_enddate" class="form-control" name="oc_enddate" style="width: 150px;float: left;" readonly="readonly">
 						</td>
 					</tr>
-					
 					<tr>
 						<td style="width:425px;">
 							<p>첨부파일</p>
@@ -186,9 +185,7 @@
 						<td style="width:425px;">
 							출석 인정 시간 
 							<input type="text" id="oc_time" class="form-control" name="oc_time" style="width: 165px;"  maxlength="3" placeholder="숫자입력 ex)10->10분">
-						</td>  
 					</tr>
-					
 				</table>
 			
 				<div style="float: right; width: 5%;">

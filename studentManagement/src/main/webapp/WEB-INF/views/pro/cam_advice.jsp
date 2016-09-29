@@ -54,8 +54,8 @@
 	
 <style>
 .local-video {
-	width: 80px;
-	height: 60px;
+	width: 20%;
+	height: 20%;
 	z-index: 10;
 	position: relative;
 	top: -100px;
@@ -65,23 +65,25 @@
 .remote-video {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	width: 320px;
-	height: 240px;
+	margin-left: 20px;
+	margin-right: 5px;
+	width: 90%;
+	height: 30%;
 }
 </style>
 <div class="row">
 	<!-- 사이버 상담실 ( 화상 상담 ) -->
 	<div class="x_panel_big">
 	<div class="x_title">
+			<h2>사이버상담실</h2>
 			<h2><i class="fa fa-comments-o"></i> 사이버상담실</h2>
-
 			<div class="clearfix"></div>
 		</div>
 	<table id="datatable" class="table table-striped jambo_table bulk_action">
-		<thead>
+		<thead>  
 			<tr>
 				<th>방법</th>
-				<th>구분</th>
+				<th>구분</th>  
 				<th>학생명</th>
 				<th>일자</th>
 				<th>시</th>
@@ -130,37 +132,50 @@
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title" id="title">화상상담</h4>
+				<h4 class="modal-title" id="title">사이버 상담실</h4>
 			</div>
 
 			  <div class="container">
     <div class="row">
 
+	<form class="form-inline">
+      <div class="col-md-12">
+        <h1 class="page-header">화상상담</h1>  
+        <br>    
+      </div>
+ 	</form>
+ 	    
+      <div class="col-md-6" style="width:90%;height:30%;">
       
 	<div style="margin:20px;">
       <div class="col-md-6">
         <h2 class="h3">교수</h2>
-        <h3 class="h4">화상 상담실 생성</h3>
-        <form class="form-inline">
+        <h3 class="h4">화상 상담실 생성</h3>  
+              
+          <div class="form-group">  
+	          <label class="sr-only" for="createChannelId">Channel Id</label>
+	          <input class="form-control" style="width:220px;" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
+	          <button class="btn btn-dark" id="createChannel">
+                           상담실 생성  
+              </button>        
+         </div>      
+         
           <div class="form-group">
+            <h3 class="h4">파일전송</h3>    
             <label class="sr-only" for="createChannelId">Channel Id</label>
-            <input class="form-control" style="width:220px;" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
           </div>
-          <button class="btn btn-dark" id="createChannel">
-            <span  aria-hidden="true"></span> 상담실 생성
-          </button>
-        </form>
-        
-        <form class="form-inline">
+          
           <div class="form-group">
-            <label for="seclectFile"><h4>파일전송</h4></label>
-            <input type="file" id="seclectFile">
-          </div>
+            <input type="file" id="seclectFile"> 
+		  </div>      
+		  
           <button class="btn btn-dark" id="send">
             <span aria-hidden="true"></span> Send
           </button>
+            
+          </div>
         </form>
-
+        
         <video class="remote-video center-block" id="callerRemoteVideo" ></video>
         <video class="local-video pull-right" id="callerLocalVideo" muted></video>
 
