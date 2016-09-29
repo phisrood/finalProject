@@ -25,17 +25,17 @@
 	<update id="updateClassSYL" parameterType="classSYLVO">
 		UPDATE
 		CLASS_SYLLBUS
-		SET CS_CONTENT	= #{cs_content}
-		,CS_PROGRESS	= #{cs_progress}
-		,CS_WRITER		= #{cs_writer}
-		,CS_BOOKVERSION = #{cs_bookversion}
-		,CS_BOOKNAME    = #{cs_bookname}
-		,CS_PUBLISHER   = #{cs_publisher}
-		,CS_MIDTERM     = #{cs_midterm}
-		,CS_FINAL       = #{cs_final}
-		,CS_HOMEWORK    = #{cs_homework}
-		,CS_ATTENT      = #{cs_attent}
-		WHERE CS_LEC_NO = #{cs_lec_no}
+		SET CS_CONTENT	= #{cs_content,jdbcType=CLOB}
+		,CS_PROGRESS	= #{cs_progress,jdbcType=CLOB}
+		,CS_WRITER		= #{cs_writer,jdbcType=VARCHAR}
+		,CS_BOOKVERSION = #{cs_bookversion,jdbcType=VARCHAR}
+		,CS_BOOKNAME    = #{cs_bookname,jdbcType=VARCHAR}
+		,CS_PUBLISHER   = #{cs_publisher,jdbcType=VARCHAR}
+		,CS_MIDTERM     = #{cs_midterm,jdbcType=INTEGER}
+		,CS_FINAL       = #{cs_final,jdbcType=INTEGER}
+		,CS_HOMEWORK    = #{cs_homework,jdbcType=INTEGER}
+		,CS_ATTENT      = #{cs_attent,jdbcType=INTEGER}
+		WHERE CS_LEC_NO = #{cs_lec_no,jdbcType=INTEGER}
 	</update>
 	<insert id="insertClassSYL" parameterType="classSYLVO">
 		INSERT INTO CLASS_SYLLBUS

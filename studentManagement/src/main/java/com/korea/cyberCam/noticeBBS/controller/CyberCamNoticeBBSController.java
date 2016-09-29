@@ -37,6 +37,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.korea.cyberCam.noticeBBS.service.CyberCamNoticeBBSService;
 import com.korea.dto.Attachment_FileVO;
 import com.korea.dto.Cyber_LectureNoticeViewVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_NoticeVO;
 import com.korea.dto.UsersVO;
 
@@ -71,9 +72,10 @@ public class CyberCamNoticeBBSController {
 		String url="/cyberCampus/common/cyberNoticePro";
 		
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
+		LectureViewVO lectureView = (LectureViewVO) session.getAttribute("lectureInfo");
 		String auth = loginUser.getAuthority();
 		// 사이버캠퍼스 이동시 CyberCamMainController 에 심어둔 lec_no를 가져와서 또 쓸려고 stu_lec_no에 담아줌 어짜피 뷰
-		int stu_lec_no =  Integer.parseInt((String) session.getAttribute("pro_lec_no"));
+		int stu_lec_no =  Integer.parseInt(lectureView.getLec_no());
 		List<Cyber_LectureNoticeViewVO> cyber_LectureNoticeViewVO = cyberCamNoticeBBSService.getNoticeBBSList(stu_lec_no);
 		
 		model.addAttribute("cyber_LectureNoticeViewVO",cyber_LectureNoticeViewVO);

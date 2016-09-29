@@ -40,7 +40,7 @@
 
 		<div class="x_title">
 			<h2>
-				<i class="fa fa-calendar"></i> 수강편람승인/반려
+				<i class="fa fa-check"></i> 수강편람승인/반려
 			</h2>
 			<ul class="nav navbar-right panel_toolbox"></ul>
 			<div class="clearfix"></div>

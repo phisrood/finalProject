@@ -145,7 +145,7 @@
 	<div class="row">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>학사일정</h2>
+				<h2><i class="fa fa-calendar"></i> 학사일정</h2>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">

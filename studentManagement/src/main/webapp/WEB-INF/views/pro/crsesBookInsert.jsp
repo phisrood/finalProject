@@ -75,7 +75,7 @@ h2 {
 		<!-- page content -->
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>수강편람 등록</h2>
+				<h2><i class="fa fa-file-text-o"></i> 수강편람 등록</h2>
 
 				<div class="clearfix"></div>
 			</div>

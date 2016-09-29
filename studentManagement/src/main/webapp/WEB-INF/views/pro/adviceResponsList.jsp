@@ -56,7 +56,7 @@
 	<div class="x_panel_big">  
 		<!-- 상담 신청 내역 -->
 		<div class="x_title">
-			<h2>상담 신청 내역</h2>
+			<h2><i class="fa fa-list"></i> 상담 신청 내역</h2>
 			<div class="clearfix"></div>
 		</div>
 		<div>부득이한 경우 처리에서 날짜 연기를 할 수 있습니다.</div>

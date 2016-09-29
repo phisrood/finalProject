@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.korea.crsesREQ.dao.CrsesREQDAO;
 import com.korea.cyberCam.noticeBBS.service.CyberCamNoticeBBSService;
 import com.korea.dto.Cyber_LectureNoticeViewVO;
+import com.korea.dto.LectureViewVO;
 import com.korea.dto.UsersVO;
 
 @Controller
@@ -35,6 +37,8 @@ public class CyberCamMainController {
 	
 	@Autowired
 	CyberCamNoticeBBSService noticeService;
+	@Autowired
+	CrsesREQDAO crsesREQDAO;
 	
 	/**
 	 * 개인 정보 조회
@@ -43,7 +47,7 @@ public class CyberCamMainController {
 	 * @throws 
 	 */
 	//사이버캠퍼스 메인
-	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method=RequestMethod.POST)
+	@RequestMapping(value={"/cyberCampus/stu/cyberClassMain","/cyberCampus/pro/cyberClassMain"}, method={RequestMethod.POST, RequestMethod.GET})
 	public String cyberClassMainByStu(HttpSession session,String pro_lec_no,@RequestParam(value="lec_no" ,defaultValue="0")int stu_lec_no,
 			Model model){
 		String url="/cyberCampus/common/cyberClassMain";
@@ -64,14 +68,11 @@ public class CyberCamMainController {
 		}
 		
 		List<Cyber_LectureNoticeViewVO> noticeList = noticeService.getNoticeBBSList(lec_no);
+		LectureViewVO lectureInfo = crsesREQDAO.getLectureInfo(lec_no);
 		
 		model.addAttribute("noticeList", noticeList);
+		session.setAttribute("lectureInfo", lectureInfo);
 		
 		return url;
 	}
-
 }
-
-
-
-

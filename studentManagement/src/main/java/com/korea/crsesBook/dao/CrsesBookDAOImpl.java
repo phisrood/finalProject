@@ -1,5 +1,6 @@
 package com.korea.crsesBook.dao;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -120,11 +121,28 @@ public class CrsesBookDAOImpl implements CrsesBookDAO{
 	}
 	@Override
 	public List<LectureViewVO> getLectureList(String use_id) {
-		return sqlSession.selectList("crsesBook.getLectureList",use_id);
+		Calendar calendar = Calendar.getInstance();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("use_id", use_id);
+		int month = calendar.get(Calendar.MONTH);
+		if(month<7){
+			map.put("semester", "1");
+		}else{
+			map.put("semester", "2");
+		}
+		return sqlSession.selectList("crsesBook.getLectureList",map);
 	}
 	@Override
 	public List<LectureViewVO> getLectureListByStu() {
-		return sqlSession.selectList("crsesBook.getLectureList");
+		Calendar calendar = Calendar.getInstance();
+		Map<String, String> map = new HashMap<String, String>();
+		int month = calendar.get(Calendar.MONTH);
+		if(month<7){
+			map.put("semester", "1");
+		}else{
+			map.put("semester", "2");
+		}
+		return sqlSession.selectList("crsesBook.getLectureList",map);
 	}
 	@Override
 	public List<Lecture_Time_ViewVO> getLectureTimeList(String use_id) {

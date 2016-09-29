@@ -76,6 +76,7 @@
 	<div class="x_panel_big">
 	<div class="x_title">
 			<h2>사이버상담실</h2>
+			<h2><i class="fa fa-comments-o"></i> 사이버상담실</h2>
 			<div class="clearfix"></div>
 		</div>
 	<table id="datatable" class="table table-striped jambo_table bulk_action">
