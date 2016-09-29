@@ -33,7 +33,7 @@
 <script type="text/javascript">
 function FileType() {
 	
-	alert('선택한 파일은'+event.srcElement.value + '입니다.');
+	
 	if(!event.srcElement.value.match(/(.jpg|.jepg|.gif|.png)/)){
 		
 		alert('지원하는 파일은 (ex: gif, jpg, jepg, png) 입니다.');
