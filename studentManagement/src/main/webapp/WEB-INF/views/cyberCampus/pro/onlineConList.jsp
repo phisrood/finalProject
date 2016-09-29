@@ -24,7 +24,7 @@
 	<div style="float: left; width: 49%; text-align: center;">
 		<div
 			style="border: 1px solid; float: left; width: 100px; text-align: center;">
-			<h2>강의</h2>
+			<h2>출석</h2>
 		</div>
 	</div>
 	<div style="float: right; width: 1%;">
@@ -36,12 +36,12 @@
 	<div style="float: left; width: 100%;">
 		<br>
 	</div>
-	<div class="x_panel_big">
+	<div class="x_panel">
 		<div class="x_title">
 			<h2>온라인 콘텐츠</h2>
 			<div class="clearfix"></div>
 		</div>
-		<table id="datatable" class="table table-striped table-bordered">
+		<table id="datatable" class="table table-striped jambo_table bulk_action">
 			<thead>
 				<tr>
 					<th>학생이름</th>
@@ -79,8 +79,7 @@
 				</c:forEach>
 
 				<tr>
-					<td colspan="5"><br> <br> <br> <br> <br>
-						<br></td>
+					<td colspan="5"><br> <br> <br> <br> <br> <br></td>
 				</tr>
 			</tbody>
 		</table>
