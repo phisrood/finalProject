@@ -55,7 +55,7 @@
 				$("#appTable").html(htmlCode);
 			},
 			error:function(){
-				alert("error");
+				swal('평가할 강의가 없습니다.');
 			}
 		});
 		$("#saveBtn").click(function(){
