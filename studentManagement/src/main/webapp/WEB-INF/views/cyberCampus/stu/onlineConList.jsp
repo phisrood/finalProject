@@ -11,11 +11,14 @@
 <link href="/stu/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/buttons.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
+<link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">  
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
 <script>
+		function closeContent(){
+			location.reload();
+		}
 		function search(af_no,oc_time,oc_no,oc_lec_no,loginUser){
-			
+
 			$.ajax({
 				method:"get",
 				contentType : "application/json",
@@ -79,8 +82,8 @@
 				    	}, 1000);
 					
 					var html = "";
-					html += "<video src=\""+data.path+"\" controls autoplay/>";
-					$("#onlineVideo").html(html);
+					html += "<video src=\""+data.path+"\" controls autoplay width='100%' height='100%'/>";
+					$("#onlineVideo").html(html);       
 				},
 				error : function(){
 					alert("에러!");
@@ -101,15 +104,12 @@
 			style="border: 1px solid; float: left; width: 100px; text-align: center;">
 			<h2>강의</h2>
 		</div>
-	</div>
+	</div>  
 	<div style="float: right; width: 1%;">
 		<br>
 	</div>
 	<div style="float: right; width: 49%; text-align: center;">
-		<div style="float: right; width: 110px; text-align: right;">
-			<button type="button" class="btn btn-default btn-sm">
-				주 추가하기 <i class="fa fa-plus-circle"></i>
-			</button>
+		<div style="float: right; width: 110px; text-align: right;">  
 		</div>
 	</div>
 	<div style="float: left; width: 100%;">
@@ -193,7 +193,7 @@
 					</h1>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">닫기</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="closeContent();">닫기</button>
 			</div>
 		</div>
 	</div>

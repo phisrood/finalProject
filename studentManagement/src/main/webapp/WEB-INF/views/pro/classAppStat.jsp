@@ -128,16 +128,16 @@
 	             
 		<div class="x_panel" style="height:300px;">
 			<div class="x_title"> 
-				<h2>수업평가항목</h2>
+				<h2><i class="fa fa-list"></i> 수업평가항목</h2>
 				<div class="clearfix">  
 				</div>
+			</div>
+			<div class="x_content">
 				<select class="form-control" id="lecture">
                       <c:forEach var="lectureList" items="${lectureList }">
                         <option value="${lectureList.lec_no }">[개설 : ${lectureList.lec_makeyear}-${lectureList.lec_makesemester}학기 분반 : ${lectureList.lec_placement} 과목명 : ${lectureList.lb_name }]</option>
                       </c:forEach>
                 </select>
-			</div>
-			<div class="x_content">
 				<div id="qnaChart" style="width:100%; height:280px;"></div>
 			</div>
 		</div>
@@ -146,20 +146,17 @@
 
             <div class="clearfix"></div>
 
-            <div class="row">
               <!-- bar chart -->
              
                 <div class="x_panel" style="height:40%;">
                   <div class="x_title">
-                    <h2>수업평가통계</h2>
-                    
+                    <h2><i class="fa fa-bar-chart"></i> 수업평가통계</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div id="graph_bar" style="width:100%; height:280px;"></div>
                   </div>
                 </div>
-              </div>
               <!-- /bar charts -->
 
 				

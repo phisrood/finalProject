@@ -33,7 +33,7 @@
     		<div style="float: left; width: 100%;"><br></div>
     		<div style="float: left; width: 1%;"><br></div>
 	    	<div style="float: left; width: 99%; text-align: center;">
-				<div style="border: 1px solid; float: left; width: 100px; text-align: center;"><h2>수강생 리스트</h2></div>
+				<div style="border: 1px solid; float: left; width: 120px; text-align: center;"><h2>수강생 리스트</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
 	     	<div class="x_panel_big">

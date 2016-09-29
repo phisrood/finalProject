@@ -100,7 +100,7 @@
 		$("#oc_startdate").datepicker(
 				{
 					showOn: "button",
-					buttonText: "선택",
+					buttonImage: "/resources/common/images/calendar.png",
 					showButtonPanel : true,
 					currentText : '오늘 날짜',
 					closeText : '닫기',
@@ -124,7 +124,7 @@
 			$("#oc_enddate").datepicker(
 					{
 						showOn: "button",
-						buttonText: "선택",
+						buttonImage: "/resources/common/images/calendar.png",
 						showButtonPanel : true,
 						currentText : '오늘 날짜',
 						closeText : '닫기',
@@ -156,45 +156,40 @@
 				<div style="border: 1px solid; float: left; width: 150px; text-align: center;"><h2>강의 등록</h2></div>
 			</div>
 			<div style="float: left; width: 100%;"><br></div>
-			<div class="x_panel_big">  
+			<div class="x_panel">  
 				<br>
 				<form method="post" action="/cyberCampus/pro/onlineConReg" enctype="multipart/form-data">
-				<table id="datatable" class="table table-striped table-bordered">
+				<table id="datatable" class="table table-striped table-bordered" style="width:850px;margin-left:100px;">
 					<tr>
-						<td>
-							강의 제목 &nbsp;: &nbsp;
-							<input name="oc_content" type="text" size="165" id="oc_content" maxlength="15" placeholder="최대 15자">
+						<td colspan="2">
+							강의 제목 
+							<input type="text" id="oc_content" class="form-control" maxlength="15" name="oc_content" style="width: 800px;" placeholder="최대 15자">
 						</td>
 					</tr>
 					<tr>
-						<td>
-							학습 시작 기간 &nbsp;: &nbsp;
-							<input name="oc_startdate" type="text" size="165" id="oc_startdate" readonly="readonly">
+						<td style="width:425px;">
+							<p>학습 시작 기간</p>
+							<input type="text" id="oc_startdate" class="form-control" name="oc_startdate" style="width: 150px;float: left;" readonly="readonly">
+						</td>
+						<td style="width:425px;">
+							<p>학습 마감 기간</p>
+							<input type="text" id="oc_enddate" class="form-control" name="oc_enddate" style="width: 150px;float: left;" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
-						<td>
-							학습 마감 기간 &nbsp;: &nbsp;
-							<input name="oc_enddate" type="text" size="165" id="oc_enddate" readonly="readonly">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div style="float: left; width: 7%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 93%;">
+						<td style="width:425px;">
+							<p>첨부파일</p>
+							<div style="float: left;">
 							<input type="file" name="file" accept="video/*" onchange="fileType()" id="file" ></div>
 						</td>
-					</tr>
-					<tr>
-						<td>
-							출석 인정 시간 &nbsp;: &nbsp;
-							<input name="oc_time" type="text" size="161" placeholder="숫자로만 입력" id="oc_time"  maxlength="3">
-						</td>  
+						<td style="width:425px;">
+							출석 인정 시간 
+							<input type="text" id="oc_time" class="form-control" name="oc_time" style="width: 165px;"  maxlength="3" placeholder="숫자입력 ex)10->10분">
 					</tr>
 				</table>
 			
 				<div style="float: right; width: 5%;">
-					<input type="submit" class="btn btn-default btn-sm" value="등록" id="submitBtn"/>
+					<input type="submit" class="btn btn-dark" value="등록" id="submitBtn"/>
 				</div>
 				</form>
 			</div>

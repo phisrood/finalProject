@@ -35,11 +35,10 @@
 
 <form>
 	<div class="row">
-		<div class="x_panel_big">
 			<div class="x_panel">
 
 				<div class="x_title">
-					<h2>학과정보관리</h2>
+					<h2><i class="fa fa-university"></i> 학과정보관리</h2>
 					<div class="clearfix"></div>
 				</div>
 
@@ -113,6 +112,5 @@
 					</table>
 				</div>
 			</div>
-		</div>
 	</div>
 </form>

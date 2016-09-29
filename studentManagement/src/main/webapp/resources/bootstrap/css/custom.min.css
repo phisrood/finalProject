@@ -1386,11 +1386,6 @@ table.jambo_table tbody tr.selected td {
 	float: left
 }
 
-.dataTables_paginate {
-	float: right;
-	text-align: right
-}
-
 table.dataTable th.focus, table.dataTable td.focus {
 	outline: 2px solid #1ABB9C !important;
 	outline-offset: -1px

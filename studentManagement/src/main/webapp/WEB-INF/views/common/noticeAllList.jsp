@@ -22,22 +22,21 @@
  * </pre>
 ===============================================================--%>
 
-	<!-- Data tables -->
-    <link href="/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/css/scroller.bootstrap.min.css" rel="stylesheet">
+	
     
-    
+<script>
+	$(function() {
+		var table = $('#datatable').DataTable();
+		table.order([ 0, 'desc' ]).draw();
+	});
+</script>
 			
            
             <div class="row">
             <!-- 공지사항 -->
-              <div class="x_panel_big">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>공지사항</h2>
+                    <h2><i class="fa fa-bullhorn"></i> 공지사항</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -131,7 +130,6 @@
 						
 					</div>
                 </div>
-              </div>
        
               
               </div>

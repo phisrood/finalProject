@@ -45,7 +45,7 @@
 	<!-- page content -->
 	<div class="x_panel">
 		<div class="x_title">
-			<h2>시간표</h2>
+			<h2><i class="fa fa-calendar"></i> 시간표</h2>
 
 			<div class="clearfix"></div>
 		</div>

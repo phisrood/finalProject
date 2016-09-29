@@ -155,6 +155,11 @@ public class CyberCamQnaBBSServiceImpl implements CyberCamQnaBBSService{
 		
 	}
 
+	@Override
+	public void deleteComment(String qc_no) {
+		cyberCamQnaBBSDAO.deleteComment(qc_no);
+	}
+
 
 
 

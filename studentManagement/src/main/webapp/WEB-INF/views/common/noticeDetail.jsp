@@ -83,7 +83,7 @@
 							</a>
 					</c:if>
 					<button type="button" class="btn btn-dark"
-						onclick="javascript:history.go(-1);">뒤로</button>
+						onclick="javascript:history.go(-1);">목록</button>
 				</div>
 	
 
