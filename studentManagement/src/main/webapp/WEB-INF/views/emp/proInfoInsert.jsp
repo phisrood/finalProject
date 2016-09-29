@@ -169,7 +169,7 @@
 	        	});
 	        	$("#pro_email").focus();
 				return false;
-	        }else if(mail.test(email) != true){
+	        }/* else if(mail.test(email) != true){
 	        	swal({
 	        		title:"< 형식에 맞지 않습니다.! >",
 	        		text : "이메일 형식을 맞춰주세요",
@@ -178,7 +178,7 @@
 	        	});
 	        	$("#pro_email").focus();
 				return false;
-	        }else if(regno1 == "" || regno2== ""){
+	        } */else if(regno1 == "" || regno2== ""){
 	        	swal({
 	        		title:"< 주민등록번호를 입력해주세요! >",
 	        		text : "ex)580522 - 2245678",

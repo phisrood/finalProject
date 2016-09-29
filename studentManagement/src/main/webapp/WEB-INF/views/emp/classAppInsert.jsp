@@ -119,6 +119,7 @@
 		
 		
 		$("#listSave").click(function(){
+			swal('문항저장이 완료되었습니다.');
 			location.href="/emp/classAppSave";
 		});
 	})
