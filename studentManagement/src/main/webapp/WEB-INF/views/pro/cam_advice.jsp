@@ -145,21 +145,36 @@
  	</form>
  	    
       <div class="col-md-6" style="width:90%;height:30%;">
+      
+	<div style="margin:20px;">
+      <div class="col-md-6">
         <h2 class="h3">교수</h2>
         <h3 class="h4">화상 상담실 생성</h3>  
               
           <div class="form-group">  
 	          <label class="sr-only" for="createChannelId">Channel Id</label>
-	          <input type="text" id="createChannelId" placeholder="생성버튼을 눌러주세요." readonly>
-	          <button class="btn btn-default" id="createChannel">상담실 생성</button>    
+	          <input class="form-control" style="width:220px;" type="text" id="createChannelId" placeholder="상담실 생성버튼을 눌러주세요." readonly>
+	          <button class="btn btn-dark" id="createChannel">
+                           상담실 생성  
+              </button>        
          </div>      
          
           <div class="form-group">
-            <label for="seclectFile">파일전송</label>  
-            <input type="file" id="seclectFile">
-            <button class="btn btn-default" id="send">전송</button>      
-		  </div>    
+            <h3 class="h4">파일전송</h3>    
+            <label class="sr-only" for="createChannelId">Channel Id</label>
+          </div>
+          
+          <div class="form-group">
+            <input type="file" id="seclectFile"> 
+		  </div>      
 		  
+          <button class="btn btn-dark" id="send">
+            <span aria-hidden="true"></span> Send
+          </button>
+            
+          </div>
+        </form>
+        
         <video class="remote-video center-block" id="callerRemoteVideo" ></video>
         <video class="local-video pull-right" id="callerLocalVideo" muted></video>
 
@@ -168,6 +183,7 @@
         <!-- <video class="remote-video center-block" id="calleeRemoteVideo"></video>
         <video class="local-video pull-right" id="calleeLocalVideo"></video> -->
 
+	</div>
     </div>
   </div>
 
@@ -289,7 +305,7 @@
   </script>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="modalClose();">종료</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="close" onclick="modalClose();">종료</button>
 			</div>
 		</div>
 	</div>

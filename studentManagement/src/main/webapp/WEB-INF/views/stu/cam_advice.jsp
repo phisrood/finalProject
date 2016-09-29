@@ -180,13 +180,18 @@
      	</form>
  	
           <div class="col-md-6" style="width:90%;height:30%;">
+   		
+   		<div style="margin:20px;">
+    	  <div class="col-md-6">
         <h2 class="h3">학생</h2>
         <h3 class="h4">화상 상담실 입장</h3>
         
           <div class="form-group">
             <label class="sr-only" for="connectChannelId">Channel Id</label>
-            <input type="text" id="connectChannelId" placeholder="상담실 코드">
-            <button class="btn btn-default" id="connectChannel">상담실 입장</button>
+            <input class="form-control" type="text" id="connectChannelId" placeholder="상담실 코드" style="width:220px;" readonly>
+            <button class="btn btn-dark" id="connectChannel">
+            	상담실 입장
+            </button>
           </div>
             
         <div class="row">
@@ -195,10 +200,12 @@
               <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="receiveProgressbar">
               </div>
             </div>
+          </div>  
+          
+          <div>      
+            <button class="btn btn-dark" id="receive">파일받기</button>
           </div>
-          <div class="col-md-2">
-            <button class="btn btn-default" id="receive">파일받기</button>
-          </div>
+          
         </div>
 		
         <video class="remote-video center-block" id="calleeRemoteVideo" ></video>
@@ -207,11 +214,9 @@
       </div>
 
     </div>
-  </div>
-
-
+  </div>  
   			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal" id="close" onclick="close();">종료</button>
+				<button type="button" class="btn btn-dark" data-dismiss="modal" id="close" onclick="close();">종료</button>
 			</div>
 		</div>
 	</div>

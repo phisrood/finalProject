@@ -162,33 +162,32 @@
 				<table id="datatable" class="table table-striped table-bordered">
 					<tr>
 						<td>
-							강의 제목 &nbsp;: &nbsp;
-							<input name="oc_content" type="text" size="165" id="oc_content" maxlength="15" placeholder="최대 15자">
-						</td>
-					</tr>
-					<tr>
-						<td>
+							강의 제목 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;
+							<input name="oc_content" type="text" size="70" id="oc_content" maxlength="15" placeholder="최대 15자">
+						</td>           
+					</tr>          
+					<tr>       
+						<td>   
 							학습 시작 기간 &nbsp;: &nbsp;
-							<input name="oc_startdate" type="text" size="165" id="oc_startdate" readonly="readonly">
-						</td>
-					</tr>
+							<input name="oc_startdate" type="text" size="70" id="oc_startdate" readonly="readonly">
+						</td>  
+					</tr>    
 					<tr>
-						<td>
+						<td>  
 							학습 마감 기간 &nbsp;: &nbsp;
-							<input name="oc_enddate" type="text" size="165" id="oc_enddate" readonly="readonly">
+							<input name="oc_enddate" type="text" size="70" id="oc_enddate" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<div style="float: left; width: 7%;">첨부 파일 &nbsp;: </div>
-							<div style="float: left; width: 93%;">
-							<input type="file" name="file" accept="video/*" onchange="fileType()" id="file" ></div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							출석 인정 시간 &nbsp;: &nbsp;
-							<input name="oc_time" type="text" size="161" placeholder="숫자로만 입력" id="oc_time"  maxlength="3">
+						<td>  
+							첨부 파일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;
+							<input type="file" name="file" accept="video/*" onchange="fileType()" id="file" >
+						</td>        
+					</tr>    
+					<tr>    
+						<td>    
+							출석 인정 시간 &nbsp;: &nbsp;  
+							<input name="oc_time" type="text" size="70" placeholder="숫자로만 입력" id="oc_time"  maxlength="3">
 						</td>  
 					</tr>
 				</table>

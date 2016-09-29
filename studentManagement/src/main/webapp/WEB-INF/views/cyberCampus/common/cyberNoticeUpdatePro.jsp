@@ -64,9 +64,9 @@
 					
 					<tr>
 						<td>
-						<div style="float: left; width: 94%;"><input type="file" name="file" />
+						<div style="float: left; width: 94%;" class="btn btn-dark"><input type="file" name="file" />
 						<c:choose>
-						<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'defalut'}">
+						<c:when test="${cyber_LectureNoticeViewVO.af_aftername eq 'default'}">
 						현재 첨부파일이 없습니다.
 						</c:when>
 						<c:otherwise>
@@ -95,10 +95,10 @@
 			</div>
 			<div style="float: left; width: 2%;"><br></div>
 			<div style="float: left; width: 92%;">
-				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button" class="btn btn-default btn-sm">목 록</button></a>
+				<a href="/cyberCampus/pro/cyberNoticeList"><button type="button"  class="btn btn-dark">목 록</button></a>
 			</div>
 			<div style="float: right; width: 6%;">
-				<input type="submit" class="btn btn-default btn-sm" value="수정">
+				<input type="submit"  class="btn btn-dark" value="수정">
 				
 			</div>
 			
