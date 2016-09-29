@@ -55,7 +55,7 @@
 			<div style="float: left; width: 100%;"><br></div>
 
 	<!-- page content -->
-	<div class="x_panel_big" style="height:730px;">
+	<div class="x_panel_big" style="height:700px;">
 		<form name="updateStudyBBSForm" class="form-horizontal form-label-left" enctype="multipart/form-data" >
 		<div class="x_content" style="height: 80%">
 			<br />
@@ -77,8 +77,8 @@
 						<textarea class="form-control" name="lr_content" style="width:1000px;height:500px;">${studyBBSDetailViewVO.lr_content}</textarea>
 					</div>
 				</div>
-
-				<div class="form-group">
+				
+				<div class="form-group" style="margin-top: 200px;">
 					<label class="control-label col-md-3 col-sm-3 col-xs-12">첨부파일</label>
 					<div class="col-md-9 col-sm-9 col-xs-12">
 							<c:if test="${studyBBSDetailViewVO.lr_af_no == 0 }">
@@ -103,13 +103,13 @@
 
 
 	<!-- /page content -->
+		</form>
+		</div>
 				<div style="text-align: right; height: 20%">
 					<button type="button" class="btn btn-dark" onclick="updateStudyBBS('updateStudyBBSForm');">수정</button>
 					<button type="button" class="btn btn-dark"
 						onclick="javascript:history.go(-1);">뒤로</button>
 				</div>
-		</form>
-		</div>
 	</div>
 
 

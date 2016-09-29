@@ -161,6 +161,16 @@ public class CyberCamOnlineConDAOImpl implements CyberCamOnlineConDAO {
 		return (List<Online_Con_Watchcheck_ViewVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineCheckList", lec_no);
 	}
 
+	@Override
+	public List<Online_ContentsVO> getOnlineConList2(String lec_no) {
+		return (List<Online_ContentsVO>) sqlSession.selectList("CyberCamOnlineContentsDAO.getOnlineConList2",lec_no);
+	}
+
+	@Override
+	public void deleteCon(int oc_no) {
+		sqlSession.delete("CyberCamOnlineContentsDAO.deleteCon",oc_no);
+	}
+
 
 
 }

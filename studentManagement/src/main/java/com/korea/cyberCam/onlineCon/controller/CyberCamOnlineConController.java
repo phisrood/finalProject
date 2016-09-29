@@ -176,8 +176,7 @@ public class CyberCamOnlineConController {
 			@RequestParam(value="loginUser")String loginUser,
 			HttpServletResponse response){
 		Attachment_FileVO file = cyberCamOnlineConService.getAF(Integer.parseInt(af_no));
-		String path = "\\resources\\common\\onlineContentsAF\\"+file.getAf_aftername();
-		
+		String path = "http://192.168.206.102:8080/resources/common/onlineContentsAF/"+file.getAf_aftername();
 		Online_Con_ViewVO conViewTimeVO = new Online_Con_ViewVO();
 		conViewTimeVO.setWs_oc_lec_no(Integer.parseInt(oc_lec_no));
 		conViewTimeVO.setWs_oc_no(Integer.parseInt(oc_no));
@@ -204,9 +203,10 @@ public class CyberCamOnlineConController {
 		// 세션
 		String lec_no = (String) session.getAttribute("pro_lec_no");
 		
-		List<Online_Con_Watchcheck_ViewVO> watchCheckList
-			= cyberCamOnlineConService.getOnlineConList(lec_no);
+		List<Online_Con_Watchcheck_ViewVO> watchCheckList = cyberCamOnlineConService.getOnlineConList(lec_no);
+		List<Online_ContentsVO> onlineConList = cyberCamOnlineConService.getOnlineConList2(lec_no);
 		
+		model.addAttribute("onlineConList",onlineConList);
 		model.addAttribute("watchCheckList", watchCheckList);
 		return url;
 	}
@@ -220,6 +220,7 @@ public class CyberCamOnlineConController {
 	@RequestMapping(value={"/cyberCampus/stu/timeCheck"}, method=RequestMethod.POST)
 	public void onlineConListPro(int oc_time,String loginUser,String oc_no,String oc_lec_no,String full_time){
 
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		Map<String,String> params = new HashMap<String,String>();
 		params.put("loginUser", loginUser);
 		params.put("oc_no", oc_no);
@@ -229,5 +230,9 @@ public class CyberCamOnlineConController {
 		cyberCamOnlineConService.updateOnlineConTime(params,full_time);
 		
 	}
-	//온라인콘텐츠 학습기한
+	
+	@RequestMapping(value={"/cyberCampus/pro/deleteCon"}, method=RequestMethod.POST)
+	public void deleteCon(int oc_no){
+		cyberCamOnlineConService.deleteCon(oc_no);
+	}
 }

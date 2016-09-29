@@ -81,6 +81,22 @@
 	<select id="getOnlineCheckList" parameterType="str" resultType="online_Con_Watchcheck_ViewVO">
 		SELECT * 
 		FROM ONLINE_CON_WATCHCHECK_VIEW 
+		WHERE OC_LEC_NO = #{lec_no}
 		ORDER BY OC_NO
 	</select>
+	<select id="getOnlineConList2" parameterType="str" resultType="onlineContentsVO">
+		select 
+		oc_no,
+		TO_CHAR(OC_STARTDATE,'YYYY/MM/DD') AS OC_STARTDATE,
+		TO_CHAR(OC_ENDDATE,'YYYY/MM/DD') AS OC_ENDDATE,
+		oc_content,
+		oc_date,
+		oc_time
+		from ONLINE_CONTENTS 
+		where oc_lec_no = #{lec_no}
+		order by oc_no asc
+	</select>
+	<delete id="deleteCon" parameterType="int">
+		delete from online_contents where oc_no = #{oc_no}
+	</delete>
 </mapper>
