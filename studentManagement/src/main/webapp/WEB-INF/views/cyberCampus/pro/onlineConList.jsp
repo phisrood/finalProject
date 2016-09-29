@@ -12,8 +12,27 @@
 <link href="/stu/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/responsive.bootstrap.min.css" rel="stylesheet">
 <link href="/stu/css/scroller.bootstrap.min.css" rel="stylesheet">
-
-<div class="row">
+<script>
+	function deleteCon(oc_no){
+		$.ajax({
+			method:"post",
+			url : "/cyberCampus/pro/deleteCon",
+			data:{
+				"oc_no":oc_no
+			},
+			success : function(){
+			}  
+		});  
+		alert("강의가 삭제되었습니다.");
+		location.reload();
+	}
+</script>    
+<style>  
+.weekCon{
+	background-color : skyblue;
+}
+</style>    
+<div class="row">    
 	<!-- 온라인 콘텐츠 ( 학과 ) -->
 	<div style="float: left; width: 100%;">
 		<br>
@@ -51,17 +70,25 @@
 				</tr>
 			</thead>
 			<c:set var="previous" value="0"/>
-			<c:set var="week" value="1"/>
-			<tbody>
-				<c:forEach var="watchCheck" items="${watchCheckList }"
-					varStatus="sta">
+			<c:set var="week" value="1"/>  
+			<tbody>    
+				<c:forEach var="watchCheck" items="${watchCheckList }" varStatus="sta">
 					<c:set var="current" value="${watchCheck.oc_no}"/>
-					<c:if test="${previous!=current }">
-						<tr>
-							<td colspan="4">${week }주차</td>
-						</tr>
+					<c:if test="${previous!=current }">      
+						<tr>      
+							<td colspan="4" class="weekCon">  
+								${week }주차   
+								<button class="btn btn-dark" style="float: right;" onclick="deleteCon(${watchCheck.oc_no});">강의취소</button>  
+								<br>  
+								강의제목 : ${onlineConList[week-1].oc_content }
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								${onlineConList[week-1].oc_startdate }~${onlineConList[week-1].oc_enddate }  
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								출석시간 : ${onlineConList[week-1].oc_time }    
+							</td>    
+						</tr>            
 						<c:set var="week" value="${week+1 }"/>
-					</c:if>
+					</c:if>    
 					<tr>
 						<td>${watchCheck.use_name}</td>
 						<td>${watchCheck.stud_use_id}</td>

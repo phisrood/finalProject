@@ -60,10 +60,10 @@
 											"loginUser":loginUser,
 											"oc_no":oc_no,
 											"oc_lec_no":oc_lec_no,
-											"full_time" : full_time
+											"full_time" : oc_time
 										},
 										error : function(){
-											alert("에러!");
+											//alert("에러!");
 										},
 										success : function(data){
 											clearInterval(timer);
@@ -90,7 +90,7 @@
 				}
 			});
 		};
-</script>
+</script>  
 <div class="row">
 	<!-- 온라인 콘텐츠 ( 학과 ) -->
 	<div style="float: left; width: 100%;">

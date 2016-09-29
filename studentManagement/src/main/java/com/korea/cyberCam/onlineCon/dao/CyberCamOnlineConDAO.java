@@ -132,4 +132,6 @@ public interface CyberCamOnlineConDAO {
 	public void updateOnlineConAttendyn(Map<String, String> params);
 	public int getWatchTime(Online_Con_ViewVO conViewTimeVO);
 	public List<Online_Con_Watchcheck_ViewVO> getOnlineConList(String lec_no);
+	public List<Online_ContentsVO> getOnlineConList2(String lec_no);
+	public void deleteCon(int oc_no);
 }
