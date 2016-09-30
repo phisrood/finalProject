@@ -34,14 +34,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korea.crsesREQ.service.CrsesREQService;
 import com.korea.dto.CrsesListViewVO;
 import com.korea.dto.CrsesList_stu_ViewVO;
+import com.korea.dto.Period;
 import com.korea.dto.UsersVO;
+import com.korea.period.service.PeriodService;
 import com.korea.security.SecurityProcess;
 
 @Controller
 public class CrsesREQController {
 
 	@Autowired
-	CrsesREQService crsesREQService;
+	private CrsesREQService crsesREQService;
+	@Autowired
+	private PeriodService periodService;
 
 	/**
 	 * 메인화면
@@ -124,7 +128,10 @@ public class CrsesREQController {
 	@RequestMapping(value = "/stu/crsesLoginForm", method = RequestMethod.GET)
 	public String crsesLoginForm() {
 		String url = "/stu/crsesLogin";
-
+		Period period = periodService.getPeriodAll();
+		if(period.getPr_crses_inquiry().equals("off")){
+			url="redirect:/stu/Notperiod";
+		}
 		return url;
 	}
 

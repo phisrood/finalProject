@@ -55,12 +55,7 @@ public class LoginServiceImpl implements LoginService{
 		SecurityProcess sp = new SecurityProcess();
 		//임시비밀번호
 		String tempPwd = pwdTemp();
-		try {
-			tempPwd = sp.encrypt(tempPwd);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		//학생일때
 		if(id.length()==8){
 			try {
@@ -70,6 +65,7 @@ public class LoginServiceImpl implements LoginService{
 				if(studentVO.getStud_email() != null){
 					MailSenderMain.sendMailInfoStu(studentVO, tempPwd);
 					//그냥 아무vo에 임시비밀번호 넣어서 초기화
+					tempPwd = sp.encrypt(tempPwd);
 					studentVO.setStud_regno1(tempPwd);
 					dao.updatePwdChangeStu(studentVO);
 					chk = 3;

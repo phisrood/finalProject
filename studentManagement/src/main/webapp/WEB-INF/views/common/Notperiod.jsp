@@ -15,7 +15,7 @@
 <body>
 <div class="row">
 <div class="alert alert-danger alert-dismissible fade in"  style="width:600px;height:100px;margin:400px;font-size:40px;text-align:center;">
-				수업평가 기간이 아닙니다.
+				해당 기간이 아닙니다.
 </div>
 </div>
 </body>

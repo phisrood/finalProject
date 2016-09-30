@@ -68,7 +68,11 @@ public class PeriodController  {
 		periodService.updateMajorReqPeriod(state);
 		getPeriodAll(session,response);
 	}
-	
+	@RequestMapping(value="/stu/allPeriod", method=RequestMethod.GET)
+	public void allPeriod(String state,HttpSession session,HttpServletResponse response){
+		getPeriodAll(session,response);
+	}
+
 	public void getPeriodAll(HttpSession session,HttpServletResponse response){
 		Period period = periodService.getPeriodAll();
 		session.setAttribute("period", period);
