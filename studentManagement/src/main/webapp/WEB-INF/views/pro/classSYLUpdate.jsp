@@ -118,8 +118,6 @@
 	function updateSYLConfirm(){
 		$('#cs_content').val($('#cs_content').val().replace("/\n/g", "<br>"));
 		$('#cs_progress').val($('#cs_progress').val().replace("/\n/g", "<br>"));
-		alert($('#cs_content'));
-		alert($('#cs_progress'));
 		document.updateSyl.method="get";
 		document.updateSyl.action="/pro/updateSylConfirm";
 		document.updateSyl.submit();

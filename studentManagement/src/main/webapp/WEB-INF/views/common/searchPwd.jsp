@@ -99,10 +99,10 @@
               	<div style="text-align: right; margin-bottom: 10px;"> 
                		<a href='/common/loginForm' style="color:balck;">--로그인하러가기--</a>
                	</div>
-                <input type="submit" value="인증메일발송" style="width:100%; height: 30px;">  
+                <input type="submit" value="인증비밀번호발송" style="width:100%; height: 30px;">  
               </div>
                 <div class="clearfix"></div>
-             	<br />
+             	<br />  
                 <div>
                   <h1 style="color:#D8D8D8;"><i class="fa fa-paw"></i> Hanguk University!</h1>
                   <p style="color:#D8D8D8;">©2016 All Rights Reserved. Hanguk is a Best University.</p>

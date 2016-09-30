@@ -32,8 +32,9 @@
 <script src="/bootstrap/js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(function() {
-		$('#datatable').DataTable();
-	});
+	    var table = $('#datatable').DataTable();
+	    table.order([ 0, 'desc' ]).draw();
+	 });
 </script>
     <div class="row">
     	<!-- Q & A 게시판 ( 학과 ) -->
