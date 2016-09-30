@@ -145,12 +145,9 @@
 		                  </li>
 		                   <li><a><i class="fa fa-bar-chart-o"></i> 수강신청 <span class="fa fa-chevron-down"></span></a>
 		                    <ul class="nav child_menu">
-		                    	<c:if test="${period.pr_crses_inquiry eq 'on'}">
+	
 		                      <li><a href="/stu/crsesLoginForm" target="_blank">수강신청</a></li>    
-		                      </c:if>
-		                      <c:if test="${period.pr_crses_inquiry eq 'off'}">
-		                      <li><a href="/stu/Notperiod" target="_blank">수강신청</a></li>    
-		                      </c:if>
+		                    
 		                    </ul>
 		                  </li>
                 </ul>

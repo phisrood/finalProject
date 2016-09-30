@@ -24,7 +24,9 @@ import com.korea.dto.Appraisal_ManageVO;
 import com.korea.dto.LectureViewVO;
 import com.korea.dto.Lecture_ChartVO;
 import com.korea.dto.Lecture_Chart_ViewVO;
+import com.korea.dto.Period;
 import com.korea.dto.UsersVO;
+import com.korea.period.service.PeriodService;
 /**
  * @Class Name : ClassAppController.java
  * @Description : 수업평가 관련 컨트롤러
@@ -46,6 +48,8 @@ public class ClassAppController {
 	
 	@Autowired
 	private ClassAppService classAppService;
+	@Autowired
+	private PeriodService periodService;
 	/**
 	 * 수업평가 항목 관리
 	 * @param
@@ -239,15 +243,15 @@ public class ClassAppController {
 	@RequestMapping(value="/stu/classAppInput", method=RequestMethod.GET)
 	public String classAppInput(HttpSession session, Model model){
 		String url="/stu/classAppInput";
-		
+		Period period = periodService.getPeriodAll();
+		if(period.getPr_app_lecture().equals("on")){
 		UsersVO loginUser = (UsersVO) session.getAttribute("loginUser");
-		
 		String id = loginUser.getUse_id();
-		
 		List<AppLecture_ViewVO> lectureList = classAppService.getLectureList(id);
-		
 		model.addAttribute("lectureList", lectureList);
-		
+		}else{
+			url="redirect:/stu/Notperiod";
+		}
 		return url;
 	}
 	/**
